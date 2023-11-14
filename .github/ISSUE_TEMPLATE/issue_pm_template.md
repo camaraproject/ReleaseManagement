@@ -1,8 +1,8 @@
 ---
-name: ☁ Subproject management 🎂
-about: Indicate an issue with subproject repository or release management
+name: ☁ WG management 🎂
+about: Indicate an issue with working group repository or release management
 title: ''
-labels: 'subproject management'
+labels: 'wg management'
 assignees: ''
 
 ---
