@@ -1,3 +1,3 @@
 | Org                    | Name                                                |
 | -----------------------| ----------------------------------------------------|
-| §company§ | $name§ |
+| Deutsche Telekom | Herbert Damker |
