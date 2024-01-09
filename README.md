@@ -6,7 +6,7 @@
 <a href="https://github.com/camaraproject/ReleaseManagement/blob/main/LICENSE" title="License"><img src="https://img.shields.io/badge/License-Apache%202.0-green.svg?style=plastic"></a>
 
 # Release Management
-Repository to describe, develop, document and test the Release Management process
+Repository to describe, develop, document and test the Release Management process.
 
 ## Scope
 * Guidelines and assets for Release Management in CAMARA
@@ -16,8 +16,9 @@ Repository to describe, develop, document and test the Release Management proces
 
 ## Meetings
 * Meetings are held virtually
-* Schedule: tbd
-* Meeting link: tbd
+* Schedule: Weekly on Tuesday's at 08:00 PT / 16:00 UTC / 17:00 CET
+* Meeting link: [Meeting Registration / Join](https://zoom-lfx.platform.linuxfoundation.org/meeting/97762557636?password=e5f98402-8c29-448d-a8b1-f2dceaa9d4ba)
+* Meeting minutes are available within the [wiki of the Release Management Working Group](https://wiki.camaraproject.org/display/CAM/Release+Management+Working+Group)
 
 ## Contributorship and mailing list
 * To subscribe / unsubscribe to the mailing list of this Sub Project and thus be / resign as Contributor please visit <https://lists.camaraproject.org/g/release>.
