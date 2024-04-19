@@ -4,6 +4,7 @@
 <a href="https://github.com/camaraproject/ReleaseManagement/graphs/contributors" title="Contributors"><img src="https://img.shields.io/github/contributors/camaraproject/ReleaseManagement?style=plastic"></a>
 <a href="https://github.com/camaraproject/ReleaseManagement" title="Repo Size"><img src="https://img.shields.io/github/repo-size/camaraproject/ReleaseManagement?style=plastic"></a>
 <a href="https://github.com/camaraproject/ReleaseManagement/blob/main/LICENSE" title="License"><img src="https://img.shields.io/badge/License-Apache%202.0-green.svg?style=plastic"></a>
+<img src="https://img.shields.io/badge/Working%20Group-red">
 
 # Release Management
 Repository to describe, develop, document and test the Release Management process.
