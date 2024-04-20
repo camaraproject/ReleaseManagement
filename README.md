@@ -22,5 +22,5 @@ Repository to describe, develop, document and test the Release Management proces
 * Meeting minutes are available within the [wiki of the Release Management Working Group](https://wiki.camaraproject.org/display/CAM/Release+Management+Working+Group)
 
 ## Contributorship and mailing list
-* To subscribe / unsubscribe to the mailing list of this Sub Project and thus be / resign as Contributor please visit <https://lists.camaraproject.org/g/release>.
-* A message to all Contributors of this Sub Project can be sent using <release@lists.camaraproject.org>.
+* To subscribe / unsubscribe to the mailing list of this Sub Project and thus be / resign as Contributor please visit <https://lists.camaraproject.org/g/wg-release-management>.
+* A message to all Contributors of this Sub Project can be sent using <wg-release-management@lists.camaraproject.org>.
