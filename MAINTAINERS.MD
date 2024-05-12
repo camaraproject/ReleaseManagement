@@ -1,6 +1,6 @@
-| Org                    | Name                                                |
-| -----------------------| ----------------------------------------------------|
-| Deutsche Telekom | Herbert Damker |
-| Telefonica       | Jose Luis Urien Pinedo |
-| Nokia            | Samuel Adeyemo |
-| T-Mobile US      | Marouane Balmakhtar |
+| Org                    | Name                          | GitHub Username               |
+| -----------------------| ------------------------------| ------------------------------|
+| Deutsche Telekom | Herbert Damker | hdamker |
+| Telefonica       | Jose Luis Urien Pinedo | hdamker |
+| Nokia            | Samuel Adeyemo | soadeyemo |
+| Nokia            | Tanja De Groot | tanjadegroot |
