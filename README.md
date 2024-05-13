@@ -13,14 +13,28 @@ Repository to describe, develop, document and test the Release Management proces
 * Guidelines and assets for Release Management in CAMARA
 * Describe, develop, document and test the deliverables
 * Started: November 2023
-* Location: virtually
 
-## Meetings
-* Meetings are held virtually
-* Schedule: Weekly on Tuesday's at 08:00 PT / 16:00 UTC / 17:00 CET
+## Release Information
+
+There is no content yet within this repository, but will come soon based on the information within the 
+[Release Management Working Group - CAMARA Project - Confluence](https://wiki.camaraproject.org/display/CAM/Release+Management+Working+Group)
+
+Some quick-access links to content within the wiki:
+
+### Meta-Release of CAMARA
+
+**[Meta-Release Fall24](https://wiki.camaraproject.org/x/cgB0AQ)** / [Meta-release Milestones](https://wiki.camaraproject.org/x/16N3) / [Meta-release Process](https://wiki.camaraproject.org/x/G7N3)
+
+### APIs
+
+[API Release Process](https://wiki.camaraproject.org/x/AgAVAQ) / [API Readiness Checklist](https://wiki.camaraproject.org/display/CAM/API+Release+Process#APIReleaseProcess-APIreadinesschecklist) / [API release tracking process](https://wiki.camaraproject.org/x/HQBFAQ) / [API versioning](https://wiki.camaraproject.org/display/CAM/API+versioning)
+
+
+## Contributing
 * Meeting link: [Meeting Registration / Join](https://zoom-lfx.platform.linuxfoundation.org/meeting/97762557636?password=e5f98402-8c29-448d-a8b1-f2dceaa9d4ba)
+* Schedule: Weekly on Tuesday's at 08:00 PT / 16:00 UTC / 17:00 CET
 * Meeting minutes are available within the [wiki of the Release Management Working Group](https://wiki.camaraproject.org/display/CAM/Release+Management+Working+Group)
 
 ## Contributorship and mailing list
-* To subscribe / unsubscribe to the mailing list of this Sub Project and thus be / resign as Contributor please visit <https://lists.camaraproject.org/g/wg-release-management>.
-* A message to all Contributors of this Sub Project can be sent using <wg-release-management@lists.camaraproject.org>.
+* Subscribe / Unsubscribe to the mailing list of this Working Group <https://lists.camaraproject.org/g/wg-release-management>.
+* A message to all Contributors of this Working Group can be sent using <wg-release-management@lists.camaraproject.org>.
