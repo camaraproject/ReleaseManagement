@@ -21,13 +21,18 @@ There is no content yet within this repository, but will come soon based on the 
 
 Some quick-access links to content within the wiki:
 
-### Meta-Release of CAMARA
+* **Meta-Releases of CAMARA**
 
-**[Meta-Release Fall24](https://wiki.camaraproject.org/x/cgB0AQ)** / [Meta-release Milestones](https://wiki.camaraproject.org/x/16N3) / [Meta-release Process](https://wiki.camaraproject.org/x/G7N3)
+  * **[Meta-Release Fall24](https://wiki.camaraproject.org/x/cgB0AQ)**
+  * [Meta-release Milestones](https://wiki.camaraproject.org/x/16N3)
+  * [Meta-release Process](https://wiki.camaraproject.org/x/G7N3)
 
-### APIs
+* Processes for API Sub Projects
 
-[API Release Process](https://wiki.camaraproject.org/x/AgAVAQ) / [API Readiness Checklist](https://wiki.camaraproject.org/display/CAM/API+Release+Process#APIReleaseProcess-APIreadinesschecklist) / [API release tracking process](https://wiki.camaraproject.org/x/HQBFAQ) / [API versioning](https://wiki.camaraproject.org/display/CAM/API+versioning)
+  * [API Release Process](https://wiki.camaraproject.org/x/AgAVAQ)
+  * [API Readiness Checklist](https://wiki.camaraproject.org/display/CAM/API+Release+Process#APIReleaseProcess-APIreadinesschecklist)
+  * [API release tracking process](https://wiki.camaraproject.org/x/HQBFAQ)
+  * [API versioning](https://wiki.camaraproject.org/display/CAM/API+versioning)
 
 
 ## Contributing
