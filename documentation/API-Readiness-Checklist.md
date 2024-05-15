@@ -14,6 +14,8 @@
 | 11 | Change log updated                           |   M   |         M         |    M    |    M   |      |      |
 | 12 | Previous public-release was certified        |   O   |         O         |    O    |    M   |      |      |
 
-Please replace in the header column the API-name and the rx.y-ext by their actually values for the release.
-Put "Y" in the Status column whent the release asset is available or fulfilled. You can add comments as needed.
-Please find explanations about the release assets to be provided and criteria to be fulfilled in the following checklist in the [API Release Process](https://wiki.camaraproject.org/x/AgAVAQ#APIReleaseProcess-APIreadinesschecklist)
+To fill the checklist:
+- replace in the header column the API-name and the rx.y-ext by their actual values for the release.
+- put "Y" in the Status column when the release asset is available or fulfilled. You can add comments as needed.
+
+More explanations about the release assets and criteria to be fulfilled can be found on the Release Management Wiki here [API Release Process](https://wiki.camaraproject.org/x/AgAVAQ#APIReleaseProcess-APIreadinesschecklist)
