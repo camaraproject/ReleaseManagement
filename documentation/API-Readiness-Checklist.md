@@ -1,6 +1,5 @@
 # API Readiness Checklist
-| Nr | API release assets                           | alpha | release-candidate |  public-|release |
-|    |                                              |       |                   | initial | stable |
+| Nr | API release assets                           | alpha | release-candidate |  public-release<br>initial | public-release<br> | Status for <api-name> <version> in rX.Y |
 |----|----------------------------------------------|-------|-------------------|---------|--------|
 |  1 | API definition                               |   M   |         M         |    M    |    M   |
 |  2 | Design guidelines from Commonalities applied |   O   |         M         |    M    |    M   |
