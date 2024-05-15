@@ -1,6 +1,9 @@
 # API Readiness Checklist
-| Nr | API release assets for API-name in rx.y-ext  | alpha | release-candidate |  public-release<br>initial | public-release<br> stable | Status | Comments |
-|----|----------------------------------------------|-------|-------------------|---------|--------|------|------|
+
+Checklist for api-name api-version in rx.y
+
+| Nr | API release assets  | alpha | release-candidate |  public-release<br>initial | public-release<br> stable | Status | Comments |
+|----|----------------------------------------------|:-----:|:-----------------:|:-------:|:------:|:----:|:----:|
 |  1 | API definition                               |   M   |         M         |    M    |    M   |      |      |
 |  2 | Design guidelines from Commonalities applied |   O   |         M         |    M    |    M   |      |      |
 |  3 | Guidelines from ICM applied                  |   O   |         M         |    M    |    M   |      |      |
@@ -15,7 +18,7 @@
 | 12 | Previous public-release was certified        |   O   |         O         |    O    |    M   |      |      |
 
 To fill the checklist:
-- replace in the header column the API-name and the rx.y-ext by their actual values for the release.
-- put "Y" in the Status column when the release asset is available or fulfilled. You can add comments as needed.
+- in line above the table, replace the api-name, api-version and the rx.y by their actual values for the current API release.
+- put "Y" (yes) or "N" (no) in the Status column when the release asset is available or fulfilled. You can add comments as needed.
 
 More explanations about the release assets and criteria to be fulfilled can be found on the Release Management Wiki here [API Release Process](https://wiki.camaraproject.org/x/AgAVAQ#APIReleaseProcess-APIreadinesschecklist)
