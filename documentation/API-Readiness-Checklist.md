@@ -21,4 +21,6 @@ To fill the checklist:
 - in line above the table, replace the api-name, api-version and the rx.y by their actual values for the current API release.
 - put "Y" (yes) or "N" (no) in the Status column when the release asset is available or fulfilled. You can add comments as needed.
 
+Note: It is normal that the checklists of the (final) release-candidate and its subsequent inital public-release are the same, while additional release assets are required for a subsequent stable public-release.
+
 More explanations about the release assets and criteria to be fulfilled can be found on the Release Management Wiki here [API Release Process](https://wiki.camaraproject.org/x/AgAVAQ#APIReleaseProcess-APIreadinesschecklist)
