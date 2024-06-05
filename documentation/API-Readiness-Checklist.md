@@ -4,22 +4,23 @@ Checklist for api-name api-version in rx.y
 
 | Nr | API release assets  | alpha | release-candidate |  public-release<br>initial | public-release<br> stable | Status | Comments |
 |----|----------------------------------------------|:-----:|:-----------------:|:-------:|:------:|:----:|:----:|
-|  1 | API definition                               |   M   |         M         |    M    |    M   |      |      |
+|  1 | API definition                               |   M   |         M         |    M    |    M   |      | link |
 |  2 | Design guidelines from Commonalities applied |   O   |         M         |    M    |    M   |      |      |
 |  3 | Guidelines from ICM applied                  |   O   |         M         |    M    |    M   |      |      |
 |  4 | API versioning convention applied            |   M   |         M         |    M    |    M   |      |      |
-|  5 | API documentation                            |   M   |         M         |    M    |    M   |      |      |
-|  6 | User stories                                 |   O   |         O         |    O    |    M   |      |      |
-|  7 | Basic API test cases & documentation         |   O   |         M         |    M    |    M   |      |      |
-|  8 | Enhanced API test cases & documentation      |   O   |         O         |    O    |    M   |      |      |
+|  5 | API documentation                            |   M   |         M         |    M    |    M   |      | link |
+|  6 | User stories                                 |   O   |         O         |    O    |    M   |      | link |
+|  7 | Basic API test cases & documentation         |   O   |         M         |    M    |    M   |      | link |
+|  8 | Enhanced API test cases & documentation      |   O   |         O         |    O    |    M   |      | link |
 |  9 | Test result statement                        |   O   |         O         |    O    |    M   |      |      |
 | 10 | API release numbering convention applied     |   M   |         M         |    M    |    M   |      |      |
-| 11 | Change log updated                           |   M   |         M         |    M    |    M   |      |      |
+| 11 | Change log updated                           |   M   |         M         |    M    |    M   |      | link |
 | 12 | Previous public-release was certified        |   O   |         O         |    O    |    M   |      |      |
 
 To fill the checklist:
 - in line above the table, replace the api-name, api-version and the rx.y by their actual values for the current API release.
 - put "Y" (yes) or "N" (no) in the Status column when the release asset is available or fulfilled. You can add comments as needed.
+- provide links whenever available to the assests in the Comments field.
 
 Note: It is normal that the checklists of the (final) release-candidate and its subsequent inital public-release are the same, while additional release assets are required for a subsequent stable public-release.
 
