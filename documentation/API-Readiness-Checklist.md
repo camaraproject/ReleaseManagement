@@ -18,10 +18,10 @@ Checklist for api-name api-version in rx.y.
 | 12 | Previous public-release was certified        |   O   |         O         |    O    |    M   |      |      |
 
 To fill the checklist:
-- in line above the table, replace the api-name, api-version and the rx.y by their actual values for the current API version and release.
+- in the line above the table, replace the api-name, api-version and the rx.y by their actual values for the current API version and release.
 - in the Status column, put "Y" (yes) if the release asset is available or fulfilled in the current release, or "N" (no) otherwise. You can add comments as needed. Example: an intermediate alpha or release-candidate release may not yet provide all mandatory release assets for the release type in an intermedaite release.
 - in the Comments column, provide links whenever available to the assests, and any other relevant comments.
 
 Note: It is normal that the checklists of the (final) release-candidate and its subsequent public-release are the same, while additional release assets are required for a subsequent stable public-release.
 
-The documentation for the content of the checklist is here: [API Readiness Checklist documenation](https://wiki.camaraproject.org/x/AgAVAQ#APIReleaseProcess-APIreadinesschecklist)
+The documentation for the content of the checklist is here: [API Readiness Checklist documentation](https://wiki.camaraproject.org/x/AgAVAQ#APIReleaseProcess-APIreadinesschecklist)
