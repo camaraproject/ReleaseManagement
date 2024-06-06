@@ -119,7 +119,7 @@ Repeat the above release steps for
 
 * alpha releases up to the M3 milestone (at M3 the first release-candidate shall be ready)
 * release-candidates between the M3 and the M4 milestone,
-* finishing with the public-release for inclusion in the meta-release at the M5 milestone
+* at M4, provide the public-release for inclusion in the meta-release at the M5 milestone
 
 **Release patch**
 
