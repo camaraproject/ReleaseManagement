@@ -121,8 +121,8 @@ Repeat the above release steps for
 * release-candidates between the M3 and the M4 milestone,
 * at M4, provide the public-release for inclusion in the meta-release at the M5 milestone
 
-**Release patch**
+**Release maintenance**
 
-In case an update of a public-release API version x.y.z is required, the patched public-release API version x.y.z+1 shall be created through a maintenance-release on a separate branch referred to as a maintenance branch. 
+In case a patch update of a public-release API version x.y.z is required, the patched public-release API version x.y.z+1 shall be created as a maintenance-release on a separate branch referred to as a maintenance branch. 
 
 NOTE: a patch is the only case for which a separate branch is created and maintained.
