@@ -24,4 +24,4 @@ To fill the checklist:
 
 Note: It is normal that the checklists of the (final) release-candidate and its subsequent inital public-release are the same, while additional release assets are required for a subsequent stable public-release.
 
-More explanations about the release assets and criteria to be fulfilled can be found on the Release Management Wiki here [API Release Process](https://wiki.camaraproject.org/x/AgAVAQ#APIReleaseProcess-APIreadinesschecklist)
+The documentation for the content of the checklist is here: [API Readiness Checklist documenation](https://wiki.camaraproject.org/x/AgAVAQ#APIReleaseProcess-APIreadinesschecklist)
