@@ -1,6 +1,6 @@
 # API Readiness Checklist
 
-Checklist for api-name api-version in rx.y
+Checklist for api-name api-version in rx.y.
 
 | Nr | API release assets  | alpha | release-candidate |  public-release<br>initial | public-release<br> stable | Status | Comments |
 |----|----------------------------------------------|:-----:|:-----------------:|:-------:|:------:|:----:|:----:|
@@ -12,16 +12,16 @@ Checklist for api-name api-version in rx.y
 |  6 | User stories                                 |   O   |         O         |    O    |    M   |      | link |
 |  7 | Basic API test cases & documentation         |   O   |         M         |    M    |    M   |      | link |
 |  8 | Enhanced API test cases & documentation      |   O   |         O         |    O    |    M   |      | link |
-|  9 | Test result statement                        |   O   |         O         |    O    |    M   |      |      |
+|  9 | Test result statement                        |   O   |         O         |    O    |    M   |      | link |
 | 10 | API release numbering convention applied     |   M   |         M         |    M    |    M   |      |      |
 | 11 | Change log updated                           |   M   |         M         |    M    |    M   |      | link |
 | 12 | Previous public-release was certified        |   O   |         O         |    O    |    M   |      |      |
 
 To fill the checklist:
-- in line above the table, replace the api-name, api-version and the rx.y by their actual values for the current API release.
-- put "Y" (yes) or "N" (no) in the Status column when the release asset is available or fulfilled. You can add comments as needed.
-- provide links whenever available to the assests in the Comments field.
+- in line above the table, replace the api-name, api-version and the rx.y by their actual values for the current API version and release.
+- in the Status column, put "Y" (yes) if the release asset is available or fulfilled in the current release, or "N" (no) otherwise. You can add comments as needed. Example: an intermediate alpha or release-candidate release may not yet provide all mandatory release assets for the release type in an intermedaite release.
+- in the Comments column, provide links whenever available to the assests, and any other relevant comments.
 
-Note: It is normal that the checklists of the (final) release-candidate and its subsequent inital public-release are the same, while additional release assets are required for a subsequent stable public-release.
+Note: It is normal that the checklists of the (final) release-candidate and its subsequent public-release are the same, while additional release assets are required for a subsequent stable public-release.
 
 The documentation for the content of the checklist is here: [API Readiness Checklist documenation](https://wiki.camaraproject.org/x/AgAVAQ#APIReleaseProcess-APIreadinesschecklist)
