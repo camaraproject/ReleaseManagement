@@ -54,6 +54,10 @@ Technically, an API release is created using GitHub features:
 
 **IMPORTANT: Release numbers are not related to the API version.**
 
+* **API releases start at r1.1**
+
+* API versioning is described [here](https://wiki.camaraproject.org/x/a4BaAQ).
+
 ---
 
 API release numbers are GitHub tags of the format "rx.y".
