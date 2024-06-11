@@ -129,4 +129,4 @@ Repeat the above release steps for
 
 In case a patch update of a public-release API version x.y.z is required, the patched public-release API version x.y.z+1 shall be created as a maintenance-release on a separate branch referred to as a maintenance branch. 
 
-NOTE: a patch is the only case for which a separate branch is created and maintained.
+NOTE: a patch is the only case for which a separate branch is created and maintained within the API repository (as pull requests should be prepared within forks of the API repository, c.f. https://github.com/camaraproject/Governance/blob/main/CONTRIBUTING.md)
