@@ -21,7 +21,7 @@ This projects constains the following (documentation folder):
 * API release guidelines
 * API readiness checklist 
 
-More detaild information can be found in the below wiki pages.
+More detailed information can be found in the below wiki pages.
 
 Some quick-access links to content within the wiki:
 
