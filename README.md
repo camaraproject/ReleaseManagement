@@ -16,8 +16,12 @@ Repository to describe, develop, document and test the Release Management proces
 
 ## Release Information
 
-There is no content yet within this repository, but will come soon based on the information within the 
-[Release Management Working Group - CAMARA Project - Confluence](https://wiki.camaraproject.org/display/CAM/Release+Management+Working+Group)
+This projects constains the following (documentation folder):
+
+* API release guidelines
+* API readiness checklist 
+
+More detailed information can be found in the below wiki pages.
 
 Some quick-access links to content within the wiki:
 
@@ -34,6 +38,9 @@ Some quick-access links to content within the wiki:
   * [API release tracking process](https://wiki.camaraproject.org/x/HQBFAQ)
   * [API versioning](https://wiki.camaraproject.org/display/CAM/API+versioning)
 
+* Processes and release numbering for Commonalities and ICM
+
+  * [Commonalities and ICM Release Process](https://wiki.camaraproject.org/display/CAM/Meta-release+Process#MetareleaseProcess-CommonalitiesandICM)
 
 ## Contributing
 * Meeting link: [Meeting Registration / Join](https://zoom-lfx.platform.linuxfoundation.org/meeting/97762557636?password=e5f98402-8c29-448d-a8b1-f2dceaa9d4ba)
