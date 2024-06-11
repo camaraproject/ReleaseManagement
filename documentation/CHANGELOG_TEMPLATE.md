@@ -8,6 +8,8 @@ CHANGES
 
 ## Table of content
 
+NOTE: please adapt the below ToC
+
 - **[r2.1 - alpha](#r21---alpha)**
 - [r1.6 - public-release](#r16---public-release)
 - [r1.5 - M4 release-candidate](#r15---M4-release-candidate)
@@ -22,16 +24,11 @@ CHANGES
 
 ### Release Notes
 
-short intro
+short intro to the release
+list of APIs ciontained in the release and their version
+ref to commonalities / ICM as needed
 
-### References 
-
-TBD: this section could be removed as now in the OAS doc
-
-* Commonalities: r0.4.0 
-* ICM: r0.2.0
-
-#### Changes
+## Changes
 
 for each changed API, put in the below sections info as follows:
 
@@ -40,10 +37,13 @@ for each changed API, put in the below sections info as follows:
 * for subsequent release-candidate(s), only the delta to the previous release-candidate
 * for the public-release, the consolidated changes since the previous public-release
 
+The below sections are examples and should be adapted.
+
 ### Added
 
 * New property `new_name`
 * New endpoint `new_name`
+* New test case feature files
 * Examples
 
 ### Changed
@@ -61,19 +61,13 @@ for each changed API, put in the below sections info as follows:
 * Deprecated field `old_field`
 * Deprecated endpoint
 
-### API Readiness
-
-* One bullet for each asset added
-
-TBC: not sure if this is usefull on top of the checklist update, it could just point to the applicable checklist ? (or not even)
-
 # r1.6 - public-release
 
 # r1.5 - M4 release-candidate
 
 # r1.4 - release-candidate
 
-# r1.3 - M3 release-candidate M3
+# r1.3 - M3 release-candidate
 
 **This is the first release-candidate made available at M3.**
 
