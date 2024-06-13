@@ -7,7 +7,7 @@
 | release | The release of an API version consists in the creation of a GitHub release of the API's repository, with a release tag and (optionally for alpha) a release package. A release can be created for any alpha, release-candidate or public API version. No releases can be created for wip API versions.|
 | pre-release | The term pre-release is used to refer to the release of any of the alpha or release-candidate API versions (*) |
 | alpha release | The term alpha-release is used to refer to the release of an alpha API version. |
-| release-candidate | The term release-candidate is used to refer to the release of a release-candidate API version. |
+| release candidate | The term release-candidate is used to refer to the release of a release-candidate API version. |
 | public release | The term public release is used to refer to the release of a public API version. It can have the status initial or stable.|
 | meta-release | A meta-release is a set of public releases of API versions made available at a given point in time (Spring and Fall). All API versions of a given meta-release shall be aligned to the Commonalities and Identity and Consent Management (ICM) public releases included in that same meta-release.|
 | maintenance release | The term maintenance release is used to refer to a patch update of a released public API version. |
