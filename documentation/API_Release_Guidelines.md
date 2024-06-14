@@ -5,10 +5,12 @@
 | Term | Definition |
 |------|-------|
 | release | The release of an API version consists in the creation of a GitHub release of the API's repository, with a release tag and (optionally for alpha) a release package. A release can be created for any alpha, release-candidate or public API version. No releases can be created for wip API versions.|
-| pre-release | The term pre-release is used to refer to the release of any of the alpha or release-candidate API versions (*) |
-| alpha release | The term alpha-release is used to refer to the release of an alpha API version. |
-| release candidate | The term release-candidate is used to refer to the release of a release-candidate API version. |
+| pre-release | The term pre-release is used to refer to the release of an alpha or a release-candidate API version (*) |
+| alpha release | The term alpha release is used to refer to the release of an alpha API version. |
+| release candidate | The term release candidate is used to refer to the release of a release-candidate API version. |
 | public release | The term public release is used to refer to the release of a public API version. It can have the status initial or stable.|
+| initial public release | An initial public release is a release of a public API versions that is not yet considered stable. It has a version number with x=0 (v0.x.y). It may be published without being part of a meta-release. |
+| stable public release | A stable public release is a release of a public API version that is stable and will be maintained. |
 | meta-release | A meta-release is a set of public releases of API versions made available at a given point in time (Spring and Fall). All API versions of a given meta-release shall be aligned to the Commonalities and Identity and Consent Management (ICM) public releases included in that same meta-release.|
 | maintenance release | The term maintenance release is used to refer to a patch update of a released public API version. |
 | release tag | A release tag is a GitHub tag placed on the main or a maintenance branch that identifies a release of the API version's repository.|
@@ -19,7 +21,7 @@
 
 ## API releases
 
-In preparation of the public release of an API version, an API Sub Project can create as many alpha and release-candidate API versions as needed for API development and testing. The API versioning is done as described in the Commonalities API design guidelines (section on versioning). 
+In preparation of the public release of an API version, an API Sub Project can create as many alpha and release-candidate API versions as needed for API development and testing. 
 
 The API Sub Project creates a release for an API version as follows:
 
@@ -29,8 +31,14 @@ The API Sub Project creates a release for an API version as follows:
 
 Public releases can have an initial or stable status:
 
-* an initial public release indicates that the public API version is the result of rapid development and is still unstable, e.g. API versions with a v0.x.y version number. It can be published without being part of a meta-release.
-* a stable public release indicates that the public API version is stable and will be maintained.
+* An initial public release is the result of rapid development and can be
+  * released and published at any time (outside the meta-release process) in order to allow for rapid evolution of APIs.
+  * published as part of a meta-release. In this case, it is expected that in the next meta-release this public API version becomes stable.
+* A stable public release is created only after its stability has been demonstrated through 
+  * availability and use of the API in at least 1 commercial implementation.
+  * at least 1 certification of the API is provided on the [GSMA API market launch and certification page](https://www.gsma.com/solutions-and-impact/gsma-open-gateway/open-gateway-public-launch-status/).
+
+Stable public releases concern the API versions recommended for use in commercial applications. The user can expect that subsequent public API versions will be backward-compatible with the one they are using, unless explicitly announced otherwise.
 
 When planning to deliver a public API version into a meta-release, the API Sub Project needs to participate in the meta-release process as described below. For more details see also: [Meta-release Process](https://wiki.camaraproject.org/x/G7N3).
 
@@ -90,22 +98,22 @@ API releases are numbered (tagged) following the API release numbering guideline
 
 ## Releasing an API step by step
 
-This section gives the overview of the steps to release an API. More details can be found in the [API Release Process](https://wiki.camaraproject.org/x/AgAVAQ) description.
+This section gives the overview of the steps to release an API. More details can be found here: [API Release Process](https://wiki.camaraproject.org/x/AgAVAQ).
 
 **Release preparation**
 
 * Create a GitHub issue defining the scope of the targeted API release. Descriptive information in this issue can be reused in the changelog/release notes.
-* Create the API release tracker for the target API version as describer here: [API release tracking process](https://wiki.camaraproject.org/x/HQBFAQ).
+* Create the API release tracker for the target API version as describer here: [API release trackers](https://wiki.camaraproject.org/x/HQBFAQ).
 
 **Release development**
 
 * On the main branch,
   * develop the API scope in a "work-in-progress mode" (API version = wip and version in URL is vwip).
-  * make sure to create and record the required release assets according to the [API-Readiness-Checklist.md]() file
+  * make sure to create the required release assets and record them in the [API-Readiness-Checklist.md]() file
 * Once the required stability is reached, create the "release PR". The “release PR” provides only the following changes: 
   * update of the version information in the API OAS definition files (no "wip" in any of the API files).
-  * update of the local copy of the [API-Readiness-Checklist.md]() ensuring all required release assets are available.
-  * update of the [Changelog.md]() in the repository with new content on the top for each changed API:
+  * update of the local copy of the [API-Readiness-Checklist.md](https://github.com/camaraproject/ReleaseManagement/blob/main/documentation/API-Readiness-Checklist.md) ensuring all required release assets are available.
+  * update of the [CHANGELOG.md]() in the repository with new content on the top for each changed API:
     * for an alpha API version, the delta to the previous release
     * for the first release candidate, all changes since the last public release
     * for the subsequent release candidate, only the delta to the previous release candidate
@@ -120,7 +128,7 @@ This section gives the overview of the steps to release an API. More details can
 
 **Release process**
 
-Repeat the above release steps for
+Repeat the above release development steps for
 
 * alpha releases before M3; the first release candidate is created for M3
 * release candidates between M3 and M4
@@ -131,3 +139,15 @@ Repeat the above release steps for
 In case a patch update of a public API version x.y.z is required, the patched public API version x.y.z+1 shall be created as a maintenance release on a separate branch referred to as a maintenance branch. 
 
 NOTE: a patch is the only case for which a separate branch is created and maintained within the API repository (as pull requests should be prepared within forks of the API repository, c.f. [Governance/CONTRIBUTING.md](https://github.com/camaraproject/Governance/blob/main/CONTRIBUTING.md))
+
+**Example of the API release process**
+
+To release a MINOR update of a publicly released API version 1.0.0, resulting in a the public release of API version 1.1.0:
+
+* Develop the 1.1.0 update on the main branch. The first PR updates the version to wip, and the URL to contain vwip.
+* Once sufficiently stable, create an alpha release PR that sets the API version to 1.1.0-alpha.1 and will create release rx.1.
+* Several alpha API versions may be released, each setting the API version back to "wip" in the first API update PR (rx.2 - rx.m)
+* Then (at least) one (or more) release-candidate API versions may be created and released (rx.m+1 - rx.n) 
+* The last release-candidate API version will be proposed for public release. 
+* For meta-release approval, create the public release PR for the next public API version 1.1.0.
+* After meta-release approval, create the release for the new public API version 1.1.0, with its release tag rx.n+1 and release package ("latest")).
