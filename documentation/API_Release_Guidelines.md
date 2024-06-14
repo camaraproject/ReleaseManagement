@@ -112,8 +112,8 @@ This section gives the overview of the steps to release an API. More details can
   * make sure to create the required release assets and record them in the [API-Readiness-Checklist.md]() file
 * Once the required stability is reached, create the "release PR". The “release PR” provides only the following changes: 
   * update of the version information in the API OAS definition files (no "wip" in any of the API files).
-  * update of the local copy of the [API-Readiness-Checklist.md](https://github.com/camaraproject/ReleaseManagement/blob/main/documentation/API-Readiness-Checklist.md) ensuring all required release assets are available.
-  * update of the [CHANGELOG.md]() in the repository with new content on the top for each changed API:
+  * update your [<API Sub Project name>-API-Readiness-Checklist.md]() ensuring all required release assets are available. If not yet available, create a local copy under the /documentation folder and prefix it with your API Sub Project name (Copy from [ReleaseManagement/documentation/API-Readiness-Checklist.md](https://github.com/camaraproject/ReleaseManagement/blob/main/documentation/API-Readiness-Checklist.md).
+  * update your [CHANGELOG.md]() in the home of the repository. Add a new section at the top for each API version with the following content:
     * for an alpha API version, the delta to the previous release
     * for the first release candidate, all changes since the last public release
     * for the subsequent release candidate, only the delta to the previous release candidate
