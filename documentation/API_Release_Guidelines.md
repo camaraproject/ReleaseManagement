@@ -19,7 +19,7 @@
 
 (*) NOTE: all pre-releases are publicly available in the CAMARA GitHub and can be used AT THE USER'S OWN RISK, as changes may happen to such API versions without notice.
 
-## API releases
+## API releases - overview
 
 In preparation of the public release of an API version, an API Sub Project can create as many alpha and release-candidate API versions as needed for API development and testing. 
 
@@ -44,27 +44,29 @@ When planning to deliver a public API version into a meta-release, the API Sub P
 
 To be part of a meta-release, (pre-)releases need to be provided as follows:
 
-* the expected (pre-)releases for alpha, release-candidate and public API versions need to be provided.
+* the expected (pre-)releases for alpha, release-candidate and public API versions need to be provided at the respective M3, M4 and M5 milestones
 * minimally an initial public release needs to be provided for the meta-release.
 * each (pre-)release must include the required set of API release assets according to the API readiness checklist described below.
 * API (pre-)releases are numbered (tagged) using the API release numbering guideline (see below).
 
-Technically, an API release is created using the GitHub release feature and requires:
+## What is an API release ? 
 
-* A GitHub issue for the release
-* A "release PR" associated to this issue
-* A GitHub release package (zip file of the API Sub Project repository)
-* A GitHub release tag with the release number "rx.y"
+Technically, an API release is created using the GitHub issues, PR and release features and requires:
+
+* A GitHub issue for the release (the scope issue)
+* A "release PR" associated to this issue (setting the version) and more - see below)
+* A GitHub release package (zip file of the whole API Sub Project repository, including API(s) and release assets)
+* A GitHub release tag with the release number "rx.y" following the API release numbering guidelines (see next section).
 
 ## API release numbering
 
 ---
 
-**IMPORTANT: Release numbers are not related to the API version.**
+**IMPORTANT: Release numbers are NOT related to the API version.**
 
 * **API releases start at r1.1**
 
-* API versioning is described [here](https://wiki.camaraproject.org/x/a4BaAQ).
+* API versioning is described in the Commonalities [API-desighn-guidelines.md](https://github.com/camaraproject/Commonalities/blob/main/documentation/API-design-guidelines.md) and on the [Release Management wiki](https://wiki.camaraproject.org/x/a4BaAQ).
 
 ---
 
@@ -86,15 +88,6 @@ Example of continuous release numbering of an API version across its release typ
 | release candidate | release-candidate | rx.m+1 ... rx.n | mandatory | "pre-release" |
 | public release | public | rx.n+1 | mandatory | "latest" |
 | maintenance release | public | rx.n+2 ... rx.n+p | mandatory | "latest" |
-
-## How to create an API release ? 
-
-An API release is created using the GitHub PR and release features, and results in:
-
-* a **release tag** (following the release numbering guidelines below) on the main or on a maintenance release branch, identifying the release of the API version.
-* a **release package** containing the API's repository with the corresponding API release assets for the released API version (zip file). This is optional for alpha releases.
-
-API releases are numbered (tagged) following the API release numbering guidelines (see section above).
 
 ## Releasing an API step by step
 
