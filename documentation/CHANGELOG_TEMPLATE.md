@@ -1,4 +1,4 @@
-# Changelog <API Sub Project name>
+# Changelog API Sub Project name
 
 <!--NOTE: in above title replace "API Sub Project name" with actual API Sub Project name and remove this note-->
 
@@ -19,7 +19,7 @@ The below sections record changes for each API versions in each release as follo
 
 ## Release Notes
 
-## Changes to API-name API-version-x.y.z
+## Changes for API-name API-version-x.y.z
 
 ### Added
 
@@ -29,4 +29,4 @@ The below sections record changes for each API versions in each release as follo
 
 ### Removed
 
-<!--repeate above sub sections (Added, Changed, Fixed, Removed for each API changed in this release -->
+<!--repeate above sub sections (Title "## Changes for API-name API-version-x.y.z", Added, Changed, Fixed, Removed) for each API changed in this release -->
