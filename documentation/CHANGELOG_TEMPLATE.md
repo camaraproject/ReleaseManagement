@@ -25,7 +25,7 @@ The below sections record the changes for each API version in each release as fo
 * API-name2 vx.y.z
 * Commonalities vx.y.z
 * ICM vx.y.z
-* Backward compatible (wrt vx.y.z rm.n): yes | no | N/A (for alpha and release-candidates)
+* Backward compatible (wrt vx.y.z rm.n): <!-- one of: yes | **no** | N/A (for alpha and release-candidates)-->
 
 ## Changes for API-name1 vx.y.z
 
