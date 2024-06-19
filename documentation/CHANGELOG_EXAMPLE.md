@@ -1,4 +1,4 @@
-# Changelog QualityOnDemand (example adjusted to new release process)
+# Changelog QualityOnDemand (example according to release process)
 
 ## Table of content
 
@@ -14,7 +14,7 @@
 
 **Please be aware that the project will have frequent updates to the main branch. There are no compatibility guarantees associated with code in any branch, including main, until it has been released. For example, changes may be reverted before a release is published. For the best results, use the latest published release.**
 
-The below sections records the changes for each API version in each release as follows:
+The below sections record the changes for each API version in each release as follows:
 
 * for an alpha release, the delta with respect to the previous release
 * for the first release candidate, all changes since the last public release
@@ -25,7 +25,7 @@ The below sections records the changes for each API version in each release as f
 
 ## Release Notes
 
-* quality-on-demand v0.10.1 (changed)
+* quality-on-demand v0.10.1
 * Commonalities v0.2.0
 * ICM v0.1.0
 * Backward compatible: yes
@@ -175,7 +175,7 @@ Changes compared to r2.3
 
 ## Release Notes
 
-* quality-on-demand v0.10.0-rc.1 (changed)
+* quality-on-demand v0.10.0-rc.1
 * Commonalities v0.2.0
 * ICM v0.1.0
 * Backward compatible: N/A
@@ -234,7 +234,7 @@ Changes compared to r2.3
 
 ## Release Notes
 
-* quality-on-demand v0.10.0-alpha.2 (changed)
+* quality-on-demand v0.10.0-alpha.2
 * Commonalities v0.2.0
 * ICM v0.1.0
 * Backward compatible: N/A
