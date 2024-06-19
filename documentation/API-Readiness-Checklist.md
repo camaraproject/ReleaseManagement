@@ -2,7 +2,7 @@
 
 Checklist for api-name api-version in rx.y.
 
-| Nr | API release assets  | alpha release | release candidate |  public release<br>initial | public release<br> stable | Status | Comments |
+| Nr | API release assets  | alpha release | release candidate |  initial<br>public release | stable<br> public release | Status | Comments |
 |----|----------------------------------------------|:-----:|:-----------------:|:-------:|:------:|:----:|:----:|
 |  1 | API definition                               |   M   |         M         |    M    |    M   |      | link |
 |  2 | Design guidelines from Commonalities applied |   O   |         M         |    M    |    M   |      |      |
