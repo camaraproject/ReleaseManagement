@@ -34,9 +34,7 @@ Public releases can have an initial or stable status:
 * An initial public release is the result of rapid development and can be
   * released and published at any time (outside the meta-release process) in order to allow for rapid evolution of APIs.
   * published as part of a meta-release. In this case, the milestones defined for the meta-release have to be followed.
-* A stable public release is created only after its stability has been demonstrated through 
-  * availability and use of the API in at least 1 commercial implementation.
-  * at least 1 certification of the API is provided on the [GSMA API market launch and certification page](https://www.gsma.com/solutions-and-impact/gsma-open-gateway/open-gateway-public-launch-status/).
+* A stable public release is created only after it meets all the API readiness checklist requirements (see: [API Readiness Checklist](https://wiki.camaraproject.org/display/CAM/API+Release+Process#APIReleaseProcess-APIreadinesschecklist).
 
 Stable public releases concern the API versions recommended for use in commercial applications. The user can expect that subsequent public API versions will be backward-compatible with the one they are using, unless explicitly announced otherwise.
 
