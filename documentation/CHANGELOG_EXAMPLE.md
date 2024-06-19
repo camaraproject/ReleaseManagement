@@ -1,18 +1,14 @@
-# Changelog <API Sub Project name>
-
-# Changelog API Sub Project name
-
-<!--NOTE: in above title replace "API Sub Project name" with actual API Sub Project name and remove this line-->>
+# Changelog QualityOnDemand (example adjusted to new release process)
 
 ## Table of content
 
-<!--NOTE: please adapt the below ToC-->
-
-- **[r2.1 - alpha release](#r21---alpha-release)**
-- [r1.6 - public release](#r16---public-release)
-- [r1.5 - M4 release candidate](#r15---M4-release-candidate)
-- [r1.4 - release candidate](#r14---release-candidate)
-- [r1.3 - M3 release candidate](#r13---M3-release-candidate)
+- **[r2.6 - patch release](#r26---patch-release)**
+- [r2.5 - initial public release](#r25---initial-public-release)
+- [r2.4 - M4 release candidate](#r24---m4-release-candidate)
+- [r2.3 - M3 release candidate](#r23---m3-release-candidate)
+- [r2.2 - release candidate](#r22---alpha-release)
+- [r2.1 - alpha release](#r21---alpha-release)
+- [r1.3 - initial public release](#r13---initial-public-release)
 - [r1.2 - alpha release](#r12---alpha-release)
 - [r1.1 - alpha release](#r11---alpha-release)
 
@@ -25,41 +21,44 @@ The below sections records the changes for each API version in each release as f
 * for subsequent release candidate(s), only the delta to the previous release candidate
 * for a public release, the consolidated changes since the previous public release
 
-<!-- Repeat the below release section at the top for each release-->
-
-# r2.1 - alpha release
+# r2.6 - patch release
 
 ## Release Notes
 
-* This is a patch release.
-* quality-on-demand
-* list the commonalities / ICM release if the impacted on this API versions
+* quality-on-demand v0.10.1 (changed)
+* Commonalities v0.2.0
+* ICM v0.1.0
+* Backward compatible: yes
 
-For each above listed API version that changed, create the following section, replacing the API-na,e and API-version-x.y.z with actual API andme and version
+<!--For each above listed API version that changed, create the following section, replacing the API-na,e and API-version-x.y.z with actual API andme and version-->
 
-## Changes to quality-on-demand v0.10.1
-
-**v0.10.1 is a patch release of v0.10.0 of the Quality-On-Demand (QoD) API. Please read also the notes and changes for v0.10.0 release**
+**v0.10.1 is a patch release of v0.10.0 of the Quality-On-Demand (QoD) API. Please read also the notes and changes for r1.6**
 
 - API definition **with inline documentation**:
   - [View it on ReDoc](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/camaraproject/QualityOnDemand/v0.10.1/code/API_definitions/qod-api.yaml&nocors)
   - [View it on Swagger Editor](https://editor.swagger.io/?url=https://raw.githubusercontent.com/camaraproject/QualityOnDemand/v0.10.1/code/API_definitions/qod-api.yaml)
   - OpenAPI [YAML spec file](https://github.com/camaraproject/QualityOnDemand/blob/v0.10.1/code/API_definitions/qod-api.yaml)
 
+## Changes for quality-on-demand v0.10.1
 
 ### Added
 
 * Added configuration for linting ruleset by @rartych in https://github.com/camaraproject/QualityOnDemand/pull/270
+
+Other examples
+
 * New property `new_name`
 * New endpoint `new_name`
 * New test case feature files
-* Examples
+* Added examples
 
 ### Changed
 
 * Updated the documentation to address the lack of `statusInfo` in `SessionInfo` temporary by @hdamker in https://github.com/camaraproject/QualityOnDemand/pull/269
   * Note: The parameter `statusInfo` will be added to `SessionInfo` within next regular release
 * Updated the project scope in the README.md by @RandyLevensalor in https://github.com/camaraproject/QualityOnDemand/pull/255
+
+Other examples
 
 * Property `old_name` renamed to `new_name`
 * Format for property `property` changed to `new_format`
@@ -70,49 +69,48 @@ For each above listed API version that changed, create the following section, re
   * Improved the documentation of "Extend the duration of an active session"
   * Improved the datatype "SessionInfo" to remove the maximum limit of duration
 
+Other examples
+
 * Typos fixed
 * Reference corrected
 
 ### Removed
 
+Examples:
+
 * Deprecated field `old_field`
 * Deprecated endpoint
 
-# r1.6 - public release
+# r2.5 - initial public release
 
-# r1.5 - M4 release candidate
+## Release Notes
 
-# r1.4 - release candidate
+* quality-on-demand v0.10.0
+* Commonalities v0.2.0
+* ICM v0.1.0
+* Backward compatible wrt v0.9.0 (r1.3): **no**
 
-# r1.3 - M3 release candidate
+**This release contains the initial public release of v0.10.0 of the Quality-On-Demand (QoD) API.**
 
-**This is the first release candidate made available at M3.**
+- **This release contains significant changes compared to r1.5, and is not backward compatible**
+  - Within notifications the schema `EventNotification`has been replace by `CloudEvent` in accordance with the updated CAMARA Design Guidelines
+  - If within `device` an IPv6 address is used it must be a single IPv6 address (out of the prefix used by the device)
+- This release includes changes to be compliant with the [Design Guidelines](https://github.com/camaraproject/Commonalities/blob/release-0.2.0/documentation/API-design-guidelines.md#10-security) and other documents in [release v0.2 of CAMARA Commonalities](https://github.com/camaraproject/Commonalities/tree/release-0.2.0)
+- This is another inital (v0.x) release and further releases before the first stable major v1.x release might introduce breaking changes (e.g. API changes to align with Commonalities updates)
 
-# r1.2 - alpha release
+**Main Changes**
 
-# r1.1 - alpha release
-
-# v0.10.0
-
-**This release contains the fourth alpha version of the Quality-On-Demand (QoD) API.**
+* Aligned event notification with CloudEvent spec which will allow API consumers and implementators to use standard libraries and tools which are available to handle CloudEvents (https://cloudevents.io/)
+* Added a new operation `/sessions/{sessionId}/extend` which allows to extend the duration of an active session 
 
 - API definition **with inline documentation**:
   - [View it on ReDoc](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/camaraproject/QualityOnDemand/v0.10.0/code/API_definitions/qod-api.yaml&nocors)
   - [View it on Swagger Editor](https://editor.swagger.io/?url=https://raw.githubusercontent.com/camaraproject/QualityOnDemand/v0.10.0/code/API_definitions/qod-api.yaml)
   - OpenAPI [YAML spec file](https://github.com/camaraproject/QualityOnDemand/blob/v0.10.0/code/API_definitions/qod-api.yaml)
 
-### Please note:
+## Changes for quality-on-demand v0.10.0
 
-- **This release contains significant changes compared to v0.9.0, and the QoD API is not backward compatible**
-  - Within notifications the schema `EventNotification`has been replace by `CloudEvent` in accordance with the updated CAMARA Design Guidelines
-  - If within `device` an IPv6 address is used it must be a single IPv6 address (out of the prefix used by the device)
-- This release includes changes to be compliant with the [Design Guidelines](https://github.com/camaraproject/Commonalities/blob/release-0.2.0/documentation/API-design-guidelines.md#10-security) and other documents in [release v0.2 of CAMARA Commonalities](https://github.com/camaraproject/Commonalities/tree/release-0.2.0)
-- This is another v0.x release and further releases before the first stable major v1.x release might introduce breaking changes (e.g. API changes to align with Commonalities updates)
-
-### Main Changes
-
-* Aligned event notification with CloudEvent spec which will allow API consumers and implementators to use standard libraries and tools which are available to handle CloudEvents (https://cloudevents.io/)
-* Added a new operation `/sessions/{sessionId}/extend` which allows to extend the duration of an active session 
+Changes compared to v0.9.0 (r1.3)
 
 ### Added
 
@@ -144,16 +142,25 @@ For each above listed API version that changed, create the following section, re
 
 **Full Changelog**: https://github.com/camaraproject/QualityOnDemand/compare/v0.9.0...v0.10.0
 
-# v0.10.0-rc2
+# r2.4 - M4 release candidate
 
-**This is the second release candidate of v0.10.0 - containing the upcoming fourth alpha version of the Quality-On-Demand (QoD) API**
+## Release Notes
+
+* quality-on-demand v0.10.0-rc.2
+* Commonalities v0.2.0
+* ICM v0.1.0
+* Backward compatible: N/A
+
+**This is the second and final (M4) release candidate of v0.10.0 of the Quality-On-Demand (QoD) API**
 
 - API definition **with inline documentation**:
   - [View it on ReDoc](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/camaraproject/QualityOnDemand/v0.10.0-rc2/code/API_definitions/qod-api.yaml&nocors)
   - [View it on Swagger Editor](https://editor.swagger.io/?url=https://raw.githubusercontent.com/camaraproject/QualityOnDemand/v0.10.0-rc2/code/API_definitions/qod-api.yaml)
   - OpenAPI [YAML spec file](https://github.com/camaraproject/QualityOnDemand/blob/v0.10.0-rc2/code/API_definitions/qod-api.yaml)
 
-## Changes compared to [v0.10.0-rc](#v0100-rc)
+## Changes for quality-on-demand v0.10.0-rc.2
+
+Changes compared to r2.3
 
 * Added a new error example for DurationOutOfRangeForQoSProfile by @jlurien in https://github.com/camaraproject/QualityOnDemand/pull/259
 * Moved "basePath" /qod/v0 to "url"-property and introduced "apiroot" in definition of server  @maxl2287 in https://github.com/camaraproject/QualityOnDemand/pull/252
@@ -164,9 +171,16 @@ For each above listed API version that changed, create the following section, re
  
 **Full Changelog**: https://github.com/camaraproject/QualityOnDemand/compare/v0.10.0-rc...v0.10.0-rc2
 
-# v0.10.0-rc
+# r2.3 - M3 release candidate
 
-**This is the first release candidate of v0.10.0 - containing the upcoming fourth alpha version of the Quality-On-Demand (QoD) API**
+## Release Notes
+
+* quality-on-demand v0.10.0-rc.1 (changed)
+* Commonalities v0.2.0
+* ICM v0.1.0
+* Backward compatible: N/A
+
+**This is the first release candidate of v0.10.0 of the Quality-On-Demand (QoD) API**
 
 - API definition **with inline documentation**:
   - [View it on ReDoc](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/camaraproject/QualityOnDemand/v0.10.0-rc/code/API_definitions/qod-api.yaml&nocors)
@@ -175,7 +189,7 @@ For each above listed API version that changed, create the following section, re
 
 ## Please note:
 
-- **This release will contain significant changes compared to v0.9.0, and it is not backward compatible**
+- **This release contains significant changes compared to v0.9.0, and it is not backward compatible**
   - Within notifications the schema `EventNotification`has been replace by `CloudEvent` in accordance with the updated CAMARA Design Guidelines
   - If within `device` an IPv6 address is used it must be a single IPv6 address (out of the prefix used by the device)
 - **This is only the pre-release, it should be considered as a draft of the upcoming release v0.10.0**
@@ -186,6 +200,7 @@ For each above listed API version that changed, create the following section, re
 * Aligned event notification with CloudEvent spec which will allow API consumers and implementators to use standard libraries and tools which are available to handle CloudEvents (https://cloudevents.io/)
 * Added a new operation `/sessions/{sessionId}/extend` which allows to extend the duration of an active session 
 
+## Changes for quality-on-demand v0.10.0-rc.1
 
 ### Added
 
@@ -215,15 +230,16 @@ For each above listed API version that changed, create the following section, re
 
 **Full Changelog**: https://github.com/camaraproject/QualityOnDemand/compare/v0.9.0...v0.10.0-rc
 
+# r2.2 - alpha release
 
-# v0.9.0
+## Release Notes
 
-**This is the third alpha version of the Quality-On-Demand (QoD) API.**
+* quality-on-demand v0.10.0-alpha.2 (changed)
+* Commonalities v0.2.0
+* ICM v0.1.0
+* Backward compatible: N/A
 
-- API definition **with inline documentation**:
-  - [View it on ReDoc](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/camaraproject/QualityOnDemand/v0.9.0/code/API_definitions/qod-api.yaml&nocors)
-  - [View it on Swagger Editor](https://editor.swagger.io/?url=https://raw.githubusercontent.com/camaraproject/QualityOnDemand/v0.9.0/code/API_definitions/qod-api.yaml)
-  - OpenAPI [YAML spec file](https://github.com/camaraproject/QualityOnDemand/blob/v0.9.0/code/API_definitions/qod-api.yaml)
+**This is the second and final alpha release of the v0.10.0 of the Quality-On-Demand (QoD) API.**
 
 ## Please note:
 
@@ -232,6 +248,13 @@ For each above listed API version that changed, create the following section, re
 - This is an alpha version, it should be considered as a draft.
 - There are bug fixes to be expected and incompatible changes in upcoming versions. 
 - The release is suitable for implementors, but it is not recommended to use the API with customers in productive environments.
+
+- API definition **with inline documentation**:
+  - [View it on ReDoc](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/camaraproject/QualityOnDemand/v0.9.0/code/API_definitions/qod-api.yaml&nocors)
+  - [View it on Swagger Editor](https://editor.swagger.io/?url=https://raw.githubusercontent.com/camaraproject/QualityOnDemand/v0.9.0/code/API_definitions/qod-api.yaml)
+  - OpenAPI [YAML spec file](https://github.com/camaraproject/QualityOnDemand/blob/v0.9.0/code/API_definitions/qod-api.yaml)
+
+## Changes for quality-on-demand v0.10.0-alpha.2
 
 ### Added
 
@@ -261,11 +284,18 @@ For each above listed API version that changed, create the following section, re
 
 **Full Changelog**: https://github.com/camaraproject/QualityOnDemand/compare/v0.8.1...v0.9.0
 
-# v0.9.0-rc
+**This is the first release candidate made available at M3.**
 
-**This is the release candidate of v0.9.0 - the (third alpha (tbc)) release of the Quality-On-Demand (QoD) API**
+# r2.1 - alpha release
 
-- [API definition with inline documentation](https://github.com/camaraproject/QualityOnDemand/blob/v0.9.0-rc/code/API_definitions/qod-api.yaml)
+## Release Notes
+
+* quality-on-demand v0.10.0-alpha.1
+* Commonalities v0.2.0
+* ICM v0.1.0
+* Backward compatible: N/A
+
+**This is the first alpha release of v0.10.0 of the Quality-On-Demand (QoD) API**
 
 ## Please note:
 
@@ -274,6 +304,10 @@ For each above listed API version that changed, create the following section, re
 - **This is only the pre-release, it should be considered as a draft of the upcoming release v0.9.0**
 - The pre-release is meant for implementors, but it is not recommended to use the API with customers in productive environments.
 
+- [API definition with inline documentation](https://github.com/camaraproject/QualityOnDemand/blob/v0.9.0-rc/code/API_definitions/qod-api.yaml)
+
+## Changes for quality-on-demand v0.10.0-alpha.1
+
 ### Added
 
 * Introduced `qosStatus` and corresponding notification event to fix issue #38 by @emil-cheung in https://github.com/camaraproject/QualityOnDemand/pull/67
@@ -281,7 +315,6 @@ For each above listed API version that changed, create the following section, re
 * Added new methods to get service provider defined QoS Profile by @RandyLevensalor in https://github.com/camaraproject/QualityOnDemand/pull/138
 * Scopes specified and OAuth2 authorizationCode flow added as security mechanism, for operations dealing with QoD sessions by @jlurien in https://github.com/camaraproject/QualityOnDemand/pull/163
 * Added new model `EventQosStatus` by @jlurien in https://github.com/camaraproject/QualityOnDemand/pull/167
-
 
 ### Changed
 
@@ -310,18 +343,25 @@ For each above listed API version that changed, create the following section, re
 
 **Full Changelog**: https://github.com/camaraproject/QualityOnDemand/compare/v0.8.1...v0.9.0-rc
 
-# v0.8.1
+# r1.3 - initial public release
 
-**This is the second alpha release of the Quality-On-Demand (QoD) API**
-- API [definition](https://github.com/camaraproject/QualityOnDemand/tree/release-0.8.1/code/API_definitions)
-- API [documentation](https://github.com/camaraproject/QualityOnDemand/tree/release-0.8.1/documentation/API_documentation)
+## Release Notes
 
-## Please note:
+* quality-on-demand v0.9.0
+* Commonalities v0.2.0
+* ICM v0.1.0
+* Backward compatible: **no**
 
-- **This minor release contains minor fixes of v0.8.0, but is not backward compatible to v0.8.0**
-- This is an alpha version, it should be considered as a draft.
+**This is the initial public release of v0.9.0 of the Quality-On-Demand (QoD) API**
+- API [definition](https://github.com/camaraproject/QualityOnDemand/tree/release-0.9.1/code/API_definitions)
+- API [documentation](https://github.com/camaraproject/QualityOnDemand/tree/release-0.9.1/documentation/API_documentation)
+
+- **This public release contains major fixes of v0.8.0, and is not backward compatible to v0.8.0**
+- This is an initial public version, it should be considered as not stable.
+- The release is suitable for implementors of the API, but it is not recommended for use in commercial contexts.
 - There are bug fixes to be expected and incompatible changes in upcoming versions. 
-- The release is suitable for implementors, but it is not recommended to use the API with customers in productive environments.
+
+## Changes for quality-on-demand v0.9.0
 
 ### Added
 
@@ -338,19 +378,28 @@ For each above listed API version that changed, create the following section, re
 
 ### Removed
 
+N/A
+
 ## New Contributors
 * @maxl2287 made their first contribution in https://github.com/camaraproject/QualityOnDemand/pull/89
 * @SfnUser made their first contribution in https://github.com/camaraproject/QualityOnDemand/pull/77
 
 **Full Changelog**: https://github.com/camaraproject/QualityOnDemand/compare/v0.8.0...v0.8.1
 
-# v0.8.0
+# r1.2 - alpha release
+
+## Release Notes
+
+* quality-on-demand v0.8.0
+* Commonalities v0.2.0
+* ICM v0.1.0
+* Backward compatible: N/A
 
 **This is the first alpha version of the Quality-On-Demand (QoD) API.** 
 - API [definition](https://github.com/camaraproject/QualityOnDemand/tree/release-0.8.0/code/API_definitions)
 - API [documentation](https://github.com/camaraproject/QualityOnDemand/tree/release-0.8.0/documentation/API_documentation)
 
-## Please note:
+**Please note:**
 
 - This is an alpha version, it should be considered as a draft.
 - There are bug fixes to be expected and incompatible changes in upcoming versions. 
@@ -360,11 +409,23 @@ For each above listed API version that changed, create the following section, re
   - [QualityOnDemand_PI1](https://github.com/camaraproject/QualityOnDemand_PI1) by Deutsche Telekom
   - [QualityOnDemand_PI2](https://github.com/camaraproject/QualityOnDemand_PI2) by Orange
 
-## What's Changed
+## Changes for quality-on-demand v0.8.0
+
+### Added
 * Contribution of the QoD-API spec v0.8.0 by @akoshunyadi in https://github.com/camaraproject/QualityOnDemand/pull/54
+
+### Changed
+
 * Improvements for QoSProfile_Mapping_Table.md by @tlohmar in https://github.com/camaraproject/QualityOnDemand/pull/62 and @hdamker in https://github.com/camaraproject/QualityOnDemand/pull/73
 * Update qod api documentation to 0.8.0 by @shilpa-padgaonkar in https://github.com/camaraproject/QualityOnDemand/pull/71
 * Editorial updates of documentation QoD_API.md by @hdamker, @kaikreuzer, and @mariobodemann
+
+### Fixed
+
+N/A
+
+### Removed
+
 * Delete code/API_code directory by @hdamker in https://github.com/camaraproject/QualityOnDemand/pull/93
 
 ## New Contributors
@@ -373,20 +434,40 @@ For each above listed API version that changed, create the following section, re
 
 **Full Changelog**: https://github.com/camaraproject/QualityOnDemand/compare/v0.1.0...v0.8.0
 
-# v0.1.0 - Initial contribution
+# r1.1 - alpha release
+
+## Release Notes
+
+* quality-on-demand v0.1.0
+* Commonalities v0.2.0
+* ICM v0.1.0
+* Backward compatible: N/A
 
 **Initial contribution of two API definitions for Quality on Demand (stable bandwidth and stable latency)**, including initial documentation and implementation code.
 
-## Please note 
-- this "release" is only tagged to document the history of the API, it is not intended to be used by implementors or API customers
+- this alpha release" is only tagged to document the history of the API, it is not intended to be used by implementors or by API consumers
 - it was implemented by Deutsche Telekom within lab environment and tested against two NEF implementations
 - going forward the implementation [code](https://github.com/camaraproject/QualityOnDemand/tree/50e81e0c4a6a7431c0a7f50c26415caf935be6df/code/API_code) will not be part of releases of QoD API. Instead it will be provided within separate repositories (QualityOnDemand_PIx).
 
-## What's Changed
+## Changes for quality-on-demand v0.1.0
+
+### Added
 * Qod latency api spec 0.1.0 contribution by @shilpa-padgaonkar in https://github.com/camaraproject/QualityOnDemand/pull/24
 * Qod bandwidth api spec 0.1.0 contribution by @shilpa-padgaonkar in https://github.com/camaraproject/QualityOnDemand/pull/25
 * Code contribution for release 0.1.0 by @anjagerlach in https://github.com/camaraproject/QualityOnDemand/pull/28
 * Create QoD-API-Readiness-Checklist.md by @shilpa-padgaonkar in https://github.com/camaraproject/QualityOnDemand/pull/30
+
+### Changed
+
+N/A
+
+### Fixed
+
+N/A
+
+### Removed
+
+N/A
 
 ## New Contributors
 * @T-sm made their first contribution in https://github.com/camaraproject/QualityOnDemand/pull/10
