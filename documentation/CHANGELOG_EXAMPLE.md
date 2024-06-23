@@ -1,4 +1,6 @@
-# Changelog QualityOnDemand (example according to release process)
+# Changelog QualityOnDemand
+
+NOTE: As this example is based on the actual CHANGELOG of QualityOnDemand it is important to note that the content of the the v0.10.x releases is here **rewritten only for illustration purposes** according to the new release process. Within the real sub project the new release process will only be applied to new releases, the existing content of the CHANGELOG file SHALL NOT be rewritten!
 
 ## Table of content
 
