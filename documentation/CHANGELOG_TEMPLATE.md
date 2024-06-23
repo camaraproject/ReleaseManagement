@@ -1,6 +1,6 @@
-# Changelog API Sub Project name
+# Changelog §API Repository Name§
 
-<!--NOTE: in above title replace "API Sub Project name" with actual API Sub Project name and remove this line-->
+<!--NOTE: in above title replace §API Repository Name§ with the actual repository name and remove this comment-->
 
 ## Table of content
 
