@@ -1,6 +1,6 @@
-# Changelog QualityOnDemand - new
+# Changelog QualityOnDemand
 
-This **example CHANGELOG file** shows how to update an existing changelog (taken from qod) is extended for new releases according to release process.
+NOTE: As this **example CHANGELOG file** is based on the actual CHANGELOG of QualityOnDemand it is important to note that the content of the the v0.10.x releases is here **rewritten only for illustration purposes** according to the new release process. Within the real sub project the new release process will only be applied to new releases, the existing content of the CHANGELOG file SHALL NOT be rewritten!
 
 ## Table of content
 
