@@ -1,6 +1,6 @@
 # Changelog QualityOnDemand - new
 
-This **example** for qod v0.10.0/1 shows how to update an existing changelog (up to qod v0.9.0) according to release process.
+This **example CHANGELOG file** shows how to update an existing changelog (taken from qod) is extended for new releases according to release process.
 
 ## Table of content
 
@@ -83,6 +83,8 @@ Examples:
 * Deprecated field `old_field`
 * Deprecated endpoint
 
+**Full Changelog**: https://github.com/camaraproject/QualityOnDemand/compare/r1.5...r1.6
+
 # r1.5 - release
 
 ## Release Notes
@@ -114,7 +116,7 @@ It is aligned to
 
 ## Changes for quality-on-demand
 
-Changes compared to previous public release v0.9.0
+Changes compared to previous release of initial public version v0.9.0 of the Quality-on-demand API.
 
 ### Added
 
@@ -122,6 +124,7 @@ Changes compared to previous public release v0.9.0
 * Introduced of linting with Megalinter and Swagger Editor Validator by @RandyLevensalor, @maxl2287 and @ravindrapalaskar17 in https://github.com/camaraproject/QualityOnDemand/pull/206, https://github.com/camaraproject/QualityOnDemand/pull/207, https://github.com/camaraproject/QualityOnDemand/pull/212, and  https://github.com/camaraproject/QualityOnDemand/pull/215
 * Added global tags element  by @rartych in https://github.com/camaraproject/QualityOnDemand/pull/227
 * Added a new error example for DurationOutOfRangeForQoSProfile by @jlurien in https://github.com/camaraproject/QualityOnDemand/pull/259
+* Added statusInfo 'DELETE_REQUESTED' for qosStatus 'UNAVAILABLE' and clarified notification events in documentation by @hdamker in https://github.com/camaraproject/QualityOnDemand/pull/258
 
 ### Changed
 
@@ -130,7 +133,6 @@ Changes compared to previous public release v0.9.0
   * Note: this change shouldn't have an impact for API consumers but is relevant for implementations of the API.
 * Single IP addresses in Device model specified with standard formats instead of patterns by @jlurien in https://github.com/camaraproject/QualityOnDemand/pull/237
 * Moved "basePath" /qod/v0 to "url"-property and introduced "apiroot" in definition of server  @maxl2287 in https://github.com/camaraproject/QualityOnDemand/pull/252
-* Added statusInfo 'DELETE_REQUESTED' for qosStatus 'UNAVAILABLE' and clarified notification events in documentation by @hdamker in https://github.com/camaraproject/QualityOnDemand/pull/258
 
 ### Fixed
 
@@ -144,7 +146,7 @@ Changes compared to previous public release v0.9.0
 * @ravindrapalaskar17 made their first contribution in https://github.com/camaraproject/QualityOnDemand/pull/215
 * @rartych made their first contribution in https://github.com/camaraproject/QualityOnDemand/pull/227
 
-**Full Changelog**: https://github.com/camaraproject/QualityOnDemand/compare/v0.9.0...v0.10.0
+**Full Changelog**: https://github.com/camaraproject/QualityOnDemand/compare/v0.9.0...r1.5
 
 # r1.4 - pre-release
 
@@ -169,7 +171,7 @@ This release contains the definition and documentation of
   * notifications will be sent for all changes of QosStatus, even if initiated by the client.
   * what will happen when qosStatus changes from 'AVAILABLE' to 'UNAVAILABLE' due to 'NETWORK_TERMINATED'
  
-**Full Changelog**: https://github.com/camaraproject/QualityOnDemand/compare/v0.10.0-rc...v0.10.0-rc2
+**Full Changelog**: https://github.com/camaraproject/QualityOnDemand/compare/r1.3...r1.4
 
 # r1.3 - pre-release
 
@@ -178,7 +180,7 @@ This release contains the definition and documentation of
 This release contains the definition and documentation of
 * quality-on-demand v0.10.0-rc.1
 
-- ** quality-on-demand v0.10.0-rc.1 is the first release candidate version for v0.10.0 of the Quality-On-Demand (QoD) API. This release contains significant changes compared to v0.9.0, and it is not backward compatible:**
+- **quality-on-demand v0.10.0-rc.1 is the first release candidate version for v0.10.0 of the Quality-On-Demand (QoD) API. This release contains significant changes compared to v0.9.0, and it is not backward compatible:**
   - Within notifications the schema `EventNotification`has been replace by `CloudEvent` in accordance with the updated CAMARA Design Guidelines
   - If within `device` an IPv6 address is used it must be a single IPv6 address (out of the prefix used by the device)
 - **This is only the pre-release, it should be considered as a draft of the upcoming release v0.10.0**
@@ -222,7 +224,7 @@ This release contains the definition and documentation of
 * @ravindrapalaskar17 made their first contribution in https://github.com/camaraproject/QualityOnDemand/pull/215
 * @rartych made their first contribution in https://github.com/camaraproject/QualityOnDemand/pull/227
 
-**Full Changelog**: https://github.com/camaraproject/QualityOnDemand/compare/v0.9.0...v0.10.0-rc
+**Full Changelog**: https://github.com/camaraproject/QualityOnDemand/compare/v0.9.0...r1.3
 
 # r1.2 - pre-release
 
@@ -272,7 +274,7 @@ This release contains the definition and documentation of
 * Removed format lines from Datatypes `Ipv4Address` and `Ipv6Address` by @tlohmar in https://github.com/camaraproject/QualityOnDemand/pull/177
 * Removed markdown documentation (now embedded within the OAS definition, see above)
 
-**Full Changelog**: https://github.com/camaraproject/QualityOnDemand/compare/v0.8.1...v0.9.0
+**Full Changelog**: https://github.com/camaraproject/QualityOnDemand/compare/r1.1...r1.2
 
 # r1.1 - pre-release
 
@@ -325,7 +327,7 @@ This release contains the definition and documentation of
 * @mdomale made their first contribution in https://github.com/camaraproject/QualityOnDemand/pull/134
 * @RandyLevensalor made their first contribution in https://github.com/camaraproject/QualityOnDemand/pull/138
 
-**Full Changelog**: https://github.com/camaraproject/QualityOnDemand/compare/v0.8.1...v0.9.0-rc
+**Full Changelog**: https://github.com/camaraproject/QualityOnDemand/compare/v0.9.0...r1.1
 
 ** NOTE: the following releases were done before the introduction of the Release Process and are kept unchanged. **
 
