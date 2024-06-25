@@ -2,7 +2,7 @@
 
 <!--NOTE: in above title replace §API Repository Name§ with the actual repository name and remove this comment-->
 
-## Table of content
+## Table of contents
 
 - **[r1.1 - pre-release](#r11---pre-release)**
 
@@ -10,7 +10,7 @@
 
 The below sections record the changes for each API version in each release as follows:
 
-* for the first alpha or release-candidiate API version, all changes since the release of the previous public API version
+* for each first alpha or release-candidate API version, all changes since the release of the previous public API version
 * for subsequent alpha or release-candidate API versions, the delta with respect to the previous pre-release
 * for a public API version, the consolidated changes since the release of the previous public API version
 
