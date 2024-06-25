@@ -4,12 +4,12 @@ NOTE: As this **example CHANGELOG file** is based on the actual CHANGELOG of Qua
 
 ## Table of contents
 
-- **[r1.6 - release](#r16---release)**
-- [r1.5 - release](#r15---release)
-- [r1.4 - pre-release](#r14---pre-release)
-- [r1.3 - pre-release](#r13---pre-release)
-- [r1.2 - pre-release](#r12---pre-release)
-- [r1.1 - pre-release](#r11---pre-release)
+- **[r1.6 - patch](#r16---patch)**
+- [r1.5 - public](#r15---public)
+- [r1.4 - release-candidate](#r14---release-candidate)
+- [r1.3 - release-candidate](#r13---release-candidate)
+- [r1.2 - alpha](#r12---alpha)
+- [r1.1 - alpha](#r11---alpha)
 - [v0.9.0](#v090)
 - [v0.9.0-rc](#v090-rc)
 - [v0.8.1](#v081)
@@ -24,7 +24,7 @@ The below sections record the changes for each API version in each (pre-)release
 * for subsequent alpha or release-candidate API versions, the delta with respect to the previous pre-release
 * for a public API version, the consolidated changes since the release of the previous public API version
 
-# r1.6 - release
+# r1.6 - patch
 
 ## Release Notes
 
@@ -64,7 +64,7 @@ It is aligned with
 
 **Full Changelog**: https://github.com/camaraproject/QualityOnDemand/compare/r1.5...r1.6
 
-# r1.5 - release
+# r1.5 - public
 
 ## Release Notes
 
@@ -125,7 +125,7 @@ It is aligned with
 
 **Full Changelog**: https://github.com/camaraproject/QualityOnDemand/compare/v0.9.0...r1.5
 
-# r1.4 - pre-release
+# r1.4 - release-candidate
 
 ## Release Notes
 
@@ -150,7 +150,7 @@ This release contains the definition and documentation of
  
 **Full Changelog**: https://github.com/camaraproject/QualityOnDemand/compare/r1.3...r1.4
 
-# r1.3 - pre-release
+# r1.3 - release-candidate
 
 ## Release Notes
 
@@ -203,7 +203,7 @@ This release contains the definition and documentation of
 
 **Full Changelog**: https://github.com/camaraproject/QualityOnDemand/compare/v0.9.0...r1.3
 
-# r1.2 - pre-release
+# r1.2 - alpha
 
 ## Release Notes
 
@@ -249,7 +249,7 @@ This release contains the definition and documentation of
 
 **Full Changelog**: https://github.com/camaraproject/QualityOnDemand/compare/r1.1...r1.2
 
-# r1.1 - pre-release
+# r1.1 - alpha
 
 ## Release Notes
 
