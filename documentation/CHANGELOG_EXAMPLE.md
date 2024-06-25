@@ -253,7 +253,7 @@ This release contains the definition and documentation of
 
 - **This version contains significant changes compared to v0.9.0, and it is not backward compatible**
   - Especially a lot of the parameter names changed in line with the agreed glossary within CAMARA Commonalities
-- **This is only the pre-release, it should be considered as a draft of the upcoming release v0.9.0**
+- **This is only the pre-release, it should be considered as a draft of the upcoming release v0.10.0**
 - The pre-release is meant for implementors, but it is not recommended to use the API with customers in productive environments.
 
 - [API definition with inline documentation](https://github.com/camaraproject/QualityOnDemand/blob/r1.1/code/API_definitions/qod-api.yaml)
