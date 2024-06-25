@@ -22,14 +22,15 @@ The below sections record the changes for each API version in each release as fo
 
 This release contains the definition and documentation of
 * API-name1 vx.y.z
-<!--* API-name2 vx.y.z - in case of multiple APIs in the repository and thus in the release, list them all here. There shall be no "wip" API version in the repository at the time of release.-->
+<!--* API-name2 vx.y.z - unchanged-->
+<!--In case the repository contains multiple APIs, and thus also the release, list them all here. Also mention if an API in the repository is unchanged. Note: There shall be no "wip" API version in the repository at the time of release.-->
 
 <!--For any API version, if known, and for public API versions, include the references to the related Commonalities and ICM versions as follows:-->
 The API definition(s) are based on
 * Commonalities vx.y.z
 * Identity and Consent Management vx.y.z
 
-<!--If multiple APIs are in the repository and hence are part of the release as listed above, for each API version that changed in this release, create a section as the below one, replacing the API-name and API-version-x.y.z with actual API name and version-->
+<!--In case the repository contains multiple APIs, for each API version that changed in this release, create additional sections by copying and filling the below template one, replacing the API-name and API-version-x.y.z with actual API name and version.-->
 
 ## API-name1 vx.y.z
 
