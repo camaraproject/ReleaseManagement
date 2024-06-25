@@ -36,9 +36,9 @@ It is aligned with
 **This is ...**
 
 - API definition **with inline documentation**:
-  - [View it on ReDoc](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/camaraproject/API-name1-repo/vx.y.z/code/API_definitions/api-name1.yaml&nocors)
-  - [View it on Swagger Editor](https://editor.swagger.io/?url=https://raw.githubusercontent.com/camaraproject/API-name1-repo/vx.y.z/code/API_definitions/api-name1.yaml)
-  - OpenAPI [YAML spec file](https://github.com/camaraproject/API-name1-repo/blob/vx.y.z/code/API_definitions/api-name1.yaml)
+  - [View it on ReDoc](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/camaraproject/API-name1-repo/r1.1/code/API_definitions/api-name1.yaml&nocors)
+  - [View it on Swagger Editor](https://editor.swagger.io/?url=https://raw.githubusercontent.com/camaraproject/API-name1-repo/r1.1/code/API_definitions/api-name1.yaml)
+  - OpenAPI [YAML spec file](https://github.com/camaraproject/API-name1-repo/blob/r1.1/code/API_definitions/api-name1.yaml)
 
 ### Added
 
