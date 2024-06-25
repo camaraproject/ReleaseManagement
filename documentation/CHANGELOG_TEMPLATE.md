@@ -24,10 +24,10 @@ This release contains the definition and documentation of
 * API-name1 vx.y.z
 <!--* API-name2 vx.y.z - in case of multiple APIs in the repository and thus in the release, list them all here. There shall be no "wip" API version in the repository at the time of release.-->
 
-<!--For any API version, if known, and for public API versions, include the references to the related Commonalities and ICM versions as follows:
+<!--For any API version, if known, and for public API versions, include the references to the related Commonalities and ICM versions as follows:-->
 The API definition(s) are based on
 * Commonalities vx.y.z
-* Identity and Consent Management vx.y.z-->
+* Identity and Consent Management vx.y.z
 
 <!--If multiple APIs are in the repository and hence are part of the release as listed above, for each API version that changed in this release, create a section as the below one, replacing the API-name and API-version-x.y.z with actual API name and version-->
 
@@ -47,5 +47,3 @@ The API definition(s) are based on
 ### Fixed
 
 ### Removed
-
-<!--In case of a release with multiple APIs: repease the above section (level 2 and 3 headers) to hold the changes for each API version in this release-->
