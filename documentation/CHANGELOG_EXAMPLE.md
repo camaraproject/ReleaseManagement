@@ -69,7 +69,7 @@ The API definition(s) are based on
 
 ## quality-on-demand v0.10.0
 
-**quality-on-demand v0.10.0 is an initial public version with significant changes compared to the previous initial version [v0.9.0](#v090) and is not backward compatible.**
+**quality-on-demand v0.10.0 is a new initial public version with significant changes compared to the previous initial version [v0.9.0](#v090) and is not backward compatible.**
 
   - Within notifications the schema `EventNotification`has been replace by `CloudEvent` in accordance with the updated CAMARA Design Guidelines
   - If within `device` an IPv6 address is used it must be a single IPv6 address (out of the prefix used by the device)
