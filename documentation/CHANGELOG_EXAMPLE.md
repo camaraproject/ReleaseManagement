@@ -35,7 +35,7 @@ The API definition(s) are based on
 * Commonalities v0.2.0
 * Identity and Consent Management v0.1.0
 
-<!--If multiple APIs are part of the release, list them all above, and for each API version listed that changed in this release, create a section, with the header 2: API-name API-version-x.y.z, and level 3 subsections, as below-->
+<!--In case of a repository with multiple APIs, list all APIs above, and for each API version that changed in this release, create a section as below, with the header 2: API-name API-version-x.y.z, and level 3 subsections. Also mention if an API in the repository is unchanged.-->
 
 ## quality-on-demand v0.10.1
 
