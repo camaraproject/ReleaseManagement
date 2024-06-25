@@ -14,7 +14,7 @@ The below sections record the changes for each API version in each release as fo
 * for subsequent alpha or release-candidate API versions, the delta with respect to the previous pre-release
 * for a public API version, the consolidated changes since the release of the previous public API version
 
-<!-- Repeat the below release section (header 1 and subsections) at the top of this file for each new (pre-)release-->
+<!--Repeat the below release section (header 1 and subsections) at the top of this file for each new (pre-)release-->
 
 # r1.1 - pre-release
 
@@ -22,9 +22,9 @@ The below sections record the changes for each API version in each release as fo
 
 This release contains the definition and documentation of
 * API-name1 vx.y.z
-* API-name2 vx.y.z
+<!--* API-name2 vx.y.z - in case of multiple APIs in the repository, list them all here. There shall be no "wip" API version in the repository at the time of (pre-)release.-->
 
-<!--In case of a release with a public API version, include the references to the Commonalities and ICM versions add:
+<!--In case of a release with a public API version, include the references to the Commonalities and ICM versions:
 It is aligned with
 * Commonalities vx.y.z
 * ICM vx.y.z-->
