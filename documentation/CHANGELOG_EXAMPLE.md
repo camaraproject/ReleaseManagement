@@ -6,8 +6,8 @@ NOTE: As this **example CHANGELOG file** is based on the actual CHANGELOG of Qua
 
 - **[r1.6 - patch](#r16---patch)**
 - [r1.5 - public](#r15---public)
-- [r1.4 - release-candidate](#r14---release-candidate)
-- [r1.3 - release-candidate](#r13---release-candidate)
+- [r1.4 - rc](#r14---rc)
+- [r1.3 - rc](#r13---rc)
 - [r1.2 - alpha](#r12---alpha)
 - [r1.1 - alpha](#r11---alpha)
 - [v0.9.0](#v090)
@@ -116,7 +116,7 @@ The API definition(s) are based on
 
 **Full Changelog**: https://github.com/camaraproject/QualityOnDemand/compare/v0.9.0...r1.5
 
-# r1.4 - release-candidate
+# r1.4 - rc
 
 ## Release Notes
 
@@ -143,7 +143,7 @@ This release contains the definition and documentation of
  
 **Full Changelog**: https://github.com/camaraproject/QualityOnDemand/compare/r1.3...r1.4
 
-# r1.3 - release-candidate
+# r1.3 - rc
 
 ## Release Notes
 
