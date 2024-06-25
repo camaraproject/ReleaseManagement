@@ -4,7 +4,7 @@
 
 ## Table of contents
 
-- **[r1.1 - pre-release](#r11---pre-release)**
+- **[r1.1](#r11)**
 
 **Please be aware that the project will have frequent updates to the main branch. There are no compatibility guarantees associated with code in any branch, including main, until it has been released. For example, changes may be reverted before a release is published. For the best results, use the latest published release.**
 
@@ -16,24 +16,24 @@ The below sections record the changes for each API version in each release as fo
 
 <!--Repeat the below release section (header 1 and subsections) at the top of this file for each new (pre-)release-->
 
-# r1.1 - pre-release
+# r1.1
 
 ## Release Notes
 
 This release contains the definition and documentation of
 * API-name1 vx.y.z
-<!--* API-name2 vx.y.z - in case of multiple APIs in the repository, list them all here. There shall be no "wip" API version in the repository at the time of (pre-)release.-->
+<!--* API-name2 vx.y.z - in case of multiple APIs in the repository and thus in the release, list them all here. There shall be no "wip" API version in the repository at the time of release.-->
 
-<!--In case of a release with a public API version, include the references to the Commonalities and ICM versions:
-It is aligned with
+<!--For any API version, if known, and for public API versions, include the references to the related Commonalities and ICM versions as follows:
+The API definition(s) are based on
 * Commonalities vx.y.z
-* ICM vx.y.z-->
+* Identity and Consent Management vx.y.z-->
 
-<!--For each above listed API version that changed, create a following section, replacing the API-name and API-version-x.y.z with actual API name and version-->
+<!--If multiple APIs are in the repository and hence are part of the release as listed above, for each API version that changed in this release, create a section as the below one, replacing the API-name and API-version-x.y.z with actual API name and version-->
 
 ## API-name1 vx.y.z
 
-**This is ...**
+**API-name1 vx.y.z is a ... version. ...**
 
 - API definition **with inline documentation**:
   - [View it on ReDoc](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/camaraproject/API-name1-repo/r1.1/code/API_definitions/api-name1.yaml&nocors)
