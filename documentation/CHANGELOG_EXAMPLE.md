@@ -20,7 +20,7 @@ NOTE: As this **example CHANGELOG file** is based on the actual CHANGELOG of Qua
 
 The below sections record the changes for each API version in each (pre-)release as follows:
 
-* for the first alpha or release-candidiate API version, all changes since the release of the previous public API version
+* for the first alpha or release-candidate API version, all changes since the release of the previous public API version
 * for subsequent alpha or release-candidate API versions, the delta with respect to the previous pre-release
 * for a public API version, the consolidated changes since the release of the previous public API version
 
@@ -59,8 +59,6 @@ It is aligned with
   * Improved the datatype "SessionInfo" to remove the maximum limit of duration
 
 ### Removed
-
-Examples:
 
 * N/A
 
@@ -293,7 +291,7 @@ This release contains the definition and documentation of
 
 **Full Changelog**: https://github.com/camaraproject/QualityOnDemand/compare/v0.9.0...r1.1
 
-** NOTE: the following releases were done before the introduction of the Release Process and are kept unchanged. In the below, an alpha verion is the equivalent of the initial public API version as defined in the Reease Process **
+** NOTE: the following releases were done before the introduction of the Release Process and are kept unchanged. In the below, an alpha version is the equivalent of the initial public API version as defined in the Reease Process **
 
 # v0.9.0
 
