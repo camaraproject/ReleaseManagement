@@ -11,10 +11,6 @@ NOTE: As this **example CHANGELOG file** is based on the actual CHANGELOG of Qua
 - [r1.2 - alpha](#r12---alpha)
 - [r1.1 - alpha](#r11---alpha)
 - [v0.9.0](#v090)
-- [v0.9.0-rc](#v090-rc)
-- [v0.8.1](#v081)
-- [v0.8.0](#v080)
-- [v0.1.0 - Initial contribution](#v010---initial-contribution)
 
 **Please be aware that the project will have frequent updates to the main branch. There are no compatibility guarantees associated with code in any branch, including main, until it has been released. For example, changes may be reverted before a release is published. For the best results, use the latest published release.**
 
