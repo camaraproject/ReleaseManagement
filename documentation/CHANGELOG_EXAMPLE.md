@@ -20,6 +20,8 @@ The below sections record the changes for each API version in each (pre-)release
 * for subsequent alpha or release-candidate API versions, the delta with respect to the previous pre-release
 * for a public API version, the consolidated changes since the release of the previous public API version
 
+DISCLAIMER: in this example file, links and other content have been edited from the original to fit the example (hence links may be broken).
+
 # r1.6 - patch
 
 ## Release Notes
@@ -301,6 +303,4 @@ This release contains the definition and documentation of
 
 # v0.9.0
 
-<!-- Originals removed-->
-
-DISCLAIMER: in this example file link names and other content have been edited from the original to fit the example (hence links may be broken).
+NOTE:Original content for older release has been removed
