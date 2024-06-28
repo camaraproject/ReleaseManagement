@@ -2,7 +2,7 @@
 
 Checklist for api-name api-version in rx.y.
 
-| Nr | API release assets  | alpha | release-candidate |  public-release<br>initial | public-release<br> stable | Status | Comments |
+| Nr | API release assets  | alpha | release-candidate |  initial<br>public | stable<br> public | Status | Comments |
 |----|----------------------------------------------|:-----:|:-----------------:|:-------:|:------:|:----:|:----:|
 |  1 | API definition                               |   M   |         M         |    M    |    M   |      | link |
 |  2 | Design guidelines from Commonalities applied |   O   |         M         |    M    |    M   |      |      |
@@ -15,13 +15,13 @@ Checklist for api-name api-version in rx.y.
 |  9 | Test result statement                        |   O   |         O         |    O    |    M   |      | link |
 | 10 | API release numbering convention applied     |   M   |         M         |    M    |    M   |      |      |
 | 11 | Change log updated                           |   M   |         M         |    M    |    M   |      | link |
-| 12 | Previous public-release was certified        |   O   |         O         |    O    |    M   |      |      |
+| 12 | Previous public release was certified        |   O   |         O         |    O    |    M   |      |      |
 
 To fill the checklist:
 - in the line above the table, replace the api-name, api-version and the rx.y by their actual values for the current API version and release.
-- in the Status column, put "Y" (yes) if the release asset is available or fulfilled in the current release, or "N" (no) otherwise. You can add comments as needed. Example: an intermediate alpha or release-candidate release may not yet provide all mandatory release assets for the release type in an intermedaite release.
-- in the Comments column, provide links whenever available to the assests, and any other relevant comments.
+- in the Status column, put "Y" (yes) if the release asset is available or fulfilled in the current release, a "N" (no) or a "tbd". Example use of "tbd" is in case an alpha or release-candidate API version does not yet provide all mandatory assets for the release.
+- in the Comments column, provide the link to the asset once available, and any other relevant comments.
 
-Note: It is normal that the checklists of the (final) release-candidate and its subsequent public-release are the same, while additional release assets are required for a subsequent stable public-release.
+Note: the checklists of a public API version and of its preceding release-candidate API version can be the same.
 
-The documentation for the content of the checklist is here: [API Readiness Checklist documentation](https://wiki.camaraproject.org/x/AgAVAQ#APIReleaseProcess-APIreadinesschecklist)
+The documentation for the content of the checklist is here: [API Readiness Checklist](https://wiki.camaraproject.org/x/HQBFAQ)
