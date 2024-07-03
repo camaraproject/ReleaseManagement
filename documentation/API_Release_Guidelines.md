@@ -150,7 +150,7 @@ To release a MINOR update of a public API version 1.0.0, resulting in the releas
 * Develop the 1.1.0 updates on the main branch. The first PR shall update the OAS file setting the API version to wip, and the URL to vwip.
 * Once sufficiently stable, create a release PR for the API version 1.1.0-alpha.1.
 * After release PR approval, create the pre-release rx.1 and publish it on the API release tracker.
-* Several alpha API versions 1.1.0-alpha.p may be released, each setting the API version back to "wip" in the first API update PR and evolving the alpha number with each following pre-release (rx.2 - rx.m).
+* Additional alpha API versions 1.1.0-alpha.p may be released. For each setting the API version back to "wip" in the first API update PR and setting the new version API only within the pre-release. Evolving the alpha number with each following pre-release (rx.2 - rx.m).
 * When the API version is ready, create a release PR for the API version 1.1.0-rc.1
 * Several release-candidate API versions 1.1.0-rc.q may be released, each setting the API version back to "wip" in the first API update PR and evolving the rc number with each following pre-release (rx.m+1 - rx.n).
 * When the API version is ready for public release, create the release PR that sets the public API version to 1.1.0. (this PR minimally removes the rc extensions from the version and URL fields in the API yaml file and assures all API release assets are available as per the API readiness checklist).
