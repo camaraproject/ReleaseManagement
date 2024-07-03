@@ -114,7 +114,7 @@ On the main branch,
 
 **Create the release PR**
 
-Once the required stability is reached, create the release PR.
+Once the defined scope and required stability is reached, create the (pre-)release PR.
 
 A release PR provides only the following changes: 
 * update of the version information in the API OAS definition files (no "wip" in the version field or URL of any of the API files).
