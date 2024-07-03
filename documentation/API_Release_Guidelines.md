@@ -133,6 +133,7 @@ A release PR provides only the following changes: 
   * an API release is created using the GitHub release feature (a release tag and, optionally, a release package).
   * the release name shall be the same as the release tag and shall have the following format: rx.y
   * the x.y number shall follow the release numbering scheme  as defined in the above section on API release numbering
+  * the release description within the GitHub release should be a copy of the section about the release within the CHANGELOG.md
   * note: outside the API Sub Project, the release name shall be referred to with the API name (for definition see the versioning section in the [API Design Guidelines](https://github.com/camaraproject/Commonalities/blob/main/documentation/API-design-guidelines.md)) followed by the release number e.g. quality-on-demand rx.y
 * update the API release tracker with the date and release tag link for the release
 
