@@ -8,7 +8,7 @@
 | release | A release is a GitHub release of an API repository which contains public API versions - initial versions (0.y.z) or stable versions (x.y.z with x>=1) . Releases may be proposed as part of a meta-release.|
 | release of an initial public API version | Initial public API versions only exist for new APIs. It concerns public APIs versions with x = 0 (0.y.z without version extension). |
 | release of a stable public API version | Stable public API versions are recommended for use in commercial applications. The user can expect that subsequent public API versions will be backward-compatible with the one they are using, unless explicitly announced otherwise.  |
-| meta-release | A meta-release is a set of public API versions made available at a given point in time (Spring and Fall). All API versions of a given meta-release shall be aligned to the Commonalities and Identity and Consent Management (ICM) public releases included in that same meta-release.|
+| meta-release | A meta-release is a set of public API versions across CAMARA, made available at a given point in time (Spring and Fall). All API versions of a given meta-release shall be aligned to the Commonalities and Identity and Consent Management (ICM) public releases included in that same meta-release.|
 | maintenance release | A maintenance release is the release of a patch update of a public API version. |
 | release tag | A release tag is a GitHub tag placed on the main or a maintenance branch that identifies a release in the API's repository.|
 | release package | A release package is a zip file of the GitHub repository created using the GitHub release mechanism. It contains a snapshot of the full API repository marked with the release tag. |
