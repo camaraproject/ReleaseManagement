@@ -26,11 +26,11 @@ To prepare the release of a public API version, API versions shall be (pre-)rele
 * to reach M3, release the first release-candidate API version:
   * the release-candidate implements the scope of the target public API version.
   * this pre-release is agreed to be ready for API implementation and functional testing.
-  * it is aligned with the release-candidate versions of Commonalities and ICM (M1).
+  * it is aligned with the alpha versions of Commonalities and ICM (M1).
 * between M3 and M4, release additional release-candidate API versions as needed
 * to reach M4, release the public API version:
   * this is the version ready for inclusion in the meta-release (if so planned).
-  * the public API version must be aligned with the latest release candidates of Commonalities and ICM and refers to the released public version of Commonalities and ICM.
+  * the public API version must be aligned with the latest release-candidates of Commonalities and ICM and refers to the released public version of Commonalities and ICM.
 
 An API Sub Project can release as many alpha and release-candidate API versions as useful for API development and testing. In between (pre-)releases, the API version is set to "wip" (to indicate that this API version should not be used).
 
@@ -132,7 +132,6 @@ A (pre-)release PR provides only the following changes: 
   * the release name shall be the same as the release tag and shall have the following format: rx.y
   * the x.y number shall follow the release numbering scheme  as defined in the above section on API release numbering
   * the release description within the GitHub release should be a copy of the section about the release within the CHANGELOG.md
-  * note: outside the API Sub Project, the release name shall be referred to with the API name (for definition see the versioning section in the [API Design Guidelines](https://github.com/camaraproject/Commonalities/blob/main/documentation/API-design-guidelines.md)) followed by the release number e.g. quality-on-demand rx.y
 * update the API release tracker with the date and release tag link for the release
 
 **Maintenance release**
