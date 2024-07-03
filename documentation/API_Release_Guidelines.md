@@ -124,7 +124,7 @@ A (pre-)release PR provides only the following changes: 
     * for each first alpha or release-candidate API version, all changes since the release of the previous public API version
     * for subsequent alpha or release-candidate API versions, the delta with respect to the previous pre-release
     * for a public API version, the consolidated changes since the release of the previous public API version
-* update of the [README.md]() (as necessary)
+* update of the API repository`README.md` (as necessary)
 
 **Create the release**
 * manage the release PR approval
