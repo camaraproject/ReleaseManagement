@@ -29,7 +29,7 @@ To prepare the release of a public API version, API versions shall be (pre-)rele
   * the release-candidate implements the scope of the target public API version.
   * this pre-release is agreed as ready for API implementation and functional testing.
   * it is aligned with the release-candidate versions of Commonalities and ICM (M1).
-* between M3 and M4, release one or more release-candidate API versions as needed
+* between M3 and M4, release additional release-candidate API versions as needed
 * to reach M4, release the public API version:
   * this is the version ready for inclusion in the meta-release (if so planned).
   * the public API version is aligned with the public versions of Commonalities and ICM (M2).
