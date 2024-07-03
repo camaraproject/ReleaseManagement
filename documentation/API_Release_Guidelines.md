@@ -116,7 +116,7 @@ On the main branch,
 
 Once the defined scope and required stability is reached, create the (pre-)release PR.
 
-A release PR provides only the following changes: 
+A (pre-)release PR provides only the following changes: 
 * update of the version information in the API OAS definition files (no "wip" in the version field or URL of any of the API files).
 * update the [API-Readiness-Checklist.md]() ensuring all required release assets are available. If not yet available, create a local copy under the /documentation folder and prefix it with your API Sub Project name (Copy from [ReleaseManagement/documentation/API-Readiness-Checklist.md](https://github.com/camaraproject/ReleaseManagement/blob/main/documentation/API-Readiness-Checklist.md).
 * update the [CHANGELOG.md]() in the home of the API repository. If not yet available, copy from [ReleaseManagement/documentation/CHANGELOG_TEMPLATE.md](https://github.com/camaraproject/ReleaseManagement/blob/main/documentation/CHANGELOG_TEMPLATE.md). See also the example available there.
