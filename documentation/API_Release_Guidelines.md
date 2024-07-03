@@ -44,7 +44,7 @@ Public API versions can have an initial or stable status.
    * released and published at any time (outside the meta-release process) in order to allow for rapid evolution of APIs.
    * published as part of a meta-release. In this case, the milestones defined for the meta-release have to be followed. For more details see also: [Meta-release Process](https://wiki.camaraproject.org/x/G7N3).
  * A public API version is released only if it provides all required API readiness checklist items (see: [API Readiness Checklist](https://wiki.camaraproject.org/display/CAM/API+Release+Process#APIReleaseProcess-APIreadinesschecklist)).
-* Stable public API versions are recommended for use in commercial applications. The user can expect that subsequent public API versions will be backward-compatible with the one they are using, unless explicitly announced otherwise.
+* For Stable public API versions the participation within the release process is mandatory. As Stable API versions are recommended for use in commercial applications and the user can expect that subsequent public API versions will be backward-compatible, there are additional API readiness checklist items to be provided for the release of Stable API versions.
 
 ### Meta-release
 
