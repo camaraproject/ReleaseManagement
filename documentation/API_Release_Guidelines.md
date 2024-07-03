@@ -62,7 +62,7 @@ To be part of a meta-release, the API Sub Project needs to participate in the me
 Technically, a release of an API repository is created using the GitHub issue, pull request (PR) and release features and requires:
 
 * A GitHub issue defining the scope of the release of the API version
-* A release PR associated to this issue (setting the version) and more - see below)
+* A release PR associated to this issue (setting the version and more - see below)
 * A GitHub release package (zip file of the whole API repository, including API(s) and release assets)
 * A GitHub release tag with the release number "rx.y" following the API release numbering guidelines (see next section).
 
