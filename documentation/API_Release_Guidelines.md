@@ -151,7 +151,7 @@ To release a MINOR update of a public API version 1.0.0, resulting in the releas
 * Once sufficiently stable, create a release PR for the API version 1.1.0-alpha.1.
 * After release PR approval, create the pre-release rx.1 and publish it on the API release tracker.
 * Additional alpha API versions 1.1.0-alpha.p may be released. For each setting the API version back to "wip" in the first API update PR and setting the new version API only within the pre-release. Evolving the alpha number with each following pre-release (rx.2 - rx.m).
-* When the API version is ready, create a release PR for the API version 1.1.0-rc.1
+* When the API version scope is complete, create a release PR for the release-candidate API version 1.1.0-rc.1
 * Several release-candidate API versions 1.1.0-rc.q may be released, each setting the API version back to "wip" in the first API update PR and evolving the rc number with each following pre-release (rx.m+1 - rx.n).
 * When the API version is ready for public release, create the release PR that sets the public API version to 1.1.0. (this PR minimally removes the rc extensions from the version and URL fields in the API yaml file and assures all API release assets are available as per the API readiness checklist).
 * After release PR approval, create the release rx.n+1 and publish it on the API release tracker.
