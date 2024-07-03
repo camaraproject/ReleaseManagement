@@ -5,7 +5,7 @@
 | Term | Definition |
 |------|-------|
 | pre-release | A pre-release is a GitHub release of an API repository which contains alpha or release-candidate API versions. Note: the term release is also often used here but it should be clear from the context. (*) |
-| release | A release is a GitHub release of a public API version. Releases may be proposed as part of a meta-release.|
+| release | A release is a GitHub release of an API repository which contains public API versions - initial versions (0.y.z) or stable versions (x.y.z with x>=1) . Releases may be proposed as part of a meta-release.|
 | release of an initial public API version | Initial public API versions only exist for new APIs. It concerns public APIs versions with x = 0 (0.y.z without version extension). |
 | release of a stable public API version | Stable public API versions are recommended for use in commercial applications. The user can expect that subsequent public API versions will be backward-compatible with the one they are using, unless explicitly announced otherwise.  |
 | meta-release | A meta-release is a set of public API versions made available at a given point in time (Spring and Fall). All API versions of a given meta-release shall be aligned to the Commonalities and Identity and Consent Management (ICM) public releases included in that same meta-release.|
