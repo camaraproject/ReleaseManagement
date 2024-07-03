@@ -24,7 +24,7 @@
 
 To prepare the release of a public API version, API versions shall be (pre-)released as follows:
 
-* before M3, release one or more alpha API versions as needed
+* before M3, release (optionally) one or more alpha API versions as needed
 * to reach M3, release the first release-candidate API version:
   * the release-candidate implements the scope of the target public API version.
   * this pre-release is agreed as ready for API implementation and functional testing.
