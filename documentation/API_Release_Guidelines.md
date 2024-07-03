@@ -110,7 +110,7 @@ This section lists the steps to release an API version. More details can be foun
 
 On the main branch,
 * develop the API scope in a "work-in-progress mode" (API version = wip and version in URL is vwip).
-* make sure to create the required release assets and record them in the [API-Readiness-Checklist.md]() file
+* make sure to create the required release assets and record them in the `API-Readiness-Checklist.md` file
 
 **Create the release PR**
 
