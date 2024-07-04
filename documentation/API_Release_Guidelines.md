@@ -26,11 +26,11 @@ To prepare the release of a public API version, API versions shall be (pre-)rele
 * to reach M3, release the first release-candidate API version:
   * the release-candidate implements the scope of the target public API version.
   * this pre-release is agreed to be ready for API implementation and functional testing.
-  * it is aligned with the alpha versions of Commonalities and ICM.
+  * it is aligned with the release-candidate versions of Commonalities and ICM
 * between M3 and M4, release additional release-candidate API versions as needed
 * to reach M4, release the public API version:
   * this is the version ready for inclusion in the meta-release (if so planned).
-  * the public API version must be aligned with the latest release-candidates of Commonalities and ICM. Please note that the links in the released public API version need to refer to the released public version of Commonalities and ICM.
+  * the public API version must be aligned with the released public version of Commonalities and ICM which shall be available 2 weeks before M4.
 
 An API Sub Project can release as many alpha and release-candidate API versions as useful for API development and testing. In between (pre-)releases, the API version is set to "wip" (to indicate that this API version should not be used).
 
