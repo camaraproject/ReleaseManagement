@@ -21,7 +21,7 @@ This projects contains the following documentation:
 
 * [API Release Guidelines](/documentation/API_Release_Guidelines.md)
 * [API Readiness Checklist (template for copying)](/documentation/API-Readiness-Checklist.md)
-* [CHANGELOG (template for copying)](https://github.com/camaraproject/ReleaseManagement/blob/main/documentation/CHANGELOG_TEMPLATE.md)
+* [CHANGELOG (template for copying)](/documentation/CHANGELOG_TEMPLATE.md)
 
 An example of the CHANGELOG created per the release management process is here: [CHANGELOG EXAMPLE](https://github.com/camaraproject/ReleaseManagement/blob/main/documentation/SupportingDocuments/CHANGELOG_EXAMPLE.MD)
 
