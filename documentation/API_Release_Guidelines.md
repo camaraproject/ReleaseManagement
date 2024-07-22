@@ -117,7 +117,7 @@ Once the defined scope and required stability is reached, create the (pre-)relea
 A (pre-)release PR provides only the following changes: 
 * update of the version information in the API OAS definition files (no "wip" in the version field and base URL of any of the API files).
 * complete the `APIname-API-Readiness-Checklist.md` file ensuring all required release assets are available. If not yet available, copy the template [API-Readiness-Checklist.md](/documentation/API-Readiness-Checklist.md), and prefix it with the API name.
-* update the `CHANGELOG.md` file in the home of the API repository. If not yet available, copy the [CHANGELOG_TEMPLATE.md](https://github.com/camaraproject/ReleaseManagement/blob/main/documentation/CHANGELOG_TEMPLATE.md). See also the example available in the [SupportingDocuments folder](https://github.com/camaraproject/ReleaseManagement/tree/main/documentation/SupportingDocuments).
+* update the `CHANGELOG.md` file in the home of the API repository. If not yet available, copy the [CHANGELOG_TEMPLATE.md](/documentation/CHANGELOG_TEMPLATE.md). See also the example available in the [SupportingDocuments folder](/documentation/SupportingDocuments).
   * add a new section at the top of the file for the release and each API version with the following content:
     * for each first alpha or release-candidate API version, all changes since the release of the previous public API version
     * for subsequent alpha or release-candidate API versions, the delta with respect to the previous pre-release
