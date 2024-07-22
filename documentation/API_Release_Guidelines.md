@@ -108,7 +108,7 @@ This section lists the steps to release an API version. More details can be foun
 
 On the main branch,
 * develop the API scope in a "work-in-progress mode" (API version = wip and version in URL is vwip).
-* make sure to create the required release assets and record them in the `API-Readiness-Checklist.md` file
+* make sure to create the required release assets and record them in the `APIname-API-Readiness-Checklist.md` file
 
 **Create the release PR**
 
@@ -116,8 +116,8 @@ Once the defined scope and required stability is reached, create the (pre-)relea
 
 A (pre-)release PR provides only the following changes: 
 * update of the version information in the API OAS definition files (no "wip" in the version field and base URL of any of the API files).
-* update the `API-Readiness-Checklist.md` file ensuring all required release assets are available. If this file not yet available, create a local copy under the /documentation folder and prefix it with the respective API name (copy it from [ReleaseManagement/documentation/API-Readiness-Checklist.md](https://github.com/camaraproject/ReleaseManagement/blob/main/documentation/API-Readiness-Checklist.md).
-* update the `CHANGELOG.md` file in the home of the API repository. If not yet available, copy it from [ReleaseManagement/documentation/CHANGELOG_TEMPLATE.md](https://github.com/camaraproject/ReleaseManagement/blob/main/documentation/CHANGELOG_TEMPLATE.md). See also the example available there.
+* update the `APIname-API-Readiness-Checklist.md` file ensuring all required release assets are available. If not yet available, copy the template [API-Readiness-Checklist.md](https://github.com/camaraproject/ReleaseManagement/blob/main/documentation/API-Readiness-Checklist.md), and prefix it with the API name.
+* update the `CHANGELOG.md` file in the home of the API repository. If not yet available, copy the [CHANGELOG_TEMPLATE.md](https://github.com/camaraproject/ReleaseManagement/blob/main/documentation/CHANGELOG_TEMPLATE.md). See also the example available in the [SupportingDocuments folder](https://github.com/camaraproject/ReleaseManagement/tree/main/documentation/SupportingDocuments).
   * add a new section at the top of the file for the release and each API version with the following content:
     * for each first alpha or release-candidate API version, all changes since the release of the previous public API version
     * for subsequent alpha or release-candidate API versions, the delta with respect to the previous pre-release
@@ -125,7 +125,7 @@ A (pre-)release PR provides only the following changes: 
 * update of the API repository `README.md` file (as necessary)
 
 **Create the release**
-* manage the release PR approval
+* manage the release PR approval with the Release Management team
 * merge the approved release PR
 * create the release:
   * an API release is created using the GitHub release feature (a release tag and, optionally, a release package).
