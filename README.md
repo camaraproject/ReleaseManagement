@@ -17,7 +17,7 @@ Repository to describe, develop, document and test the Release Management proces
 
 ## Release Process Information
 
-This projects constains the following documentation:
+This projects contains the following documentation:
 
 * [API Release Guidelines](https://github.com/camaraproject/ReleaseManagement/blob/main/documentation/API_Release_Guidelines.md)
 * [API Readiness Checklist (template for copying)](https://github.com/camaraproject/ReleaseManagement/blob/main/documentation/API-Readiness-Checklist.md)
