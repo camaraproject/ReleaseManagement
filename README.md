@@ -23,7 +23,7 @@ This projects contains the following documentation:
 * [API Readiness Checklist (template for copying)](/documentation/API-Readiness-Checklist.md)
 * [CHANGELOG (template for copying)](/documentation/CHANGELOG_TEMPLATE.md)
 
-An example of the CHANGELOG created per the release management process is here: [CHANGELOG EXAMPLE](https://github.com/camaraproject/ReleaseManagement/blob/main/documentation/SupportingDocuments/CHANGELOG_EXAMPLE.MD)
+An example of the CHANGELOG created per the release management process is here: [CHANGELOG EXAMPLE](/documentation/SupportingDocuments/CHANGELOG_EXAMPLE.md)
 
 The reference documentation on API versioning is here: [Commonalities API design guidelines (section 5)](https://github.com/camaraproject/Commonalities/blob/main/documentation/API-design-guidelines.md)
 
