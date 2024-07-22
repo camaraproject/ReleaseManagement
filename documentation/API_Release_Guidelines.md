@@ -108,7 +108,7 @@ This section lists the steps to release an API version. More details can be foun
 
 On the main branch,
 * develop the API scope in a "work-in-progress mode" (API version = wip and version in URL is vwip).
-* make sure to create the required release assets and record them in the `APIname-API-Readiness-Checklist.md` file. If not yet available, copy the template [API-Readiness-Checklist.md](https://github.com/camaraproject/ReleaseManagement/blob/main/documentation/API-Readiness-Checklist.md), and prefix it with the API name.
+* make sure to create the required release assets and record them in the `APIname-API-Readiness-Checklist.md` file. If not yet available, copy the template [API-Readiness-Checklist.md](/documentation/API-Readiness-Checklist.md), and prefix it with the API name.
 
 **Create the release PR**
 
