@@ -13,6 +13,7 @@ Repository to describe, develop, document and test the Release Management proces
 * Guidelines and assets for Release Management in CAMARA
 * Describe, develop, document and test the deliverables
 * Started: November 2023
+* First release: r1.0.0 (July 2024)
 
 ## Release Process Information
 
