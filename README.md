@@ -18,27 +18,28 @@ Repository to describe, develop, document and test the Release Management proces
 
 This projects constains the following documentation:
 
-* [API release guidelines](https://github.com/camaraproject/ReleaseManagement/blob/main/documentation/API_Release_Guidelines.md)
-* [API readiness checklist](https://github.com/camaraproject/ReleaseManagement/blob/main/documentation/API-Readiness-Checklist.md)
-* [CHANGELOG TEMPLATE](https://github.com/camaraproject/ReleaseManagement/blob/main/documentation/CHANGELOG_TEMPLATE.md)
-* [CHANGELOG EXAMPLE]()
+* [API Release Guidelines](https://github.com/camaraproject/ReleaseManagement/blob/main/documentation/API_Release_Guidelines.md)
+* [API Readiness Checklist (template for copying)](https://github.com/camaraproject/ReleaseManagement/blob/main/documentation/API-Readiness-Checklist.md)
+* [CHANGELOG (template for copying)](https://github.com/camaraproject/ReleaseManagement/blob/main/documentation/CHANGELOG_TEMPLATE.md)
 
-Note: the reference documentation on API versioning is here: [Commonalities API design guidelinse (section 5)](https://github.com/camaraproject/Commonalities/blob/main/documentation/API-design-guidelines.md)
+An example of the CHANGELOG created per the release management process is here: [CHANGELOG EXAMPLE](https://github.com/camaraproject/ReleaseManagement/blob/main/documentation/SupportingDocuments/CHANGELOG_EXAMPLE.MD)
+
+The reference documentation on API versioning is here: [Commonalities API design guidelines (section 5)](https://github.com/camaraproject/Commonalities/blob/main/documentation/API-design-guidelines.md)
 
 ## Release Management Wiki
 
-Beyond the above reference release management information in GitHub, more information on processes for API Sub Projects is available on the wiki.
+Beyond the above reference release management information in GitHub, more information on the release process is available on the wiki.
 
-* **Meta-Releases of CAMARA**
+* **Meta-releases of CAMARA**
 
-  * **[Meta-Release plans](https://wiki.camaraproject.org/x/2qN3)**
+  * [Meta-release Plans](https://wiki.camaraproject.org/x/2qN3)
   * [Meta-release Process](https://wiki.camaraproject.org/x/G7N3)
 
 * **API release management**
   * [API Release Process](https://wiki.camaraproject.org/x/AgAVAQ)
   * [API Release Tracking Process](https://wiki.camaraproject.org/x/HQBFAQ)
   * [More on API Readiness Checklist](https://wiki.camaraproject.org/display/CAM/API+Release+Process#APIReleaseProcess-APIreadinesschecklist)
-  * [More on API versioning](https://wiki.camaraproject.org/display/CAM/API+versioning)
+  * [More on API Versioning](https://wiki.camaraproject.org/display/CAM/API+versioning)
 
 More information about processes and release numbering for Commonalities and ICM can be found here:
 
