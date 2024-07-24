@@ -1,6 +1,6 @@
 ---
 name: ❗ Correction 👣
-about: Suggest the correction of an issue in API specification or a misalignment with API design guidelines 
+about: Suggest the correction of an issue in Release Management documents or artifacts
 title: ''
 labels: 'correction'
 assignees: ''
