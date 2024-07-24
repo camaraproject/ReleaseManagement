@@ -14,11 +14,11 @@ assignees: ''
 To review, follow the below list. 
 For any item, when done, put a comment in this issue.
 
-* yaml (check version in info & servers objects)  
-* test file(s) availability
-* changelog updated
-* readme updated (enforce correct release number / API version naming) 
-* API readiness checklist
+[ ] API Definition files (YAML) (check version in info & servers objects)  
+[ ] test file(s) availability
+[ ] changelog updated
+[ ] readme updated (enforce correct release number / API version naming) 
+[ ] API readiness checklist(s)
 
 **Additional comments**
 <!-- Add any other comments here as needed. -->
