@@ -1,6 +1,6 @@
 ---
 name: 💡 Enhancement 🌟
-about: Suggest an idea or pose a question on directions for Release Management evolution
+about: Suggest an idea or ask a question on directions for Release Management evolution
 title: ''
 labels: 'enhancement'
 assignees: ''
