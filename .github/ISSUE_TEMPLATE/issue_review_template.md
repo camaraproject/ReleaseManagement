@@ -7,14 +7,12 @@ assignees: ''
 
 ---
 
-<!-- When you start reviewing the issue or PR below, assign this issue to yourself (or to another Release Manager) -->
-
 **Release PR or issue to review**
-<!-- Put here the link to the issue(s) or PR(s) that needs to be reviewed -->
+<!-- Put here the link(s) to the issue(s) or PR(s) that need to be reviewed -->
 
-**Review actions**
+**Reviewer actions**
 
-To review, follow the below list.
+To review, assign this issue to yourself and follow the below list.
 For any item, review the file(s) in the issue/PR listed above. 
 Put comments in the above issue or PR if they concern non-changed text.
 When done, tick the box in this issue. 
