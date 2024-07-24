@@ -1,8 +1,12 @@
 blank_issues_enabled: true
 contact_links:
-  - name: 🗣 Subproject discussions 
-    url: https://github.com/camaraproject/§repo_name§/discussions
-    about: Please ask and answer questions here.
+  - name: 📖 Release Management Wiki
+    url: https://wiki.camaraproject.org/display/CAM/Release+Management+Working+Group
+    about: Comprehensive documentation including FAQs etc
+  - name: 🗣 Release Management discussions 
+    url: https://github.com/camaraproject/ReleaseManagement/discussions
+    about: Please ask and answer questions about Release Management in CAMARA here.
   - name: 📖 CAMARA API Design Guidelines
     url: https://github.com/camaraproject/Commonalities/blob/main/documentation/API-design-guidelines.md
-    about: Please refer to the design guidelines.
+    about: Please refer to the design guidelines, especially Chapter 5 about API Versioning
+    
