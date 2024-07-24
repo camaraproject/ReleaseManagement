@@ -1,0 +1,25 @@
+---
+name: 💡 Review 🌟
+about: Indicates that the review of a given issues or PR shall be done by the Release Mgmt team
+title: ''
+labels: 'review'
+assignees: ''
+
+---
+
+**Related API issue or PR **
+<!-- Put here the link to the issue or PR that needs to be reviewed  -->
+
+**Expected actions**
+To review, follow the below list. 
+For any item, when done, put a comment in this issue.
+
+* yaml (check version in info & servers objects):  
+* test file(s) availability: 
+* changelog updated: 
+* readme updated (enforce correct release number / API version naming): 
+* API readiness checklist: 
+
+
+**Additional comments**
+<!-- Add any other comments here as needed. -->
