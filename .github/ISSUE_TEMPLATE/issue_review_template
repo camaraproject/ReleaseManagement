@@ -1,6 +1,6 @@
 ---
 name: 💡 Review 🌟
-about: Indicates that the review of a given issues or PR shall be done by the Release Mgmt team
+about: Request that the review of a given issue or PR shall be done by the Release Mgmt team
 title: 'API release review request'
 labels: 'review'
 assignees: ''
