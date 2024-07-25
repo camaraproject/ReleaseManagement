@@ -17,7 +17,7 @@ For any item, review the file(s) in the issue/PR listed above.
 Put comments in the above issue or PR if they concern non-changed text.
 When done, tick the box in this issue. 
 
-- [ ] API Definition files (YAML) (check version in info & servers objects)  
+- [ ] API definition files (YAML) (check version in info & servers objects)  
 - [ ] test file(s) availability
 - [ ] changelog updated
 - [ ] readme updated (enforce correct release number / API version naming) 
