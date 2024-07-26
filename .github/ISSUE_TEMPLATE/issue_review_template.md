@@ -15,6 +15,7 @@ assignees: ''
 Assign this issue to yourself and follow the below list.
 For any review action, review the file(s) in the issue/PR listed above. 
 Put comments in the above issue or PR if they concern non-changed files/text.
+Put a short summary of the main review result here into the review issue.
 
 - [ ] API definition files (YAML) (check version in info & servers objects)  
 - [ ] test file(s) availability
