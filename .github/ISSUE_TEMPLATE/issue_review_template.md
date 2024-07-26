@@ -33,7 +33,7 @@ When done, tick the box in this issue.
 - [ ] Release PR approved (on behalf of Release Management)
 - [ ] PR merged (by Sub Project codeowner)
 - [ ] Release created within GitHub (by Sub Project codeowner)
-- [ ] Release Tracker updated (with creation date of the release)
+- [ ] Release Tracker updated (with creation date of the release and the release tag link)
 
 **Additional comments**
 <!-- Add any other comments here as needed. -->
