@@ -2,14 +2,17 @@
 
 ## Table of Contents
 
-- **[r1.1 - Initial version](#r11---initial-version)**
+- **[r1.1](#r11)**
 
-# r1.1 - Initial version
+# r1.1
 
 ## Release Notes
 
-**This is the first pre-release of the Release Management documents with version 0.1.0**
-**It provides the initial version of de process description and release management templates based on the work done in the [Release Management WG](https://github.com/camaraproject/ReleaseManagement).**
+**This is the first pre-release of the Release Management documents with version 0.1.0.** 
+
+Content is based on the work done by the [Release Management Working Group](https://lf-camaraproject.atlassian.net/l/cp/scZC1AYy) and the results are located in the [Release Management repository](https://github.com/camaraproject/ReleaseManagement).
+
+**It provides the initial version of de guidelines describing how to releasing an API version, as well as the API-Readiness-Checklist  template in which to record the availability of the artefacts required for the API release.**
 
 It contains the Release Management approved documents in the **documentation** folder:
    - **[API_Release_Guidelines.md](https://github.com/camaraproject/ReleaseManagement/blob/r1.1/documentation/API_Release_Guidelines.md)** - An extract of the API Release Management process form the CAMARA wiki.
@@ -30,12 +33,8 @@ N/A
 ### Removed
 N/A
 
-
 ## New Contributors
 * @hdamker made their first contribution in https://github.com/camaraproject/ReleaseManagement/pull/8
 * @MarkusKuemmerle made their first contribution in https://github.com/camaraproject/ReleaseManagement/pull/21
 * @tanjadegroot made their first contribution in https://github.com/camaraproject/ReleaseManagement/pull/29
 * @wrathwolf made their first contribution in https://github.com/camaraproject/ReleaseManagement/pull/102
-
-**Full Changelog**: https://github.com/camaraproject/ReleaseManagement/commits/r1.1-test
-
