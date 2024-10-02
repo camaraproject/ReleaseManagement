@@ -37,3 +37,5 @@ N/A
 * @hdamker made their first contribution in https://github.com/camaraproject/ReleaseManagement/pull/8
 * @MarkusKuemmerle made their first contribution in https://github.com/camaraproject/ReleaseManagement/pull/21
 * @tanjadegroot made their first contribution in https://github.com/camaraproject/ReleaseManagement/pull/29
+
+Full Changelog: https://github.com/nokia/camaraproject-ReleaseManagement/commits/r1.1
