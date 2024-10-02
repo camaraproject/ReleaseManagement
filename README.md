@@ -13,23 +13,23 @@ Repository to describe, develop, document and test the Release Management proces
 * Guidelines and assets for Release Management in CAMARA
 * Describe, develop, document and test the deliverables
 * Started: November 2023
-* First release: r1.0.0 (July 2024)
+* First release: [r1.1](https://github.com/camaraproject/ReleaseManagement/releases/tag/r1.1) / v0.1.0 (July 2024)
 
 ## Release Process Information
 
 This projects contains the following documentation:
 
-* [API Release Guidelines](/documentation/API_Release_Guidelines.md)
-* [API Readiness Checklist (template for copying)](/documentation/API-Readiness-Checklist.md)
-* [CHANGELOG (template for copying)](/documentation/CHANGELOG_TEMPLATE.md)
+* [API_Release_Guidelines.md](https://github.com/camaraproject/ReleaseManagement/blob/r1.1/documentation/API_Release_Guidelines.md)
+* [API-Readiness-Checklist.md (template for copying)](https://github.com/camaraproject/ReleaseManagement/blob/r1.1/documentation/API-Readiness-Checklist.md)
+* [CHANGELOG_TEMPLATE.md (template for copying)](https://github.com/camaraproject/ReleaseManagement/blob/r1.1/documentation/CHANGELOG_TEMPLATE.md)
 
-An example of the CHANGELOG created per the release management process is here: [CHANGELOG EXAMPLE](/documentation/SupportingDocuments/CHANGELOG_EXAMPLE.md)
+An example of the CHANGELOG created per the release management process is here: [CHANGELOG_EXAMPLE.md](https://github.com/camaraproject/ReleaseManagement/blob/r1.1/documentation/SupportingDocuments/CHANGELOG_EXAMPLE.md)
 
-The reference documentation on API versioning is here: [Commonalities API design guidelines (section 5)](https://github.com/camaraproject/Commonalities/blob/main/documentation/API-design-guidelines.md)
+The reference documentation on API versioning is here: [Commonalities: API design guidelines (section 5)](https://github.com/camaraproject/Commonalities/blob/r0.4.0/documentation/API-design-guidelines.md)
 
 ## Release Management Wiki
 
-Beyond the above reference release management information in GitHub, more information on the release process is available on the wiki.
+Beyond the above reference release management information in GitHub, more information on the release process is available on the wiki as follows:
 
 * **Meta-releases of CAMARA**
 
