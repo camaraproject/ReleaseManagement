@@ -11,20 +11,24 @@ Repository to describe, develop, document and test the Release Management proces
 
 ## Scope
 * Guidelines and assets for Release Management in CAMARA
-* Describe, develop, document and test the deliverables
+* Describe, develop, document and apply the deliverables
 * Started: November 2023
 
 ## Release Process Information
 
-For the latest release see https://github.com/camaraproject/ReleaseManagement/releases/latest
+**The first public release of the Release Management documents with version v0.2.0 is availalbe in [r1.2](https://github.com/camaraproject/ReleaseManagement/releases/tag/r1.2)**
 
-The pre-release r1.1 contains the Release Management approved documents in the **documentation** folder:
-   - [API_Release_Guidelines.md](https://github.com/camaraproject/ReleaseManagement/blob/r1.1/documentation/API_Release_Guidelines.md) - An extract of the API Release Management process form the CAMARA wiki.
-   - [API-Readiness-Checklist.md](https://github.com/camaraproject/ReleaseManagement/blob/r1.1/documentation/API-Readiness-Checklist.md) - The checklist (template to copy) to ensure release readiness of the API according to its release type (alpha, release-candidate, public).
-   - [CHANGELOG_TEMPLATE.md (template for copying)](https://github.com/camaraproject/ReleaseManagement/blob/r1.1/documentation/CHANGELOG_TEMPLATE.md)
-   - An example of the CHANGELOG created per the release management process is here: [CHANGELOG_EXAMPLE.md](https://github.com/camaraproject/ReleaseManagement/blob/r1.1/documentation/SupportingDocuments/CHANGELOG_EXAMPLE.md)
+It describes the processes and artifacts for use in the Release Management of the Fall24 meta-release.
 
-The reference documentation on API versioning is here: [Commonalities API design guidelines (section 5)](https://github.com/camaraproject/Commonalities/blob/main/documentation/API-design-guidelines.md)
+It contains the Release Management approved documents in the **documentation** folder:
+   - [API_Release_Guidelines.md](https://github.com/camaraproject/ReleaseManagement/blob/r1.2/documentation/API_Release_Guidelines.md) - An extract of the API Release Management process from the CAMARA wiki.
+   - [API-Readiness-Checklist.md](https://github.com/camaraproject/ReleaseManagement/blob/r1.2/documentation/API-Readiness-Checklist.md) - The checklist to ensure release readiness of the API according to its release type (alpha, release-candidate, public).
+   - [CHANGELOG_TEMPLATE.md](https://github.com/camaraproject/ReleaseManagement/blob/r1.2/documentation/CHANGELOG_TEMPLATE.md) - The template for creating CHANGELOG history of an API repository.
+
+It also contains the following in the **documentation/SupportingDocuments** folder:
+   - [CHANGELOG_EXAMPLE.md](https://github.com/camaraproject/ReleaseManagement/blob/r1.2/documentation/SupportingDocuments/CHANGELOG_EXAMPLE.md) - An example of 
+
+For the reference documentation on API versioning please see Chapter 5 within the API Design Guidelines document in [Commonalities](https://github.com/camaraproject/Commonalities/).
 
 ## Release Management Wiki
 
@@ -46,10 +50,10 @@ More information about processes and release numbering for Commonalities and ICM
   * [Commonalities and ICM Release Process](https://lf-camaraproject.atlassian.net/wiki/spaces/CAM/pages/14551399/Meta-release+Process#Commonalities-and-ICM)
 
 ## Contributing
-* Meeting link: [Meeting Registration / Join](https://zoom-lfx.platform.linuxfoundation.org/meeting/97762557636?password=e5f98402-8c29-448d-a8b1-f2dceaa9d4ba)
-* Schedule: Weekly on Tuesday's at 08:00 PT / 16:00 UTC / 17:00 CET
-* Meeting minutes are available within the [wiki of the Release Management Working Group](https://lf-camaraproject.atlassian.net/wiki/x/VA7e)
-
-## Contributorship and mailing list
-* Subscribe / Unsubscribe to the mailing list of this Working Group <https://lists.camaraproject.org/g/wg-release-management>.
-* A message to all Contributors of this Working Group can be sent using <wg-release-management@lists.camaraproject.org>.
+* Meetings are held virtually
+  * Schedule: Weekly on Tuesday's at 08:00 PT / 16:00 UTC / 17:00 CET
+  * Meeting link: [Meeting Registration / Join](https://zoom-lfx.platform.linuxfoundation.org/meeting/97762557636?password=e5f98402-8c29-448d-a8b1-f2dceaa9d4ba)
+  * Meeting minutes are available within the [wiki of the Release Management Working Group](https://lf-camaraproject.atlassian.net/wiki/x/VA7e)
+* Mailing List
+  * Subscribe / Unsubscribe to the mailing list of this Working Group <https://lists.camaraproject.org/g/wg-release-management>.
+  * A message to all Contributors of this Working Group can be sent using <wg-release-management@lists.camaraproject.org>.
