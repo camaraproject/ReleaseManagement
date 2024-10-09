@@ -16,10 +16,13 @@ Repository to describe, develop, document and test the Release Management proces
 
 ## Release Information
 
-This projects constains the following (documentation folder):
+This is the first pre-release of the Release Management documents with version 0.1.0.
 
-* API release guidelines
-* API readiness checklist 
+It contains the Release Management approved documents in the **documentation** folder:
+   - [API_Release_Guidelines.md](https://github.com/camaraproject/ReleaseManagement/blob/r1.1/documentation/API_Release_Guidelines.md) - An extract of the API Release Management process form the CAMARA wiki.
+   - [API-Readiness-Checklist.md](https://github.com/camaraproject/ReleaseManagement/blob/r1.1/documentation/API-Readiness-Checklist.md) - The checklist (template to copy) to ensure release readiness of the API according to its release type (alpha, release-candidate, public).
+   - [CHANGELOG_TEMPLATE.md (template for copying)](https://github.com/camaraproject/ReleaseManagement/blob/r1.1/documentation/CHANGELOG_TEMPLATE.md)
+   - An example of the CHANGELOG created per the release management process is here: [CHANGELOG_EXAMPLE.md](https://github.com/camaraproject/ReleaseManagement/blob/r1.1/documentation/SupportingDocuments/CHANGELOG_EXAMPLE.md)
 
 More detailed information can be found in the below wiki pages.
 
