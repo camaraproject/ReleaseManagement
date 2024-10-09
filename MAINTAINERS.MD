@@ -1,6 +1,8 @@
-| Org                    | Name                          | GitHub Username               |
-| -----------------------| ------------------------------| ------------------------------|
+| Org              | Name                          | GitHub Username               |
+| -----------------| ------------------------------| ------------------------------|
 | Deutsche Telekom | Herbert Damker | hdamker |
-| Telefonica       | Jose Luis Urien Pinedo | jlurien |
+| Deutsche Telekom | Rafal Artych | rartych |
 | Nokia            | Samuel Adeyemo | soadeyemo |
 | Nokia            | Tanja De Groot | tanjadegroot |
+| Orange           | Ludovic Robert | bigludo7 |
+| Telefonica       | Jose Luis Urien Pinedo | jlurien |

@@ -14,9 +14,9 @@ Repository to describe, develop, document and test the Release Management proces
 * Describe, develop, document and test the deliverables
 * Started: November 2023
 
-## Release Information
+## Release Process Information
 
-This is the first pre-release of the Release Management documents with version 0.1.0.
+This is the first release of the Release Management documents with version 0.1.0.
 
 It contains the Release Management approved documents in the **documentation** folder:
    - [API_Release_Guidelines.md](https://github.com/camaraproject/ReleaseManagement/blob/r1.1/documentation/API_Release_Guidelines.md) - An extract of the API Release Management process form the CAMARA wiki.
@@ -24,31 +24,33 @@ It contains the Release Management approved documents in the **documentation** f
    - [CHANGELOG_TEMPLATE.md (template for copying)](https://github.com/camaraproject/ReleaseManagement/blob/r1.1/documentation/CHANGELOG_TEMPLATE.md)
    - An example of the CHANGELOG created per the release management process is here: [CHANGELOG_EXAMPLE.md](https://github.com/camaraproject/ReleaseManagement/blob/r1.1/documentation/SupportingDocuments/CHANGELOG_EXAMPLE.md)
 
-More detailed information can be found in the below wiki pages.
+An example of the CHANGELOG created per the release management process is here: [CHANGELOG EXAMPLE](/documentation/SupportingDocuments/CHANGELOG_EXAMPLE.md)
 
-Some quick-access links to content within the wiki:
+The reference documentation on API versioning is here: [Commonalities API design guidelines (section 5)](https://github.com/camaraproject/Commonalities/blob/main/documentation/API-design-guidelines.md)
 
-* **Meta-Releases of CAMARA**
+## Release Management Wiki
 
-  * **[Meta-Release Fall24](https://wiki.camaraproject.org/x/cgB0AQ)**
-  * [Meta-release Milestones](https://wiki.camaraproject.org/x/16N3)
-  * [Meta-release Process](https://wiki.camaraproject.org/x/G7N3)
+Beyond the above reference release management information in GitHub, more information on the release process is available on the wiki.
 
-* Processes for API Sub Projects
+* **Meta-releases of CAMARA**
 
-  * [API Release Process](https://wiki.camaraproject.org/x/AgAVAQ)
-  * [API Readiness Checklist](https://wiki.camaraproject.org/display/CAM/API+Release+Process#APIReleaseProcess-APIreadinesschecklist)
-  * [API release tracking process](https://wiki.camaraproject.org/x/HQBFAQ)
-  * [API versioning](https://wiki.camaraproject.org/display/CAM/API+versioning)
+  * [Meta-release Plans](https://lf-camaraproject.atlassian.net/wiki/x/bmTe)
+  * [Meta-release Process](https://lf-camaraproject.atlassian.net/wiki/x/Zwne)
 
-* Processes and release numbering for Commonalities and ICM
+* **API release management**
+  * [API Release Process](https://lf-camaraproject.atlassian.net/wiki/x/jine)
+  * [API Release Tracking Process](https://lf-camaraproject.atlassian.net/wiki/x/ZhHe)
+  * [More on API Readiness Checklist](https://lf-camaraproject.atlassian.net/wiki/spaces/CAM/pages/14559630/API+Release+Process#API-readiness-checklist)
+  * [More on API Versioning](https://lf-camaraproject.atlassian.net/wiki/x/3yLe)
 
-  * [Commonalities and ICM Release Process](https://wiki.camaraproject.org/display/CAM/Meta-release+Process#MetareleaseProcess-CommonalitiesandICM)
+More information about processes and release numbering for Commonalities and ICM can be found here:
+
+  * [Commonalities and ICM Release Process](https://lf-camaraproject.atlassian.net/wiki/spaces/CAM/pages/14551399/Meta-release+Process#Commonalities-and-ICM)
 
 ## Contributing
 * Meeting link: [Meeting Registration / Join](https://zoom-lfx.platform.linuxfoundation.org/meeting/97762557636?password=e5f98402-8c29-448d-a8b1-f2dceaa9d4ba)
 * Schedule: Weekly on Tuesday's at 08:00 PT / 16:00 UTC / 17:00 CET
-* Meeting minutes are available within the [wiki of the Release Management Working Group](https://wiki.camaraproject.org/display/CAM/Release+Management+Working+Group)
+* Meeting minutes are available within the [wiki of the Release Management Working Group](https://lf-camaraproject.atlassian.net/wiki/x/VA7e)
 
 ## Contributorship and mailing list
 * Subscribe / Unsubscribe to the mailing list of this Working Group <https://lists.camaraproject.org/g/wg-release-management>.
