@@ -12,7 +12,7 @@
 
 Content is based on the work done by the [Release Management Working Group](https://lf-camaraproject.atlassian.net/l/cp/scZC1AYy) and the results are located in the [Release Management repository](https://github.com/camaraproject/ReleaseManagement).
 
-**It provides the initial version of de guidelines describing how to releasing an API version, as well as the API-Readiness-Checklist template in which to record the availability of the artefacts required for the API release.**
+**It provides the initial version of de guidelines describing how to release an API version, as well as the API-Readiness-Checklist template in which to record the availability of the artefacts required for the API release.**
 
 It contains the Release Management approved documents in the **documentation** folder:
    - **[API_Release_Guidelines.md](https://github.com/camaraproject/ReleaseManagement/blob/r1.1/documentation/API_Release_Guidelines.md)** - An extract of the API Release Management process form the CAMARA wiki.
