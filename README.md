@@ -24,8 +24,6 @@ The pre-release r1.1 contains the Release Management approved documents in the *
    - [CHANGELOG_TEMPLATE.md (template for copying)](https://github.com/camaraproject/ReleaseManagement/blob/r1.1/documentation/CHANGELOG_TEMPLATE.md)
    - An example of the CHANGELOG created per the release management process is here: [CHANGELOG_EXAMPLE.md](https://github.com/camaraproject/ReleaseManagement/blob/r1.1/documentation/SupportingDocuments/CHANGELOG_EXAMPLE.md)
 
-An example of the CHANGELOG created per the release management process is here: [CHANGELOG EXAMPLE](/documentation/SupportingDocuments/CHANGELOG_EXAMPLE.md)
-
 The reference documentation on API versioning is here: [Commonalities API design guidelines (section 5)](https://github.com/camaraproject/Commonalities/blob/main/documentation/API-design-guidelines.md)
 
 ## Release Management Wiki
