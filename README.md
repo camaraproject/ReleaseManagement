@@ -26,7 +26,7 @@ It contains the Release Management approved documents in the **documentation** f
    - [CHANGELOG_TEMPLATE.md](https://github.com/camaraproject/ReleaseManagement/blob/r1.2/documentation/CHANGELOG_TEMPLATE.md) - The template for creating CHANGELOG history of an API repository.
 
 It also contains the following in the **documentation/SupportingDocuments** folder:
-   - [CHANGELOG_EXAMPLE.md](https://github.com/camaraproject/ReleaseManagement/blob/r1.2/documentation/SupportingDocuments/CHANGELOG_EXAMPLE.md) - An example of 
+   - [CHANGELOG_EXAMPLE.md](https://github.com/camaraproject/ReleaseManagement/blob/r1.2/documentation/SupportingDocuments/CHANGELOG_EXAMPLE.md) - An example of the content of a CHANGELOG.md over multiple releases created following the Release Management guidelines.
 
 For the reference documentation on API versioning please see Chapter 5 within the API Design Guidelines document in [Commonalities](https://github.com/camaraproject/Commonalities/).
 
