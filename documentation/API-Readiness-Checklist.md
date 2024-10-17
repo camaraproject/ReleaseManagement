@@ -15,12 +15,12 @@ Checklist for api-name api-version in rx.y.
 |  9 | Test result statement                        |   O   |         O         |    O    |    M   |      | link |
 | 10 | API release numbering convention applied     |   M   |         M         |    M    |    M   |      |      |
 | 11 | Change log updated                           |   M   |         M         |    M    |    M   |      | link |
-| 12 | Previous public release was certified        |   O   |         O         |    O    |    M   |      |      |
+| 12 | Previous public release was certified        |   O   |         O         |    O    |    M   |      | link |
 
 To fill the checklist:
 - in the line above the table, replace the api-name, api-version and the rx.y by their actual values for the current API version and release.
 - in the Status column, put "Y" (yes) if the release asset is available or fulfilled in the current release, a "N" (no) or a "tbd". Example use of "tbd" is in case an alpha or release-candidate API version does not yet provide all mandatory assets for the release.
-- in the Reference information column, provide the links to the asset once available, the applicable versions of Commonalities and ICM, and any other relevant links or information.
+- in the Reference information column, provide the links to the asset once available, the applicable versions of Commonalities and ICM, and any other relevant links or information. For the point 12; you can put the link to the [GSMA Open Gateway Portal](https://www.open-gateway.com/operators-map) if your previous API version has been certified.
 
 Note: the checklists of a public API version and of its preceding release-candidate API version can be the same.
 
