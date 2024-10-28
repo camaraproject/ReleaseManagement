@@ -26,11 +26,13 @@ To prepare the release of a public API version, API versions shall be (pre-)rele
 * to reach M3, release the first release-candidate API version:
   * the release-candidate implements the scope of the target public API version.
   * this pre-release is agreed to be ready for API implementation and functional testing.
-  * it is aligned with the release-candidate versions of Commonalities and ICM
+  * it is aligned with the release-candidates of Commonalities and ICM
 * between M3 and M4, release additional release-candidate API versions as needed
+  * to fix bugs reported by the API users
+  * to include updates needed to be in-line with the public releases of Commonalities and ICM
 * to reach M4, release the public API version:
-  * this is the version ready for inclusion in the meta-release (if so planned).
-  * the public API version must be aligned with the released public version of Commonalities and ICM which shall be available 2 weeks before M4.
+  * this is the API release for inclusion in the meta-release (if so planned).
+  * the public API release must be aligned with the public releases of Commonalities and ICM which shall be available 2 weeks before M4.
 
 An API Sub Project can release as many alpha and release-candidate API versions as useful for API development and testing. In between (pre-)releases, the API version is set to "wip" (to indicate that this API version should not be used).
 
@@ -40,15 +42,15 @@ Public API versions can have an initial or stable status.
 
  * An initial public API version is the result of rapid development and can be
    * released and published at any time (outside the meta-release process) in order to allow for rapid evolution of APIs.
-   * published as part of a meta-release. In this case, the milestones defined for the meta-release have to be followed. For more details see also: [Meta-release Process](https://wiki.camaraproject.org/x/G7N3).
- * A public API version is released only if it provides all required API readiness checklist items (see: [API Readiness Checklist](https://wiki.camaraproject.org/display/CAM/API+Release+Process#APIReleaseProcess-APIreadinesschecklist)).
+   * published as part of a meta-release. In this case, the milestones defined for the meta-release have to be followed. For more details see also: [Meta-release Process](https://lf-camaraproject.atlassian.net/wiki/spaces/CAM/pages/14551399/Meta-release+Process).
+ * A public API version is released only if it provides all required API readiness checklist items (see: [API Readiness Checklist](https://lf-camaraproject.atlassian.net/wiki/spaces/CAM/pages/14559630/API+Release+Process#API-readiness-checklist)).
 * For stable public API versions, participation in the meta-release process is mandatory. As stable API versions are recommended for use in commercial applications, and the user can expect that subsequent public API versions will be backward-compatible, there are additional API readiness checklist items to be provided for the release of stable API versions.
 
 ### Meta-release
 
 To be part of a meta-release, the API Sub Project needs to participate in the meta-release process. For the meta-release, the following needs to be provided:
 
-* the API release tracker (see [API release trackers](https://wiki.camaraproject.org/x/HQBFAQ))
+* the API release tracker (see [API release trackers](https://lf-camaraproject.atlassian.net/wiki/spaces/CAM/pages/14553446/API+release+trackers))
 * the expected (pre-)releases at the respective M3 and M4 milestones
 * minimally an initial public API version
 * the required set of API release assets according to the API readiness checklist (see below).
@@ -57,10 +59,10 @@ To be part of a meta-release, the API Sub Project needs to participate in the me
 
 ### GitHub release 
 
-Technically, a release of an API repository is created using the GitHub issue, pull request (PR) and release features and requires:
+Technically, a release of an API version consists in the GitHub release of the repository containing the API version. Creating it involves using standard GitHub capabilities as follows: 
 
-* A GitHub issue defining the scope of the release of the API version
-* A release PR associated to this issue (setting the version and more - see below)
+* A GitHub issue defining the scope of the API version to be released
+* A dedicated "release PR" (pull request) associated to this issue, setting the version and more (see below) 
 * A GitHub release package (zip file of the whole API repository, including API(s) and release assets)
 * A GitHub release tag with the release number "rx.y" following the API release numbering guidelines (see next section).
 
@@ -72,7 +74,7 @@ Technically, a release of an API repository is created using the GitHub issue, p
 
 * **API release numbers start at r1.1**
 
-* API versioning is described in the Commonalities [API-design-guidelines.md](https://github.com/camaraproject/Commonalities/blob/main/documentation/API-design-guidelines.md) and on the [Release Management wiki](https://wiki.camaraproject.org/x/a4BaAQ).
+* API versioning is described in the API-design-guidelines.md available in the documentation folder of the [Commonalities working group](https://github.com/camaraproject/Commonalities), and on the [Release Management wiki](https://lf-camaraproject.atlassian.net/wiki/spaces/CAM/pages/14552660/Release+Management+Working+Group).
 
 ---
 
@@ -97,12 +99,12 @@ Example of continuous release numbering of an API version across its release typ
 
 ## Releasing an API step by step
 
-This section lists the steps to release an API version. More details can be found here: [API Release Process](https://wiki.camaraproject.org/x/AgAVAQ).
+This section lists the steps to release an API version. More details can be found here: [API Release Process](https://lf-camaraproject.atlassian.net/wiki/spaces/CAM/pages/14559630/API+Release+Process).
 
 **Release preparation**
 
 * Create a GitHub issue defining the scope of the targeted API version. Descriptive information in this issue can be reused in the `CHANGELOG.md` file in the release notes part.
-* Create the API release tracker for the target API version as described here: [API release trackers](https://wiki.camaraproject.org/x/HQBFAQ).
+* Create the API release tracker for the target API version as described here: [API release trackers](https://lf-camaraproject.atlassian.net/wiki/spaces/CAM/pages/14553446/API+release+trackers).
 
 **API version development**
 
