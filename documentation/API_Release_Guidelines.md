@@ -26,15 +26,16 @@ To prepare the release of a public API version, API versions shall be (pre-)rele
 * to reach M3, release the first release-candidate API version:
   * the release-candidate implements the scope of the target public API version.
   * this pre-release is agreed to be ready for API implementation and functional testing.
-  * it is aligned with the release-candidates of Commonalities and ICM
+  * it is aligned with the release-candidates of Commonalities and ICM for the meta-release.
+  * it includes all required API release assets as defined in the API Readiness Checklist.
 * between M3 and M4, release additional release-candidate API versions as needed
   * to fix bugs reported by the API users
-  * to include updates needed to be in-line with the public releases of Commonalities and ICM
+  * to include updates needed to be in-line with the (planned) public releases of Commonalities and ICM
 * to reach M4, release the public API version:
   * this is the API release for inclusion in the meta-release (if so planned).
   * the public API release must be aligned with the public releases of Commonalities and ICM which shall be available 2 weeks before M4.
 
-An API Sub Project can release as many alpha and release-candidate API versions as useful for API development and testing. In between (pre-)releases, the API version is set to "wip" (to indicate that this API version should not be used).
+An API Sub Project can release as many alpha and release-candidate API versions as useful for API development and testing. In between (pre-)releases, the API version shall be set to "wip" (to indicate that this API version should not be used).
 
 ### Public API versions
 
@@ -118,6 +119,7 @@ Once the defined scope and required stability is reached, create the (pre-)relea
 
 A (pre-)release PR provides only the following changes: 
 * update of the version information in the API OAS definition files (no "wip" in the version field and base URL of any of the API files).
+* ensure all links (URLS) point to resources of the release and include the release number on their path (no links with "main", no relative links). 
 * complete the `APIname-API-Readiness-Checklist.md` file ensuring all required release assets are available. If not yet available, copy the template [API-Readiness-Checklist.md](/documentation/API-Readiness-Checklist.md), and prefix it with the API name.
 * update the `CHANGELOG.md` file in the home of the API repository. If not yet available, copy the [CHANGELOG_TEMPLATE.md](/documentation/CHANGELOG_TEMPLATE.md). See also the example available in the [SupportingDocuments folder](/documentation/SupportingDocuments).
   * add a new section at the top of the file for the release and each API version with the following content:
