@@ -122,10 +122,11 @@ A (pre-)release PR provides only the following changes: 
 * update all links (URLS) to point to resources of the release and include the release number on their path (no links with "main", no relative links). 
 * complete the `APIname-API-Readiness-Checklist.md` file ensuring all required release assets are available. If not yet available, copy the template API-Readiness-Checklist.md from the [ReleaseManagement](https://github.com/camaraproject/ReleaseManagement) / documentation folder, and prefix it with the API name.
 * update the `CHANGELOG.md` file in the home of the API repository. If not yet available, copy the `CHANGELOG_TEMPLATE.md` from the [ReleaseManagement](https://github.com/camaraproject/ReleaseManagement) / documentation folder. See also the example available in the documentation / SupportingDocuments / `CHANGELOG_EXAMPLE.md`.
-  * add a new section at the top of the file for the release and each API version with the following content:
-    * for each first alpha or release-candidate API version, all changes since the release of the previous public API version
-    * for subsequent alpha or release-candidate API versions, the delta with respect to the previous pre-release
-    * for a public API version, the consolidated changes since the release of the previous public API version
+  * add a new section at the top of the file for the release and each API version with the following content: 
+    * for an alpha release, the delta with respect to the previous release
+    * for the first release-candidate, all changes since the last public release
+    * for subsequent release-candidate(s), only the delta to the previous release-candidate
+    * for a public release, the consolidated changes since the previous public release
 * update of the API repository `README.md` file (as necessary)
 
 **Create the release**
