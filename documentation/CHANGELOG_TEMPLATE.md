@@ -10,9 +10,10 @@
 
 The below sections record the changes for each API version in each release as follows:
 
-* for each first alpha or release-candidate API version, all changes since the release of the previous public API version
-* for subsequent alpha or release-candidate API versions, the delta with respect to the previous pre-release
-* for a public API version, the consolidated changes since the release of the previous public API version
+* for an alpha release, the delta with respect to the previous release
+* for the first release-candidate, all changes since the last public release
+* for subsequent release-candidate(s), only the delta to the previous release-candidate
+* for a public release, the consolidated changes since the previous public release
 
 <!--Repeat the below release section (header 1 and subsections) at the top of this file for each new (pre-)release-->
 
@@ -25,12 +26,12 @@ This release contains the definition and documentation of
 <!--* API-name2 vx.y.z - unchanged-->
 <!--In case the repository (and hence its release) contains multiple APIs, list them all here. Also mention if an API in the repository is unchanged. Note: There shall be no "wip" API version in the repository at the time of release.-->
 
-<!--For any API version, if known, and for public API versions, include the references to the related Commonalities and ICM versions as follows:-->
+<!--For any API version, if known, and for public API versions, include the link to the related Commonalities and ICM releases:-->
 The API definition(s) are based on
-* Commonalities vx.y.z
-* Identity and Consent Management vx.y.z
+* Commonalities rx.y
+* Identity and Consent Management rx.y
 
-<!--In case the repository contains multiple APIs, for each API version that changed in this release, create additional sections by copying and filling the below template (level 2 and 3 sections), replacing the API-name and API-version-x.y.z with actual API name and version.-->
+<!--In case the repository contains multiple APIs, for each API version that changed in this release, create additional sections by copying and filling the below template (level 2 and 3 sections), replacing the API-name and API-version vx.y.z with actual API name and version.-->
 
 ## API-name1 vx.y.z
 
