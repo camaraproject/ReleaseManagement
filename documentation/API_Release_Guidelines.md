@@ -111,7 +111,7 @@ This section lists the steps to release an API version. More details can be foun
 
 On the main branch,
 * develop the API scope in a "work-in-progress mode" (API version = wip and version in URL is vwip).
-* make sure to create the required release assets and record them in the `APIname-API-Readiness-Checklist.md` file. If not yet available, copy the template [API-Readiness-Checklist.md](/documentation/API-Readiness-Checklist.md), and prefix it with the API name.
+* make sure to create the required release assets and record them in the `APIname-API-Readiness-Checklist.md` file. If this file is not yet available, copy and rename the template API-Readiness-Checklist.md from the [ReleaseManagement](https://github.com/camaraproject/ReleaseManagement) / documentation folder, and prefix it with the API name.
 
 **Create the release PR**
 
@@ -119,9 +119,9 @@ Once the defined scope and required stability is reached, create the (pre-)relea
 
 A (pre-)release PR provides only the following changes: 
 * update of the version information in the API OAS definition files (no "wip" in the version field and base URL of any of the API files).
-* ensure all links (URLS) point to resources of the release and include the release number on their path (no links with "main", no relative links). 
-* complete the `APIname-API-Readiness-Checklist.md` file ensuring all required release assets are available. If not yet available, copy the template [API-Readiness-Checklist.md](/documentation/API-Readiness-Checklist.md), and prefix it with the API name.
-* update the `CHANGELOG.md` file in the home of the API repository. If not yet available, copy the [CHANGELOG_TEMPLATE.md](/documentation/CHANGELOG_TEMPLATE.md). See also the example available in the [SupportingDocuments folder](/documentation/SupportingDocuments).
+* update all links (URLS) to point to resources of the release and include the release number on their path (no links with "main", no relative links). 
+* complete the `APIname-API-Readiness-Checklist.md` file ensuring all required release assets are available. If not yet available, copy the template API-Readiness-Checklist.md from the [ReleaseManagement](https://github.com/camaraproject/ReleaseManagement) / documentation folder, and prefix it with the API name.
+* update the `CHANGELOG.md` file in the home of the API repository. If not yet available, copy the `CHANGELOG_TEMPLATE.md` from the [ReleaseManagement](https://github.com/camaraproject/ReleaseManagement) / documentation folder. See also the example available in the documentation / SupportingDocuments / `CHANGELOG_EXAMPLE.md`.
   * add a new section at the top of the file for the release and each API version with the following content:
     * for each first alpha or release-candidate API version, all changes since the release of the previous public API version
     * for subsequent alpha or release-candidate API versions, the delta with respect to the previous pre-release
