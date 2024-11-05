@@ -143,25 +143,25 @@ A (pre-)release PR provides only the following changes: 
 
 In case a patch update of a public API version x.y.z is required, the patched public API version x.y.z+1 shall be created through a maintenance release on a separate branch referred to as a maintenance branch. 
 
-The name of the maintenance branch shall be "maintenance-x.y" (for a patch x.y.z+1 of released API x.y.z). Any further patches shall be done on this same branch. 
+The name of the maintenance branch shall be `maintenance-x.y` (for a patch x.y.z+1 of released API x.y.z). Any further patches shall be done on this same branch. 
 
 Preferably, a maintenance release shall be merged into the main branch as soon as possible.
 
 The maintenance release shall replace the public API and its API release tracker shall be updated. This implies to update the API release tracker (page) name with the patch version and adding the release tag link and the date of publication.
 
-NOTE: a patch is the only case for which a separate branch is created and maintained within the API repository (as pull requests should be prepared within forks of the API repository, c.f. [Governance/CONTRIBUTING.md](https://github.com/camaraproject/Governance/blob/main/CONTRIBUTING.md))
+NOTE: a patch is the only case for which a separate branch is created and maintained within the API repository (as pull requests should be prepared within forks of the API repository, c.f. [Governance](https://github.com/camaraproject/Governance) / `CONTRIBUTING.md`
 
 ## Example of the API release process
 
 To release a MINOR update of a public API version 1.0.0, resulting in the release of public API version 1.1.0:
 
-* Develop the 1.1.0 updates on the main branch. The first PR shall update the OAS file setting the API version to wip, and the URL to vwip.
+* Develop the 1.1.0 updates on the main branch. The first PR shall update the OAS file setting the API version to `wip`, and the URL to `vwip`.
 * Once sufficiently stable, create a release PR for the API version 1.1.0-alpha.1.
 * After release PR approval, create the pre-release rx.1 and publish it on the API release tracker.
-* Additional alpha API versions 1.1.0-alpha.p may be released. For each such alpha API version, set the API version to "wip" in the first API update PR, and only set the next API version in the release PR of the next pre-release. The alpha number evolves with each following pre-release (rx.2 - rx.m).
+* Additional alpha API versions 1.1.0-alpha.p may be released. For each such alpha API version, set the API version to `wip` in the first API update PR, and only set the next API version in the release PR of the next pre-release. The alpha number evolves with each following pre-release numbered rx.2 - rx.m.
 * When the API version scope development is complete, create a release PR for the release-candidate API version 1.1.0-rc.1
-* Additional release-candidate API versions 1.1.0-rc.q may be released. For each such release-candidate API version, set the API version to "wip" in the first API update PR, and only set the next API version in the release PR of the next pre-release. The rc number evolves with each following pre-release (rx.m+1 - rx.n).
+* Additional release-candidate API versions 1.1.0-rc.q may be released. For each such release-candidate API version, set the API version to `wip` in the first API update PR, and only set the next API version in the release PR of the next pre-release. The rc number evolves with each following pre-release numbered rx.m+1 - rx.n.
 * When the API version is ready for public release, create the release PR that sets the public API version to 1.1.0. (this PR minimally removes the rc extensions from the version and URL fields in the API yaml file and assures all API release assets are available as per the API readiness checklist).
-* After release PR approval, create the release rx.n+1 and update the API release tracker.
+* After release PR approval, create the release rx.n+1 for the public API version 1.1.0 and update the API release tracker.
 * The approved public API version 1.1.0 will be included in the meta-release.
 * If a patch is provided for the released API, it shall be declared asthe latest release, and the information shall be published on the existing API release tracker.
