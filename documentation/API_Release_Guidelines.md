@@ -141,9 +141,9 @@ A (pre-)release PR provides only the following changes: 
 
 **Maintenance release**
 
-In case a patch update of a public API version x.y.z is required, the patched public API version x.y.z+1 shall be created through a maintenance release on a separate branch referred to as a maintenance branch. 
+In case a patch update of a public API version x.y.z (released as rm.n) is required, the patched public API version x.y.z+1 shall be created through a maintenance release rm.n+1 on a separate branch referred to as a maintenance branch. 
 
-The name of the maintenance branch shall be `maintenance-x.y` (for a patch x.y.z+1 of released API x.y.z). Any further patches shall be done on this same branch. 
+The name of the maintenance branch shall be `maintenance-rm` (for a patch of an API publicly released as rm.n). Any further patches shall be done on this same branch. 
 
 Preferably, a maintenance release shall be merged into the main branch as soon as possible.
 
