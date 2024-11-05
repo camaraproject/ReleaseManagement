@@ -110,19 +110,19 @@ This section lists the steps to release an API version. More details can be foun
 **API version development**
 
 On the main branch,
-* develop the API scope in a "work-in-progress mode" (API version = wip and version in URL is vwip).
-* make sure to create the required release assets and record them in the `APIname-API-Readiness-Checklist.md` file. If this file is not yet available, copy and rename the template API-Readiness-Checklist.md from the [ReleaseManagement](https://github.com/camaraproject/ReleaseManagement) / documentation folder, and prefix it with the API name.
+* develop the API scope in a "work-in-progress mode" (API version = `wip` and version in URL is `vwip`).
+* make sure to create the required release assets and record them in the `APIname-API-Readiness-Checklist.md` file. If this file is not yet available, copy and rename the template `API-Readiness-Checklist.md` from the [ReleaseManagement](https://github.com/camaraproject/ReleaseManagement) / documentation folder, and prefix it with the API name.
 
 **Create the release PR**
 
 Once the defined scope and required stability is reached, create the (pre-)release PR.
 
 A (pre-)release PR provides only the following changes: 
-* update of the version information in the API OAS definition files (no "wip" in the version field and base URL of any of the API files).
-* update all links (URLS) to point to resources of the release and include the release number on their path (no links with "main", no relative links). 
-* complete the `APIname-API-Readiness-Checklist.md` file ensuring all required release assets are available. If not yet available, copy the template API-Readiness-Checklist.md from the [ReleaseManagement](https://github.com/camaraproject/ReleaseManagement) / documentation folder, and prefix it with the API name.
-* update the `CHANGELOG.md` file in the home of the API repository. If not yet available, copy the `CHANGELOG_TEMPLATE.md` from the [ReleaseManagement](https://github.com/camaraproject/ReleaseManagement) / documentation folder. See also the example available in the documentation / SupportingDocuments / `CHANGELOG_EXAMPLE.md`.
-  * add a new section at the top of the file for the release and each API version with the following content: 
+* update of the version information in the API OAS definition files (no `wip` in the version field and base URL of any of the API files).
+* update all links (URLS) to point to resources of the release and include the release number on their path (no links with `main`, no relative links). 
+* complete the `APIname-API-Readiness-Checklist.md` file ensuring all required release assets are available. If not yet available, copy the template `API-Readiness-Checklist.md` from the [ReleaseManagement](https://github.com/camaraproject/ReleaseManagement) / documentation folder, and prefix it with the API name.
+* update the `CHANGELOG.md` file in the home of the API repository. If not yet available, copy the `CHANGELOG_TEMPLATE.md` from the [ReleaseManagement](https://github.com/camaraproject/ReleaseManagement) / documentation folder (removing the `_TEMPLATE` part). See also the example available in the documentation / SupportingDocuments / `CHANGELOG_EXAMPLE.md`.
+  * add a new section at the top of your `CHANGELOG.md` file for the release and each API version with content as follows: 
     * for an alpha release, the delta with respect to the previous release
     * for the first release-candidate, all changes since the last public release
     * for subsequent release-candidate(s), only the delta to the previous release-candidate
@@ -134,20 +134,20 @@ A (pre-)release PR provides only the following changes: 
 * merge the approved release PR
 * create the release:
   * an API release is created using the GitHub release feature (a release tag and, optionally, a release package).
-  * the release name shall be the same as the release tag and shall have the following format: rx.y
+  * the release name shall be the same as the release tag and shall have the following format: `rx.y`
   * the x.y number shall follow the release numbering scheme  as defined in the above section on API release numbering
   * the release description within the GitHub release should be a copy of the section about the release within the CHANGELOG.md
 * update the API release tracker with the date and release tag link for the release
 
 **Maintenance release**
 
-In case a patch update of a public API version x.y.z (released as rm.n) is required, the patched public API version x.y.z+1 shall be created through a maintenance release rm.n+1 on a separate branch referred to as a maintenance branch. 
+In case a patch update of a public API version x.y.z (released as rm.n) is required, the patched public API version x.y.z+1 shall be released as a maintenance release rm.n+1 on a separate branch referred to as a maintenance branch. 
 
-The name of the maintenance branch shall be `maintenance-rm` (for a patch of an API publicly released as rm.n). Any further patches shall be done on this same branch. 
+The name of the maintenance branch shall be `maintenance-rm` (for a patch of an API publicly released as rm.n). Any further patches to that API version shall be done on this same branch. 
 
 Preferably, a maintenance release shall be merged into the main branch as soon as possible.
 
-The maintenance release shall replace the public API and its API release tracker shall be updated. This implies to update the API release tracker (page) name with the patch version and adding the release tag link and the date of publication.
+The maintenance release shall replace the public API release, and its API release tracker shall be updated. This implies to update the API release tracker (page) name with the patch version and adding the release tag link and the date of publication.
 
 NOTE: a patch is the only case for which a separate branch is created and maintained within the API repository (as pull requests should be prepared within forks of the API repository, c.f. [Governance](https://github.com/camaraproject/Governance) / `CONTRIBUTING.md`
 
