@@ -35,7 +35,7 @@ To prepare the release of a public API version, API versions shall be (pre-)rele
   * this is the API release for inclusion in the meta-release (if so planned).
   * the public API release must be aligned with the public releases of Commonalities and ICM which shall be available 2 weeks before M4.
 
-An API Sub Project can release as many alpha and release-candidate API versions as useful for API development and testing. In between (pre-)releases, the API version shall be set to "wip" (to indicate that this API version should not be used).
+An API Sub Project can release as many alpha and release-candidate API versions as useful for API development and testing. In between (pre-)releases, the API version shall be set to `wip` (to indicate that this API version should not be used).
 
 ### Public API versions
 
@@ -43,15 +43,16 @@ Public API versions can have an initial or stable status.
 
  * An initial public API version is the result of rapid development and can be
    * released and published at any time (outside the meta-release process) in order to allow for rapid evolution of APIs.
-   * published as part of a meta-release. In this case, the milestones defined for the meta-release have to be followed. For more details see also: [Meta-release Process](https://lf-camaraproject.atlassian.net/wiki/spaces/CAM/pages/14551399/Meta-release+Process).
- * A public API version is released only if it provides all required API readiness checklist items (see: [API Readiness Checklist](https://lf-camaraproject.atlassian.net/wiki/spaces/CAM/pages/14559630/API+Release+Process#API-readiness-checklist)).
+   * published as part of a meta-release. In this case, the milestones defined for the meta-release have to be followed. For more details see also: [Meta-release Process](https://lf-camaraproject.atlassian.net/wiki/x/Zwne).
+ * A public API version is released only if it provides all required API readiness checklist items (see: API Readiness Checklist section in the [API Release Process](https://lf-camaraproject.atlassian.net/wiki/x/jine).
+.
 * For stable public API versions, participation in the meta-release process is mandatory. As stable API versions are recommended for use in commercial applications, and the user can expect that subsequent public API versions will be backward-compatible, there are additional API readiness checklist items to be provided for the release of stable API versions.
 
 ### Meta-release
 
 To be part of a meta-release, the API Sub Project needs to participate in the meta-release process. For the meta-release, the following needs to be provided:
 
-* the API release tracker (see [API release trackers](https://lf-camaraproject.atlassian.net/wiki/spaces/CAM/pages/14553446/API+release+trackers))
+* the API release tracker (see [API release trackers](https://lf-camaraproject.atlassian.net/wiki/x/ZhHe))
 * the expected (pre-)releases at the respective M3 and M4 milestones
 * minimally an initial public API version
 * the required set of API release assets according to the API readiness checklist (see below).
@@ -65,7 +66,7 @@ Technically, a release of an API version consists in the GitHub release of the r
 * A GitHub issue defining the scope of the API version to be released
 * A dedicated "release PR" (pull request) associated to this issue, setting the version and more (see below) 
 * A GitHub release package (zip file of the whole API repository, including API(s) and release assets)
-* A GitHub release tag with the release number "rx.y" following the API release numbering guidelines (see next section).
+* A GitHub release tag with the release number `rx.y` following the API release numbering guidelines (see next section).
 
 ### API release numbering
 
@@ -75,11 +76,11 @@ Technically, a release of an API version consists in the GitHub release of the r
 
 * **API release numbers start at r1.1**
 
-* API versioning is described in the API-design-guidelines.md available in the documentation folder of the [Commonalities working group](https://github.com/camaraproject/Commonalities), and on the [Release Management wiki](https://lf-camaraproject.atlassian.net/wiki/spaces/CAM/pages/14552660/Release+Management+Working+Group).
+* API versioning is described in the API-design-guidelines.md available in the documentation folder of the [Commonalities working group](https://github.com/camaraproject/Commonalities), and on the [Release Management wiki](https://lf-camaraproject.atlassian.net/wiki/x/VA7e).
 
 ---
 
-API release numbers are GitHub tags of the format "rx.y".
+API release numbers are GitHub tags of the format `rx.y`.
 
 The release numbers shall follow the guidelines described below.
 
@@ -93,19 +94,19 @@ Example of continuous release numbering of an API version across its release typ
 | Release type | API version | release tag | release package | release package label |
 |------|------|:------:|:------:|:------:| 
 | N/A | work-in-progress | N/A | N/A | N/A |
-| pre-release | alpha | rx.1 ... rx.m | optional | optional: "pre-release" |
-| pre-release | release-candidate | rx.m+1 ... rx.n | mandatory | "pre-release" |
-| release | public | rx.n+1 | mandatory | "latest" |
-| maintenance release | public | rx.n+2 ... rx.n+p | mandatory | "latest" |
+| pre-release | alpha | rx.1 ... rx.m | optional | optional: `pre-release` |
+| pre-release | release-candidate | rx.m+1 ... rx.n | mandatory | `pre-release` |
+| release | public | rx.n+1 | mandatory | `latest` |
+| maintenance release | public | rx.n+2 ... rx.n+p | mandatory | `latest` |
 
 ## Releasing an API step by step
 
-This section lists the steps to release an API version. More details can be found here: [API Release Process](https://lf-camaraproject.atlassian.net/wiki/spaces/CAM/pages/14559630/API+Release+Process).
+This section lists the steps to release an API version. More details can be found here: [API Release Process](https://lf-camaraproject.atlassian.net/wiki/x/jine).
 
 **Release preparation**
 
 * Create a GitHub issue defining the scope of the targeted API version. Descriptive information in this issue can be reused in the `CHANGELOG.md` file in the release notes part.
-* Create the API release tracker for the target API version as described here: [API release trackers](https://lf-camaraproject.atlassian.net/wiki/spaces/CAM/pages/14553446/API+release+trackers).
+* Create the API release tracker for the target API version as described here: [API release trackers](https://lf-camaraproject.atlassian.net/wiki/x/ZhHe).
 
 **API version development**
 
