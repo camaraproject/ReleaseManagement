@@ -25,4 +25,4 @@ To fill the checklist:
 
 Note: the checklists of a public API version and of its preceding release-candidate API version can be the same.
 
-The documentation for the content of the checklist is here: [API Readiness Checklist](https://lf-camaraproject.atlassian.net/wiki/spaces/CAM/pages/14559630/API+Release+Process#API-readiness-checklist).
+The documentation for the content of the checklist is here: see API Readiness Checklist section in the [API Release Process](https://lf-camaraproject.atlassian.net/wiki/x/jine).
