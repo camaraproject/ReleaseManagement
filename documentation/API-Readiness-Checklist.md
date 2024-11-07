@@ -4,18 +4,18 @@ Checklist for api-name api-version in rx.y.
 
 | Nr | API release assets  | alpha | release-candidate |  initial<br>public | stable<br> public | Status | Reference information |
 |----|----------------------------------------------|:-----:|:-----------------:|:-------:|:------:|:----:|:----:|
-|  1 | API definition                               |   M   |         M         |    M    |    M   |      | link |
+|  1 | API definition                               |   M   |         M         |    M    |    M   |      | local link |
 |  2 | Design guidelines from Commonalities applied |   O   |         M         |    M    |    M   |      | Comm. release nr |
 |  3 | Guidelines from ICM applied                  |   O   |         M         |    M    |    M   |      | ICM release nr |
-|  4 | API versioning convention applied            |   M   |         M         |    M    |    M   |      | x.y.z |
-|  5 | API documentation                            |   M   |         M         |    M    |    M   |      | link |
-|  6 | User stories                                 |   O   |         O         |    O    |    M   |      | link |
-|  7 | Basic API test cases & documentation         |   O   |         M         |    M    |    M   |      | link |
-|  8 | Enhanced API test cases & documentation      |   O   |         O         |    O    |    M   |      | link |
-|  9 | Test result statement                        |   O   |         O         |    O    |    M   |      | link |
-| 10 | API release numbering convention applied     |   M   |         M         |    M    |    M   |      | rx.y |
-| 11 | Change log updated                           |   M   |         M         |    M    |    M   |      | link |
-| 12 | Previous public release was certified        |   O   |         O         |    O    |    M   |      | link |
+|  4 | API versioning convention applied            |   M   |         M         |    M    |    M   |      |   |
+|  5 | API documentation                            |   M   |         M         |    M    |    M   |      | local link |
+|  6 | User stories                                 |   O   |         O         |    O    |    M   |      | local link |
+|  7 | Basic API test cases & documentation         |   O   |         M         |    M    |    M   |      | local link |
+|  8 | Enhanced API test cases & documentation      |   O   |         O         |    O    |    M   |      | local link |
+|  9 | Test result statement                        |   O   |         O         |    O    |    M   |      | issue link |
+| 10 | API release numbering convention applied     |   M   |         M         |    M    |    M   |      |   |
+| 11 | Change log updated                           |   M   |         M         |    M    |    M   |      | local link |
+| 12 | Previous public release was certified        |   O   |         O         |    O    |    M   |      | GSMA link |
 
 To fill the checklist:
 - in the line above the table, replace the api-name, api-version and the rx.y by their actual values for the current API version and release.
