@@ -4,23 +4,23 @@ Checklist for api-name api-version in rx.y.
 
 | Nr | API release assets  | alpha | release-candidate |  initial<br>public | stable<br> public | Status | Reference information |
 |----|----------------------------------------------|:-----:|:-----------------:|:-------:|:------:|:----:|:----:|
-|  1 | API definition                               |   M   |         M         |    M    |    M   |      | local link |
+|  1 | API definition                               |   M   |         M         |    M    |    M   |      | relative link |
 |  2 | Design guidelines from Commonalities applied |   O   |         M         |    M    |    M   |      | Comm. release nr |
 |  3 | Guidelines from ICM applied                  |   O   |         M         |    M    |    M   |      | ICM release nr |
 |  4 | API versioning convention applied            |   M   |         M         |    M    |    M   |      |   |
-|  5 | API documentation                            |   M   |         M         |    M    |    M   |      | local link |
-|  6 | User stories                                 |   O   |         O         |    O    |    M   |      | local link |
-|  7 | Basic API test cases & documentation         |   O   |         M         |    M    |    M   |      | local link |
-|  8 | Enhanced API test cases & documentation      |   O   |         O         |    O    |    M   |      | local link |
-|  9 | Test result statement                        |   O   |         O         |    O    |    M   |      | issue link |
+|  5 | API documentation                            |   M   |         M         |    M    |    M   |      | relative link |
+|  6 | User stories                                 |   O   |         O         |    O    |    M   |      | relative link |
+|  7 | Basic API test cases & documentation         |   O   |         M         |    M    |    M   |      | relative link |
+|  8 | Enhanced API test cases & documentation      |   O   |         O         |    O    |    M   |      | relative link |
+|  9 | Test result statement                        |   O   |         O         |    O    |    M   |      | relative link |
 | 10 | API release numbering convention applied     |   M   |         M         |    M    |    M   |      |   |
-| 11 | Change log updated                           |   M   |         M         |    M    |    M   |      | local link |
+| 11 | Change log updated                           |   M   |         M         |    M    |    M   |      | relative link |
 | 12 | Previous public release was certified        |   O   |         O         |    O    |    M   |      | GSMA link |
 
 To fill the checklist:
 - in the line above the table, replace the api-name, api-version and the rx.y by their actual values for the current API version and release.
 - in the Status column, put "Y" (yes) if the release asset is available or fulfilled in the current release, a "N" (no) or a "tbd". Example use of "tbd" is in case an alpha or release-candidate API version does not yet provide all mandatory assets for the release.
-- in the Reference information column, provide the links to the release asset once available, the applicable release numbers (not versions) of Commonalities and ICM, and any other relevant links or information.
+- in the Reference information column, provide the relative links (inside the GitHub repo) to the release asset once available, the applicable release numbers (not versions) of Commonalities and ICM, and any other relevant links or information.
 - For the point 12: you can copy the following link if your previous API version has been certified: [GSMA OGW Portal](https://www.open-gateway.com/operators-map).
 
 Note: the checklists of a public API version and of its preceding release-candidate API version can be the same.
