@@ -12,7 +12,7 @@ Checklist for api-name api-version in rx.y.
 |  6 | User stories                                 |   O   |         O         |    O    |    M   |      | relative link |
 |  7 | Basic API test cases & documentation         |   O   |         M         |    M    |    M   |      | relative link |
 |  8 | Enhanced API test cases & documentation      |   O   |         O         |    O    |    M   |      | relative link |
-|  9 | Test result statement                        |   O   |         O         |    O    |    M   |      | relative link |
+|  9 | Test result statement                        |   O   |         O         |    O    |    M   |      | issue link |
 | 10 | API release numbering convention applied     |   M   |         M         |    M    |    M   |      |   |
 | 11 | Change log updated                           |   M   |         M         |    M    |    M   |      | relative link |
 | 12 | Previous public release was certified        |   O   |         O         |    O    |    M   |      | GSMA link |
