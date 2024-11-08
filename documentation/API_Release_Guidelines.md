@@ -159,7 +159,7 @@ In case a PATCH update of a public API version x.y.z (released as rm.n) is requi
 
 The name of the maintenance branch shall be `maintenance-rm` (for a patch of an API publicly released as rm.n). Any further patches to that API version shall be done on this same branch. 
 
-Preferably, a maintenance release shall be merged into the main branch as soon as possible.
+Preferably, a maintenance release shall be merged into the main branch as soon as possible if the patch is applicable to the main branch.
 
 The maintenance release shall replace the public API release, and its API release tracker shall be updated. This implies to update the API release tracker (page) name with the patch version and adding the release tag link and the date of its publication.
 
