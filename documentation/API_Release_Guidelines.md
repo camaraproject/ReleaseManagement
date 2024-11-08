@@ -178,4 +178,4 @@ To release a MINOR update of a public API version 1.0.0, resulting in the releas
 * When the API version is ready for public release, create the release PR that sets the public API version to 1.1.0. (this PR minimally removes the rc extensions from the version and URL fields in the API yaml file and assures all API release assets are available as per the API readiness checklist).
 * After release PR approval, create the release rx.n+1 for the public API version 1.1.0 and update the API release tracker.
 * The approved public API version 1.1.0 will be included in the meta-release.
-* If a patch is provided for the released API, it shall be declared asthe latest release, and the information shall be published on the existing API release tracker.
+* If a patch is provided for the released API, it shall be declared as the latest release, and the information shall be published on the existing API release tracker.
