@@ -20,7 +20,7 @@ Checklist for api-name api-version in rx.y.
 To fill the checklist:
 - in the line above the table, replace the api-name, api-version and the rx.y by their actual values for the current API version and release.
 - in the Status column, put "Y" (yes) if the release asset is available or fulfilled in the current release, a "N" (no) or a "tbd". Example use of "tbd" is in case an alpha or release-candidate API version does not yet provide all mandatory assets for the release.
-- in the Reference information column, provide the relative links (inside the GitHub repo) to the release asset once available, the applicable release numbers (not versions) of Commonalities and ICM, and any other relevant links or information.
+- in the Reference information column, provide the relative links (from the API repository home folder) to the release asset once available, the applicable release numbers (not versions) of Commonalities and ICM, and any other relevant links or information.
 - For the point 12: The Reference information section shall reference a note to be added under the checklist table that states the certified company(s) as can be found on the following link: [GSMA OGW Portal](https://www.open-gateway.com/operators-map).
 
 Note: the checklists of a public API version and of its preceding release-candidate API version can be the same.
