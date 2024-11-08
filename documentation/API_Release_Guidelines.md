@@ -101,7 +101,7 @@ Example of continuous release numbering of an API's versions across its release 
 | Release type | API version | release tag | release package | release package label |
 |------|------|:------:|:------:|:------:| 
 | N/A | work-in-progress | N/A | N/A | N/A |
-| pre-release | alpha | rx.1 ... rx.m | optional | optional: `pre-release` |
+| pre-release | alpha | rx.1 ... rx.m | optional | `pre-release` |
 | pre-release | release-candidate | rx.m+1 ... rx.n | mandatory | `pre-release` |
 | release | public | rx.n+1 | mandatory | `latest` |
 | maintenance release | public | rx.n+2 ... rx.n+p | mandatory | `latest` |
