@@ -2,17 +2,17 @@
 
 ## Table of Contents
 
-- **[r2.1 - public release](#r21-public-release)**
+- **[r2.1](#r21)**
 - **[r1.2 - public release](#r12-public-release)**
 - **[r1.1](#r11)**
 
-# r2.1 - public release
+# r2.1
 
 ## Release Notes
 
-**This is the second public release of the Release Management documents with version v0.3.0.**
+**This is the pre-release release of the Release Management documents with version v0.3.0-rc.1.**
 
-It describes the processes and artifacts for use in the Release Management of the Spring25 meta-release.
+It describes the processes and artifacts for use in the Release Management of the Spring25 meta-release. It includes the feedback from the Fall24 meta-release.
 
 ### Added
 N/A
