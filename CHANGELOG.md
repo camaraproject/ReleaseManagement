@@ -10,7 +10,7 @@
 
 ## Release Notes
 
-**This is the pre-release release of the Release Management documents with version v0.3.0-rc.1.**
+**This is the pre-release release of the Release Management documents for use in the with version v0.3.0-rc.1.**
 
 It describes the processes and artifacts for use in the Release Management of the Spring25 meta-release. It includes the feedback from the Fall24 meta-release.
 
