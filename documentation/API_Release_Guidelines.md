@@ -1,5 +1,12 @@
 # API release guidelines
 
+- [Definitions](#definitions)
+- [API releases - overview](#API-releases---overview)
+- [Release guidelines](#Release-guidelines)
+- [Releasing an API step by step](#Releasing-an-API-step-by-step)
+- [Releasing an update of a public API version](#Releasing-an-update-of-a-public-API-version)
+- [Example of the API release process](#Example-of-the-API-release-process)
+
 ## Definitions
 
 | Term | Definition |
@@ -89,7 +96,7 @@ The release numbers shall follow the guidelines described below.
 * After a meta-release of an API through release rx.y, the next release number for this API is rx+1.1 (y resets to 1).
 * In case of maintenance of a release rx.y, the new public release shall be rx.y+1.
 
-Example of continuous release numbering of an API version across its release types.
+Example of continuous release numbering of an API's versions across its release types is given in the below table.
 
 | Release type | API version | release tag | release package | release package label |
 |------|------|:------:|:------:|:------:| 
@@ -140,15 +147,21 @@ A (pre-)release PR provides only the following changes: 
   * the release description within the GitHub release should be a copy of the section about the release within the CHANGELOG.md
 * update the API release tracker with the date and release tag link for the release
 
-**Maintenance release**
+## Releasing an update of a public API version
 
-In case a patch update of a public API version x.y.z (released as rm.n) is required, the patched public API version x.y.z+1 shall be released as a maintenance release rm.n+1 on a separate branch referred to as a maintenance branch. 
+### MAJOR or MINOR update
+
+For MAJOR and MINOR updates of a public API version x.y.z (released as rm.n), follow the above API version release process (see "Releasing an API step by step"), increasing the x (MAJOR) or y (MINOR) version number by 1 respectively, and starting the release numbering at rm+1.1. A new API release tracker shall be created for the new API version.
+
+### PATCH update (maintenance release)
+
+In case a PATCH update of a public API version x.y.z (released as rm.n) is required, the patched public API version x.y.z+1 shall be released as a maintenance release rm.n+1 on a separate branch referred to as a maintenance branch. 
 
 The name of the maintenance branch shall be `maintenance-rm` (for a patch of an API publicly released as rm.n). Any further patches to that API version shall be done on this same branch. 
 
 Preferably, a maintenance release shall be merged into the main branch as soon as possible.
 
-The maintenance release shall replace the public API release, and its API release tracker shall be updated. This implies to update the API release tracker (page) name with the patch version and adding the release tag link and the date of publication.
+The maintenance release shall replace the public API release, and its API release tracker shall be updated. This implies to update the API release tracker (page) name with the patch version and adding the release tag link and the date of its publication.
 
 NOTE: a patch is the only case for which a separate branch is created and maintained within the API repository (as pull requests should be prepared within forks of the API repository, c.f. [Governance](https://github.com/camaraproject/Governance) / `CONTRIBUTING.md`
 
