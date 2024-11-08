@@ -14,23 +14,12 @@
 
 It describes the processes and artifacts for use in the Release Management of the Spring25 meta-release. It includes the feedback from the Fall24 meta-release.
 
-### Added
-N/A
-
 ### Changed
-tbd
+* update api release guidelines by @tanjadegroot in https://github.com/camaraproject/ReleaseManagement/pull/118
+* updates to API readiness checklist by @tanjadegroot in https://github.com/camaraproject/ReleaseManagement/pull/116
+* Update changelog template & example by @tanjadegroot in https://github.com/camaraproject/ReleaseManagement/pull/117
 
-### Fixed
-N/A
-
-### Removed
-N/A
-
-## New Contributors
-
-* tbd
-
-**Full Changelog**: https://github.com/camaraproject/ReleaseManagement/commits/r2.1
+**Full Changelog**: https://github.com/camaraproject/ReleaseManagement/compare/r1.2...r2.1
 
 
 # r1.2 - public release
