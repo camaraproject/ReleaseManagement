@@ -136,9 +136,10 @@ A (pre-)release PR provides only the following changes: 
     * for subsequent release-candidate(s), only the delta to the previous release-candidate
     * for a public release, the consolidated changes since the previous public release
 * update of the API repository `README.md` file (as necessary)
+* request the review of the release PR by adding the camaraproject/release-management_maintainers to the list of reviewers of the release PR. 
 
 **Create the release**
-* manage the release PR approval with the Release Management team
+* check the progress of the release PR approval in the review issue created by the Release Management team
 * merge the approved release PR
 * create the release:
   * an API release is created using the GitHub release feature (a release tag and, optionally, a release package).
