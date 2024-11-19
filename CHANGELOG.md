@@ -3,7 +3,7 @@
 ## Table of Contents
 
 - **[r2.1](#r21)**
-- **[r1.2 - public release](#r12-public-release)**
+- **[r1.2](#r12)**
 - **[r1.1](#r11)**
 
 # r2.1
@@ -22,7 +22,7 @@ It describes the processes and artifacts for use in the Release Management of th
 **Full Changelog**: https://github.com/camaraproject/ReleaseManagement/compare/r1.2...r2.1
 
 
-# r1.2 - public release
+# r1.2
 
 ## Release Notes
 
