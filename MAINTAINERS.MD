@@ -3,6 +3,6 @@
 | Deutsche Telekom | Herbert Damker | hdamker |
 | Deutsche Telekom | Rafal Artych | rartych |
 | Nokia            | Samuel Adeyemo | soadeyemo |
-| Nokia            | Tanja De Groot | tanjadegroot |
+| Nokia            | Tanja de Groot | tanjadegroot |
 | Orange           | Ludovic Robert | bigludo7 |
 | Telefonica       | Jose Luis Urien Pinedo | jlurien |
