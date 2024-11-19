@@ -16,19 +16,19 @@ Repository to describe, develop, document and test the Release Management proces
 
 ## Release Process Information
 
-**The first public release of the Release Management documents with version v0.2.0 is availalbe in [r1.2](https://github.com/camaraproject/ReleaseManagement/releases/tag/r1.2)**
+**The Release Management documents describes the processes and the repository provides the artifacts for use by API Sub projects to release an API version.**
 
-It describes the processes and artifacts for use in the Release Management of the Fall24 meta-release.
-
-It contains the Release Management approved documents in the **documentation** folder:
-   - [API_Release_Guidelines.md](https://github.com/camaraproject/ReleaseManagement/blob/r1.2/documentation/API_Release_Guidelines.md) - An extract of the API Release Management process from the CAMARA wiki.
-   - [API-Readiness-Checklist.md](https://github.com/camaraproject/ReleaseManagement/blob/r1.2/documentation/API-Readiness-Checklist.md) - The checklist to ensure release readiness of the API according to its release type (alpha, release-candidate, public).
-   - [CHANGELOG_TEMPLATE.md](https://github.com/camaraproject/ReleaseManagement/blob/r1.2/documentation/CHANGELOG_TEMPLATE.md) - The template for creating CHANGELOG history of an API repository.
+It contains the Release Management released documents and assests in the **documentation** folder:
+   - [API_Release_Guidelines.md](/documentation/API_Release_Guidelines.md) - An extract of the API release management process from the CAMARA wiki.
+   - [API-Readiness-Checklist.md](/documentation/API-Readiness-Checklist.md) - The checklist to ensure release readiness of the API according to its version (alpha, release-candidate, public).
+   - [CHANGELOG_TEMPLATE.md](/documentation/CHANGELOG_TEMPLATE.md) - The template for creating CHANGELOG history of an API repository.
 
 It also contains the following in the **documentation/SupportingDocuments** folder:
-   - [CHANGELOG_EXAMPLE.md](https://github.com/camaraproject/ReleaseManagement/blob/r1.2/documentation/SupportingDocuments/CHANGELOG_EXAMPLE.md) - An example of the content of a CHANGELOG.md over multiple releases created following the Release Management guidelines.
+   - [CHANGELOG_EXAMPLE.md](/documentation/SupportingDocuments/CHANGELOG_EXAMPLE.md) - Pointers to example CHANGELOG.md files over multiple releases created following the release management guidelines.
 
-For the reference documentation on API versioning please see Chapter 5 within the API Design Guidelines document in [Commonalities](https://github.com/camaraproject/Commonalities/).
+For the reference documentation on API versioning, please see Chapter 5 in the API Design Guidelines document in [Commonalities](https://github.com/camaraproject/Commonalities).
+
+The [CHANGELOG.md](/CHANGELOG.md) file describes the differences between releases of the Release Management repository.  
 
 ## Release Management Wiki
 
