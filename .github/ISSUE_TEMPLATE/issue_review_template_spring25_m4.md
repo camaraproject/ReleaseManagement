@@ -32,11 +32,16 @@ Put a short summary of the main review result as a comment here into the review 
 - [ ] readme updated (correct naming "Public release" and release number, API versions naming, alignment with template) 
 - [ ] API readiness checklist(s) (check for Commonalities and ICM 2.3, for stable APIs for link to "test result statement" issue)
 
-Specific checks for APIs with subscriptions/notficiations, that the following PRs are applied to be aligned with Commonalities r2.3:
+Specific checks for APIs with subscriptions/notifications, that the following PRs are applied to be aligned with Commonalities r2.3:
 - [ ] Added note and changed descriptions for date-time formats in subscriptions in [#404](https://github.com/camaraproject/Commonalities/pull/404)
 - [ ] Sink format corrected in [#414](https://github.com/camaraproject/Commonalities/pull/414/files) (from `url` to `uri`)
 - [ ] Error 429 aligned for event-subscription-template.yaml and notification-as-cloud-event.yaml in [#407](https://github.com/camaraproject/Commonalities/pull/407/files) and [#408](https://github.com/camaraproject/Commonalities/pull/408/files)
 - [ ] Removed sinkCredential from Subscription schema in event-subscription-template.yaml in [#400](https://github.com/camaraproject/Commonalities/pull/400) (The sinkCredential must not be present in POST and GET responses)
+
+Specific request to API Repositories promoted to "Incubating" stage:
+- [ ] Badge "Incubating API Repository" applied in README
+- [ ] Text in README aligned with [template README.md](https://github.com/camaraproject/Template_API_Repository/blob/main/README.md) (see code)
+- [ ] Line "Incubating stage since: February 2025" added
 
 **Release actions**
 
