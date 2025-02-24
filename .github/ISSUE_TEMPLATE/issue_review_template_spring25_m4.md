@@ -30,11 +30,11 @@ Put a short summary of the main review result as a comment here into the review 
 - [ ] test definition file(s) (availability, version infos and resource URLs)
 - [ ] changelog updated (structure in line with template, for public release all changes since last public release must be listed, Commonalities & ICM public releases)
 - [ ] readme updated (correct naming "Public release" and release number, API versions naming, alignment with template) 
-- [ ] API readiness checklist(s) (check for Commonalities and ICM 2.3, for stable APIs for link to "test result statement" issue)
+- [ ] API readiness checklist(s) (check link to Commonalities and ICM r2.3, for stable APIs, check for link to "test result statement" issue)
 
 Specific checks for APIs with subscriptions/notifications, that the following PRs are applied to be aligned with Commonalities r2.3:
 - [ ] Added note and changed descriptions for date-time formats in subscriptions in [#404](https://github.com/camaraproject/Commonalities/pull/404)
-- [ ] Sink format corrected in [#414](https://github.com/camaraproject/Commonalities/pull/414/files) (from `url` to `uri`)
+- [ ] Sink format corrected in [#414](https://github.com/camaraproject/Commonalities/pull/414/files) and [#421](https://github.com/camaraproject/Commonalities/pull/421) (from `url` to `uri`)
 - [ ] Error 429 aligned for event-subscription-template.yaml and notification-as-cloud-event.yaml in [#407](https://github.com/camaraproject/Commonalities/pull/407/files) and [#408](https://github.com/camaraproject/Commonalities/pull/408/files)
 - [ ] Removed sinkCredential from Subscription schema in event-subscription-template.yaml in [#400](https://github.com/camaraproject/Commonalities/pull/400) (The sinkCredential must not be present in POST and GET responses)
 
