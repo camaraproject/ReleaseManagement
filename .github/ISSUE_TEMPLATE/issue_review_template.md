@@ -7,7 +7,6 @@ assignees: ''
 
 ---
 <!-- Examples for $mile-stone or type of release$ in issue title: 
-* "$meta-release$ M4" (e.g. "Spring25 M4")
 * "$meta-release$ M3" (e.g. "Fall25 M3")
 * "Sandbox pre-release" (review by Release Management is optional)
 * "Sandbox public release"
@@ -36,9 +35,9 @@ Put a short summary of the main review result as a comment here into the review 
 - [ ] API release tracker page(s) available on wiki (see links above)
 - [ ] API definition files (YAML) (check version in info & servers objects)  
 - [ ] test definition file(s) (check availability and version infos)
-- [ ] changelog updated
+- [ ] changelog updated (check structure against template)
 - [ ] readme updated (check correct release number / API version naming) 
-- [ ] API readiness checklist(s) (check consistency with artefacts in the repository and PR)
+- [ ] API readiness checklist(s) (check consistency with artifacts in the repository and PR)
 
 **Release actions**
 
@@ -47,10 +46,10 @@ When done, tick the box in this issue (requires write access, leave a comment ot
 
 - [ ] Short link to release review issue added to release trackers (for M3/M4 reviews)
 - [ ] Review comments provided (on behalf of Release Management)
-- [ ] Review comments addressed (by Sub Project)
+- [ ] Review comments addressed (by release PR editor)
 - [ ] Release PR approved (on behalf of Release Management)
-- [ ] PR merged (by Sub Project codeowner)
-- [ ] Release created within GitHub (by Sub Project codeowner)
+- [ ] PR merged (by API repository codeowner)
+- [ ] Release created within GitHub (by API repository codeowner)
 - [ ] Release Tracker updated (with creation date of the release and the release tag link)
 
 <!-- for public releases outside a meta-release, e.g. patch or Sandbox releases. Delete for pre-releases or M4 releases -->
