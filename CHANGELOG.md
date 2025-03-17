@@ -2,9 +2,25 @@
 
 ## Table of Contents
 
+- **[r2.2](#r22)**
 - **[r2.1](#r21)**
 - **[r1.2](#r12)**
 - **[r1.1](#r11)**
+
+# r2.2
+
+## Release Notes
+
+**This is the public release of the Release Management documents for use in the Spring25 meta-release with version v0.3.0.**
+
+It describes the processesand artifacts for use in the Release Management of the Spring25 meta-release. It includes the feedback from the Fall24 meta-release.
+
+### Changed
+
+* Update issue_review_template.md by @hdamker in https://github.com/camaraproject/ReleaseManagement/pull/159
+* 168 update review issue template by @hdamker in https://github.com/camaraproject/ReleaseManagement/pull/170
+
+**Full Changelog**: https://github.com/camaraproject/ReleaseManagement/compare/r1.2...r2.2
 
 # r2.1
 
