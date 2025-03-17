@@ -19,6 +19,9 @@ It describes the processesand artifacts for use in the Release Management of the
 
 * Update issue_review_template.md by @hdamker in https://github.com/camaraproject/ReleaseManagement/pull/159
 * 168 update review issue template by @hdamker in https://github.com/camaraproject/ReleaseManagement/pull/170
+* Update api release guidelines by @tanjadegroot in https://github.com/camaraproject/ReleaseManagement/pull/118
+* Updates to API readiness checklist by @tanjadegroot in https://github.com/camaraproject/ReleaseManagement/pull/116
+* Update changelog template & example by @tanjadegroot in https://github.com/camaraproject/ReleaseManagement/pull/117
 
 **Full Changelog**: https://github.com/camaraproject/ReleaseManagement/compare/r1.2...r2.2
 
