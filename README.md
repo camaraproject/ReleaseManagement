@@ -26,7 +26,7 @@ It contains the Release Management released documents and assests in the **docum
 It also contains the following in the **documentation/SupportingDocuments** folder:
    - [CHANGELOG_EXAMPLE.md](/documentation/SupportingDocuments/CHANGELOG_EXAMPLE.md) - Pointers to example CHANGELOG.md files over multiple releases created following the release management guidelines.
 
-For the reference documentation on API versioning, please see Chapter 5 in the API Design Guidelines document in [Commonalities](https://github.com/camaraproject/Commonalities).
+For the reference documentation on API versioning, please see "Versioning" section in the API Design Guidelines document in [Commonalities](https://github.com/camaraproject/Commonalities).
 
 The [CHANGELOG.md](/CHANGELOG.md) file describes the differences between releases of the Release Management repository.  
 
