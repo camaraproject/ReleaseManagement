@@ -16,6 +16,7 @@ Checklist for api-name api-version in rx.y.
 | 10 | API release numbering convention applied     |   M   |         M         |    M    |    M   |      |   |
 | 11 | Change log updated                           |   M   |         M         |    M    |    M   |      | [relative link](/CHANGELOG.md) |
 | 12 | Previous public release was certified        |   O   |         O         |    O    |    M   |      | comment |
+| 13 | API Description (for marketing)              |   O   |         O         |    M    |    M   |      | [Wiki link](https://lf-camaraproject.atlassian.net/wiki/) |
 
 To fill the checklist:
 - in the line above the table, replace the api-name, api-version and the rx.y by their actual values for the current API version and release.
