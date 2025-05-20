@@ -19,7 +19,7 @@
 | release package | A release package is a zip file of the GitHub repository created using the GitHub release mechanism. It contains a snapshot of the full API repository content which is marked with the release tag. |
 | GitHub release | A GitHub release is the combination of a release tag and, optionally, a release package of the GitHub repository (zip file) created using the GitHub release feature. A GitHub release applies to the full API repository. A GitHub release may contain alpha, release-candidate or public API version(s). A GitHub release shall not include any wip API versions.`|
 | release pull request (PR) | A release PR is created within an API repository to prepare its GitHub release. A release PR shall minimally set the version and URL fields in the API yaml file(s) to the exact API version and establish the availability of the API release assets as per the API readiness checklist. |
-| API release tracker | An API release tracker provides the visibility on the progress of the (pre-)releases of a given API version within the CAMARA Wiki. Each public API version planned for release by an API Sub Project shall have its release tracker under their API Sub Project's API Release Tracking wiki page. |
+| API release tracker | An API release tracker provides the visibility on the progress of the (pre-)releases of a given API version within the CAMARA Wiki. For each API version planned for public release (as part of or outside a meta-release), its release tracker shall be created under their API Release Tracking page on the CAMARA Wiki. |
 
 (*) NOTE: pre-releases are not meant to be included in a meta-release. All pre-releases are publicly available in the CAMARA GitHub and can be used AT THE USER'S OWN RISK, as changes may happen to such API versions without notice.
 
@@ -42,7 +42,7 @@ To prepare the release of a public API version, API versions shall be (pre-)rele
   * this is the API release for inclusion in the meta-release (if so planned).
   * the public API release must be aligned with the public releases of Commonalities and ICM which shall be available 2 weeks before M4.
 
-An API Sub Project can release as many alpha and release-candidate API versions as useful for API development and testing. In between (pre-)releases, the API version shall be set to `wip` (to indicate that this API version should not be used).
+An API Sub Project or stand-alone Sandbox team can release as many alpha and release-candidate API versions as useful for API development and testing. In between (pre-)releases, the API version shall be set to `wip` (to indicate that this API version should not be used).
 
 ### Public API versions
 
@@ -57,7 +57,7 @@ Public API versions can have an initial or stable status.
 
 ### Meta-release
 
-To be part of a meta-release, the API Sub Project needs to participate in the meta-release process. For the meta-release, the following needs to be provided:
+To be part of a meta-release, the API Sub Project or stand-alone Sandbox team needs to participate in the meta-release process. For the meta-release, the following needs to be provided:
 
 * the API release tracker (see [API release trackers](https://lf-camaraproject.atlassian.net/wiki/x/ZhHe))
 * the expected (pre-)releases at the respective M3 and M4 milestones
