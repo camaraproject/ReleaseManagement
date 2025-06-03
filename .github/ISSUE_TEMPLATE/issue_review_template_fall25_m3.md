@@ -1,6 +1,6 @@
 ---
 name: 💡 Fall25 M3 Review 🌟
-about: Request the review of a Spring25 M3 release PR by the Release Mgmt team
+about: Request the review of a Fall25 M3 release PR by the Release Mgmt team
 title: '$repo name$ $releasenr$ (Fall25 M3) release review'
 labels: 'Fall25 M3 review'
 assignees: ''
