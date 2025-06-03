@@ -28,11 +28,12 @@ Put a short summary of the main review result as a comment here into the review 
 
 - [ ] API definition files updated (YAML) (version in info & servers objects, check for links into main or older releases)  
 - [ ] test definition file(s) (availability, version infos and resource URLs)
-- [ ] changelog updated (structure in line with template, for public release all changes since last public release must be listed, Commonalities & ICM public releases)
-- [ ] readme updated (correct naming "Public release" and release number, API versions naming, alignment with template) 
-- [ ] API readiness checklist(s) (check link to Commonalities and ICM r2.3, for stable APIs, check for link to "test result statement" issue)
+- [ ] changelog updated (structure in line with template, for public release all changes since last public release must be listed, Commonalities & ICM release candidates referred)
+- [ ] readme updated (correct naming "pre-release" and release number, API versions naming, alignment with template) 
+- [ ] API readiness checklist(s) (check link to Commonalities and ICM r3.2)
+- [ ] API description within wiki (check if existing, request to open issue for update until M4)
 
-Specific checks for APIs with subscriptions/notifications, that the following PRs are applied to be aligned with Commonalities r3.2:
+Specific checks for alignment with Commonalities r3.2:
 - [ ] ... (TDB)
 
 **Release actions**
