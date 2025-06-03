@@ -31,7 +31,7 @@ Put a short summary of the main review result as a comment here into the review 
 - [ ] changelog updated (structure in line with template, for public release all changes since last public release must be listed, Commonalities & ICM release candidates referred)
 - [ ] readme updated (correct naming "pre-release" and release number, API versions naming, alignment with template) 
 - [ ] API readiness checklist(s) (check link to Commonalities and ICM r3.2)
-- [ ] API description within wiki (check if existing, request to open issue for update until M4)
+- [ ] API description (ensure that the API readiness checklists have been updated with the additional line for the API Description and contains the link to the current API descriptions)
 
 Specific checks for alignment with Commonalities r3.2:
 - [ ] ... (TDB)
