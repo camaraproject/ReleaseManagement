@@ -62,7 +62,7 @@ When done, tick the box in this issue (requires write access, leave a comment ot
 - [ ] Release created within GitHub (by API repository codeowner)
 - [ ] Release Tracker updated (with creation date of the release and the release tag link)
 
-(Note: for public releases within Spring25 M4 the updates of GitHub README, CAMARA website and within API Backlog list will be done in batch as part of M5.)
+(Note: for pre-releases there is no update needed of website and other places. For public releases within Fall25 M4 the updates of GitHub README, CAMARA website and within API Backlog list will be done in batch as part of M5 milestone.)
 
 **Additional comments**
 <!-- Add any other comments here as needed. -->
