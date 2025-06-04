@@ -34,7 +34,20 @@ Put a short summary of the main review result as a comment here into the review 
 - [ ] API description (ensure that the API readiness checklists have been updated with the additional line for the API Description and contains the link to the current API descriptions)
 
 Specific checks for alignment with Commonalities r3.2:
-- [ ] ... (TDB)
+See Analysis here:  https://lf-camaraproject.atlassian.net/wiki/x/uoDIBg
+
+- [ ] Remove the 401 AUTHENTICATION_REQUIRED code 
+- [ ] Mandatory text on non-documented error responses
+- [ ] remove IDENTIFIER_MISMATCH error and add response
+- [ ] Mandatory text proposed when duration string format is used
+- [ ] Update x-correlator pattern
+
+For Subscription APIs:
+
+- [ ] Update types property of Subscription to allow allowing more than one event type per subscription (optional)
+- [ ] 3.2. subscription-begins event
+- [ ] 3.3 subscription-updates event
+- [ ] Add sink pattern and specific 400 - INVALID_SINK error
 
 **Release actions**
 
