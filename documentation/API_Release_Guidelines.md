@@ -42,7 +42,7 @@ To prepare the release of a public API version, API versions shall be (pre-)rele
   * this is the API release for inclusion in the meta-release (if so planned).
   * the public API release must be aligned with the public releases of Commonalities and ICM which shall be available 2 weeks before M4.
 
-An API Sub Project or stand-alone Sandbox team can release as many alpha and release-candidate API versions as useful for API development and testing. In between (pre-)releases, the API version shall be set to `wip` (to indicate that this API version should not be used).
+An API Sub Project or independent Sandbox team can release as many alpha and release-candidate API versions as useful for API development and testing. In between (pre-)releases, the API version shall be set to `wip` (to indicate that this API version should not be used).
 
 ### Public API versions
 
@@ -57,7 +57,7 @@ Public API versions can have an initial or stable status.
 
 ### Meta-release
 
-To be part of a meta-release, the API Sub Project or stand-alone Sandbox team needs to participate in the meta-release process. For the meta-release, the following needs to be provided:
+To be part of a meta-release, the API Sub Project or independent Sandbox team needs to participate in the meta-release process. For the meta-release, the following needs to be provided:
 
 * the API release tracker (see [API release trackers](https://lf-camaraproject.atlassian.net/wiki/x/ZhHe))
 * the expected (pre-)releases at the respective M3 and M4 milestones
