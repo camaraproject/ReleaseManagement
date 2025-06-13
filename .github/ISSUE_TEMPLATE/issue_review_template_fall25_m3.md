@@ -45,8 +45,9 @@ See Analysis here:  https://lf-camaraproject.atlassian.net/wiki/x/uoDIBg
 For Subscription APIs:
 
 - [ ] Update types property of Subscription to allow allowing more than one event type per subscription (optional)
-- [ ] 3.2. subscription-begins event
-- [ ] 3.3 subscription-updates event
+- [ ] 3.1 subscription-begins --> subscription-started
+- [ ] 3.2 subscription-started event
+- [ ] 3.3 subscription-updated event
 - [ ] Add sink pattern and specific 400 - INVALID_SINK error
 
 **Release actions**
