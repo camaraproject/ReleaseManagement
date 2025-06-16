@@ -40,14 +40,14 @@ See Analysis here:  https://lf-camaraproject.atlassian.net/wiki/x/uoDIBg
 - [ ] Mandatory text on non-documented error responses
 - [ ] remove IDENTIFIER_MISMATCH error and add response
 - [ ] Mandatory text proposed when duration string format is used
-- [ ] Update x-correlator pattern
+- [ ] Update x-correlator pattern 
 
 For Subscription APIs:
 
 - [ ] Update types property of Subscription to allow allowing more than one event type per subscription (optional)
-- [ ] 3.1 subscription-begins --> subscription-started
-- [ ] 3.2 subscription-started event
-- [ ] 3.3 subscription-updated event
+- [ ] 3.2 subscription-started event (optional event)
+- [ ] 3.3 subscription-updated event (optional event)
+- [ ] 3.4 subscription-begins --> subscription-started (event name change)
 - [ ] Add sink pattern and specific 400 - INVALID_SINK error
 
 **Release actions**
