@@ -6,17 +6,17 @@ Checklist for api-name api-version in rx.y.
 |----|----------------------------------------------|:-----:|:-----------------:|:-------:|:------:|:----:|:----:|
 |  1 | API definition                               |   M   |         M         |    M    |    M   |      | [relative link](/code/API_definitions/apiname.yaml) |
 |  2 | Design guidelines from Commonalities applied |   O   |         M         |    M    |    M   |      | Comm. release nr |
-|  3 | Guidelines from ICM applied                  |   O   |         M         |    M    |    M   |      | ICM release nr |
-|  4 | API versioning convention applied            |   M   |         M         |    M    |    M   |      |   |
-|  5 | API documentation                            |   M   |         M         |    M    |    M   |      | [relative link](/documentation/API_documentation/apiname-API-Readiness-Checklist.md) |
+|  3 | Guidelines from ICM applied                  |   O   |         M         |    M    |    M   |      | ICM release nr   |
+|  4 | API versioning convention applied            |   M   |         M         |    M    |    M   |      |                  |
+|  5 | API documentation                            |   M   |         M         |    M    |    M   |      | in yaml (or [relative link](/documentation/API_documentation/xxx.md)) |
 |  6 | User stories                                 |   O   |         O         |    O    |    M   |      | [relative link](/documentation/API_documentation/apiname-Userstory.md) |
 |  7 | Basic API test cases & documentation         |   O   |         M         |    M    |    M   |      | [relative link](/code/Test_definitions) |
 |  8 | Enhanced API test cases & documentation      |   O   |         O         |    O    |    M   |      | [relative link](/code/Test_definitions) |
-|  9 | Test result statement                        |   O   |         O         |    O    |    M   |      | issue link |
-| 10 | API release numbering convention applied     |   M   |         M         |    M    |    M   |      |   |
+|  9 | Test result statement                        |   O   |         O         |    O    |    M   |      | issue link       |
+| 10 | API release numbering convention applied     |   M   |         M         |    M    |    M   |      |                  |
 | 11 | Change log updated                           |   M   |         M         |    M    |    M   |      | [relative link](/CHANGELOG.md) |
-| 12 | Previous public release was certified        |   O   |         O         |    O    |    M   |      | comment |
-| 13 | API description (for marketing)              |   O   |         O         |    M    |    M   |      | [Wiki link](https://lf-camaraproject.atlassian.net/wiki/) |
+| 12 | Previous public release was certified        |   O   |         O         |    O    |    M   |      | comment          |
+| 13 | API description (for marketing)              |   O   |         O         |    M    |    M   |      | [wiki link](https://lf-camaraproject.atlassian.net/wiki/xxx) |
 
 To fill the checklist:
 - in the line above the table, replace the api-name, api-version and the rx.y by their actual values for the current API version and release.
