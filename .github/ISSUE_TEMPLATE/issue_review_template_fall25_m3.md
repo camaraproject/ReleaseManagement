@@ -38,13 +38,14 @@ See Analysis here:  https://lf-camaraproject.atlassian.net/wiki/x/uoDIBg
 
 - [ ] Remove the 401 AUTHENTICATION_REQUIRED code 
 - [ ] Mandatory text on non-documented error responses
-- [ ] remove IDENTIFIER_MISMATCH error and add response
+- [ ] remove IDENTIFIER_MISMATCH error and add DeviceResponse object (when Device object is used in the request)
 - [ ] Mandatory text proposed when duration string format is used
 - [ ] X-Correlator (header & parameter) referencing XCorrelator schema with updated string pattern 
 
 For Subscription APIs:
 
-- [ ] Update types property of Subscription to allow allowing more than one event type per subscription (optional)
+- [ ] Update types property of SubscriptionRequest to allow more than one event type per subscription (optional)
+- [ ] Update types property of SubscriptionRequest to use SubscriptionEventType schema (enum of defined types)
 - [ ] 3.2 subscription-started event (optional event)
 - [ ] 3.3 subscription-updated event (optional event)
 - [ ] 3.4 subscription-ends --> subscription-ended (event name change)
