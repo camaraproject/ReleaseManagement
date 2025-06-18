@@ -40,7 +40,7 @@ See Analysis here:  https://lf-camaraproject.atlassian.net/wiki/x/uoDIBg
 - [ ] Mandatory text on non-documented error responses
 - [ ] remove IDENTIFIER_MISMATCH error and add DeviceResponse object (when Device object is used in the request)
 - [ ] Mandatory text proposed when duration string format is used
-- [ ] X-Correlator (header & parameter) referencing XCorrelator schema with updated string pattern 
+- [ ] x-correlator (header & parameter) referencing XCorrelator schema with updated string pattern. Also check in subscription APIs and in Test files
 
 For Subscription APIs:
 
