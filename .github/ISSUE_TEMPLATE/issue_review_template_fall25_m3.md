@@ -34,7 +34,7 @@ Put a short summary of the main review result as a comment here into the review 
 - [ ] API description (ensure that the API readiness checklists have been updated with the additional line for the API Description and contains the link to the current API descriptions)
 
 Specific checks for alignment with Commonalities r3.2:
-See Analysis here:  https://lf-camaraproject.atlassian.net/wiki/x/uoDIBg
+See Analysis here:  https://lf-camaraproject.atlassian.net/wiki/x/AYDhBw
 
 - [ ] Remove the 401 AUTHENTICATION_REQUIRED code 
 - [ ] Mandatory text on non-documented error responses
