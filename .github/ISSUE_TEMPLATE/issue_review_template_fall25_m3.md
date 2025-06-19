@@ -34,19 +34,23 @@ Put a short summary of the main review result as a comment here into the review 
 - [ ] API description (ensure that the API readiness checklists have been updated with the additional line for the API Description and contains the link to the current API descriptions)
 
 Specific checks for alignment with Commonalities r3.2:
-See Analysis here:  https://lf-camaraproject.atlassian.net/wiki/x/uoDIBg
+See Analysis here:  https://lf-camaraproject.atlassian.net/wiki/x/AYDhBw
 
-- [ ] Remove the 401 AUTHENTICATION_REQUIRED code 
+- [ ] Remove the 401 AUTHENTICATION_REQUIRED code - also in notification APIs and test files
 - [ ] Mandatory text on non-documented error responses
-- [ ] remove IDENTIFIER_MISMATCH error and add response
+- [ ] remove IDENTIFIER_MISMATCH error and add DeviceResponse object (when Device object is used in the request) - also in notification APIs and test files```
 - [ ] Mandatory text proposed when duration string format is used
-- [ ] Update x-correlator pattern
+- [ ] x-correlator (header & parameter) referencing XCorrelator schema with updated string pattern (^[a-zA-Z0-9-_:;.\/<>{}]{0,256}$). Also check this update in subscription APIs and in Test files
+- [ ] check in test files that the Background section line on x-correlator is updated to refer to the XCorrelator schema
 
 For Subscription APIs:
 
-- [ ] Update types property of Subscription to allow allowing more than one event type per subscription (optional)
-- [ ] 3.2. subscription-begins event
-- [ ] 3.3 subscription-updates event
+- [ ] Update example section of Generic401 definition as per lines 245-250 in notification-as-cloud-event.yaml (add in 245; "and a new authentication is required" and in 250: "250: "A new authentication is required."
+- [ ] Update types property of SubscriptionRequest to allow more than one event type per subscription (optional)
+- [ ] Update types property of SubscriptionRequest to use SubscriptionEventType schema (enum of defined types)
+- [ ] 3.2 subscription-started event (optional event)
+- [ ] 3.3 subscription-updated event (optional event)
+- [ ] 3.4 subscription-ends --> subscription-ended (event name change)
 - [ ] Add sink pattern and specific 400 - INVALID_SINK error
 
 **Release actions**
