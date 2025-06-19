@@ -36,7 +36,7 @@ Put a short summary of the main review result as a comment here into the review 
 Specific checks for alignment with Commonalities r3.2:
 See Analysis here:  https://lf-camaraproject.atlassian.net/wiki/x/AYDhBw
 
-- [ ] Remove the 401 AUTHENTICATION_REQUIRED code 
+- [ ] Remove the 401 AUTHENTICATION_REQUIRED code - also in notification APIs and test files
 - [ ] Mandatory text on non-documented error responses
 - [ ] remove IDENTIFIER_MISMATCH error and add DeviceResponse object (when Device object is used in the request)
 - [ ] Mandatory text proposed when duration string format is used
