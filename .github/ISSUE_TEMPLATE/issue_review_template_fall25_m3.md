@@ -44,6 +44,7 @@ See Analysis here:  https://lf-camaraproject.atlassian.net/wiki/x/AYDhBw
 
 For Subscription APIs:
 
+- [ ] Update example section of Generic401 definition as per lines 245-250 in notification-as-cloud-event.yaml (add in 245; "and a new authentication is required" and in 250: "250: "A new authentication is required."
 - [ ] Update types property of SubscriptionRequest to allow more than one event type per subscription (optional)
 - [ ] Update types property of SubscriptionRequest to use SubscriptionEventType schema (enum of defined types)
 - [ ] 3.2 subscription-started event (optional event)
