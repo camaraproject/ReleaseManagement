@@ -1,0 +1,607 @@
+# .github/workflows/api-review-trigger.yml
+# 
+# CAMARA API Review Trigger Workflow
+# 
+# Purpose: Entry point for automated CAMARA API compliance reviews. Can be triggered by:
+#   - Issue comments starting with "/rc-api-review" (extracts PR URL from issue description)
+#   - Pull request comments starting with "/rc-api-review" (reviews PR head)
+#   - Issue or pull request comments starting with "/wip-api-review" (reviews main branch or PR head)
+#   - Manual workflow dispatch with custom parameters
+# 
+# Repository Configuration:
+#   - Repo owners can modify the "uses" field below to test with a fork of tooling
+#   - Default: camaraproject/tooling (official tooling)
+#   - Custom example: myuser/tooling (for testing changes to tooling)
+# 
+# This workflow validates inputs and calls the reusable review workflow.
+# 
+# Deploy this file to: ANY CAMARA API repository .github/workflows/ directory 
+# or to ReleaseManagement (for use in release review issues)
+# Results will be posted to: Issues/PRs in the SAME repository
+
+name: 'CAMARA API Review Trigger'
+
+on:
+  workflow_dispatch:
+    inputs:
+      pull_request_url:
+        description: 'Full URL of the pull request to review (e.g., https://github.com/camaraproject/QualityOnDemand/pull/123)'
+        required: true
+        type: string
+      review_type:
+        description: 'Type of review to perform'
+        required: true
+        default: 'release-candidate'
+        type: choice
+        options:
+          - 'release-candidate'
+          - 'wip'
+      commonalities_version:
+        description: 'CAMARA Commonalities version (currently only 0.6 is supported)'
+        required: false
+        default: '0.6'
+        type: choice
+        options:
+          - '0.6'
+  issue_comment:
+    types: [created]
+
+jobs:
+  check-comment-trigger:
+    runs-on: ubuntu-latest
+    outputs:
+      should_run: ${{ steps.check.outputs.should_run }}
+      trigger_command: ${{ steps.check.outputs.trigger_command }}
+      comment_context: ${{ steps.check.outputs.comment_context }}
+      pull_request_url: ${{ steps.extract.outputs.pull_request_url }}
+      comment_target_number: ${{ steps.extract.outputs.comment_target_number }}
+      review_type: ${{ steps.extract.outputs.review_type }}
+      commonalities_version: ${{ steps.extract.outputs.commonalities_version }}
+      is_main_branch: ${{ steps.extract.outputs.is_main_branch }}
+      target_branch: ${{ steps.extract.outputs.target_branch }}
+      target_repo: ${{ steps.extract.outputs.target_repo }}
+    steps:
+      - name: Check Comment Trigger
+        id: check
+        run: |
+          # Check if this is a comment event
+          if [[ "${{ github.event_name }}" != "issue_comment" ]]; then
+            echo "ℹ️ Not a comment event, skipping comment processing"
+            echo "should_run=false" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          
+          # Determine comment context (issue or pull request)
+          if [[ -n "${{ github.event.issue.pull_request.url }}" ]]; then
+            COMMENT_CONTEXT="pull_request"
+            echo "💬 Comment context: Pull Request #${{ github.event.issue.number }}"
+          else
+            COMMENT_CONTEXT="issue"
+            echo "💬 Comment context: Issue #${{ github.event.issue.number }}"
+          fi
+          
+          # Use jq to safely extract comment body and get first line only
+          COMMENT_FIRST_LINE=$(echo '${{ toJSON(github.event.comment.body) }}' | jq -r '. | split("\n")[0]')
+          
+          echo "💬 Comment first line: '$COMMENT_FIRST_LINE'"
+          
+          # Check for trigger commands
+          if [[ "$COMMENT_FIRST_LINE" == "/rc-api-review"* ]]; then
+            echo "✅ Release candidate review trigger detected: /rc-api-review"
+            echo "should_run=true" >> $GITHUB_OUTPUT
+            echo "trigger_command=rc-api-review" >> $GITHUB_OUTPUT
+            echo "comment_context=$COMMENT_CONTEXT" >> $GITHUB_OUTPUT
+          elif [[ "$COMMENT_FIRST_LINE" == "/wip-api-review"* ]]; then
+            echo "✅ Work-in-progress review trigger detected: /wip-api-review"
+            echo "should_run=true" >> $GITHUB_OUTPUT
+            echo "trigger_command=wip-api-review" >> $GITHUB_OUTPUT
+            echo "comment_context=$COMMENT_CONTEXT" >> $GITHUB_OUTPUT
+          else
+            echo "ℹ️ Comment does not start with a recognized trigger command, skipping"
+            echo "Recognized commands: /rc-api-review, /wip-api-review"
+            echo "should_run=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Extract Review Parameters
+        id: extract
+        if: steps.check.outputs.should_run == 'true'
+        run: |
+          echo "🔍 Extracting review parameters..."
+          
+          TRIGGER_COMMAND="${{ steps.check.outputs.trigger_command }}"
+          COMMENT_CONTEXT="${{ steps.check.outputs.comment_context }}"
+          
+          echo "Command: $TRIGGER_COMMAND"
+          echo "Context: $COMMENT_CONTEXT"
+          
+          # Set comment target number (same for both issues and PRs)
+          echo "comment_target_number=${{ github.event.issue.number }}" >> $GITHUB_OUTPUT
+          
+          if [[ "$COMMENT_CONTEXT" == "issue" ]]; then
+            echo "📋 Processing issue comment..."
+            
+            if [[ "$TRIGGER_COMMAND" == "wip-api-review" ]]; then
+              echo "🔄 WIP review in issue - targeting main branch"
+              
+              # For WIP reviews in issues, target the main branch of current repository
+              # First, get the default branch (fallback to 'main' if not available)
+              DEFAULT_BRANCH=$(gh api repos/${{ github.repository }} --jq '.default_branch' 2>/dev/null || echo "main")
+              
+              # Construct URL for current repo's main branch (simulating a PR-like target)
+              MAIN_BRANCH_URL="https://github.com/${{ github.repository }}/tree/$DEFAULT_BRANCH"
+              
+              echo "✅ Targeting main branch: $DEFAULT_BRANCH"
+              echo "pull_request_url=$MAIN_BRANCH_URL" >> $GITHUB_OUTPUT
+              echo "target_branch=$DEFAULT_BRANCH" >> $GITHUB_OUTPUT
+              echo "target_repo=${{ github.repository }}" >> $GITHUB_OUTPUT
+              echo "is_main_branch=true" >> $GITHUB_OUTPUT
+              
+            elif [[ "$TRIGGER_COMMAND" == "rc-api-review" ]]; then
+              echo "🎯 RC review in issue - looking for PR URL"
+              
+              # For RC reviews in issues, extract PR URL from issue description
+              ISSUE_BODY=$(gh api repos/${{ github.repository }}/issues/${{ github.event.issue.number }} --jq '.body')
+              
+              # Enhanced extraction: Handle various formats including markdown lists
+              # First try to extract from lines 3-4, then clean up any markdown formatting
+              PR_URL_RAW=$(echo "$ISSUE_BODY" | sed -n '3,4p' | grep -E 'https://github\.com/[^/]+/[^/]+/pull/[0-9]+' | head -1)
+              
+              # Clean up the URL by extracting just the URL part, removing markdown list markers, spaces, etc.
+              PR_URL=$(echo "$PR_URL_RAW" | grep -oE 'https://github\.com/[^/]+/[^/]+/pull/[0-9]+' | head -1)
+              
+              if [[ -z "$PR_URL" ]]; then
+                echo "❌ No PR URL found in issue description for /rc-api-review"
+                echo ""
+                echo "📋 Issue body analysis:"
+                echo "Line 3: $(echo "$ISSUE_BODY" | sed -n '3p')"
+                echo "Line 4: $(echo "$ISSUE_BODY" | sed -n '4p')"
+                echo "Raw extraction: '$PR_URL_RAW'"
+                echo ""
+                echo "Expected formats:"
+                echo "  - https://github.com/camaraproject/[repo]/pull/[number]"
+                echo "  - Plain URL: https://github.com/camaraproject/MyAPI/pull/123"
+                echo "  - List item: - https://github.com/camaraproject/MyAPI/pull/123"
+                echo "  - Markdown link: [PR](https://github.com/camaraproject/MyAPI/pull/123)"
+                echo ""
+                echo "Issue description should be formatted like:"
+                echo "# Release PR to review"
+                echo ""
+                echo "https://github.com/camaraproject/MyAPI/pull/123"
+                echo ""
+                echo "💡 Use /wip-api-review if you want to review the main branch instead"
+                exit 1
+              fi
+              
+              echo "✅ Found and cleaned PR URL: $PR_URL"
+              echo "  Raw extraction: '$PR_URL_RAW'"
+              echo "  Cleaned URL: '$PR_URL'"
+              
+              echo "pull_request_url=$PR_URL" >> $GITHUB_OUTPUT
+              echo "target_branch=" >> $GITHUB_OUTPUT
+              echo "target_repo=" >> $GITHUB_OUTPUT
+              echo "is_main_branch=false" >> $GITHUB_OUTPUT
+            fi
+            
+          elif [[ "$COMMENT_CONTEXT" == "pull_request" ]]; then
+            echo "🔀 Processing pull request comment..."
+            
+            # For PR comments, always use the current pull request
+            PR_URL="${{ github.event.issue.pull_request.html_url }}"
+            
+            echo "✅ Using current PR: $PR_URL"
+            echo "pull_request_url=$PR_URL" >> $GITHUB_OUTPUT
+            echo "target_branch=" >> $GITHUB_OUTPUT
+            echo "target_repo=" >> $GITHUB_OUTPUT
+            echo "is_main_branch=false" >> $GITHUB_OUTPUT
+          fi
+          
+          # Set review type based on trigger command
+          if [[ "$TRIGGER_COMMAND" == "rc-api-review" ]]; then
+            REVIEW_TYPE="release-candidate"
+          elif [[ "$TRIGGER_COMMAND" == "wip-api-review" ]]; then
+            REVIEW_TYPE="wip"
+          else
+            REVIEW_TYPE="release-candidate"  # default
+          fi
+          
+          echo "review_type=$REVIEW_TYPE" >> $GITHUB_OUTPUT
+          echo "commonalities_version=0.6" >> $GITHUB_OUTPUT
+          
+          echo "📝 Final parameters:"
+          echo "  Review Type: $REVIEW_TYPE"
+          echo "  Commonalities Version: 0.6"
+          echo "  Target: ${{ steps.extract.outputs.pull_request_url }}"
+          echo "  Context: $COMMENT_CONTEXT"
+          echo "  Comment Target: #${{ github.event.issue.number }}"
+          
+          if [[ "$COMMENT_CONTEXT" == "issue" && "${{ steps.extract.outputs.is_main_branch }}" == "true" ]]; then
+            echo "  Special: Targeting main branch for WIP review"
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Acknowledge Comment
+        if: steps.check.outputs.should_run == 'true'
+        run: |
+          TRIGGER_COMMAND="${{ steps.check.outputs.trigger_command }}"
+          COMMENT_CONTEXT="${{ steps.check.outputs.comment_context }}"
+          REVIEW_TYPE="${{ steps.extract.outputs.review_type }}"
+          
+          # Create appropriate acknowledgment message
+          if [[ "$TRIGGER_COMMAND" == "rc-api-review" ]]; then
+            REVIEW_DESCRIPTION="Release Candidate Review"
+            if [[ "$COMMENT_CONTEXT" == "issue" ]]; then
+              REVIEW_CONTEXT="Pull Request: ${{ steps.extract.outputs.pull_request_url }}"
+            else
+              REVIEW_CONTEXT="Current Pull Request: ${{ steps.extract.outputs.pull_request_url }}"
+            fi
+          elif [[ "$TRIGGER_COMMAND" == "wip-api-review" ]]; then
+            REVIEW_DESCRIPTION="Work-in-Progress Review"
+            REVIEW_CONTEXT="Current Pull Request: ${{ steps.extract.outputs.pull_request_url }}"
+          fi
+          
+          # Create acknowledgment comment
+          cat > acknowledge_comment.md << EOF
+          🤖 **$REVIEW_DESCRIPTION Triggered**
+          
+          Starting automated CAMARA API review...
+          
+          **Details:**
+          - $REVIEW_CONTEXT
+          - Review Type: $REVIEW_TYPE
+          - Commonalities Version: 0.6
+          - Repository: ${{ github.repository }}
+          - Trigger: \`/$TRIGGER_COMMAND\`
+          
+          **Version Support:**
+          - ✅ Commonalities 0.6: Fully supported
+          - ⏳ Commonalities 0.7+: Coming soon
+          
+          Results will be posted here when the review completes.
+          EOF
+          
+          # Post acknowledgment comment
+          COMMENT_JSON=$(jq -n --rawfile body acknowledge_comment.md '{body: $body}')
+          
+          curl -X POST \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            "${{ github.api_url }}/repos/${{ github.repository }}/issues/${{ steps.extract.outputs.comment_target_number }}/comments" \
+            -d "$COMMENT_JSON"
+          
+          echo "✅ Acknowledgment posted to #${{ steps.extract.outputs.comment_target_number }}"
+
+  validate-input:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'issue_comment' && needs.check-comment-trigger.outputs.should_run == 'true')
+    needs: check-comment-trigger
+    outputs:
+      repo_owner: ${{ steps.parse.outputs.repo_owner }}
+      repo_name: ${{ steps.parse.outputs.repo_name }}
+      issue_number: ${{ steps.determine-inputs.outputs.comment_target_number }}
+      pull_request_url: ${{ steps.determine-inputs.outputs.pull_request_url }}
+      comment_target_number: ${{ steps.determine-inputs.outputs.comment_target_number }}
+      review_type: ${{ steps.determine-inputs.outputs.review_type }}
+      commonalities_version: ${{ steps.determine-inputs.outputs.commonalities_version }}
+      is_main_branch: ${{ steps.determine-inputs.outputs.is_main_branch }}
+      target_branch: ${{ steps.determine-inputs.outputs.target_branch }}
+      target_repo: ${{ steps.determine-inputs.outputs.target_repo }}
+      final_pr_head_sha: ${{ steps.final-outputs.outputs.final_pr_head_sha }}
+      final_pr_head_repo: ${{ steps.final-outputs.outputs.final_pr_head_repo }}
+    steps:
+      - name: Determine Input Source
+        id: determine-inputs
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            echo "📝 Using inputs from manual dispatch"
+            echo "pull_request_url=${{ github.event.inputs.pull_request_url }}" >> $GITHUB_OUTPUT
+            echo "comment_target_number=0" >> $GITHUB_OUTPUT
+            echo "review_type=${{ github.event.inputs.review_type }}" >> $GITHUB_OUTPUT
+            echo "commonalities_version=${{ github.event.inputs.commonalities_version }}" >> $GITHUB_OUTPUT
+            echo "is_main_branch=false" >> $GITHUB_OUTPUT
+            echo "target_branch=" >> $GITHUB_OUTPUT
+            echo "target_repo=" >> $GITHUB_OUTPUT
+          else
+            echo "📝 Using inputs from comment trigger"
+            echo "pull_request_url=${{ needs.check-comment-trigger.outputs.pull_request_url }}" >> $GITHUB_OUTPUT
+            echo "comment_target_number=${{ needs.check-comment-trigger.outputs.comment_target_number }}" >> $GITHUB_OUTPUT
+            echo "review_type=${{ needs.check-comment-trigger.outputs.review_type }}" >> $GITHUB_OUTPUT
+            echo "commonalities_version=${{ needs.check-comment-trigger.outputs.commonalities_version }}" >> $GITHUB_OUTPUT
+            echo "is_main_branch=${{ needs.check-comment-trigger.outputs.is_main_branch }}" >> $GITHUB_OUTPUT
+            echo "target_branch=${{ needs.check-comment-trigger.outputs.target_branch }}" >> $GITHUB_OUTPUT
+            echo "target_repo=${{ needs.check-comment-trigger.outputs.target_repo }}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Parse Pull Request URL or Main Branch
+        id: parse
+        run: |
+          PR_URL="${{ steps.determine-inputs.outputs.pull_request_url }}"
+          IS_MAIN_BRANCH="${{ steps.determine-inputs.outputs.is_main_branch }}"
+          
+          echo "🔍 Parsing target: $PR_URL"
+          echo "Is main branch: $IS_MAIN_BRANCH"
+          
+          if [[ "$IS_MAIN_BRANCH" == "true" ]]; then
+            echo "🌿 Processing main branch target"
+            
+            # For main branch, use the current repository
+            REPO_OWNER="${{ github.repository_owner }}"
+            REPO_NAME="${{ github.repository }}"
+            REPO_NAME="${REPO_NAME#*/}"  # Remove owner prefix
+            
+            # Get the default branch and latest commit
+            DEFAULT_BRANCH="${{ steps.determine-inputs.outputs.target_branch }}"
+            LATEST_SHA=$(gh api repos/${{ github.repository }}/commits/$DEFAULT_BRANCH --jq '.sha')
+            
+            echo "✅ Main branch target parsed:"
+            echo "  Owner: $REPO_OWNER"
+            echo "  Repository: $REPO_NAME"
+            echo "  Branch: $DEFAULT_BRANCH"
+            echo "  Latest SHA: $LATEST_SHA"
+            
+            echo "repo_owner=$REPO_OWNER" >> $GITHUB_OUTPUT
+            echo "repo_name=$REPO_NAME" >> $GITHUB_OUTPUT
+            echo "pr_head_sha=$LATEST_SHA" >> $GITHUB_OUTPUT
+            echo "pr_head_repo=${{ github.repository }}" >> $GITHUB_OUTPUT
+            
+          else
+            echo "🔗 Processing pull request URL"
+            
+            # Extract components using regex
+            if [[ "$PR_URL" =~ ^https://github\.com/([^/]+)/([^/]+)/pull/([0-9]+)$ ]]; then
+              REPO_OWNER="${BASH_REMATCH[1]}"
+              REPO_NAME="${BASH_REMATCH[2]}"
+              
+              echo "✅ Successfully parsed PR URL:"
+              echo "  Owner: $REPO_OWNER"
+              echo "  Repository: $REPO_NAME"
+              echo "  PR Number: ${BASH_REMATCH[3]}"
+              
+              echo "repo_owner=$REPO_OWNER" >> $GITHUB_OUTPUT
+              echo "repo_name=$REPO_NAME" >> $GITHUB_OUTPUT
+            else
+              echo "❌ Invalid PR URL format: $PR_URL"
+              echo "Expected format: https://github.com/[owner]/[repo]/pull/[number]"
+              exit 1
+            fi
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Get Pull Request Details
+        id: pr_details
+        if: steps.determine-inputs.outputs.is_main_branch != 'true'
+        run: |
+          REPO_OWNER="${{ steps.parse.outputs.repo_owner }}"
+          REPO_NAME="${{ steps.parse.outputs.repo_name }}"
+          PR_URL="${{ steps.determine-inputs.outputs.pull_request_url }}"
+          
+          # Extract PR number from URL for API call
+          if [[ "$PR_URL" =~ pull/([0-9]+)$ ]]; then
+            PR_NUMBER="${BASH_REMATCH[1]}"
+          else
+            echo "❌ Could not extract PR number from URL: $PR_URL"
+            exit 1
+          fi
+          
+          echo "🔍 Fetching PR details for $PR_URL"
+          
+          # Get PR details using GitHub API
+          PR_DATA=$(gh api repos/$REPO_OWNER/$REPO_NAME/pulls/$PR_NUMBER)
+          
+          # Extract required information
+          PR_HEAD_SHA=$(echo "$PR_DATA" | jq -r '.head.sha')
+          PR_HEAD_REPO=$(echo "$PR_DATA" | jq -r '.head.repo.full_name')
+          PR_STATE=$(echo "$PR_DATA" | jq -r '.state')
+          
+          echo "✅ PR Details:"
+          echo "  State: $PR_STATE"
+          echo "  Head SHA: $PR_HEAD_SHA"
+          echo "  Head Repo: $PR_HEAD_REPO"
+          
+          # Validate PR state
+          if [[ "$PR_STATE" != "open" ]]; then
+            echo "⚠️ Warning: PR is not open (state: $PR_STATE)"
+            echo "Review will proceed but results may not be relevant"
+          fi
+          
+          echo "pr_head_sha=$PR_HEAD_SHA" >> $GITHUB_OUTPUT
+          echo "pr_head_repo=$PR_HEAD_REPO" >> $GITHUB_OUTPUT
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set Final Outputs
+        id: final-outputs
+        run: |
+          # Use PR details if available, otherwise use main branch details
+          if [[ "${{ steps.determine-inputs.outputs.is_main_branch }}" == "true" ]]; then
+            echo "Using main branch details"
+            echo "final_pr_head_sha=${{ steps.parse.outputs.pr_head_sha }}" >> $GITHUB_OUTPUT
+            echo "final_pr_head_repo=${{ steps.parse.outputs.pr_head_repo }}" >> $GITHUB_OUTPUT
+          else
+            echo "Using PR details"
+            echo "final_pr_head_sha=${{ steps.pr_details.outputs.pr_head_sha }}" >> $GITHUB_OUTPUT
+            echo "final_pr_head_repo=${{ steps.pr_details.outputs.pr_head_repo }}" >> $GITHUB_OUTPUT
+          fi
+
+  call-review-workflow:
+    needs: validate-input
+    if: always() && needs.validate-input.result == 'success'
+    # 🔧 CONFIGURATION: Repo owners can modify this line to use their own tooling repository
+    # Example: myuser/tooling/.github/workflows/api-review-reusable.yml@main
+    uses: camaraproject/tooling/.github/workflows/api-review-reusable.yml@main
+    with:
+      tooling_repository: "camaraproject/tooling"  # ← repository where the validator script will be expected
+      repo_owner: ${{ needs.validate-input.outputs.repo_owner }}
+      repo_name: ${{ needs.validate-input.outputs.repo_name }}
+      issue_number: ${{ needs.validate-input.outputs.issue_number }}
+      pr_head_sha: ${{ needs.validate-input.outputs.final_pr_head_sha }}
+      pr_head_repo: ${{ needs.validate-input.outputs.final_pr_head_repo }}
+      review_type: ${{ needs.validate-input.outputs.review_type }}
+      commonalities_version: ${{ needs.validate-input.outputs.commonalities_version }}
+    secrets: inherit
+
+  post-results:
+    runs-on: ubuntu-latest
+    needs: [call-review-workflow, validate-input]
+    if: always() && needs.call-review-workflow.result != 'skipped'
+    steps:
+      - name: Post Review Results
+        if: needs.call-review-workflow.result == 'success'
+        run: |
+          echo "📊 Posting review results..."
+          
+          # Get review status and critical issues count from reusable workflow
+          REVIEW_STATUS="${{ needs.call-review-workflow.outputs.review_status }}"
+          CRITICAL_ISSUES="${{ needs.call-review-workflow.outputs.critical_issues_count }}"
+          
+          # Determine trigger information
+          if [[ "${{ github.event_name }}" == "issue_comment" ]]; then
+            if [[ "${{ needs.validate-input.outputs.is_main_branch }}" == "true" ]]; then
+              TRIGGER_INFO="**Triggered by**: Comment \`/wip-api-review\` by @${{ github.event.comment.user.login }}"
+            else
+              TRIGGER_COMMAND="${{ needs.check-comment-trigger.outputs.trigger_command }}"
+              TRIGGER_INFO="**Triggered by**: Comment \`/$TRIGGER_COMMAND\` by @${{ github.event.comment.user.login }}"
+            fi
+          else
+            TRIGGER_INFO="**Triggered by**: Manual workflow dispatch"
+          fi
+          
+          # Create results content header
+          cat > results_content.md << 'EOF'
+          ## ✅ API Review Complete
+          
+          EOF
+          
+          # Add dynamic content safely
+          echo "${TRIGGER_INFO}" >> results_content.md
+          echo "**Pull Request**: ${{ needs.validate-input.outputs.pull_request_url }}" >> results_content.md
+          echo "**Repository**: ${{ github.repository }}" >> results_content.md
+          echo "**Review Type**: ${{ needs.validate-input.outputs.review_type }}" >> results_content.md
+          echo "**Commonalities Version**: ${{ needs.validate-input.outputs.commonalities_version }}" >> results_content.md
+          echo "**Workflow Run**: [${{ github.run_id }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})" >> results_content.md
+          echo "" >> results_content.md
+          echo "### Review Summary" >> results_content.md
+          echo "" >> results_content.md
+          
+          # Write summary content safely using printf
+          printf '%s\n' '${{ needs.call-review-workflow.outputs.summary_content }}' >> results_content.md
+          
+          echo "" >> results_content.md
+          echo "### Next Steps" >> results_content.md
+          echo "" >> results_content.md
+          
+          # Add status-specific guidance
+          if [[ "$REVIEW_STATUS" == "success" ]]; then
+            echo "🎉 **No critical issues found** - API is ready for release!" >> results_content.md
+          elif [[ "$REVIEW_STATUS" == "has_critical_issues" ]]; then
+            echo "⚠️ **$CRITICAL_ISSUES critical issue(s) found** - Please address before release." >> results_content.md
+            echo "" >> results_content.md
+            echo "1. Review the detailed report in the workflow artifacts" >> results_content.md
+            echo "2. Fix all critical issues" >> results_content.md
+            if [[ "${{ needs.validate-input.outputs.review_type }}" == "release-candidate" ]]; then
+              echo "3. Re-run the review with \`/rc-api-review\`" >> results_content.md
+            else
+              echo "3. Re-run the review with \`/wip-api-review\`" >> results_content.md
+            fi
+          else
+            echo "❓ **Review completed with warnings** - Please review the detailed report." >> results_content.md
+          fi
+          
+          # Determine result target based on trigger type
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            echo "📝 Posting results to workflow summary"
+            
+            # Post to workflow summary
+            cat results_content.md >> $GITHUB_STEP_SUMMARY
+            
+            echo "✅ Results posted to workflow summary"
+          else
+            echo "📝 Posting results to comment"
+            
+            # Simplified comment posting - use single target number
+            COMMENT_TARGET_NUMBER="${{ needs.validate-input.outputs.comment_target_number }}"
+            echo "Posting to #$COMMENT_TARGET_NUMBER"
+            
+            # Post comment (works for both issues and PRs)
+            COMMENT_JSON=$(jq -n --rawfile body results_content.md '{body: $body}')
+            
+            curl -X POST \
+              -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+              -H "Accept: application/vnd.github.v3+json" \
+              "${{ github.api_url }}/repos/${{ github.repository }}/issues/${COMMENT_TARGET_NUMBER}/comments" \
+              -d "$COMMENT_JSON"
+            
+            echo "✅ Results posted to #${COMMENT_TARGET_NUMBER}"
+          fi 
+
+      - name: Handle Workflow Failure
+        if: needs.call-review-workflow.result == 'failure'
+        run: |
+          echo "❌ API Review workflow failed"
+          
+          # Determine trigger information
+          if [[ "${{ github.event_name }}" == "issue_comment" ]]; then
+            if [[ "${{ needs.validate-input.outputs.is_main_branch }}" == "true" ]]; then
+              TRIGGER_INFO="**Triggered by**: Comment \`/wip-api-review\` by @${{ github.event.comment.user.login }}"
+            else
+              TRIGGER_COMMAND="${{ needs.check-comment-trigger.outputs.trigger_command }}"
+              TRIGGER_INFO="**Triggered by**: Comment \`/$TRIGGER_COMMAND\` by @${{ github.event.comment.user.login }}"
+            fi
+          else
+            TRIGGER_INFO="**Triggered by**: Manual workflow dispatch"
+          fi
+          
+          # Create failure content
+          cat > failure_content.md << EOF
+          ## ❌ API Review Failed
+          
+          The automated API review encountered an error and could not complete.
+          
+          ${TRIGGER_INFO}
+          **Pull Request**: ${{ needs.validate-input.outputs.pull_request_url }}
+          **Repository**: ${{ github.repository }}
+          **Review Type**: ${{ needs.validate-input.outputs.review_type }}
+          **Commonalities Version**: ${{ needs.validate-input.outputs.commonalities_version }}
+          **Workflow Run**: [${{ github.run_id }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+          
+          **Error Details:**
+          - Reusable workflow failed to execute
+          - Check the workflow logs for detailed error information
+          - This may be due to version compatibility, missing scripts, or GitHub Actions issues
+          
+          **Troubleshooting:**
+          1. Verify Commonalities version is supported (currently: 0.6)
+          2. Check that required validator scripts exist in tooling repository
+          3. Review workflow logs for specific error messages
+          4. Ensure API files exist in \`/code/API_definitions/\` directory
+          
+          Please check the workflow logs and retry the review.
+          EOF
+          
+          # Determine result target based on trigger type
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            echo "📝 Posting failure to workflow summary"
+            
+            # Post to workflow summary
+            cat failure_content.md >> $GITHUB_STEP_SUMMARY
+            
+            echo "✅ Failure notification posted to workflow summary"
+          else
+            echo "📝 Posting failure to comment"
+            
+            # Simplified comment posting - use single target number
+            COMMENT_TARGET_NUMBER="${{ needs.validate-input.outputs.comment_target_number }}"
+            echo "Posting to #$COMMENT_TARGET_NUMBER"
+            
+            # Post comment (works for both issues and PRs)
+            COMMENT_JSON=$(jq -n --rawfile body failure_content.md '{body: $body}')
+            
+            curl -X POST \
+              -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+              -H "Accept: application/vnd.github.v3+json" \
+              "${{ github.api_url }}/repos/${{ github.repository }}/issues/${COMMENT_TARGET_NUMBER}/comments" \
+              -d "$COMMENT_JSON"
+            
+            echo "✅ Failure notification posted to #${COMMENT_TARGET_NUMBER}"
+          fi
