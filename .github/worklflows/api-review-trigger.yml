@@ -431,7 +431,7 @@ jobs:
     # Example: myuser/tooling/.github/workflows/api-review-reusable.yml@main
     uses: camaraproject/tooling/.github/workflows/api-review-reusable.yml@main
     with:
-      tooling_repository: "camaraproject/tooling"  # ← repository where the validator script will expected
+      tooling_repository: "camaraproject/tooling"  # ← repository where the validator script will be expected
       repo_owner: ${{ needs.validate-input.outputs.repo_owner }}
       repo_name: ${{ needs.validate-input.outputs.repo_name }}
       issue_number: ${{ needs.validate-input.outputs.issue_number }}
