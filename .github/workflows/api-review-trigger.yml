@@ -63,6 +63,8 @@ jobs:
     steps:
       - name: Check Comment Trigger
         id: check
+        env:
+          COMMENT_BODY: ${{ toJSON(github.event.comment.body) }}
         run: |
           # Check if this is a comment event
           if [[ "${{ github.event_name }}" != "issue_comment" ]]; then
@@ -81,7 +83,7 @@ jobs:
           fi
           
           # Use jq to safely extract comment body and get first line only
-          COMMENT_FIRST_LINE=$(echo '${{ toJSON(github.event.comment.body) }}' | jq -r '. | split("\n")[0]')
+          COMMENT_FIRST_LINE=$(echo "$COMMENT_BODY" | jq -r '. | split("\n")[0]')
           
           echo "💬 Comment first line: '$COMMENT_FIRST_LINE'"
           
