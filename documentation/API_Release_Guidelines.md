@@ -33,14 +33,15 @@ To prepare the release of a public API version, API versions shall be (pre-)rele
 * to reach M3, release the first release-candidate API version:
   * the release-candidate implements the scope of the target public API version.
   * this pre-release is agreed to be ready for API implementation and functional testing.
-  * it is aligned with the release-candidates of Commonalities and ICM for the meta-release.
-  * it includes all required API release assets as defined in the API Readiness Checklist.
+  * it is aligned with the alpha release of Commonalities and ICM for the meta-release.
+  * it includes all required API release assets as defined in the API Readiness Checklist for release candidiate API versions.
 * between M3 and M4, release additional release-candidate API versions as needed
   * to fix bugs reported by the API users
-  * to include updates needed to be in-line with the (planned) public releases of Commonalities and ICM
+  * to include updates needed to be in-line with the release candidiates of Commonalities and ICM (M2)
 * to reach M4, release the public API version:
   * this is the API release for inclusion in the meta-release (if so planned).
-  * the public API release must be aligned with the public releases of Commonalities and ICM which shall be available 2 weeks before M4.
+  * the public API release must be aligned with the public releases of Commonalities and ICM (M4).
+  * it includes all required API release assets as defined in the API Readiness Checklist for public API versions.
 
 An API Sub Project or independent Sandbox team can release as many alpha and release-candidate API versions as useful for API development and testing. In between (pre-)releases, the API version shall be set to `wip` (to indicate that this API version should not be used).
 
@@ -50,9 +51,8 @@ Public API versions can have an initial or stable status.
 
  * An initial public API version is the result of rapid development and can be
    * released and published at any time (outside the meta-release process) in order to allow for rapid evolution of APIs.
-   * published as part of a meta-release. In this case, the milestones defined for the meta-release have to be followed. For more details see also: [Meta-release Process](https://lf-camaraproject.atlassian.net/wiki/x/Zwne).
- * A public API version is released only if it provides all required API readiness checklist items (see: API Readiness Checklist section in the [API Release Process](https://lf-camaraproject.atlassian.net/wiki/x/jine).
-.
+   * published as part of a meta-release, in which case, the milestones defined for the meta-release have to be followed. For more details see also: [Meta-release Process](https://lf-camaraproject.atlassian.net/wiki/x/Zwne).
+* A public API version is released only if it provides all required API readiness checklist items (see: API Readiness Checklist section in the [API Release Process](https://lf-camaraproject.atlassian.net/wiki/x/jine).
 * For stable public API versions, participation in the meta-release process is mandatory. As stable API versions are recommended for use in commercial applications, and the user can expect that subsequent public API versions will be backward-compatible, there are additional API readiness checklist items to be provided for the release of stable API versions.
 
 ### Meta-release
@@ -63,6 +63,8 @@ To be part of a meta-release, the API Sub Project or independent Sandbox team ne
 * the expected (pre-)releases at the respective M3 and M4 milestones
 * minimally an initial public API version
 * the required set of API release assets according to the API readiness checklist (see below).
+
+Once released as part of a meta-release, it is expected that a public API releases an update in the next meta-release to align with updated Commonalities and ICM guidelines.
 
 ## Release guidelines
 
