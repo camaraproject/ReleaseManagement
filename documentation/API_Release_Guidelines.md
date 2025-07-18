@@ -47,13 +47,17 @@ An API Sub Project or independent Sandbox team can release as many alpha and rel
 
 ### Public API versions
 
-Public API versions can have an initial or stable status.
+Public API versions can have an **initial** or **stable** status.
 
  * An initial public API version is the result of rapid development and can be
    * released and published at any time (outside the meta-release process) in order to allow for rapid evolution of APIs.
    * published as part of a meta-release, in which case, the milestones defined for the meta-release have to be followed. For more details see also: [Meta-release Process](https://lf-camaraproject.atlassian.net/wiki/x/Zwne).
-* A public API version is released only if it provides all required API readiness checklist items (see: API Readiness Checklist section in the [API Release Process](https://lf-camaraproject.atlassian.net/wiki/x/jine).
-* For stable public API versions, participation in the meta-release process is mandatory. As stable API versions are recommended for use in commercial applications, and the user can expect that subsequent public API versions will be backward-compatible, there are additional API readiness checklist items to be provided for the release of stable API versions.
+
+A public API version is released only if it provides all required API readiness checklist items (see: API Readiness Checklist section in the [API Release Process](https://lf-camaraproject.atlassian.net/wiki/x/jine).
+
+For stable public API versions, participation in the meta-release process is mandatory. There are additional API readiness checklist items to be provided for the release of stable API versions.
+
+Only stable public API versions are recommended for use in commercial applications. The user can expect that subsequent public API versions will be backward-compatible with the one they are using, unless explicitly announced otherwise.
 
 ### Meta-release
 
@@ -64,7 +68,7 @@ To be part of a meta-release, the API Sub Project or independent Sandbox team ne
 * minimally an initial public API version
 * the required set of API release assets according to the API readiness checklist (see below).
 
-Once released as part of a meta-release, it is expected that a public API releases an update in the next meta-release to align with updated Commonalities and ICM guidelines.
+Once released as part of a meta-release, it is expected that a public API releases an update in the next meta-release to align with applicable updated Commonalities and ICM guidelines.
 
 ## Release guidelines
 
@@ -170,15 +174,22 @@ NOTE: a patch is the only case for which a separate branch is created and maint
 
 ## Example of the API release process
 
-To release a MINOR update of a public API version 1.0.0, resulting in the release of public API version 1.1.0:
+To release a MINOR update of a public API version 1.0.0 (released as r1.3), resulting in the release of public API version 1.1.0:
 
 * Develop the 1.1.0 updates on the main branch. The first PR shall update the OAS file setting the API version to `wip`, and the URL to `vwip`.
 * Once sufficiently stable, create a release PR for the API version 1.1.0-alpha.1.
-* After release PR approval, create the pre-release rx.1 and publish it on the API release tracker.
-* Additional alpha API versions 1.1.0-alpha.p may be released. For each such alpha API version, set the API version to `wip` in the first API update PR, and only set the next API version in the release PR of the next pre-release. The alpha number evolves with each following pre-release numbered rx.2 - rx.m.
+* After release PR approval, create the pre-release r2.1 and publish it on the API release tracker.
+* Additional alpha API versions 1.1.0-alpha.2..4 may be released. For each such alpha API version, set the API version to `wip` in the first API update PR, and only set the next API version in the release PR of the next pre-release. The release number evolves with each following pre-release: 2.2 - r2.4.
 * When the API version scope development is complete, create a release PR for the release-candidate API version 1.1.0-rc.1
-* Additional release-candidate API versions 1.1.0-rc.q may be released. For each such release-candidate API version, set the API version to `wip` in the first API update PR, and only set the next API version in the release PR of the next pre-release. The rc number evolves with each following pre-release numbered rx.m+1 - rx.n.
-* When the API version is ready for public release, create the release PR that sets the public API version to 1.1.0. (this PR minimally removes the rc extensions from the version and URL fields in the API yaml file and assures all API release assets are available as per the API readiness checklist).
-* After release PR approval, create the release rx.n+1 for the public API version 1.1.0 and update the API release tracker.
-* The approved public API version 1.1.0 will be included in the meta-release.
+* Additional release-candidate API versions 1.1.0-rc.1..3 may be released. For each such release-candidate API version, set the API version to `wip` in the first API update PR, and only set the next API version in the release PR of the next pre-release. The rc number evolves with each following pre-release numbered r2.5 - r2.7.
+  * Example: 1.1.0-rc.1 / v1rc1 (r2.5) → 1.1.0-rc.2 / v1rc2 (r2.6) → 1.1.0-rc.3 / v1rc3 (r2.7) 
+* When the API version is ready for public release, create the release PR that sets the public API version to 1.1.0. NOTE: the public release PR minimally removes the rc extension from the version and URL fields in the API yaml file and assures all API release assets are available as per the API readiness checklist)
+* After release PR approval, create the release r2.8 for the public API version 1.1.0 and update the API release tracker.
+* The approved public API version 1.1.0 (URL version v1) will be included in the meta-release (as planned).
 * If a patch is provided for the released API, it shall be declared as the latest release, and the information shall be published on the existing API release tracker.
+
+To release a PATCH update of this public API version 1.1.1 (choice per API team decision):
+
+* (on a maintenance branch or on the main branch if no changes have been done on main since the API public release)
+* optionally: create a release candidate API patch version 1.1.1-rc.4 / v1rc4 (r2.9)
+* create the public API patch version 1.1.1 / v1 (r2.10 (or 2.9 if no release-candidate was done))
