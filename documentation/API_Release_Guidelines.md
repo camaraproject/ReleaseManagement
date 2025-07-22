@@ -172,7 +172,14 @@ The maintenance release shall replace the public API release, and its API releas
 
 NOTE: a PATCH update is the only case for which a separate branch is created and maintained within the API repository (as pull requests should be prepared within forks of the API repository, c.f. [Governance](https://github.com/camaraproject/Governance) / `CONTRIBUTING.md`
 
-NOTE: if a PATCH only update of a release rm.n is created in order to align to a next meta-release, then this PATCH update shall be released as rm+1.1. 
+### PATCH update (meta-release alignment)
+
+A PATCH update of a public API version may be created to align with the Commonalities and ICM release of the next meta-release if only PATCH changes are needed.
+
+* For stable APIs, an intermediate pre-release (release candidate) shall be created such that testing can be done.
+* For initial APIs, the pre-release is optional and the public PATCH release can be prepared directly (release PR only for review and public release after the public releases of Commonalities and ICM are available.
+
+In all cases, for an API version x.y.z, released as rm.n in the current meta-release, the PATCH update of the API in the next meta-release shall be version x.y.z+1, released as rm+1.1.
 
 ## Example of the API release process
 
