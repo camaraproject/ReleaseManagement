@@ -179,7 +179,9 @@ A PATCH update of a public API version may be created to align with the Commonal
 * For stable APIs, an intermediate pre-release (release candidate) shall be created such that testing can be done.
 * For initial APIs, the pre-release is optional and the public PATCH release can be prepared directly (release PR only for review and public release after the public releases of Commonalities and ICM are available.
 
-In all cases, for an API version x.y.z, released as rm.n in the current meta-release, the PATCH update of the API in the next meta-release shall be version x.y.z+1, released as rm+1.1.
+For an API version x.y.z, released as rm.n in the current meta-release, 
+* the PATCH update of the API in the next meta-release shall be version x.y.z+1, released as rm+1.1.
+* a new API release tracker shall be created
 
 ## Example of the API release process
 
@@ -195,12 +197,14 @@ To release a MINOR update of a public API version 1.0.0 (released as r1.3), resu
 * When the API version is ready for public release, create the release PR that sets the public API version to 1.1.0. NOTE: the public release PR minimally removes the rc extension from the version and URL fields in the API yaml file and assures all API release assets are available as per the API readiness checklist)
 * After release PR approval, create the release r2.8 for the public API version 1.1.0 and update the API release tracker.
 * The approved public API version 1.1.0 (URL version v1) will be included in the meta-release (as planned).
-* If a patch is provided for the released API, it shall be declared as the latest release, and the information shall be published on the existing API release tracker.
 
-To release a PATCH update of this public API version 1.1.1 (choice per API team decision):
+If a patch update is needed for the released API, do a maintenance release
+* optionally: create an alpha or release candidate API patch version 1.1.1-alpha2 / v1alpha.2 (r2.9) or 1.1.1-rc.4 / v1rc4 (r2.10)
+* create the public API patch version as version 1.1.1 / v1 (r2.11 (or 2.10 if no alpha or release-candidate was done))
+* it shall be declared as the latest release
+* the information shall be published on the existing API release tracker.
 
-* (on a maintenance branch or on the main branch if no changes have been done on main since the API public release)
-* optionally: create a release candidate API patch version 1.1.1-rc.4 / v1rc4 (r2.9)
-* create the public API patch version 1.1.1 / v1 (r2.10 (or 2.9 if no release-candidate was done))
+To align the above public API version 1.1.1 to the next release of Commonalities and ICM (patch updates only):
 
-If the PATCH update is done to align to a next meta-release, the public API version 1.1.1 / v1 shall be released as r3.1. 
+* create the release candidiate API version 1.1.1-rc.4 / v1rc4 (r3.1) (for stable API patch update)
+.* create the public API patch version 1.1.1 / v1 (r3.2)
