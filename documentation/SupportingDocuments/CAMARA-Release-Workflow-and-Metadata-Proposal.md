@@ -123,16 +123,21 @@ release_notes: Initial alpha release for CAMARA Fall26 release cycle.
 
 ### Step 1: Continuous Development on `main`
 
-- All PRs target `main`, with changes validated via MegaLinter and YAML schema checks.
-- `release-plan.yaml` defines the roadmap and desired targets.
+- All PRs target the `main` branch, with changes validated via MegaLinter and YAML schema checks.
+- `release-plan.yaml` defines the roadmap and desired targets for the upcoming (pre-)release.
 - CI gates validate:
-  - Formatting and schemas
-  - Guideline adherence (based on `release_status` & `api_status`)
-  - Status progression rules (e.g. `rc` requires all APIs are `rc` or better)
+  - Formatting and schema correctness
+  - Adherence to CAMARA guidelines based on the declared `release_status` and `api_status`
+  - Status progression logic (e.g., `rc` requires all APIs to be at least `rc`)
+- CI also raises non-blocking warnings about issues that must be addressed to enable promotion to the next stage (e.g., from `alpha` to `rc`, or `rc` to `release`).
+- All validation results are summarized in the CI output and posted as comments in the PR, helping developers stay informed and proactive.
 
 ✅ Benefits:
-- Prevents bad content landing in `main`
-- Ensures only appropriate changes are prepared for promotion
+- Prevents invalid or incomplete content from entering `main`
+- Ensures developers align with release status expectations early
+- Encourages iterative, forward-looking quality improvements
+- Keeps readiness transparent across reviewers, contributors, and release managers
+- Allows optional enforcement that metadata updates (e.g., status changes) must be done in dedicated PRs separate from implementation changes
 
 ### Step 2: Automated Release Branch Creation
 
@@ -209,4 +214,59 @@ Do not update:
 - [ ] Add GitHub Actions for metadata validation, release branch preparation, and post-release syncing
 - [ ] Enforce CODEOWNERS and team-based protections on branches
 - [ ] Plan and implement CHANGELOG automation as a separate phase
+
+## Appendix: Metadata Status and Dependency Update Strategy
+
+### ❗ The Problem
+
+In the current CAMARA workflow, we risk repeating the problems caused by “monolithic” release PRs — where contributors update `release-plan.yaml` to promote an API (e.g., from `draft` to `rc`) and simultaneously attempt to fix all blocking issues in the same PR. These PRs are hard to review, difficult to verify, and blur responsibility between status declaration and implementation compliance.
+
+Worse, when deadlines are near, this approach encourages rush patches and discourages proper code review.
+
+### Proposed Strategy: Separate Metadata from Implementation Changes
+
+To avoid reintroducing this problem, the following strategy is proposed and can be enforced by CI:
+
+#### 1. **Mutual Exclusivity Rule**  
+A pull request to `main` may either:
+- ✅ Modify metadata (e.g., `release-plan.yaml`), or
+- ✅ Modify repository content (OpenAPI specs, test files, descriptions, etc.),  
+but ❌ not both.
+
+This applies particularly to:
+- Status changes in `release_status` or per-API `api_status`
+- Dependency updates, such as upgrading `commonalities_version`
+
+#### 2. **CI Validation of Metadata-only PRs**
+
+- If a PR modifies status or dependencies:
+  - CI will run validation against the target status level
+  - Block the PR if issues remain for that level
+- The validation report will:
+  - List blocking issues
+  - Warn about any errors that must be resolved first
+  - Recommend raising separate PRs for specification/test fixes
+
+#### 3. **CI Enforcement Conditions**
+
+| PR Type                  | Allowed to change           | Validation Conditions                                    |
+|--------------------------|-----------------------------|----------------------------------------------------------|
+| Metadata-only PR         | `release-plan.yaml` only     | Must have no blocking issues for target statuses/versions |
+| Specification/test PR    | All files except metadata    | CI checks correctness of content; PR passes independently |
+| Mixed PR (both types)    | ❌ Blocked                    | Will be rejected — must be split before proceeding        |
+
+### ✅ Benefits
+
+- Improved reviewability: Each PR is focused and reviewable on its own merit
+- Clear accountability: Metadata changes are explicit declarations of readiness
+- Reduced risk: No status promotions can be hidden inside technical change PRs
+- Reinforces proper sequencing: Implementation improvements come before status upgrades
+
+### Developer Workflow Example
+
+1. Developer merges a PR that corrects a missing test file for an API.
+2. Once CI passes and no blocking issues remain, they open a small metadata-only PR updating the `api_status` from `alpha` to `rc`.
+3. CI detects the change, runs combined checks, and approves if valid.
+
+This enforces discipline, ensures correctness, and maintains oversight — without compromising developer agility.
 
