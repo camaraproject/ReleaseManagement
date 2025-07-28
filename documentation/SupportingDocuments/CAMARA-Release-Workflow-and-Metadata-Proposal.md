@@ -1,78 +1,72 @@
-
-# CAMARA Release Workflow and Metadata Proposal
+# CAMARA Release Workflow and Metadata Specification  
+*Version: Proposal – Concept Phase*
 
 ## Summary of Current Situation and Pain Points
 
-CAMARA currently manages releases with largely manual processes, leading to several challenges that impede automation, traceability, and consistent quality assurance:
+CAMARA currently coordinates releases using manual practices across GitHub repositories and external tools (e.g. a Confluence-based tracker), which presents multiple challenges:
 
 - **Manual Release Tracking in Wiki:**  
-  Status tracking is maintained manually in an external wiki using page properties tables, which are insufficient for automation or flexible reporting. This causes duplicated effort and scope inconsistency between this tracker and GitHub repositories.
+  Status tracking is maintained manually using wiki pages, which cannot support automation or flexible reporting. Synchronizing scope and status across repositories requires redundant effort and is error-prone.
 
-- **Informal Release PRs Merged to Main:**  
-  Presently, "release PRs" are manually created and merged into the `main` branch before release, containing version bumps, changelog edits, API readiness checklists, and README updates. This approach risks inconsistency and oversight.
+- **Informal Release PRs Merged into `main`:**  
+  Releases rely on manually created PRs that are merged into `main` before tagging. These PRs often include version updates, changelog edits, and last-minute changes, introducing risk and inconsistency.
 
 - **Limited CI Enforcement on `main`:**  
-  The `main` branch mixes “work in progress” (WIP) development with release information, lacking strong CI gating, allowing inconsistent or incomplete APIs and metadata to merge.
+  While MegaLinter is integrated for YAML and Gherkin, there is no structured validation for metadata files or enforcement of CAMARA-specific release guidelines.
 
-- **Unclear Branching and Metadata Practices:**  
-  Development and release metadata are intermingled, leading to manual version resets post-release and error-prone processes.
+- **Unclear Versioning and Branching Strategy:**  
+  Metadata and version fields are frequently changed manually in `main` prior to release, only to be reset afterward. Changes made directly in release PRs are hard to trace and review.
 
-- **Minimal or Absent Automation for CHANGELOG and API Readiness:**  
-  Though some PR template fields exist to aid automation, they are currently unused, causing manual effort to update changelogs and API readiness status.
+- **Minimal Automation for Changelogs and Checklists:**  
+  CHANGELOG generation is mostly manual. The API Readiness Checklist is not fully automated and depends on manual cross-checks.
 
 ## Proposed Objectives and Guiding Principles
 
-To improve automation, transparency, and quality, **we are proposing** the following principles for the CAMARA release process:
+We are proposing the following objectives to modernize and automate the CAMARA release process:
 
-- **Clearly separate development intent from released state metadata.**  
-- **Keep the `main` branch in a consistent "work in progress" (WIP) state** with version fields set to `"wip"`.  
-- **Use dedicated release branches per (pre-)release** — a (pre-)release being any release in a release cycle from alpha through rc to public release.  
-- **Require mandatory CI gating on PRs into `main`** for guideline compliance and correctness.  
-- **Adopt metadata files (in YAML) to represent release planning and snapshots.**  
-- **Keep CAMARA release numbering separate and distinct from API semantic versions.**  
-- **Apply branch protection rules restricting edits on release branches to release managers.**  
-- **Automate creation, updating, and synchronization of release metadata and documentation.**  
-- **Use “Release preparation PRs” on release branches as the review mechanism before final release tagging.**  
-- **Handle review feedback via issues and PRs into `main`, followed by updates to release branches, including rebasing or repeating release preparation PRs as necessary.**
+- ✅ Clearly separate development intent (planning) from released state (actual).
+- ✅ Keep the `main` branch in a consistent "work in progress" (WIP) state with version fields as `"wip"`.
+- ✅ Use dedicated **release branches per (pre-)release** (e.g. for alpha, rc, release).
+- ✅ Introduce structured **metadata files (in YAML)** to support automation and CI.
+- ✅ Keep CAMARA **release numbering (`rX.Y`)** distinct from API **semantic versioning**.
+- ✅ Enforce CI gating on PRs to `main`.
+- ✅ Restrict release branch changes to authorized release managers.
+- ✅ Automate creation of release branches and generation of release metadata.
+- ✅ Use **Release preparation PRs** into release branches for structured approvals.
+- ✅ Handle specification or implementation feedback via PRs into `main`, and re-update the release branch as necessary.
 
 ## Terminology
 
-| Term                   | Meaning and Usage                                                                       |
-|------------------------|-----------------------------------------------------------------------------------------|
-| `release_number`       | CAMARA release numbering (e.g., `r2.1`) distinguishing releases in a cycle             |
-| API semantic version    | Independent semantic version of each API (e.g., `3.0.0`, `0.5.0`)                      |
-| `main` branch           | Development branch containing WIP versions and development intent metadata             |
-| release branch          | Branch created for each (pre-)release (e.g., `release/r2.1`), holding finalized metadata and release artifacts |
-| Release preparation PR  | PR opened *into* a release branch to review and finalize release metadata and artifacts |
+| Term                   | Description |
+|------------------------|-------------|
+| `meta_release`         | Meta-release timeline (e.g., `Fall26`) |
+| `release_number`       | CAMARA release identifier within (e.g., `r4.1`). Distinct from API SemVer. |
+| `release_status`       | Status of the (planned) (pre-)release: `alpha`, `rc`, or `release`. |
+| `api_status`           | Per-API maturity used for gating validations. |
+| `main_contacts`        | GitHub handles of code owners or maintainers (per API in `release-plan.yaml`). |
+| `main` branch          | Development branch. All content is work-in-progress (`version: wip`). |
+| Release branch         | Dedicated release preparation branch per (pre-)release (e.g., `release/r4.1`). |
+| Release preparation PR | Pull request against a release branch to finalize or tweak the release content. |
 
-## Metadata File Format and Content
+## Metadata File Format
 
-All metadata files are written in **YAML** to align with CAMARA’s existing OpenAPI usage and to balance readability with machine parsability.
+All metadata files are YAML-based and versioned in the repository. They serve as authoritative configuration & release inputs.
 
-### 1. `release-plan.yaml`
+### 1. `release-plan.yaml` (on `main`)
 
-Located on the `main` branch, this file represents **development intent** for the upcoming (pre-)release and steers CI and tooling.
+Planning metadata owned by codeowners, manually updated and CI-validated.
 
 ```yaml
+meta_release: Fall26 # default as long not eligible or planned for a meta-release: Other
 
-# Planned meta-release (requires that the APIs have at least `alpha" status, otherwise set to "Other")
-meta_release_cycle: Fall26
+release_number: r4.1
 
-# Release umber of the next planned (pre-)release (starts with r1.1 for new repositories)
-release_number: r4.1            
+release_status: alpha  # must be one of: draft, alpha, rc, release
 
-# Release status (`draft`, `alpha`, `rc`, `release`)
-# * Determines the set of rules which will be mandatory in PR validations
-# * Use `draft` if no release is planned yet - only basic linting and rules are enforced
-# * Use `alpha` to be able to create an alpha pre-release (all APIs must have at least `alpha` status as well)
-# * Use `rc` to be able to create an release-candidate pre-release (all APIs must have at least `rc` status as well)
-# * Use `release` to be able to create a public release (all APIs must have at least `rc` status as well)
-release_status: alpha                     
-                             
 apis:
-  - name: location-verification   # api-name, to be used in file-names and server URLs
-    target_version: 3.2.0         # Semantic API version (without pre-release suffix, starts with 0.1.0 for new APIs)
-    api_status: rc                # Set of rules which should be applied to this API in pull request validations
+  - name: location-verification
+    target_version: 3.2.0
+    api_status: rc
     main_contacts:
       - githubUser1
       - githubUser2
@@ -93,114 +87,126 @@ commonalities_version: 1.2.0-rc.1
 identity_consent_management_version: 1.1.0
 ```
 
-### 2. `release-metadata.yaml`
+👉 Notes:
+- All APIs must meet the minimum `api_status` for the current `release_status`.
+- `draft` status can't be released 
+- APIs below the threshold block tagging (enforced via CI).
+- Changes to the file can only be merged into main if the APIs and the repository are fulfilling the intendent status.
 
-Created and committed on the release branch during the release process, this file captures the **authoritative released state** including pre-release suffixes based on the `status`.
+### 2. `release-metadata.yaml` (on release branch)
+
+Generated automatically from the release plan and committed before tagging.
 
 ```yaml
-release_number: r2.1              # Final released CAMARA release number
-meta_release_cycle: Fall25
-release_date: 2025-09-14
-status: rc                      # Release-wide status at release time
+release_number: r4.1
+meta_release: Fall26
+release_date: 2025-11-22
+status: alpha
 
 apis:
   - name: location-verification
-    version: 3.0.0-rc.1          # Semantic API version combined with pre-release suffix
+    version: 3.2.0-alpha.1
 
   - name: location-retrieval
-    version: 0.5.0-rc.1
+    version: 0.5.0-alpha.1
 
-  - name: geofencing-subscriptions
-    version: 0.5.0-rc.1
+  - name: some-new-location-service
+    version: 0.1.0-alpha.1
 
 commonalities_version: 1.2.0-rc.1
 identity_consent_management_version: 1.1.0
-commit_sha: abc1234def5678
-release_notes: Stable release candidate for CAMARA Fall25.
+commit_sha: abcd1234efgh5678
+release_notes: Initial alpha release for CAMARA Fall26 release cycle.
 ```
 
-**Note:** The `release-metadata.yaml` does *not* include `main_contacts`, as contact responsibility is tracked per-API in the planning file.
+## End-to-End Workflow
 
-## Branching and Workflow Overview
+### Step 1: Continuous Development on `main`
 
-### 1. Development on `main`
+- All PRs target `main`, with changes validated via MegaLinter and YAML schema checks.
+- `release-plan.yaml` defines the roadmap and desired targets.
+- CI gates validate:
+  - Formatting and schemas
+  - Guideline adherence (based on `release_status` & `api_status`)
+  - Status progression rules (e.g. `rc` requires all APIs are `rc` or better)
 
-- All ongoing development merges into `main` branch with `version: wip` and `release-plan.yaml` updated with intended API versions and `release_number` for the next (pre-)release.
-- PRs to `main` are subject to CI gates including file format linting, CAMARA guideline validation, tests, and YAML schema validation for metadata files.
-- Development teams manage `release-plan.yaml` and API code concurrently.
+✅ Benefits:
+- Prevents bad content landing in `main`
+- Ensures only appropriate changes are prepared for promotion
 
-**Benefits:**
-- Keeps `main` stable and consistent, avoiding accidental release.
-- Provides a single source of truth for development intent.
-- Prevents integration of invalid or inconsistent API changes.
+### Step 2: Automated Release Branch Creation
 
-### 2. Automated Creation of Release Branch per (Pre-)Release
+Upon triggering the release (e.g., via GitHub issue or label):
 
-- When ready to prepare a (pre-)release, automation creates a release branch from `main`. E.g., `release/r2.1`.
-- Automation replaces placeholders (`wip`) with finalized `release_number`, API versions (applying suffixes like `-rc.1` per `status`), and generates the `release-metadata.yaml`.
-- Additional release-specific files, e.g., changelogs and API readiness checklists, are prepared and committed in this branch.
+- A release branch is created (e.g. `release/r4.1`)
+- A script or GitHub Action:
+  - Sets exact API versions using `target_version` + derived suffix (`-rc.1`, etc.)
+  - Writes `release-metadata.yaml`
+  - Replaces all `wip` markers in metadata
+  - Commits consistent/structured changelog, README, and checklist artifacts
 
-**Benefits:**
-- Isolates release artifact generation from ongoing development.
-- Enables human and automated review before release.
-- Prevents accidental contamination of `main`.
+✅ Benefits:
+- Avoids fragile manual editing
+- Creates trusted, reviewable release state before tag
 
-### 3. Review and Refinement via Release Preparation PRs
+### Step 3: Review via Release Preparation PRs
 
-- Contributors open **Release preparation PRs** targeting the release branch for manual review tweaks (e.g., changelog edits).
-- Only release managers (enforced via branch protection) can merge these PRs.
-- Review comments and change requests on release content from any stakeholders are handled by:
+Manual review and adjustments happen through “release preparation PRs” into the release branch.
 
-  - Creating **issues** and corresponding **PRs into `main`** for fixes or updates.
-  - After merging fixes into `main`, the release branch is updated (rebased or merged).
-  - Release preparation PRs are updated, rebased, or recreated as necessary to reflect the latest main branch changes.
-  - Release managers iterate through the review cycle until approval.
+- Only release managers can merge to release branches (via branch protection).
+- Review covers CHANGELOG, checklist, metadata correctness.
 
-**Benefits:**
-- Clear, controlled review process with auditable history.
-- Separates development fixes from release branch content.
-- Avoids unreviewed or uncontrolled changes on release branches.
+If problems are found in API specs or implementation:
+- Create PRs against `main`
+- Update (or rebase) release branch from `main`
+- Regenerate release metadata/artifacts
 
-### 4. Release Tagging and Publication
+✅ Benefits:
+- Keeps the actual release clean, visible, and traceable
+- Ensures specification fixes flow through formal code review
 
-- After Release preparation PRs are merged and the release branch is finalized, the release manager or automation creates a release tag on the release branch.
-- Builds, artifact publishing, and documentation releases are triggered for the tagged release.
-- The release branch remains available until the release is published and stable.
+### Step 4: Tag and Generate Release
 
-**Benefits:**
-- Creates an immutable release record.
-- Supports traceability from release tag to exact source and metadata.
-- Limits release triggering to controlled, reviewed states.
+After approval:
 
-### 5. Post-release Synchronization Back to `main`
+- A tag (e.g., `r4.1`) is created on the release branch
+- CI builds and publishes artifacts
+- GitHub Release, OpenAPI bundles, and documentation are generated
 
-- Automation opens a **post-release PR** from the release branch into `main` with selective updates:
-  - Changelog entries
-  - README release notes or metadata visibility updates
-- These PRs exclude version bumps in API or release version fields—keeping `main` versions as `wip`.
-- Code owners review and merge these PRs to keep documentation consistent.
+✅ Benefits:
+- Fully traceable, repeatable state for each tagged release
 
-**Benefits:**
-- Keeps `main` documentation current without compromising development intent state.
-- Avoids manual duplicate updating and errors.
-- Supports ongoing development cycles succeeding the release.
+### Step 5: Post-Release PR into `main`
 
-### 6. Maintenance Branches for Post-Release Fixes
+To keep `main` updated with useful release info (but not version numbers):
 
-- If post-release fixes or patches are needed:
-  - Maintenance branches (e.g., `maintenance/r2.x`) are created.
-  - These branches follow a similar guarded workflow as release branches.
-- This approach cleanly separates emergency fixes from new development and releases.
+- Create a PR back into `main` with:
+  - CHANGELOG entry
+  - README additions (e.g., new API table rows)
+
+Do not update:
+- Any version fields (they stay `"wip"`)
+
+✅ Benefits:
+- Bridges visibility, avoids disrupting ongoing WIP development state
 
 ## Summary of Benefits
 
-| Aspect                               | Benefit                                                                                                  |
-|------------------------------------|----------------------------------------------------------------------------------------------------------|
-| Clear Separation of Development and Release States | Avoids accidental release and mixing of WIP with finalized versions.                                      |
-| Consistent and Familiar YAML Metadata | Simplifies automation and review, aligned with existing CAMARA tooling.                                    |
-| Controlled Review via Release Preparation PRs | Restricts release changes to qualified release managers while allowing wider collaboration on `main`.     |
-| Automated CI Gating on `main` | Ensures high quality and guideline compliance before merging any development or metadata changes.             |
-| Traceable and Immutable Release Records | Maintains complete provenance with tagged releases on dedicated branches.                                 |
-| Flexible Yet Controlled Sync Back to Main | Documentation stays updated without disturbing ongoing development.                                       |
-| Alignment with CAMARA Versioning Schemes | Clear distinction between release numbering (`rX.Y`) and API semantic versions reduces confusion.          |
-| Scalable Branching Model | Supports multiple (pre-)releases and maintenance efficiently without clutter or risk.                            |
+| Area                   | Benefits                                                                                     |
+|------------------------|----------------------------------------------------------------------------------------------|
+| Separation of concerns | `main` can always be integrated or reworked — no release state mixed in                     |
+| Consistent metadata    | Metadata is parseable, validatable, and source-of-truth for release tooling                 |
+| Flexible compliance    | Pre-release vs public release phases are enforced via `release_status`/`api_status`         |
+| CI-friendly            | No fragile manual checks — all validations declarative, structural, and branch-aware        |
+| Collaborative review   | All critical changes reviewed like any other PR                                              |
+| Traceable results      | Tag, commit SHA, and metadata captured in release snapshot                                  |
+| Minimal backporting    | Minor fixes flow through `main` and regenerate the release — auto-tidy                     |
+| Reusable tooling       | YAML format + GitHub workflows = universal scripting, readable for both devs and CI         |
+
+## Next Steps (Optional)
+
+- [ ] Define a YAML schema for `release-plan.yaml` and `release-metadata.yaml`
+- [ ] Add GitHub Actions for metadata validation, release branch preparation, and post-release syncing
+- [ ] Enforce CODEOWNERS and team-based protections on branches
+- [ ] Plan and implement CHANGELOG automation as a separate phase
+
