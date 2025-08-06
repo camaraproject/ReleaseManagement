@@ -53,6 +53,7 @@ assignees: ''
 ### API Readiness checklist
 - [ ] first line ('Checklist for'): has been updated to the latest version number and the latest release number
 - [ ] links to Commonalities and ICM r3.3
+- [ ] for stable APIs Test result statement is mandatory - issue link should be referenced
 
 ### README.MD
 - [ ] the 'NEW: public release' section is updated with the latest release number
