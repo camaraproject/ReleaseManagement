@@ -1,8 +1,8 @@
 ---
-name: 💡 Fall25 M3 Review 🌟
-about: Request the review of a Fall25 M3 release PR by the Release Mgmt team
-title: '$repo name$ $releasenr$ (Fall25 M3) release review'
-labels: 'Fall25 M3 review'
+name: 💡 Fall25 M4 Review 🌟
+about: Request the review of a Fall25 M4 release PR by the Release Mgmt team
+title: '$repo name$ $releasenr$ (Fall25 M4) release review'
+labels: 'Fall25 M4 review'
 assignees: ''
 
 ---
@@ -19,54 +19,65 @@ assignees: ''
 - 
 - 
 
-**Review actions**
+# Review actions
 
-Assign this issue to yourself and follow the below list.
-For any review action, review the file(s) in the issue/PR listed above. 
-Put comments in the above issue or PR if they concern non-changed files/text.
-Put a short summary of the main review result as a comment here into the review issue.
+### API repository
+- [ ] Check that there are no PRs beside the release PR are waiting to be reviewed and merged. If there are other open PRs, request that they are either set to draft (if not relevant for Fall25) or merged and the release PR get updated before the review
 
-- [ ] API definition files updated (YAML) (version in info & servers objects, check for links into main or older releases)  
-- [ ] test definition file(s) (availability, version infos and resource URLs)
-- [ ] changelog updated (structure in line with template, for public release all changes since last public release must be listed, Commonalities & ICM release candidates referred)
-- [ ] readme updated (correct naming "pre-release" and release number, API versions naming, alignment with template) 
-- [ ] API readiness checklist(s) (check link to Commonalities and ICM r3.2)
-- [ ] API description (ensure that the API readiness checklists have been updated with the additional line for the API Description and contains the link to the current API descriptions)
+### CHANGELOG.MD 
+**Table of contents**
+- [ ] the `y` in `rX.Y` has been increased by 1 from the pre-release 
 
-Specific checks for alignment with Commonalities r3.2:
-See Analysis here:  https://lf-camaraproject.atlassian.net/wiki/x/AYDhBw
+**Release notes**
+- [ ] first paragraph: 'public release' is used instead of 'pre-release'
+- [ ] the release candidate suffix (`-rc.x`) has been removed from API versions
+- [ ] the release candidate suffix (`-rc.x`) has been removed from Commonalities and ICM versions
 
-- [ ] Remove the 401 AUTHENTICATION_REQUIRED code - also in notification APIs and test files
-- [ ] Mandatory text on non-documented error responses
-- [ ] remove IDENTIFIER_MISMATCH error and add DeviceResponse object (when Device object is used in the request) - also in notification APIs and test files```
-- [ ] Mandatory text proposed when duration string format is used
-- [ ] x-correlator (header & parameter) referencing XCorrelator schema with updated string pattern (^[a-zA-Z0-9-_:;.\/<>{}]{0,256}$). Also check this update in subscription APIs and in Test files
-- [ ] check in test files that the Background section line on x-correlator is updated to refer to the XCorrelator schema
+**API sections of CHANGELOG**
+- [ ] the words 'release candidate' are not present
+- [ ] the release candidate suffix (`-rc.x`) has been removed from API versions
+- [ ] API definition links {ReDoc, Swagger, OAS) includes the correct release tag in the URL
+- [ ] Added/Changed/Removed sections includes any additional changes made for M4 and all the entries from M3
+- _Note: create a "draft release" to see which PRs were done since the last document pre-release `rX.Y`_
 
-For Subscription APIs:
+### API definition .yaml file(s)
+- [ ] `info.version` has been updated to latest version number (without rc.n suffix)
+- [ ] `info.servers.url` has been updated to include latest version number (without rc.n suffix)
+- [ ] check for links containing `/main/` or `/rX.Y/` (with `rX.Y` being the pre-release) which are pointing the repository. They must be replaced with the `/rX.Y+1/`.
+- [ ] Read the Swagger UI view of the API yaml to spot formatting/spelling errors
 
-- [ ] Update example section of Generic401 definition as per lines 245-250 in notification-as-cloud-event.yaml (add in 245; "and a new authentication is required" and in 250: "250: "A new authentication is required."
-- [ ] Update types property of SubscriptionRequest to allow more than one event type per subscription (optional)
-- [ ] Update types property of SubscriptionRequest to use SubscriptionEventType schema (enum of defined types)
-- [ ] 3.2 subscription-started event (optional event)
-- [ ] 3.3 subscription-updated event (optional event)
-- [ ] 3.4 subscription-ends --> subscription-ended (event name change)
-- [ ] Add sink pattern and specific 400 - INVALID_SINK error
+### Test definition .feature file(s)
+- [ ] 'Feature:' line: `vwip` has been changed to the latest version number
+- [ ] All resource links have been updated with the correct serverURL and are using a root-relative path (e.g. `And the resource "/qos-profiles/vwip/qos-profiles/{name}"`)
 
-**Release actions**
+### API Readiness checklist
+- [ ] first line ('Checklist for'): 'vwip' has been changed to the latest version number
+
+### README.MD
+- [ ] the 'NEW: public release' section is updated with the latest release number
+- [ ] The ReDoc/Swagger/OAS links have been updated with the latest release number in their URL
+- [ ] the 'NEW: Pre-release' section has been removed
+
+### API description wiki page
+- [ ] Check that the links within API Readiness Checklists are pointing to valid wiki pages
+- [ ] Co-assign the review issue to a member of the API Backlog team (tbd to whom!)
+- [ ] Get confirmation from API Backlog team that the API description is up-to-date
+
+# Release actions
 
 Assign this issue to yourself or another RM team member and follow the below list. 
 When done, tick the box in this issue (requires write access, leave a comment otherwise). 
 
-- [ ] Short link to release review issue added to release trackers ("M3 #nnn")
+- [ ] Short link to release review issue added to release trackers ("M4 #nnn")
 - [ ] Review comments provided (on behalf of Release Management)
 - [ ] Review comments addressed (by release PR editor)
+- [ ] `/rc-api-review` run by Release Management reviewer as final check
 - [ ] Release PR approved (on behalf of Release Management)
 - [ ] PR merged (by API repository codeowner)
 - [ ] Release created within GitHub (by API repository codeowner)
 - [ ] Release Tracker updated (with creation date of the release and the release tag link)
 
-(Note: for pre-releases there is no update needed of website and other places. For public releases within Fall25 M4 the updates of GitHub README, CAMARA website and within API Backlog list will be done in batch as part of M5 milestone.)
+(Note: For public releases within Fall25 M4 the updates of GitHub README, CAMARA website and within API Backlog list will be done in batch as part of M5 milestone.)
 
 **Additional comments**
 <!-- Add any other comments here as needed. -->
