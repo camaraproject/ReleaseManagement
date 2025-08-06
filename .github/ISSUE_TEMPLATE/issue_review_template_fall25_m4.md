@@ -51,7 +51,8 @@ assignees: ''
 - [ ] All resource links have been updated with the correct serverURL and are using a root-relative path (e.g. `And the resource "/qos-profiles/vwip/qos-profiles/{name}"`)
 
 ### API Readiness checklist
-- [ ] first line ('Checklist for'): 'vwip' has been changed to the latest version number
+- [ ] first line ('Checklist for'): has been updated to the latest version number and the latest release number
+- [ ] links to Commonalities and ICM r3.3
 
 ### README.MD
 - [ ] the 'NEW: public release' section is updated with the latest release number
