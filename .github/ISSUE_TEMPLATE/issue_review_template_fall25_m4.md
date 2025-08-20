@@ -43,7 +43,8 @@ assignees: ''
 ### API definition .yaml file(s)
 - [ ] `info.version` has been updated to latest version number (without rc.n suffix)
 - [ ] `info.servers.url` has been updated to include latest version number (without rc.n suffix)
-- [ ] check for links containing `/main/` or `/rX.Y/` (with `rX.Y` being the pre-release) which are pointing the repository. They must be replaced with the `/rX.Y+1/`.
+- [ ] check for links containing `/main/` or `/rX.Y/` (with `rX.Y` being the pre-release) which are pointing to the repository. They must be replaced with the `/rX.Y+1/`.
+- [ ] check that any properties with `date-time` format reference RFC 3339 in their description (per [Commonalities #497](https://github.com/camaraproject/Commonalities/pull/497)
 - [ ] Read the Swagger UI view of the API yaml to spot formatting/spelling errors
 
 ### Test definition .feature file(s)
@@ -73,6 +74,7 @@ When done, tick the box in this issue (requires write access, leave a comment ot
 - [ ] Short link to release review issue added to release trackers ("M4 #nnn")
 - [ ] Review comments provided (on behalf of Release Management)
 - [ ] Review comments addressed (by release PR editor)
+- [ ] Check there are no additional errors from cenralised linting (ref [Commonalities #502](https://github.com/camaraproject/Commonalities/pull/502)
 - [ ] `/rc-api-review` run by Release Management reviewer as final check
 - [ ] Release PR approved (on behalf of Release Management)
 - [ ] PR merged (by API repository codeowner)
