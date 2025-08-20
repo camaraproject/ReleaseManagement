@@ -44,7 +44,7 @@ assignees: ''
 - [ ] `info.version` has been updated to latest version number (without rc.n suffix)
 - [ ] `info.servers.url` has been updated to include latest version number (without rc.n suffix)
 - [ ] check for links containing `/main/` or `/rX.Y/` (with `rX.Y` being the pre-release) which are pointing to the repository. They must be replaced with the `/rX.Y+1/`.
-- [ ] check that any properties with `date-time` format reference RFC 3339 in their description (per [Commonalities #497](https://github.com/camaraproject/Commonalities/pull/497)
+- [ ] check that any properties with `date-time` format reference RFC 3339 in their description, and suggest to delete the additional format recommendation if still present (was removed in r3.3 of API Design Guide, see [Commonalities #497](https://github.com/camaraproject/Commonalities/pull/497)).
 - [ ] Read the Swagger UI view of the API yaml to spot formatting/spelling errors
 
 ### Test definition .feature file(s)
