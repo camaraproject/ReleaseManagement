@@ -49,7 +49,7 @@ assignees: ''
 
 ### Test definition .feature file(s)
 - [ ] 'Feature:' line: `vwip` has been changed to the latest version number
-- [ ] All resource links have been updated with the correct serverURL and are using a root-relative path (e.g. `And the resource "/qos-profiles/vwip/qos-profiles/{name}"`)
+- [ ] All resource links have been updated with the correct serverURL and are using a root-relative path (e.g. `And the resource "/qos-profiles/v1/qos-profiles/{name}"`)
 
 ### API Readiness checklist
 - [ ] first line ('Checklist for'): has been updated to the latest version number and the latest release number
