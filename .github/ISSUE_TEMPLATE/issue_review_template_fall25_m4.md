@@ -74,7 +74,7 @@ When done, tick the box in this issue (requires write access, leave a comment ot
 - [ ] Short link to release review issue added to release trackers ("M4 #nnn")
 - [ ] Review comments provided (on behalf of Release Management)
 - [ ] Review comments addressed (by release PR editor)
-- [ ] Check there are no additional errors from cenralised linting (ref [Commonalities #502](https://github.com/camaraproject/Commonalities/pull/502)
+- [ ] Check there are no additional errors from centralised linting (ref https://github.com/camaraproject/Commonalities/pull/502)
 - [ ] `/rc-api-review` run by Release Management reviewer as final check
 - [ ] Release PR approved (on behalf of Release Management)
 - [ ] PR merged (by API repository codeowner)
