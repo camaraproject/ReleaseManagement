@@ -159,7 +159,8 @@ Upon triggering the release (via labeled issue - maintainers+ can trigger by add
   - Sets exact API versions using `target_version` + auto-calculated suffix (e.g., `-rc.2` based on consecutive numbering across API lifecycle)
   - Enforces CAMARA versioning rules: info.version matches tag, server URLs follow v0.x or vx patterns
   - Writes `release-metadata.yaml`
-  - Replaces all placeholder markers in repository files
+  - Replaces placeholder markers (e.g., `{{api_version}}`, `{{commonalities_version}}`) in repository files
+  - Updates external references to point to specific dependency release tags
   - Commits consistent/structured CHANGELOG, README, and checklist artifacts
 
 ✅ Benefits:
@@ -188,7 +189,10 @@ After approval:
 
 - A tag (e.g., `r4.1`) is created on the release branch
 - CI builds and publishes artifacts
-- GitHub Release, OpenAPI bundles, and documentation are generated
+- GitHub Release with artifacts is created:
+  - OpenAPI bundles (self-contained specs with all external references resolved)
+  - Generated documentation
+  - Release metadata files
 
 ✅ Benefits:
 - Fully traceable, repeatable state for each tagged release
