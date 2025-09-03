@@ -26,7 +26,7 @@ We are proposing the following objectives to automate the CAMARA release process
 
 - ✅ Clearly separate development intent (planning) from released state (actual).
 - ✅ Keep the `main` branch in a consistent "work in progress" (WIP) state with version fields as `"wip"`.
-- ✅ Use dedicated **release branches per (pre-)release** (e.g. for alpha, rc, release).
+- ✅ Use dedicated **release branches per (pre-)release** (e.g. for alpha, rc, public).
 - ✅ Provide structured **metadata files (in YAML)** to support automation and CI.
 - ✅ Keep CAMARA **release numbering (`rX.Y`)** distinct from API **semantic versioning**.
 - ✅ Enforce CI gating on PRs to `main`.
@@ -113,10 +113,10 @@ status: pre-release
 
 apis:
   - name: location-verification
-    version: 3.2.0-alpha.1
+    version: 3.2.0-rc.2
 
   - name: location-retrieval
-    version: 0.5.0-alpha.1
+    version: 0.5.0-rc.1
 
   - name: some-new-location-service
     version: 0.1.0-alpha.1
@@ -131,8 +131,8 @@ release_notes: Pre-release for CAMARA Fall26 release cycle.
 
 ### Step 1: Continuous Development on `main`
 
-- All PRs target the `main` branch, with changes validated via MegaLinter and YAML schema checks.
-- `release-plan.yaml` defines the roadmap and desired targets for the upcoming (pre-)release.
+- All API development related PRs target the `main` branch, with changes validated via MegaLinter and YAML schema checks.
+- the `release-plan.yaml` is updated on main to reflect the roadmap and desired targets for the upcoming (pre-)release.
 - CI gates validate:
   - Formatting and schema correctness
   - Strict version consistency: info.version format, server URL patterns per CAMARA rules
@@ -169,10 +169,10 @@ Upon triggering the release (via labeled issue - maintainers+ can trigger by add
 
 ### Step 3: Review via Release Preparation PRs
 
-Manual review and adjustments happen through “release preparation PRs” into the release branch.
+Manual review and adjustments happen through Release Preparation PRs into the release branch.
 
 - Release PRs require approval from codeowner(s) and release reviewer(s) (via branch protection).
-- Review covers CHANGELOG, checklist, metadata correctness.
+- Review covers CHANGELOG, README and checklist correctness wrt metadata
 
 If problems are found in API specs or implementation:
 - Create PRs against `main`
@@ -272,6 +272,7 @@ See Appendix for detailed branching diagrams and maintenance strategy.
 - [ ] Add GitHub Actions for metadata validation, release branch preparation, and post-release syncing
 - [ ] Enforce CODEOWNERS and team-based protections on branches
 - [ ] Plan and implement CHANGELOG automation as a separate phase
+- [ ] Revisit content of checklist and implement automated updates where possible
 - [ ] Consider attaching `release-metadata.yaml` additionally as release artifact for efficient reporting
 
 ## Appendix: Metadata Status and Dependency Update Strategy
@@ -289,7 +290,7 @@ To avoid reintroducing this problem, the following strategy is proposed and can 
 #### 1. **Mutual Exclusivity Rule**  
 A pull request to `main` may either:
 - ✅ Modify metadata (e.g., `release-plan.yaml`), or
-- ✅ Modify repository content (OpenAPI specs, test files, descriptions, etc.),  
+- ✅ Modify other repository content (OpenAPI specs, test files, descriptions, etc.),  
 but ❌ not both.
 
 This applies particularly to:
@@ -299,8 +300,8 @@ This applies particularly to:
 #### 2. **CI Validation of Metadata-only PRs**
 
 - If a PR modifies status or dependencies:
-  - CI will run validation against the target status level
-  - Block the PR if issues remain for that level
+  - CI will run validation against the target status
+  - Block the PR if issues remain for that status
 - The validation report will:
   - List blocking issues
   - Warn about any errors that must be resolved first
