@@ -42,7 +42,7 @@ We are proposing the following objectives to modernize and automate the CAMARA r
 | `meta_release`         | Meta-release timeline (e.g., `Fall26`) |
 | `release_number`       | CAMARA release identifier within (e.g., `r4.1`). Distinct from API SemVer. |
 | `release_readiness`    | Repository readiness: `none` (not ready), `pre-release` (mixed maturity), `pre-release-rc` (rc minimum), `public-release` (all stable), `patch-release` (maintenance). |
-| `api_status`           | Per-API status type (`draft`, `alpha`, `rc`, `release`) for gating validations. Extension numbers are auto-calculated. |
+| `api_status`           | Per-API status: `planned` (not yet in repo), `alpha`, `rc`, `release`. Extension numbers are auto-calculated. |
 | `main_contacts`        | GitHub handles of code owners or maintainers (per API in `release-plan.yaml`). |
 | `main` branch          | Development branch. All content is work-in-progress (`version: wip`). |
 | Maintenance branch     | Long-lived branch for maintaining older release cycles (e.g., `maintenance-r3`). See Appendix for details. |
@@ -89,8 +89,11 @@ identity_consent_management_version: 1.1.0
 ```
 
 👉 Notes:
+- API status progression: `planned` → `alpha` → `rc` → `release`
+  - `planned`: API declared in release-plan.yaml but not yet in repository (CI skips validation)
+  - `alpha`+: API file must exist and pass validation at declared maturity level
 - Release readiness determines what type of release can be created:
-  - `none`: No release possible
+  - `none`: No release possible (APIs missing or only planned)
   - `pre-release`: Can release with mixed API maturity (alpha, rc, release)
   - `pre-release-rc`: Requires all APIs at rc or release status (M3 milestone)
   - `public-release`: Requires all APIs at release status
@@ -133,7 +136,8 @@ release_notes: Initial alpha release for CAMARA Fall26 release cycle.
   - Formatting and schema correctness
   - Strict version consistency: info.version format, server URL patterns per CAMARA rules
   - Adherence to CAMARA guidelines based on the declared `release_readiness` and `api_status`
-  - Status progression logic (e.g., `rc` requires all APIs to be at least `rc`)
+  - APIs with status `alpha` or higher must exist and meet validation criteria
+  - APIs with status `planned` are skipped (allows declaration before implementation)
 - CI also raises non-blocking warnings about issues that must be addressed to enable promotion to the next stage (e.g., from `alpha` to `rc`, or `rc` to `release`).
 - All validation results are summarized in the CI output and posted as comments in the PR, helping developers stay informed and proactive.
 
