@@ -230,6 +230,24 @@ See Appendix for detailed branching diagrams and maintenance strategy.
 | Minimal backporting    | Minor fixes flow through `main` and regenerate the release — auto-tidy                     |
 | Reusable tooling       | YAML format + GitHub workflows = universal scripting, readable for both devs and CI         |
 
+## Migration Timeline (Work in Progress)
+
+### Fall25 (In Progress)
+- Complete releases with current process
+- Post-release: Generate and attach `release-metadata.yaml` as release artifacts (can be added after release)
+
+### Spring26 (October 2025 - March 2026)
+- All repositories add `release-plan.yaml` for Spring26 planning
+- Auto-generate meta-release overview tables from YAML files
+- Wiki tracker pages deprecated (no longer maintained)
+- **Parallel operation**: Manual and automated release process (selected repositories as early adopters)
+- **Ambition**: Spring26 M4 milestone automated for all participating repositories
+
+### Fall26 (April 2026)
+- Full automation implementation
+- Wiki completely deprecated
+- Mandatory adoption for all repositories
+
 ## Next Steps (Optional)
 
 - [ ] Define a YAML schema for `release-plan.yaml` and `release-metadata.yaml`
