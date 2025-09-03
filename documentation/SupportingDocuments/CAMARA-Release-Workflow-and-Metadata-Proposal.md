@@ -55,7 +55,7 @@ All metadata files are YAML-based and versioned in the repository. They serve as
 
 ### 1. `release-plan.yaml` (on `main`)
 
-Planning metadata owned by codeowners, manually updated and CI-validated.
+Planning metadata owned by codeowners, manually updated and CI-validated. Contains only forward-looking release plans, not historical data.
 
 ```yaml
 meta_release: Fall26 # default as long not eligible or planned for a meta-release: Other
@@ -99,7 +99,7 @@ identity_consent_management_version: 1.1.0
 
 ### 2. `release-metadata.yaml` (on release branch)
 
-Generated automatically from the release plan and committed before tagging.
+Generated automatically from the release plan and committed before tagging. Preserved in each release tag, providing complete release history.
 
 ```yaml
 release_number: r4.1
@@ -232,6 +232,7 @@ See Appendix for detailed branching diagrams and maintenance strategy.
 - [ ] Add GitHub Actions for metadata validation, release branch preparation, and post-release syncing
 - [ ] Enforce CODEOWNERS and team-based protections on branches
 - [ ] Plan and implement CHANGELOG automation as a separate phase
+- [ ] Consider attaching `release-metadata.yaml` additionally as release artifact for efficient reporting
 
 ## Appendix: Metadata Status and Dependency Update Strategy
 
