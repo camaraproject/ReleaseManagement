@@ -22,7 +22,7 @@ CAMARA currently coordinates releases using manual practices across GitHub repos
 
 ## Proposed Objectives and Guiding Principles
 
-We are proposing the following objectives to modernize and automate the CAMARA release process:
+We are proposing the following objectives to automate the CAMARA release process:
 
 - ✅ Clearly separate development intent (planning) from released state (actual).
 - ✅ Keep the `main` branch in a consistent "work in progress" (WIP) state with version fields as `"wip"`.
@@ -40,7 +40,7 @@ We are proposing the following objectives to modernize and automate the CAMARA r
 | Term                   | Description |
 |------------------------|-------------|
 | `meta_release`         | Meta-release label (e.g., `Fall26`) |
-| `release_number`       | CAMARA release identifier within (e.g., `r4.1`). Distinct from API SemVer. |
+| `release_number`       | CAMARA release tag (e.g., `r4.1`). Distinct from API SemVer. |
 | `release_readiness`    | Repository readiness: `none` (not ready), `pre-release` (mixed maturity), `pre-release-rc` (rc minimum), `public-release` (all stable), `patch-release` (maintenance). |
 | `api_status`           | Per-API status: `planned` (not yet in repo), `unchanged` (no changes from previous release), `alpha`, `rc`, `release`. Extension numbers are auto-calculated. |
 | `main_contacts`        | GitHub handles of code owners or maintainers (per API in `release-plan.yaml`). |
