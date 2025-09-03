@@ -41,10 +41,11 @@ We are proposing the following objectives to modernize and automate the CAMARA r
 |------------------------|-------------|
 | `meta_release`         | Meta-release timeline (e.g., `Fall26`) |
 | `release_number`       | CAMARA release identifier within (e.g., `r4.1`). Distinct from API SemVer. |
-| `release_readiness`    | Repository readiness: `none` (not ready), `pre-release` (mixed maturity), `pre-release-rc` (rc minimum), `public-release` (all stable). |
+| `release_readiness`    | Repository readiness: `none` (not ready), `pre-release` (mixed maturity), `pre-release-rc` (rc minimum), `public-release` (all stable), `patch-release` (maintenance). |
 | `api_status`           | Per-API status type (`draft`, `alpha`, `rc`, `release`) for gating validations. Extension numbers are auto-calculated. |
 | `main_contacts`        | GitHub handles of code owners or maintainers (per API in `release-plan.yaml`). |
 | `main` branch          | Development branch. All content is work-in-progress (`version: wip`). |
+| Maintenance branch     | Long-lived branch for maintaining older release cycles (e.g., `maintenance-r3`). See Appendix for details. |
 | Release branch         | Dedicated release preparation branch per (pre-)release (e.g., `release/r4.1`). |
 | Release preparation PR | Pull request against a release branch to finalize or tweak the release content. |
 
@@ -93,6 +94,7 @@ identity_consent_management_version: 1.1.0
   - `pre-release`: Can release with mixed API maturity (alpha, rc, release)
   - `pre-release-rc`: Requires all APIs at rc or release status (M3 milestone)
   - `public-release`: Requires all APIs at release status
+  - `patch-release`: For maintenance/hotfix releases from maintenance branches
 - CI validates that API statuses match the declared release readiness level.
 
 ### 2. `release-metadata.yaml` (on release branch)
@@ -198,6 +200,18 @@ Do not update:
 
 ✅ Benefits:
 - Bridges visibility, avoids disrupting ongoing WIP development state
+
+### Step 6: Maintenance and Patch Releases
+
+For critical fixes and security patches on older release cycles:
+
+- **Maintenance branches** (`maintenance-r3`) are created from the last commit included in that release cycle
+- Patches are developed and tested on the maintenance branch
+- Set `release_readiness: patch-release` in the maintenance branch's `release-plan.yaml`
+- Follow steps 2-5 above, but create release branch from maintenance branch instead of `main`
+- Patch releases (r3.4, r3.5) contain only bug fixes, no new features
+
+See Appendix for detailed branching diagrams and maintenance strategy.
 
 ## Summary of Benefits
 
