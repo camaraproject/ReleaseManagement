@@ -193,19 +193,31 @@ After approval:
 ✅ Benefits:
 - Fully traceable, repeatable state for each tagged release
 
-### Step 5: Post-Release PR into `main`
+### Step 5: Post-Release Actions
 
-To keep `main` updated with useful release info (but not version numbers):
+After release is tagged and published:
 
+#### 5a. Update `main` branch:
 - Create a PR back into `main` with:
   - CHANGELOG entry
   - README additions (e.g., new API table rows)
+- Do not update any version fields (they stay `"wip"`)
 
-Do not update:
-- Any version fields (they stay `"wip"`)
+#### 5b. For public releases only:
+- Auto-update `release-plan.yaml`: Set all APIs to `unchanged` status
+- Forces explicit planning for next release cycle
+- Prevents unintended changes to stable APIs
+
+#### 5c. Tag reference point on `main`:
+- Create tag `src/X.Y` (e.g., `src/4.1`) on main at branch point
+- Marks commit for potential maintenance branch creation
+- Reference for comparing API changes in next release
+- Note: This is NOT a release tag, just a reference marker
 
 ✅ Benefits:
 - Bridges visibility, avoids disrupting ongoing WIP development state
+- Clear reference points for maintenance and comparison
+- Enforces explicit planning after public releases
 
 ### Step 6: Maintenance and Patch Releases
 
@@ -335,7 +347,7 @@ Each release (e.g., r4.1, r4.2) gets its own **temporary** branch:
 5. **Deletion**: After tagging, the branch is deleted (the tag preserves the release)
 
 ```
-main ────┬─────────────────┬──────────────────────► (ongoing development)
+main ────┬──[src/4.1]──────┬──[src/4.2]──────────► (ongoing development)
          │                 │
          └─release/r4.1    └─release/r4.2
               ↓                  ↓
@@ -382,17 +394,19 @@ main ────┬───[fix]───────┬──────►
 
 ### Post-Release PR Explained
 
-After a release is tagged, a **selective** PR is created back to `main`:
+After a release is tagged, several actions occur:
 
 ```
-main ────┬──────────────────[PR: selective updates]───► 
+main ────┬──[src/4.1]──────────[PR: selective updates]───► 
          │                           ↑
          └─release/r4.1─────────────┘
                     ↓
                   tag:r4.1
 ```
 
-**What gets merged** (cherry-picked):
+**1. Tag reference point**: `src/4.1` tag is created on main where the release branched off
+
+**2. Selective PR back to main** (cherry-picked):
 - CHANGELOG entries for the release
 - README updates with latest stable version links
 
@@ -401,5 +415,7 @@ main ────┬──────────────────[PR: s
 - Server URL changes (main keeps `vwip`)
 - Release-specific metadata
 
-**Purpose**: Makes release information visible in the default branch without disrupting ongoing development. This is NOT a full merge but a selective update of documentation only.
+**3. For public releases**: Update `release-plan.yaml` to set all APIs to `unchanged`
+
+**Purpose**: Makes release information visible in the default branch without disrupting ongoing development, provides reference point for maintenance branches, and ensures explicit planning for next cycle.
 
