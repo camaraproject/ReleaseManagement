@@ -415,8 +415,8 @@ main ────┬──[src/4.1]──────────[PR: selective 
 - README updates with latest stable version links
 
 **What does NOT get merged**:
-- API version changes (main stays at `wip`)
-- Server URL changes (main keeps `vwip`)
+- API version changes (placeholders like `{{api_version}}` remain unchanged)
+- Server URL changes (keep placeholder format)
 - Release-specific metadata
 
 **3. For public releases**: Update `release-plan.yaml` to set all APIs to `unchanged`
