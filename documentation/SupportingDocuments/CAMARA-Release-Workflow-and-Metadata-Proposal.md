@@ -27,7 +27,7 @@ We are proposing the following objectives to modernize and automate the CAMARA r
 - ✅ Clearly separate development intent (planning) from released state (actual).
 - ✅ Keep the `main` branch in a consistent "work in progress" (WIP) state with version fields as `"wip"`.
 - ✅ Use dedicated **release branches per (pre-)release** (e.g. for alpha, rc, release).
-- ✅ Introduce structured **metadata files (in YAML)** to support automation and CI.
+- ✅ Provide structured **metadata files (in YAML)** to support automation and CI.
 - ✅ Keep CAMARA **release numbering (`rX.Y`)** distinct from API **semantic versioning**.
 - ✅ Enforce CI gating on PRs to `main`.
 - ✅ Restrict release branch changes to authorized release managers.
@@ -39,7 +39,7 @@ We are proposing the following objectives to modernize and automate the CAMARA r
 
 | Term                   | Description |
 |------------------------|-------------|
-| `meta_release`         | Meta-release timeline (e.g., `Fall26`) |
+| `meta_release`         | Meta-release label (e.g., `Fall26`) |
 | `release_number`       | CAMARA release identifier within (e.g., `r4.1`). Distinct from API SemVer. |
 | `release_readiness`    | Repository readiness: `none` (not ready), `pre-release` (mixed maturity), `pre-release-rc` (rc minimum), `public-release` (all stable), `patch-release` (maintenance). |
 | `api_status`           | Per-API status: `planned` (not yet in repo), `unchanged` (no changes from previous release), `alpha`, `rc`, `release`. Extension numbers are auto-calculated. |
