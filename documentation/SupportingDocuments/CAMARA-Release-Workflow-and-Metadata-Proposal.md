@@ -274,3 +274,93 @@ This applies particularly to:
 
 This enforces discipline, ensures correctness, and maintains oversight — without compromising developer agility.
 
+## Appendix: Branching Strategy Clarification
+
+### Understanding Git Branches and Tags
+
+For those newer to Git, here's how branches and tags relate in the CAMARA release workflow:
+
+- **Branch**: A movable pointer to commits, used for ongoing work
+- **Tag**: A permanent marker on a specific commit, used to mark releases
+- **Release branch**: A temporary branch created from `main` for preparing a specific release
+- **Maintenance branch**: A long-lived branch for maintaining older release cycles
+
+### Release Branch Lifecycle
+
+Each release (e.g., r4.1, r4.2) gets its own **temporary** branch:
+
+1. **Creation**: Branch `release/r4.1` is created from `main` (or `maintenance-rX` for patches)
+2. **Preparation**: Automation sets versions, updates metadata, creates CHANGELOG
+3. **Review**: Release preparation PRs can adjust content on this branch
+4. **Tagging**: Once approved, the branch HEAD is tagged with `r4.1`
+5. **Deletion**: After tagging, the branch is deleted (the tag preserves the release)
+
+```
+main ────┬─────────────────┬──────────────────────► (ongoing development)
+         │                 │
+         └─release/r4.1    └─release/r4.2
+              ↓                  ↓
+            tag:r4.1          tag:r4.2
+```
+
+### Maintenance Branches
+
+For maintaining older release cycles after new major releases:
+
+```
+main ──────┬────────────────────────────► r5.x development
+           │
+           └─maintenance-r3─────┬──────► r3.x maintenance (r3.4, r3.5...)
+                                 │
+                                 └─release/r3.4
+                                      ↓
+                                    tag:r3.4
+```
+
+**Creation strategy**:
+- Created from the last commit on `main` that was included in the release cycle to maintain
+- Named `maintenance-rX` where X is the release cycle (e.g., r3 for r3.1, r3.2, r3.3...)
+- Used for patch releases (r3.4, r3.5) containing API bug fixes
+- New API minor versions go into new release cycles on `main`
+
+**Important**: Maintenance branches are tied to **release cycles** (r3.x), not API versions. A maintenance branch can produce r3.4, r3.5 etc., each potentially containing different patch versions of the APIs.
+
+### Updating Release Branch from Main
+
+During release preparation, if critical fixes are needed:
+
+1. **Fix in main**: Create PR to `main` with the fix
+2. **Update release branch**: Either:
+   - Cherry-pick specific commits from `main` to release branch
+   - Merge `main` into release branch (if many changes)
+   - Rebase release branch on `main` (cleanest history)
+
+```
+main ────┬───[fix]───────┬──────► 
+         │               │
+         └─release/r4.1──┴──────► (updated with fix)
+```
+
+### Post-Release PR Explained
+
+After a release is tagged, a **selective** PR is created back to `main`:
+
+```
+main ────┬──────────────────[PR: selective updates]───► 
+         │                           ↑
+         └─release/r4.1─────────────┘
+                    ↓
+                  tag:r4.1
+```
+
+**What gets merged** (cherry-picked):
+- CHANGELOG entries for the release
+- README updates with latest stable version links
+
+**What does NOT get merged**:
+- API version changes (main stays at `wip`)
+- Server URL changes (main keeps `vwip`)
+- Release-specific metadata
+
+**Purpose**: Makes release information visible in the default branch without disrupting ongoing development. This is NOT a full merge but a selective update of documentation only.
+
