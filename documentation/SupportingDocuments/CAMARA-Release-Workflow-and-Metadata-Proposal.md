@@ -39,7 +39,7 @@ We are proposing the following objectives to modernize and automate the CAMARA r
 
 | Term                   | Description |
 |------------------------|-------------|
-| `meta_release`         | Meta-release timeline (e.g., `Fall26`) |
+| `meta_release`         | Meta-release label (e.g., `Fall26`) |
 | `release_number`       | CAMARA release identifier within (e.g., `r4.1`). Distinct from API SemVer. |
 | `release_status`       | Status of the (planned) (pre-)release: `alpha`, `rc`, or `release`. |
 | `api_status`           | Per-API maturity used for gating validations. |
