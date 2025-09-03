@@ -84,8 +84,8 @@ apis:
     main_contacts:
       - githubUser4
 
-commonalities_version: 1.2.0-rc.1
-identity_consent_management_version: 1.1.0
+commonalities_version: r4.2
+identity_consent_management_version: r4.3
 ```
 
 👉 Notes:
@@ -109,7 +109,7 @@ Generated automatically from the release plan and committed before tagging. Pres
 release_number: r4.1
 meta_release: Fall26
 release_date: 2025-11-22
-status: alpha
+status: pre-release
 
 apis:
   - name: location-verification
@@ -121,10 +121,10 @@ apis:
   - name: some-new-location-service
     version: 0.1.0-alpha.1
 
-commonalities_version: 1.2.0-rc.1
-identity_consent_management_version: 1.1.0
-commit_sha: abcd1234efgh5678
-release_notes: Initial alpha release for CAMARA Fall26 release cycle.
+commonalities_version: r4.2 (1.2.0-rc.1) 
+identity_consent_management_version: r4.3 (1.1.0)
+src_commit_sha: abcd1234efgh5678  # Last commit from main or maintenance branch included in this release
+release_notes: Pre-release for CAMARA Fall26 release cycle.
 ```
 
 ## End-to-End Workflow
@@ -159,8 +159,8 @@ Upon triggering the release (via labeled issue - maintainers+ can trigger by add
   - Sets exact API versions using `target_version` + auto-calculated suffix (e.g., `-rc.2` based on consecutive numbering across API lifecycle)
   - Enforces CAMARA versioning rules: info.version matches tag, server URLs follow v0.x or vx patterns
   - Writes `release-metadata.yaml`
-  - Replaces all `wip` markers in metadata
-  - Commits consistent/structured changelog, README, and checklist artifacts
+  - Replaces all placeholder markers in repository files
+  - Commits consistent/structured CHANGELOG, README, and checklist artifacts
 
 ✅ Benefits:
 - Avoids fragile manual editing
