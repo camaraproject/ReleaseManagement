@@ -41,7 +41,7 @@ We are proposing the following objectives to modernize and automate the CAMARA r
 |------------------------|-------------|
 | `meta_release`         | Meta-release timeline (e.g., `Fall26`) |
 | `release_number`       | CAMARA release identifier within (e.g., `r4.1`). Distinct from API SemVer. |
-| `release_status`       | Status of the (planned) (pre-)release: `alpha`, `rc`, or `release`. |
+| `release_readiness`    | Repository readiness: `none` (not ready), `pre-release` (mixed maturity), `pre-release-rc` (rc minimum), `public-release` (all stable). |
 | `api_status`           | Per-API status type (`draft`, `alpha`, `rc`, `release`) for gating validations. Extension numbers are auto-calculated. |
 | `main_contacts`        | GitHub handles of code owners or maintainers (per API in `release-plan.yaml`). |
 | `main` branch          | Development branch. All content is work-in-progress (`version: wip`). |
@@ -61,7 +61,7 @@ meta_release: Fall26 # default as long not eligible or planned for a meta-releas
 
 release_number: r4.1
 
-release_status: alpha  # must be one of: draft, alpha, rc, release
+release_readiness: pre-release  # Repository ready for pre-release with mixed API maturity levels
 
 apis:
   - name: location-verification
@@ -88,10 +88,12 @@ identity_consent_management_version: 1.1.0
 ```
 
 👉 Notes:
-- All APIs must meet the minimum `api_status` for the current `release_status`.
-- `draft` status can't be released 
-- APIs below the threshold block tagging (enforced via CI).
-- Changes to the file can only be merged into main if the APIs and the repository are fulfilling the intendent status.
+- Release readiness determines what type of release can be created:
+  - `none`: No release possible
+  - `pre-release`: Can release with mixed API maturity (alpha, rc, release)
+  - `pre-release-rc`: Requires all APIs at rc or release status (M3 milestone)
+  - `public-release`: Requires all APIs at release status
+- CI validates that API statuses match the declared release readiness level.
 
 ### 2. `release-metadata.yaml` (on release branch)
 
