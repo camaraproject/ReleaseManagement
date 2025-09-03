@@ -42,7 +42,7 @@ We are proposing the following objectives to modernize and automate the CAMARA r
 | `meta_release`         | Meta-release timeline (e.g., `Fall26`) |
 | `release_number`       | CAMARA release identifier within (e.g., `r4.1`). Distinct from API SemVer. |
 | `release_status`       | Status of the (planned) (pre-)release: `alpha`, `rc`, or `release`. |
-| `api_status`           | Per-API maturity used for gating validations. |
+| `api_status`           | Per-API status type (`draft`, `alpha`, `rc`, `release`) for gating validations. Extension numbers are auto-calculated. |
 | `main_contacts`        | GitHub handles of code owners or maintainers (per API in `release-plan.yaml`). |
 | `main` branch          | Development branch. All content is work-in-progress (`version: wip`). |
 | Release branch         | Dedicated release preparation branch per (pre-)release (e.g., `release/r4.1`). |
@@ -66,7 +66,7 @@ release_status: alpha  # must be one of: draft, alpha, rc, release
 apis:
   - name: location-verification
     target_version: 3.2.0
-    api_status: rc
+    api_status: rc  # Status type only; extension numbers (e.g., rc.2) are auto-calculated
     main_contacts:
       - githubUser1
       - githubUser2
@@ -145,7 +145,7 @@ Upon triggering the release (e.g., via GitHub issue or label):
 
 - A release branch is created (e.g. `release/r4.1`)
 - A script or GitHub Action:
-  - Sets exact API versions using `target_version` + derived suffix (`-rc.1`, etc.)
+  - Sets exact API versions using `target_version` + auto-calculated suffix (e.g., `-rc.2` based on consecutive numbering across API lifecycle)
   - Writes `release-metadata.yaml`
   - Replaces all `wip` markers in metadata
   - Commits consistent/structured changelog, README, and checklist artifacts
