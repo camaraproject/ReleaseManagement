@@ -42,7 +42,7 @@ We are proposing the following objectives to modernize and automate the CAMARA r
 | `meta_release`         | Meta-release timeline (e.g., `Fall26`) |
 | `release_number`       | CAMARA release identifier within (e.g., `r4.1`). Distinct from API SemVer. |
 | `release_readiness`    | Repository readiness: `none` (not ready), `pre-release` (mixed maturity), `pre-release-rc` (rc minimum), `public-release` (all stable), `patch-release` (maintenance). |
-| `api_status`           | Per-API status: `planned` (not yet in repo), `alpha`, `rc`, `release`. Extension numbers are auto-calculated. |
+| `api_status`           | Per-API status: `planned` (not yet in repo), `unchanged` (no changes from previous release), `alpha`, `rc`, `release`. Extension numbers are auto-calculated. |
 | `main_contacts`        | GitHub handles of code owners or maintainers (per API in `release-plan.yaml`). |
 | `main` branch          | Development branch. All content is work-in-progress (`version: wip`). |
 | Maintenance branch     | Long-lived branch for maintaining older release cycles (e.g., `maintenance-r3`). See Appendix for details. |
@@ -89,8 +89,9 @@ identity_consent_management_version: 1.1.0
 ```
 
 👉 Notes:
-- API status progression: `planned` → `alpha` → `rc` → `release`
+- API status progression: `planned` → `alpha` → `rc` → `release` (or `unchanged` for existing APIs)
   - `planned`: API declared in release-plan.yaml but not yet in repository (CI skips validation)
+  - `unchanged`: API remains at previous release version, no changes allowed (CI blocks modifications)
   - `alpha`+: API file must exist and pass validation at declared maturity level
 - Release readiness determines what type of release can be created:
   - `none`: No release possible (APIs missing or only planned)
@@ -138,6 +139,7 @@ release_notes: Initial alpha release for CAMARA Fall26 release cycle.
   - Adherence to CAMARA guidelines based on the declared `release_readiness` and `api_status`
   - APIs with status `alpha` or higher must exist and meet validation criteria
   - APIs with status `planned` are skipped (allows declaration before implementation)
+  - APIs with status `unchanged` must not be modified (enforces no changes to API or test files)
 - CI also raises non-blocking warnings about issues that must be addressed to enable promotion to the next stage (e.g., from `alpha` to `rc`, or `rc` to `release`).
 - All validation results are summarized in the CI output and posted as comments in the PR, helping developers stay informed and proactive.
 
