@@ -129,7 +129,8 @@ release_notes: Initial alpha release for CAMARA Fall26 release cycle.
 - `release-plan.yaml` defines the roadmap and desired targets for the upcoming (pre-)release.
 - CI gates validate:
   - Formatting and schema correctness
-  - Adherence to CAMARA guidelines based on the declared `release_status` and `api_status`
+  - Strict version consistency: info.version format, server URL patterns per CAMARA rules
+  - Adherence to CAMARA guidelines based on the declared `release_readiness` and `api_status`
   - Status progression logic (e.g., `rc` requires all APIs to be at least `rc`)
 - CI also raises non-blocking warnings about issues that must be addressed to enable promotion to the next stage (e.g., from `alpha` to `rc`, or `rc` to `release`).
 - All validation results are summarized in the CI output and posted as comments in the PR, helping developers stay informed and proactive.
@@ -148,6 +149,7 @@ Upon triggering the release (via labeled issue - maintainers+ can trigger by add
 - A release branch is created (e.g. `release/r4.1`)
 - A script or GitHub Action:
   - Sets exact API versions using `target_version` + auto-calculated suffix (e.g., `-rc.2` based on consecutive numbering across API lifecycle)
+  - Enforces CAMARA versioning rules: info.version matches tag, server URLs follow v0.x or vx patterns
   - Writes `release-metadata.yaml`
   - Replaces all `wip` markers in metadata
   - Commits consistent/structured changelog, README, and checklist artifacts
