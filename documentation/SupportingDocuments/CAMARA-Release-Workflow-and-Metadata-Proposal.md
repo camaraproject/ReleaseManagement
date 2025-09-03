@@ -143,7 +143,7 @@ release_notes: Initial alpha release for CAMARA Fall26 release cycle.
 
 ### Step 2: Automated Release Branch Creation
 
-Upon triggering the release (e.g., via GitHub issue or label):
+Upon triggering the release (via labeled issue - maintainers+ can trigger by adding `trigger-release` or `trigger-pre-release` label):
 
 - A release branch is created (e.g. `release/r4.1`)
 - A script or GitHub Action:
@@ -160,7 +160,7 @@ Upon triggering the release (e.g., via GitHub issue or label):
 
 Manual review and adjustments happen through “release preparation PRs” into the release branch.
 
-- Only release managers can merge to release branches (via branch protection).
+- Release PRs require approval from codeowner(s) and release reviewer(s) (via branch protection).
 - Review covers CHANGELOG, checklist, metadata correctness.
 
 If problems are found in API specs or implementation:
