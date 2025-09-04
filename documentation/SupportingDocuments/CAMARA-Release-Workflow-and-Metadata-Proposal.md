@@ -241,7 +241,7 @@ See Appendix for detailed branching diagrams and maintenance strategy.
 |------------------------|----------------------------------------------------------------------------------------------|
 | Separation of concerns | `main` can always be integrated or reworked — no release state mixed in                     |
 | Consistent metadata    | Metadata is parseable, validatable, and source-of-truth for release tooling                 |
-| Flexible compliance    | Pre-release vs public release phases are enforced via `release_status`/`api_status`         |
+| Flexible compliance    | Pre-release vs public release phases are enforced via `release_readiness`/`api_status`      |
 | CI-friendly            | No fragile manual checks — all validations declarative, structural, and branch-aware        |
 | Collaborative review   | All critical changes reviewed like any other PR                                              |
 | Traceable results      | Tag, commit SHA, and metadata captured in release snapshot                                  |
@@ -279,7 +279,7 @@ See Appendix for detailed branching diagrams and maintenance strategy.
 
 ### ❗ The Problem
 
-In the current CAMARA workflow, we risk repeating the problems caused by “monolithic” release PRs — where contributors update `release-plan.yaml` to promote an API (e.g., from `draft` to `rc`) and simultaneously attempt to fix all blocking issues in the same PR. These PRs are hard to review, difficult to verify, and blur responsibility between status declaration and implementation compliance.
+In the current CAMARA workflow, we risk repeating the problems caused by "monolithic" release PRs — where contributors update `release-plan.yaml` to promote an API (e.g., from `planned` to `rc`) and simultaneously attempt to fix all blocking issues in the same PR. These PRs are hard to review, difficult to verify, and blur responsibility between status declaration and implementation compliance.
 
 Worse, when deadlines are near, this approach encourages rush patches and discourages proper code review.
 
@@ -294,7 +294,7 @@ A pull request to `main` may either:
 but ❌ not both.
 
 This applies particularly to:
-- Status changes in `release_status` or per-API `api_status`
+- Status changes in `release_readiness` or per-API `api_status`
 - Dependency updates, such as upgrading `commonalities_version`
 
 #### 2. **CI Validation of Metadata-only PRs**
