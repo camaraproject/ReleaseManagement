@@ -62,7 +62,7 @@ meta_release: Fall26 # default as long not eligible or planned for a meta-releas
 
 release_number: r4.1
 
-release_readiness: pre-release  # Repository ready for pre-release with mixed API maturity levels
+release_readiness: pre-release  # Repository ready for pre-release with mixed API maturity
 
 apis:
   - name: location-verification
@@ -92,14 +92,14 @@ identity_consent_management_version: r4.3
 - API status progression: `planned` → `alpha` → `rc` → `public` (or `unchanged` for existing APIs)
   - `planned`: API declared in release-plan.yaml but not yet in repository (CI skips validation)
   - `unchanged`: API remains at previous release version, no changes allowed (CI blocks modifications)
-  - `alpha`+: API file must exist and pass validation at declared maturity level
+  - `alpha`+: API file must exist and pass validation at declared maturity
 - Release readiness determines what type of release can be created:
   - `none`: No release possible (APIs missing or only planned)
   - `pre-release`: Can release with mixed API maturity (alpha, rc, public)
   - `pre-release-rc`: Requires all APIs at rc or public status (M3 milestone)
   - `public-release`: Requires all APIs at public status
   - `patch-release`: For maintenance/hotfix releases from maintenance branches
-- CI validates that API statuses match the declared release readiness level.
+- CI validates that API statuses match the declared release readiness.
 
 ### 2. `release-metadata.yaml` (on release branch)
 
