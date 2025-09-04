@@ -41,7 +41,7 @@ We are proposing the following objectives to automate the CAMARA release process
 |------------------------|-------------|
 | `meta_release`         | Meta-release label (e.g., `Fall26`) |
 | `release_number`       | CAMARA release tag (e.g., `r4.1`). Distinct from API SemVer. |
-| `release_readiness`    | Repository readiness: `none` (not ready), `pre-release` (mixed maturity), `pre-release-rc` (rc minimum), `public-release` (all stable), `patch-release` (maintenance). |
+| `release_readiness`    | Release phase: `none` (not ready), `pre-release` (mixed maturity), `pre-release-rc` (rc minimum), `public-release` (all stable), `patch-release` (maintenance). |
 | `api_status`           | Per-API status: `planned` (not yet in repo), `unchanged` (no changes from previous release), `alpha`, `rc`, `public`. Extension numbers are auto-calculated. |
 | `main_contacts`        | GitHub handles of code owners or maintainers (per API in `release-plan.yaml`). |
 | `main` branch          | Development branch. All content is work-in-progress (`version: wip`). |
@@ -159,8 +159,8 @@ Upon triggering the release (via labeled issue - maintainers+ can trigger by add
   - Sets exact API versions using `target_version` + auto-calculated suffix (e.g., `-rc.2` based on consecutive numbering across API lifecycle)
   - Enforces CAMARA versioning rules: info.version matches tag, server URLs follow v0.x or vx patterns
   - Writes `release-metadata.yaml`
-  - Replaces placeholder markers (e.g., `{{api_version}}`, `{{commonalities_version}}`) in repository files
-  - Updates external references to point to specific dependency release tags
+  - Replaces placeholder markers (e.g., `{{api_version}}`, `{{commonalities_version}}`) in repository files, including updated template text from Commonalities/ICM and structures from CAMARA_common.yaml
+  - Updates external references to point to specific dependency release tags (Note: Cross-repository reference handling, validation, and bundling complexities are addressed in a later implementation phase)
   - Commits consistent/structured CHANGELOG, README, and checklist artifacts
 
 ✅ Benefits:
