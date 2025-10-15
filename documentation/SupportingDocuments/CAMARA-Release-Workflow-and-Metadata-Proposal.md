@@ -1,39 +1,30 @@
-# CAMARA Release Workflow and Metadata Specification  
-*Version: Proposal – Concept Phase*
+# CAMARA Release Workflow and Metadata Specification
+*Version 0.1*
 
-## Summary of Current Situation and Pain Points
+## Objectives
 
-CAMARA currently coordinates releases using manual practices across GitHub repositories and external tools (e.g. a Confluence-based tracker), which presents multiple challenges:
+This workflow concept establishes an automated release process for CAMARA that addresses key challenges in managing multi-repository releases:
 
-- **Manual Release Tracking in Wiki:**  
-  Status tracking is maintained manually using wiki pages, which cannot support automation or flexible reporting. Synchronizing scope and status across repositories requires redundant effort and is error-prone.
+**Replace manual wiki-based tracking** with structured, machine-readable metadata files that enable automation, flexible reporting, and consistent status synchronization across repositories.
 
-- **Informal Release PRs Merged into `main`:**  
-  Releases rely on manually created PRs that are merged into `main` before tagging. These PRs often include version updates, changelog edits, and last-minute changes, introducing risk and inconsistency.
+**Establish clear separation** between development work and release preparation by keeping the `main` branch in a consistent work-in-progress state with version fields as `"wip"`, while using dedicated release branches per (pre-)release for alpha, rc, and public releases.
 
-- **Limited CI Enforcement on `main`:**  
-  While MegaLinter is integrated for YAML and Gherkin, there is no structured validation for metadata files or enforcement of CAMARA-specific release guidelines.
+**Enable structured validation and enforcement** through CI gating on PRs to `main`, replacing limited validation with complete checks for metadata files and CAMARA-specific release guidelines.
 
-- **Unclear Versioning and Branching Strategy:**  
-  Metadata and version fields are frequently changed manually in `main` prior to release, only to be reset afterward. Changes made directly in release PRs are hard to trace and review.
+**Provide transparent and traceable release preparation** by using dedicated release branches and release preparation PRs with structured approvals, avoiding informal PRs merged directly into `main` that mix version updates, changelog edits, and last-minute changes.
 
-- **Minimal Automation for Changelogs and Checklists:**  
-  CHANGELOG generation is mostly manual. The API Readiness Checklist is not fully automated and depends on manual cross-checks.
+**Support flexible versioning strategy** by keeping CAMARA release numbering (`rX.Y`) distinct from API semantic versioning, with clear metadata-driven version management instead of manual field updates in `main` that must be reset after releases.
 
-## Proposed Objectives and Guiding Principles
+**Enable progressive automation** for release artifacts including CHANGELOG generation and API Readiness Checklist validation, reducing manual cross-checks and enabling consistent artifact creation.
 
-We are proposing the following objectives to automate the CAMARA release process:
+The workflow achieves these objectives through:
 
-- ✅ Clearly separate development intent (planning) from released state (actual).
-- ✅ Keep the `main` branch in a consistent "work in progress" (WIP) state with version fields as `"wip"`.
-- ✅ Use dedicated **release branches per (pre-)release** (e.g. for alpha, rc, public).
-- ✅ Provide structured **metadata files (in YAML)** to support automation and CI.
-- ✅ Keep CAMARA **release numbering (`rX.Y`)** distinct from API **semantic versioning**.
-- ✅ Enforce CI gating on PRs to `main`.
-- ✅ Restrict release branch changes to authorized release managers.
-- ✅ Automate creation of release branches and generation of release metadata.
-- ✅ Use **Release preparation PRs** into release branches for structured approvals.
-- ✅ Handle specification or implementation feedback via PRs into `main`, and re-update the release branch as necessary.
+- Structured **metadata files (in YAML)** as authoritative source for release planning and status
+- Dedicated **release branches per (pre-)release** with automated preparation and validation
+- **CI enforcement** on PRs to `main` ensuring correctness before merge
+- **Branch protection** restricting release branch changes to authorized release managers
+- **Release preparation PRs** into release branches for collaborative review
+- **Feedback integration** via PRs into `main`, with controlled updates to release branches as necessary
 
 ## Terminology
 
@@ -145,10 +136,9 @@ apis:
 - CI also raises non-blocking warnings about issues that must be addressed to enable promotion to the next stage (e.g., from `alpha` to `rc`, or `rc` to `public`).
 - All validation results are summarized in the CI output and posted as comments in the PR, helping developers stay informed and proactive.
 
-✅ Benefits:
+**Rationale:**
 - Prevents invalid or incomplete content from entering `main`
-- Ensures developers align with release status expectations early
-- Encourages iterative, forward-looking quality improvements
+- Ensures developers align with repository release readiness expectations early
 - Keeps readiness transparent across reviewers, contributors, and release managers
 - Allows optional enforcement that metadata updates (e.g., status changes) must be done in dedicated PRs separate from implementation changes
 
@@ -165,9 +155,9 @@ Upon triggering the release (via labeled issue - maintainers+ can trigger by add
   - Updates external references to point to specific dependency release tags (Note: Cross-repository reference handling, validation, and bundling complexities are addressed in a later implementation phase)
   - Commits consistent/structured CHANGELOG, README, and checklist artifacts
 
-✅ Benefits:
-- Avoids fragile manual editing
-- Creates trusted, reviewable release state before tag
+**Rationale:**
+- Avoids fragile manual editing of version fields and metadata
+- Creates verified, reviewable release state before tag
 
 ### Step 3: Review via Release Preparation PRs
 
@@ -181,9 +171,9 @@ If problems are found in API specs or implementation:
 - Update (or rebase) release branch from `main`
 - Regenerate release metadata/artifacts
 
-✅ Benefits:
-- Keeps the actual release clean, visible, and traceable
-- Ensures specification fixes flow through formal code review
+**Rationale:**
+- Keeps release preparation clean, visible, and traceable
+- Ensures specification fixes flow through formal code review on `main`
 
 ### Step 4: Tag and Generate Release
 
@@ -196,8 +186,8 @@ After approval:
   - Generated documentation
   - Release metadata files
 
-✅ Benefits:
-- Fully traceable, repeatable state for each tagged release
+**Rationale:**
+- Provides traceable, repeatable state for each tagged release
 
 ### Step 5: Post-Release Actions
 
@@ -220,10 +210,10 @@ After release is tagged and published:
 - Reference for comparing API changes in next release
 - Note: This is NOT a release tag, just a reference marker
 
-✅ Benefits:
-- Bridges visibility, avoids disrupting ongoing WIP development state
-- Clear reference points for maintenance and comparison
-- Enforces explicit planning after public releases
+**Rationale:**
+- Provides visibility into releases without disrupting ongoing work-in-progress development state in `main`
+- Establishes clear reference points for maintenance branch creation and change comparison
+- Enforces explicit planning for next release cycle after public releases
 
 ### Step 6: Maintenance and Patch Releases
 
@@ -330,7 +320,7 @@ This applies particularly to:
 2. Once CI passes and no blocking issues remain, they open a small metadata-only PR updating the `api_status` from `alpha` to `rc`.
 3. CI detects the change, runs combined checks, and approves if valid.
 
-This enforces discipline, ensures correctness, and maintains oversight — without compromising developer agility.
+This enforces discipline, validates correctness, and maintains oversight — without compromising developer agility.
 
 ## Appendix: Branching Strategy Clarification
 
