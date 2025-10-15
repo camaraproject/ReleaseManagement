@@ -41,7 +41,7 @@ We are proposing the following objectives to automate the CAMARA release process
 |------------------------|-------------|
 | `meta_release`         | Meta-release label (e.g., `Fall26`) |
 | `release_number`       | CAMARA release tag (e.g., `r4.1`). Distinct from API SemVer. |
-| `release_readiness`    | Release phase: `none` (not ready), `pre-release` (mixed maturity), `pre-release-rc` (rc minimum), `public-release` (all stable), `patch-release` (maintenance). |
+| `release_readiness`    | Repository release phase: `none` (not ready), `pre-release` (mixed maturity), `pre-release-rc` (rc minimum), `public-release` (all stable), `patch-release` (maintenance). |
 | `api_status`           | Per-API status: `planned` (not yet in repo), `unchanged` (no changes from previous release), `alpha`, `rc`, `public`. Extension numbers are auto-calculated. |
 | `main_contacts`        | GitHub handles of code owners or maintainers (per API in `release-plan.yaml`). |
 | `main` branch          | Development branch. All content is work-in-progress (`version: wip`). |
@@ -58,11 +58,14 @@ All metadata files are YAML-based and versioned in the repository. They serve as
 Planning metadata owned by codeowners, manually updated and CI-validated. Contains only forward-looking release plans, not historical data.
 
 ```yaml
-meta_release: Fall26 # default as long not eligible or planned for a meta-release: Other
+repository:
+  meta_release: Fall26  # default as long not eligible or planned for a meta-release: Other
+  release_number: r4.1
+  release_readiness: pre-release  # Repository ready for pre-release with mixed API maturity
 
-release_number: r4.1
-
-release_readiness: pre-release  # Repository ready for pre-release with mixed API maturity
+dependencies:
+  commonalities_version: r4.2
+  identity_consent_management_version: r4.3
 
 apis:
   - name: location-verification
@@ -83,9 +86,6 @@ apis:
     api_status: alpha
     main_contacts:
       - githubUser4
-
-commonalities_version: r4.2
-identity_consent_management_version: r4.3
 ```
 
 👉 Notes:
@@ -93,23 +93,30 @@ identity_consent_management_version: r4.3
   - `planned`: API declared in release-plan.yaml but not yet in repository (CI skips validation)
   - `unchanged`: API remains at previous release version, no changes allowed (CI blocks modifications)
   - `alpha`+: API file must exist and pass validation at declared maturity
-- Release readiness determines what type of release can be created:
+- Repository release readiness determines what type of release can be created:
   - `none`: No release possible (APIs missing or only planned)
   - `pre-release`: Can release with mixed API maturity (alpha, rc, public)
   - `pre-release-rc`: Requires all APIs at rc or public status (M3 milestone)
   - `public-release`: Requires all APIs at public status
   - `patch-release`: For maintenance/hotfix releases from maintenance branches
-- CI validates that API statuses match the declared release readiness.
+- CI validates that API statuses match the declared repository release readiness.
 
 ### 2. `release-metadata.yaml` (on release branch)
 
 Generated automatically from the release plan and committed before tagging. Preserved in each release tag, providing complete release history.
 
 ```yaml
-release_number: r4.1
-meta_release: Fall26
-release_date: 2025-11-22
-status: pre-release
+repository:
+  release_number: r4.1
+  meta_release: Fall26
+  release_date: 2025-11-22  # Actual release date (set at release time)
+  status: pre-release
+  src_commit_sha: abcd1234efgh5678  # Last commit from main or maintenance branch included in this release
+  release_notes: Pre-release for CAMARA Fall26 release cycle.
+
+dependencies:
+  commonalities_version: r4.2 (1.2.0-rc.1)
+  identity_consent_management_version: r4.3 (1.1.0)
 
 apis:
   - name: location-verification
@@ -120,11 +127,6 @@ apis:
 
   - name: some-new-location-service
     version: 0.1.0-alpha.1
-
-commonalities_version: r4.2 (1.2.0-rc.1) 
-identity_consent_management_version: r4.3 (1.1.0)
-src_commit_sha: abcd1234efgh5678  # Last commit from main or maintenance branch included in this release
-release_notes: Pre-release for CAMARA Fall26 release cycle.
 ```
 
 ## End-to-End Workflow
@@ -136,7 +138,7 @@ release_notes: Pre-release for CAMARA Fall26 release cycle.
 - CI gates validate:
   - Formatting and schema correctness
   - Strict version consistency: info.version format, server URL patterns per CAMARA rules
-  - Adherence to CAMARA guidelines based on the declared `release_readiness` and `api_status`
+  - Adherence to CAMARA guidelines based on the declared repository `release_readiness` and `api_status`
   - APIs with status `alpha` or higher must exist and meet validation criteria
   - APIs with status `planned` are skipped (allows declaration before implementation)
   - APIs with status `unchanged` must not be modified (enforces no changes to API or test files)
@@ -241,7 +243,7 @@ See Appendix for detailed branching diagrams and maintenance strategy.
 |------------------------|----------------------------------------------------------------------------------------------|
 | Separation of concerns | `main` can always be integrated or reworked — no release state mixed in                     |
 | Consistent metadata    | Metadata is parseable, validatable, and source-of-truth for release tooling                 |
-| Flexible compliance    | Pre-release vs public release phases are enforced via `release_readiness`/`api_status`      |
+| Flexible compliance    | Pre-release vs public release phases are enforced via repository `release_readiness` and `api_status` |
 | CI-friendly            | No fragile manual checks — all validations declarative, structural, and branch-aware        |
 | Collaborative review   | All critical changes reviewed like any other PR                                              |
 | Traceable results      | Tag, commit SHA, and metadata captured in release snapshot                                  |
@@ -294,7 +296,7 @@ A pull request to `main` may either:
 but ❌ not both.
 
 This applies particularly to:
-- Status changes in `release_readiness` or per-API `api_status`
+- Status changes in repository `release_readiness` or per-API `api_status`
 - Dependency updates, such as upgrading `commonalities_version`
 
 #### 2. **CI Validation of Metadata-only PRs**
