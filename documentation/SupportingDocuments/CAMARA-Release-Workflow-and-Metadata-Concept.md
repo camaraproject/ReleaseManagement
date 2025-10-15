@@ -247,11 +247,11 @@ See Appendix for detailed branching diagrams and maintenance strategy.
 - Post-release: Generate and attach `release-metadata.yaml` as release artifacts (can be added after release)
 
 ### Spring26 (October 2025 - March 2026)
-- All repositories add `release-plan.yaml` for Spring26 planning
+- All repositories add `release-plan.yaml` with their planning e.g. for Fall26 (based on pre-populated file)
 - Auto-generate meta-release overview tables from YAML files
 - Wiki tracker pages deprecated (no longer maintained)
 - **Parallel operation**: Manual and automated release process (selected repositories as early adopters)
-- **Ambition**: Spring26 M4 milestone automated for all participating repositories
+- **Ambition**: Spring26 M4 milestone automated for all participating API repositories
 
 ### Fall26 (April 2026)
 - Full automation implementation
