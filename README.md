@@ -16,7 +16,7 @@ Repository to describe, develop, document and test the Release Management proces
 
 ## Release Process Information
 
-**The Release Management documents describes the processes and the repository provides the artifacts for use by API Sub projects to release an API version.**
+**The Release Management documents describe the CAMARA meta-release and API release processes, contibute the API versioning guidelines, and provides the artifacts for use by API Sub projects to release an API version.**
 
 It contains the Release Management released documents and assests in the **documentation** folder:
    - [API_Release_Guidelines.md](/documentation/API_Release_Guidelines.md) - An extract of the API release management process from the CAMARA wiki.
