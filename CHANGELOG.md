@@ -2,10 +2,34 @@
 
 ## Table of Contents
 
+- **[r3.1](#r31)**
 - **[r2.2](#r22)**
 - **[r2.1](#r21)**
 - **[r1.2](#r12)**
 - **[r1.1](#r11)**
+
+# r3.1
+
+## Release Notes
+
+**This release captures the Release Management documents with version 0.4.0 used in the Fall25 meta-release.**
+
+This release includes updates to the API release process documentation, introduction of automated API review workflows, and enhancements to the API readiness checklist. This release provides a reference point before preparing the Spring26 meta-release.
+
+### Added
+
+* Add API description requirement to API-Readiness-Checklist by @tanjadegroot in https://github.com/camaraproject/ReleaseManagement/pull/209
+* Add Sandbox related information to API Release Guidelines by @tanjadegroot in https://github.com/camaraproject/ReleaseManagement/pull/219
+* Create api-review-trigger workflow for automated API compliance reviews by @hdamker in https://github.com/camaraproject/ReleaseManagement/pull/270
+
+### Changed
+
+* Update API-Readiness-Checklist with API description requirement and clarify API documentation field by @tanjadegroot and @hdamker in https://github.com/camaraproject/ReleaseManagement/pull/209
+* Update API Release Guidelines to include Sandbox teams participation in meta-releases by @tanjadegroot in https://github.com/camaraproject/ReleaseManagement/pull/219
+* Update CHANGELOG template to use camaraproject swagger-ui instead of editor.swagger.io in https://github.com/camaraproject/ReleaseManagement/pull/230
+* Update Fall25 M3 review issue template by @rartych in https://github.com/camaraproject/ReleaseManagement/pull/222
+
+**Full Changelog**: https://github.com/camaraproject/ReleaseManagement/compare/r2.2...r3.1
 
 # r2.2
 
