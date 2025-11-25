@@ -31,7 +31,7 @@ The workflow achieves these objectives through:
 | Term                   | Description |
 |------------------------|-------------|
 | `meta_release`         | Meta-release label (e.g., `Fall26`) |
-| `release_number`       | CAMARA release tag (e.g., `r4.1`). Distinct from API SemVer. |
+| `release_tag`          | CAMARA release tag (e.g., `r4.1`). Distinct from API SemVer. |
 | `release_readiness`    | Repository release phase: `none` (not ready), `pre-release` (mixed maturity), `pre-release-rc` (rc minimum), `public-release` (all stable), `patch-release` (maintenance). |
 | `api_status`           | Per-API status: `planned` (not yet in repo), `unchanged` (no changes from previous release), `alpha`, `rc`, `public`. Extension numbers are auto-calculated. |
 | `main_contacts`        | GitHub handles of code owners or maintainers (per API in `release-plan.yaml`). |
@@ -51,7 +51,7 @@ Planning metadata owned by codeowners, manually updated and CI-validated. Contai
 ```yaml
 repository:
   meta_release: Fall26  # default as long not eligible or planned for a meta-release: Other
-  release_number: r4.1
+  release_tag: r4.1
   release_readiness: pre-release  # Repository ready for pre-release with mixed API maturity
 
 dependencies:
@@ -59,20 +59,20 @@ dependencies:
   identity_consent_management_version: r4.3
 
 apis:
-  - name: location-verification
+  - api_name: location-verification
     target_version: 3.2.0
     api_status: rc  # Status type only; extension numbers (e.g., rc.2) are auto-calculated
     main_contacts:
       - githubUser1
       - githubUser2
 
-  - name: location-retrieval
+  - api_name: location-retrieval
     target_version: 0.5.0
     api_status: rc
     main_contacts:
       - githubUser3
 
-  - name: some-new-location-service
+  - api_name: some-new-location-service
     target_version: 0.1.0
     api_status: alpha
     main_contacts:
@@ -98,9 +98,10 @@ Generated automatically from the release plan and committed before tagging. Pres
 
 ```yaml
 repository:
-  release_number: r4.1
+  repository_name: DeviceLocation
+  release_tag: r4.1
   meta_release: Fall26
-  release_date: 2025-11-22  # Actual release date (set at release time)
+  release_date: 2025-11-22T14:30:00Z  # Actual release date and time in ISO 8601 format (UTC)
   status: pre-release
   src_commit_sha: abcd1234efgh5678  # Last commit from main or maintenance branch included in this release
   release_notes: Pre-release for CAMARA Fall26 release cycle.
@@ -110,14 +111,17 @@ dependencies:
   identity_consent_management_version: r4.3 (1.1.0)
 
 apis:
-  - name: location-verification
+  - api_name: location-verification
     version: 3.2.0-rc.2
+    title: "Location Verification"
 
-  - name: location-retrieval
+  - api_name: location-retrieval
     version: 0.5.0-rc.1
+    title: "Location Retrieval"
 
-  - name: some-new-location-service
+  - api_name: some-new-location-service
     version: 0.1.0-alpha.1
+    title: "Some New Location Service"
 ```
 
 ## End-to-End Workflow

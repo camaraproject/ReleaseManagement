@@ -9,7 +9,7 @@
 
 repository:
   meta_release: Fall25
-  release_number: r3.4
+  release_tag: r3.4
   release_readiness: patch-release
 
 dependencies:
@@ -17,13 +17,13 @@ dependencies:
   identity_consent_management_version: r3.3
 
 apis:
-  - name: sim-swap
+  - api_name: sim-swap
     target_version: 2.1.1
     api_status: public
     main_contacts:
       - simswapMaintainer
 
-  - name: sim-swap-subscriptions
+  - api_name: sim-swap-subscriptions
     target_version: 0.3.0
     api_status: unchanged
     main_contacts:

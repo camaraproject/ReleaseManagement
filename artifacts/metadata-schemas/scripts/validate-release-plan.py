@@ -152,7 +152,7 @@ class MetadataValidator:
         # Check version format consistency with status
         if status == 'public' and version.startswith('0.'):
             self.warnings.append(
-                f"API '{api.get('name')}' has 'public' status but version {version} starts with 0.x"
+                f"API '{api.get('api_name')}' has 'public' status but version {version} starts with 0.x"
             )
 
     def check_file_existence(self, metadata: Dict[str, Any]) -> None:
@@ -164,7 +164,7 @@ class MetadataValidator:
         metadata_dir = self.metadata_file.parent
 
         for api in apis:
-            api_name = api.get('name')
+            api_name = api.get('api_name')
             api_status = api.get('api_status')
 
             # Skip file checks for planned APIs

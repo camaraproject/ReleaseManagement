@@ -15,12 +15,22 @@ properties:
     type: object
     description: Repository-level release metadata including generated fields
     required:
-      - release_number
+      - repository_name
+      - release_tag
       - status
       - release_date
       - src_commit_sha
     properties:
-      release_number:
+      repository_name:
+        type: string
+        description: GitHub repository name at release creation time (immutable, not affected by repository renames)
+        pattern: "^[A-Za-z][A-Za-z0-9-]*$"
+        examples:
+          - "QualityOnDemand"
+          - "DeviceLocation"
+          - "SimSwap"
+
+      release_tag:
         type: string
         description: CAMARA release tag (e.g., r4.1)
         pattern: "^r\\d+\\.\\d+$"
@@ -39,12 +49,12 @@ properties:
 
       release_date:
         type: string
-        description: Actual release date in YYYY-MM-DD format
-        format: date
-        pattern: "^\\d{4}-\\d{2}-\\d{2}$"
+        description: Actual release date and time in ISO 8601 format (UTC)
+        format: date-time
+        pattern: "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
         examples:
-          - "2025-11-22"
-          - "2026-03-15"
+          - "2025-11-22T14:30:00Z"
+          - "2026-03-15T09:15:30Z"
 
       status:
         type: string
@@ -103,12 +113,13 @@ properties:
     items:
       type: object
       required:
-        - name
+        - api_name
         - version
+        - title
       properties:
-        name:
+        api_name:
           type: string
-          description: API name (kebab-case)
+          description: API name (kebab-case), leading identifier from which file_name is derived
           pattern: "^[a-z][a-z0-9-]*$"
           examples:
             - "location-verification"
@@ -125,12 +136,10 @@ properties:
             - "0.5.0-alpha.1"
             - "3.2.0-rc.2"
 
-        main_contacts:
-          type: array
-          description: GitHub usernames of code owners or maintainers for this API
-          items:
-            type: string
-            pattern: "^[a-zA-Z0-9]([a-zA-Z0-9-]*[a-zA-Z0-9])?$"
-          minItems: 1
+        title:
+          type: string
+          description: Human-readable API title from OpenAPI info.title (generated during release branch creation)
           examples:
-            - ["githubUser1", "githubUser2"]
+            - "Quality On Demand"
+            - "Location Verification"
+            - "SIM Swap"

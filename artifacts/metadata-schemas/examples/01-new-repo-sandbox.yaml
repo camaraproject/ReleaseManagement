@@ -8,7 +8,7 @@
 
 repository:
   meta_release: Sandbox
-  release_number: r1.1
+  release_tag: r1.1
   release_readiness: none
 
 dependencies:
@@ -16,7 +16,7 @@ dependencies:
   identity_consent_management_version: r4.3
 
 apis:
-  - name: device-reachability
+  - api_name: device-reachability
     target_version: 0.1.0
     api_status: planned
     main_contacts:

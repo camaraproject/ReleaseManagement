@@ -15,7 +15,7 @@ properties:
     type: object
     description: Repository-level release planning information
     required:
-      - release_number
+      - release_tag
       - release_readiness
     properties:
       meta_release:
@@ -29,7 +29,7 @@ properties:
           - "Spring27"
           - "Sandbox"
 
-      release_number:
+      release_tag:
         type: string
         description: CAMARA release tag (e.g., r4.1). Distinct from API semantic versioning.
         pattern: "^r\\d+\\.\\d+$"
@@ -80,13 +80,13 @@ properties:
     items:
       type: object
       required:
-        - name
+        - api_name
         - target_version
         - api_status
       properties:
-        name:
+        api_name:
           type: string
-          description: API name (kebab-case, matching API definition file name)
+          description: API name (kebab-case), leading identifier that determines file_name
           pattern: "^[a-z][a-z0-9-]*$"
           examples:
             - "location-verification"

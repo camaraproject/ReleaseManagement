@@ -14,9 +14,10 @@
 # and committed before tagging.
 
 repository:
-  release_number: r4.4
+  repository_name: QualityOnDemand
+  release_tag: r4.4
   meta_release: Fall26
-  release_date: "2025-09-30"
+  release_date: "2025-09-30T10:00:00Z"
   status: public-release
   src_commit_sha: 7f3a9b2c8e1d4f6a0b5c7e9d3f8a1c4e6b9d2f5a
   release_notes: "Public release for CAMARA Fall26 meta-release cycle. Includes stable versions of quality-on-demand 2.0.0 and qos-provisioning 1.0.0. API qos-profiles remains unchanged at 1.2.0."
@@ -26,19 +27,14 @@ dependencies:
   identity_consent_management_version: r4.3 (1.0.0)
 
 apis:
-  - name: quality-on-demand
+  - api_name: quality-on-demand
     version: 2.0.0
-    main_contacts:
-      - qodMaintainer1
-      - qodMaintainer2
+    title: "Quality On Demand"
 
-  - name: qos-profiles
+  - api_name: qos-profiles
     version: 1.2.0
-    main_contacts:
-      - qosMaintainer
+    title: "QoS Profiles"
 
-  - name: qos-provisioning
+  - api_name: qos-provisioning
     version: 1.0.0
-    main_contacts:
-      - qosMaintainer
-      - provisioningMaintainer
+    title: "QoS Provisioning"

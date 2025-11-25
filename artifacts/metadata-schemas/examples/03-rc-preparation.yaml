@@ -9,7 +9,7 @@
 
 repository:
   meta_release: Spring26
-  release_number: r3.2
+  release_tag: r3.2
   release_readiness: pre-release-rc
 
 dependencies:
@@ -17,7 +17,7 @@ dependencies:
   identity_consent_management_version: r4.2
 
 apis:
-  - name: device-identifier
+  - api_name: device-identifier
     target_version: 1.0.0
     api_status: rc
     main_contacts:

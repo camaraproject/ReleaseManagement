@@ -45,7 +45,7 @@ Defines the structure for `release-plan.yaml` files maintained on the main branc
 
 **Key fields:**
 - `repository.meta_release` - Optional meta-release label (Fall26, Spring27, or Sandbox)
-- `repository.release_number` - CAMARA release tag (e.g., r4.1), must be the next available number in the release cycle or rN+1.1 for start of new release cycle
+- `repository.release_tag` - CAMARA release tag (e.g., r4.1), must be the next available number in the release cycle or rN+1.1 for start of new release cycle
 - `repository.release_readiness` - Release phase (none, pre-release, pre-release-rc, public-release, patch-release)
 - `dependencies` - Dependencies on Commonalities and ICM releases
 - `apis[]` - Array of APIs with target versions and status
@@ -153,10 +153,12 @@ Recommended dependencies for JavaScript version:
 
 Use these exact field names:
 
+- `release_tag` (not release_number)
+- `api_name` (not name)
 - `commonalities_version` (not commonalities_release)
 - `identity_consent_management_version` (not icm_release)
 - `api_status` (not just status)
-- `main_contacts` (array of GitHub usernames)
+- `main_contacts` (array of GitHub usernames, only in release-plan.yaml)
 
 ### Release Readiness vs API Status
 
@@ -216,8 +218,8 @@ pip install pyyaml jsonschema
 
 ### Schema Errors
 
-**Error:** "release_number does not match pattern"
-- **Fix:** Release numbers must follow format `rX.Y` (e.g., r4.1, not 4.1 or r4.1.0)
+**Error:** "release_tag does not match pattern"
+- **Fix:** Release tags must follow format `rX.Y` (e.g., r4.1, not 4.1 or r4.1.0)
 
 **Error:** "meta_release does not match pattern"
 - **Fix:** Must be Fall26, Spring27, Sandbox, or similar pattern
@@ -236,7 +238,7 @@ pip install pyyaml jsonschema
 ### Field Name Errors
 
 **Error:** Field names not recognized
-- **Fix:** Check field names match schema definitions: `commonalities_version`, `identity_consent_management_version`, `api_status`, `main_contacts`
+- **Fix:** Check field names match schema definitions: `release_tag`, `api_name`, `commonalities_version`, `identity_consent_management_version`, `api_status`, `main_contacts` (release-plan only)
 - **Note:** The schemas allow additional properties for extensibility, but required fields must use exact names
 
 ## Questions and Support
