@@ -220,6 +220,8 @@ Python scripts for cross-file validation:
 - `validate-status-promotion.py` - Check if status promotion is valid
 - `check-test-alignment.py` - Validate test files exist for APIs
 
+**Note**: This is an example list. Actual validators will be defined based on validation requirements analysis.
+
 **Rationale**: Spectral operates on individual files; cross-file checks need custom code.
 
 #### 3.4 PR Validation Workflow (C1) - Structure
@@ -284,10 +286,10 @@ jobs:
 
 **Performance Target**: < 3 minutes total
 
-### Success Criteria
+### Success Criteria (Phase 1B)
 - [ ] Validation configuration format defined and schema validated
-- [ ] Spectral rules extended with 5+ placeholder validation rules
-- [ ] 6 custom validators implemented and tested
+- [ ] Spectral rules extended with placeholder validation rules (exact number TBD)
+- [ ] Custom validators implemented and tested (exact number based on requirements analysis)
 - [ ] CI workflow (v1) runs successfully on test repository
 - [ ] Performance target met (< 3 minutes)
 - [ ] **Stable and ready for Fall26 cycle start (end-January)**
@@ -350,10 +352,12 @@ Template-based approach:
 #### 4.5 API Readiness Checklist Generator
 **Location**: `camaraproject/tooling/scripts/generate-checklist.js`
 
-Automated validation of 13 checklist items:
+Automated validation of 13 checklist items (example categorization):
 - **Fully automated**: Items 1,4,5,7,10,11 (file existence, naming conventions)
 - **Partially automated**: Items 2,3,8 (version checks, guidelines compliance)
 - **Manual only**: Items 6,9,12,13 (user stories, test results, certification)
+
+**Note**: Exact automation capabilities will be determined during implementation based on validation requirements analysis.
 
 Output: Markdown checklist with Y/N/tbd status
 
@@ -376,10 +380,10 @@ Output: Markdown checklist with Y/N/tbd status
 
 **Reusable Workflow**: API repositories call this workflow from their own repos
 
-### Success Criteria
+### Success Criteria (Phase 2)
 - [ ] Version calculation tested on 3+ repositories with complex history
 - [ ] Dependency resolution handles concrete release references
-- [ ] Placeholder replacement handles all patterns correctly (100+ test cases)
+- [ ] Placeholder replacement handles all identified patterns correctly (comprehensive test coverage)
 - [ ] CHANGELOG generation produces usable baseline
 - [ ] Checklist validation runs and generates accurate Y/N/tbd status
 - [ ] **End-to-end release branch creation tested on 2-3 early adopter repos by Feb 28 (Fall26 M0)**
@@ -456,7 +460,7 @@ Support maintenance branch releases (C5 workflow).
 - Sync PR goes to maintenance branch
 - Optional backport PR to main
 
-### Success Criteria
+### Success Criteria (Phase 4)
 - [ ] Maintenance releases fully automated
 - [ ] Tested on 2-3 repositories requiring patches
 - [ ] Documentation complete
