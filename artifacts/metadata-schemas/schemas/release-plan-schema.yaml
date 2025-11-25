@@ -1,0 +1,131 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+$id: "https://github.com/camaraproject/ReleaseManagement/schemas/release-plan-schema.yaml"
+title: CAMARA Release Plan Schema
+description: |
+  Schema for release-plan.yaml file maintained on main branch.
+  This file is manually edited by codeowners and CI-validated.
+  It contains forward-looking release plans for the next release cycle.
+
+type: object
+required:
+  - repository
+  - apis
+properties:
+  repository:
+    type: object
+    description: Repository-level release planning information
+    required:
+      - release_number
+      - release_readiness
+    properties:
+      meta_release:
+        type: string
+        description: |
+          Meta-release label (e.g., Fall26) or Sandbox for new repositories.
+          Optional field - can be omitted if not eligible for meta-release.
+        pattern: "^(Spring|Fall)\\d{2}|Sandbox$"
+        examples:
+          - "Fall26"
+          - "Spring27"
+          - "Sandbox"
+
+      release_number:
+        type: string
+        description: CAMARA release tag (e.g., r4.1). Distinct from API semantic versioning.
+        pattern: "^r\\d+\\.\\d+$"
+        examples:
+          - "r4.1"
+          - "r5.0"
+
+      release_readiness:
+        type: string
+        description: |
+          Repository release phase determining what type of release can be created:
+          - none: No release possible (APIs missing or only planned)
+          - pre-release: Can release with mixed API maturity (alpha, rc, public)
+          - pre-release-rc: Requires all APIs at rc or public status (M3 milestone)
+          - public-release: Requires all APIs at public status
+          - patch-release: For maintenance/hotfix releases from maintenance branches
+        enum:
+          - "none"
+          - "pre-release"
+          - "pre-release-rc"
+          - "public-release"
+          - "patch-release"
+
+  dependencies:
+    type: object
+    description: |
+      Version dependencies on other CAMARA repositories.
+      Uses release numbers (e.g., r4.2) not API versions.
+    properties:
+      commonalities_version:
+        type: string
+        description: Commonalities repository release number
+        pattern: "^r\\d+\\.\\d+$"
+        examples:
+          - "r4.2"
+
+      identity_consent_management_version:
+        type: string
+        description: Identity and Consent Management repository release number
+        pattern: "^r\\d+\\.\\d+$"
+        examples:
+          - "r4.3"
+
+  apis:
+    type: array
+    description: List of APIs planned for this release
+    minItems: 1
+    items:
+      type: object
+      required:
+        - name
+        - target_version
+        - api_status
+      properties:
+        name:
+          type: string
+          description: API name (kebab-case, matching API definition file name)
+          pattern: "^[a-z][a-z0-9-]*$"
+          examples:
+            - "location-verification"
+            - "quality-on-demand"
+
+        target_version:
+          type: string
+          description: |
+            Target semantic version for this release (base version only, no pre-release suffixes).
+            Format: X.Y.Z where X=major, Y=minor, Z=patch.
+            Pre-release extensions like -alpha.1 or -rc.2 are auto-calculated during release.
+          pattern: "^\\d+\\.\\d+\\.\\d+$"
+          examples:
+            - "1.0.0"
+            - "0.5.0"
+            - "3.2.1"
+
+        api_status:
+          type: string
+          description: |
+            API status for this release:
+            - planned: API declared but not yet in repository (CI skips validation)
+            - unchanged: API remains at previous release version, no changes allowed
+            - alpha: Early development version
+            - rc: Release candidate
+            - public: Stable public release
+          enum:
+            - "planned"
+            - "unchanged"
+            - "alpha"
+            - "rc"
+            - "public"
+
+        main_contacts:
+          type: array
+          description: GitHub usernames of code owners or maintainers for this API
+          items:
+            type: string
+            pattern: "^[a-zA-Z0-9]([a-zA-Z0-9-]*[a-zA-Z0-9])?$"
+          minItems: 1
+          examples:
+            - ["githubUser1", "githubUser2"]

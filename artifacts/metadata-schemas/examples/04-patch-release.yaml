@@ -1,0 +1,30 @@
+# Example 4: Patch Release on Maintenance Branch
+#
+# Scenario: A maintenance patch on an older release cycle addressing
+# critical bugs. The repository is on a maintenance branch (e.g.,
+# maintenance-r3) and preparing a patch release (r3.4).
+#
+# Shows a mix of APIs: one receiving a patch update (2.1.0 → 2.1.1),
+# while another remains unchanged from the previous release in this cycle.
+
+repository:
+  meta_release: Fall25
+  release_number: r3.4
+  release_readiness: patch-release
+
+dependencies:
+  commonalities_version: r3.4
+  identity_consent_management_version: r3.3
+
+apis:
+  - name: sim-swap
+    target_version: 2.1.1
+    api_status: public
+    main_contacts:
+      - simswapMaintainer
+
+  - name: sim-swap-subscriptions
+    target_version: 0.3.0
+    api_status: unchanged
+    main_contacts:
+      - simswapMaintainer

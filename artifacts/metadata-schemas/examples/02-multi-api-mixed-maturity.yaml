@@ -1,0 +1,37 @@
+# Example 2: Multi-API Repository with Mixed Maturity
+#
+# Scenario: A QualityOnDemand-style repository with multiple APIs at
+# different maturity levels. Some APIs are being released as stable
+# (public), while one remains unchanged from the previous release.
+#
+# This represents a typical mature repository during a release cycle.
+
+repository:
+  meta_release: Fall26
+  release_number: r4.1
+  release_readiness: pre-release
+
+dependencies:
+  commonalities_version: r4.2
+  identity_consent_management_version: r4.3
+
+apis:
+  - name: quality-on-demand
+    target_version: 2.0.0
+    api_status: public
+    main_contacts:
+      - qodMaintainer1
+      - qodMaintainer2
+
+  - name: qos-profiles
+    target_version: 1.3.0
+    api_status: unchanged
+    main_contacts:
+      - qosMaintainer
+
+  - name: qos-provisioning
+    target_version: 1.0.0
+    api_status: public
+    main_contacts:
+      - qosMaintainer
+      - provisioningMaintainer

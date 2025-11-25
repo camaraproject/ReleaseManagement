@@ -1,0 +1,136 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+$id: "https://github.com/camaraproject/ReleaseManagement/schemas/release-metadata-schema.yaml"
+title: CAMARA Release Metadata Schema
+description: |
+  Schema for release-metadata.yaml file generated on release branches.
+  This file is automatically created during release preparation and committed before tagging.
+  It provides complete release history preserved in each release tag.
+
+type: object
+required:
+  - repository
+  - apis
+properties:
+  repository:
+    type: object
+    description: Repository-level release metadata including generated fields
+    required:
+      - release_number
+      - status
+      - release_date
+      - src_commit_sha
+    properties:
+      release_number:
+        type: string
+        description: CAMARA release tag (e.g., r4.1)
+        pattern: "^r\\d+\\.\\d+$"
+        examples:
+          - "r4.1"
+          - "r5.0"
+
+      meta_release:
+        type: string
+        description: Meta-release label (e.g., Fall26) if applicable
+        pattern: "^(Spring|Fall)\\d{2}|Sandbox$"
+        examples:
+          - "Fall26"
+          - "Spring27"
+          - "Sandbox"
+
+      release_date:
+        type: string
+        description: Actual release date in YYYY-MM-DD format
+        format: date
+        pattern: "^\\d{4}-\\d{2}-\\d{2}$"
+        examples:
+          - "2025-11-22"
+          - "2026-03-15"
+
+      status:
+        type: string
+        description: |
+          Release status (mirrors release_readiness from release plan):
+          - pre-release: Mixed API maturity
+          - pre-release-rc: All APIs at rc or public
+          - public-release: All APIs at public status
+          - patch-release: Maintenance/hotfix release
+        enum:
+          - "pre-release"
+          - "pre-release-rc"
+          - "public-release"
+          - "patch-release"
+
+      src_commit_sha:
+        type: string
+        description: Last commit SHA from main or maintenance branch included in this release
+        pattern: "^[a-f0-9]{40}$"
+        examples:
+          - "abcd1234efgh5678ijkl9012mnop3456qrst7890"
+
+      release_notes:
+        type: string
+        description: Optional release notes or description
+        examples:
+          - "Pre-release for CAMARA Fall26 release cycle."
+          - "Patch release with critical bug fixes."
+
+  dependencies:
+    type: object
+    description: |
+      Version dependencies with both release numbers and resolved API versions.
+      Format: "rX.Y (semantic-version)"
+    properties:
+      commonalities_version:
+        type: string
+        description: Commonalities release and resolved version
+        pattern: "^r\\d+\\.\\d+ \\(\\d+\\.\\d+\\.\\d+(-[a-z]+\\.\\d+)?\\)$"
+        examples:
+          - "r4.2 (1.2.0-rc.1)"
+          - "r4.3 (1.3.0)"
+
+      identity_consent_management_version:
+        type: string
+        description: Identity and Consent Management release and resolved version
+        pattern: "^r\\d+\\.\\d+ \\(\\d+\\.\\d+\\.\\d+(-[a-z]+\\.\\d+)?\\)$"
+        examples:
+          - "r4.3 (1.1.0)"
+          - "r5.0 (2.0.0-rc.2)"
+
+  apis:
+    type: array
+    description: List of APIs included in this release with actual versions
+    minItems: 1
+    items:
+      type: object
+      required:
+        - name
+        - version
+      properties:
+        name:
+          type: string
+          description: API name (kebab-case)
+          pattern: "^[a-z][a-z0-9-]*$"
+          examples:
+            - "location-verification"
+            - "quality-on-demand"
+
+        version:
+          type: string
+          description: |
+            Actual API version with pre-release suffix if applicable.
+            Format: X.Y.Z or X.Y.Z-alpha.N or X.Y.Z-rc.N
+          pattern: "^\\d+\\.\\d+\\.\\d+(-[a-z]+\\.\\d+)?$"
+          examples:
+            - "1.0.0"
+            - "0.5.0-alpha.1"
+            - "3.2.0-rc.2"
+
+        main_contacts:
+          type: array
+          description: GitHub usernames of code owners or maintainers for this API
+          items:
+            type: string
+            pattern: "^[a-zA-Z0-9]([a-zA-Z0-9-]*[a-zA-Z0-9])?$"
+          minItems: 1
+          examples:
+            - ["githubUser1", "githubUser2"]

@@ -1,0 +1,44 @@
+# Example 5: Generated Release Metadata
+#
+# Scenario: This shows the release-metadata.yaml format generated
+# automatically during release branch preparation. Based on the
+# multi-API example (02), this demonstrates how the release plan
+# is transformed into release metadata with:
+#
+# - Generated fields added directly to the repository section
+# - API versions with calculated pre-release suffixes
+# - Dependencies with resolved semantic versions
+# - NO top-level generated_metadata or contacts sections
+#
+# This file would be created on a release branch (e.g., release/r4.4)
+# and committed before tagging.
+
+repository:
+  release_number: r4.4
+  meta_release: Fall26
+  release_date: "2025-09-30"
+  status: public-release
+  src_commit_sha: 7f3a9b2c8e1d4f6a0b5c7e9d3f8a1c4e6b9d2f5a
+  release_notes: "Public release for CAMARA Fall26 meta-release cycle. Includes stable versions of quality-on-demand 2.0.0 and qos-provisioning 1.0.0. API qos-profiles remains unchanged at 1.2.0."
+
+dependencies:
+  commonalities_version: r4.4 (1.0.1)
+  identity_consent_management_version: r4.3 (1.0.0)
+
+apis:
+  - name: quality-on-demand
+    version: 2.0.0
+    main_contacts:
+      - qodMaintainer1
+      - qodMaintainer2
+
+  - name: qos-profiles
+    version: 1.2.0
+    main_contacts:
+      - qosMaintainer
+
+  - name: qos-provisioning
+    version: 1.0.0
+    main_contacts:
+      - qosMaintainer
+      - provisioningMaintainer
