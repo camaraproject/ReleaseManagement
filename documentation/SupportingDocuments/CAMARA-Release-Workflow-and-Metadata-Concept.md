@@ -264,7 +264,7 @@ See Appendix for detailed branching diagrams and maintenance strategy.
 
 ## Next Steps (Optional)
 
-- [ ] Define a YAML schema for `release-plan.yaml` and `release-metadata.yaml`
+- [x] Define a YAML schema for `release-plan.yaml` and `release-metadata.yaml` (see `artifacts/metadata-schemas/`)
 - [ ] Add GitHub Actions for metadata validation, release branch preparation, and post-release syncing
 - [ ] Enforce CODEOWNERS and team-based protections on branches
 - [ ] Plan and implement CHANGELOG automation as a separate phase
