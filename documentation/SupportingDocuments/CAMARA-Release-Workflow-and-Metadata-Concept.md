@@ -102,7 +102,7 @@ repository:
   release_tag: r4.1
   meta_release: Fall26
   release_date: 2025-11-22T14:30:00Z  # Actual release date and time in ISO 8601 format (UTC)
-  status: pre-release
+  release_type: pre-release
   src_commit_sha: abcd1234efgh5678  # Last commit from main or maintenance branch included in this release
   release_notes: Pre-release for CAMARA Fall26 release cycle.
 

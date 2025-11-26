@@ -17,7 +17,7 @@ properties:
     required:
       - repository_name
       - release_tag
-      - status
+      - release_type
       - release_date
       - src_commit_sha
     properties:
@@ -56,10 +56,10 @@ properties:
           - "2025-11-22T14:30:00Z"
           - "2026-03-15T09:15:30Z"
 
-      status:
+      release_type:
         type: string
         description: |
-          Release status (mirrors release_readiness from release plan):
+          Release type (mirrors release_readiness from release plan):
           - pre-release: Mixed API maturity
           - pre-release-rc: All APIs at rc or public
           - public-release: All APIs at public status

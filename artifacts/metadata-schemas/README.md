@@ -60,8 +60,8 @@ Defines the structure for `release-metadata.yaml` files generated on release bra
 
 **Key differences from release-plan:**
 - Generated fields added directly in `repository` section:
-  - `release_date` - Actual release date (YYYY-MM-DD)
-  - `status` - Release status (mirrors release_readiness)
+  - `release_date` - Actual release date and time in ISO 8601 format (UTC)
+  - `release_type` - Release type (mirrors release_readiness)
   - `src_commit_sha` - Source commit SHA (40 characters)
   - `release_notes` - Optional release description
 - API `version` field includes calculated suffixes (e.g., 3.2.0-rc.2)
