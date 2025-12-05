@@ -5,16 +5,17 @@
 # maintenance-r3) and preparing a patch release (r3.4).
 #
 # Shows a mix of APIs: one receiving a patch update (2.1.0 → 2.1.1),
-# while another remains unchanged from the previous release in this cycle.
+# while another remains at its previously released version (implicit lock).
 
 repository:
+  release_scope: meta-release
   meta_release: Fall25
   release_tag: r3.4
   release_readiness: patch-release
 
 dependencies:
-  commonalities_version: r3.4
-  identity_consent_management_version: r3.3
+  commonalities_release: r3.4
+  identity_consent_management_release: r3.3
 
 apis:
   - api_name: sim-swap
@@ -25,6 +26,8 @@ apis:
 
   - api_name: sim-swap-subscriptions
     target_version: 0.3.0
-    api_status: unchanged
+    api_status: public
+    # Note: CI detects this version was already released as public
+    # version and will block any modifications (implicit lock)
     main_contacts:
       - simswapMaintainer

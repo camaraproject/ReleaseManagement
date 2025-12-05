@@ -110,6 +110,11 @@ class MetadataValidator:
         repo = metadata.get('repository', {})
         apis = metadata.get('apis', [])
 
+        # Check release_scope and meta_release consistency
+        release_scope = repo.get('release_scope')
+        meta_release = repo.get('meta_release')
+        self._check_scope_consistency(release_scope, meta_release)
+
         # Check release readiness consistency
         release_readiness = repo.get('release_readiness')
         if release_readiness:
@@ -119,41 +124,76 @@ class MetadataValidator:
         for api in apis:
             self._check_api_status(api)
 
-    def _check_readiness_consistency(self, readiness: str, apis: List[Dict]) -> None:
-        """Check that API statuses align with repository release readiness."""
-        api_statuses = [api.get('api_status') for api in apis]
+    def _check_scope_consistency(self, release_scope: Optional[str], meta_release: Optional[str]) -> None:
+        """Check that release_scope and meta_release are consistent."""
+        if release_scope == 'meta-release' and not meta_release:
+            self.errors.append(
+                "release_scope is 'meta-release' but meta_release field is missing"
+            )
+        elif release_scope in ['none', 'sandbox'] and meta_release:
+            self.warnings.append(
+                f"release_scope is '{release_scope}' but meta_release field is present"
+            )
 
+    def _check_readiness_consistency(self, readiness: str, apis: List[Dict]) -> None:
+        """Check that API statuses align with repository release readiness.
+
+        Rules:
+        - none: No constraints (repository not targeting a release)
+        - pre-release-alpha: All APIs must be at least alpha (no draft)
+        - pre-release-rc: All APIs must be at least rc (no draft or alpha)
+        - public-release: All APIs must be public
+        - patch-release: All APIs must be public (can only patch released APIs)
+        """
+        # 'none' has no constraints - repository is not targeting a release
         if readiness == 'none':
-            if any(status not in ['planned'] for status in api_statuses if status):
-                self.warnings.append(
-                    "release_readiness is 'none' but some APIs have status beyond 'planned'"
+            pass
+
+        elif readiness == 'pre-release-alpha':
+            # All APIs must be at least alpha (alpha, rc, or public)
+            draft_apis = [api.get('api_name') for api in apis if api.get('api_status') == 'draft']
+            if draft_apis:
+                self.errors.append(
+                    f"release_readiness is 'pre-release-alpha' but these APIs are 'draft': {', '.join(draft_apis)}"
                 )
 
         elif readiness == 'pre-release-rc':
-            if any(status in ['planned', 'alpha'] for status in api_statuses):
+            # All APIs must be at least rc (rc or public)
+            invalid_apis = [api.get('api_name') for api in apis
+                           if api.get('api_status') in ['draft', 'alpha']]
+            if invalid_apis:
                 self.errors.append(
-                    "release_readiness is 'pre-release-rc' but some APIs are 'planned' or 'alpha'"
+                    f"release_readiness is 'pre-release-rc' but these APIs are not rc/public: {', '.join(invalid_apis)}"
                 )
 
         elif readiness == 'public-release':
-            if any(status != 'public' for status in api_statuses if status):
+            # All APIs must be public
+            non_public = [api.get('api_name') for api in apis if api.get('api_status') != 'public']
+            if non_public:
                 self.errors.append(
-                    "release_readiness is 'public-release' but not all APIs are 'public'"
+                    f"release_readiness is 'public-release' but these APIs are not 'public': {', '.join(non_public)}"
+                )
+
+        elif readiness == 'patch-release':
+            # Patch releases are for maintenance - all APIs should be public
+            non_public = [api.get('api_name') for api in apis if api.get('api_status') != 'public']
+            if non_public:
+                self.errors.append(
+                    f"release_readiness is 'patch-release' but these APIs are not 'public': {', '.join(non_public)}"
                 )
 
     def _check_api_status(self, api: Dict) -> None:
-        """Check individual API status consistency."""
-        status = api.get('api_status')
-        version = api.get('target_version') or api.get('version')
+        """Check individual API status consistency.
 
-        if not status or not version:
-            return
-
-        # Check version format consistency with status
-        if status == 'public' and version.startswith('0.'):
-            self.warnings.append(
-                f"API '{api.get('api_name')}' has 'public' status but version {version} starts with 0.x"
-            )
+        Note: 0.x versions with 'public' status are valid - they represent
+        initial public releases that are not yet stable (pre-1.0).
+        The version number indicates API stability, not release status.
+        """
+        # Currently no per-API semantic checks beyond schema validation.
+        # Future checks could include:
+        # - Version format validation
+        # - Status progression rules
+        pass
 
     def check_file_existence(self, metadata: Dict[str, Any]) -> None:
         """Check if referenced API files exist (optional check)."""
@@ -167,8 +207,8 @@ class MetadataValidator:
             api_name = api.get('api_name')
             api_status = api.get('api_status')
 
-            # Skip file checks for planned APIs
-            if api_status == 'planned':
+            # Skip file checks for draft APIs
+            if api_status == 'draft':
                 continue
 
             # Look for API definition file

@@ -3,7 +3,7 @@ $id: "https://github.com/camaraproject/ReleaseManagement/schemas/release-plan-sc
 title: CAMARA Release Plan Schema
 description: |
   Schema for release-plan.yaml file maintained on main branch.
-  This file is manually edited by codeowners and CI-validated.
+  This file is manually edited by codeowners after each release creation and CI-validated.
   It contains forward-looking release plans for the next release cycle.
 
 type: object
@@ -15,40 +15,53 @@ properties:
     type: object
     description: Repository-level release planning information
     required:
+      - release_scope
       - release_tag
       - release_readiness
     properties:
+      release_scope:
+        type: string
+        description: |
+          Scope of the planned release:
+          - none: No release planned, other repository fields can be omitted
+          - sandbox: Release outside meta-release cycle
+          - meta-release: Participating in a CAMARA meta-release cycle (requires meta_release field)
+        enum:
+          - "none"
+          - "sandbox"
+          - "meta-release"
+
       meta_release:
         type: string
         description: |
-          Meta-release label (e.g., Fall26) or Sandbox for new repositories.
-          Optional field - can be omitted if not eligible for meta-release.
-        pattern: "^(Spring|Fall)\\d{2}|Sandbox$"
+          Meta-release label (e.g., Fall26, Spring27).
+          Required when release_scope is "meta-release", should be omitted otherwise.
+        pattern: "^(Spring|Fall)\\d{2}$"
         examples:
           - "Fall26"
           - "Spring27"
-          - "Sandbox"
 
       release_tag:
         type: string
         description: CAMARA release tag (e.g., r4.1). Distinct from API semantic versioning.
-        pattern: "^r\\d+\\.\\d+$"
+        pattern: "^r[1-9]\\d*\\.[1-9]\\d*$"
         examples:
           - "r4.1"
-          - "r5.0"
+          - "r5.3"
 
       release_readiness:
         type: string
         description: |
-          Repository release phase determining what type of release can be created:
-          - none: No release possible (APIs missing or only planned)
-          - pre-release: Can release with mixed API maturity (alpha, rc, public)
-          - pre-release-rc: Requires all APIs at rc or public status (M3 milestone)
-          - public-release: Requires all APIs at public status
-          - patch-release: For maintenance/hotfix releases from maintenance branches
+          Repository readiness level determining which release type can be triggered:
+          - none: No release planned or not ready for any release yet
+          - pre-release-alpha: All APIs at alpha or better (mix of alpha/rc allowed,
+            public only for previously released APIs - no new public versions)
+          - pre-release-rc: All changed APIs at rc status
+          - public-release: All APIs at public status
+          - patch-release: Maintenance release on maintenance branch
         enum:
           - "none"
-          - "pre-release"
+          - "pre-release-alpha"
           - "pre-release-rc"
           - "public-release"
           - "patch-release"
@@ -56,20 +69,20 @@ properties:
   dependencies:
     type: object
     description: |
-      Version dependencies on other CAMARA repositories.
+      Release dependencies on other CAMARA repositories.
       Uses release numbers (e.g., r4.2) not API versions.
     properties:
-      commonalities_version:
+      commonalities_release:
         type: string
         description: Commonalities repository release number
-        pattern: "^r\\d+\\.\\d+$"
+        pattern: "^r[1-9]\\d*\\.[1-9]\\d*$"
         examples:
           - "r4.2"
 
-      identity_consent_management_version:
+      identity_consent_management_release:
         type: string
         description: Identity and Consent Management repository release number
-        pattern: "^r\\d+\\.\\d+$"
+        pattern: "^r[1-9]\\d*\\.[1-9]\\d*$"
         examples:
           - "r4.3"
 
@@ -95,7 +108,7 @@ properties:
         target_version:
           type: string
           description: |
-            Target semantic version for this release (base version only, no pre-release suffixes).
+            Target semantic version for this release (base version only, no pre-release extensions).
             Format: X.Y.Z where X=major, Y=minor, Z=patch.
             Pre-release extensions like -alpha.1 or -rc.2 are auto-calculated during release.
           pattern: "^\\d+\\.\\d+\\.\\d+$"
@@ -107,15 +120,16 @@ properties:
         api_status:
           type: string
           description: |
-            API status for this release:
-            - planned: API declared but not yet in repository (CI skips validation)
-            - unchanged: API remains at previous release version, no changes allowed
-            - alpha: Early development version
-            - rc: Release candidate
-            - public: Stable public release
+            API validation level determining which CI checks are applied:
+            - draft: API declared but implementation in progress (basic validation only)
+            - alpha: Initial implementation ready for early feedback
+            - rc: Release candidate, feature-complete for final review
+            - public: Stable release meeting all quality requirements
+
+            Note: APIs targeting a version already released as public are
+            automatically locked by CI (modifications blocked).
           enum:
-            - "planned"
-            - "unchanged"
+            - "draft"
             - "alpha"
             - "rc"
             - "public"

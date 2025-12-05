@@ -23,7 +23,9 @@ properties:
     properties:
       repository_name:
         type: string
-        description: GitHub repository name at release creation time (immutable, not affected by repository renames)
+        description: |
+          GitHub repository name at release creation time (immutable, not affected by repository renames).
+          Generated during release creation.
         pattern: "^[A-Za-z][A-Za-z0-9-]*$"
         examples:
           - "QualityOnDemand"
@@ -32,24 +34,25 @@ properties:
 
       release_tag:
         type: string
-        description: CAMARA release tag (e.g., r4.1)
-        pattern: "^r\\d+\\.\\d+$"
+        description: CAMARA release tag (derived from release-plan.yaml)
+        pattern: "^r[1-9]\\d*\\.[1-9]\\d*$"
         examples:
           - "r4.1"
-          - "r5.0"
+          - "r5.3"
 
       meta_release:
         type: string
-        description: Meta-release label (e.g., Fall26) if applicable
-        pattern: "^(Spring|Fall)\\d{2}|Sandbox$"
+        description: |
+          Meta-release label (e.g., Fall26, Spring27).
+          Derived from release-plan.yaml. Only present for releases participating in a meta-release.
+        pattern: "^(Spring|Fall)\\d{2}$"
         examples:
           - "Fall26"
           - "Spring27"
-          - "Sandbox"
 
       release_date:
         type: string
-        description: Actual release date and time in ISO 8601 format (UTC)
+        description: Actual release date and time in ISO 8601 format (UTC). Generated during release creation.
         format: date-time
         pattern: "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
         examples:
@@ -59,27 +62,29 @@ properties:
       release_type:
         type: string
         description: |
-          Release type (mirrors release_readiness from release plan):
-          - pre-release: Mixed API maturity
-          - pre-release-rc: All APIs at rc or public
+          Release type (derived from release_readiness in release-plan.yaml):
+          - pre-release-alpha: All APIs at alpha or better (mix of alpha/rc allowed)
+          - pre-release-rc: All APIs at rc or public status
           - public-release: All APIs at public status
           - patch-release: Maintenance/hotfix release
         enum:
-          - "pre-release"
+          - "pre-release-alpha"
           - "pre-release-rc"
           - "public-release"
           - "patch-release"
 
       src_commit_sha:
         type: string
-        description: Last commit SHA from main or maintenance branch included in this release
+        description: |
+          Last commit SHA from main or maintenance branch included in this release.
+          Generated during release creation.
         pattern: "^[a-f0-9]{40}$"
         examples:
           - "abcd1234efgh5678ijkl9012mnop3456qrst7890"
 
       release_notes:
         type: string
-        description: Optional release notes or description
+        description: Optional release notes or description (manual or generated)
         examples:
           - "Pre-release for CAMARA Fall26 release cycle."
           - "Patch release with critical bug fixes."
@@ -87,24 +92,24 @@ properties:
   dependencies:
     type: object
     description: |
-      Version dependencies with both release numbers and resolved API versions.
-      Format: "rX.Y (semantic-version)"
+      Release dependencies with both release numbers and resolved API versions.
+      Format: "rX.Y (semantic-version)". Derived from release-plan.yaml with version resolution.
     properties:
-      commonalities_version:
+      commonalities_release:
         type: string
-        description: Commonalities release and resolved version
-        pattern: "^r\\d+\\.\\d+ \\(\\d+\\.\\d+\\.\\d+(-[a-z]+\\.\\d+)?\\)$"
+        description: Commonalities release number and resolved version
+        pattern: "^r[1-9]\\d*\\.[1-9]\\d* \\(\\d+\\.\\d+\\.\\d+(-[a-z]+\\.\\d+)?\\)$"
         examples:
           - "r4.2 (1.2.0-rc.1)"
           - "r4.3 (1.3.0)"
 
-      identity_consent_management_version:
+      identity_consent_management_release:
         type: string
-        description: Identity and Consent Management release and resolved version
-        pattern: "^r\\d+\\.\\d+ \\(\\d+\\.\\d+\\.\\d+(-[a-z]+\\.\\d+)?\\)$"
+        description: Identity and Consent Management release number and resolved version
+        pattern: "^r[1-9]\\d*\\.[1-9]\\d* \\(\\d+\\.\\d+\\.\\d+(-[a-z]+\\.\\d+)?\\)$"
         examples:
           - "r4.3 (1.1.0)"
-          - "r5.0 (2.0.0-rc.2)"
+          - "r5.1 (2.0.0-rc.2)"
 
   apis:
     type: array
@@ -114,7 +119,7 @@ properties:
       type: object
       required:
         - api_name
-        - version
+        - api_version
         - title
       properties:
         api_name:
@@ -125,11 +130,12 @@ properties:
             - "location-verification"
             - "quality-on-demand"
 
-        version:
+        api_version:
           type: string
           description: |
-            Actual API version with pre-release suffix if applicable.
+            Actual API version with pre-release extension if applicable.
             Format: X.Y.Z or X.Y.Z-alpha.N or X.Y.Z-rc.N
+            Derived from target_version in release-plan.yaml with extension calculation.
           pattern: "^\\d+\\.\\d+\\.\\d+(-[a-z]+\\.\\d+)?$"
           examples:
             - "1.0.0"

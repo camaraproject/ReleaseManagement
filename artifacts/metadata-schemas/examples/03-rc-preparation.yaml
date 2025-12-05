@@ -1,20 +1,19 @@
 # Example 3: Release Candidate Preparation
 #
-# Scenario: A single-API repository preparing for its first public
-# release. The API is at rc status and targeting version 1.0.0.
+# Scenario: A single-API repository with its first stable API version
+# as target. The API is at rc status targeting version 1.0.0.
 # The repository release readiness is set to pre-release-rc,
-# indicating M3 milestone readiness.
-#
-# This represents the final stage before a first public release.
+# indicating the repository is ready to create an M3 pre-release.
 
 repository:
+  release_scope: meta-release
   meta_release: Spring26
   release_tag: r3.2
   release_readiness: pre-release-rc
 
 dependencies:
-  commonalities_version: r4.2
-  identity_consent_management_version: r4.2
+  commonalities_release: r4.2
+  identity_consent_management_release: r4.2
 
 apis:
   - api_name: device-identifier

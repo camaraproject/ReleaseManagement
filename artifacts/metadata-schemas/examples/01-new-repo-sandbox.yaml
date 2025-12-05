@@ -1,23 +1,23 @@
-# Example 1: New Repository using Sandbox Meta-Release
+# Example 1: New Sandbox Repository
 #
-# Scenario: A new CAMARA API repository that is not yet eligible for
-# a formal meta-release. Uses "Sandbox" meta-release designation and
-# starts with planned API status at version 0.1.0.
+# Scenario: A new CAMARA API repository that is not yet participating in
+# a meta-release. Uses release_scope "sandbox" and starts with draft
+# API status at version 0.1.0.
 #
 # This represents initial planning before the API implementation exists.
 
 repository:
-  meta_release: Sandbox
+  release_scope: sandbox
   release_tag: r1.1
   release_readiness: none
 
 dependencies:
-  commonalities_version: r4.2
-  identity_consent_management_version: r4.3
+  commonalities_release: r4.2
+  identity_consent_management_release: r4.3
 
 apis:
   - api_name: device-reachability
     target_version: 0.1.0
-    api_status: planned
+    api_status: draft
     main_contacts:
       - newApiMaintainer
