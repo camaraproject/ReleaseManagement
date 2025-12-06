@@ -138,7 +138,7 @@ rule_groups:
       - id: unchanged-api-not-modified
         severity: error
         validator: custom
-        script: check-unchanged-apis.js
+        script: check-unchanged-apis.py
 ```
 
 **Key Features**:
@@ -160,13 +160,13 @@ Extend existing [.spectral.yaml](https://github.com/camaraproject/tooling/blob/m
 #### 1B.3 Custom Validators
 **Location**: `camaraproject/tooling/validation/validators/`
 
-Node.js scripts for cross-file validation:
-- `check-unchanged-apis.js` - Ensure unchanged APIs have no modifications
-- `check-readiness-matrix.js` - Validate repository readiness vs API statuses
-- `check-pr-mutual-exclusivity.js` - Block PRs changing both metadata and implementation
-- `check-dependency-refs.js` - Validate Commonalities/ICM reference format
-- `validate-status-promotion.js` - Check if status promotion is valid
-- `check-test-alignment.js` - Validate test files exist for APIs
+Python scripts for cross-file validation:
+- `check-unchanged-apis.py` - Ensure unchanged APIs have no modifications
+- `check-readiness-matrix.py` - Validate repository readiness vs API statuses
+- `check-pr-mutual-exclusivity.py` - Block PRs changing both metadata and implementation
+- `check-dependency-refs.py` - Validate Commonalities/ICM reference format
+- `validate-status-promotion.py` - Check if status promotion is valid
+- `check-test-alignment.py` - Validate test files exist for APIs
 
 **Rationale**: Spectral operates on individual files; cross-file checks need custom code.
 
