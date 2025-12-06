@@ -52,15 +52,15 @@ repository:
   release_readiness: "pre-release"  # none|pre-release|pre-release-rc|public-release|patch-release
 
 dependencies:
-  commonalities_version: "r3.4"  # Concrete Commonalities release (not meta-release reference)
-  identity_consent_management_version: "r3.4"  # Concrete ICM release
+  commonalities_release: "r3.4"  # Concrete Commonalities release (not meta-release reference)
+  identity_consent_management_release: "r3.4"  # Concrete ICM release
   # Rationale: APIs decide when ready to validate against newest Commonalities
   # Meta-release reference would cause uncontrolled updates
 
 apis:
   - name: "location-verification"
     target_version: "3.2.0"  # SemVer base (extension auto-calculated)
-    api_status: "rc"  # planned|unchanged|alpha|rc|public
+    api_status: "rc"  # draft|unchanged|alpha|rc|public
     main_contacts: ["githubUser1", "githubUser2"]
 ```
 
@@ -278,7 +278,7 @@ Resolves concrete Commonalities/ICM release references to exact versions:
 Context-aware replacement:
 - `info.version: "wip"` → `info.version: "3.2.0-rc.2"`
 - `{{api_version}}` → `3.2.0-rc.2`
-- `{{commonalities_version}}` → `1.2.0-rc.1`
+- `{{commonalities_release}}` → `1.2.0-rc.1`
 - `{apiRoot}/api-name/vwip` → `{apiRoot}/api-name/v3` (or `/v0.5` for initial)
 - `x-camara-commonalities: wip` → `x-camara-commonalities: 1.2.0-rc.1`
 
