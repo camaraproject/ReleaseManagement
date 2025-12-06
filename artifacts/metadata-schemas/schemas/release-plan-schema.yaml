@@ -1,0 +1,145 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+$id: "https://github.com/camaraproject/ReleaseManagement/schemas/release-plan-schema.yaml"
+title: CAMARA Release Plan Schema
+description: |
+  Schema for release-plan.yaml file maintained on main branch.
+  This file is manually edited by codeowners after each release creation and CI-validated.
+  It contains forward-looking release plans for the next release cycle.
+
+type: object
+required:
+  - repository
+  - apis
+properties:
+  repository:
+    type: object
+    description: Repository-level release planning information
+    required:
+      - release_scope
+      - release_tag
+      - release_readiness
+    properties:
+      release_scope:
+        type: string
+        description: |
+          Scope of the planned release:
+          - none: No release planned, other repository fields can be omitted
+          - sandbox: Release outside meta-release cycle
+          - meta-release: Participating in a CAMARA meta-release cycle (requires meta_release field)
+        enum:
+          - "none"
+          - "sandbox"
+          - "meta-release"
+
+      meta_release:
+        type: string
+        description: |
+          Meta-release label (e.g., Fall26, Spring27).
+          Required when release_scope is "meta-release", should be omitted otherwise.
+        pattern: "^(Spring|Fall)\\d{2}$"
+        examples:
+          - "Fall26"
+          - "Spring27"
+
+      release_tag:
+        type: string
+        description: CAMARA release tag (e.g., r4.1). Distinct from API semantic versioning.
+        pattern: "^r[1-9]\\d*\\.[1-9]\\d*$"
+        examples:
+          - "r4.1"
+          - "r5.3"
+
+      release_readiness:
+        type: string
+        description: |
+          Repository readiness level determining which release type can be triggered:
+          - none: No release planned or not ready for any release yet
+          - pre-release-alpha: All APIs at alpha or better (mix of alpha/rc allowed,
+            public only for previously released APIs - no new public versions)
+          - pre-release-rc: All changed APIs at rc status
+          - public-release: All APIs at public status
+          - patch-release: Maintenance release on maintenance branch
+        enum:
+          - "none"
+          - "pre-release-alpha"
+          - "pre-release-rc"
+          - "public-release"
+          - "patch-release"
+
+  dependencies:
+    type: object
+    description: |
+      Release dependencies on other CAMARA repositories.
+      Uses release numbers (e.g., r4.2) not API versions.
+    properties:
+      commonalities_release:
+        type: string
+        description: Commonalities repository release number
+        pattern: "^r[1-9]\\d*\\.[1-9]\\d*$"
+        examples:
+          - "r4.2"
+
+      identity_consent_management_release:
+        type: string
+        description: Identity and Consent Management repository release number
+        pattern: "^r[1-9]\\d*\\.[1-9]\\d*$"
+        examples:
+          - "r4.3"
+
+  apis:
+    type: array
+    description: List of APIs planned for this release
+    minItems: 1
+    items:
+      type: object
+      required:
+        - api_name
+        - target_version
+        - api_status
+      properties:
+        api_name:
+          type: string
+          description: API name (kebab-case), leading identifier that determines file_name
+          pattern: "^[a-z][a-z0-9-]*$"
+          examples:
+            - "location-verification"
+            - "quality-on-demand"
+
+        target_version:
+          type: string
+          description: |
+            Target semantic version for this release (base version only, no pre-release extensions).
+            Format: X.Y.Z where X=major, Y=minor, Z=patch.
+            Pre-release extensions like -alpha.1 or -rc.2 are auto-calculated during release.
+          pattern: "^\\d+\\.\\d+\\.\\d+$"
+          examples:
+            - "1.0.0"
+            - "0.5.0"
+            - "3.2.1"
+
+        api_status:
+          type: string
+          description: |
+            API validation level determining which CI checks are applied:
+            - draft: API declared but implementation in progress (basic validation only)
+            - alpha: Initial implementation ready for early feedback
+            - rc: Release candidate, feature-complete for final review
+            - public: Stable release meeting all quality requirements
+
+            Note: APIs targeting a version already released as public are
+            automatically locked by CI (modifications blocked).
+          enum:
+            - "draft"
+            - "alpha"
+            - "rc"
+            - "public"
+
+        main_contacts:
+          type: array
+          description: GitHub usernames of code owners or maintainers for this API
+          items:
+            type: string
+            pattern: "^[a-zA-Z0-9]([a-zA-Z0-9-]*[a-zA-Z0-9])?$"
+          minItems: 1
+          examples:
+            - ["githubUser1", "githubUser2"]
