@@ -7,7 +7,7 @@
 # This represents initial planning before the API implementation exists.
 
 repository:
-  release_scope: sandbox
+  release_track: sandbox
   release_tag: r1.1
   release_readiness: none
 

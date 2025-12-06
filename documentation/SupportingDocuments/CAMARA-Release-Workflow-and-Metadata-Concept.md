@@ -30,8 +30,8 @@ The workflow achieves these objectives through:
 
 | Term                   | Description |
 |------------------------|-------------|
-| `release_scope`        | Scope of planned release: `none` (no release), `sandbox` (outside meta-release), `meta-release` (participating in meta-release). |
-| `meta_release`         | Meta-release label (e.g., `Fall26`). Only used when `release_scope` is `meta-release`. |
+| `release_track`        | Release track determining how repository participates: `none` (no release), `sandbox` (outside meta-release), `meta-release` (participating in meta-release). |
+| `meta_release`         | Meta-release label (e.g., `Fall26`). Only used when `release_track` is `meta-release`. |
 | `release_tag`          | CAMARA release tag (e.g., `r4.1`). Distinct from API SemVer. |
 | `release_readiness`    | Repository readiness level: `none` (not ready), `pre-release-alpha` (alpha or better), `pre-release-rc` (rc minimum), `public-release` (all public), `patch-release` (maintenance). |
 | `api_status`           | Per-API validation level: `draft` (declared, basic validation), `alpha`, `rc`, `public`. Extension numbers are auto-calculated. |
@@ -51,8 +51,8 @@ Planning metadata owned by codeowners, manually updated and CI-validated. Contai
 
 ```yaml
 repository:
-  release_scope: meta-release  # none, sandbox, or meta-release
-  meta_release: Fall26  # Only when release_scope is meta-release
+  release_track: meta-release  # none, sandbox, or meta-release
+  meta_release: Fall26  # Only when release_track is meta-release
   release_tag: r4.1
   release_readiness: pre-release-alpha  # Repository ready for pre-release with mixed API status
 

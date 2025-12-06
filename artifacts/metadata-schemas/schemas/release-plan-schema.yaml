@@ -15,14 +15,14 @@ properties:
     type: object
     description: Repository-level release planning information
     required:
-      - release_scope
+      - release_track
       - release_tag
       - release_readiness
     properties:
-      release_scope:
+      release_track:
         type: string
         description: |
-          Scope of the planned release:
+          Release track determining how the repository participates in CAMARA releases:
           - none: No release planned, other repository fields can be omitted
           - sandbox: Release outside meta-release cycle
           - meta-release: Participating in a CAMARA meta-release cycle (requires meta_release field)
@@ -35,7 +35,7 @@ properties:
         type: string
         description: |
           Meta-release label (e.g., Fall26, Spring27).
-          Required when release_scope is "meta-release", should be omitted otherwise.
+          Required when release_track is "meta-release", should be omitted otherwise.
         pattern: "^(Spring|Fall)\\d{2}$"
         examples:
           - "Fall26"

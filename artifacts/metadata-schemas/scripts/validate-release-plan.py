@@ -110,10 +110,10 @@ class MetadataValidator:
         repo = metadata.get('repository', {})
         apis = metadata.get('apis', [])
 
-        # Check release_scope and meta_release consistency
-        release_scope = repo.get('release_scope')
+        # Check release_track and meta_release consistency
+        release_track = repo.get('release_track')
         meta_release = repo.get('meta_release')
-        self._check_scope_consistency(release_scope, meta_release)
+        self._check_track_consistency(release_track, meta_release)
 
         # Check release readiness consistency
         release_readiness = repo.get('release_readiness')
@@ -124,15 +124,15 @@ class MetadataValidator:
         for api in apis:
             self._check_api_status(api)
 
-    def _check_scope_consistency(self, release_scope: Optional[str], meta_release: Optional[str]) -> None:
-        """Check that release_scope and meta_release are consistent."""
-        if release_scope == 'meta-release' and not meta_release:
+    def _check_track_consistency(self, release_track: Optional[str], meta_release: Optional[str]) -> None:
+        """Check that release_track and meta_release are consistent."""
+        if release_track == 'meta-release' and not meta_release:
             self.errors.append(
-                "release_scope is 'meta-release' but meta_release field is missing"
+                "release_track is 'meta-release' but meta_release field is missing"
             )
-        elif release_scope in ['none', 'sandbox'] and meta_release:
+        elif release_track in ['none', 'sandbox'] and meta_release:
             self.warnings.append(
-                f"release_scope is '{release_scope}' but meta_release field is present"
+                f"release_track is '{release_track}' but meta_release field is present"
             )
 
     def _check_readiness_consistency(self, readiness: str, apis: List[Dict]) -> None:

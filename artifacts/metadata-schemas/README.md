@@ -44,8 +44,8 @@ metadata-schemas/
 Defines the structure for `release-plan.yaml` files maintained on the main branch.
 
 **Key fields:**
-- `repository.release_scope` - Scope of planned release (none, sandbox, meta-release)
-- `repository.meta_release` - Meta-release label (Fall26, Spring27), required when release_scope is "meta-release"
+- `repository.release_track` - Release track (none, sandbox, meta-release)
+- `repository.meta_release` - Meta-release label (Fall26, Spring27), required when release_track is "meta-release"
 - `repository.release_tag` - CAMARA release tag (e.g., r4.1), must be the next available number in the release cycle or rN+1.1 for start of new release cycle
 - `repository.release_readiness` - Readiness level (none, pre-release-alpha, pre-release-rc, public-release, patch-release)
 - `dependencies` - Dependencies on Commonalities and ICM releases
@@ -154,7 +154,7 @@ Recommended dependencies for JavaScript version:
 
 Use these exact field names:
 
-- `release_scope` (none, sandbox, meta-release)
+- `release_track` (none, sandbox, meta-release)
 - `release_tag` (not release_number)
 - `api_name` (not name)
 - `commonalities_release` (not commonalities_version)
@@ -162,9 +162,9 @@ Use these exact field names:
 - `api_status` (not just status)
 - `main_contacts` (array of GitHub usernames, only in release-plan.yaml)
 
-### Release Scope
+### Release Track
 
-**release_scope** determines the type of planned release:
+**release_track** determines how the repository participates in CAMARA releases:
 - `none` - No release planned
 - `sandbox` - Release outside meta-release cycle
 - `meta-release` - Participating in a CAMARA meta-release (requires meta_release field)
@@ -188,9 +188,9 @@ Use these exact field names:
 
 ### Meta-Release Field
 
-The `meta_release` field is only used when `release_scope` is "meta-release":
+The `meta_release` field is only used when `release_track` is "meta-release":
 - Use meta-release labels (Fall26, Spring27) for repositories participating in meta-releases
-- For sandbox releases, use `release_scope: sandbox` without meta_release field
+- For sandbox releases, use `release_track: sandbox` without meta_release field
 
 ### Version Fields
 
@@ -236,7 +236,7 @@ pip install pyyaml jsonschema
 **Error:** "api_status is not one of enum values"
 - **Fix:** Must be exactly: draft, alpha, rc, or public
 
-**Error:** "release_scope is not one of enum values"
+**Error:** "release_track is not one of enum values"
 - **Fix:** Must be exactly: none, sandbox, or meta-release
 
 ### Semantic Errors
@@ -250,7 +250,7 @@ pip install pyyaml jsonschema
 ### Field Name Errors
 
 **Error:** Field names not recognized
-- **Fix:** Check field names match schema definitions: `release_scope`, `release_tag`, `api_name`, `commonalities_release`, `identity_consent_management_release`, `api_status`, `main_contacts` (release-plan only)
+- **Fix:** Check field names match schema definitions: `release_track`, `release_tag`, `api_name`, `commonalities_release`, `identity_consent_management_release`, `api_status`, `main_contacts` (release-plan only)
 - **Note:** The schemas allow additional properties for extensibility, but required fields must use exact names
 
 ## Questions and Support

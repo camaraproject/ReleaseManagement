@@ -7,7 +7,7 @@
 # This represents a typical mature repository during a release cycle.
 
 repository:
-  release_scope: meta-release
+  release_track: meta-release
   meta_release: Fall26
   release_tag: r4.1
   release_readiness: pre-release-alpha

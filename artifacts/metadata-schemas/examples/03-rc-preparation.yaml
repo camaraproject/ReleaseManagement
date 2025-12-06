@@ -6,7 +6,7 @@
 # indicating the repository is ready to create an M3 pre-release.
 
 repository:
-  release_scope: meta-release
+  release_track: meta-release
   meta_release: Spring26
   release_tag: r3.2
   release_readiness: pre-release-rc

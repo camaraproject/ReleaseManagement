@@ -8,7 +8,7 @@
 # while another remains at its previously released version (implicit lock).
 
 repository:
-  release_scope: meta-release
+  release_track: meta-release
   meta_release: Fall25
   release_tag: r3.4
   release_readiness: patch-release
