@@ -1,6 +1,6 @@
 # Example 5: Generated Release Metadata
 #
-# Scenario: This shows the release-metadata.yaml format generated
+# Scenario: This shows the release-metadata.yaml file generated
 # automatically during release branch preparation. Based on a
 # public-release scenario, this demonstrates how the release plan
 # is transformed into release metadata with:

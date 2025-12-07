@@ -1,6 +1,6 @@
-# Example 2: Multi-API Repository with Mixed API Status
+# Example 2: Multi-API Repository with mixed API Status
 #
-# Scenario: A QualityOnDemand-style repository with multiple APIs at
+# Scenario: A QualityOnDemand-style repository with multiple APIs with
 # different API status values. This represents a pre-release-alpha
 # with a mix of alpha, rc, and previously released public APIs.
 #

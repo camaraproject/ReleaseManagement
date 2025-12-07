@@ -3,8 +3,8 @@ $id: "https://github.com/camaraproject/ReleaseManagement/schemas/release-plan-sc
 title: CAMARA Release Plan Schema
 description: |
   Schema for release-plan.yaml file maintained on main branch.
-  This file is manually edited by codeowners after each release creation and CI-validated.
-  It contains forward-looking release plans for the next release cycle.
+  This file is manually edited by codeowners, and is CI-validated.
+  It contains forward-looking release plan for the next release.
 
 type: object
 required:
@@ -54,7 +54,7 @@ properties:
         description: |
           Repository readiness level determining which release type can be triggered:
           - none: No release planned or not ready for any release yet
-          - pre-release-alpha: All APIs at alpha or better (mix of alpha/rc allowed,
+          - pre-release-alpha: All APIs at alpha status or better (mix of alpha/rc allowed,
             public only for previously released APIs - no new public versions)
           - pre-release-rc: All changed APIs at rc status
           - public-release: All APIs at public status
@@ -120,11 +120,11 @@ properties:
         api_status:
           type: string
           description: |
-            API validation level determining which CI checks are applied:
+            API status for the release under preparation (determines also the validation level and which CI checks are applied):
             - draft: API declared but implementation in progress (basic validation only)
             - alpha: Initial implementation ready for early feedback
-            - rc: Release candidate, feature-complete for final review
-            - public: Stable release meeting all quality requirements
+            - rc: Release candidate version, feature-complete for final review
+            - public: Public API version release meeting all quality requirements
 
             Note: APIs targeting a version already released as public are
             automatically locked by CI (modifications blocked).

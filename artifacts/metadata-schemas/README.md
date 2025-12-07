@@ -47,13 +47,13 @@ Defines the structure for `release-plan.yaml` files maintained on the main branc
 - `repository.release_track` - Release track (none, sandbox, meta-release)
 - `repository.meta_release` - Meta-release label (Fall26, Spring27), required when release_track is "meta-release"
 - `repository.release_tag` - CAMARA release tag (e.g., r4.1), must be the next available number in the release cycle or rN+1.1 for start of new release cycle
-- `repository.release_readiness` - Readiness level (none, pre-release-alpha, pre-release-rc, public-release, patch-release)
+- `repository.release_readiness` - Declared readiness level, validated by CI against API statuses (none, pre-release-alpha, pre-release-rc, public-release, patch-release)
 - `dependencies` - Dependencies on Commonalities and ICM releases
-- `apis[]` - Array of APIs with target versions and status
+- `apis[]` - Array of APIs with api_name, target_version and api_status
 
 **API status values:** `draft`, `alpha`, `rc`, `public`
 
-**Important:** API `target_version` contains only base semantic version (X.Y.Z), pre-release extensions are auto-calculated during release.
+**Important:** API `target_version` contains only base semantic version (X.Y.Z), version extensions are auto-calculated during release.
 
 ### release-metadata-schema.yaml
 
@@ -178,11 +178,11 @@ Use these exact field names:
 - `public-release` - All APIs at public status
 - `patch-release` - Maintenance/hotfix release
 
-**API api_status** indicates individual API validation level:
+**api_status** indicates the individual API (achieved) validation level (and determines the version suffix in case of a release)
 - `draft` - API declared but implementation in progress (basic validation)
 - `alpha` - Initial implementation ready for early feedback
-- `rc` - Release candidate, feature-complete
-- `public` - Stable release meeting all quality requirements
+- `rc` - Release candidate, feature-complete version
+- `public` - Published version meeting all quality requirements
 
 **Note:** APIs targeting a version already released as public are automatically locked by CI (modifications blocked). This replaces the previous "unchanged" status.
 
@@ -196,7 +196,7 @@ The `meta_release` field is only used when `release_track` is "meta-release":
 
 **release-plan.yaml:**
 - `apis[].target_version` - Base semantic version only (1.0.0, 0.5.0)
-- No pre-release extensions used in planning
+- No version extensions are used in planning
 
 **release-metadata.yaml:**
 - `apis[].api_version` - Full version with calculated extension (1.0.0-rc.2, 0.5.0-alpha.1)
