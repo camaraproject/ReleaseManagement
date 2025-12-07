@@ -10,7 +10,7 @@ repository:
   release_track: meta-release
   meta_release: Fall26
   release_tag: r4.1
-  release_readiness: pre-release-alpha
+  target_release_type: pre-release-alpha
 
 dependencies:
   commonalities_release: r4.2
@@ -18,23 +18,23 @@ dependencies:
 
 apis:
   - api_name: quality-on-demand
-    target_version: 2.0.0
-    api_status: alpha
+    target_api_version: 2.0.0
+    target_api_status: alpha
     main_contacts:
       - qodMaintainer1
       - qodMaintainer2
 
   - api_name: qos-profiles
-    target_version: 1.2.0
-    api_status: public
+    target_api_version: 1.2.0
+    target_api_status: public
     # Note: CI detects this version was already released as public
     # and will block any modifications (implicit lock)
     main_contacts:
       - qosMaintainer
 
   - api_name: qos-provisioning
-    target_version: 1.5.0
-    api_status: rc
+    target_api_version: 1.5.0
+    target_api_status: rc
     main_contacts:
       - qosMaintainer
       - provisioningMaintainer

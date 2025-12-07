@@ -17,7 +17,7 @@ properties:
     required:
       - release_track
       - release_tag
-      - release_readiness
+      - target_release_type
     properties:
       release_track:
         type: string
@@ -49,16 +49,32 @@ properties:
           - "r4.1"
           - "r5.3"
 
-      release_readiness:
+      target_release_type:
         type: string
         description: |
-          Repository readiness level determining which release type can be triggered:
-          - none: No release planned or not ready for any release yet
-          - pre-release-alpha: All APIs at alpha status or better (mix of alpha/rc allowed,
-            public only for previously released APIs - no new public versions)
-          - pre-release-rc: All changed APIs at rc status
-          - public-release: All APIs at public status
-          - patch-release: Maintenance release on maintenance branch
+          Declares the release type being prepared for the next release.
+          This is one of three target_* fields that together define the release plan:
+          - target_api_version: which semantic version for each API
+          - target_release_type: which type of release (this field)
+          - target_api_status: which status for each API in this release
+
+          Codeowners set this field to declare intent. CI validates that all API
+          target_api_status values are compatible with the declared release type.
+
+          Values:
+          - none: No release planned or repository not yet ready
+          - pre-release-alpha: Optional early release for feedback. All APIs must have
+            target_api_status alpha or better. Changed APIs use alpha/rc; only unchanged
+            APIs (same target_api_version as in previous public release) may use public.
+          - pre-release-rc: Release candidate (e.g., by M3 for meta-releases). All APIs
+            must have target_api_status rc or public. Changed APIs use rc; only unchanged
+            APIs may use public.
+          - public-release: Public release (e.g., by M4 for meta-releases). All APIs must
+            have target_api_status public. At least one API must have a target_api_version not
+            previously published.
+          - patch-release: Maintenance release from maintenance branch. All APIs must
+            have target_api_status public. At least one API must have a target_api_version not
+            previously published.
         enum:
           - "none"
           - "pre-release-alpha"
@@ -94,8 +110,8 @@ properties:
       type: object
       required:
         - api_name
-        - target_version
-        - api_status
+        - target_api_version
+        - target_api_status
       properties:
         api_name:
           type: string
@@ -105,7 +121,7 @@ properties:
             - "location-verification"
             - "quality-on-demand"
 
-        target_version:
+        target_api_version:
           type: string
           description: |
             Target semantic version for this release (base version only, no pre-release extensions).
@@ -117,17 +133,30 @@ properties:
             - "0.5.0"
             - "3.2.1"
 
-        api_status:
+        target_api_status:
           type: string
           description: |
-            API status for the release under preparation (determines also the validation level and which CI checks are applied):
-            - draft: API declared but implementation in progress (basic validation only)
-            - alpha: Initial implementation ready for early feedback
-            - rc: Release candidate version, feature-complete for final review
-            - public: Public API version release meeting all quality requirements
+            Declares the status this API will have in the next release.
+            Together with target_api_version, determines the full version string
+            (e.g., target_api_version 1.2.0 + target_api_status rc → 1.2.0-rc.N).
 
-            Note: APIs targeting a version already released as public are
-            automatically locked by CI (modifications blocked).
+            Codeowners set this field to declare intent. CI validates that the
+            API already meets the requirements for the declared status level -
+            the status can only be set if validation passes.
+
+            Values (progression: draft → alpha → rc → public):
+            - draft: API declared but implementation in progress. Basic validation
+              only. API definition may not exist yet.
+            - alpha: Initial implementation ready for early feedback. API definition
+              must exist and pass alpha-level validation.
+            - rc: Release candidate, feature-complete. API and test definitions
+              must pass rc-level validation.
+            - public: Public release meeting all quality requirements. API and test
+              definitions must pass full validation.
+
+            Note: APIs with target_api_version matching a previously published public
+            version are automatically locked by CI (modifications blocked). These
+            unchanged APIs may keep target_api_status public across pre-releases.
           enum:
             - "draft"
             - "alpha"

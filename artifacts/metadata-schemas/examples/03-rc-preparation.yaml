@@ -9,7 +9,7 @@ repository:
   release_track: meta-release
   meta_release: Spring26
   release_tag: r3.2
-  release_readiness: pre-release-rc
+  target_release_type: pre-release-rc
 
 dependencies:
   commonalities_release: r4.2
@@ -17,8 +17,8 @@ dependencies:
 
 apis:
   - api_name: device-identifier
-    target_version: 1.0.0
-    api_status: rc
+    target_api_version: 1.0.0
+    target_api_status: rc
     main_contacts:
       - deviceTeamLead
       - deviceDeveloper

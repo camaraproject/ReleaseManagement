@@ -71,8 +71,8 @@ class MetadataValidator:
         # release-metadata has release_date and src_commit_sha
         if 'release_date' in repo and 'src_commit_sha' in repo:
             return 'release-metadata'
-        # release-plan has release_readiness
-        elif 'release_readiness' in repo:
+        # release-plan has target_release_type
+        elif 'target_release_type' in repo:
             return 'release-plan'
 
         return 'unknown'
@@ -115,10 +115,10 @@ class MetadataValidator:
         meta_release = repo.get('meta_release')
         self._check_track_consistency(release_track, meta_release)
 
-        # Check release readiness consistency
-        release_readiness = repo.get('release_readiness')
-        if release_readiness:
-            self._check_readiness_consistency(release_readiness, apis)
+        # Check target release type consistency
+        target_release_type = repo.get('target_release_type')
+        if target_release_type:
+            self._check_release_type_consistency(target_release_type, apis)
 
         # Check API status progression
         for api in apis:
@@ -135,8 +135,8 @@ class MetadataValidator:
                 f"release_track is '{release_track}' but meta_release field is present"
             )
 
-    def _check_readiness_consistency(self, readiness: str, apis: List[Dict]) -> None:
-        """Check that API statuses align with repository release readiness.
+    def _check_release_type_consistency(self, release_type: str, apis: List[Dict]) -> None:
+        """Check that API statuses align with repository target release type.
 
         Rules:
         - none: No constraints (repository not targeting a release)
@@ -146,40 +146,40 @@ class MetadataValidator:
         - patch-release: All APIs must be public (can only patch released APIs)
         """
         # 'none' has no constraints - repository is not targeting a release
-        if readiness == 'none':
+        if release_type == 'none':
             pass
 
-        elif readiness == 'pre-release-alpha':
+        elif release_type == 'pre-release-alpha':
             # All APIs must be at least alpha (alpha, rc, or public)
-            draft_apis = [api.get('api_name') for api in apis if api.get('api_status') == 'draft']
+            draft_apis = [api.get('api_name') for api in apis if api.get('target_api_status') == 'draft']
             if draft_apis:
                 self.errors.append(
-                    f"release_readiness is 'pre-release-alpha' but these APIs are 'draft': {', '.join(draft_apis)}"
+                    f"target_release_type is 'pre-release-alpha' but these APIs are 'draft': {', '.join(draft_apis)}"
                 )
 
-        elif readiness == 'pre-release-rc':
+        elif release_type == 'pre-release-rc':
             # All APIs must be at least rc (rc or public)
             invalid_apis = [api.get('api_name') for api in apis
-                           if api.get('api_status') in ['draft', 'alpha']]
+                           if api.get('target_api_status') in ['draft', 'alpha']]
             if invalid_apis:
                 self.errors.append(
-                    f"release_readiness is 'pre-release-rc' but these APIs are not rc/public: {', '.join(invalid_apis)}"
+                    f"target_release_type is 'pre-release-rc' but these APIs are not rc/public: {', '.join(invalid_apis)}"
                 )
 
-        elif readiness == 'public-release':
+        elif release_type == 'public-release':
             # All APIs must be public
-            non_public = [api.get('api_name') for api in apis if api.get('api_status') != 'public']
+            non_public = [api.get('api_name') for api in apis if api.get('target_api_status') != 'public']
             if non_public:
                 self.errors.append(
-                    f"release_readiness is 'public-release' but these APIs are not 'public': {', '.join(non_public)}"
+                    f"target_release_type is 'public-release' but these APIs are not 'public': {', '.join(non_public)}"
                 )
 
-        elif readiness == 'patch-release':
+        elif release_type == 'patch-release':
             # Patch releases are for maintenance - all APIs should be public
-            non_public = [api.get('api_name') for api in apis if api.get('api_status') != 'public']
+            non_public = [api.get('api_name') for api in apis if api.get('target_api_status') != 'public']
             if non_public:
                 self.errors.append(
-                    f"release_readiness is 'patch-release' but these APIs are not 'public': {', '.join(non_public)}"
+                    f"target_release_type is 'patch-release' but these APIs are not 'public': {', '.join(non_public)}"
                 )
 
     def _check_api_status(self, api: Dict) -> None:
@@ -205,17 +205,17 @@ class MetadataValidator:
 
         for api in apis:
             api_name = api.get('api_name')
-            api_status = api.get('api_status')
+            target_api_status = api.get('target_api_status')
 
             # Skip file checks for draft APIs
-            if api_status == 'draft':
+            if target_api_status == 'draft':
                 continue
 
             # Look for API definition file
             api_file = metadata_dir / 'code' / 'API_definitions' / f'{api_name}.yaml'
             if not api_file.exists():
                 self.warnings.append(
-                    f"API definition file not found: {api_file} (status: {api_status})"
+                    f"API definition file not found: {api_file} (status: {target_api_status})"
                 )
 
     def validate(self) -> bool:

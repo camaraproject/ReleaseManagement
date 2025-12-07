@@ -11,7 +11,7 @@ repository:
   release_track: meta-release
   meta_release: Fall25
   release_tag: r3.4
-  release_readiness: patch-release
+  target_release_type: patch-release
 
 dependencies:
   commonalities_release: r3.4
@@ -19,14 +19,14 @@ dependencies:
 
 apis:
   - api_name: sim-swap
-    target_version: 2.1.1
-    api_status: public
+    target_api_version: 2.1.1
+    target_api_status: public
     main_contacts:
       - simswapMaintainer
 
   - api_name: sim-swap-subscriptions
-    target_version: 0.3.0
-    api_status: public
+    target_api_version: 0.3.0
+    target_api_status: public
     # Note: CI detects this version was already released as public
     # version and will block any modifications (implicit lock)
     main_contacts:

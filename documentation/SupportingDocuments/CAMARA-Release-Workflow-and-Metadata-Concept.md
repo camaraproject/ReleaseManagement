@@ -33,8 +33,8 @@ The workflow achieves these objectives through:
 | `release_track`        | Release track determining how repository participates: `none` (no release), `sandbox` (outside meta-release), `meta-release` (participating in meta-release). |
 | `meta_release`         | Meta-release label (e.g., `Fall26`). Only used when `release_track` is `meta-release`. |
 | `release_tag`          | CAMARA release tag (e.g., `r4.1`). Distinct from API SemVer. |
-| `release_readiness`    | Codeowner-declared readiness level, validated by CI: `none` (not ready), `pre-release-alpha` (requires all APIs at alpha+), `pre-release-rc` (requires all APIs at rc+), `public-release` (requires all APIs public), `patch-release` (maintenance). |
-| `api_status`           | Per-API validation level: `draft` (declared, basic validation), `alpha`, `rc`, `public`. Extension numbers are auto-calculated. |
+| `target_release_type`  | Codeowner-declared release type for next release, validated by CI: `none` (not ready), `pre-release-alpha` (requires all APIs at alpha+), `pre-release-rc` (requires all APIs at rc+), `public-release` (requires all APIs public), `patch-release` (maintenance). |
+| `target_api_status`    | Per-API target status for next release: `draft` (declared, basic validation), `alpha`, `rc`, `public`. Extension numbers are auto-calculated. |
 | `main_contacts`        | GitHub handles of code owners or maintainers (per API in `release-plan.yaml`). |
 | `main` branch          | Development branch. All content is work-in-progress (`version: wip`). |
 | Maintenance branch     | Long-lived branch for maintaining older release cycles (e.g., `maintenance-r3`). See Appendix for details. |
@@ -54,7 +54,7 @@ repository:
   release_track: meta-release  # none, sandbox, or meta-release
   meta_release: Fall26  # Only when release_track is meta-release
   release_tag: r4.1
-  release_readiness: pre-release-alpha  # Repository ready for pre-release with mixed API status
+  target_release_type: pre-release-alpha  # Repository ready for pre-release with mixed API status
 
 dependencies:
   commonalities_release: r4.2
@@ -62,37 +62,37 @@ dependencies:
 
 apis:
   - api_name: location-verification
-    target_version: 3.2.0
-    api_status: rc  # Status type only; extension numbers (e.g., rc.2) are auto-calculated
+    target_api_version: 3.2.0
+    target_api_status: rc  # Status type only; extension numbers (e.g., rc.2) are auto-calculated
     main_contacts:
       - githubUser1
       - githubUser2
 
   - api_name: location-retrieval
-    target_version: 0.5.0
-    api_status: rc
+    target_api_version: 0.5.0
+    target_api_status: rc
     main_contacts:
       - githubUser3
 
   - api_name: some-new-location-service
-    target_version: 0.1.0
-    api_status: alpha
+    target_api_version: 0.1.0
+    target_api_status: alpha
     main_contacts:
       - githubUser4
 ```
 
 👉 Notes:
-- API status progression: `draft` → `alpha` → `rc` → `public`
+- Target API status progression: `draft` → `alpha` → `rc` → `public`
   - `draft`: API declared in release-plan.yaml but implementation in progress (basic CI validation)
   - `alpha`+: API file must exist and pass validation at declared status level
   - APIs targeting a version already released as public are automatically locked by CI
-- Repository release readiness determines what type of release can be created:
+- Repository target release type determines what type of release can be created:
   - `none`: No release planned or not ready yet
   - `pre-release-alpha`: All APIs at alpha or better (mix of alpha/rc allowed)
-  - `pre-release-rc`: Requires all APIs at rc or public status (M3 milestone)
+  - `pre-release-rc`: Requires all APIs at rc or public status (e.g., M3 milestone for meta-releases)
   - `public-release`: Requires all APIs at public status
   - `patch-release`: For maintenance/hotfix releases from maintenance branches
-- CI validates that API statuses match the declared repository release readiness.
+- CI validates that target API statuses match the declared repository target release type.
 
 ### 2. `release-metadata.yaml` (on release branch)
 
@@ -135,9 +135,9 @@ apis:
 - CI gates validate:
   - Formatting and schema correctness
   - Strict version consistency: info.version format, server URL patterns per CAMARA rules
-  - Adherence to CAMARA guidelines based on the declared repository `release_readiness` and `api_status`
-  - APIs with status `alpha` or higher must exist and meet validation criteria
-  - APIs with status `draft` receive basic validation (allows declaration while implementation in progress)
+  - Adherence to CAMARA guidelines based on the declared repository `target_release_type` and `target_api_status`
+  - APIs with target status `alpha` or higher must exist and meet validation criteria
+  - APIs with target status `draft` receive basic validation (allows declaration while implementation in progress)
   - APIs targeting a version already released as public are locked (CI blocks modifications)
 - CI also raises non-blocking warnings about issues that must be addressed to enable promotion to the next stage (e.g., from `alpha` to `rc`, or `rc` to `public`).
 - All validation results are summarized in the CI output and posted as comments in the PR, helping developers stay informed and proactive.
@@ -154,7 +154,7 @@ Upon triggering the release (via labeled issue - maintainers+ can trigger by add
 
 - A release branch is created (e.g. `release/r4.1`)
 - A script or GitHub Action:
-  - Sets exact API versions using `target_version` + auto-calculated suffix (e.g., `-rc.2` based on consecutive numbering across API lifecycle)
+  - Sets exact API versions using `target_api_version` + auto-calculated extension (e.g., `-rc.2` based on consecutive numbering across API lifecycle)
   - Enforces CAMARA versioning rules: info.version matches tag, server URLs follow v0.x or vx patterns
   - Writes `release-metadata.yaml`
   - Replaces placeholder markers (e.g., `{{api_version}}`, `{{commonalities_release}}`) in repository files, including updated template text from Commonalities/ICM in second phase
@@ -207,7 +207,7 @@ After release is tagged and published:
 
 #### 5b. For public releases only:
 - APIs targeting the just-released public version are automatically locked by CI
-- Any modification to these APIs will be blocked until target_version is updated
+- Any modification to these APIs will be blocked until target_api_version is updated
 - Forces explicit planning for next release cycle
 
 #### 5c. Tag reference point on `main`:
@@ -227,7 +227,7 @@ For critical fixes and security patches on older release cycles:
 
 - **Maintenance branches** (`maintenance-r3`) are created from the last commit included in that release cycle
 - Patches are developed and tested on the maintenance branch
-- Set `release_readiness: patch-release` in the maintenance branch's `release-plan.yaml`
+- Set `target_release_type: patch-release` in the maintenance branch's `release-plan.yaml`
 - Follow steps 2-5 above, but create release branch from maintenance branch instead of `main`
 - Patch releases (r3.4, r3.5) contain only bug fixes, no new features
 
@@ -239,7 +239,7 @@ See Appendix for detailed branching diagrams and maintenance strategy.
 |------------------------|----------------------------------------------------------------------------------------------|
 | Separation of concerns | `main` can always be integrated or reworked — no release state mixed in                     |
 | Consistent metadata    | Metadata is parseable, validatable, and source-of-truth for release tooling                 |
-| Flexible compliance    | Pre-release vs public release phases are enforced via repository `release_readiness` and `api_status` |
+| Flexible compliance    | Pre-release vs public release phases are enforced via repository `target_release_type` and `target_api_status` |
 | CI-friendly            | No fragile manual checks — all validations declarative, structural, and branch-aware        |
 | Collaborative review   | All critical changes reviewed like any other PR                                              |
 | Traceable results      | Tag, commit SHA, and metadata captured in release snapshot                                  |
@@ -292,7 +292,7 @@ A pull request to `main` may either:
 but ❌ not both.
 
 This applies particularly to:
-- Status changes in repository `release_readiness` or per-API `api_status`
+- Status changes in repository `target_release_type` or per-API `target_api_status`
 - Dependency updates, such as upgrading `commonalities_release`
 
 #### 2. **CI Validation of Metadata-only PRs**
@@ -323,7 +323,7 @@ This applies particularly to:
 ### Developer Workflow Example
 
 1. Developer merges a PR that corrects a missing test file for an API.
-2. Once CI passes and no blocking issues remain, they open a small metadata-only PR updating the `api_status` from `alpha` to `rc`.
+2. Once CI passes and no blocking issues remain, they open a small metadata-only PR updating the `target_api_status` from `alpha` to `rc`.
 3. CI detects the change, runs combined checks, and approves if valid.
 
 This enforces discipline, validates correctness, and maintains oversight — without compromising developer agility.
@@ -418,7 +418,7 @@ main ────┬──[src/4.1]──────────[PR: selective 
 - Server URL changes (keep placeholder format)
 - Release-specific metadata
 
-**3. For public releases**: APIs targeting the just-released public version are automatically locked by CI (any modification blocked until `target_version` is updated)
+**3. For public releases**: APIs targeting the just-released public version are automatically locked by CI (any modification blocked until `target_api_version` is updated)
 
 **Purpose**: Makes release information visible in the default branch without disrupting ongoing development, provides reference point for maintenance branches, and ensures explicit planning for next cycle.
 

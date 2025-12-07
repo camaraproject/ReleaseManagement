@@ -47,13 +47,13 @@ Defines the structure for `release-plan.yaml` files maintained on the main branc
 - `repository.release_track` - Release track (none, sandbox, meta-release)
 - `repository.meta_release` - Meta-release label (Fall26, Spring27), required when release_track is "meta-release"
 - `repository.release_tag` - CAMARA release tag (e.g., r4.1), must be the next available number in the release cycle or rN+1.1 for start of new release cycle
-- `repository.release_readiness` - Declared readiness level, validated by CI against API statuses (none, pre-release-alpha, pre-release-rc, public-release, patch-release)
+- `repository.target_release_type` - Declared release type, validated by CI against API statuses (none, pre-release-alpha, pre-release-rc, public-release, patch-release)
 - `dependencies` - Dependencies on Commonalities and ICM releases
-- `apis[]` - Array of APIs with api_name, target_version and api_status
+- `apis[]` - Array of APIs with api_name, target_api_version and target_api_status
 
-**API status values:** `draft`, `alpha`, `rc`, `public`
+**Target API status values:** `draft`, `alpha`, `rc`, `public`
 
-**Important:** API `target_version` contains only base semantic version (X.Y.Z), version extensions are auto-calculated during release.
+**Important:** API `target_api_version` contains only base semantic version (X.Y.Z), version extensions are auto-calculated during release.
 
 ### release-metadata-schema.yaml
 
@@ -62,7 +62,7 @@ Defines the structure for `release-metadata.yaml` files generated on release bra
 **Key differences from release-plan:**
 - Generated fields added directly in `repository` section:
   - `release_date` - Actual release date and time in ISO 8601 format (UTC)
-  - `release_type` - Release type (mirrors release_readiness)
+  - `release_type` - Release type (mirrors target_release_type)
   - `src_commit_sha` - Source commit SHA (40 characters)
   - `release_notes` - Optional release description
 - API `api_version` field includes calculated extensions (e.g., 3.2.0-rc.2)
@@ -118,8 +118,8 @@ The validator performs:
 
 1. **Schema validation** - Checks structure, required fields, data types, and patterns
 2. **Semantic checks:**
-   - Release readiness consistency with API statuses
-   - API status progression rules
+   - Target release type consistency with API statuses
+   - Target API status progression rules
    - Version format alignment
 3. **Optional file checks** - Verifies referenced API files exist (with `--check-files`)
 
@@ -159,7 +159,7 @@ Use these exact field names:
 - `api_name` (not name)
 - `commonalities_release` (not commonalities_version)
 - `identity_consent_management_release` (not icm_release)
-- `api_status` (not just status)
+- `target_api_status` (in release-plan.yaml, `api_status` not used)
 - `main_contacts` (array of GitHub usernames, only in release-plan.yaml)
 
 ### Release Track
@@ -169,16 +169,16 @@ Use these exact field names:
 - `sandbox` - Release outside meta-release cycle
 - `meta-release` - Participating in a CAMARA meta-release (requires meta_release field)
 
-### Release Readiness vs API Status
+### Target Release Type vs Target API Status
 
-**Repository release_readiness** determines what type of release can be triggered:
+**Repository target_release_type** determines what type of release can be triggered:
 - `none` - No release planned or not ready yet
 - `pre-release-alpha` - All APIs at alpha or better (mix of alpha/rc allowed)
 - `pre-release-rc` - All changed APIs at rc status
 - `public-release` - All APIs at public status
 - `patch-release` - Maintenance/hotfix release
 
-**api_status** indicates the individual API (achieved) validation level (and determines the version suffix in case of a release)
+**target_api_status** indicates the individual API target status for the next release (and determines the version extension):
 - `draft` - API declared but implementation in progress (basic validation)
 - `alpha` - Initial implementation ready for early feedback
 - `rc` - Release candidate, feature-complete version
@@ -195,7 +195,7 @@ The `meta_release` field is only used when `release_track` is "meta-release":
 ### Version Fields
 
 **release-plan.yaml:**
-- `apis[].target_version` - Base semantic version only (1.0.0, 0.5.0)
+- `apis[].target_api_version` - Base semantic version only (1.0.0, 0.5.0)
 - No version extensions are used in planning
 
 **release-metadata.yaml:**
@@ -233,7 +233,7 @@ pip install pyyaml jsonschema
 **Error:** "meta_release does not match pattern"
 - **Fix:** Must be Fall26, Spring27, or similar pattern (SpringYY or FallYY)
 
-**Error:** "api_status is not one of enum values"
+**Error:** "target_api_status is not one of enum values"
 - **Fix:** Must be exactly: draft, alpha, rc, or public
 
 **Error:** "release_track is not one of enum values"
@@ -241,16 +241,16 @@ pip install pyyaml jsonschema
 
 ### Semantic Errors
 
-**Error:** "release_readiness is 'pre-release-rc' but some APIs are 'draft' or 'alpha'"
-- **Fix:** For pre-release-rc readiness, all APIs must be rc or public status
+**Error:** "target_release_type is 'pre-release-rc' but some APIs are 'draft' or 'alpha'"
+- **Fix:** For pre-release-rc release type, all APIs must be rc or public status
 
-**Error:** "release_readiness is 'public-release' but not all APIs are 'public'"
+**Error:** "target_release_type is 'public-release' but not all APIs are 'public'"
 - **Fix:** Public releases require all APIs to have public status
 
 ### Field Name Errors
 
 **Error:** Field names not recognized
-- **Fix:** Check field names match schema definitions: `release_track`, `release_tag`, `api_name`, `commonalities_release`, `identity_consent_management_release`, `api_status`, `main_contacts` (release-plan only)
+- **Fix:** Check field names match schema definitions: `release_track`, `release_tag`, `api_name`, `commonalities_release`, `identity_consent_management_release`, `target_api_status`, `main_contacts` (release-plan only)
 - **Note:** The schemas allow additional properties for extensibility, but required fields must use exact names
 
 ## Questions and Support

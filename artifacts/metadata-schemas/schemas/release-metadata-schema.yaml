@@ -62,7 +62,7 @@ properties:
       release_type:
         type: string
         description: |
-          Release type (derived from release_readiness in release-plan.yaml):
+          Release type (derived from target_release_type in release-plan.yaml):
           - pre-release-alpha: All APIs at alpha or better (mix of alpha/rc allowed)
           - pre-release-rc: All APIs at rc or public status
           - public-release: All APIs at public status
@@ -135,7 +135,7 @@ properties:
           description: |
             Actual API version with pre-release extension if applicable.
             Format: X.Y.Z or X.Y.Z-alpha.N or X.Y.Z-rc.N
-            Derived from target_version in release-plan.yaml with extension calculation.
+            Derived from target_api_version in release-plan.yaml with extension calculation.
           pattern: "^\\d+\\.\\d+\\.\\d+(-[a-z]+\\.\\d+)?$"
           examples:
             - "1.0.0"
