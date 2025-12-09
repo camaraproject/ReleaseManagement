@@ -652,7 +652,7 @@ Rules vary by:
 
 **Concept Documents**:
 - [CAMARA-Release-Workflow-and-Metadata-Concept.md](https://github.com/camaraproject/ReleaseManagement/blob/main/documentation/SupportingDocuments/CAMARA-Release-Workflow-and-Metadata-Concept.md)
-- [CAMARA_Release_Rrocess_coverage_o_fall_25.md](https://github.com/camaraproject/ReleaseManagement/blob/main/documentation/SupportingDocuments/CAMARA_Release_Rrocess_coverage_o_fall_25.md)
+- [CAMARA_Release_Process_coverage_of_fall_25.md](https://github.com/camaraproject/ReleaseManagement/blob/main/documentation/SupportingDocuments/CAMARA_Release_Process_coverage_of_fall_25.md)
 
 **Existing Infrastructure**:
 - [.spectral.yaml](https://github.com/camaraproject/tooling/blob/main/linting/config/.spectral.yaml) - Extend with new rules
