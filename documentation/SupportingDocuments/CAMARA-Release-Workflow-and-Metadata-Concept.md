@@ -88,7 +88,7 @@ apis:
   - APIs targeting a version already released as public are automatically locked by CI
 - Repository target release type determines what type of release can be created:
   - `none`: No release planned or not ready yet
-  - `pre-release-alpha`: All APIs at alpha or better (mix of alpha/rc allowed)
+  - `pre-release-alpha`: All APIs at alpha or higher (rc or public) (mix of alpha/rc/public allowed)
   - `pre-release-rc`: Requires all APIs at rc or public status (e.g., M3 milestone for meta-releases)
   - `public-release`: Requires all APIs at public status
   - `patch-release`: For maintenance/hotfix releases from maintenance branches

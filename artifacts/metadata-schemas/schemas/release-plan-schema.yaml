@@ -52,19 +52,18 @@ properties:
       target_release_type:
         type: string
         description: |
-          Declares the release type being prepared for the next release.
-          This is one of three target_* fields that together define the release plan:
+          Declares the release type of the repository being prepared for the next release.
+          The target_release_type is one of three target_* fields that together define the release plan. The other 2 fields indicate the target version and status for each API in the repository to be released:
           - target_api_version: which semantic version for each API
-          - target_release_type: which type of release (this field)
           - target_api_status: which status for each API in this release
 
-          Codeowners set this field to declare intent. CI validates that all API
-          target_api_status values are compatible with the declared release type.
+          Codeowners set these fields to declare intent. CI validates that all API
+          target_api_status values are compatible with the declared target_release_type.
 
           Values:
           - none: No release planned or repository not yet ready
           - pre-release-alpha: Optional early release for feedback. All APIs must have
-            target_api_status alpha or better. Changed APIs use alpha/rc; only unchanged
+            target_api_status alpha or higher (rc, public). Changed APIs use alpha or rc; only unchanged
             APIs (same target_api_version as in previous public release) may use public.
           - pre-release-rc: Release candidate (e.g., by M3 for meta-releases). All APIs
             must have target_api_status rc or public. Changed APIs use rc; only unchanged
@@ -74,7 +73,7 @@ properties:
             previously published.
           - patch-release: Maintenance release from maintenance branch. All APIs must
             have target_api_status public. At least one API must have a target_api_version not
-            previously published.
+            previously published (and which must be a patch version).
         enum:
           - "none"
           - "pre-release-alpha"
@@ -86,7 +85,7 @@ properties:
     type: object
     description: |
       Release dependencies on other CAMARA repositories.
-      Uses release numbers (e.g., r4.2) not API versions.
+      Uses release numbers (e.g., r4.2) not documentation versions.
     properties:
       commonalities_release:
         type: string

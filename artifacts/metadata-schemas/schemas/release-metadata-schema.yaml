@@ -92,7 +92,7 @@ properties:
   dependencies:
     type: object
     description: |
-      Release dependencies with both release numbers and resolved API versions.
+      Release dependencies with both release numbers and resolved documentation versions.
       Format: "rX.Y (semantic-version)". Derived from release-plan.yaml with version resolution.
     properties:
       commonalities_release:
