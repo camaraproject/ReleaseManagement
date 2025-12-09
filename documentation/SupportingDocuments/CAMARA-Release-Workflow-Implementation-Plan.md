@@ -1,45 +1,63 @@
 # CAMARA Automated Release Workflow - Implementation Plan
 
+## Table of Contents
+- [Overview](#overview)
+- [Key Design Decisions](#key-design-decisions)
+- [Timeline Alignment](#timeline-alignment)
+- [Phase 1: Concept & Preparation](#phase-1-concept--preparation-nov---dec-10-2025)
+- [Phase 2: Mass Rollout](#phase-2-mass-rollout-dec-2025---jan-15-2026)
+- [Phase 3: Validation Framework](#phase-3-validation-framework-jan-2026-4-5-weeks)
+- [Phase 4: Release Automation](#phase-4-release-automation-jan-feb-2026-6-weeks)
+- [Phase 5: Release Operations](#phase-5-release-operations-march-2026-8-10-weeks)
+- [Phase 6: Maintenance](#phase-6-maintenance-spring26---fall26)
+- [Validation Architecture](#validation-architecture)
+- [Repository Changes Required](#repository-changes-required)
+- [Implementation Issues](#implementation-issues-sub-issues-to-191)
+- [Open Questions & Risk Areas](#open-questions--risk-areas)
+- [Critical Files](#critical-files)
+- [Next Steps](#next-steps)
+
 ## Overview
 
 This document provides a phased implementation plan for automating the CAMARA release workflow as defined in [CAMARA-Release-Workflow-and-Metadata-Concept.md](https://github.com/camaraproject/ReleaseManagement/blob/main/documentation/SupportingDocuments/CAMARA-Release-Workflow-and-Metadata-Concept.md).
 
-**Implementation Timeline**: November 2025 → Fall 2026 (5 phases)
+**Implementation Timeline**: November 2025 → Fall 2026 (6 phases)
 **Target Repositories**: camaraproject/tooling, camaraproject/ReleaseManagement
 **Scope**: Replace manual wiki-based release process with metadata-driven automation
 
 ## Key Design Decisions
 
-1. **Aggressive adoption strategy**: All participating Spring26 repositories migrate (limited early adopter set)
-2. **Replace monolithic validator**: New modular architecture with Spectral + custom validators
-3. **Direct linter integration**: Use YAML-lint, Spectral, Gherkin-lint directly (not MegaLinter wrapper)
-4. **Defer complex dependencies**: Cross-API $ref resolution postponed to later phase (separate concept needed)
-5. **Severity matrix**: error/warning/info/hint with context-aware enforcement
+1. **Mass Rollout Strategy**: Automated campaign to migrate all ~61 repositories by Jan 15 (replacing wiki trackers)
+2. **Minimal Initial Validation**: Use lightweight validation for rollout (Schema + Existence + Consistency); full framework follows
+3. **Replace monolithic validator**: New modular architecture with Spectral + custom validators
+4. **Direct linter integration**: Use YAML-lint, Spectral, Gherkin-lint directly (not MegaLinter wrapper)
+5. **Defer complex dependencies**: Cross-API $ref resolution postponed to later phase (separate concept needed)
+6. **Severity matrix**: error/warning/info/hint with context-aware enforcement
 
 ## Timeline Alignment
 
 | Milestone | Date | Phase Deliverable |
 |-----------|------|-------------------|
 | **All Hands Call** | Dec 10, 2025 | Present release-plan.yaml concept |
-| **Spring26 M1** | Dec 15, 2025 | Phase 1A complete (metadata schemas + adoption) |
-| **Fall26 cycle start** | Mid-Jan 2026 | Phase 1B complete (validation framework stable) |
-| **Spring26 M3** | Jan 31, 2026 | First early adopters create releases with new process (Phase 2 functional) |
-| **Spring26 M4** | Mar 2026 | Phase 3 rollout to 10-15 early adopter repositories |
-| **Fall26** | Sep-Oct 2026 | Phases 4-5 complete, mandatory adoption |
+| **Spring26 M1** | Dec 15, 2025 | Phase 1 complete, Phase 2 (Mass Rollout) started |
+| **Fall26 cycle start** | Mid-Jan 2026 | Phase 2 complete (adoption) + Phase 3 started (validation) |
+| **Spring26 M3** | Jan 31, 2026 | Phase 3 complete (validation framework stable) |
+| **Spring26 M4** | Mar 2026 | Phase 4 functional (release automation) |
+| **Fall26** | Sep-Oct 2026 | Phase 5+ complete, mandatory adoption |
 
 ---
 
-## Phase 1A: Metadata Foundation (Nov-Dec 2025, 3 weeks)
+## Phase 1: Concept & Preparation (Nov - Dec 10 2025)
+**Status**: Completed
+**Deliverables**:
+- Concept definition (`CAMARA-Release-Workflow-and-Metadata-Concept.md`)
+- Schema definitions (Release Plan, Release Metadata)
+- Agreement on Mass Rollout Strategy
+- Presentation Materials (for Dec 10 All Hands Call)
 
-### Objectives
-1. Define metadata schemas and get repositories using `release-plan.yaml`
-2. Replace wiki tracker with Release Progress Tracker (immediate value)
-3. Present to community in All Hands Call (Dec 10)
 
-### Deliverables
-
-#### 1A.1 Metadata Schemas (PRIORITY)
-**Location**: `camaraproject/ReleaseManagement/schemas/`
+#### 1.1 Metadata Schemas (Finalized)
+**Location**: `camaraproject/ReleaseManagement/artifacts/metadata-schemas`
 
 - `release-plan-schema.yaml` - Structure for planning metadata on main
 - `release-metadata-schema.yaml` - Structure for generated release metadata
@@ -68,51 +86,84 @@ apis:
 **Rationale**: Schema must be well-designed from start; repositories will adopt this format immediately.
 
 **Schema Validation**:
-- Initially manual: API codeowners create release-plan.yaml PR, request review from release management team
-- As soon as possible: integrated into CI validation (Phase 1B)
+- **Strategy**: Initial centralized validation included in PR workflow (see Phase 3)
+- As soon as possible: integrated into CI validation (Phase 3)
 
-#### 1A.2 Release Progress Tracker Integration
-**Reference**: [camaraproject/project-administration#38](https://github.com/camaraproject/project-administration/issues/38)
-
-**Integration Point**: Meta-release aggregator already planned in project-administration as "Release Progress Tracker"
-
-**Immediate Value**: Replaces manual wiki tracker API tables as soon as repositories add `release-plan.yaml`
-
-#### 1A.3 Repository Adoption Package (PRIORITY)
-**Location**: `camaraproject/ReleaseManagement/documentation/`
-
-**Contents**:
-- Pre-populated `release-plan.yaml` template for each repository
-- Migration guide for converting wiki tracker to YAML
-- Instructions for adding file to repository
-- Schema validation tool (local testing before commit)
-
-**Goal**: Get 20+ repositories to add `release-plan.yaml` by Dec 15 (Spring26 M1)
-
-#### 1A.4 Presentation Materials
+#### 1.2 Presentation Materials
 **For All Hands Call (Dec 10)**:
 - Concept overview slides
 - Demo: release-plan.yaml example
 - Benefits: automated tracking, wiki deprecation
 - Timeline and participation requirements
 
+## Phase 2: Mass Rollout (Dec 2025 - Jan 15 2026)
+
+### Objectives
+1. Get `release-plan.yaml` added to all ~61 repositories using automated campaign
+2. Replace wiki tracker with Release Progress Tracker (immediate value)
+
+### Deliverables
+
+#### 2.1 Adoption Package
+**Location**: `camaraproject/ReleaseManagement/documentation/`
+
+**Contents**:
+- Pre-populated `release-plan.yaml` template for each repository
+- Migration guide for converting wiki tracker to YAML
+- **Delivery Method**: Delivered via automated PR to each repository (see Mass Rollout Campaign)
+- **Validation**: Integrated into central `pr-validation` workflow
+
+#### 2.2 Release Progress Tracker Integration
+**Location**: `camaraproject/project-administration` (workflow and data) -> `camaraproject/camaraproject.github.io` (viewer)
+
+**Integration Point**: Meta-release aggregator already planned in project-administration as "Release Progress Tracker"
+
+**Immediate Value**: Replaces manual wiki tracker API tables as soon as repositories add `release-plan.yaml`
+
+**Goal**: Mass Rollout to all ~61 repositories (43 released + 18 new) by Jan 15 (Fall26 M0 target). Replaces wiki tracker completely.
+
+#### 2.3 Mass Rollout Campaign (NEW)
+**Location**: `camaraproject/project-administration/campaigns/`
+
+**Activities**:
+- Scripted generation of `release-plan.yaml` from `releases-master.yaml`
+- Automated PR creation across all ~61 repositories using existing campaign tooling (reusing actions from existing campaigns)
+- Minimal validation ("Sanity Check") before merge:
+    - Reuse `scripts/validate-release-plan.py` (from metadata-schemas)
+    - Schema validation, file existence, and basic consistency
+    - **Note**: Complements (does not replace) existing MegaLinter checks. Does not yet enable strict status-based validation differentiation.
+- **Review Strategy**:
+    - Standard Repos (No Spring26 tracker): Fast-track/Auto-merge
+    - Complex Repos (With Spring26 tracker): Manual review required to ensure alignment
+    - Edge case will be supported by ReleaseManagement
+
+#### 2.4 Wiki Integration (Moved from Phase 5)
+**Note**: Wiki remains for extensive documentation and meta-release pages (timeline, etc.)
+
+**Actions**:
+- Embed Release Progress Tracker into wiki via iframe (from camaraproject.github.io)
+- Deprecate manual API tracker tables in wiki
+- Update documentation references
+
+
+
 ### Success Criteria
 - [ ] **Metadata schemas finalized and documented** (CRITICAL - blocks everything)
-- [ ] **Release Progress Tracker fetching release-plan.yaml files** (CRITICAL - immediate wiki replacement)
-- [ ] **20+ repositories have added release-plan.yaml** (enables wiki deprecation)
 - [ ] **Concept presented at All Hands Call (Dec 10)**
+- [ ] **Release Progress Tracker fetching release-plan.yaml files** (CRITICAL for wiki replacement)
+- [ ] **All ~61 repositories have added release-plan.yaml** (complete wiki replacement)
 - [ ] **Wiki API tracker tables deprecated with iframe to camaraproject.github.io**
 
 ---
 
-## Phase 1B: Validation Framework (Dec 2025 - Jan 2026, 4-5 weeks)
+## Phase 3: Validation Framework (Jan 2026, 4-5 weeks)
 
 ### Objectives
-Build CI validation foundation on `main` with placeholder enforcement (C1 workflow). Must be stable by mid-January for Fall26 cycle start.
+Build CI validation foundation on `main` with placeholder enforcement (C1 workflow). Must be stable by end-January for early adoption in Spring26 and for start of Fall26.
 
 ### Deliverables
 
-#### 1B.1 Validation Configuration Framework
+#### 3.1 Validation Configuration Framework
 **Location**: `camaraproject/tooling/validation/config/validation-rules.yaml`
 
 Machine-readable validation rules inspired by [compliance-checks.yaml](https://github.com/hdamker/project-administration/blob/feat/repository-compliance-requirements-51/workflows/repository-compliance/config/compliance-checks.yaml):
@@ -150,7 +201,7 @@ rule_groups:
 **Validation Rules Schema**:
 **Location**: `camaraproject/ReleaseManagement/schemas/validation-rules-schema.yaml`
 
-#### 1B.2 Enhanced Spectral Rules
+#### 3.2 Enhanced Spectral Rules
 **Location**: `camaraproject/tooling/linting/config/.spectral.yaml`
 
 Extend existing [.spectral.yaml](https://github.com/camaraproject/tooling/blob/main/linting/config/.spectral.yaml) with:
@@ -158,7 +209,7 @@ Extend existing [.spectral.yaml](https://github.com/camaraproject/tooling/blob/m
 - Server URL pattern enforcement (must contain placeholders on main)
 - Branch-aware checks using custom functions
 
-#### 1B.3 Custom Validators
+#### 3.3 Custom Validators
 **Location**: `camaraproject/tooling/validation/validators/`
 
 Python scripts for cross-file validation:
@@ -171,7 +222,7 @@ Python scripts for cross-file validation:
 
 **Rationale**: Spectral operates on individual files; cross-file checks need custom code.
 
-#### 1B.4 PR Validation Workflow (C1) - Structure
+#### 3.4 PR Validation Workflow (C1) - Structure
 **Location**: `camaraproject/tooling/.github/workflows/pr-validation-main.yml`
 
 **Note**: This defines the validation workflow structure. Existing repositories already have `.github/workflows/pr-validation.yml` calling `camaraproject/tooling` reusable workflows (currently v0). Migration requires bumping to v1 for repositories adopting the new process.
@@ -239,18 +290,18 @@ jobs:
 - [ ] 6 custom validators implemented and tested
 - [ ] CI workflow (v1) runs successfully on test repository
 - [ ] Performance target met (< 3 minutes)
-- [ ] **Stable and ready for Fall26 cycle start (mid-January)**
+- [ ] **Stable and ready for Fall26 cycle start (end-January)**
 
 ---
 
-## Phase 2: Release Automation (Jan-Feb 2026, 6-8 weeks)
+## Phase 4: Release Automation (Jan-Feb 2026, 6 weeks)
 
 ### Objectives
 Implement automated release branch generation (C2 workflow). First early adopters must be able to create releases by Spring26 M3 (Jan 31).
 
 ### Deliverables
 
-#### 2.1 Version Calculator
+#### 4.1 Version Calculator
 **Location**: `camaraproject/tooling/scripts/calculate-versions.js`
 
 Algorithm:
@@ -264,7 +315,7 @@ Algorithm:
 - Version bump: Reset counter
 - Skipped extensions: Continue sequence
 
-#### 2.2 Dependency Resolver
+#### 4.2 Dependency Resolver
 **Location**: `camaraproject/tooling/scripts/resolve-dependencies.js`
 
 Resolves concrete Commonalities/ICM release references to exact versions:
@@ -273,7 +324,7 @@ Resolves concrete Commonalities/ICM release references to exact versions:
 3. Parse `release-metadata.yaml` from dependency releases
 4. Format as `"rX.Y (semver)"` (e.g., `"r3.4 (1.2.0-rc.1)"`)
 
-#### 2.3 Placeholder Replacement Engine
+#### 4.3 Placeholder Replacement Engine
 **Location**: `camaraproject/tooling/scripts/replace-placeholders.js`
 
 Context-aware replacement:
@@ -285,7 +336,7 @@ Context-aware replacement:
 
 **Test Suite**: Comprehensive coverage of all placeholder patterns in YAML, markdown, URLs
 
-#### 2.4 CHANGELOG Generator
+#### 4.4 CHANGELOG Generator
 **Location**: `camaraproject/tooling/scripts/generate-changelog.js`
 
 Template-based approach:
@@ -296,7 +347,7 @@ Template-based approach:
 
 **Quality**: Auto-generation creates baseline; manual refinement adds context.
 
-#### 2.5 API Readiness Checklist Generator
+#### 4.5 API Readiness Checklist Generator
 **Location**: `camaraproject/tooling/scripts/generate-checklist.js`
 
 Automated validation of 13 checklist items:
@@ -306,7 +357,7 @@ Automated validation of 13 checklist items:
 
 Output: Markdown checklist with Y/N/tbd status
 
-#### 2.6 Release Branch Generator Workflow (C2)
+#### 4.6 Release Branch Generator Workflow (C2)
 **Location**: `camaraproject/tooling/.github/workflows/release-branch-generator.yml`
 
 **Trigger**: Issue labeled `trigger-release` or `trigger-pre-release`
@@ -331,18 +382,18 @@ Output: Markdown checklist with Y/N/tbd status
 - [ ] Placeholder replacement handles all patterns correctly (100+ test cases)
 - [ ] CHANGELOG generation produces usable baseline
 - [ ] Checklist validation runs and generates accurate Y/N/tbd status
-- [ ] **End-to-end release branch creation tested on 2-3 early adopter repos by Spring26 M3 (Jan 31)**
+- [ ] **End-to-end release branch creation tested on 2-3 early adopter repos by Feb 28 (Fall26 M0)**
 
 ---
 
-## Phase 3: Full Rollout (Mar-Apr 2026, 8-10 weeks)
+## Phase 5: Release Operations (March 2026, 8-10 weeks)
 
 ### Objectives
-Complete C1-C4 workflow; migrate 10-15 early adopter repositories.
+Complete C1-C4 workflow; ensure Release Progress Tracker is fully featured.
 
 ### Deliverables
 
-#### 3.1 Post-Release Workflow (C4)
+#### 5.1 Post-Release Workflow (C4)
 **Location**: `camaraproject/tooling/.github/workflows/post-release-actions.yml`
 
 **Jobs**:
@@ -363,75 +414,34 @@ Complete C1-C4 workflow; migrate 10-15 early adopter repositories.
 
 **Risk Mitigation**: Initially can be done manually (copy from released tag, create manual PR). Automate progressively.
 
-#### 3.2 Release Progress Tracker Enhancements
+#### 5.2 Release Progress Tracker Enhancements
 **Reference**: [camaraproject/project-administration#38](https://github.com/camaraproject/project-administration/issues/38)
 
-**Note**: Basic Release Progress Tracker already operational from Phase 1A
+**Note**: Basic Release Progress Tracker already operational from Phase 2
 
-**Phase 3 Enhancements**:
+**Phase 5 Enhancements**:
 - Real-time status updates (triggered by release-plan.yaml changes)
 - Drill-down views per API with detailed checklist status
 - Historical trend analysis
 - API dependency graph visualization
 - Export to JSON/CSV for tooling integration
 
-#### 3.3 Migration Tooling & Documentation
-**Location**: `camaraproject/ReleaseManagement/documentation/`
-
-**Migration Guide**:
-- Pre-populated `release-plan.yaml` template
-- Step-by-step migration checklist
-- Workflow setup instructions (bump pr-validation.yml from v0 to v1)
-- Branch protection configuration
-- Training materials
-
-**Migration Script**:
-- Generates initial `release-plan.yaml` from existing repository state
-- Validates repository structure
-- Tests workflow in fork
-
-#### 3.4 Early Adopter Repository Migrations
-**Target**: 10-15 repositories (volunteers from Spring26 participants)
-
-**Per-Repository Tasks**:
-1. Create `release-plan.yaml` from template
-2. Bump PR validation workflow from v0 to v1
-3. Configure branch protection (if needed)
-4. Test in fork
-5. Train maintainers
-6. Go live
-7. First release with automation
-8. Collect feedback
-
-**Support**: Dedicated Slack channel, office hours, rapid issue resolution
-
-#### 3.5 Wiki Integration
-**Note**: Wiki remains for extensive documentation and meta-release pages (timeline, etc.)
-
-**Phase 3 Actions**:
-- Embed Release Progress Tracker into wiki via iframe (from camaraproject.github.io)
-- Deprecate manual API tracker tables in wiki
-- Update documentation references
-
 ### Success Criteria
 - [ ] Post-release workflow tested end-to-end (manual initially, automated progressively)
 - [ ] Release Progress Tracker enhanced with real-time updates
-- [ ] Migration guide complete and validated
-- [ ] 10-15 early adopter repositories migrated successfully
 - [ ] Zero critical issues blocking releases
-- [ ] Wiki API tables replaced with iframe to Release Progress Tracker
 - [ ] Community satisfaction > 80% (survey early adopter teams)
 
 ---
 
-## Phase 4: Maintenance Workflow (May-Jun 2026, 4-6 weeks)
+## Phase 6: Maintenance (Spring26 - Fall26)
 
 ### Objectives
 Support maintenance branch releases (C5 workflow).
 
 ### Deliverables
 
-#### 4.1 Maintenance Branch Workflow (C5)
+#### 6.1 Maintenance Branch Workflow (C5)
 **Enhancement**: Extend C2-C4 workflows for maintenance branches
 
 **Prerequisites**:
@@ -450,38 +460,6 @@ Support maintenance branch releases (C5 workflow).
 - [ ] Maintenance releases fully automated
 - [ ] Tested on 2-3 repositories requiring patches
 - [ ] Documentation complete
-
----
-
-## Phase 5: Production Hardening (Jul-Sep 2026, 8-10 weeks)
-
-### Objectives
-Mandatory adoption; operational excellence; preparation for Fall26.
-
-### Deliverables
-
-#### 5.1 Mandatory Adoption Rollout
-**Target**: All participating repositories using automated workflow by Fall26
-
-**Activities**:
-- Deadline enforcement
-- Migration support for remaining repositories
-- Escalation path for blockers
-
-#### 5.2 Operational Excellence
-**Deliverables**:
-- Monitoring dashboards (workflow success rate, duration)
-- SLA metrics (95% success rate, < 10 min release branch generation)
-- Incident response runbooks
-- Rollback procedures
-- Quarterly review process
-
-### Success Criteria
-- [ ] All participating repositories using automated workflow
-- [ ] Manual process completely deprecated
-- [ ] SLA metrics met for 1 quarter
-- [ ] Zero critical incidents
-- [ ] Operational runbooks complete
 
 ---
 
@@ -538,7 +516,7 @@ Rules vary by:
 **Note**: This validator was never used in CI, only triggered manually. It is effectively already deprecated.
 
 **Strategy**:
-1. **Analysis** (Phase 1B): Catalog all 50+ checks, map to new architecture
+1. **Analysis** (Phase 3): Catalog all 50+ checks, map to new architecture
 2. **Reference only**: Use as reference for validation logic
 
 **Check Migration Map**:
@@ -579,53 +557,52 @@ Rules vary by:
 
 ## Implementation Issues (Sub-issues to #191)
 
-### Phase 1A: Metadata Foundation
+### Phase 1: Concept & Preparation
 - **#191.1** Design and implement metadata schemas (ReleaseManagement, L) **[PRIORITY]**
-- **#191.2** Integrate with Release Progress Tracker (project-administration, coordination with #38) **[PRIORITY]**
-- **#191.3** Create repository adoption package and pre-populated templates (ReleaseManagement, M) **[PRIORITY]**
-- **#191.4** Roll out release-plan.yaml to 20+ repositories (multiple repos, coordination) **[PRIORITY]**
 
-### Phase 1B: Validation Framework
+
+### Phase 2: Mass Rollout
+- **#191.2** Create repository adoption package and pre-populated templates (ReleaseManagement, M) **[PRIORITY]**
+- **#191.3** Integrate with Release Progress Tracker (project-administration, coordination with #38) **[PRIORITY]**
+- **#191.4** Roll out release-plan.yaml to all ~61 repositories (project-administration campaign) **[PRIORITY]**
+
+### Phase 3: Validation Framework
 - **#191.5** Define validation rules configuration format (ReleaseManagement, M)
-- **#191.6** Extend Spectral rules for placeholder validation (tooling, L)
-- **#191.7** Implement custom validators framework + 6 validators (tooling, XL)
-- **#191.8** Create PR validation workflow C1 v1 (tooling, L)
+- **#191.6** Implement Spectral rulesets for release-plan.yaml (ReleaseManagement, M)
+- **#191.7** Implement custom validator for logic checks (ReleaseManagement, L)
+- **#191.8** Integrate validaton into PR workflow (project-administration, M)
 
-### Phase 2: Release Automation
-- **#191.9** Implement version calculator (tooling, L)
-- **#191.10** Implement dependency resolver (tooling, M)
-- **#191.11** Implement placeholder replacement engine (tooling, L)
-- **#191.12** Implement CHANGELOG generator (tooling, M)
-- **#191.13** Implement release branch generator workflow C2 (tooling, XL)
+### Phase 4: Release Automation
+- **#191.9** Implement version calculator (ReleaseManagement, L)
+- **#191.10** Implement changelog generator (ReleaseManagement, XL)
+- **#191.11** Create release branch automation workflow (project-administration, L)
 
-### Phase 3: Full Rollout
-- **#191.14** Implement post-release workflow C4 (tooling, L) - Initially manual, automate progressively
-- **#191.15** Enhance Release Progress Tracker with real-time updates (project-administration, M)
-- **#191.16** Migration tooling and documentation (ReleaseManagement, M)
-- **#191.17** Early adopter repository migrations (multiple repos, 10-15 × L)
+### Phase 5: Release Operations
+- **#191.12** Post-release verification workflow (project-administration, M)
+- **#191.13** Enhance Release Progress Tracker with real-time updates (project-administration, M)
 
-### Phase 4: Maintenance Workflow
-- **#191.18** Maintenance branch workflow C5 (tooling, M)
+### Phase 6: Maintenance & Hardening
+- **#191.14** Monitor early adopter releases and fix bugs (ReleaseManagement, L)
+- **#191.15** Maintenance branch workflow C5 (tooling, M)
 
-### Phase 5: Production Hardening
-- **#191.19** Mandatory adoption rollout (ReleaseManagement, coordination)
-- **#191.20** Operational excellence and monitoring (tooling/ReleaseManagement, M)
+### Deferred topics
+- **#191.16** Cross-repository dependency resolution (ReleaseManagement, XL) - Initially manual, automate progressively
+- **#191.18** Operational excellence and monitoring (tooling/ReleaseManagement, M)
 
 **Complexity**: S=1-3 days, M=1-2 weeks, L=2-4 weeks, XL=4-8 weeks
 
 ### Critical Dependencies
-- **#191.2 depends on #191.1** (tracker needs schemas)
-- **#191.3 depends on #191.1** (templates need schemas)
-- **#191.4 depends on #191.1, #191.2, #191.3** (rollout needs schemas, tracker, templates)
+- **#191.1** (Schemas) blocks #191.2 (Templates) and #191.3 (Tracker)
+- **#191.2** (Templates) blocks #191.4 (Rollout)
+- **#191.3** (Tracker) blocks Wiki Deprecation
+- **#191.4** (Rollout) depends on #191.1 - #191.3
 - #191.7 depends on #191.5, #191.6 (validators need config format)
 - #191.8 depends on #191.6, #191.7 (workflow needs validators)
 - #191.11 depends on #191.9, #191.10 (replacement needs version/dependency data)
-- #191.13 depends on #191.9-12 (orchestrates all automation)
-- #191.14 depends on #191.13 (post-release follows release creation)
-- #191.16 depends on #191.1-15 (documentation after infrastructure ready)
-- #191.17 depends on #191.1-16 (migrations need everything ready)
-- #191.18 depends on #191.13, #191.14 (extends release workflows)
-- #191.19 depends on all previous (mandatory adoption after everything stable)
+- #191.13 depends on #191.12 (tracker enhancements)
+- #191.14 depends on #191.1-13 (monitoring after operations)
+- #191.15 depends on #191.11 (maintenance extends automation)
+- #191.17 depends on all previous (mandatory adoption after everything stable)
 
 ---
 
@@ -633,22 +610,22 @@ Rules vary by:
 
 ### Technical Challenges Requiring POC
 
-1. **Spectral cross-file limitations** → Use custom validators (Phase 1B week 2-3)
-2. **Version extension numbering** → Test on real repos (Phase 2 week 1-2)
-3. **CHANGELOG generation quality** → Template + manual refinement (Phase 2 week 3-4)
-4. **Placeholder pattern complexity** → Comprehensive test suite (Phase 2 week 2-3)
+1. **Spectral cross-file limitations** → Use custom validators (Phase 3)
+2. **Version extension numbering** → Test on real repos (Phase 4)
+3. **CHANGELOG generation quality** → Template + manual refinement (Phase 4)
+4. **Placeholder pattern complexity** → Comprehensive test suite (Phase 4)
 
 ### Governance Decisions Needed
 
-1. **Mandatory adoption timeline** → Fall26 (aggressive, recommended) - Decide by end of Phase 1A
-2. **Release trigger permissions** → Maintainers + release management - Decide by Phase 2 start
-3. **CHANGELOG editing policy** → Auto-generate + manual refinement - Decide by Phase 2 start
-4. **Metadata PR mutual exclusivity** → Conditional enforcement - Decide by Phase 1B completion
+1. **Mandatory adoption timeline** → Fall26 (aggressive, recommended) - Decide by end of Phase 2
+2. **Release trigger permissions** → Maintainers + release management - Decide by Phase 4 start
+3. **CHANGELOG editing policy** → Auto-generate + manual refinement - Decide by Phase 4 start
+4. **Metadata PR mutual exclusivity** → Conditional enforcement - Decide by Phase 2 completion
 
 ### Integration Points
 
-1. **Wiki integration** → Phase 1A embed Release Progress Tracker via iframe, Phase 3 deprecate manual tables
-2. **Release Progress Tracker** → Phase 1A basic aggregator, Phase 3 real-time enhancements
+1. **Wiki integration** → Phase 2 embed Release Progress Tracker via iframe, deprecate manual tables
+2. **Release Progress Tracker** → Phase 2 basic aggregator, Phase 5 real-time enhancements
 3. **Checklist automation scope** → Auto items 1,4,5,7,10,11; manual 6,9,12,13
 
 ### Deferred Topics Requiring Separate Concepts
@@ -695,13 +672,12 @@ Rules vary by:
 ## Next Steps
 
 1. **Review and approve** this plan with Release Management team
-2. **Create Phase 1A issues** (#191.1-4) in ReleaseManagement and project-administration repos
+2. **Create Phase 1 & 2 issues** (#191.1-4) in ReleaseManagement and project-administration repos
 3. **Assign ownership** and establish timeline toward Dec 10 presentation
-4. **Begin Phase 1A development** (Nov 25 - Dec 15):
-   - Design and implement metadata schemas
-   - Integrate with Release Progress Tracker
-   - Create adoption package
-   - Roll out to 20+ repositories
-   - Prepare All Hands Call presentation
+4. **Begin development**:
+   - Finalize metadata schemas (Phase 1)
+   - Prepare Adoption Package (Phase 1)
+   - Prepare Mass Rollout Campaign (Phase 2)
+   - Execute Rollout (Phase 2)
 
-**Target**: Phase 1A by Dec 15, Phase 1B by mid-Jan, Phase 2 functional by Jan 31 (Spring26 M3), Phase 3 by Spring26 M4, Phases 4-5 by Fall26.
+**Target**: Phase 1 complete by Dec 10, Phase 2 by Jan 15, Phase 3 by Jan 31, Phase 4 functional by Feb 28 (Fall26 M0), Phase 5+ by Fall26.
