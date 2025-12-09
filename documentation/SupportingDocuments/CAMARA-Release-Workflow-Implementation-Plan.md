@@ -47,9 +47,10 @@ This document provides a phased implementation plan for automating the CAMARA re
 **Key Fields in release-plan.yaml**:
 ```yaml
 repository:
-  meta_release: "Fall26"  # or "Other"
-  release_number: "r4.1"
-  release_readiness: "pre-release"  # none|pre-release|pre-release-rc|public-release|patch-release
+  release_track: "meta-release" # none|sandbox|meta-release
+  meta_release: "Fall26"  # Required if release_track is meta-release, omit otherwise
+  release_tag: "r4.1"
+  release_readiness: "pre-release-alpha"  # none|pre-release-alpha|pre-release-rc|public-release|patch-release
 
 dependencies:
   commonalities_release: "r3.4"  # Concrete Commonalities release (not meta-release reference)
@@ -58,9 +59,9 @@ dependencies:
   # Meta-release reference would cause uncontrolled updates
 
 apis:
-  - name: "location-verification"
+  - api_name: "location-verification"
     target_version: "3.2.0"  # SemVer base (extension auto-calculated)
-    api_status: "rc"  # draft|unchanged|alpha|rc|public
+    api_status: "rc"  # draft|alpha|rc|public
     main_contacts: ["githubUser1", "githubUser2"]
 ```
 
