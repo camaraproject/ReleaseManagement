@@ -33,7 +33,7 @@ The workflow achieves these objectives through:
 | `release_track`        | Release track determining how repository participates: `none` (no release), `sandbox` (outside meta-release), `meta-release` (participating in meta-release). |
 | `meta_release`         | Meta-release label (e.g., `Fall26`). Only used when `release_track` is `meta-release`. |
 | `release_tag`          | CAMARA release tag (e.g., `r4.1`). Distinct from API SemVer. |
-| `target_release_type`  | Codeowner-declared release type for next release, validated by CI: `none` (not ready), `pre-release-alpha` (requires all APIs at alpha+), `pre-release-rc` (requires all APIs at rc+), `public-release` (requires all APIs public), `patch-release` (maintenance). |
+| `target_release_type`  | Codeowner-declared release type for next release, validated by CI: `none` (not ready), `pre-release-alpha` (requires all APIs at alpha+), `pre-release-rc` (requires all APIs at rc+), `public-release` (requires all APIs public), `maintenance-release` (maintenance). |
 | `target_api_status`    | Per-API target status for next release: `draft` (declared, basic validation), `alpha`, `rc`, `public`. Extension numbers are auto-calculated. |
 | `main_contacts`        | GitHub handles of code owners or maintainers (per API in `release-plan.yaml`). |
 | `main` branch          | Development branch. All content is work-in-progress (`version: wip`). |
@@ -91,7 +91,7 @@ apis:
   - `pre-release-alpha`: All APIs at alpha or higher (rc or public) (mix of alpha/rc/public allowed)
   - `pre-release-rc`: Requires all APIs at rc or public status (e.g., M3 milestone for meta-releases)
   - `public-release`: Requires all APIs at public status
-  - `patch-release`: For maintenance/hotfix releases from maintenance branches
+  - `maintenance-release`: For maintenance/hotfix releases from maintenance branches
 - CI validates that target API statuses match the declared repository target release type.
 
 ### 2. `release-metadata.yaml` (on release branch)
@@ -115,15 +115,15 @@ dependencies:
 apis:
   - api_name: location-verification
     api_version: 3.2.0-rc.2
-    title: "Location Verification"
+    api_title: "Location Verification"
 
   - api_name: location-retrieval
     api_version: 0.5.0-rc.1
-    title: "Location Retrieval"
+    api_title: "Location Retrieval"
 
   - api_name: some-new-location-service
     api_version: 0.1.0-alpha.1
-    title: "Some New Location Service"
+    api_title: "Some New Location Service"
 ```
 
 ## End-to-End Workflow
@@ -171,29 +171,58 @@ Manual review and adjustments happen through Release Preparation PRs into the re
 
 - Release PRs require approval from codeowner(s) and release reviewer(s) (via branch protection).
 - Review covers CHANGELOG, README and checklist correctness wrt metadata
+- CHANGELOG.md entries may be added/updated during review
 
-If problems are found in API specs or implementation:
-- Create PRs against `main`
-- Update (or rebase) release branch from `main`
-- Regenerate release metadata/artifacts
+**If problems are found in API specs or implementation (initial implementation - immutable branches):**
+- Create PRs against `main` to fix the issues
+- **Abandon** the current release (close release PR and delete release branch)
+- **Retrigger** release creation from updated `main`
+- This ensures release branch remains immutable and src_commit_sha is accurate
+- Alternative: Forward-merge approach is deferred for future consideration (see Appendix)
 
 **Rationale:**
 - Keeps release preparation clean, visible, and traceable
 - Ensures specification fixes flow through formal code review on `main`
+- Immutable branches simplify validation and prevent drift
 
 ### Step 4: Tag and Generate Release
 
-After approval:
+The release finalization follows a two-phase workflow:
 
-- A tag (e.g., `r4.1`) is created on the release branch
-- CI builds and publishes artifacts
-- GitHub Release with artifacts is created:
-  - OpenAPI bundles (self-contained specs with all external references resolved)
-  - Generated documentation
-  - Release metadata files
+#### Phase 1: Release Branch Preparation (during PR review)
+
+1. Automation creates release branch from main/maintenance HEAD
+2. Generates `release-metadata.yaml` with:
+   - `release_date: null` (set during finalization)
+   - `src_commit_sha: null` (set during finalization)
+   - Other fields derived from `release-plan.yaml`
+3. Release PR is created for review
+4. **Important - Immutable release branch (initial implementation)**:
+   - Release branch content is immutable after creation
+   - Exception: CHANGELOG.md entries may be added/updated
+   - If API corrections needed: abandon release, fix main, retrigger
+   - Future: Forward-merge support may be added (see Appendix)
+
+#### Phase 2: Finalization (after PR merge)
+
+After approval and PR merge to release branch:
+
+1. Automation triggers on release branch
+2. Populates final metadata:
+   - `release_date`: Current UTC timestamp
+   - `src_commit_sha`: HEAD SHA from base branch at branch creation time
+3. Creates "release commit": `chore: finalize release metadata for rX.Y`
+4. Creates git tag (e.g., `r4.1`) pointing to this release commit
+5. CI builds and publishes artifacts
+6. GitHub Release with artifacts is created:
+   - OpenAPI bundles (self-contained specs with all external references resolved)
+   - Generated documentation
+   - Release metadata files
 
 **Rationale:**
 - Provides traceable, repeatable state for each tagged release
+- Two-phase approach ensures metadata reflects actual release state
+- Immutable branches simplify validation and prevent drift
 
 ### Step 5: Post-Release Actions
 
@@ -216,6 +245,11 @@ After release is tagged and published:
 - Reference for comparing API changes in next release
 - Note: This is NOT a release tag, just a reference marker
 
+#### 5d. Cleanup release branch (optional):
+- Release branches (e.g., `release/r4.1`) are temporary scaffolding
+- The git tag preserves the release permanently
+- Release branches can be deleted after tag creation
+
 **Rationale:**
 - Provides visibility into releases without disrupting ongoing work-in-progress development state in `main`
 - Establishes clear reference points for maintenance branch creation and change comparison
@@ -227,9 +261,9 @@ For critical fixes and security patches on older release cycles:
 
 - **Maintenance branches** (`maintenance-r3`) are created from the last commit included in that release cycle
 - Patches are developed and tested on the maintenance branch
-- Set `target_release_type: patch-release` in the maintenance branch's `release-plan.yaml`
+- Set `target_release_type: maintenance-release` in the maintenance branch's `release-plan.yaml`
 - Follow steps 2-5 above, but create release branch from maintenance branch instead of `main`
-- Patch releases (r3.4, r3.5) contain only bug fixes, no new features
+- Maintenance releases (r3.4, r3.5) contain only bug fixes, no new features
 
 See Appendix for detailed branching diagrams and maintenance strategy.
 
@@ -374,12 +408,17 @@ main ──────┬──────────────────
 **Creation strategy**:
 - Created from the last commit on `main` that was included in the release cycle to maintain
 - Named `maintenance-rX` where X is the release cycle (e.g., r3 for r3.1, r3.2, r3.3...)
-- Used for patch releases (r3.4, r3.5) containing API bug fixes
+- Used for maintenance releases (r3.4, r3.5) containing API bug fixes
 - New API minor versions go into new release cycles on `main`
 
 **Important**: Maintenance branches are tied to **release cycles** (r3.x), not API versions. A maintenance branch can produce r3.4, r3.5 etc., each potentially containing different patch versions of the APIs.
 
 ### Updating Release Branch from Main
+
+> **Note:** This section describes a forward-merge approach that is **deferred for future consideration**.
+> The initial implementation uses immutable release branches (see Step 4 above).
+> If corrections are needed during release preparation, the release is abandoned and retriggered from updated main.
+> This approach may be reconsidered based on operational experience.
 
 During release preparation, if critical fixes are needed:
 
@@ -390,7 +429,7 @@ During release preparation, if critical fixes are needed:
    - Rebase release branch on `main` (cleanest history)
 
 ```
-main ────┬───[fix]───────┬──────► 
+main ────┬───[fix]───────┬──────►
          │               │
          └─release/r4.1──┴──────► (updated with fix)
 ```

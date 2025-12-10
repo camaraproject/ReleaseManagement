@@ -71,7 +71,7 @@ properties:
           - public-release: Public release (e.g., by M4 for meta-releases). All APIs must
             have target_api_status public. At least one API must have a target_api_version not
             previously published.
-          - patch-release: Maintenance release from maintenance branch. All APIs must
+          - maintenance-release: Maintenance release from maintenance branch. All APIs must
             have target_api_status public. At least one API must have a target_api_version not
             previously published (and which must be a patch version).
         enum:
@@ -79,7 +79,7 @@ properties:
           - "pre-release-alpha"
           - "pre-release-rc"
           - "public-release"
-          - "patch-release"
+          - "maintenance-release"
 
   dependencies:
     type: object

@@ -30,7 +30,7 @@ metadata-schemas/
 │   ├── 01-new-repo-sandbox.yaml
 │   ├── 02-multi-api-mixed-status.yaml
 │   ├── 03-rc-preparation.yaml
-│   ├── 04-patch-release.yaml
+│   ├── 04-maintenance-release.yaml
 │   └── 05-generated-release-metadata.yaml
 ├── scripts/
 │   └── validate-release-plan.py
@@ -47,7 +47,7 @@ Defines the structure for `release-plan.yaml` files maintained on the main branc
 - `repository.release_track` - Release track (none, sandbox, meta-release)
 - `repository.meta_release` - Meta-release label (Fall26, Spring27), required when release_track is "meta-release"
 - `repository.release_tag` - CAMARA release tag (e.g., r4.1), must be the next available number in the release cycle or rN+1.1 for start of new release cycle
-- `repository.target_release_type` - Declared release type, validated by CI against API statuses (none, pre-release-alpha, pre-release-rc, public-release, patch-release)
+- `repository.target_release_type` - Declared release type, validated by CI against API statuses (none, pre-release-alpha, pre-release-rc, public-release, maintenance-release)
 - `dependencies` - Dependencies on Commonalities and ICM releases
 - `apis[]` - Array of APIs with api_name, target_api_version and target_api_status
 
@@ -77,7 +77,7 @@ The [examples/](examples/) directory contains five scenarios:
 | [01-new-repo-sandbox.yaml](examples/01-new-repo-sandbox.yaml) | New sandbox repository not yet in meta-release |
 | [02-multi-api-mixed-status.yaml](examples/02-multi-api-mixed-status.yaml) | Multi-API repository with mixed API status values |
 | [03-rc-preparation.yaml](examples/03-rc-preparation.yaml) | Single API preparing for M3 pre-release |
-| [04-patch-release.yaml](examples/04-patch-release.yaml) | Maintenance patch on maintenance branch |
+| [04-maintenance-release.yaml](examples/04-maintenance-release.yaml) | Maintenance patch on maintenance branch |
 | [05-generated-release-metadata.yaml](examples/05-generated-release-metadata.yaml) | Generated release-metadata format |
 
 ## Validation
@@ -107,6 +107,14 @@ python3 scripts/validate-release-plan.py release-plan.yaml --check-files
 
 This checks if API definition files referenced in the metadata actually exist in the repository.
 
+### Phase 1 Validation (Release Branch PRs)
+
+```bash
+python3 scripts/validate-release-plan.py release-metadata.yaml --strict-phase1
+```
+
+Enforces that `release_date` and `src_commit_sha` are `null` during release preparation (Phase 1). Use this flag in CI during release branch PR review to prevent manual population of these fields.
+
 ### Exit Codes
 
 - `0` - Validation passed
@@ -121,6 +129,7 @@ The validator performs:
    - Target release type consistency with API statuses
    - Target API status progression rules
    - Version format alignment
+   - Two-phase workflow enforcement (with `--strict-phase1` for release-metadata)
 3. **Optional file checks** - Verifies referenced API files exist (with `--check-files`)
 
 ## Using in CI
@@ -128,10 +137,18 @@ The validator performs:
 Example GitHub Actions workflow:
 
 ```yaml
+# Validate release-plan.yaml on main branch
 - name: Validate Release Plan
   run: |
     python3 -m pip install pyyaml jsonschema
     python3 artifacts/metadata-schemas/scripts/validate-release-plan.py release-plan.yaml
+
+# Validate release-metadata.yaml on release branch (Phase 1)
+- name: Validate Release Metadata (Phase 1)
+  if: startsWith(github.head_ref, 'release/')
+  run: |
+    python3 -m pip install pyyaml jsonschema
+    python3 artifacts/metadata-schemas/scripts/validate-release-plan.py release-metadata.yaml --strict-phase1
 ```
 
 ### Future JavaScript Implementation
@@ -176,7 +193,7 @@ Use these exact field names:
 - `pre-release-alpha` - All APIs at alpha or better (mix of alpha/rc allowed)
 - `pre-release-rc` - All changed APIs at rc status
 - `public-release` - All APIs at public status
-- `patch-release` - Maintenance/hotfix release
+- `maintenance-release` - Maintenance/hotfix release
 
 **target_api_status** indicates the individual API target status for the next release (and determines the version extension):
 - `draft` - API declared but implementation in progress (basic validation)

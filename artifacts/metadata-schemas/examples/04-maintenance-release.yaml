@@ -1,8 +1,8 @@
-# Example 4: Patch Release on Maintenance Branch
+# Example 4: Maintenance Release on Maintenance Branch
 #
 # Scenario: A maintenance patch on an older release cycle addressing
 # critical bugs. The repository is on a maintenance branch (e.g.,
-# maintenance-r3) and preparing a patch release (r3.4).
+# maintenance-r3) and preparing a maintenance release (r3.4).
 #
 # Shows a mix of APIs: one receiving a patch update (2.1.0 → 2.1.1),
 # while another remains at its previously released version (implicit lock).
@@ -11,7 +11,7 @@ repository:
   release_track: meta-release
   meta_release: Fall25
   release_tag: r3.4
-  target_release_type: patch-release
+  target_release_type: maintenance-release
 
 dependencies:
   commonalities_release: r3.4

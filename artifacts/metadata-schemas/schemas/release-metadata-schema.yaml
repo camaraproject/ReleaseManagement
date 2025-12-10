@@ -51,8 +51,12 @@ properties:
           - "Spring27"
 
       release_date:
-        type: string
-        description: Actual release date and time in ISO 8601 format (UTC). Generated during release creation.
+        type: [string, "null"]
+        description: |
+          Release finalization timestamp in ISO 8601 format (UTC).
+          Set to null during release preparation. Populated by automation
+          in the final "release commit" immediately before tag creation.
+          Represents the official release timestamp.
         format: date-time
         pattern: "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
         examples:
@@ -66,18 +70,22 @@ properties:
           - pre-release-alpha: All APIs at alpha or better (mix of alpha/rc allowed)
           - pre-release-rc: All APIs at rc or public status
           - public-release: All APIs at public status
-          - patch-release: Maintenance/hotfix release
+          - maintenance-release: Maintenance/hotfix release
         enum:
           - "pre-release-alpha"
           - "pre-release-rc"
           - "public-release"
-          - "patch-release"
+          - "maintenance-release"
 
       src_commit_sha:
-        type: string
+        type: [string, "null"]
         description: |
-          Last commit SHA from main or maintenance branch included in this release.
-          Generated during release creation.
+          Commit SHA from main or maintenance branch from which this release
+          was created. Set to null during release preparation. Populated by
+          automation at finalization to the HEAD commit SHA of the base branch
+          at the time the release branch was created. Release branches are
+          immutable after creation - corrections require abandoning and
+          retriggering the release from updated main.
         pattern: "^[a-f0-9]{40}$"
         examples:
           - "abcd1234efgh5678ijkl9012mnop3456qrst7890"
@@ -120,7 +128,7 @@ properties:
       required:
         - api_name
         - api_version
-        - title
+        - api_title
       properties:
         api_name:
           type: string
@@ -142,7 +150,7 @@ properties:
             - "0.5.0-alpha.1"
             - "3.2.0-rc.2"
 
-        title:
+        api_title:
           type: string
           description: Human-readable API title from OpenAPI info.title (generated during release branch creation)
           examples:

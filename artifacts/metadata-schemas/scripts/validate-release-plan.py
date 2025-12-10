@@ -43,10 +43,11 @@ class MetadataValidator:
     """Validator for CAMARA release metadata files."""
 
     def __init__(self, metadata_file: Path, schema_file: Optional[Path] = None,
-                 check_files: bool = False):
+                 check_files: bool = False, strict_phase1: bool = False):
         self.metadata_file = metadata_file
         self.schema_file = schema_file
         self.check_files = check_files
+        self.strict_phase1 = strict_phase1
         self.errors: List[str] = []
         self.warnings: List[str] = []
 
@@ -105,7 +106,7 @@ class MetadataValidator:
                 self.errors.append(f"  at path: {path_str}")
             return False
 
-    def check_semantic_rules(self, metadata: Dict[str, Any]) -> None:
+    def check_semantic_rules(self, metadata: Dict[str, Any], schema_type: str) -> None:
         """Check semantic rules beyond schema validation."""
         repo = metadata.get('repository', {})
         apis = metadata.get('apis', [])
@@ -123,6 +124,10 @@ class MetadataValidator:
         # Check API status progression
         for api in apis:
             self._check_api_status(api)
+
+        # Check two-phase workflow for release-metadata
+        if schema_type == 'release-metadata':
+            self._check_two_phase_workflow(repo)
 
     def _check_track_consistency(self, release_track: Optional[str], meta_release: Optional[str]) -> None:
         """Check that release_track and meta_release are consistent."""
@@ -143,7 +148,7 @@ class MetadataValidator:
         - pre-release-alpha: All APIs must be at least alpha (no draft)
         - pre-release-rc: All APIs must be at least rc (no draft or alpha)
         - public-release: All APIs must be public
-        - patch-release: All APIs must be public (can only patch released APIs)
+        - maintenance-release: All APIs must be public (can only patch released APIs)
         """
         # 'none' has no constraints - repository is not targeting a release
         if release_type == 'none':
@@ -174,12 +179,12 @@ class MetadataValidator:
                     f"target_release_type is 'public-release' but these APIs are not 'public': {', '.join(non_public)}"
                 )
 
-        elif release_type == 'patch-release':
+        elif release_type == 'maintenance-release':
             # Patch releases are for maintenance - all APIs should be public
             non_public = [api.get('api_name') for api in apis if api.get('target_api_status') != 'public']
             if non_public:
                 self.errors.append(
-                    f"target_release_type is 'patch-release' but these APIs are not 'public': {', '.join(non_public)}"
+                    f"target_release_type is 'maintenance-release' but these APIs are not 'public': {', '.join(non_public)}"
                 )
 
     def _check_api_status(self, api: Dict) -> None:
@@ -194,6 +199,32 @@ class MetadataValidator:
         # - Version format validation
         # - Status progression rules
         pass
+
+    def _check_two_phase_workflow(self, repo: Dict) -> None:
+        """Check two-phase workflow rules for release-metadata.
+
+        Two-phase workflow:
+        - Phase 1 (preparation): release_date and src_commit_sha MUST be null
+        - Phase 2 (finalized): release_date and src_commit_sha MUST be valid strings
+
+        The --strict-phase1 flag enforces null values for Phase 1 validation.
+        Without this flag, both null and valid values are accepted (lenient mode).
+        """
+        release_date = repo.get('release_date')
+        src_commit_sha = repo.get('src_commit_sha')
+
+        # Strict Phase 1 validation (for CI during release branch PR review)
+        if self.strict_phase1:
+            if release_date is not None:
+                self.errors.append(
+                    "Phase 1 validation: release_date must be null during release preparation"
+                )
+            if src_commit_sha is not None:
+                self.errors.append(
+                    "Phase 1 validation: src_commit_sha must be null during release preparation"
+                )
+        # Lenient mode: Allow both null (Phase 1) and valid strings (Phase 2)
+        # Schema validation already ensures format is correct when not null
 
     def check_file_existence(self, metadata: Dict[str, Any]) -> None:
         """Check if referenced API files exist (optional check)."""
@@ -256,7 +287,7 @@ class MetadataValidator:
             return False
 
         # Run semantic checks
-        self.check_semantic_rules(metadata)
+        self.check_semantic_rules(metadata, schema_type)
 
         # Check file existence if requested
         self.check_file_existence(metadata)
@@ -302,6 +333,11 @@ def main():
         action='store_true',
         help='Check if referenced API definition files exist'
     )
+    parser.add_argument(
+        '--strict-phase1',
+        action='store_true',
+        help='Enforce null values for release_date and src_commit_sha (Phase 1 validation for release branch PRs)'
+    )
 
     args = parser.parse_args()
 
@@ -312,7 +348,8 @@ def main():
     validator = MetadataValidator(
         args.metadata_file,
         args.schema,
-        args.check_files
+        args.check_files,
+        args.strict_phase1
     )
 
     success = validator.validate()
