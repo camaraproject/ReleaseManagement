@@ -8,7 +8,7 @@
 
 repository:
   release_track: sandbox
-  release_tag: r1.1
+  target_release_tag: r1.1
   target_release_type: none
 
 dependencies:

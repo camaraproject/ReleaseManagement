@@ -32,7 +32,7 @@ The workflow achieves these objectives through:
 |------------------------|-------------|
 | `release_track`        | Release track determining how repository participates: `none` (no release), `sandbox` (outside meta-release), `meta-release` (participating in meta-release). |
 | `meta_release`         | Meta-release label (e.g., `Fall26`). Only used when `release_track` is `meta-release`. |
-| `release_tag`          | CAMARA release tag (e.g., `r4.1`). Distinct from API SemVer. |
+| `target_release_tag`   | Target CAMARA release tag this release should have (e.g., `r4.1`). Distinct from API SemVer. |
 | `target_release_type`  | Codeowner-declared release type for next release, validated by CI: `none` (not ready), `pre-release-alpha` (requires all APIs at alpha+), `pre-release-rc` (requires all APIs at rc+), `public-release` (requires all APIs public), `maintenance-release` (maintenance). |
 | `target_api_status`    | Per-API target status for next release: `draft` (declared, basic validation), `alpha`, `rc`, `public`. Extension numbers are auto-calculated. |
 | `main_contacts`        | GitHub handles of code owners or maintainers (per API in `release-plan.yaml`). |
@@ -53,7 +53,7 @@ Planning metadata owned by codeowners, manually updated and CI-validated. Contai
 repository:
   release_track: meta-release  # none, sandbox, or meta-release
   meta_release: Fall26  # Only when release_track is meta-release
-  release_tag: r4.1
+  target_release_tag: r4.1
   target_release_type: pre-release-alpha  # Repository ready for pre-release with mixed API status
 
 dependencies:

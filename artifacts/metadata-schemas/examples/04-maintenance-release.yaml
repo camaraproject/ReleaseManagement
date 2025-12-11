@@ -10,7 +10,7 @@
 repository:
   release_track: meta-release
   meta_release: Fall25
-  release_tag: r3.4
+  target_release_tag: r3.4
   target_release_type: maintenance-release
 
 dependencies:

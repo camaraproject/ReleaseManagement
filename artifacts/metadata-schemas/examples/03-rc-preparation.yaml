@@ -8,7 +8,7 @@
 repository:
   release_track: meta-release
   meta_release: Spring26
-  release_tag: r3.2
+  target_release_tag: r3.2
   target_release_type: pre-release-rc
 
 dependencies:

@@ -16,7 +16,7 @@ properties:
     description: Repository-level release planning information
     required:
       - release_track
-      - release_tag
+      - target_release_tag
       - target_release_type
     properties:
       release_track:
@@ -41,9 +41,9 @@ properties:
           - "Fall26"
           - "Spring27"
 
-      release_tag:
+      target_release_tag:
         type: string
-        description: CAMARA release tag (e.g., r4.1). Distinct from API semantic versioning.
+        description: Target CAMARA release tag this release should have (e.g., r4.1). Distinct from API semantic versioning.
         pattern: "^r[1-9]\\d*\\.[1-9]\\d*$"
         examples:
           - "r4.1"
@@ -53,7 +53,9 @@ properties:
         type: string
         description: |
           Declares the release type of the repository being prepared for the next release.
-          The target_release_type is one of three target_* fields that together define the release plan. The other 2 fields indicate the target version and status for each API in the repository to be released:
+          The target_release_type is one of four target_* fields that together define the release plan:
+          - target_release_tag: which release tag this release will have
+          - target_release_type: which release type this release will have
           - target_api_version: which semantic version for each API
           - target_api_status: which status for each API in this release
 

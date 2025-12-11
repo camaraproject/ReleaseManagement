@@ -34,7 +34,7 @@ properties:
 
       release_tag:
         type: string
-        description: CAMARA release tag (derived from release-plan.yaml)
+        description: CAMARA release tag (derived from target_release_tag in release-plan.yaml)
         pattern: "^r[1-9]\\d*\\.[1-9]\\d*$"
         examples:
           - "r4.1"

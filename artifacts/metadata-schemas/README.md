@@ -46,7 +46,7 @@ Defines the structure for `release-plan.yaml` files maintained on the main branc
 **Key fields:**
 - `repository.release_track` - Release track (none, sandbox, meta-release)
 - `repository.meta_release` - Meta-release label (Fall26, Spring27), required when release_track is "meta-release"
-- `repository.release_tag` - CAMARA release tag (e.g., r4.1), must be the next available number in the release cycle or rN+1.1 for start of new release cycle
+- `repository.target_release_tag` - CAMARA release tag this release should have (e.g., r4.1), must be the next available number in the release cycle or rN+1.1 for start of new release cycle
 - `repository.target_release_type` - Declared release type, validated by CI against API statuses (none, pre-release-alpha, pre-release-rc, public-release, maintenance-release)
 - `dependencies` - Dependencies on Commonalities and ICM releases
 - `apis[]` - Array of APIs with api_name, target_api_version and target_api_status
@@ -172,7 +172,7 @@ Recommended dependencies for JavaScript version:
 Use these exact field names:
 
 - `release_track` (none, sandbox, meta-release)
-- `release_tag` (not release_number)
+- `target_release_tag` (in release-plan.yaml) / `release_tag` (in release-metadata.yaml)
 - `api_name` (not name)
 - `commonalities_release` (not commonalities_version)
 - `identity_consent_management_release` (not icm_release)
@@ -267,7 +267,7 @@ pip install pyyaml jsonschema
 ### Field Name Errors
 
 **Error:** Field names not recognized
-- **Fix:** Check field names match schema definitions: `release_track`, `release_tag`, `api_name`, `commonalities_release`, `identity_consent_management_release`, `target_api_status`, `main_contacts` (release-plan only)
+- **Fix:** Check field names match schema definitions: `release_track`, `target_release_tag` (release-plan) / `release_tag` (release-metadata), `api_name`, `commonalities_release`, `identity_consent_management_release`, `target_api_status`, `main_contacts` (release-plan only)
 - **Note:** The schemas allow additional properties for extensibility, but required fields must use exact names
 
 ## Questions and Support
