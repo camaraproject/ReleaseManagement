@@ -235,8 +235,8 @@ After release is tagged and published:
 - Do not update any version fields (they stay `"wip"`)
 
 #### 5b. For public releases only:
-- APIs targeting the just-released public version are automatically locked by CI
-- Any modification to these APIs will be blocked until target_api_version is updated
+- PRs on main targeting the just-released public version are automatically locked by CI
+- Any modification to these APIs will be blocked until the target_api_version and other fields are updated in the release-plan.
 - Forces explicit planning for next release cycle
 
 #### 5c. Tag reference point on `main`:
@@ -413,7 +413,7 @@ main ──────┬──────────────────
 
 **Important**: Maintenance branches are tied to **release cycles** (r3.x), not API versions. A maintenance branch can produce r3.4, r3.5 etc., each potentially containing different patch versions of the APIs.
 
-### Updating Release Branch from Main
+### Updating Release Branch from Main (future feature)
 
 > **Note:** This section describes a forward-merge approach that is **deferred for future consideration**.
 > The initial implementation uses immutable release branches (see Step 4 above).
@@ -457,7 +457,7 @@ main ────┬──[src/4.1]──────────[PR: selective 
 - Server URL changes (keep placeholder format)
 - Release-specific metadata
 
-**3. For public releases**: APIs targeting the just-released public version are automatically locked by CI (any modification blocked until `target_api_version` is updated)
+**3. For public releases**: PRs targeting the just-released public version on main are automatically locked by CI (any modification blocked until `target_api_version` is updated)
 
 **Purpose**: Makes release information visible in the default branch without disrupting ongoing development, provides reference point for maintenance branches, and ensures explicit planning for next cycle.
 
