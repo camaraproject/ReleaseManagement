@@ -39,16 +39,6 @@ properties:
           - "r4.1"
           - "r5.3"
 
-      meta_release:
-        type: string
-        description: |
-          Meta-release label (e.g., Fall26, Spring27).
-          Derived from release-plan.yaml. Only present for releases participating in a meta-release.
-        pattern: "^(Spring|Fall)\\d{2}$"
-        examples:
-          - "Fall26"
-          - "Spring27"
-
       release_date:
         type: [string, "null"]
         description: |
