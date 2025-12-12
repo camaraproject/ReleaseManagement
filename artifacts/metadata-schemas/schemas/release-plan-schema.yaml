@@ -41,8 +41,8 @@ properties:
           - "Spring27"
 
       target_release_tag:
-        type: string
-        description: Target CAMARA release tag this release should have (e.g., r4.1). Distinct from API semantic versioning.
+        type: [string, "null"]
+        description: Target CAMARA release tag this release should have (e.g., r4.1). Use null when target_release_type is "none". Distinct from API semantic versioning.
         pattern: "^r[1-9]\\d*\\.[1-9]\\d*$"
         examples:
           - "r4.1"
