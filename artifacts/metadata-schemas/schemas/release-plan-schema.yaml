@@ -3,8 +3,8 @@ $id: "https://github.com/camaraproject/ReleaseManagement/schemas/release-plan-sc
 title: CAMARA Release Plan Schema
 description: |
   Schema for release-plan.yaml file maintained on main branch.
-  This file is manually edited by codeowners, and is CI-validated.
-  It contains forward-looking release plan for the next release.
+  The release-plan.yaml file is manually edited by codeowners, and is CI-validated against this schema.
+  The release-plan.yaml contains the forward-looking release plan for the next release of the repository and its APIs.
 
 type: object
 required:
@@ -139,7 +139,7 @@ properties:
           description: |
             Declares the status this API will have in the next release.
             Together with target_api_version, determines the full version string
-            (e.g., target_api_version 1.2.0 + target_api_status rc → 1.2.0-rc.N).
+            (e.g., target_api_version 1.2.0 + target_api_status rc → 1.2.0-rc.N, where N will be auto-generated).
 
             Codeowners set this field to declare intent. CI validates that the
             API already meets the requirements for the declared status level -

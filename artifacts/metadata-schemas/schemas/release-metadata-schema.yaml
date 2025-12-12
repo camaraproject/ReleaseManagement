@@ -3,7 +3,7 @@ $id: "https://github.com/camaraproject/ReleaseManagement/schemas/release-metadat
 title: CAMARA Release Metadata Schema
 description: |
   Schema for release-metadata.yaml file generated on release branches.
-  This file is automatically created during release preparation and committed before tagging.
+  The release-metadata.yaml file is automatically created during release preparation, validated against this schema, and committed before tagging.
   It provides complete release history preserved in each release tag.
 
 type: object
@@ -94,8 +94,8 @@ properties:
         type: string
         description: Optional release notes or description (manual or generated)
         examples:
-          - "Pre-release for CAMARA Fall26 release cycle."
-          - "Patch release with critical bug fixes."
+          - "Pre-release for CAMARA Fall26 meta-release."
+          - "Maintenance release with critical bug fixes."
 
   dependencies:
     type: object
@@ -105,7 +105,7 @@ properties:
     properties:
       commonalities_release:
         type: string
-        description: Commonalities release number and resolved version
+        description: Commonalities release_tag and resolved version
         pattern: "^r[1-9]\\d*\\.[1-9]\\d* \\(\\d+\\.\\d+\\.\\d+(-[a-z]+\\.\\d+)?\\)$"
         examples:
           - "r4.2 (1.2.0-rc.1)"
@@ -113,7 +113,7 @@ properties:
 
       identity_consent_management_release:
         type: string
-        description: Identity and Consent Management release number and resolved version
+        description: Identity and Consent Management release_tag and resolved version
         pattern: "^r[1-9]\\d*\\.[1-9]\\d* \\(\\d+\\.\\d+\\.\\d+(-[a-z]+\\.\\d+)?\\)$"
         examples:
           - "r4.3 (1.1.0)"
