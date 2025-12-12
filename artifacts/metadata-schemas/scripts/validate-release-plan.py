@@ -135,7 +135,7 @@ class MetadataValidator:
             self.errors.append(
                 "release_track is 'meta-release' but meta_release field is missing"
             )
-        elif release_track in ['none', 'sandbox'] and meta_release:
+        elif release_track in ['none', 'independent'] and meta_release:
             self.warnings.append(
                 f"release_track is '{release_track}' but meta_release field is present"
             )

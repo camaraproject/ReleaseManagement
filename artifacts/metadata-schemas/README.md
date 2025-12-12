@@ -44,7 +44,7 @@ metadata-schemas/
 Defines the structure for `release-plan.yaml` files maintained on the main branch.
 
 **Key fields:**
-- `repository.release_track` - Release track (none, sandbox, meta-release)
+- `repository.release_track` - Release track (none, independent, meta-release)
 - `repository.meta_release` - Meta-release label (Fall26, Spring27), required when release_track is "meta-release"
 - `repository.target_release_tag` - CAMARA release tag this release should have (e.g., r4.1), must be the next available number in the release cycle or rN+1.1 for start of new release cycle
 - `repository.target_release_type` - Declared release type, validated by CI against API statuses (none, pre-release-alpha, pre-release-rc, public-release, maintenance-release)
@@ -171,7 +171,7 @@ Recommended dependencies for JavaScript version:
 
 Use these exact field names:
 
-- `release_track` (none, sandbox, meta-release)
+- `release_track` (none, independent, meta-release)
 - `target_release_tag` (in release-plan.yaml) / `release_tag` (in release-metadata.yaml)
 - `api_name` (not name)
 - `commonalities_release` (not commonalities_version)
@@ -183,7 +183,7 @@ Use these exact field names:
 
 **release_track** determines how the repository participates in CAMARA releases:
 - `none` - No release planned
-- `sandbox` - Release outside meta-release cycle
+- `independent` - Release outside meta-release cycle
 - `meta-release` - Participating in a CAMARA meta-release (requires meta_release field)
 
 ### Target Release Type vs Target API Status
@@ -207,7 +207,7 @@ Use these exact field names:
 
 The `meta_release` field is only used when `release_track` is "meta-release":
 - Use meta-release labels (Fall26, Spring27) for repositories participating in meta-releases
-- For sandbox releases, use `release_track: sandbox` without meta_release field
+- For independent releases, use `release_track: independent` without meta_release field
 
 ### Version Fields
 
@@ -254,7 +254,7 @@ pip install pyyaml jsonschema
 - **Fix:** Must be exactly: draft, alpha, rc, or public
 
 **Error:** "release_track is not one of enum values"
-- **Fix:** Must be exactly: none, sandbox, or meta-release
+- **Fix:** Must be exactly: none, independent, or meta-release
 
 ### Semantic Errors
 
