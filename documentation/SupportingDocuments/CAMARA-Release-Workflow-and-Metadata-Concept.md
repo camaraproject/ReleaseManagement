@@ -215,7 +215,7 @@ After approval and PR merge to release branch:
 4. Creates git tag (e.g., `r4.1`) pointing to this release commit
 5. CI builds and publishes artifacts
 6. GitHub Release with artifacts is created:
-   - OpenAPI bundles (self-contained specs with all external references resolved)
+   - Bundled OpenAPI specifications (later phase)
    - Generated documentation
    - Release metadata files
 

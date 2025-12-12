@@ -1,5 +1,4 @@
 $schema: "http://json-schema.org/draft-07/schema#"
-$id: "https://github.com/camaraproject/ReleaseManagement/schemas/release-plan-schema.yaml"
 title: CAMARA Release Plan Schema
 description: |
   Schema for release-plan.yaml file maintained on main branch.
@@ -87,18 +86,18 @@ properties:
     type: object
     description: |
       Release dependencies on other CAMARA repositories.
-      Uses release numbers (e.g., r4.2) not documentation versions.
+      Uses release_tag (e.g., r4.2) not documentation versions.
     properties:
       commonalities_release:
         type: string
-        description: Commonalities repository release number
+        description: Commonalities repository release_tag
         pattern: "^r[1-9]\\d*\\.[1-9]\\d*$"
         examples:
           - "r4.2"
 
       identity_consent_management_release:
         type: string
-        description: Identity and Consent Management repository release number
+        description: Identity and Consent Management repository release_tag
         pattern: "^r[1-9]\\d*\\.[1-9]\\d*$"
         examples:
           - "r4.3"

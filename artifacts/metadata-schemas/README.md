@@ -201,7 +201,7 @@ Use these exact field names:
 - `rc` - Release candidate, feature-complete version
 - `public` - Published version meeting all quality requirements
 
-**Note:** APIs targeting a version already released as public are automatically locked by CI (modifications blocked). This replaces the previous "unchanged" status.
+**Note:** APIs targeting a version already released as public are automatically locked by CI (modifications blocked).
 
 ### Meta-Release Field
 

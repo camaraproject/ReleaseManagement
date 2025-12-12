@@ -8,7 +8,7 @@
 
 repository:
   release_track: sandbox
-  target_release_tag: r1.1
+  target_release_tag: null  # Replace with r1.1 for first release
   target_release_type: none
 
 dependencies:
