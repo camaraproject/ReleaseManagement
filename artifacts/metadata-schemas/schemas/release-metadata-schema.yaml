@@ -3,7 +3,7 @@ title: CAMARA Release Metadata Schema
 description: |
   Schema for release-metadata.yaml file generated on release branches.
   The release-metadata.yaml file is automatically created during release preparation, validated against this schema, and committed before tagging.
-  It provides complete release history preserved in each release tag.
+  The generated release-metadata.yaml file provides complete release history and is preserved in the release tag.
 
 type: object
 required:
