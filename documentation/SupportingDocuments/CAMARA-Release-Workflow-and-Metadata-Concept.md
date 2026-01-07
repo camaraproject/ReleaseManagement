@@ -30,10 +30,11 @@ The workflow achieves these objectives through:
 
 | Term                   | Description |
 |------------------------|-------------|
-| `meta_release`         | Meta-release label (e.g., `Fall26`) |
-| `release_number`       | CAMARA release tag (e.g., `r4.1`). Distinct from API SemVer. |
-| `release_readiness`    | Repository release phase: `none` (not ready), `pre-release` (mixed maturity), `pre-release-rc` (rc minimum), `public-release` (all stable), `patch-release` (maintenance). |
-| `api_status`           | Per-API status: `planned` (not yet in repo), `unchanged` (no changes from previous release), `alpha`, `rc`, `public`. Extension numbers are auto-calculated. |
+| `release_track`        | Release track determining how repository participates: `none` (no release), `independent` (outside meta-release), `meta-release` (participating in meta-release). |
+| `meta_release`         | Meta-release label (e.g., `Fall26`). Only used when `release_track` is `meta-release`. |
+| `target_release_tag`   | Target CAMARA release tag this release should have (e.g., `r4.1`). Distinct from API SemVer. |
+| `target_release_type`  | Codeowner-declared release type for next release, validated by CI: `none` (not ready), `pre-release-alpha` (requires all APIs at alpha+), `pre-release-rc` (requires all APIs at rc+), `public-release` (requires all APIs public), `maintenance-release` (maintenance). |
+| `target_api_status`    | Per-API target status for next release: `draft` (declared, basic validation), `alpha`, `rc`, `public`. Extension numbers are auto-calculated. |
 | `main_contacts`        | GitHub handles of code owners or maintainers (per API in `release-plan.yaml`). |
 | `main` branch          | Development branch. All content is work-in-progress (`version: wip`). |
 | Maintenance branch     | Long-lived branch for maintaining older release cycles (e.g., `maintenance-r3`). See Appendix for details. |
@@ -50,47 +51,48 @@ Planning metadata owned by codeowners, manually updated and CI-validated. Contai
 
 ```yaml
 repository:
-  meta_release: Fall26  # default as long not eligible or planned for a meta-release: Other
-  release_number: r4.1
-  release_readiness: pre-release  # Repository ready for pre-release with mixed API maturity
+  release_track: meta-release  # none, independent, or meta-release
+  meta_release: Fall26  # Only when release_track is meta-release
+  target_release_tag: r4.1
+  target_release_type: pre-release-alpha  # Repository ready for pre-release with mixed API status
 
 dependencies:
-  commonalities_version: r4.2
-  identity_consent_management_version: r4.3
+  commonalities_release: r4.2
+  identity_consent_management_release: r4.3
 
 apis:
-  - name: location-verification
-    target_version: 3.2.0
-    api_status: rc  # Status type only; extension numbers (e.g., rc.2) are auto-calculated
+  - api_name: location-verification
+    target_api_version: 3.2.0
+    target_api_status: rc  # Status type only; extension numbers (e.g., rc.2) are auto-calculated
     main_contacts:
       - githubUser1
       - githubUser2
 
-  - name: location-retrieval
-    target_version: 0.5.0
-    api_status: rc
+  - api_name: location-retrieval
+    target_api_version: 0.5.0
+    target_api_status: rc
     main_contacts:
       - githubUser3
 
-  - name: some-new-location-service
-    target_version: 0.1.0
-    api_status: alpha
+  - api_name: some-new-location-service
+    target_api_version: 0.1.0
+    target_api_status: alpha
     main_contacts:
       - githubUser4
 ```
 
 👉 Notes:
-- API status progression: `planned` → `alpha` → `rc` → `public` (or `unchanged` for existing APIs)
-  - `planned`: API declared in release-plan.yaml but not yet in repository (CI skips validation)
-  - `unchanged`: API remains at previous release version, no changes allowed (CI blocks modifications)
-  - `alpha`+: API file must exist and pass validation at declared maturity
-- Repository release readiness determines what type of release can be created:
-  - `none`: No release possible (APIs missing or only planned)
-  - `pre-release`: Can release with mixed API maturity (alpha, rc, public)
-  - `pre-release-rc`: Requires all APIs at rc or public status (M3 milestone)
+- Target API status progression: `draft` → `alpha` → `rc` → `public`
+  - `draft`: API declared in release-plan.yaml but implementation in progress (basic CI validation)
+  - `alpha`+: API file must exist and pass validation at declared status level
+  - APIs targeting a version already released as public are automatically locked by CI
+- Repository target release type determines what type of release can be created:
+  - `none`: No release planned or not ready yet
+  - `pre-release-alpha`: All APIs at alpha or higher (rc or public) (mix of alpha/rc/public allowed)
+  - `pre-release-rc`: Requires all APIs at rc or public status (e.g., M3 milestone for meta-releases)
   - `public-release`: Requires all APIs at public status
-  - `patch-release`: For maintenance/hotfix releases from maintenance branches
-- CI validates that API statuses match the declared repository release readiness.
+  - `maintenance-release`: For maintenance/hotfix releases from maintenance branches
+- CI validates that target API statuses match the declared repository target release type.
 
 ### 2. `release-metadata.yaml` (on release branch)
 
@@ -98,26 +100,29 @@ Generated automatically from the release plan and committed before tagging. Pres
 
 ```yaml
 repository:
-  release_number: r4.1
-  meta_release: Fall26
-  release_date: 2025-11-22  # Actual release date (set at release time)
-  status: pre-release
+  repository_name: DeviceLocation
+  release_tag: r4.1
+  release_date: 2025-11-22T14:30:00Z  # Actual release date and time in ISO 8601 format (UTC)
+  release_type: pre-release-alpha
   src_commit_sha: abcd1234efgh5678  # Last commit from main or maintenance branch included in this release
   release_notes: Pre-release for CAMARA Fall26 release cycle.
 
 dependencies:
-  commonalities_version: r4.2 (1.2.0-rc.1)
-  identity_consent_management_version: r4.3 (1.1.0)
+  commonalities_release: r4.2 (1.2.0-rc.1)
+  identity_consent_management_release: r4.3 (1.1.0)
 
 apis:
-  - name: location-verification
-    version: 3.2.0-rc.2
+  - api_name: location-verification
+    api_version: 3.2.0-rc.2
+    api_title: "Location Verification"
 
-  - name: location-retrieval
-    version: 0.5.0-rc.1
+  - api_name: location-retrieval
+    api_version: 0.5.0-rc.1
+    api_title: "Location Retrieval"
 
-  - name: some-new-location-service
-    version: 0.1.0-alpha.1
+  - api_name: some-new-location-service
+    api_version: 0.1.0-alpha.1
+    api_title: "Some New Location Service"
 ```
 
 ## End-to-End Workflow
@@ -129,10 +134,10 @@ apis:
 - CI gates validate:
   - Formatting and schema correctness
   - Strict version consistency: info.version format, server URL patterns per CAMARA rules
-  - Adherence to CAMARA guidelines based on the declared repository `release_readiness` and `api_status`
-  - APIs with status `alpha` or higher must exist and meet validation criteria
-  - APIs with status `planned` are skipped (allows declaration before implementation)
-  - APIs with status `unchanged` must not be modified (enforces no changes to API or test files)
+  - Adherence to CAMARA guidelines based on the declared repository `target_release_type` and `target_api_status`
+  - APIs with target status `alpha` or higher must exist and meet validation criteria
+  - APIs with target status `draft` receive basic validation (allows declaration while implementation in progress)
+  - APIs targeting a version already released as public are locked (CI blocks modifications)
 - CI also raises non-blocking warnings about issues that must be addressed to enable promotion to the next stage (e.g., from `alpha` to `rc`, or `rc` to `public`).
 - All validation results are summarized in the CI output and posted as comments in the PR, helping developers stay informed and proactive.
 
@@ -148,10 +153,10 @@ Upon triggering the release (via labeled issue - maintainers+ can trigger by add
 
 - A release branch is created (e.g. `release/r4.1`)
 - A script or GitHub Action:
-  - Sets exact API versions using `target_version` + auto-calculated suffix (e.g., `-rc.2` based on consecutive numbering across API lifecycle)
+  - Sets exact API versions using `target_api_version` + auto-calculated extension (e.g., `-rc.2` based on consecutive numbering across API lifecycle)
   - Enforces CAMARA versioning rules: info.version matches tag, server URLs follow v0.x or vx patterns
   - Writes `release-metadata.yaml`
-  - Replaces placeholder markers (e.g., `{{api_version}}`, `{{commonalities_version}}`) in repository files, including updated template text from Commonalities/ICM in second phase
+  - Replaces placeholder markers (e.g., `{{api_version}}`, `{{commonalities_release}}`) in repository files, including updated template text from Commonalities/ICM in second phase
   - Updates external references to point to specific dependency release tags (Note: Cross-repository reference handling, validation, and bundling complexities are addressed in a later implementation phase)
   - Commits consistent/structured CHANGELOG, README, and checklist artifacts
 
@@ -165,29 +170,58 @@ Manual review and adjustments happen through Release Preparation PRs into the re
 
 - Release PRs require approval from codeowner(s) and release reviewer(s) (via branch protection).
 - Review covers CHANGELOG, README and checklist correctness wrt metadata
+- CHANGELOG.md entries may be added/updated during review
 
-If problems are found in API specs or implementation:
-- Create PRs against `main`
-- Update (or rebase) release branch from `main`
-- Regenerate release metadata/artifacts
+**If problems are found in API specs or implementation (initial implementation - immutable branches):**
+- Create PRs against `main` to fix the issues
+- **Abandon** the current release (close release PR and delete release branch)
+- **Retrigger** release creation from updated `main`
+- This ensures release branch remains immutable and src_commit_sha is accurate
+- Alternative: Forward-merge approach is deferred for future consideration (see Appendix)
 
 **Rationale:**
 - Keeps release preparation clean, visible, and traceable
 - Ensures specification fixes flow through formal code review on `main`
+- Immutable branches simplify validation and prevent drift
 
 ### Step 4: Tag and Generate Release
 
-After approval:
+The release finalization follows a two-phase workflow:
 
-- A tag (e.g., `r4.1`) is created on the release branch
-- CI builds and publishes artifacts
-- GitHub Release with artifacts is created:
-  - OpenAPI bundles (self-contained specs with all external references resolved)
-  - Generated documentation
-  - Release metadata files
+#### Phase 1: Release Branch Preparation (during PR review)
+
+1. Automation creates release branch from main/maintenance HEAD
+2. Generates `release-metadata.yaml` with:
+   - `release_date: null` (set during finalization)
+   - `src_commit_sha: null` (set during finalization)
+   - Other fields derived from `release-plan.yaml`
+3. Release PR is created for review
+4. **Important - Immutable release branch (initial implementation)**:
+   - Release branch content is immutable after creation
+   - Exception: CHANGELOG.md entries may be added/updated
+   - If API corrections needed: abandon release, fix main, retrigger
+   - Future: Forward-merge support may be added (see Appendix)
+
+#### Phase 2: Finalization (after PR merge)
+
+After approval and PR merge to release branch:
+
+1. Automation triggers on release branch
+2. Populates final metadata:
+   - `release_date`: Current UTC timestamp
+   - `src_commit_sha`: HEAD SHA from base branch at branch creation time
+3. Creates "release commit": `chore: finalize release metadata for rX.Y`
+4. Creates git tag (e.g., `r4.1`) pointing to this release commit
+5. CI builds and publishes artifacts
+6. GitHub Release with artifacts is created:
+   - Bundled OpenAPI specifications (later phase)
+   - Generated documentation
+   - Release metadata files
 
 **Rationale:**
 - Provides traceable, repeatable state for each tagged release
+- Two-phase approach ensures metadata reflects actual release state
+- Immutable branches simplify validation and prevent drift
 
 ### Step 5: Post-Release Actions
 
@@ -200,15 +234,20 @@ After release is tagged and published:
 - Do not update any version fields (they stay `"wip"`)
 
 #### 5b. For public releases only:
-- Auto-update `release-plan.yaml`: Set all APIs to `unchanged` status
+- PRs on main targeting the just-released public version are automatically locked by CI
+- Any modification to these APIs will be blocked until the target_api_version and other fields are updated in the release-plan.
 - Forces explicit planning for next release cycle
-- Prevents unintended changes to stable APIs
 
 #### 5c. Tag reference point on `main`:
 - Create tag `src/X.Y` (e.g., `src/4.1`) on main at branch point
 - Marks commit for potential maintenance branch creation
 - Reference for comparing API changes in next release
 - Note: This is NOT a release tag, just a reference marker
+
+#### 5d. Cleanup release branch (optional):
+- Release branches (e.g., `release/r4.1`) are temporary scaffolding
+- The git tag preserves the release permanently
+- Release branches can be deleted after tag creation
 
 **Rationale:**
 - Provides visibility into releases without disrupting ongoing work-in-progress development state in `main`
@@ -221,9 +260,9 @@ For critical fixes and security patches on older release cycles:
 
 - **Maintenance branches** (`maintenance-r3`) are created from the last commit included in that release cycle
 - Patches are developed and tested on the maintenance branch
-- Set `release_readiness: patch-release` in the maintenance branch's `release-plan.yaml`
+- Set `target_release_type: maintenance-release` in the maintenance branch's `release-plan.yaml`
 - Follow steps 2-5 above, but create release branch from maintenance branch instead of `main`
-- Patch releases (r3.4, r3.5) contain only bug fixes, no new features
+- Maintenance releases (r3.4, r3.5) contain only bug fixes, no new features
 
 See Appendix for detailed branching diagrams and maintenance strategy.
 
@@ -233,7 +272,7 @@ See Appendix for detailed branching diagrams and maintenance strategy.
 |------------------------|----------------------------------------------------------------------------------------------|
 | Separation of concerns | `main` can always be integrated or reworked — no release state mixed in                     |
 | Consistent metadata    | Metadata is parseable, validatable, and source-of-truth for release tooling                 |
-| Flexible compliance    | Pre-release vs public release phases are enforced via repository `release_readiness` and `api_status` |
+| Flexible compliance    | Pre-release vs public release phases are enforced via repository `target_release_type` and `target_api_status` |
 | CI-friendly            | No fragile manual checks — all validations declarative, structural, and branch-aware        |
 | Collaborative review   | All critical changes reviewed like any other PR                                              |
 | Traceable results      | Tag, commit SHA, and metadata captured in release snapshot                                  |
@@ -260,7 +299,7 @@ See Appendix for detailed branching diagrams and maintenance strategy.
 
 ## Next Steps (Optional)
 
-- [ ] Define a YAML schema for `release-plan.yaml` and `release-metadata.yaml`
+- [x] Define a YAML schema for `release-plan.yaml` and `release-metadata.yaml` (see `artifacts/metadata-schemas/`)
 - [ ] Add GitHub Actions for metadata validation, release branch preparation, and post-release syncing
 - [ ] Enforce CODEOWNERS and team-based protections on branches
 - [ ] Plan and implement CHANGELOG automation as a separate phase
@@ -271,7 +310,7 @@ See Appendix for detailed branching diagrams and maintenance strategy.
 
 ### ❗ The Problem
 
-In the current CAMARA workflow, we risk repeating the problems caused by "monolithic" release PRs — where contributors update `release-plan.yaml` to promote an API (e.g., from `planned` to `rc`) and simultaneously attempt to fix all blocking issues in the same PR. These PRs are hard to review, difficult to verify, and blur responsibility between status declaration and implementation compliance.
+In the current CAMARA workflow, we risk repeating the problems caused by "monolithic" release PRs — where contributors update `release-plan.yaml` to promote an API (e.g., from `draft` to `rc`) and simultaneously attempt to fix all blocking issues in the same PR. These PRs are hard to review, difficult to verify, and blur responsibility between status declaration and implementation compliance.
 
 Worse, when deadlines are near, this approach encourages rush patches and discourages proper code review.
 
@@ -286,8 +325,8 @@ A pull request to `main` may either:
 but ❌ not both.
 
 This applies particularly to:
-- Status changes in repository `release_readiness` or per-API `api_status`
-- Dependency updates, such as upgrading `commonalities_version`
+- Status changes in repository `target_release_type` or per-API `target_api_status`
+- Dependency updates, such as upgrading `commonalities_release`
 
 #### 2. **CI Validation of Metadata-only PRs**
 
@@ -317,7 +356,7 @@ This applies particularly to:
 ### Developer Workflow Example
 
 1. Developer merges a PR that corrects a missing test file for an API.
-2. Once CI passes and no blocking issues remain, they open a small metadata-only PR updating the `api_status` from `alpha` to `rc`.
+2. Once CI passes and no blocking issues remain, they open a small metadata-only PR updating the `target_api_status` from `alpha` to `rc`.
 3. CI detects the change, runs combined checks, and approves if valid.
 
 This enforces discipline, validates correctness, and maintains oversight — without compromising developer agility.
@@ -368,12 +407,17 @@ main ──────┬──────────────────
 **Creation strategy**:
 - Created from the last commit on `main` that was included in the release cycle to maintain
 - Named `maintenance-rX` where X is the release cycle (e.g., r3 for r3.1, r3.2, r3.3...)
-- Used for patch releases (r3.4, r3.5) containing API bug fixes
+- Used for maintenance releases (r3.4, r3.5) containing API bug fixes
 - New API minor versions go into new release cycles on `main`
 
 **Important**: Maintenance branches are tied to **release cycles** (r3.x), not API versions. A maintenance branch can produce r3.4, r3.5 etc., each potentially containing different patch versions of the APIs.
 
-### Updating Release Branch from Main
+### Updating Release Branch from Main (future feature)
+
+> **Note:** This section describes a forward-merge approach that is **deferred for future consideration**.
+> The initial implementation uses immutable release branches (see Step 4 above).
+> If corrections are needed during release preparation, the release is abandoned and retriggered from updated main.
+> This approach may be reconsidered based on operational experience.
 
 During release preparation, if critical fixes are needed:
 
@@ -384,7 +428,7 @@ During release preparation, if critical fixes are needed:
    - Rebase release branch on `main` (cleanest history)
 
 ```
-main ────┬───[fix]───────┬──────► 
+main ────┬───[fix]───────┬──────►
          │               │
          └─release/r4.1──┴──────► (updated with fix)
 ```
@@ -412,7 +456,7 @@ main ────┬──[src/4.1]──────────[PR: selective 
 - Server URL changes (keep placeholder format)
 - Release-specific metadata
 
-**3. For public releases**: Update `release-plan.yaml` to set all APIs to `unchanged`
+**3. For public releases**: PRs targeting the just-released public version on main are automatically locked by CI (any modification blocked until `target_api_version` is updated)
 
 **Purpose**: Makes release information visible in the default branch without disrupting ongoing development, provides reference point for maintenance branches, and ensures explicit planning for next cycle.
 

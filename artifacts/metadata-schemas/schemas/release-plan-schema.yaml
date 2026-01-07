@@ -1,0 +1,174 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+title: CAMARA Release Plan Schema
+description: |
+  Schema for release-plan.yaml file maintained on main branch.
+  The release-plan.yaml file is manually edited by codeowners, and is CI-validated against this schema.
+  The release-plan.yaml contains the forward-looking release plan for the next release of the repository and its APIs.
+
+type: object
+required:
+  - repository
+  - apis
+properties:
+  repository:
+    type: object
+    description: Repository-level release planning information
+    required:
+      - release_track
+      - target_release_tag
+      - target_release_type
+    properties:
+      release_track:
+        type: string
+        description: |
+          Release track determining how the repository participates in CAMARA releases:
+          - none: No release planned, other repository fields can be omitted
+          - independent: Release outside meta-release cycle
+          - meta-release: Participating in a CAMARA meta-release cycle (requires meta_release field)
+        enum:
+          - "none"
+          - "independent"
+          - "meta-release"
+
+      meta_release:
+        type: string
+        description: |
+          Meta-release label (e.g., Fall26, Spring27).
+          Required when release_track is "meta-release", should be omitted otherwise.
+        pattern: "^(Spring|Fall)\\d{2}$"
+        examples:
+          - "Fall26"
+          - "Spring27"
+
+      target_release_tag:
+        type: [string, "null"]
+        description: Target CAMARA release tag this release should have (e.g., r4.1). Use null when target_release_type is "none". Distinct from API semantic versioning.
+        pattern: "^r[1-9]\\d*\\.[1-9]\\d*$"
+        examples:
+          - "r4.1"
+          - "r5.3"
+
+      target_release_type:
+        type: string
+        description: |
+          Declares the release type of the repository being prepared for the next release.
+          The target_release_type is one of four target_* fields that together define the release plan:
+          - target_release_tag: which release tag this release will have
+          - target_release_type: which release type this release will have
+          - target_api_version: which semantic version for each API
+          - target_api_status: which status for each API in this release
+
+          Codeowners set these fields to declare intent. CI validates that all API
+          target_api_status values are compatible with the declared target_release_type.
+
+          Values:
+          - none: No release planned or repository not yet ready
+          - pre-release-alpha: Optional early release for feedback. All APIs must have
+            target_api_status alpha or higher (rc, public). Changed APIs use alpha or rc; only unchanged
+            APIs (same target_api_version as in previous public release) may use public.
+          - pre-release-rc: Release candidate (e.g., by M3 for meta-releases). All APIs
+            must have target_api_status rc or public. Changed APIs use rc; only unchanged
+            APIs may use public.
+          - public-release: Public release (e.g., by M4 for meta-releases). All APIs must
+            have target_api_status public. At least one API must have a target_api_version not
+            previously published.
+          - maintenance-release: Maintenance release from maintenance branch. All APIs must
+            have target_api_status public. At least one API must have a target_api_version not
+            previously published (and which must be a patch version).
+        enum:
+          - "none"
+          - "pre-release-alpha"
+          - "pre-release-rc"
+          - "public-release"
+          - "maintenance-release"
+
+  dependencies:
+    type: object
+    description: |
+      Release dependencies on other CAMARA repositories.
+      Uses release_tag (e.g., r4.2) not documentation versions.
+    properties:
+      commonalities_release:
+        type: string
+        description: Commonalities repository release_tag
+        pattern: "^r[1-9]\\d*\\.[1-9]\\d*$"
+        examples:
+          - "r4.2"
+
+      identity_consent_management_release:
+        type: string
+        description: Identity and Consent Management repository release_tag
+        pattern: "^r[1-9]\\d*\\.[1-9]\\d*$"
+        examples:
+          - "r4.3"
+
+  apis:
+    type: array
+    description: List of APIs planned for this release
+    minItems: 1
+    items:
+      type: object
+      required:
+        - api_name
+        - target_api_version
+        - target_api_status
+      properties:
+        api_name:
+          type: string
+          description: API name (kebab-case), leading identifier that determines file_name
+          pattern: "^[a-z][a-z0-9-]*$"
+          examples:
+            - "location-verification"
+            - "quality-on-demand"
+
+        target_api_version:
+          type: string
+          description: |
+            Target semantic version for this release (base version only, no pre-release extensions).
+            Format: X.Y.Z where X=major, Y=minor, Z=patch.
+            Pre-release extensions like -alpha.1 or -rc.2 are auto-calculated during release.
+          pattern: "^\\d+\\.\\d+\\.\\d+$"
+          examples:
+            - "1.0.0"
+            - "0.5.0"
+            - "3.2.1"
+
+        target_api_status:
+          type: string
+          description: |
+            Declares the status this API will have in the next release.
+            Together with target_api_version, determines the full version string
+            (e.g., target_api_version 1.2.0 + target_api_status rc → 1.2.0-rc.N, where N will be auto-generated).
+
+            Codeowners set this field to declare intent. CI validates that the
+            API already meets the requirements for the declared status level -
+            the status can only be set if validation passes.
+
+            Values (progression: draft → alpha → rc → public):
+            - draft: API declared but implementation in progress. Basic validation
+              only. API definition may not exist yet.
+            - alpha: Initial implementation ready for early feedback. API definition
+              must exist and pass alpha-level validation.
+            - rc: Release candidate, feature-complete. API and test definitions
+              must pass rc-level validation.
+            - public: Public release meeting all quality requirements. API and test
+              definitions must pass full validation.
+
+            Note: APIs with target_api_version matching a previously published public
+            version are automatically locked by CI (modifications blocked). These
+            unchanged APIs may keep target_api_status public across pre-releases.
+          enum:
+            - "draft"
+            - "alpha"
+            - "rc"
+            - "public"
+
+        main_contacts:
+          type: array
+          description: GitHub usernames of code owners or maintainers for this API
+          items:
+            type: string
+            pattern: "^[a-zA-Z0-9]([a-zA-Z0-9-]*[a-zA-Z0-9])?$"
+          minItems: 1
+          examples:
+            - ["githubUser1", "githubUser2"]

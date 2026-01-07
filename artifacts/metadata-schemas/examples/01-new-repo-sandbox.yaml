@@ -1,0 +1,23 @@
+# Example 1: New Sandbox Repository
+#
+# Scenario: A new CAMARA API repository that is not yet participating in
+# a meta-release. Uses release_track "independent" and starts with draft
+# API status at version 0.1.0.
+#
+# This represents initial planning before the API implementation exists.
+
+repository:
+  release_track: independent
+  target_release_tag: null  # Replace with r1.1 for first release
+  target_release_type: none
+
+dependencies:
+  commonalities_release: r4.2
+  identity_consent_management_release: r4.3
+
+apis:
+  - api_name: device-reachability
+    target_api_version: 0.1.0
+    target_api_status: draft
+    main_contacts:
+      - newApiMaintainer

@@ -1,0 +1,24 @@
+# Example 3: Release plan for Release Candidate Preparation
+#
+# Scenario: A single-API repository with its first stable API version
+# as target. The API is at rc status targeting version 1.0.0.
+# The repository release readiness is set to pre-release-rc,
+# indicating the repository is ready to create an M3 pre-release.
+
+repository:
+  release_track: meta-release
+  meta_release: Spring26
+  target_release_tag: r3.2
+  target_release_type: pre-release-rc
+
+dependencies:
+  commonalities_release: r4.2
+  identity_consent_management_release: r4.2
+
+apis:
+  - api_name: device-identifier
+    target_api_version: 1.0.0
+    target_api_status: rc
+    main_contacts:
+      - deviceTeamLead
+      - deviceDeveloper
