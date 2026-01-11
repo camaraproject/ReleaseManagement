@@ -15,7 +15,6 @@
 - [Implementation Issues](#implementation-issues-sub-issues-to-191)
 - [Open Questions & Risk Areas](#open-questions--risk-areas)
 - [Critical Files](#critical-files)
-- [Next Steps](#next-steps)
 
 ## Overview
 
@@ -40,10 +39,12 @@ This document provides a phased implementation plan for automating the CAMARA re
 |-----------|------|-------------------|
 | **All Hands Call** | Dec 10, 2025 | Present release-plan.yaml concept |
 | **Spring26 M1** | Dec 15, 2025 | Phase 1 complete, Phase 2 (Mass Rollout) started |
-| **Fall26 cycle start** | Mid-Jan 2026 | Phase 2 complete (adoption) + Phase 3 started (validation) |
+| **Fall26 M0 (Kick-off)** | Mid-Jan 2026 | Phase 2 complete (adoption) + Phase 3 started |
 | **Spring26 M3** | Jan 31, 2026 | Phase 3 complete (validation framework stable) |
-| **Spring26 M4** | Mar 2026 | Phase 4 functional (release automation) |
-| **Fall26** | Sep-Oct 2026 | Phase 5+ complete, mandatory adoption |
+| **Spring26 M4** | Mar 31, 2026 | Phase 4 functional (release automation) |
+| **Fall26 M1** | Apr 30, 2026 | Phase 5 complete (post-release workflows) |
+| **Fall26 M3 (RC)** | Jun 15, 2026 | Phase 6 complete (maintenance workflows) |
+| **Fall26 M4 (Public)** | Sep 30, 2026 | Mandatory adoption |
 
 ---
 
@@ -286,7 +287,7 @@ jobs:
 
 **Performance Target**: < 3 minutes total
 
-### Success Criteria (Phase 1B)
+### Success Criteria
 - [ ] Validation configuration format defined and schema validated
 - [ ] Spectral rules extended with placeholder validation rules (exact number TBD)
 - [ ] Custom validators implemented and tested (exact number based on requirements analysis)
@@ -299,7 +300,7 @@ jobs:
 ## Phase 4: Release Automation (Jan-Feb 2026, 6 weeks)
 
 ### Objectives
-Implement automated release branch generation (C2 workflow). First early adopters must be able to create releases by Spring26 M3 (Jan 31).
+Implement automated release branch generation (C2 workflow). Target: functional by Feb 28 for Spring26 M4 public releases.
 
 ### Deliverables
 
@@ -380,13 +381,13 @@ Output: Markdown checklist with Y/N/tbd status
 
 **Reusable Workflow**: API repositories call this workflow from their own repos
 
-### Success Criteria (Phase 2)
+### Success Criteria
 - [ ] Version calculation tested on 3+ repositories with complex history
 - [ ] Dependency resolution handles concrete release references
 - [ ] Placeholder replacement handles all identified patterns correctly (comprehensive test coverage)
 - [ ] CHANGELOG generation produces usable baseline
 - [ ] Checklist validation runs and generates accurate Y/N/tbd status
-- [ ] **End-to-end release branch creation tested on 2-3 early adopter repos by Feb 28 (Fall26 M0)**
+- [ ] **End-to-end release branch creation tested on 2-3 early adopter repos by Feb 28**
 
 ---
 
@@ -456,11 +457,10 @@ Support maintenance branch releases (C5 workflow).
 **Differences**:
 - Release branch created from maintenance branch (not main)
 - Version validation: patch-only (X.Y.Z → X.Y.Z+n)
-- No `src/` tag creation
 - Sync PR goes to maintenance branch
 - Optional backport PR to main
 
-### Success Criteria (Phase 4)
+### Success Criteria
 - [ ] Maintenance releases fully automated
 - [ ] Tested on 2-3 repositories requiring patches
 - [ ] Documentation complete
@@ -671,17 +671,3 @@ Rules vary by:
 - [API_Release_Guidelines.md](https://github.com/camaraproject/ReleaseManagement/blob/main/documentation/API_Release_Guidelines.md) - Current process to replace
 - [CAMARA-API-Design-Guide.md](https://github.com/camaraproject/Commonalities/blob/main/documentation/CAMARA-API-Design-Guide.md) - Validation requirements
 
----
-
-## Next Steps
-
-1. **Review and approve** this plan with Release Management team
-2. **Create Phase 1 & 2 issues** (#191.1-4) in ReleaseManagement and project-administration repos
-3. **Assign ownership** and establish timeline toward Dec 10 presentation
-4. **Begin development**:
-   - Finalize metadata schemas (Phase 1)
-   - Prepare Adoption Package (Phase 1)
-   - Prepare Mass Rollout Campaign (Phase 2)
-   - Execute Rollout (Phase 2)
-
-**Target**: Phase 1 complete by Dec 10, Phase 2 by Jan 15, Phase 3 by Jan 31, Phase 4 functional by Feb 28 (Fall26 M0), Phase 5+ by Fall26.
