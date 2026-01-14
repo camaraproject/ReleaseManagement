@@ -1,6 +1,6 @@
 # CAMARA Release Process
 
-This document describes the unified Release Management process for CAMARA API repositories. It consolidates the standard release guidelines with the new metadata-driven workflow.
+This document describes the Release Management process for CAMARA API repositories. The process automates checking compliance of API releases to the release guidelines using metadata-driven GitHub workflows.
 
 ## 1. Objectives
 
@@ -14,32 +14,32 @@ The CAMARA release process aims to:
 
 ### The Release Cycle
 The lifecycle of an API version progresses through distinct states:
-- **Draft / In-Development**: All work targets `main`. The `info.version` is kept as `wip`.
-- **Alpha** (Optional): An early release (`x.y.z-alpha.m`) for initial feedback.
-- **Release Candidate** (Mandatory): A stable pre-release (`x.y.z-rc.n`) to verify readiness. All public releases must be preceded by at least one RC.
-- **Public Release**: The official, content-frozen release.
+- **Draft**: All work targets `main`. The `info.version` is kept as `wip`.
+- **Alpha** (Optional): An early version (`x.y.z-alpha.m`) for initial feedback.
+- **Release Candidate** (Mandatory): A more stable pre-release version (`x.y.z-rc.n`) to verify readiness. All public versions must be preceded by at least one Release Candidate.
+- **Public**: The official, content-frozen API version. Such a version is called:
     - **Initial (`0.y.z`)**: For new APIs during rapid development.
     - **Stable (`x.y.z`)**: For mature APIs with strictly managed breaking changes.
 
 ### Release Tracks
-Repositories can participate in releases via two tracks:
+API repositories can be released via one of two tracks:
 - **Sandbox (Independent)**: 
     - Decoupled from CAMARA-wide release schedules. 
     - Allows releases at any time, ideal for new APIs or fast iteration.
 - **Meta-Release (Coordinated)**: 
-    - Aligned with CAMARA-wide milestones (e.g., Spring/Fall releases).
-    - Must adhere to strict deadlines (code freeze, etc.) and alignment with Commonalities.
+    - Aligned with CAMARA-wide milestones (e.g., Spring/Fall meta-release).
+    - Must adhere to strict deadlines (code freeze, etc.) and alignment with Commonalities and ICM.
 
 ## 3. Terminology
 
 | Term | Definition |
 |------|------------|
-| **Release Track** | Defines how a repository participates in releases: `meta-release` (synced with CAMARA meta-releases), `sandbox` (independent), or `none`. |
-| **Meta-Release** | A coordinated set of public API versions across CAMARA (e.g., "Fall25"), aligned with Commonalities and ICM versions. |
-| **Pre-Release** | An alpha (`x.y.z-alpha.m`) or release-candidate (`x.y.z-rc.n`) version. Not for commercial use. |
-| **Public Release** | A stable (`x.y.z`, x>=1) or initial (`0.y.z`) version for commercial use. |
+| **Release Track** | Defines how an API repository will be released: `meta-release` (synced with CAMARA meta-release milestones), `sandbox` (independent), or `none`. |
+| **Meta-Release** | The coordinated release of a set of public API versions across CAMARA (e.g., "Fall25"), aligned with Commonalities and ICM versions. |
+| **Pre-Release** | The release of an alpha (`x.y.z-alpha.m`) or release-candidate (`x.y.z-rc.n`) version. Not for commercial use. |
+| **Public Release** | The release of a stable (`x.y.z`, x>=1) or initial (`0.y.z`) version for commercial use. |
 | **Release Tag** | A GitHub tag for the repository release (e.g., `r4.1`), distinct from individual API SemVer versions. |
-| **Release Readiness** | The repository's declared state (e.g., `pre-release-alpha`, `public-release`), governing what validation checks apply. |
+| **Release Readiness** | The repository's declared state for its release (e.g., `pre-release-alpha`, `public-release`), governing which automated validation checks will be applied to the repository content to assess if it can be released. |
 
 ## 4. The Release Workflow
 
