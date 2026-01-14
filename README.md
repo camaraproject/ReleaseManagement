@@ -10,21 +10,19 @@
 Repository to describe, develop, document and test the Release Management process.
 
 ## Scope
-* Guidelines and assets for Release Management in CAMARA
+* Guidelines and templates for API Release Management in CAMARA
+* Artefacts enabling automation of release management processes (January 2026)
 * Describe, develop, document and apply the deliverables
 * Started: November 2023
 
 ## Release Process Information
 
-**The Release Management documents describe the CAMARA meta-release and API release processes, contibute the API versioning guidelines, and provides the artifacts for use by API Sub projects to release an API version.**
+**Release Management provides the documentation of the CAMARA API release process, contributes the API versioning guidelines (to Commonalities), provides the templates for use by API Sub projects to release an API version, and the artefacts enabling the automation of the API release process.**
 
-It contains the Release Management released documents and assests in the **documentation** folder:
-   - [API_Release_Guidelines.md](/documentation/API_Release_Guidelines.md) - An extract of the API release management process from the CAMARA wiki.
-   - [API-Readiness-Checklist.md](/documentation/API-Readiness-Checklist.md) - The checklist to ensure release readiness of the API according to its version (alpha, release-candidate, public).
-   - [CHANGELOG_TEMPLATE.md](/documentation/CHANGELOG_TEMPLATE.md) - The template for creating CHANGELOG history of an API repository.
-
-It also contains the following in the **documentation/SupportingDocuments** folder:
-   - [CHANGELOG_EXAMPLE.md](/documentation/SupportingDocuments/CHANGELOG_EXAMPLE.md) - Pointers to example CHANGELOG.md files over multiple releases created following the release management guidelines.
+- The **documentation** folder contains the documentation of the documents describing the CAMARA API release process, the checklist of items requires for releasing an API, and the supporting CHANGELOG templates. See [the documentation README](/documenation/README.md).
+- The **artefacts** folder contains the CAMARA Release Metadata Schemas (JSON Schema definitions and validation tools) for CAMARA release metadata files. These artefact enable the automation of the CAMARA release management process. See [the artefacts README](artefacts/README.md).
+- The **documentation/SupportingDocuments** folder provides additional information such as an example CHANGELOG.md files over multiple releases created according to the API release guidelines, presentations and other information.
+- The **documentation/Archive** folder is where deprecated release management documents are moved to.
 
 For the reference documentation on API versioning, please see "Versioning" section in the API Design Guidelines document in [Commonalities](https://github.com/camaraproject/Commonalities).
 
