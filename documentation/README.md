@@ -12,5 +12,4 @@ This folder contains the documentation of the CAMARA Release Process.
 
 - Release Cookbook: examples of various release-plans and how to create them (TBD)
 - FAQ: (TBD)
-- [Release process and metadata concept](documentation/SupportingDocuments
-/CAMARA-Release-Workflow-and-Metadata-Concept.md): for information. Provides an extensive description of the Release Process and its metadata and the concepts for the automation process.
+- [Release process and metadata concept](documentation/SupportingDocuments/CAMARA-Release-Workflow-and-Metadata-Concept.md): for information. Provides an extensive description of the Release Process and its metadata and the concepts for the automation process.
