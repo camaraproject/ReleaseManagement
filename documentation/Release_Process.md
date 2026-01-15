@@ -43,7 +43,7 @@ An API repository can be released using one of two tracks:
 
 ## 4. Creating an API Release Step-by-Step
 
-The release process is a structured 6-step process including 3 manual steps and 3 automated step driven by metadata.
+The release process is a structured process that includes automated steps driven by metadata. This automation takes away a lot of burder from the API developers.
 
 ```mermaid
 graph LR
@@ -55,7 +55,7 @@ graph LR
     F -->|Post-Release| G["Update main<br>(CHANGELOG only)"]
 ```
 
-### Step 1: Planning (on `main`) & Release Readiness validation
+### Step 1: Planning a Release & Automated Readiness validation
 - **Development**: All code changes target `main`. The `info.version` in OpenAPI files is kept as `wip` to avoid merge conflicts.
 - **Planning**: Maintainers update the `release-plan.yaml` on `main` to declare the target version and status of the next API release.
     - CI validates (automatically) that the code meets the requirements for the declared status (e.g., if you plan a `public` release, CI checks for broken links or missing docs).
