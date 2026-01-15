@@ -21,7 +21,7 @@ The lifecycle of an API version progresses through distinct states:
     - **Initial (`0.y.z`)**: For new APIs during rapid development.
     - **Stable (`x.y.z`)**: For mature APIs with strictly managed breaking changes.
 
-### Release Tracks
+### API Release Tracks
 An API repository can be released using one of two tracks:
 - **Sandbox (Independent)**: 
     - Decoupled from CAMARA-wide release schedules. 
@@ -41,9 +41,9 @@ An API repository can be released using one of two tracks:
 | **Release Tag** | A GitHub tag for the repository release (e.g., `r4.1`), distinct from individual API SemVer versions. |
 | **Release Readiness** | The repository's declared state for its release (e.g., `pre-release-alpha`, `public-release`). This state governing which automated validation checks will be applied to the repository content to assess if it can be released. |
 
-## 4. The Release Workflow
+## 4. Creating an API Release Step-by-Step
 
-The release process follows a structured 5-step workflow driven by metadata.
+The release process is a structured 6-step process including 3 manual steps and 3 automated step driven by metadata.
 
 ```mermaid
 graph LR
@@ -51,14 +51,14 @@ graph LR
     B -->|Trigger Release| C[Create Release Branch]
     C -->|Auto-Generate| D(release-metadata.yaml)
     D -->|Review PR| E[Release Branch Review]
-    E -->|Approve| F[Tag & Publish rX.Y]
-    F -->|Post-Release| G["Update main<br>(Changelog only)"]
+    E -->|Approve| F[Merge, Tag & Publish rX.Y]
+    F -->|Post-Release| G["Update main<br>(CHANGELOG only)"]
 ```
 
-### Step 1: Continuous Development & Planning (on `main`)
+### Step 1: Planning (on `main`) & Release Readiness validation
 - **Development**: All code changes target `main`. The `info.version` in OpenAPI files is kept as `wip` to avoid merge conflicts.
-- **Planning**: Maintainers update `release-plan.yaml` on `main` to declare the target version and status for the next release.
-    - CI validates that the code meets the requirements for the declared status (e.g., if you plan a `public` release, CI checks for broken links or missing docs).
+- **Planning**: Maintainers update the `release-plan.yaml` on `main` to declare the target version and status of the next API release.
+    - CI validates (automatically) that the code meets the requirements for the declared status (e.g., if you plan a `public` release, CI checks for broken links or missing docs).
 
 ### Step 2: Triggering a Release
 - Maintainers trigger a release by adding a label (e.g., `trigger-release`) to an issue or dispatching a workflow.
@@ -66,7 +66,7 @@ graph LR
 - The automation calculates the exact versions for all APIs based on their history and the `release-plan.yaml`.
 
 ### Step 3: Release Preparation & Review
-- A **Release Preparation PR** is automatically created against the release branch.
+- A **Release PR** is automatically created against the release branch.
 - This PR contains:
     - `release-metadata.yaml`: The frozen history of what is being released.
     - Updated API and Test definition files with concrete versions (replacing `wip`).
@@ -94,13 +94,13 @@ If substantive issues are found during review, they must be fixed on `main`, NOT
 3.  **Abandoning a Release**:
     - **Action**: Simply close the Release PR and delete the release branch. No released tags are created, and `main` remains unaffected.
 
-### Step 4: Tagging & Publication
-- Once the Release Preparation PR is merged, the release branch is tagged (e.g., `r1.2`).
+### Step 4: Merge, Tag & Publish the Release
+- Once the Release PR is merged, the release branch is tagged (e.g., `r1.2`), both by the mainteners.
 - GitHub Actions automatically:
     - Build release artifacts (OpenAPI bundles).
     - Create the GitHub Release.
 
-### Step 5: Post-Release Sync
+### Step 5: Post-Release Actions
 - A PR is automatically created back to `main` to:
     - Append the new entry to `CHANGELOG.md`.
     - Update `README.md` with links to the new release.
