@@ -7,11 +7,11 @@ This workflow concept establishes an automated release process for CAMARA that a
 
 **Replace manual wiki-based tracking** with structured, machine-readable metadata files that enable automation, flexible reporting, and consistent status synchronization across repositories.
 
-**Establish clear separation** between development work and release preparation by keeping the `main` branch in a consistent work-in-progress state with version fields as `"wip"`, while using dedicated release branches per (pre-)release for alpha, rc, and public releases.
+**Establish clear separation** between development work and release preparation by keeping the `main` branch in a consistent work-in-progress state with version fields as `"wip"`, while using dedicated snapshot branches per release attempt for alpha, rc, and public releases.
 
 **Enable structured validation and enforcement** through CI gating on PRs to `main`, replacing limited validation with complete checks for metadata files and CAMARA-specific release guidelines.
 
-**Provide transparent and traceable release preparation** by using dedicated release branches and release preparation PRs with structured approvals, avoiding informal PRs merged directly into `main` that mix version updates, changelog edits, and last-minute changes.
+**Provide transparent and traceable release preparation** by using dedicated snapshot branches and review PRs with structured approvals, avoiding informal PRs merged directly into `main` that mix version updates, changelog edits, and last-minute changes.
 
 **Support flexible versioning strategy** by keeping CAMARA release numbering (`rX.Y`) distinct from API semantic versioning, with clear metadata-driven version management instead of manual field updates in `main` that must be reset after releases.
 
@@ -20,11 +20,11 @@ This workflow concept establishes an automated release process for CAMARA that a
 The workflow achieves these objectives through:
 
 - Structured **metadata files (in YAML)** as authoritative source for release planning and status
-- Dedicated **release branches per (pre-)release** with automated preparation and validation
+- Dedicated **snapshot branches per release attempt** with automated preparation and validation
 - **CI enforcement** on PRs to `main` ensuring correctness before merge
-- **Branch protection** restricting release branch changes to authorized release managers
-- **Release preparation PRs** into release branches for collaborative review
-- **Feedback integration** via PRs into `main`, with controlled updates to release branches as necessary
+- **Branch protection** restricting snapshot branch changes to automation only
+- **Review PRs** into snapshot branches for collaborative review of documentation
+- **Feedback integration** via PRs into `main`, with new snapshots created as necessary
 
 ## Terminology
 
@@ -38,8 +38,9 @@ The workflow achieves these objectives through:
 | `main_contacts`        | GitHub handles of code owners or maintainers (per API in `release-plan.yaml`). |
 | `main` branch          | Development branch. All content is work-in-progress (`version: wip`). |
 | Maintenance branch     | Long-lived branch for maintaining older release cycles (e.g., `maintenance-r3`). See Appendix for details. |
-| Release branch         | Dedicated release preparation branch per (pre-)release (e.g., `release/r4.1`). |
-| Release preparation PR | Pull request against a release branch to finalize or tweak the release content. |
+| Snapshot branch        | Automation-owned branch per release attempt (e.g., `release-snapshot/r4.1-abc1234`). Contains mechanical changes. |
+| Review branch          | Human-editable branch for reviewable content (e.g., `review/r4.1-abc1234`). Merged into snapshot branch. |
+| Review PR              | Pull request from review branch to snapshot branch to finalize documentation. |
 
 ## Metadata File Format
 
@@ -94,9 +95,9 @@ apis:
   - `maintenance-release`: For maintenance/hotfix releases from maintenance branches
 - CI validates that target API statuses match the declared repository target release type.
 
-### 2. `release-metadata.yaml` (on release branch)
+### 2. `release-metadata.yaml` (on snapshot branch)
 
-Generated automatically from the release plan and committed before tagging. Preserved in each release tag, providing complete release history.
+Generated automatically from the release plan and committed to the snapshot branch. Serves as the authoritative source of truth for the release attempt. Preserved in each release tag, providing complete release history.
 
 ```yaml
 repository:
@@ -147,81 +148,87 @@ apis:
 - Keeps readiness transparent across reviewers, contributors, and release managers
 - Allows optional enforcement that metadata updates (e.g., status changes) must be done in dedicated PRs separate from implementation changes
 
-### Step 2: Automated Release Branch Creation
+### Step 2: Automated Snapshot Creation
 
-Upon triggering the release (via labeled issue - maintainers+ can trigger by adding `trigger-release` or `trigger-pre-release` label):
+Upon triggering the release (via `/create-snapshot` slash command in a release issue - maintainers+ can trigger):
 
-- A release branch is created (e.g. `release/r4.1`)
+- Validation runs against current HEAD before any branches are created
+- A snapshot branch is created (e.g., `release-snapshot/r4.1-abc1234`) with SHA-based naming
+- A review branch is created from the snapshot branch (e.g., `review/r4.1-abc1234`)
 - A script or GitHub Action:
   - Sets exact API versions using `target_api_version` + auto-calculated extension (e.g., `-rc.2` based on consecutive numbering across API lifecycle)
   - Enforces CAMARA versioning rules: info.version matches tag, server URLs follow v0.x or vx patterns
-  - Writes `release-metadata.yaml`
-  - Replaces placeholder markers (e.g., `{{api_version}}`, `{{commonalities_release}}`) in repository files, including updated template text from Commonalities/ICM in second phase
-  - Updates external references to point to specific dependency release tags (Note: Cross-repository reference handling, validation, and bundling complexities are addressed in a later implementation phase)
-  - Commits consistent/structured CHANGELOG, README, and checklist artifacts
+  - Writes `release-metadata.yaml` to the snapshot branch (source of truth for release parameters)
+  - Commits mechanical changes (versions, URLs) to snapshot branch
+  - Commits reviewable content (CHANGELOG, README, checklists) to review branch
+  - Opens a review PR from review branch to snapshot branch
 
 **Rationale:**
 - Avoids fragile manual editing of version fields and metadata
 - Creates verified, reviewable release state before tag
+- Separates mechanical changes (protected) from reviewable content (editable)
 
-### Step 3: Review via Release Preparation PRs
+> **Detailed Design**: See [CAMARA-Release-Creation-Detailed-Design.md](CAMARA-Release-Creation-Detailed-Design.md) for comprehensive design including state model, command set, and bot UX contract.
 
-Manual review and adjustments happen through Release Preparation PRs into the release branch.
+### Step 3: Review via Review PRs
 
-- Release PRs require approval from codeowner(s) and release reviewer(s) (via branch protection).
+Manual review and adjustments happen through the review PR (from review branch to snapshot branch).
+
+- Review PRs require approval from codeowner(s) and release reviewer(s) (via branch protection).
 - Review covers CHANGELOG, README and checklist correctness wrt metadata
-- CHANGELOG.md entries may be added/updated during review
+- CHANGELOG.md entries may be added/updated on the review branch during review
+- Mechanical changes on the snapshot branch are protected and cannot be edited
 
-**If problems are found in API specs or implementation (initial implementation - immutable branches):**
+**If problems are found in API specs or implementation (immutable snapshots):**
 - Create PRs against `main` to fix the issues
-- **Abandon** the current release (close release PR and delete release branch)
-- **Retrigger** release creation from updated `main`
-- This ensures release branch remains immutable and src_commit_sha is accurate
-- Alternative: Forward-merge approach is deferred for future consideration (see Appendix)
+- **Discard** the current snapshot via `/discard-snapshot <reason>` command
+- **Retrigger** snapshot creation via `/create-snapshot` from updated `main`
+- This ensures snapshot remains immutable and src_commit_sha is accurate
+- Discarding snapshots is normal and expected — not a failure
 
 **Rationale:**
 - Keeps release preparation clean, visible, and traceable
 - Ensures specification fixes flow through formal code review on `main`
-- Immutable branches simplify validation and prevent drift
+- Immutable snapshots simplify validation and prevent drift
 
-### Step 4: Tag and Generate Release
+### Step 4: Draft and Publish Release
 
 The release finalization follows a two-phase workflow:
 
-#### Phase 1: Release Branch Preparation (during PR review)
+#### Phase 1: Snapshot Creation and Review (during PR review)
 
-1. Automation creates release branch from main/maintenance HEAD
-2. Generates `release-metadata.yaml` with:
-   - `release_date: null` (set during finalization)
-   - `src_commit_sha: null` (set during finalization)
+1. Automation creates snapshot branch from main/maintenance HEAD (Step 2)
+2. `release-metadata.yaml` on snapshot branch contains:
+   - `base_commit_sha`: SHA from base branch at snapshot creation
    - Other fields derived from `release-plan.yaml`
-3. Release PR is created for review
-4. **Important - Immutable release branch (initial implementation)**:
-   - Release branch content is immutable after creation
-   - Exception: CHANGELOG.md entries may be added/updated
-   - If API corrections needed: abandon release, fix main, retrigger
-   - Future: Forward-merge support may be added (see Appendix)
+3. Review PR is created for review (review branch → snapshot branch)
+4. **Important - Immutable snapshot (MVP implementation)**:
+   - Snapshot branch content is immutable after creation
+   - Reviewable content (CHANGELOG) is on the review branch
+   - If API corrections needed: discard snapshot, fix main, create new snapshot
 
-#### Phase 2: Finalization (after PR merge)
+#### Phase 2: Draft Creation and Publication (after PR merge)
 
-After approval and PR merge to release branch:
+After approval and review PR merge to snapshot branch:
 
-1. Automation triggers on release branch
+1. Automation creates draft GitHub Release (no tag yet)
 2. Populates final metadata:
    - `release_date`: Current UTC timestamp
-   - `src_commit_sha`: HEAD SHA from base branch at branch creation time
-3. Creates "release commit": `chore: finalize release metadata for rX.Y`
-4. Creates git tag (e.g., `r4.1`) pointing to this release commit
+3. Human reviews draft release artifacts
+4. **Human publishes** the release → creates git tag (e.g., `r4.1`)
 5. CI builds and publishes artifacts
-6. GitHub Release with artifacts is created:
+6. GitHub Release with artifacts is finalized:
    - Bundled OpenAPI specifications (later phase)
    - Generated documentation
    - Release metadata files
 
+**Note:** Tag `rX.Y` is only created at final publication, not after PR merge. This provides a human checkpoint before publication.
+
 **Rationale:**
 - Provides traceable, repeatable state for each tagged release
 - Two-phase approach ensures metadata reflects actual release state
-- Immutable branches simplify validation and prevent drift
+- Human checkpoint prevents accidental publication
+- Immutable snapshots simplify validation and prevent drift
 
 ### Step 5: Post-Release Actions
 
@@ -244,10 +251,11 @@ After release is tagged and published:
 - Reference for comparing API changes in next release
 - Note: This is NOT a release tag, just a reference marker
 
-#### 5d. Cleanup release branch (optional):
-- Release branches (e.g., `release/r4.1`) are temporary scaffolding
+#### 5d. Cleanup snapshot and review branches (optional):
+- Snapshot branches (e.g., `release-snapshot/r4.1-abc1234`) are temporary scaffolding
+- Review branches (e.g., `review/r4.1-abc1234`) may be kept for reference
 - The git tag preserves the release permanently
-- Release branches can be deleted after tag creation
+- Snapshot branches can be deleted after tag creation
 
 **Rationale:**
 - Provides visibility into releases without disrupting ongoing work-in-progress development state in `main`
@@ -261,7 +269,7 @@ For critical fixes and security patches on older release cycles:
 - **Maintenance branches** (`maintenance-r3`) are created from the last commit included in that release cycle
 - Patches are developed and tested on the maintenance branch
 - Set `target_release_type: maintenance-release` in the maintenance branch's `release-plan.yaml`
-- Follow steps 2-5 above, but create release branch from maintenance branch instead of `main`
+- Follow steps 2-5 above, but create snapshot from maintenance branch instead of `main`
 - Maintenance releases (r3.4, r3.5) contain only bug fixes, no new features
 
 See Appendix for detailed branching diagrams and maintenance strategy.
@@ -300,7 +308,7 @@ See Appendix for detailed branching diagrams and maintenance strategy.
 ## Next Steps (Optional)
 
 - [x] Define a YAML schema for `release-plan.yaml` and `release-metadata.yaml` (see `artifacts/metadata-schemas/`)
-- [ ] Add GitHub Actions for metadata validation, release branch preparation, and post-release syncing
+- [ ] Add GitHub Actions for metadata validation, snapshot creation, and post-release syncing
 - [ ] Enforce CODEOWNERS and team-based protections on branches
 - [ ] Plan and implement CHANGELOG automation as a separate phase
 - [ ] Revisit content of checklist and implement automated updates where possible
@@ -369,25 +377,27 @@ For those newer to Git, here's how branches and tags relate in the CAMARA releas
 
 - **Branch**: A movable pointer to commits, used for ongoing work
 - **Tag**: A permanent marker on a specific commit, used to mark releases
-- **Release branch**: A temporary branch created from `main` for preparing a specific release
+- **Snapshot branch**: A temporary, automation-owned branch for preparing a specific release attempt
+- **Review branch**: A temporary branch for reviewable content, merged into the snapshot branch
 - **Maintenance branch**: A long-lived branch for maintaining older release cycles
 
-### Release Branch Lifecycle
+### Snapshot Branch Lifecycle
 
-Each release (e.g., r4.1, r4.2) gets its own **temporary** branch:
+Each release attempt gets its own **temporary** snapshot branch (SHA-based naming allows multiple attempts):
 
-1. **Creation**: Branch `release/r4.1` is created from `main` (or `maintenance-rX` for patches)
-2. **Preparation**: Automation sets versions, updates metadata, creates CHANGELOG
-3. **Review**: Release preparation PRs can adjust content on this branch
-4. **Tagging**: Once approved, the branch HEAD is tagged with `r4.1`
-5. **Deletion**: After tagging, the branch is deleted (the tag preserves the release)
+1. **Creation**: Snapshot branch `release-snapshot/r4.1-abc1234` is created from `main` (or `maintenance-rX` for patches)
+2. **Preparation**: Automation sets versions, updates metadata on snapshot branch; creates review branch for CHANGELOG
+3. **Review**: Review PR merges reviewable content from review branch into snapshot branch
+4. **Draft**: After PR merge, draft release is created
+5. **Publication**: Human publishes → tag `r4.1` is created
+6. **Deletion**: After tagging, snapshot branch is deleted (the tag preserves the release)
 
 ```
 main ────┬──[src/4.1]──────┬──[src/4.2]──────────► (ongoing development)
          │                 │
-         └─release/r4.1    └─release/r4.2
-              ↓                  ↓
-            tag:r4.1          tag:r4.2
+         └─release-snapshot/r4.1-abc1234    └─release-snapshot/r4.2-def5678
+              ↓                                    ↓
+            tag:r4.1                             tag:r4.2
 ```
 
 ### Maintenance Branches
@@ -399,7 +409,7 @@ main ──────┬──────────────────
            │
            └─maintenance-r3─────┬──────► r3.x maintenance (r3.4, r3.5...)
                                  │
-                                 └─release/r3.4
+                                 └─release-snapshot/r3.4-xyz7890
                                       ↓
                                     tag:r3.4
 ```
@@ -412,35 +422,30 @@ main ──────┬──────────────────
 
 **Important**: Maintenance branches are tied to **release cycles** (r3.x), not API versions. A maintenance branch can produce r3.4, r3.5 etc., each potentially containing different patch versions of the APIs.
 
-### Updating Release Branch from Main (future feature)
+### Updating Snapshots from Main (future feature)
 
 > **Note:** This section describes a forward-merge approach that is **deferred for future consideration**.
-> The initial implementation uses immutable release branches (see Step 4 above).
-> If corrections are needed during release preparation, the release is abandoned and retriggered from updated main.
+> The MVP implementation uses immutable snapshots (see Step 4 above).
+> If corrections are needed during release preparation, the snapshot is discarded and a new one is created from updated main.
 > This approach may be reconsidered based on operational experience.
 
 During release preparation, if critical fixes are needed:
 
 1. **Fix in main**: Create PR to `main` with the fix
-2. **Update release branch**: Either:
-   - Cherry-pick specific commits from `main` to release branch
-   - Merge `main` into release branch (if many changes)
-   - Rebase release branch on `main` (cleanest history)
+2. **Discard and recreate**: Use `/discard-snapshot` then `/create-snapshot` to create new snapshot from updated main
 
-```
-main ────┬───[fix]───────┬──────►
-         │               │
-         └─release/r4.1──┴──────► (updated with fix)
-```
+Alternative approaches (future consideration):
+- Cherry-pick specific commits from `main` to snapshot branch
+- Forward-merge `main` into snapshot branch
 
 ### Post-Release PR Explained
 
 After a release is tagged, several actions occur:
 
 ```
-main ────┬──[src/4.1]──────────[PR: selective updates]───► 
+main ────┬──[src/4.1]──────────[PR: selective updates]───►
          │                           ↑
-         └─release/r4.1─────────────┘
+         └─release-snapshot/r4.1-abc1234───────────┘
                     ↓
                   tag:r4.1
 ```
