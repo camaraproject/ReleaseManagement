@@ -16,7 +16,7 @@ This document details the **release creation workflow** for CAMARA API repositor
 
 2. **Slash commands for control**: Users express intent via slash commands (`/create-snapshot`, `/discard-snapshot`, `/revoke-draft`). Labels reflect system state only. This separates user intent from system state and enables clear audit trails.
 
-3. **Dual-branch separation**: Each snapshot uses two branches — a protected *snapshot branch* for mechanical changes (versions, URLs) and an editable *release-review branch* for documentation (CHANGELOG, README). This prevents accidental corruption of version fields by construction.
+3. **Dual-branch separation**: Each snapshot uses two branches — a protected *snapshot branch* for mechanical changes (versions, URLs) and an editable *release-review branch* for documentation (e.g. CHANGELOG). The release-review branch is merged into the snapshot branch via Release PR. This prevents accidental corruption of version fields by construction.
 
 4. **Repository artifacts as source of truth**: The `release-metadata.yaml` on the snapshot branch is the authoritative record of the release attempt, including base commit SHA. The Release Issue (a dedicated GitHub issue for tracking the release) serves as UI, trigger surface, and audit trail — not the state store.
 
@@ -38,7 +38,7 @@ This document details the **release creation workflow** for CAMARA API repositor
 | Branch naming | `release/rX.Y` | `release-snapshot/rX.Y-<shortsha>` (SHA-based) |
 | Trigger mechanism | Label (`trigger-release`) | Slash command (`/create-snapshot`) in the Release Issue |
 | Validation | Implicit in trigger | Preflight validation within `/create-snapshot` |
-| PR structure | Single release prep PR | Dual-branch: snapshot (mechanical) + release-review (documentation) |
+| PR structure | Single release prep PR | Dual-branch: release-snapshot (mechanical) + release-review (documentation); Release PR merges review into snapshot |
 | Bot responses | Not specified | Mandatory structure with next-steps guidance |
 | Issue closure | Not specified | Blocked in SNAPSHOT ACTIVE and DRAFT READY states |
 | Tag creation | After Release PR merge | Only at final publication |
@@ -634,7 +634,7 @@ Every bot reaction (command execution, rejection, reopen) must:
 ### Validation Errors
 
 - ❌ Dependency `commonalities_release: r3.5` not found (not published yet)
-- ❌ API `location-verification` has target_api_status `rc` but test file missing
+- ��� API `location-verification` has target_api_status `rc` but test file missing
 
 ### Release Configuration (from `release-plan.yaml`)
 
