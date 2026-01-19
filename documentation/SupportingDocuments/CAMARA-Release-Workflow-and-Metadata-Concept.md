@@ -11,7 +11,7 @@ This workflow concept establishes an automated release process for CAMARA that a
 
 **Enable structured validation and enforcement** through CI gating on PRs to `main`, replacing limited validation with complete checks for metadata files and CAMARA-specific release guidelines.
 
-**Provide transparent and traceable release preparation** by using dedicated snapshot branches and review PRs with structured approvals, avoiding informal PRs merged directly into `main` that mix version updates, changelog edits, and last-minute changes.
+**Provide transparent and traceable release preparation** by using dedicated snapshot branches and Release PRs with structured approvals, avoiding informal PRs merged directly into `main` that mix version updates, changelog edits, and last-minute changes.
 
 **Support flexible versioning strategy** by keeping CAMARA release numbering (`rX.Y`) distinct from API semantic versioning, with clear metadata-driven version management instead of manual field updates in `main` that must be reset after releases.
 
@@ -23,7 +23,7 @@ The workflow achieves these objectives through:
 - Dedicated **snapshot branches per release attempt** with automated preparation and validation
 - **CI enforcement** on PRs to `main` ensuring correctness before merge
 - **Branch protection** restricting snapshot branch changes to automation only
-- **Review PRs** into snapshot branches for collaborative review of documentation
+- **Release PRs** into snapshot branches for collaborative review of documentation
 - **Feedback integration** via PRs into `main`, with new snapshots created as necessary
 
 ## Terminology
@@ -39,8 +39,8 @@ The workflow achieves these objectives through:
 | `main` branch          | Development branch. All content is work-in-progress (`version: wip`). |
 | Maintenance branch     | Long-lived branch for maintaining older release cycles (e.g., `maintenance-r3`). See Appendix for details. |
 | Snapshot branch        | Automation-owned branch per release attempt (e.g., `release-snapshot/r4.1-abc1234`). Contains mechanical changes. |
-| Review branch          | Human-editable branch for reviewable content (e.g., `review/r4.1-abc1234`). Merged into snapshot branch. |
-| Review PR              | Pull request from review branch to snapshot branch to finalize documentation. |
+| Release-review branch          | Human-editable branch for reviewable content (e.g., `release-review/r4.1-abc1234`). Merged into snapshot branch. |
+| Release PR              | Pull request from release-review branch to snapshot branch to finalize documentation. |
 
 ## Metadata File Format
 
@@ -154,14 +154,14 @@ Upon triggering the release (via `/create-snapshot` slash command in a release i
 
 - Validation runs against current HEAD before any branches are created
 - A snapshot branch is created (e.g., `release-snapshot/r4.1-abc1234`) with SHA-based naming
-- A review branch is created from the snapshot branch (e.g., `review/r4.1-abc1234`)
+- A release-review branch is created from the snapshot branch (e.g., `release-review/r4.1-abc1234`)
 - A script or GitHub Action:
   - Sets exact API versions using `target_api_version` + auto-calculated extension (e.g., `-rc.2` based on consecutive numbering across API lifecycle)
   - Enforces CAMARA versioning rules: info.version matches tag, server URLs follow v0.x or vx patterns
   - Writes `release-metadata.yaml` to the snapshot branch (source of truth for release parameters)
   - Commits mechanical changes (versions, URLs) to snapshot branch
-  - Commits reviewable content (CHANGELOG, README, checklists) to review branch
-  - Opens a review PR from review branch to snapshot branch
+  - Commits reviewable content (CHANGELOG, README, checklists) to release-review branch
+  - Opens a Release PR from release-review branch to snapshot branch
 
 **Rationale:**
 - Avoids fragile manual editing of version fields and metadata
@@ -170,13 +170,13 @@ Upon triggering the release (via `/create-snapshot` slash command in a release i
 
 > **Detailed Design**: See [CAMARA-Release-Creation-Detailed-Design.md](CAMARA-Release-Creation-Detailed-Design.md) for comprehensive design including state model, command set, and bot UX contract.
 
-### Step 3: Review via Review PRs
+### Step 3: Review via Release PRs
 
-Manual review and adjustments happen through the review PR (from review branch to snapshot branch).
+Manual review and adjustments happen through the Release PR (from release-review branch to snapshot branch).
 
-- Review PRs require approval from codeowner(s) and release reviewer(s) (via branch protection).
+- Release PRs require approval from codeowner(s) and release reviewer(s) (via branch protection).
 - Review covers CHANGELOG, README and checklist correctness wrt metadata
-- CHANGELOG.md entries may be added/updated on the review branch during review
+- CHANGELOG.md entries may be added/updated on the release-review branch during review
 - Mechanical changes on the snapshot branch are protected and cannot be edited
 
 **If problems are found in API specs or implementation (immutable snapshots):**
@@ -201,15 +201,15 @@ The release finalization follows a two-phase workflow:
 2. `release-metadata.yaml` on snapshot branch contains:
    - `base_commit_sha`: SHA from base branch at snapshot creation
    - Other fields derived from `release-plan.yaml`
-3. Review PR is created for review (review branch → snapshot branch)
+3. Release PR is created for review (release-review branch → snapshot branch)
 4. **Important - Immutable snapshot (MVP implementation)**:
    - Snapshot branch content is immutable after creation
-   - Reviewable content (CHANGELOG) is on the review branch
+   - Reviewable content (CHANGELOG) is on the release-review branch
    - If API corrections needed: discard snapshot, fix main, create new snapshot
 
 #### Phase 2: Draft Creation and Publication (after PR merge)
 
-After approval and review PR merge to snapshot branch:
+After approval and Release PR merge to snapshot branch:
 
 1. Automation creates draft GitHub Release (no tag yet)
 2. Populates final metadata:
@@ -251,9 +251,9 @@ After release is tagged and published:
 - Reference for comparing API changes in next release
 - Note: This is NOT a release tag, just a reference marker
 
-#### 5d. Cleanup snapshot and review branches (optional):
+#### 5d. Cleanup snapshot and release-review branches (optional):
 - Snapshot branches (e.g., `release-snapshot/r4.1-abc1234`) are temporary scaffolding
-- Review branches (e.g., `review/r4.1-abc1234`) may be kept for reference
+- Release-review branches (e.g., `release-review/r4.1-abc1234`) may be kept for reference
 - The git tag preserves the release permanently
 - Snapshot branches can be deleted after tag creation
 
@@ -378,7 +378,7 @@ For those newer to Git, here's how branches and tags relate in the CAMARA releas
 - **Branch**: A movable pointer to commits, used for ongoing work
 - **Tag**: A permanent marker on a specific commit, used to mark releases
 - **Snapshot branch**: A temporary, automation-owned branch for preparing a specific release attempt
-- **Review branch**: A temporary branch for reviewable content, merged into the snapshot branch
+- **Release-review branch**: A temporary branch for reviewable content, merged into the snapshot branch
 - **Maintenance branch**: A long-lived branch for maintaining older release cycles
 
 ### Snapshot Branch Lifecycle
@@ -386,8 +386,8 @@ For those newer to Git, here's how branches and tags relate in the CAMARA releas
 Each release attempt gets its own **temporary** snapshot branch (SHA-based naming allows multiple attempts):
 
 1. **Creation**: Snapshot branch `release-snapshot/r4.1-abc1234` is created from `main` (or `maintenance-rX` for patches)
-2. **Preparation**: Automation sets versions, updates metadata on snapshot branch; creates review branch for CHANGELOG
-3. **Review**: Review PR merges reviewable content from review branch into snapshot branch
+2. **Preparation**: Automation sets versions, updates metadata on snapshot branch; creates release-review branch for CHANGELOG
+3. **Review**: Release PR merges reviewable content from release-review branch into snapshot branch
 4. **Draft**: After PR merge, draft release is created
 5. **Publication**: Human publishes → tag `r4.1` is created
 6. **Deletion**: After tagging, snapshot branch is deleted (the tag preserves the release)
