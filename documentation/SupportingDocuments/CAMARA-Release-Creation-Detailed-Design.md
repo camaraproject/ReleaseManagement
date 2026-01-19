@@ -634,7 +634,7 @@ Every bot reaction (command execution, rejection, reopen) must:
 ### Validation Errors
 
 - ❌ Dependency `commonalities_release: r3.5` not found (not published yet)
-- ��� API `location-verification` has target_api_status `rc` but test file missing
+- ❌ API `location-verification` has target_api_status `rc` but test file missing
 
 ### Release Configuration (from `release-plan.yaml`)
 
