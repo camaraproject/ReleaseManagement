@@ -466,26 +466,25 @@ Cleanup: delete snapshot and release-review branches (tag preserves content)
 The `release-metadata.yaml` file on the snapshot branch contains:
 
 ```yaml
-snapshot:
-  id: r4.1-abc1234
-  base_branch: main
-  base_commit_sha: abc1234def5678...  # Full SHA
-  created_at: 2026-01-17T14:30:00Z
-
 repository:
+  repository_name: DeviceLocation
   release_tag: r4.1
   release_type: pre-release-rc
-  meta_release: Fall26
-
-apis:
-  - api_name: location-verification
-    api_version: 3.2.0-rc.2
-  - api_name: location-retrieval
-    api_version: 0.5.0-rc.1
+  release_date: null                   # Set at publication
+  src_commit_sha: abc1234def5678901234567890abcdef12345678  # Set at snapshot creation
+  release_notes: "Pre-release for CAMARA Fall26 meta-release."
 
 dependencies:
   commonalities_release: "r3.4 (1.2.0)"
   identity_consent_management_release: "r3.3 (1.1.0)"
+
+apis:
+  - api_name: location-verification
+    api_version: 3.2.0-rc.2
+    api_title: "Location Verification"
+  - api_name: location-retrieval
+    api_version: 0.5.0-rc.1
+    api_title: "Location Retrieval"
 ```
 
 Bot messages derive all snapshot information from this file.
