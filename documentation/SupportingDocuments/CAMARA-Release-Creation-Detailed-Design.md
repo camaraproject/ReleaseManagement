@@ -1,10 +1,12 @@
-# Release Creation Process — Detailed Design (MVP)
+# Release Creation Process (C2) — Detailed Design (MVP)
+
+> **Scope:** This document details the **release creation process** for CAMARA API repositories — from triggering a release through Release PR merge and draft release creation. It covers [Issue #354: C2 Automated Release Branch Creation](https://github.com/camaraproject/ReleaseManagement/issues/354) and partially extends into [Issue #355: C3 Release Tag and Artifact Creation](https://github.com/camaraproject/ReleaseManagement/issues/355) for the draft release and manual publication steps in MVP.
 
 ---
 
 ## Executive Summary
 
-This document details the **release creation workflow** for CAMARA API repositories — the process from deciding to release through publication.
+This document details the **release creation process** for CAMARA API repositories — the process from deciding to release through publication.
 
 ### Core Mental Model
 
@@ -14,7 +16,7 @@ This document details the **release creation workflow** for CAMARA API repositor
 
 1. **Snapshot-centric model**: Releases are created via immutable, automation-owned *snapshots* identified by `rX.Y-<shortsha>`. Multiple attempts per release number are normal and expected — discarding a snapshot is routine, not failure.
 
-2. **Slash commands for control**: Users express intent via slash commands (`/create-snapshot`, `/discard-snapshot`, `/revoke-draft`). Labels reflect system state only. This separates user intent from system state and enables clear audit trails.
+2. **Slash commands for control**: Users express intent via slash commands (`/create-snapshot`, `/discard-snapshot`, `/delete-draft`). Labels reflect system state only. This separates user intent from system state and enables clear audit trails.
 
 3. **Dual-branch separation**: Each snapshot uses two branches — a protected *snapshot branch* for mechanical changes (versions, URLs) and an editable *release-review branch* for documentation (e.g. CHANGELOG). The release-review branch is merged into the snapshot branch via Release PR. This prevents accidental corruption of version fields by construction.
 
@@ -118,7 +120,7 @@ These refinements are **compatible extensions** to the concept. A change request
 | G4 | Clear separation: content vs. configuration | Metadata PRs separate from implementation PRs |
 | G5 | Immutable release snapshots | What you reviewed is what you release |
 | G6 | All releases traceable to source commit | Audit and reproducibility |
-| G7 | Consistent process across repositories | Predictable, learnable workflow |
+| G7 | Consistent process across repositories | Predictable, learnable process |
 
 ---
 
@@ -126,7 +128,7 @@ These refinements are **compatible extensions** to the concept. A change request
 
 ### 2.1 Issue-Based Release Tracking
 
-**Principle:** Each release (`rX.Y`) is tracked via a dedicated Release Issue (GitHub issue) that serves as the UI, trigger surface, and audit trail across all snapshot attempts.
+**Principle:** Each release (`rX.Y`) is tracked via a dedicated Release Issue (GitHub issue) that serves as the UI, trigger points, and audit trail across all snapshot attempts.
 
 **Addresses:** M1, M9, R1, R5, R7
 
@@ -160,7 +162,7 @@ These refinements are **compatible extensions** to the concept. A change request
 |---------|---------|
 | `/create-snapshot` | Validate current HEAD, then create snapshot branch (`release-snapshot/rX.Y-<sha>`), release-review branch (`release-review/rX.Y-<sha>`), and Release PR |
 | `/discard-snapshot <reason>` | Discard the active snapshot attempt; keeps release-review branch and closes Release PR |
-| `/revoke-draft <reason>` | Revoke a prepared draft release before publication |
+| `/delete-draft <reason>` | Delete a prepared draft release before publication |
 
 ### 2.3 Repository Artifacts as Source of Truth
 
@@ -171,7 +173,7 @@ These refinements are **compatible extensions** to the concept. A change request
 **Rationale:**
 - Ensures reproducibility and auditability from repo artifacts
 - Avoids "issue as state store" complexity
-- Single source of truth for base commit SHA, snapshot identity, release parameters
+- Single source of truth for base commit SHA, snapshot identity, release configuration
 - State derivable from artifact existence (snapshot branch, draft release)
 
 ### 2.4 Separation of Mechanical and Reviewable Content
@@ -236,13 +238,13 @@ These refinements are **compatible extensions** to the concept. A change request
 
 **Snapshot:** An immutable, automation-owned branch representing one attempt at a release. Identified by `rX.Y-<shortsha>`. Can be discarded and replaced by a new snapshot.
 
-**`release-metadata.yaml`:** The authoritative record for a snapshot, created automatically on the snapshot branch. Contains base commit SHA, snapshot identity, and release parameters. Bot messages derive information from this file.
+**`release-metadata.yaml`:** The authoritative record for a snapshot, created automatically on the snapshot branch. Contains base commit SHA, snapshot identity, and release configuration. Bot messages derive information from this file.
 
-**Current Snapshot:** The active snapshot for a release. Only one is active at a time.
+**Active Snapshot:** The latest snapshot branch for a release tag. There is only one at a time.
 
-**Discarded Snapshot:** A previous snapshot replaced by a newer attempt. Snapshot branch deleted; release-review branch kept for reference.
+**Discarded Snapshot:** A snapshot that was abandoned via `/discard-snapshot`. Snapshot branch deleted; release-review branch kept for reference.
 
-**Discard vs. Revoke:** Before a GitHub draft release exists, snapshots are *discarded*. After a draft exists, the draft is *revoked*, and the automation also discards the underlying snapshot.
+**Discard vs. Delete:** If no GitHub draft release exists, snapshot branches are *discarded*. Once a draft release exists, the draft release can be *deleted*, in which case the automation also discards the related snapshot branch.
 
 **Maintenance releases:** For maintenance releases, the same state model applies but starting from the relevant maintenance branch (e.g., `maintenance-r3`) instead of from `main`; states and commands are unchanged.
 
@@ -270,11 +272,11 @@ Labels use a single `release-state:` namespace to ensure mutual exclusivity and 
 |---------|---------|----------------|-----------------|
 | `/create-snapshot` | Validate current HEAD, create snapshot + Release PR | OPEN only | SNAPSHOT ACTIVE (on success) |
 | `/discard-snapshot <reason>` | Discard the active snapshot | SNAPSHOT ACTIVE only | OPEN |
-| `/revoke-draft <reason>` | Revoke draft release before publication | DRAFT READY only | OPEN |
+| `/delete-draft <reason>` | Delete draft release before publication | DRAFT READY only | OPEN |
 
 **Command semantics:**
 - `/create-snapshot` validates **current HEAD at execution time**. If validation fails, no snapshot is created and state remains OPEN. Validation errors are reported in the bot response.
-- `/discard-snapshot` and `/revoke-draft` require a reason (for audit trail)
+- `/discard-snapshot` and `/delete-draft` require a reason (for audit trail)
 - Commands fail with clear explanation if run in the wrong state
 
 ### 3.4 State Transitions
@@ -287,7 +289,7 @@ Labels use a single `release-state:` namespace to ensure mutual exclusivity and 
 | OPEN | Close issue | CANCELLED | Terminal state; no active work lost |
 | SNAPSHOT ACTIVE | `/discard-snapshot <reason>` | OPEN | Reason required |
 | SNAPSHOT ACTIVE | Merge Release PR | DRAFT READY | |
-| DRAFT READY | `/revoke-draft <reason>` | OPEN | Reason required |
+| DRAFT READY | `/delete-draft <reason>` | OPEN | Reason required |
 | DRAFT READY | Publish release | PUBLISHED | Creates tag `rX.Y`, closes issue |
 
 **Blocked transitions:**
@@ -296,7 +298,7 @@ Labels use a single `release-state:` namespace to ensure mutual exclusivity and 
 |---------|--------------|--------|
 | `/create-snapshot` | Snapshot already active | One snapshot per release at a time |
 | `/discard-snapshot` | No active snapshot | Nothing to discard |
-| `/revoke-draft` | No draft exists | Nothing to revoke |
+| `/delete-draft` | No draft exists | Nothing to delete |
 
 **Terminal states:** PUBLISHED and CANCELLED cannot transition to other states. Recovery from accidental cancellation requires manual intervention (see Section 3.7).
 
@@ -309,7 +311,7 @@ stateDiagram-v2
     OPEN --> CANCELLED : Close issue
     SNAPSHOT_ACTIVE --> OPEN : /discard-snapshot
     SNAPSHOT_ACTIVE --> DRAFT_READY : Merge Release PR
-    DRAFT_READY --> OPEN : /revoke-draft
+    DRAFT_READY --> OPEN : /delete-draft
     DRAFT_READY --> PUBLISHED : Publish
     PUBLISHED --> [*]
     CANCELLED --> [*]
@@ -370,25 +372,25 @@ When a snapshot is discarded:
 
 | Artifact | Naming | Purpose | Lifecycle |
 |----------|--------|---------|-----------|
-| `release-plan.yaml` | On `main` branch | Release configuration | Persistent, updated per release cycle |
+| `release-plan.yaml` | On `main` branch | Provide target release configuration | Persistent, updated at the start of each release cycle |
 | Release Issue | One per `rX.Y` | UI, trigger surface, audit trail | Created → closed (PUBLISHED or CANCELLED) |
-| Snapshot branch | `release-snapshot/rX.Y-<shortsha>` | Mechanical changes (automation-owned) | Created → deleted on discard or after tag |
-| `release-metadata.yaml` | On snapshot branch | Authoritative snapshot record | Created with snapshot; source of truth |
-| Release-review branch | `release-review/rX.Y-<shortsha>` | Reviewable content (human-owned) | Created → kept until publication (reference for retry) |
+| Snapshot branch | `release-snapshot/rX.Y-<shortsha>` | Mechanical changes (automation-owned) | Created → deleted on discard, on draft release deletion or after release tag |
+| `release-metadata.yaml` | On snapshot branch | Authoritative snapshot record | Created (auto-generated) with snapshot; source of truth for this release |
+| Release-review branch | `release-review/rX.Y-<shortsha>` | Reviewable content (human-owned) | Created → kept for reference; deleted manually if no longer needed |
 | Release PR | PR: release-review → snapshot | CHANGELOG/README/Checklist review | Created → merged or closed |
-| Draft release | GitHub Releases | Pre-publication artifact | Created after PR merge |
+| Draft release | GitHub Releases | Pre-publication artifact | Created after Release PR merge |
 | Published release | GitHub Releases + tag `rX.Y` | Final artifact | Tag created at publication |
 
 ### 4.2 Issue Template
 
-The Release Issue template collects only supplementary information. Technical configuration comes from `release-plan.yaml`.
+The Release Issue template guides the supplementary information to be provided with respect to `release-plan.yaml`. The latter contains the technical configuration of the planned release.
 
 **Template asks for:**
 - Confirmation that `release-plan.yaml` is ready
-- Confirmation that intended PRs are merged
+- Confirmation that release assets are provided (as per readiness checklist)
+- Confirmation that intended implementation PRs are merged to `main`
 - Release highlights (for CHANGELOG)
-- Additional notes (timing, coordination)
-- Urgency level
+- Additional notes (timing, coordination, urgency)
 
 **Template does NOT ask for:**
 - Release type, tag, meta-release (from `release-plan.yaml`)
@@ -407,13 +409,13 @@ When `/create-snapshot` is run, automation:
 6. **If validation fails:** Posts error report, state remains OPEN
 7. **If validation passes:**
    - Creates snapshot branch `release-snapshot/rX.Y-<shortsha>`
-   - Commits mechanical changes (version replacements, URL updates)
-   - Creates `release-metadata.yaml` with base commit SHA and release parameters
+   - Commits mechanical changes (version replacements, URL updates) directly to the snapshot branch
+   - Creates `release-metadata.yaml` with base commit SHA and release configuration
    - Creates release-review branch `release-review/rX.Y-<shortsha>`
-   - Commits CHANGELOG, README, checklists to release-review branch
-   - Opens PR: review → snapshot
-   - Updates label to `release-state: snapshot-active`
-   - Posts success comment with links and next steps
+   - Commits automated updates for the release to CHANGELOG, README, checklists to the release-review branch
+   - Creates the Release PR: release-review → release-snapshot
+   - Updates the Release Issue label to `release-state: snapshot-active`
+   - Posts success comment with links and next steps in the Release Issue
 
 ### 4.4 Dual-Branch Model
 
@@ -431,7 +433,7 @@ Each snapshot attempt uses two branches:
 - Name: `release-review/rX.Y-<shortsha>`
 - Created from snapshot branch
 - Contains reviewable content (CHANGELOG, README, checklists)
-- Merged INTO snapshot branch via PR
+- Merged INTO snapshot branch via Release PR
 - PR diff shows only reviewable content
 - Not protected: maintainers can push refinements
 
@@ -446,24 +448,25 @@ Commit: version replacements, release-metadata.yaml (with base SHA)
 Create release-review/r4.1-abc1234 from snapshot
 Commit: CHANGELOG, README, checklists
        ↓
-PR: release-review/r4.1-abc1234 → release-snapshot/r4.1-abc1234
+Release PR: release-review/r4.1-abc1234 → release-snapshot/r4.1-abc1234
        ↓
 Review, refine CHANGELOG
        ↓
-Merge PR into snapshot
+Merge Release PR into snapshot
        ↓
-Finalization commit to snapshot: release_date
+Automation commits finalization (release_date) to snapshot
        ↓
-Create draft release (no tag yet)
+Automation creates draft release (no tag yet)
        ↓
-Human publishes → creates tag r4.1
+Human publishes the release with the tag r4.1
        ↓
-Cleanup: delete snapshot and release-review branches (tag preserves content)
+Delete snapshot branch manually (tag preserves content)
+Note: Automated cleanup via /publish-release command planned for C3 design
 ```
 
 ### 4.5 `release-metadata.yaml` as Source of Truth
 
-The `release-metadata.yaml` file on the snapshot branch contains:
+The `release-metadata.yaml` file on the snapshot branch is automatically generated and contains:
 
 ```yaml
 repository:
@@ -491,11 +494,13 @@ Bot messages derive all snapshot information from this file.
 
 ### 4.6 Content Separation
 
-| Content | Committed To | Editable in PR |
+| Content | Committed To | Editable |
 |---------|--------------|----------------|
 | `info.version` replacement | Snapshot branch | No |
 | Server URL replacement | Snapshot branch | No |
 | `x-camara-commonalities` | Snapshot branch | No |
+| Feature file versions | Snapshot branch | No |
+| Link replacements | Snapshot branch | No |
 | `release-metadata.yaml` | Snapshot branch | No |
 | CHANGELOG section | Release-review branch | Yes |
 | README release info | Release-review branch | Yes |
@@ -504,7 +509,7 @@ Bot messages derive all snapshot information from this file.
 ### 4.7 Discard and Retry Flow
 
 ```
-Issue found during review
+Problem found during review
        ↓
 Comment: /discard-snapshot API spec bug in location-verification
        ↓
@@ -520,23 +525,23 @@ Fix issues on main via PR(s)
        ↓
 Comment: /create-snapshot
        ↓
-Automation validates new HEAD (def5678), creates new snapshot
+Automation validates new HEAD (def5678), creates new snapshot branch
        ↓
-New snapshot: release-snapshot/r4.1-def5678
+New snapshot branch: release-snapshot/r4.1-def5678
 New release-review branch: release-review/r4.1-def5678
-New PR opened
+New Release PR opened
        ↓
 Maintainer can copy content from discarded release-review/r4.1-abc1234 if needed
 ```
 
-### 4.8 Revoke Draft Flow
+### 4.8 Delete Draft Flow
 
 If issues are found after Release PR is merged but before publication:
 
 ```
 Problem discovered in draft release
        ↓
-Comment: /revoke-draft Found critical issue in generated artifacts
+Comment: /delete-draft Found critical issue in generated artifacts
        ↓
 Automation:
   - Deletes draft release
@@ -548,16 +553,16 @@ Automation:
 Fix issues, then /create-snapshot again
 ```
 
-### 4.9 Snapshot Status Tracking
+### 4.9 Release Status Tracking
 
 The Release Issue maintains a snapshot history:
 
 ```markdown
-## Snapshot History
+## Release History
 
-| Snapshot | Status | Created | Discarded | Reason | Review Branch |
-|----------|--------|---------|-----------|--------|---------------|
-| `r4.1-def5678` | **Current** | 2026-01-17 | — | — | `release-review/r4.1-def5678` |
+| Snapshot Branch | Release State | Created | Discarded | Reason | Review Branch |
+|-----------------|---------------|---------|-----------|--------|---------------|
+| `r4.1-def5678` | **Active** | 2026-01-17 | — | — | `release-review/r4.1-def5678` |
 | `r4.1-abc1234` | Discarded | 2026-01-15 | 2026-01-16 | API spec bug in location-verification | `release-review/r4.1-abc1234` |
 ```
 
@@ -567,7 +572,7 @@ Note: Discarded snapshot branches are deleted; only release-review branches are 
 
 ## 5. Bot UX Contract
 
-The bot acts as a **guided UI**, not just automation glue. Every bot response follows a consistent structure.
+The release process automation is realized through a GitHub bot triggered through commands in the Release Issue. The Release Issue serves as the User Interface (UI) between the maintainers and the automation bot. Every bot response follows a consistent structure.
 
 ### 5.1 Mandatory Message Structure
 
@@ -590,7 +595,7 @@ Every bot reaction (command execution, rejection, reopen) must:
 
 ### 5.3 Example Bot Messages
 
-**After `/create-snapshot` succeeds (OPEN → SNAPSHOT ACTIVE):**
+**When `/create-snapshot` succeeds (OPEN → SNAPSHOT ACTIVE):**
 
 ```markdown
 ## ✅ Snapshot Created
@@ -623,7 +628,7 @@ Every bot reaction (command execution, rejection, reopen) must:
 - `/discard-snapshot <reason>` — discard this snapshot and start over
 ```
 
-**After `/create-snapshot` fails (OPEN → OPEN):**
+**When `/create-snapshot` fails (OPEN → OPEN):**
 
 ```markdown
 ## ❌ Snapshot Creation Failed
@@ -639,7 +644,7 @@ Every bot reaction (command execution, rejection, reopen) must:
 
 **Release:** `r4.1` (`pre-release-rc`) — Fall26
 
-| API | Target Version | Status |
+| API | Target Version | Result |
 |-----|----------------|--------|
 | location-verification | `3.2.0-rc` | ❌ Missing tests |
 | location-retrieval | `0.5.0-rc` | ✅ OK |
@@ -664,7 +669,7 @@ A snapshot already exists: `r4.1-abc1234`
 ---
 
 **Valid actions in this state:**
-- Review and merge PR [#456](link-to-pr) to proceed to draft
+- Review and merge Release PR [#456](link-to-pr) to proceed to draft
 - `/discard-snapshot <reason>` — discard snapshot and start over
 ```
 
@@ -695,13 +700,30 @@ This issue cannot be closed while a snapshot is active. The issue serves as the 
 
 This release issue was closed while no active snapshot existed.
 
-To start a new release attempt for this version, please create a **new release issue**.
+To start a new release attempt, create a **new release issue**.
 
 ---
 
 **If this closure was accidental:**
 1. Reopen the issue manually
 2. Replace label `release-state: cancelled` with `release-state: open`
+```
+
+**When `/delete-draft` succeeds (DRAFT READY → OPEN):**
+
+```markdown
+## 🗑 Draft Release Deleted
+
+**State:** DRAFT READY → OPEN
+
+The draft release and its snapshot were deleted.
+This is a normal recovery action when issues are found before publication.
+
+---
+
+**Next steps:**
+- Fix issues on `main`
+- `/create-snapshot` to create a new release attempt
 ```
 
 ---
@@ -714,7 +736,7 @@ To start a new release attempt for this version, please create a **new release i
 |---------|-----------------|
 | `/create-snapshot` | Maintainers, Codeowners (write/maintain/admin on repo) |
 | `/discard-snapshot` | Maintainers, Codeowners, Release Management team |
-| `/revoke-draft` | Maintainers, Codeowners, Release Management team |
+| `/delete-draft` | Maintainers, Codeowners, Release Management team |
 
 Permission is enforced by automation via GitHub API checks (repository permissions or team membership).
 
@@ -736,7 +758,7 @@ Release-review branches and PRs are best-effort cleanup artifacts. Leaving an ol
 
 ### 6.3 PR Labels for Discarded Snapshots
 
-When a snapshot is discarded, the associated Release PR should be:
+When a snapshot is discarded, the associated Release PR should be by automation:
 - Closed (not merged)
 - Labeled `discarded-snapshot` for clarity
 
@@ -754,7 +776,7 @@ When a snapshot is discarded, the associated Release PR should be:
 
 ## 8. Future Enhancements (Post-MVP)
 
-The following extensions are **explicitly out of scope for the MVP** and must not affect the core flow. They are documented to guide future evolution without reintroducing hidden state.
+The following extensions are **explicitly out of scope for the MVP** and must not affect the core process. They are documented to guide future evolution without reintroducing hidden state.
 
 ### 8.1 Preview / Dry-Run Command (Non-binding)
 
@@ -799,13 +821,27 @@ For future support of maintenance releases, the base branch could be specified e
 - The issue must not become a state store for the chosen branch
 
 **Proposed UX (future):**
-- Issue template may *ask* for intended base branch (default: `main`) for human coordination
+- The Release Issue template may include a field for the intended base branch (default: `main`) for human coordination
 - The **authoritative branch selection happens at execution time**, e.g.:
   - `/create-snapshot --base-branch maintenance-r3`
 
 **Rationale:** Keeps execution explicit and reproducible. Prevents hidden state in the issue. Supports maintenance releases without duplicating the state model.
 
-### 8.4 Final Guidance for Future Extensions
+### 8.4 Release Readiness Check Command
+
+A future command to validate release readiness before merging the Release PR.
+
+**Suggested naming (non-binding):**
+- `/check-release`
+
+**Behavior (if ever added):**
+- Validates all readiness checklist items are complete
+- Reports checklist status in the Release Issue
+- Does **not** modify state; purely informational
+
+**Rationale:** Provides explicit readiness validation without manual inspection. Complements the draft release checkpoint by front-loading checks.
+
+### 8.5 Final Guidance for Future Extensions
 
 These extensions must remain opt-in and appendix-only. MVP behavior must not depend on them.
 
@@ -826,24 +862,24 @@ If implemented later, they must follow the same principles:
 | M4 (Abort and retry) | `/discard-snapshot` + `/create-snapshot` |
 | M5 (Refine CHANGELOG) | Release-review branch PR allows edits |
 | M6 (Protect mechanical) | Direct commit to snapshot branch, not in PR (by construction) |
-| M7 (Clear feedback) | Bot UX contract with actionable messages |
+| M7 (Clear feedback) | Automation bot results in Release Issue with actionable messages |
 | M8 (Preserve work) | Release-review branch kept on discard |
 | M9 (Know current state) | Bot always shows state + valid next steps |
 | M10 (Minimal actions) | Single `/create-snapshot` command |
 | R1 (Cross-repo visibility) | Issues queryable, labels filterable |
 | R2 (Verify dependencies) | Validation checks dependencies exist |
-| R3 (Human checkpoint) | Draft + environment approval for publish |
-| R4 (Override capability) | RM can run discard/revoke commands |
-| R5 (Audit trail) | Issue history, commands, bot responses |
+| R3 (Human checkpoint) | Draft release requires manual publication |
+| R4 (Override capability) | RM can run discard/delete-draft commands |
+| R5 (Audit trail) | Release state history in Release Issue, commands, bot responses |
 | R6 (Know source commit) | SHA in `release-metadata.yaml` |
 | R7 (Current vs. discarded) | Snapshot history table, bot messages |
 | G1 (Config from yaml) | Bot shows config from `release-plan.yaml` |
-| G2 (Scoped freeze) | Blocking rule on `release-plan.yaml` PRs for active release |
+| G2 (Scoped freeze) | Blocking rule on PRs for `release-plan.yaml` if an active snapshot exists |
 | G3 (Tamper-proof mechanical) | Direct commit to snapshot, not in PR |
 | G4 (Content vs config separation) | Mutual exclusivity rule (from concept) |
-| G5 (Immutable snapshots) | Snapshot branches immutable, discard to change |
+| G5 (Immutable base) | Source commit fixed at snapshot branch creation; discard to change |
 | G6 (Traceable to commit) | SHA in `release-metadata.yaml` |
-| G7 (Consistent process) | Same flow for all repositories |
+| G7 (Consistent process) | Same process for all repositories |
 
 ---
 
@@ -853,9 +889,9 @@ If implemented later, they must follow the same principles:
 |------|------------|
 | Release (`rX.Y`) | The CAMARA release number. Has no extensions. One tag per release. |
 | Snapshot | An immutable attempt at a release, identified by `rX.Y-<shortsha>`. |
-| `release-metadata.yaml` | Authoritative record on snapshot branch; source of truth for base SHA and release parameters. |
+| `release-metadata.yaml` | Authoritative record on snapshot branch; source of truth for base SHA and release configuration. |
 | Current snapshot | The active snapshot being worked on. Only one per release. |
-| Discarded snapshot | A previous snapshot replaced by a newer attempt. Branch deleted, release-review branch kept. |
+| Discarded snapshot | A snapshot abandoned via `/discard-snapshot`. Branch deleted, release-review branch kept. |
 | Snapshot branch | `release-snapshot/rX.Y-<shortsha>` — automation-owned, mechanical changes |
 | Release-review branch | `release-review/rX.Y-<shortsha>` — human-owned, reviewable content |
 | Release PR | PR from release-review branch to snapshot branch |
@@ -869,4 +905,4 @@ If implemented later, they must follow the same principles:
 |---------|----------------|--------|
 | `/create-snapshot` | OPEN | Validates HEAD, creates snapshot + release-review branches, opens PR |
 | `/discard-snapshot <reason>` | SNAPSHOT ACTIVE | Deletes snapshot branch, keeps release-review branch, returns to OPEN |
-| `/revoke-draft <reason>` | DRAFT READY | Deletes draft release and snapshot branch, returns to OPEN |
+| `/delete-draft <reason>` | DRAFT READY | Deletes draft release and snapshot branch, returns to OPEN |
