@@ -3,7 +3,7 @@
 
 ## Objectives
 
-This workflow concept establishes an automated release process for CAMARA that addresses key challenges in managing multi-repository releases:
+This concept document establishes an automated release process for CAMARA that addresses key challenges in managing multi-repository releases:
 
 **Replace manual wiki-based tracking** with structured, machine-readable metadata files that enable automation, flexible reporting, and consistent status synchronization across repositories.
 
@@ -17,14 +17,15 @@ This workflow concept establishes an automated release process for CAMARA that a
 
 **Enable progressive automation** for release artifacts including CHANGELOG generation and API Readiness Checklist validation, reducing manual cross-checks and enabling consistent artifact creation.
 
-The workflow achieves these objectives through:
+The process achieves these objectives through:
 
 - Structured **metadata files (in YAML)** as authoritative source for release planning and status
+- Dedicated **Release Issue** to trigger and track release attempts and provide information on release state progress (replacing the manual Wiki-based release tracker)
 - Dedicated **snapshot branches per release attempt** with automated preparation and validation
 - **CI enforcement** on PRs to `main` ensuring correctness before merge
 - **Branch protection** restricting snapshot branch changes to automation only
-- **Release PRs** into snapshot branches for collaborative review of documentation
-- **Feedback integration** via PRs into `main`, with new snapshots created as necessary
+- **Release-review branch** for collaborative documentation review, merged into snapshot via Release PR
+- **Feedback integration** via PRs into `main`; discard snapshot and create new one after fixes
 
 ## Terminology
 
@@ -39,8 +40,9 @@ The workflow achieves these objectives through:
 | `main` branch          | Development branch. All content is work-in-progress (`version: wip`). |
 | Maintenance branch     | Long-lived branch for maintaining older release cycles (e.g., `maintenance-r3`). See Appendix for details. |
 | Snapshot branch        | Automation-owned branch per release attempt (e.g., `release-snapshot/r4.1-abc1234`). Contains mechanical changes. |
-| Release-review branch          | Human-editable branch for reviewable content (e.g., `release-review/r4.1-abc1234`). Merged into snapshot branch. |
+| Release-review branch          | Human-editable branch for reviewable content (e.g., `release-review/r4.1-abc1234`). Contains reviewable content refinable through PRs. Eventually merged into snapshot branch via Release PR. |
 | Release PR              | Pull request from release-review branch to snapshot branch to finalize documentation. |
+| Release Issue           | GitHub issue to trigger and track a release attempt. Commands (`/create-snapshot`, etc.) are issued here. |
 
 ## Metadata File Format
 
@@ -97,7 +99,7 @@ apis:
 
 ### 2. `release-metadata.yaml` (on snapshot branch)
 
-Generated automatically from the release plan and committed to the snapshot branch. Serves as the authoritative source of truth for the release attempt. Preserved in each release tag, providing complete release history.
+Generated automatically from the release plan and committed to the snapshot branch. Serves as the authoritative source of truth for the release attempt. Preserved in each release tag, providing complete release history. Exploitable for release reporting.
 
 ```yaml
 repository:
@@ -126,7 +128,7 @@ apis:
     api_title: "Some New Location Service"
 ```
 
-## End-to-End Workflow
+## End-to-End Process
 
 ### Step 1: Continuous Development on `main`
 
@@ -150,17 +152,17 @@ apis:
 
 ### Step 2: Automated Snapshot Creation
 
-Upon triggering the release (via `/create-snapshot` slash command in a release issue - maintainers+ can trigger):
+Upon triggering the release (via `/create-snapshot` slash command in a Release Issue - maintainers+ can trigger):
 
 - Validation runs against current HEAD before any branches are created
 - A snapshot branch is created (e.g., `release-snapshot/r4.1-abc1234`) with SHA-based naming
 - A release-review branch is created from the snapshot branch (e.g., `release-review/r4.1-abc1234`)
 - A script or GitHub Action:
   - Sets exact API versions using `target_api_version` + auto-calculated extension (e.g., `-rc.2` based on consecutive numbering across API lifecycle)
-  - Enforces CAMARA versioning rules: info.version matches tag, server URLs follow v0.x or vx patterns
+  - Enforces CAMARA versioning rules: info.version follows API SemVer patterns, server URLs follow v0.x or vx patterns
   - Writes `release-metadata.yaml` to the snapshot branch (source of truth for release parameters)
   - Commits mechanical changes (versions, URLs) to snapshot branch
-  - Commits reviewable content (CHANGELOG, README, checklists) to release-review branch
+  - Commits automated updates as reviewable content (CHANGELOG, README, checklists) to release-review branch
   - Opens a Release PR from release-review branch to snapshot branch
 
 **Rationale:**
@@ -168,9 +170,9 @@ Upon triggering the release (via `/create-snapshot` slash command in a release i
 - Creates verified, reviewable release state before tag
 - Separates mechanical changes (protected) from reviewable content (editable)
 
-> **Detailed Design**: See [CAMARA-Release-Creation-Detailed-Design.md](CAMARA-Release-Creation-Detailed-Design.md) for comprehensive design including state model, command set, and bot UX contract.
+> **Detailed Design**: See [CAMARA-Release-Creation-Detailed-Design.md](CAMARA-Release-Creation-Detailed-Design.md) for comprehensive design including state model, command set, and bot interaction patterns.
 
-### Step 3: Review via Release PRs
+### Step 3: Documentation Review and Release PR
 
 Manual review and adjustments happen through the Release PR (from release-review branch to snapshot branch).
 
@@ -181,7 +183,7 @@ Manual review and adjustments happen through the Release PR (from release-review
 
 **If problems are found in API specs or implementation (immutable snapshots):**
 - Create PRs against `main` to fix the issues
-- **Discard** the current snapshot via `/discard-snapshot <reason>` command
+- **Discard** the active snapshot via `/discard-snapshot <reason>` command
 - **Retrigger** snapshot creation via `/create-snapshot` from updated `main`
 - This ensures snapshot remains immutable and src_commit_sha is accurate
 - Discarding snapshots is normal and expected — not a failure
@@ -193,7 +195,7 @@ Manual review and adjustments happen through the Release PR (from release-review
 
 ### Step 4: Draft and Publish Release
 
-The release finalization follows a two-phase workflow:
+The release finalization follows a two-phase process:
 
 #### Phase 1: Snapshot Creation and Review (during PR review)
 
@@ -214,7 +216,7 @@ After approval and Release PR merge to snapshot branch:
 1. Automation creates draft GitHub Release (no tag yet)
 2. Populates final metadata:
    - `release_date`: Current UTC timestamp
-3. Human reviews draft release artifacts
+3. Human reviews draft release (description from CHANGELOG, assets)
 4. **Human publishes** the release → creates git tag (e.g., `r4.1`)
 5. CI builds and publishes artifacts
 6. GitHub Release with artifacts is finalized:
@@ -234,8 +236,8 @@ After approval and Release PR merge to snapshot branch:
 
 After release is tagged and published:
 
-#### 5a. Update `main` branch:
-- Create a PR back into `main` with:
+#### 5a. Update `main` branch (automated PR, human approval):
+- Automation creates a PR back into `main` with:
   - CHANGELOG entry
   - README additions (e.g., new API table rows)
 - Do not update any version fields (they stay `"wip"`)
@@ -318,7 +320,7 @@ See Appendix for detailed branching diagrams and maintenance strategy.
 
 ### ❗ The Problem
 
-In the current CAMARA workflow, we risk repeating the problems caused by "monolithic" release PRs — where contributors update `release-plan.yaml` to promote an API (e.g., from `draft` to `rc`) and simultaneously attempt to fix all blocking issues in the same PR. These PRs are hard to review, difficult to verify, and blur responsibility between status declaration and implementation compliance.
+As in the current CAMARA release process, we risk repeating the problems caused by "monolithic" release PRs — where contributors update `release-plan.yaml` to promote an API (e.g., from `draft` to `rc`) and simultaneously attempt to fix all blocking issues in the same PR. These PRs are hard to review, difficult to verify, and blur responsibility between status declaration and implementation compliance.
 
 Worse, when deadlines are near, this approach encourages rush patches and discourages proper code review.
 
@@ -361,7 +363,7 @@ This applies particularly to:
 - Reduced risk: No status promotions can be hidden inside technical change PRs
 - Reinforces proper sequencing: Implementation improvements come before status upgrades
 
-### Developer Workflow Example
+### Developer Process Example
 
 1. Developer merges a PR that corrects a missing test file for an API.
 2. Once CI passes and no blocking issues remain, they open a small metadata-only PR updating the `target_api_status` from `alpha` to `rc`.
@@ -373,13 +375,13 @@ This enforces discipline, validates correctness, and maintains oversight — wit
 
 ### Understanding Git Branches and Tags
 
-For those newer to Git, here's how branches and tags relate in the CAMARA release workflow:
+For those newer to Git, here's how branches and tags relate in the CAMARA release process:
 
 - **Branch**: A movable pointer to commits, used for ongoing work
 - **Tag**: A permanent marker on a specific commit, used to mark releases
 - **Snapshot branch**: A temporary, automation-owned branch for preparing a specific release attempt
 - **Release-review branch**: A temporary branch for reviewable content, merged into the snapshot branch
-- **Maintenance branch**: A long-lived branch for maintaining older release cycles
+- **Maintenance branch**: A long-lived branch for maintaining older releases (e.g., `maintenance-r3`)
 
 ### Snapshot Branch Lifecycle
 
