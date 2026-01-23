@@ -176,7 +176,7 @@ Upon triggering the release (via `/create-snapshot` slash command in a Release I
 
 Manual review and adjustments happen through the Release PR (from release-review branch to snapshot branch).
 
-- Release PRs require approval from codeowner(s) and release reviewer(s) (via branch protection).
+- Release PRs require approval from at least one codeowner AND at least one Release Management reviewer (enforced via branch protection on snapshot branches).
 - Review covers CHANGELOG and README correctness wrt metadata
 - CHANGELOG.md entries may be refined on the release-review branch (codeowners commit directly; maintainers/contributors via PRs from forks)
 - Mechanical changes on the snapshot branch are protected and cannot be edited

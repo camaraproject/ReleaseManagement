@@ -747,6 +747,7 @@ Permission is enforced by automation via GitHub API checks (repository permissio
 - Writable only by automation
 - Deletable only by automation (and admins as break-glass)
 - No direct pushes from humans
+- **Release PR approval**: Requires at least one codeowner AND at least one Release Management reviewer before merge
 
 **Release-review branches (`release-review/*`):**
 - Not protected
