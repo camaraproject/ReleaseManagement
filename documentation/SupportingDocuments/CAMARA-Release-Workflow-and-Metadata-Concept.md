@@ -42,7 +42,7 @@ The process achieves these objectives through:
 | Snapshot branch        | Automation-owned branch per release attempt (e.g., `release-snapshot/r4.1-abc1234`). Contains mechanical changes. |
 | Release-review branch          | Human-editable branch for reviewable content (e.g., `release-review/r4.1-abc1234`). Contains reviewable content refinable through PRs. Eventually merged into snapshot branch via Release PR. |
 | Release PR              | Pull request from release-review branch to snapshot branch to finalize documentation. |
-| Release Issue           | GitHub issue to trigger and track a release attempt. Commands (`/create-snapshot`, etc.) are issued here. |
+| Release Issue           | GitHub issue for a specific release (rX.Y) to trigger and track snapshot attempts. Commands (`/create-snapshot`, etc.) are issued here. |
 
 ## Metadata File Format
 
