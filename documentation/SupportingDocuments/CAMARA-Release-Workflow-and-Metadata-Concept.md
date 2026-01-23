@@ -15,7 +15,7 @@ This concept document establishes an automated release process for CAMARA that a
 
 **Support flexible versioning strategy** by keeping CAMARA release numbering (`rX.Y`) distinct from API semantic versioning, with clear metadata-driven version management instead of manual field updates in `main` that must be reset after releases.
 
-**Enable progressive automation** for release artifacts including CHANGELOG generation and API Readiness Checklist validation, reducing manual cross-checks and enabling consistent artifact creation.
+**Enable progressive automation** for release artifacts including CHANGELOG generation and API Readiness validation (via CI), reducing manual cross-checks and enabling consistent artifact creation.
 
 The process achieves these objectives through:
 
@@ -162,7 +162,7 @@ Upon triggering the release (via `/create-snapshot` slash command in a Release I
   - Enforces CAMARA versioning rules: info.version follows API SemVer patterns, server URLs follow v0.x or vx patterns
   - Writes `release-metadata.yaml` to the snapshot branch (source of truth for release parameters)
   - Commits mechanical changes (versions, URLs) to snapshot branch
-  - Commits automated updates as reviewable content (CHANGELOG, README, checklists) to release-review branch
+  - Commits automated updates as reviewable content (CHANGELOG, README) to release-review branch
   - Opens a Release PR from release-review branch to snapshot branch
 
 **Rationale:**
@@ -177,7 +177,7 @@ Upon triggering the release (via `/create-snapshot` slash command in a Release I
 Manual review and adjustments happen through the Release PR (from release-review branch to snapshot branch).
 
 - Release PRs require approval from codeowner(s) and release reviewer(s) (via branch protection).
-- Review covers CHANGELOG, README and checklist correctness wrt metadata
+- Review covers CHANGELOG and README correctness wrt metadata
 - CHANGELOG.md entries may be refined on the release-review branch (codeowners commit directly; maintainers/contributors via PRs from forks)
 - Mechanical changes on the snapshot branch are protected and cannot be edited
 
@@ -313,7 +313,7 @@ See Appendix for detailed branching diagrams and maintenance strategy.
 - [ ] Add GitHub Actions for metadata validation, snapshot creation, and post-release syncing
 - [ ] Enforce CODEOWNERS and team-based protections on branches
 - [ ] Plan and implement CHANGELOG automation as a separate phase
-- [ ] Revisit content of checklist and implement automated updates where possible
+- [ ] Design Release Issue template with readiness attestation checklist (replaces per-API checklist files)
 - [ ] Consider attaching `release-metadata.yaml` additionally as release artifact for efficient reporting
 
 ## Appendix: Metadata Status and Dependency Update Strategy
