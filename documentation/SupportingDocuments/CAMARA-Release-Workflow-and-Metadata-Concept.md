@@ -216,20 +216,20 @@ After approval and Release PR merge to snapshot branch:
 1. Automation creates draft GitHub Release (no tag yet)
 2. Populates final metadata:
    - `release_date`: Current UTC timestamp
-3. Human reviews draft release (description from CHANGELOG, assets)
-4. **Human publishes** the release → creates git tag (e.g., `r4.1`)
+3. Codeowner reviews draft release (description from CHANGELOG, assets)
+4. **Codeowner publishes** the release → creates git tag (e.g., `r4.1`)
 5. CI builds and publishes artifacts
 6. GitHub Release with artifacts is finalized:
    - Bundled OpenAPI specifications (later phase)
    - Generated documentation
    - Release metadata files
 
-**Note:** Tag `rX.Y` is only created at final publication, not after PR merge. This provides a human checkpoint before publication.
+**Note:** Tag `rX.Y` is only created at final publication, not after PR merge. This provides a codeowner checkpoint before publication.
 
 **Rationale:**
 - Provides traceable, repeatable state for each tagged release
 - Two-phase approach ensures metadata reflects actual release state
-- Human checkpoint prevents accidental publication
+- Codeowner checkpoint prevents accidental publication
 - Immutable snapshots simplify validation and prevent drift
 
 ### Step 5: Post-Release Actions

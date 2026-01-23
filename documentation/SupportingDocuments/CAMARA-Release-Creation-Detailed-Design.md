@@ -215,15 +215,15 @@ These refinements are **compatible extensions** to the concept. A change request
 - Multiple attempts per `rX.Y` are normal and visible
 - Defers complexity of forward-merge
 
-### 2.7 Automation Creates, Human Publishes
+### 2.7 Automation Creates, Codeowner Publishes
 
-**Principle:** Automation creates draft releases; humans explicitly approve final publication and tag creation.
+**Principle:** Automation creates draft releases; codeowners explicitly approve final publication and tag creation.
 
 **Addresses:** R3, G3
 
 **Rationale:**
 - Automation ensures consistency of artifacts
-- Human checkpoint prevents accidents
+- Codeowner checkpoint prevents accidents
 - Clear accountability for publication decision
 - Uses GitHub Environment protection
 - Tag `rX.Y` only created at final publication (no extensions)
@@ -458,7 +458,7 @@ Automation commits finalization (release_date) to snapshot
        ↓
 Automation creates draft release (no tag yet)
        ↓
-Human publishes the release with the tag r4.1
+Codeowner publishes the release with the tag r4.1
        ↓
 Delete snapshot branch manually (tag preserves content)
 Note: Automated cleanup via /publish-release command planned for C3 design
@@ -731,13 +731,14 @@ This is a normal recovery action when issues are found before publication.
 
 ### 6.1 Command Permissions
 
-| Command | Who May Execute |
+| Command / Action | Who May Execute |
 |---------|-----------------|
 | `/create-snapshot` | Maintainers, Codeowners (write/maintain/admin on repo) |
 | `/discard-snapshot` | Maintainers, Codeowners, Release Management team |
 | `/delete-draft` | Maintainers, Codeowners, Release Management team |
+| Publish draft release | Codeowners (via GitHub Releases UI) |
 
-Permission is enforced by automation via GitHub API checks (repository permissions or team membership).
+Permission is enforced by automation via GitHub API checks (repository permissions or team membership). Publication is a manual action in GitHub UI, restricted to codeowners with write access.
 
 ### 6.2 Branch Protection
 
@@ -749,7 +750,7 @@ Permission is enforced by automation via GitHub API checks (repository permissio
 
 **Release-review branches (`release-review/*`):**
 - Not protected
-- Maintainers can push refinements
+- Codeowners can push directly; others via PRs from forks
 - Best-effort cleanup by automation after release
 - Manual cleanup acceptable
 
