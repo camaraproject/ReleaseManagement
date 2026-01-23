@@ -435,7 +435,7 @@ Each snapshot attempt uses two branches:
 - Contains reviewable content (CHANGELOG, README, checklists)
 - Merged INTO snapshot branch via Release PR
 - PR diff shows only reviewable content
-- Not protected: maintainers can push refinements
+- Editable: codeowners can commit directly; maintainers and contributors submit PRs from forks (merged by codeowners)
 
 ```
 main (at abc1234)

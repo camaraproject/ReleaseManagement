@@ -40,7 +40,7 @@ The process achieves these objectives through:
 | `main` branch          | Development branch. All content is work-in-progress (`version: wip`). |
 | Maintenance branch     | Long-lived branch for maintaining older release cycles (e.g., `maintenance-r3`). See Appendix for details. |
 | Snapshot branch        | Automation-owned branch per release attempt (e.g., `release-snapshot/r4.1-abc1234`). Contains mechanical changes. |
-| Release-review branch          | Human-editable branch for reviewable content (e.g., `release-review/r4.1-abc1234`). Contains reviewable content refinable through PRs. Eventually merged into snapshot branch via Release PR. |
+| Release-review branch          | Human-editable branch for reviewable content (e.g., `release-review/r4.1-abc1234`). Codeowners commit directly; others submit PRs from forks. Eventually merged into snapshot branch via Release PR. |
 | Release PR              | Pull request from release-review branch to snapshot branch to finalize documentation. |
 | Release Issue           | GitHub issue for a specific release (rX.Y) to trigger and track snapshot attempts. Commands (`/create-snapshot`, etc.) are issued here. |
 
@@ -178,7 +178,7 @@ Manual review and adjustments happen through the Release PR (from release-review
 
 - Release PRs require approval from codeowner(s) and release reviewer(s) (via branch protection).
 - Review covers CHANGELOG, README and checklist correctness wrt metadata
-- CHANGELOG.md entries may be added/updated on the release-review branch during review
+- CHANGELOG.md entries may be refined on the release-review branch (codeowners commit directly; maintainers/contributors via PRs from forks)
 - Mechanical changes on the snapshot branch are protected and cannot be edited
 
 **If problems are found in API specs or implementation (immutable snapshots):**
