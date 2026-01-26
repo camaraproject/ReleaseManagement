@@ -207,3 +207,9 @@ No. While a snapshot is active, `release-plan.yaml` changes for that release are
 
 **Can I change the release plan during development?**
 Yes. The release plan should evolve as understanding improves. Update target statuses or release type as needed—just not while a snapshot is active.
+
+---
+
+## See also
+
+- [../README.md](../README.md) for documentation index

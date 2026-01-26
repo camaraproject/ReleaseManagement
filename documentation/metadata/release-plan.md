@@ -203,3 +203,9 @@ Development continues normally on `main`—only the release scope and intent are
 You edit `release-plan.yaml` to declare what you want. Automation generates `release-metadata.yaml` with what actually happened.
 
 For details on the generated metadata, see [release-metadata.md](release-metadata.md).
+
+---
+
+## See also
+
+- [../README.md](../README.md) for documentation index

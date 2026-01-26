@@ -224,6 +224,7 @@ Contact the Release Management team if:
 
 ## See also
 
+- [../README.md](../README.md) for documentation index
 - [release-issue-and-commands.md](release-issue-and-commands.md) for command details
 - [snapshot-and-release-branches.md](snapshot-and-release-branches.md) for branch behavior
 - [lifecycle.md](../release-process/lifecycle.md) for the normal flow

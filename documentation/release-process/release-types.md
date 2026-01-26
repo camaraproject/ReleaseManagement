@@ -238,3 +238,9 @@ When the API has proven itself in production, the interface is mature, and you'r
 
 **Can an initial public API version be part of a meta-release?**
 Yes. Initial API versions can optionally participate in meta-releases. However, stable API versions (`x.y.z` with x≥1) must always go through the meta-release process.
+
+---
+
+## See also
+
+- [../README.md](../README.md) for documentation index

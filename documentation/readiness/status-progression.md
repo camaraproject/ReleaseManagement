@@ -14,5 +14,6 @@ Explain allowed API status transitions.
 
 ## See also
 
+- [../README.md](../README.md) for documentation index
 - [readiness-model.md](readiness-model.md) for the conceptual model
 - [../release-process/terminology.md](../release-process/terminology.md) for status definitions

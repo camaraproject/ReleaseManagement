@@ -15,5 +15,6 @@ High-level mental model of the CAMARA release process.
 
 ## See also
 
+- [../README.md](../README.md) for documentation index
 - [terminology.md](terminology.md) for key terms
 - [lifecycle.md](lifecycle.md) for the step-by-step process

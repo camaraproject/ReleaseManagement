@@ -15,5 +15,6 @@ Explain metadata as declarative release intent.
 
 ## See also
 
+- [../README.md](../README.md) for documentation index
 - [release-plan.md](release-plan.md) for the planning file
 - [release-metadata.md](release-metadata.md) for the generated file

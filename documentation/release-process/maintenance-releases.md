@@ -15,5 +15,6 @@ Explain the maintenance / patch release model.
 
 ## See also
 
+- [../README.md](../README.md) for documentation index
 - [release-types.md](release-types.md) for release type overview
 - [../automation/snapshot-and-release-branches.md](../automation/snapshot-and-release-branches.md) for branching details

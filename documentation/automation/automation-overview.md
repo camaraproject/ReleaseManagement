@@ -192,3 +192,9 @@ Development on main
 - Monitor release status across repositories
 - Verify dependencies before coordinating meta-releases
 - Trust the process to produce consistent, traceable releases
+
+---
+
+## See also
+
+- [../README.md](../README.md) for documentation index

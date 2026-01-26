@@ -16,4 +16,5 @@ Repository-level responsibilities related to API development and release prepara
 
 ## See also
 
+- [../README.md](../README.md) for documentation index
 - [release-management-roles.md](release-management-roles.md) for Release Management WG roles

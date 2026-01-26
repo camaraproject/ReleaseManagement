@@ -213,3 +213,9 @@ During snapshot review (before Release PR merge), some fields may be incomplete 
 | Dependency versions | Release tags only | Tags + resolved versions |
 
 Think of the plan as input and the metadata as output.
+
+---
+
+## See also
+
+- [../README.md](../README.md) for documentation index

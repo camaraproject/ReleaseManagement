@@ -243,6 +243,7 @@ After a release is published:
 
 ## See also
 
+- [../README.md](../README.md) for documentation index
 - [automation-overview.md](automation-overview.md) for automation behavior
 - [release-issue-and-commands.md](release-issue-and-commands.md) for commands
 - [failure-and-recovery.md](failure-and-recovery.md) for recovery scenarios

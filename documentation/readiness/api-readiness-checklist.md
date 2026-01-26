@@ -14,5 +14,6 @@ Canonical explanation of the API Readiness Checklist.
 
 ## See also
 
+- [../README.md](../README.md) for documentation index
 - [readiness-model.md](readiness-model.md) for the conceptual model
 - [../deprecated/API-Readiness-Checklist.md](../deprecated/API-Readiness-Checklist.md) for the legacy template

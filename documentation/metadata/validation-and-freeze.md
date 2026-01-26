@@ -205,6 +205,7 @@ Update `release-plan.yaml` with a new `target_api_version` for the API. This sig
 
 ## See also
 
+- [../README.md](../README.md) for documentation index
 - [../automation/automation-overview.md](../automation/automation-overview.md) for automation behavior
 - [release-plan.md](release-plan.md) for what gets validated
 - [../automation/failure-and-recovery.md](../automation/failure-and-recovery.md) for recovery paths

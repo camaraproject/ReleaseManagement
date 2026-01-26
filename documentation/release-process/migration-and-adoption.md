@@ -15,4 +15,5 @@ Explain the coexistence of old and new release processes.
 
 ## See also
 
+- [../README.md](../README.md) for documentation index
 - [../deprecated/README.md](../deprecated/README.md) for deprecated documents

@@ -14,5 +14,6 @@ Conceptual readiness model for API releases.
 
 ## See also
 
+- [../README.md](../README.md) for documentation index
 - [api-readiness-checklist.md](api-readiness-checklist.md) for the checklist
 - [status-progression.md](status-progression.md) for status transitions

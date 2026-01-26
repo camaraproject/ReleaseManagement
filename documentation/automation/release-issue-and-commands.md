@@ -230,3 +230,9 @@ Creating multiple snapshots for the same release is normal. Each attempt gets a 
 | Draft publication | Finalize the release | Publish |
 
 Each entry point has clear responsibilities. Automation handles the mechanical work; you make the decisions.
+
+---
+
+## See also
+
+- [../README.md](../README.md) for documentation index
