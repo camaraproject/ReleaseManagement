@@ -57,8 +57,8 @@ ReleaseManagement/documentation/
 │
 ├── automation/                        # Automation behavior & guarantees
 │   ├── automation-overview.md
-│   ├── triggers-and-entry-points.md
-│   ├── snapshot-and-branch-model.md
+│   ├── release-issue-and-commands.md
+│   ├── snapshot-and-release-branches.md
 │   └── failure-and-recovery.md
 │
 ├── roles/                             # Who does what, and when
@@ -208,18 +208,18 @@ The **source of truth** for releases is always the repository itself (metadata f
   → `automation/automation-overview.md`
 
 - How releases are triggered (release issue, commands, entry points)\
-  → `automation/triggers-and-entry-points.md`
+  → `automation/release-issue-and-commands.md`
 
 - How snapshot branches and immutability work\
-  → `automation/snapshot-and-branch-model.md`
+  → `automation/snapshot-and-release-branches.md`
 
 - **(Release Management)** How to review the Release PR and publish the draft release\
-  → `automation/triggers-and-entry-points.md`
+  → `automation/release-issue-and-commands.md`
 
 ### …recover from an unsuccessful release attempt
 
 - Understand reasons why a started release attempt needs to be abandoned\
-  → `automation/snapshot-and-branch-model.md`
+  → `automation/snapshot-and-release-branches.md`
 
 - Recover safely from an abandoned or unsuccessful release attempt\
   → `automation/failure-and-recovery.md`
@@ -557,7 +557,7 @@ Start with `release-process/terminology.md`, then `release-process/overview.md`.
 
 ---
 
-### `triggers-and-entry-points.md`
+### `release-issue-and-commands.md`
 
 **Audience:** Codeowners, maintainers, release managers\
 **Responsibility:** Happy-path interaction points for release automation (how humans drive a release)
@@ -584,7 +584,7 @@ Start with `release-process/terminology.md`, then `release-process/overview.md`.
 
 ---
 
-### `snapshot-and-branch-model.md`
+### `snapshot-and-release-branches.md`
 
 **Audience:** Maintainers, release managers\
 **Responsibility:** Explain snapshot branches and immutability
