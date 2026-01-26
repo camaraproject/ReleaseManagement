@@ -23,8 +23,10 @@ A release cycle begins when codeowners declare their intent in `release-plan.yam
 
 **When this happens:**
 - When a new release cycle is decided (e.g., participation in a meta-release)
-- When a release scope issue is created
+- When a release scope issue is created defining intended API outcomes
 - At the start of development toward a specific release target
+
+*Note: The **scope issue** defines the intended API outcomes for a release cycle. The **release plan** (`release-plan.yaml`) declares how to achieve the next step toward those outcomes.*
 
 **What happens:**
 - Codeowners set the `release_track` (independent or meta-release) and `meta_release` cycle if applicable
@@ -76,12 +78,9 @@ When development is complete and the repository meets the declared targets, a ma
 1. Automation validates the current HEAD of `main` against the release plan
 2. CI confirms that all APIs meet their declared target statuses (no `draft` APIs allowed)
 3. If validation passes:
-   - A **snapshot branch** is created (`release-snapshot/rX.Y-<sha>`)
-   - Mechanical changes (version numbers, URLs) are applied to the snapshot
-   - `release-metadata.yaml` is generated with the source commit SHA
-   - A **release-review branch** is created (`release-review/rX.Y-<sha>`)
-   - CHANGELOG and README updates are committed to the release-review branch
-   - A **Release PR** is opened (release-review → snapshot)
+   - An immutable **snapshot** is created with mechanical changes (version numbers, URLs)
+   - A **release-review branch** is created for documentation refinement
+   - A **Release PR** is opened for human review
 4. The Release Issue state changes from OPEN to SNAPSHOT ACTIVE
 
 **What is expected of you:**
@@ -125,9 +124,8 @@ The Release PR allows review of documentation before publication. The PR merges 
 After the Release PR is merged, the release proceeds through draft creation and publication.
 
 **Draft creation (automatic):**
-- Automation creates a draft GitHub release
-- The `release_date` field is set in `release-metadata.yaml`
-- The draft contains the release artifacts
+- Automation creates a draft GitHub release with release artifacts
+- Release metadata is finalized
 - Release Issue state is DRAFT READY
 
 **Publication (manual):**

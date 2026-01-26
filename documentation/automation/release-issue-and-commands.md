@@ -33,7 +33,7 @@ The Release Issue is the **user interface** for a release. It serves as:
 
 | Action | How | When |
 |--------|-----|------|
-| Start a release | Post `/create-snapshot` | When ready to release |
+| Start a release | Post `/create-snapshot` | When development is complete |
 | Abandon an attempt | Post `/discard-snapshot <reason>` | When issues are found during review |
 | Delete a draft | Post `/delete-draft <reason>` | When problems are found in draft before publication |
 | Track progress | Read the issue comments and labels | Throughout the release |

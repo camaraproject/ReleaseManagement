@@ -83,6 +83,8 @@ A **Release Issue** is a GitHub issue dedicated to tracking one release (`rX.Y`)
 - **UI**: Shows current state, snapshot history, and next steps
 - **Audit trail**: Records all release decisions and state changes
 
+**Important:** The Release Issue is *not* the source of truth. All authoritative state is derived from repository artifacts (branches, tags, releases). The issue reflects and tracks that state.
+
 Each Release Issue has a state label (`release-state: open`, `release-state: snapshot-active`, etc.) that reflects the current status.
 
 ### Release states
@@ -163,17 +165,17 @@ Commands express **intent**. Labels on the Release Issue express **state** (syst
 
 ---
 
-## Naming conventions
+## Examples
 
-| Entity | Pattern | Example |
-|--------|---------|---------|
-| Release tag | `rX.Y` | `r4.1`, `r5.3` |
-| Snapshot branch | `release-snapshot/rX.Y-<shortsha>` | `release-snapshot/r4.1-abc1234` |
-| Release-review branch | `release-review/rX.Y-<shortsha>` | `release-review/r4.1-abc1234` |
-| Maintenance branch | `maintenance-rX` | `maintenance-r3` |
-| API version (alpha) | `X.Y.Z-alpha.N` | `0.5.0-alpha.1` |
-| API version (rc) | `X.Y.Z-rc.N` | `3.2.0-rc.2` |
-| API version (public) | `X.Y.Z` | `1.0.0` |
+| Entity | Example |
+|--------|---------|
+| Release tag | `r4.1`, `r5.3` |
+| API version (alpha) | `0.5.0-alpha.1` |
+| API version (rc) | `3.2.0-rc.2` |
+| API version (public) | `1.0.0` |
+| Maintenance branch | `maintenance-r4` |
+
+*Note: Internal branch names (snapshot, release-review) are managed by automation and may change. Focus on the observable artifacts: release tags, API versions, and maintenance branches.*
 
 ---
 
