@@ -6,16 +6,36 @@ This document explains the available release types and their intended use.
 
 ## Overview
 
-CAMARA defines four release types, each serving a different purpose in the API lifecycle:
+CAMARA defines five release types (including `none`), each serving a different purpose in the API lifecycle:
 
 | Release type | Purpose | When to use |
 |--------------|---------|-------------|
+| `none` | Not ready | No release planned, or repository not yet releasable |
 | `pre-release-alpha` | Early feedback | Initial implementation ready for review |
 | `pre-release-rc` | Release candidate | Feature-complete, ready for testing |
 | `public-release` | Public release | Production-ready, meets all quality gates |
 | `maintenance-release` | Patch release | Bug fixes to an existing public release |
 
 The release type is declared in `release-plan.yaml` via the `target_release_type` field.
+
+---
+
+## API status progression
+
+Before discussing release types, it's important to understand how APIs progress through maturity levels:
+
+```
+draft → alpha → rc → public
+```
+
+| Status | Meaning | Can be released? |
+|--------|---------|------------------|
+| `draft` | Declared but implementation in progress | No — development only |
+| `alpha` | Early implementation ready for feedback | Yes — in alpha or RC releases |
+| `rc` | Feature-complete, ready for testing | Yes — in RC or public releases |
+| `public` | Production-ready | Yes — in public or maintenance releases |
+
+The `draft` status is special: it allows APIs to be declared in `release-plan.yaml` while still under development. APIs at `draft` status cannot be released—they must reach at least `alpha` before inclusion in any release.
 
 ---
 

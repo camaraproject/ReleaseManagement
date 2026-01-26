@@ -33,9 +33,9 @@ The Release Issue is the **user interface** for a release. It serves as:
 
 | Action | How | When |
 |--------|-----|------|
-| Start a release | Post a command to create a snapshot | When ready to release |
-| Abandon an attempt | Post a command to discard the snapshot | When issues are found |
-| Revoke a draft | Post a command to revoke before publication | When problems are found in draft |
+| Start a release | Post `/create-snapshot` | When ready to release |
+| Abandon an attempt | Post `/discard-snapshot <reason>` | When issues are found during review |
+| Delete a draft | Post `/delete-draft <reason>` | When problems are found in draft before publication |
 | Track progress | Read the issue comments and labels | Throughout the release |
 | Discuss decisions | Comment on the issue | As needed |
 
@@ -43,11 +43,11 @@ The Release Issue is the **user interface** for a release. It serves as:
 
 Commands are posted as comments on the Release Issue. They express your **intent** to take an action.
 
-| Command | What it does |
-|---------|--------------|
-| `/create-snapshot` | Validates current HEAD and creates a snapshot if validation passes |
-| `/discard-snapshot <reason>` | Discards the active snapshot; requires a reason for the audit trail |
-| `/revoke-draft <reason>` | Revokes a draft release before publication; requires a reason |
+| Command | What it does | Allowed state |
+|---------|--------------|---------------|
+| `/create-snapshot` | Validates current HEAD and creates a snapshot if validation passes | OPEN |
+| `/discard-snapshot <reason>` | Discards the active snapshot; requires a reason for the audit trail | SNAPSHOT ACTIVE |
+| `/delete-draft <reason>` | Deletes a draft release before publication; requires a reason | DRAFT READY |
 
 **Command behavior:**
 - Commands only work when the release is in the appropriate state
@@ -67,6 +67,22 @@ Labels on the Release Issue indicate the current state:
 | `release-state: cancelled` | Issue closed without publication |
 
 Labels are updated automatically. Do not edit them manually.
+
+### State transitions
+
+The release progresses through states based on commands and events:
+
+```
+OPEN ──/create-snapshot──► SNAPSHOT ACTIVE ──merge PR──► DRAFT READY ──publish──► PUBLISHED
+  │                              │                            │
+  │                              │/discard-snapshot           │/delete-draft
+  │                              ▼                            ▼
+  │                            OPEN                         OPEN
+  │
+  └──close issue──► CANCELLED
+```
+
+**Terminal states:** PUBLISHED and CANCELLED are final. Once in these states, the release is complete.
 
 ---
 
@@ -195,7 +211,7 @@ If you find a problem in the API specification:
 
 If you find a problem in the draft release:
 
-1. Post `/revoke-draft <reason>` on the Release Issue
+1. Post `/delete-draft <reason>` on the Release Issue
 2. Fix the issue with a PR to `main`
 3. Post `/create-snapshot` to start fresh
 

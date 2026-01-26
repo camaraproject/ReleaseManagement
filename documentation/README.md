@@ -51,13 +51,13 @@ This documentation explains **how to work with the automation-bot assisted relea
   → [automation/automation-overview.md](automation/automation-overview.md)
 
 - How releases are triggered (release issue, commands, entry points)
-  → [automation/triggers-and-entry-points.md](automation/triggers-and-entry-points.md)
+  → [automation/release-issue-and-commands.md](automation/release-issue-and-commands.md)
 
 - How snapshot branches and immutability work
-  → [automation/snapshot-and-branch-model.md](automation/snapshot-and-branch-model.md)
+  → [automation/snapshot-and-release-branches.md](automation/snapshot-and-release-branches.md)
 
 - **(Release Management)** How to review the Release PR and publish the draft release
-  → [automation/triggers-and-entry-points.md](automation/triggers-and-entry-points.md)
+  → [automation/release-issue-and-commands.md](automation/release-issue-and-commands.md)
 
 ### ...check API readiness
 
@@ -70,7 +70,7 @@ This documentation explains **how to work with the automation-bot assisted relea
 ### ...recover from an unsuccessful release attempt
 
 - Understand reasons why a started release attempt needs to be abandoned
-  → [automation/snapshot-and-branch-model.md](automation/snapshot-and-branch-model.md)
+  → [automation/snapshot-and-release-branches.md](automation/snapshot-and-release-branches.md)
 
 - Recover safely from an abandoned or unsuccessful release attempt
   → [automation/failure-and-recovery.md](automation/failure-and-recovery.md)

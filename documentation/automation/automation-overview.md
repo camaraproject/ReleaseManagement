@@ -40,21 +40,43 @@ The release workflow has two distinct automation surfaces with different purpose
 
 ### 2. Release automation (snapshot-based)
 
-**When:** Triggered explicitly when creating a release
+**When:** Triggered via `/create-snapshot` command in the Release Issue
 
 **Purpose:** Creates immutable release snapshots and prepares release artifacts.
 
 **What it does:**
 - Validates the repository state before creating a snapshot
-- Creates snapshot and release-review branches
+- Creates the **snapshot branch** (automation-owned, immutable)
+- Creates the **release-review branch** (human-editable)
 - Applies mechanical changes (version numbers, URLs) to the snapshot
 - Generates `release-metadata.yaml` with actual release parameters
-- Opens the Release PR
+- Opens the Release PR (release-review → snapshot)
 - Creates the draft GitHub release after PR merge
 
 **Outcome:** A complete, validated release attempt ready for human review and publication.
 
-**Key characteristic:** This is *on-demand* — it runs only when explicitly triggered, and produces immutable snapshots.
+**Key characteristic:** This is *on-demand* — it runs only when explicitly triggered via commands, and produces immutable snapshots.
+
+---
+
+## The dual-branch model
+
+Each release attempt uses two branches to separate concerns:
+
+| Branch | Pattern | Content | Owner |
+|--------|---------|---------|-------|
+| **Snapshot branch** | `release-snapshot/rX.Y-<sha>` | Mechanical changes, metadata | Automation |
+| **Release-review branch** | `release-review/rX.Y-<sha>` | CHANGELOG, README | Humans |
+
+**Why two branches?**
+
+- **Mechanical content** (version numbers, URLs, server paths) must be exactly correct. Automation ensures this by making the snapshot branch immutable after creation.
+- **Reviewable content** (CHANGELOG descriptions, README updates) requires human judgment. The release-review branch allows edits before merging into the snapshot.
+
+The Release PR merges the release-review branch *into* the snapshot branch. This means:
+- The PR diff shows only the content humans should review
+- Mechanical fields cannot be accidentally changed via the PR
+- Protection is structural, not policy-based
 
 ---
 
@@ -67,10 +89,14 @@ The release workflow has two distinct automation surfaces with different purpose
 | Updating URLs for release | Automation | Mechanical transformation |
 | Generating release metadata | Automation | Derived from validated inputs |
 | Creating snapshot branches | Automation | Ensures immutability |
-| Reviewing CHANGELOG content | Human | Requires judgment about clarity |
+| Generating initial CHANGELOG | Automation | Provides starting point |
+| Refining CHANGELOG content | Human | Requires judgment about clarity |
+| Triggering release attempts | Human | `/create-snapshot` command |
 | Deciding when to release | Human | Business and coordination decision |
 | Approving the Release PR | Human | Final review checkpoint |
 | Publishing the release | Human | Intentional, irreversible action |
+| Discarding snapshots | Human | `/discard-snapshot` command |
+| Deleting drafts | Human | `/delete-draft` command |
 
 ---
 

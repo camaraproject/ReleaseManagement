@@ -6,14 +6,16 @@ This document explains the generated `release-metadata.yaml` file and how it is 
 
 ## Purpose
 
-The `release-metadata.yaml` file is the **authoritative record** of a release:
+The `release-metadata.yaml` file is the **authoritative source of truth** for a release attempt:
 
 - Records the exact parameters of a release attempt
-- Captures the source commit SHA
+- Captures the source commit SHA (the base from which the snapshot was created)
 - Contains calculated API versions with extensions
 - Provides resolved dependency information
 
 This file answers: "What was actually released, and from what source?"
+
+**Important:** Bot messages and state derivation use this file as the authoritative record. The Release Issue is a UI and audit trail—not a state store.
 
 ---
 
@@ -76,9 +78,21 @@ apis:
 
 ## Key fields
 
+### Field population timing
+
+| Field | When set |
+|-------|----------|
+| `src_commit_sha` | At snapshot creation |
+| `release_tag`, `release_type` | At snapshot creation |
+| `apis` (with calculated versions) | At snapshot creation |
+| `dependencies` | At snapshot creation |
+| `release_date` | At draft creation (after Release PR merge) |
+
+Most fields are populated when the snapshot is created. The `release_date` is set later, when the draft release is created.
+
 ### `src_commit_sha`
 
-The full SHA of the commit on `main` (or maintenance branch) from which the snapshot was created.
+The full SHA of the commit on `main` (or maintenance branch) from which the snapshot was created. This may also be referred to as `base_commit_sha` in some contexts.
 
 This is critical for:
 - **Reproducibility** — knowing exactly what code was released

@@ -185,6 +185,12 @@ Update `release-plan.yaml` when:
 - Updating dependencies
 - After a public release (to unlock APIs for the next version)
 
+### Scoped configuration freeze
+
+While a snapshot is active for a release (`rX.Y`), PRs that modify `release-plan.yaml` for that release are blocked. This prevents confusion about which configuration applies to the active snapshot.
+
+Development continues normally on `main`—only the release scope and intent are frozen. To change the release configuration, first discard the active snapshot with `/discard-snapshot`.
+
 ---
 
 ## Relationship to `release-metadata.yaml`
