@@ -545,7 +545,7 @@ Start with `release-process/terminology.md`, then `release-process/overview.md`.
 **Outline**
 
 - Automation as co-reviewer (why it exists)
-- Two automation surfaces
+- Two automation workflows
   - Continuous validation for PRs to `main` (planning & development)
   - Release automation for creating and publishing releases (snapshot-based)
 - What automation owns vs humans
