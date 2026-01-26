@@ -2,7 +2,7 @@
 
 > **This document has been deprecated.**
 >
-> The canonical version is now at [deprecated/API_Release_Guidelines.md](deprecated/API_Release_Guidelines.md).
+> The original document has been moved to [deprecated/API_Release_Guidelines.md](deprecated/API_Release_Guidelines.md).
 >
 > For current release process documentation, see the [release-process/](release-process/) folder, starting with:
 > - [release-process/terminology.md](release-process/terminology.md) for key concepts

@@ -97,8 +97,6 @@ This documentation explains **how to work with the automation-bot assisted relea
 - **Readiness** defines *quality and maturity gates*
 - **Automation** enforces rules and produces repeatable release artifacts
 
-These parts are intentionally separated but work together.
-
 ---
 
 ## Transitional and deprecated documents

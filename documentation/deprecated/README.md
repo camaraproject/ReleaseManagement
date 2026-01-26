@@ -2,7 +2,7 @@
 
 This folder contains superseded documents that are preserved for reference and link stability.
 
-These documents were part of the original CAMARA release process documentation. They have been replaced by the new metadata-driven release workflow documentation.
+These documents were part of the original CAMARA release process documentation. They have been replaced by the new metadata-driven approach.
 
 ## Deprecated Documents
 

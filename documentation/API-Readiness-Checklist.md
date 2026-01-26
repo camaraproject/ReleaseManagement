@@ -2,7 +2,7 @@
 
 > **This document has been deprecated.**
 >
-> The canonical version is now at [deprecated/API-Readiness-Checklist.md](deprecated/API-Readiness-Checklist.md).
+> The original document has been moved to [deprecated/API-Readiness-Checklist.md](deprecated/API-Readiness-Checklist.md).
 >
 > For the current readiness documentation, see [readiness/api-readiness-checklist.md](readiness/api-readiness-checklist.md).
 
