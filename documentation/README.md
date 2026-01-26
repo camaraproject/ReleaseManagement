@@ -12,7 +12,7 @@ This documentation describes the **CAMARA release process** for API repositories
 - predictable automation and validation
 - safe, repeatable release attempts
 
-The **source of truth** for releases is always the repository itself (metadata files, branches, and tags). 
+The **source of truth** for releases is always the repository itself (metadata files, branches, and tags).
 
 This documentation explains **how to work with the automation-bot assisted release process**.
 
@@ -34,7 +34,7 @@ This documentation explains **how to work with the automation-bot assisted relea
 - Get a high-level overview of how releasing an API Repository in CAMARA
   → [release-process/overview.md](release-process/overview.md)
 
-### ...plan or declare a release
+### ...plan and prepare a release
 
 - Understand the release lifecycle from planning to publication
   → [release-process/lifecycle.md](release-process/lifecycle.md)
@@ -45,12 +45,7 @@ This documentation explains **how to work with the automation-bot assisted relea
 - Prepare or update `release-plan.yaml`
   → [metadata/release-plan.md](metadata/release-plan.md)
 
-### ...fix a validation error during planning or development
-
-- Understand why CI validation failed or a PR is blocked on `main`
-  → [metadata/validation-and-freeze.md](metadata/validation-and-freeze.md)
-
-### ...understand release automation behavior
+### ...create a release
 
 - What automation does (and does not do)
   → [automation/automation-overview.md](automation/automation-overview.md)
@@ -64,6 +59,14 @@ This documentation explains **how to work with the automation-bot assisted relea
 - **(Release Management)** How to review the Release PR and publish the draft release
   → [automation/triggers-and-entry-points.md](automation/triggers-and-entry-points.md)
 
+### ...check API readiness
+
+- Understand the API Readiness Checklist
+  → [readiness/api-readiness-checklist.md](readiness/api-readiness-checklist.md)
+
+- Understand the readiness model behind API releases
+  → [readiness/readiness-model.md](readiness/readiness-model.md)
+
 ### ...recover from an unsuccessful release attempt
 
 - Understand reasons why a started release attempt needs to be abandoned
@@ -72,13 +75,10 @@ This documentation explains **how to work with the automation-bot assisted relea
 - Recover safely from an abandoned or unsuccessful release attempt
   → [automation/failure-and-recovery.md](automation/failure-and-recovery.md)
 
-### ...check API readiness
+### ...fix a validation error during planning or development
 
-- Understand the readiness model behind API releases
-  → [readiness/readiness-model.md](readiness/readiness-model.md)
-
-- Understand the API Readiness Checklist
-  → [readiness/api-readiness-checklist.md](readiness/api-readiness-checklist.md)
+- Understand why CI validation failed or a PR is blocked on `main`
+  → [metadata/validation-and-freeze.md](metadata/validation-and-freeze.md)
 
 ### ...understand roles and responsibilities
 
@@ -93,7 +93,7 @@ This documentation explains **how to work with the automation-bot assisted relea
 ## How the pieces fit together
 
 - **Release process** describes *what needs to happens and when*
-- **Metadata** describes the *intended target* and *records the result* of the release process
+- **Metadata** describes the *target* and the *result* of the release process
 - **Readiness** defines *quality and maturity gates*
 - **Automation** enforces rules and produces repeatable release artifacts
 
@@ -108,14 +108,6 @@ During migration, the following documents are **deprecated** and replaced by stu
 - `CHANGELOG_TEMPLATE.md`
 
 The old documents are moved to the deprecated folder. See [deprecated/README.md](deprecated/README.md) for details.
-
----
-
-## Migration status
-
-- The metadata-driven release process is being rolled out incrementally
-- Legacy documents are kept temporarily to avoid breaking links
-- Over time, the documents in this folder become the authoritative reference
 
 ---
 
