@@ -7,12 +7,14 @@ It explains how the release process works, how metadata is used, and where to go
 
 This documentation describes the **CAMARA release process** for API repositories, with a focus on:
 
-- a metadata-driven release workflow
+- a metadata-driven approach
 - clear separation between development and release preparation
 - predictable automation and validation
 - safe, repeatable release attempts
 
-The **source of truth** for releases is always the repository itself (metadata files, branches, and tags). This documentation explains *how to work with that system*.
+The **source of truth** for releases is always the repository itself (metadata files, branches, and tags). 
+
+This documentation explains **how to work with the automation-bot assisted release process**.
 
 ## What this documentation is not
 
@@ -26,10 +28,10 @@ The **source of truth** for releases is always the repository itself (metadata f
 
 ### ...understand the basics
 
-- Understand core terms like *release*, *release tag*, and *API version*
+- Understand terms like *release*, *release tag*, and *API version*
   → [release-process/terminology.md](release-process/terminology.md)
 
-- Get a high-level overview of how releases work in CAMARA
+- Get a high-level overview of how releasing an API Repository in CAMARA
   → [release-process/overview.md](release-process/overview.md)
 
 ### ...plan or declare a release
@@ -90,8 +92,8 @@ The **source of truth** for releases is always the repository itself (metadata f
 
 ## How the pieces fit together
 
-- **Release process** describes *what happens and when*
-- **Metadata** describes *declared intent* and *recorded outcomes*
+- **Release process** describes *what needs to happens and when*
+- **Metadata** describes the *intended target* and *records the result* of the release process
 - **Readiness** defines *quality and maturity gates*
 - **Automation** enforces rules and produces repeatable release artifacts
 
@@ -101,13 +103,13 @@ These parts are intentionally separated but work together.
 
 ## Transitional and deprecated documents
 
-During migration, some legacy documents are still present for link stability:
+During migration, the following documents are **deprecated** and replaced by stubs for link stability:
 
 - `API-Readiness-Checklist.md`
 - `API_Release_Guidelines.md`
 - `CHANGELOG_TEMPLATE.md`
 
-These documents are **deprecated** and replaced by the documentation in this folder. See [deprecated/README.md](deprecated/README.md) for details.
+The old documents are moved to the deprecated folder. See [deprecated/README.md](deprecated/README.md) for details.
 
 ---
 
