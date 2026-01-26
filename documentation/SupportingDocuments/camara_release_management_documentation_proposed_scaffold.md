@@ -21,7 +21,7 @@ The following constraints are explicitly incorporated into the structure:
   - Many have inbound links (from issues, wikis, presentations)
   - They must either:
     - stay in place unchanged, or
-    - be replaced by **short deprecation stubs** pointing to their new location
+    - be replaced by **document stubs** replacing and pointing to the deprecated document in their new location (the deprecated/ folder).
 
 - **No hard breaks during migration**
 
@@ -98,7 +98,7 @@ For documents that currently live directly under `documentation/`:
 - Original file is replaced with a short Markdown file
 - Content:
   - Deprecation notice
-  - Link to new canonical document under `deprecated/`
+  - Link to old document moved under `deprecated/`
 
 This avoids breaking inbound links while making status explicit.
 
@@ -106,7 +106,7 @@ This avoids breaking inbound links while making status explicit.
 
 ### 2. `deprecated/` folder role
 
-- Acts as the **canonical archive** of superseded material
+- Acts as the **archive** of superseded material
 - Is explicitly linked from the new `README.md`
 - Makes deprecation intentional and visible
 - Prevents legacy documents from being silently lost
