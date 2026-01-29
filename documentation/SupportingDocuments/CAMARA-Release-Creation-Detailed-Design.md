@@ -146,7 +146,7 @@ These refinements are **compatible extensions** to the concept. A change request
 
 **Principle:** Release Issues are **workflow-managed system artifacts**.
 
-- Created automatically by automation (via `/sync-issue`)
+- Created automatically by automation
 - Updated automatically when state changes
 - Used as UI, command surface, and audit trail
 - **Not** manually created or adopted by the workflow
@@ -302,43 +302,38 @@ Labels use a single `release-state:` namespace to ensure mutual exclusivity and 
 
 | Command | Meaning | Allowed in State | Resulting State |
 |---------|---------|----------------|-----------------|
-| `/sync-issue` | Synchronize Release Issue with current derived state | Any | Reflects derived state |
 | `/create-snapshot` | Validate current HEAD, create snapshot + Release PR | PLANNED only | SNAPSHOT ACTIVE (on success) |
 | `/discard-snapshot <reason>` | Discard the active snapshot | SNAPSHOT ACTIVE only | PLANNED |
 | `/delete-draft <reason>` | Delete draft release before publication | DRAFT READY only | PLANNED |
 
 **Command semantics:**
-- `/sync-issue` creates the Release Issue if state is PLANNED and no issue exists; updates labels and sections when state changes; idempotent and safe to run multiple times
 - `/create-snapshot` validates **current HEAD at execution time**. If validation fails, no snapshot is created and state remains PLANNED. Validation errors are reported in the bot response.
 - `/discard-snapshot` and `/delete-draft` require a reason (for audit trail)
 - Commands fail with clear explanation if run in the wrong state
 
-### 3.3.1 `/sync-issue` Command Details
+### 3.3.1 Keeping the Release Issue in Sync
 
-**Purpose:** Synchronize the Release Issue with the currently derived state from repository artifacts.
+The Release Issue is a **projection** of repository state. It never defines state; it mirrors it.
 
-**Behavior:**
-- Create Release Issue if state is PLANNED and no issue exists
-- Update labels and issue sections when derived state changes
-- Set state to CANCELLED if `target_release_type: none`
+**Guarantee:** Whenever a release is planned or changes state, the Release Issue will reflect the current state derived from repository artifacts. Users do not need to trigger or manage this.
 
-**Constraints:**
-- Idempotent — safe to run multiple times
-- Does NOT create, delete, or modify branches, tags, or releases
-- Does NOT rely on issue-stored state
+**What this means for users:**
+- A Release Issue exists when a release is planned
+- Labels always reflect the current derived state
+- To change the release state, change repository artifacts (`release-plan.yaml`, branches)
+- The issue updates automatically — no user action required
 
-**Exposure:**
-- Automation-first (called after `release-plan.yaml` changes are merged)
-- Available as advanced/recovery command for manual sync
+**Implementation Note (Non-normative):**
+The release automation workflow synchronizes the Release Issue when triggered by workflow dispatch or merged changes to `release-plan.yaml`.
 
 ### 3.4 State Transitions
 
 | From | Command / Event | To | Notes |
 |------|-----------------|-----|-------|
-| (none) | `release-plan.yaml` configured | PLANNED | Via `/sync-issue` — creates Release Issue |
+| (none) | `release-plan.yaml` configured | PLANNED | Automation creates Release Issue |
 | PLANNED | `/create-snapshot` (success) | SNAPSHOT ACTIVE | Validates HEAD, creates snapshot + Release PR |
 | PLANNED | `/create-snapshot` (failure) | PLANNED | Validation failed; errors shown |
-| PLANNED | `target_release_type: none` | CANCELLED | Via `/sync-issue` — updates labels |
+| PLANNED | `target_release_type: none` | CANCELLED | Automation updates labels |
 | SNAPSHOT ACTIVE | `/discard-snapshot <reason>` | PLANNED | Reason required |
 | SNAPSHOT ACTIVE | Merge Release PR | DRAFT READY | |
 | DRAFT READY | `/delete-draft <reason>` | PLANNED | Reason required |
@@ -386,11 +381,20 @@ The Release Issue is the command surface and audit trail. Closure behavior depen
 
 | State | Issue Close Allowed? | System Reaction |
 |-------|---------------------|-----------------|
-| PLANNED | ⚠️ Manual | Automation does NOT auto-close; humans close manually |
+| PLANNED | ✅ Allowed | Closing has no semantic effect; issue treated as historical |
 | SNAPSHOT ACTIVE | ❌ No | Auto-reopened with explanation |
 | DRAFT READY | ❌ No | Auto-reopened with explanation |
 | PUBLISHED | ✅ Yes | Closes normally (automatic after publication) |
 | CANCELLED | ✅ Yes | Humans close manually; already terminal |
+
+**Closing in PLANNED State:**
+
+Closing a workflow-owned Release Issue in PLANNED state:
+- Does **not** cancel the planned release
+- Treats the issue as **historical**
+- Does not block future release automation
+
+Release intent remains derived only from `release-plan.yaml`. Closing the issue is a UI choice, not a state transition.
 
 **CANCELLED State Handling:**
 
@@ -410,7 +414,7 @@ When `target_release_type` becomes `none` in `release-plan.yaml`:
 If a release was accidentally cancelled (via `target_release_type: none`):
 1. Update `release-plan.yaml` to set `target_release_type` to the desired value
 2. Merge the PR to the base branch
-3. Run `/sync-issue` to update the Release Issue state to PLANNED
+3. Automation updates the Release Issue state to PLANNED
 
 ### 3.8 Snapshot Lifecycle
 
@@ -422,6 +426,25 @@ When a snapshot is discarded:
 5. Maintainer can run `/create-snapshot` again
 
 **Discarding snapshots is normal, not failure.** The Release Issue tracks all attempts.
+
+### 3.9 Release Issue Recreation
+
+When a Release Issue is closed or doesn't exist, automation creates a new one under specific conditions.
+
+**Rules:**
+- Creates new Release Issue **only if**:
+  - Derived state is PLANNED, and
+  - No open workflow-owned Release Issue exists for this release
+- Closed Release Issues are preserved as history
+- Automation never creates duplicate open issues for the same planned release
+
+**Flow:**
+1. Human closes Release Issue in PLANNED state
+2. Issue remains closed (historical)
+3. When the release automation workflow next runs:
+   - State = PLANNED (from `release-plan.yaml`)
+   - No open Release Issue exists
+4. Automation creates new Release Issue
 
 ---
 
@@ -771,7 +794,7 @@ The release was cancelled due to `target_release_type: none` in `release-plan.ya
 **If this cancellation was accidental:**
 1. Update `release-plan.yaml` to set `target_release_type` to the desired value
 2. Merge the PR to the base branch
-3. Run `/sync-issue` to restore PLANNED state
+3. Automation will restore PLANNED state
 ```
 
 **When `/delete-draft` succeeds (DRAFT READY → PLANNED):**
@@ -791,7 +814,7 @@ This is a normal recovery action when issues are found before publication.
 - `/create-snapshot` to create a new release attempt
 ```
 
-**When automation creates a Release Issue (via `/sync-issue`):**
+**When automation creates a Release Issue:**
 
 ```markdown
 ## 📋 Release Issue Created
@@ -813,6 +836,23 @@ This Release Issue was created automatically due to changes in `release-plan.yam
 
 > **Note:** This message provides traceability (linking to the triggering PR) without encoding business rules in prose. It avoids attributing creation to a specific field change.
 
+**When a Release Issue is closed in PLANNED state:**
+
+```markdown
+## 📋 Release Issue Closed
+
+This Release Issue tracked a planned release derived from `release-plan.yaml`.
+
+**Closing this issue does not cancel the planned release.**
+
+---
+
+**Options:**
+- **Accidental closure?** Reopen this issue to continue using it
+- **Fresh start needed?** Keep this issue closed; automation will create a new Release Issue when needed
+- **No release planned for now?** Set `target_release_type: none` in `release-plan.yaml`
+```
+
 ---
 
 ## 6. Permissions and Enforcement
@@ -821,7 +861,6 @@ This Release Issue was created automatically due to changes in `release-plan.yam
 
 | Command / Action | Who May Execute |
 |---------|-----------------|
-| `/sync-issue` | Automation, Codeowners (recovery only) |
 | `/create-snapshot` | Maintainers, Codeowners (write/maintain/admin on repo) |
 | `/discard-snapshot` | Maintainers, Codeowners, Release Management team |
 | `/delete-draft` | Maintainers, Codeowners, Release Management team |
@@ -993,7 +1032,6 @@ If implemented later, they must follow the same principles:
 
 | Command | Allowed States | Effect |
 |---------|----------------|--------|
-| `/sync-issue` | Any | Creates or updates Release Issue to reflect current derived state |
 | `/create-snapshot` | PLANNED | Validates HEAD, creates snapshot + release-review branches, opens PR |
 | `/discard-snapshot <reason>` | SNAPSHOT ACTIVE | Deletes snapshot branch, keeps release-review branch, returns to PLANNED |
 | `/delete-draft <reason>` | DRAFT READY | Deletes draft release and snapshot branch, returns to PLANNED |
