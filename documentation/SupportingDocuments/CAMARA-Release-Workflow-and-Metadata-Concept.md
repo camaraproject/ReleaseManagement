@@ -20,7 +20,7 @@ This concept document establishes an automated release process for CAMARA that a
 The process achieves these objectives through:
 
 - Structured **metadata files (in YAML)** as authoritative source for release planning and status
-- Dedicated **Release Issue** to trigger and track release attempts and provide information on release state progress (replacing the manual Wiki-based release tracker)
+- Dedicated **Release Issue** to track release attempts, provide a command surface, and provide information on release state progress (replacing the manual Wiki-based release tracker)
 - Dedicated **snapshot branches per release attempt** with automated preparation and validation
 - **CI enforcement** on PRs to `main` ensuring correctness before merge
 - **Branch protection** restricting snapshot branch changes to automation only
@@ -42,7 +42,7 @@ The process achieves these objectives through:
 | Snapshot branch        | Automation-owned branch per release attempt (e.g., `release-snapshot/r4.1-abc1234`). Contains mechanical changes. |
 | Release-review branch          | Human-editable branch for reviewable content (e.g., `release-review/r4.1-abc1234`). Codeowners commit directly; others submit PRs from forks. Eventually merged into snapshot branch via Release PR. |
 | Release PR              | Pull request from release-review branch to snapshot branch to finalize documentation. |
-| Release Issue           | GitHub issue for a specific release (rX.Y) to trigger and track snapshot attempts. Commands (`/create-snapshot`, etc.) are issued here. |
+| Release Issue           | Workflow-managed GitHub issue for a release (rX.Y). Tracks release attempts and provides the command surface. Reflects release intent declared in `release-plan.yaml`. |
 
 ## Metadata File Format
 
@@ -152,7 +152,7 @@ apis:
 
 ### Step 2: Automated Snapshot Creation
 
-Upon triggering the release (via `/create-snapshot` slash command in a Release Issue - maintainers+ can trigger):
+When snapshot creation is initiated (via `/create-snapshot` command in the Release Issue):
 
 - Validation runs against current HEAD before any branches are created
 - A snapshot branch is created (e.g., `release-snapshot/r4.1-abc1234`) with SHA-based naming
@@ -391,7 +391,7 @@ Each release attempt gets its own **temporary** snapshot branch (SHA-based namin
 2. **Preparation**: Automation sets versions, updates metadata on snapshot branch; creates release-review branch for CHANGELOG
 3. **Review**: Release PR merges reviewable content from release-review branch into snapshot branch
 4. **Draft**: After PR merge, draft release is created
-5. **Publication**: Human publishes → tag `r4.1` is created
+5. **Publication**: Codeowner publishes → tag `r4.1` is created
 6. **Deletion**: After tagging, snapshot branch is deleted (the tag preserves the release)
 
 ```
