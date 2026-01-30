@@ -144,7 +144,7 @@ These refinements are **compatible extensions** to the concept. A change request
 
 ### 2.1.1 Release Issue Ownership
 
-**Principle:** Release Issues are **workflow-managed system artifacts**.
+**Principle:** Release Issues are **workflow-managed GitHub artifacts**.
 
 - Created automatically by automation
 - Updated automatically when state changes
