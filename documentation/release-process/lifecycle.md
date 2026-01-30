@@ -45,7 +45,7 @@ This phase is ongoing until you decide to release.
 
 **What you see:**
 - Automation validates your repository
-- If successful: Release PR opens, issue shows "SNAPSHOT ACTIVE"
+- If successful: Release PR created, issue shows "SNAPSHOT ACTIVE"
 - If failed: Error message with what to fix
 
 **What can block you:**
@@ -59,7 +59,7 @@ This phase is ongoing until you decide to release.
 **What you do:**
 1. Review the Release PR (CHANGELOG, README)
 2. Refine documentation if needed
-3. Approve when satisfied
+3. Ensure required approvals are in place (codeowner and release reviewer)
 4. Merge the Release PR
 
 **What you see:**

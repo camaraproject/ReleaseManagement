@@ -1,4 +1,4 @@
-# CAMARA Release Management Documentation
+# CAMARA Release Process Documentation
 
 ## Quick Start
 

@@ -18,8 +18,8 @@
 ## Command Permissions
 
 | Command | Who may execute |
-|---------|-----------------|
-| `/create-snapshot` | Codeowner, Maintainer |
-| `/discard-snapshot` | Codeowner, Maintainer, Release manager |
-| `/delete-draft` | Codeowner, Maintainer, Release manager |
+|---------|----------------|
+| `/create-snapshot` | Codeowner |
+| `/discard-snapshot` | Codeowner, Release manager |
+| `/delete-draft` | Codeowner, Release manager |
 | Publish release | Codeowner |

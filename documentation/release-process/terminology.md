@@ -25,7 +25,7 @@ These are independent numbering systems.
 | `public-release` | Production-ready |
 | `maintenance-release` | Patch to existing release |
 
-**API status:** The maturity level of an individual API: `draft` → `alpha` → `rc` → `public`
+**API status:** The development level of an individual API: `draft` → `alpha` → `rc` → `public`
 
 ## Release Artifacts
 

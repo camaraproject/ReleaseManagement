@@ -6,7 +6,7 @@ This document explains the generated `release-metadata.yaml` file.
 
 The `release-metadata.yaml` file is the **authoritative record** for a release:
 
-- Records the exact parameters of a release attempt
+- Records the exact configuration of a release
 - Captures the source commit SHA
 - Contains calculated API versions with extensions
 - Provides resolved dependency information
