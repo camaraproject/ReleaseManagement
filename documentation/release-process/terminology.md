@@ -35,7 +35,7 @@ A repository may contain multiple APIs. Each release of the repository includes 
 - Release tag `r4.1` may contain API version `3.2.0-rc.2`
 - Release tag `r4.2` may contain API version `3.2.0` (public)
 
-The release tag increments with each release attempt. The API version follows semantic versioning rules and reflects the API's maturity.
+The release tag increments with each release release. The API version follows semantic versioning rules and reflects the API's maturity.
 
 ### Release track and meta-release
 
