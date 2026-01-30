@@ -355,7 +355,7 @@ The release automation workflow synchronizes the Release Issue when triggered by
 stateDiagram-v2
     [*] --> PLANNED : release-plan.yaml configured
     PLANNED --> SNAPSHOT_ACTIVE : /create-snapshot (success)
-    PLANNED --> CANCELLED : "target_release_type: none"
+    PLANNED --> CANCELLED : target_release_type#colon; none
     SNAPSHOT_ACTIVE --> PLANNED : /discard-snapshot
     SNAPSHOT_ACTIVE --> DRAFT_READY : Merge Release PR
     DRAFT_READY --> PLANNED : /delete-draft
