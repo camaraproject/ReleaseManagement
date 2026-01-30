@@ -85,7 +85,7 @@ A **Release Issue** is a GitHub issue dedicated to tracking one release (`rX.Y`)
 
 **Important:** The Release Issue is *not* the source of truth. All authoritative state is derived from repository artifacts (branches, tags, releases). The issue reflects and tracks that state.
 
-Each Release Issue has a state label (`release-state: open`, `release-state: snapshot-active`, etc.) that reflects the current status.
+Each Release Issue has a state label (`release-state: open`, `release-state: snapshot-active`, etc.) that reflects the current state.
 
 ### Release states
 
