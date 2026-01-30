@@ -18,12 +18,13 @@ Maintenance releases provide patches to existing public releases.
 | Version change | Any | Patch only |
 | Release type | Any | `maintenance-release` |
 
-## Process
+## Key Differences in the Process
 
-The release process is identical to regular releases, but:
+Compared to a regular release:
 
-1. Work on the `maintenance-rX` branch instead of `main`
-2. Set `target_release_type: maintenance-release` in `release-plan.yaml`
-3. Increment patch version only (e.g., `1.0.0` → `1.0.1`)
+- Development and fixes are done on a maintenance branch (`maintenance-rX`) rather than `main`
+- The release is declared with `target_release_type: maintenance-release`
+- Only patch versions are produced (e.g., `1.0.0` → `1.0.1`)
+
 
 → [Full release process](lifecycle.md)

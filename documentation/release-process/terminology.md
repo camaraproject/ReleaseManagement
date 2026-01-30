@@ -29,7 +29,7 @@ These are independent numbering systems.
 
 ## Release Artifacts
 
-**Release Issue:** GitHub issue used to trigger and track a release.
+**Release Issue:** Workflow-managed GitHub issue used to trigger and track a release.
 
 **Release PR:** Pull request for reviewing release documentation.
 
@@ -45,7 +45,7 @@ These are independent numbering systems.
 | SNAPSHOT ACTIVE | Release PR under review |
 | DRAFT READY | Draft awaiting publication |
 | PUBLISHED | Release complete |
-| CANCELLED | Release abandoned |
+| CANCELLED | Release no longer planned |
 
 ## Metadata Files
 

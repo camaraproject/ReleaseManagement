@@ -1,6 +1,6 @@
 # Release Types
 
-Reference for CAMARA release types and their constraints.
+This page describes release types and constraints. Guidance on how to release is in [lifecycle.md](lifecycle.md).
 
 ## Release Types
 
@@ -32,7 +32,7 @@ Reference for CAMARA release types and their constraints.
 Maintenance releases provide patches to existing public releases:
 
 - Bug fixes and security patches only
-- Released from `maintenance-rX` branch
+- Based on a maintenance branch (`maintenance-rX`)
 - Patch version increment only (e.g., `1.0.0` → `1.0.1`)
 
 → [Maintenance release details](maintenance-releases.md)

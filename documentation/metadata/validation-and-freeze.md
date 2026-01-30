@@ -1,46 +1,54 @@
-# Validation and Freeze Behavior
+# Validation and Configuration Lock
 
-This document explains what validation checks apply and when changes are blocked.
+This document explains which validation checks apply in different situations and when release configuration changes are blocked.
 
-## Validation Points
+## When Validation Runs
 
-| Context | When | Purpose |
-|---------|------|---------|
-| **Continuous validation** | Every PR to `main` | Ensure changes meet CAMARA guidelines |
-| **Preflight validation** | `/create-snapshot` | Verify release readiness |
+Validation always checks repository content against the declared intent in `release-plan.yaml`. Which checks apply depends on what is being changed or triggered.
 
-## What Is Checked
+## Pull Requests Changing `release-plan.yaml`
 
-| Check | Description |
-|-------|-------------|
-| Schema validation | `release-plan.yaml` follows expected schema |
-| API file existence | APIs at `alpha` or higher must have files |
-| API compliance | Specifications follow CAMARA design guidelines |
-| Version format | `info.version` fields are valid (or `wip`) |
-| Status alignment | API statuses match declared `target_release_type` |
-| Linting | MegaLinter and Spectral rules pass |
+When a pull request modifies `release-plan.yaml`, validation ensures that:
 
-## Preflight-Only Checks
+* The file follows the expected schema
+* The declared release intent is internally consistent
+* The repository content already matches the newly declared intent
 
-| Check | Description |
-|-------|-------------|
-| No `draft` APIs | All APIs must be at least `alpha` |
-| Dependencies exist | Declared dependency releases are published |
-| No active snapshot | Only one snapshot per release at a time |
+This makes changes to release intent explicit and reviewable.
 
-## Configuration Freeze
+## Pull Requests to `main` (No Changes to `release-plan.yaml`)
+
+When a pull request does not modify `release-plan.yaml`, validation ensures that:
+
+* Repository content remains compatible with the currently declared release intent
+* API definitions, tests, and documentation do not violate declared API statuses
+* Version placeholders and formatting remain valid
+
+Implementation changes are free to evolve, as long as they stay within the declared intent.
+
+
+## Creating a Snapshot
+
+When creating a snapshot (via `/create-snapshot`), validation ensures that:
+
+* The current HEAD of the base branch satisfies the declared release intent
+* All required dependencies are published
+* No other snapshot is active for the same release
+
+No new rules are introduced at this stage. This is a final consistency check before creating an immutable snapshot.
+
+
+## Configuration Lock During Active Snapshot
 
 While a snapshot is active, changes to `release-plan.yaml` for that release are blocked.
 
-**Frozen:** `target_release_tag`, `target_release_type`, `target_api_status` for the active release
+This applies only to release configuration. Normal development on `main` can continue.
 
-**Not frozen:** API specification content, test files, documentation, configuration for other releases
-
-**Released when:** Snapshot is discarded, draft is deleted, or release is published
+Configuration becomes editable again when the snapshot is discarded, the draft is deleted, or the release is published.
 
 ## Post-Public-Release Lock
 
-After a public release, APIs at the released version are locked. You must update `target_api_version` in `release-plan.yaml` before making changes.
+After a public release, APIs at the released version are locked to preserve release integrity. Further changes require updating `target_api_version` in `release-plan.yaml`.
 
 ## Common Validation Errors
 

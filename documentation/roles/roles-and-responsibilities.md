@@ -4,9 +4,9 @@
 
 | Role | Permissions |
 |------|-------------|
-| Codeowner | Update `release-plan.yaml`, trigger releases, publish |
-| Maintainer | Contribute to release content, review |
-| Contributor | Submit PRs to release-review branch |
+| Codeowner | Update `release-plan.yaml` via pull requests, trigger releases, publish |
+| Maintainer | Contribute to and review release content |
+| Contributor | Submit PRs for release-review content |
 
 ## Release Management Roles
 
@@ -20,6 +20,6 @@
 | Command | Who may execute |
 |---------|-----------------|
 | `/create-snapshot` | Codeowner, Maintainer |
-| `/discard-snapshot` | Codeowner, Maintainer, Release Management |
-| `/delete-draft` | Codeowner, Maintainer, Release Management |
+| `/discard-snapshot` | Codeowner, Maintainer, Release manager |
+| `/delete-draft` | Codeowner, Maintainer, Release manager |
 | Publish release | Codeowner |

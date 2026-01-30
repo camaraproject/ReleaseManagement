@@ -50,7 +50,9 @@ Commands are posted as comments on the Release Issue.
 | SNAPSHOT ACTIVE | Release PR exists | `release-state: snapshot-active` |
 | DRAFT READY | Draft awaiting publish | `release-state: draft-ready` |
 | PUBLISHED | Complete | `release-state: published` |
-| CANCELLED | Abandoned | `release-state: cancelled` |
+| CANCELLED | Release no longer planned | `release-state: cancelled` |
+
+If a release is no longer intended, it is cancelled by setting `target_release_type: none` in `release-plan.yaml`. This is outside the normal release flow.
 
 ## Branch Model
 

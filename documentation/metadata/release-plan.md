@@ -4,7 +4,8 @@ This document explains how to use `release-plan.yaml` to declare your release in
 
 ## Purpose
 
-The `release-plan.yaml` file declares your **intent** for the next release. It is edited by codeowners on `main` and validated by CI.
+The `release-plan.yaml` file declares your **intent** for the next release. It is edited by codeowners on `main` and validated automatically.
+
 
 ## Structure
 
@@ -31,10 +32,11 @@ apis:
 
 | Field | Description |
 |-------|-------------|
-| `release_track` | `none`, `independent`, or `meta-release` |
+| `release_track` | `none`, `independent`, or `meta-release` (`none` = no release planned) |
 | `meta_release` | Meta-release cycle (e.g., `Fall26`) — required if track is `meta-release` |
 | `target_release_tag` | Release tag (e.g., `r4.1`) |
-| `target_release_type` | `pre-release-alpha`, `pre-release-rc`, `public-release`, or `maintenance-release` |
+| `target_release_type` | `none` (no release planned), `pre-release-alpha`, `pre-release-rc`, `public-release`, `maintenance-release` |
+
 
 ## API-Level Fields
 
@@ -66,8 +68,15 @@ Use **release tags** (e.g., `r4.2`), not documentation versions.
 ## When to Update
 
 - Starting a new release cycle
-- Changing release type (alpha → RC → public)
 - Adding a new API
+- Changing release type (alpha → RC → public)
 - After a public release (to unlock APIs for next version)
 
 **Note:** While a snapshot is active, changes to `release-plan.yaml` for that release are blocked.
+
+## Full Schema Reference (Optional)
+
+For the complete, machine-readable definition of `release-plan.yaml`, including validation rules and constraints, see the full JSON schema:
+
+→ [`release-plan.schema.yaml`](../../artifacts/metadata-schemas/schemas/release-plan-schema.yaml)
+

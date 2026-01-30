@@ -48,9 +48,9 @@ apis:
 |-------|-------------|----------|
 | `src_commit_sha` | Source commit from which snapshot was created | Snapshot creation |
 | `release_tag` | Release number (e.g., `r4.1`) | Snapshot creation |
-| `release_date` | Timestamp of draft creation | Draft creation |
+| `release_date` | Timestamp when the release is finalized | Publication |
 | `api_version` | Complete version with extension (e.g., `3.2.0-rc.2`) | Snapshot creation |
-| `dependencies` | Release tags with resolved versions | Snapshot creation |
+| `dependencies` | Dependency release tags with resolved semantic versions | Snapshot creation |
 
 ## Differences from `release-plan.yaml`
 
@@ -60,3 +60,10 @@ apis:
 | Location | `main` branch | Snapshot branch / tag |
 | Edited by | Codeowners | Automation |
 | Version extensions | Not included | Calculated |
+
+## Full Schema Reference (Optional)
+
+For the complete, machine-readable definition of `release-metadata.yaml`, see the full JSON schema:
+
+→ [`release-metadata.schema.yaml`](../../artifacts/metadata-schemas/schemas/release-metadata-schema.yaml)
+
