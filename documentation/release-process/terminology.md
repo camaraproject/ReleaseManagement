@@ -41,7 +41,7 @@ These are independent numbering systems.
 
 | State | Meaning |
 |-------|---------|
-| OPEN | No active release attempt |
+| PLANNED | Release intent declared in release-plan.yaml |
 | SNAPSHOT ACTIVE | Release PR under review |
 | DRAFT READY | Draft awaiting publication |
 | PUBLISHED | Release complete |

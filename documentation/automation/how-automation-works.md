@@ -36,7 +36,7 @@ When you trigger a release, automation creates:
 
 | Command | Purpose | When allowed |
 |---------|---------|--------------|
-| `/create-snapshot` | Start release attempt | OPEN state |
+| `/create-snapshot` | Start release attempt | PLANNED state |
 | `/discard-snapshot <reason>` | Abandon attempt | SNAPSHOT ACTIVE state |
 | `/delete-draft <reason>` | Delete before publish | DRAFT READY state |
 
@@ -46,7 +46,7 @@ Commands are posted as comments on the Release Issue.
 
 | State | Meaning | Label |
 |-------|---------|-------|
-| OPEN | Ready to start | `release-state: open` |
+| PLANNED | Ready to start | `release-state: planned` |
 | SNAPSHOT ACTIVE | Release PR exists | `release-state: snapshot-active` |
 | DRAFT READY | Draft awaiting publish | `release-state: draft-ready` |
 | PUBLISHED | Complete | `release-state: published` |
