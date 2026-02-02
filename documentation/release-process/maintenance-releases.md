@@ -1,20 +1,30 @@
 # Maintenance Releases
 
-*This document is a placeholder. Content to be added.*
+Maintenance releases provide patches to existing public releases.
 
-## Purpose
+## When to Use
 
-Explain the maintenance / patch release model.
+| Use maintenance release | Don't use |
+|------------------------|-----------|
+| Critical bug fix | New features |
+| Security vulnerability | Enhancements |
+| Commonalities alignment (patch) | Breaking changes |
 
-## Outline
+## How They Differ
 
-- What qualifies as a maintenance release
-- Maintenance branches vs `main`
-- Metadata implications
-- When *not* to use maintenance releases
+| Aspect | Regular Release | Maintenance Release |
+|--------|-----------------|---------------------|
+| Source branch | `main` | `maintenance-rX` |
+| Version change | Any | Patch only |
+| Release type | Any | `maintenance-release` |
 
-## See also
+## Key Differences in the Process
 
-- [../README.md](../README.md) for documentation index
-- [release-types.md](release-types.md) for release type overview
-- [../automation/snapshot-and-release-branches.md](../automation/snapshot-and-release-branches.md) for branching details
+Compared to a regular release:
+
+- Development and fixes are done on a maintenance branch (`maintenance-rX`) rather than `main`
+- The release is declared with `target_release_type: maintenance-release`
+- Only patch versions are produced (e.g., `1.0.0` → `1.0.1`)
+
+
+→ [Full release process](lifecycle.md)
