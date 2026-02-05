@@ -1,5 +1,7 @@
 # CAMARA Release Process Documentation
 
+> **Note:** This documentation and the described process are work in progress. For API repository releases during the Spring26 meta-release, please continue to use the documents in the [deprecated section](deprecated/README.md).
+
 ## Quick Start
 
 **I need to release an API** → [Release Process Guide](release-process/lifecycle.md)
