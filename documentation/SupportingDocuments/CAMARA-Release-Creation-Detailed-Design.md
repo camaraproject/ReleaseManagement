@@ -836,6 +836,66 @@ This Release Issue was created automatically due to changes in `release-plan.yam
 
 > **Note:** This message provides traceability (linking to the triggering PR) without encoding business rules in prose. It avoids attributing creation to a specific field change.
 
+### 5.4 UX Design Decisions
+
+The following UX decisions were made based on external UX expert review (2026-02-05):
+
+#### D-002: Compact Bot Comment Format
+
+Bot comments use a compact format to reduce vertical space and improve scanability:
+
+- **Header**: Single H3 (`###`) with leading emoji and key identifier
+- **Details**: Collapsible `<details>` block for configuration (APIs, dependencies, branches)
+- **Footer**: "Valid actions" section with available commands
+
+**Rationale**: GitHub issues become unreadable with many verbose comments. Codeowners need quick "what do I do next?" view; details are available on demand.
+
+#### D-003: Issue Body vs Comments Separation
+
+| Location | Content Type | Purpose |
+|----------|--------------|---------|
+| Issue body | Persistent state | Current state, active artifacts, configuration, valid actions |
+| Comments | Timeline | Command acknowledgments, errors, state transitions, audit trail |
+
+**Rationale**: The issue body serves as the "current view" that Release Management can scan across many repos. Comments provide the audit trail but should not be the only way to learn the current state.
+
+#### D-004: Valid Actions Display
+
+Valid actions are shown in two places:
+
+1. **Issue body** (ACTIONS section): Always shows actions available in current state
+2. **Bot comments**: Each comment ends with valid next actions
+
+**Rationale**: Users need clear guidance on what to do next. Showing valid actions prevents confusion about allowed commands.
+
+#### D-005: State Display Format
+
+State is displayed using plain text with backticks for the state value:
+
+```markdown
+**State:** `planned`
+**State:** `snapshot-active`
+**State:** `draft-ready`
+```
+
+**Rationale**: Consistent, scannable format. Backticks provide visual distinction without requiring badge/label styling.
+
+#### D-006: Emoji Usage
+
+Emojis are used as a **single leading signal** in bot comment headers only:
+
+| Emoji | Meaning |
+|-------|---------|
+| ✅ | Success (snapshot created) |
+| ❌ | Failure or rejection |
+| 🗑️ | Destructive action (discard, delete) |
+| 🔄 | Reopen/resync |
+| 📋 | Issue created |
+| 📦 | Draft release created |
+| ⏳ | Processing |
+
+**Rationale**: Emojis aid quick scanning but should not clutter tables or step lists.
+
 **When a Release Issue is closed in PLANNED state:**
 
 ```markdown
