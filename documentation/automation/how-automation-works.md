@@ -14,7 +14,8 @@ When you trigger a release, automation creates:
 | Release-review branch | Your editable content | Via Release PR |
 | Release PR | Review checkpoint | Review and merge |
 | `release-metadata.yaml` | Release record | No (generated) |
-| Draft release | Pre-publication | Publish when ready |
+| Draft release | Pre-publication | Review, then publish |
+| Post-release sync PR | Syncs CHANGELOG and README to `main` | Review and merge |
 
 ## What Automation Guarantees
 
@@ -29,7 +30,8 @@ When you trigger a release, automation creates:
 |--------|-----|
 | Trigger release (`/create-snapshot`) | Codeowner |
 | Review and merge Release PR | Codeowner + Release reviewer |
-| Publish draft release | Codeowner |
+| Publish release (`/publish-release --confirm rX.Y`) | Codeowner |
+| Merge post-release sync PR | Codeowner |
 | Discard or delete if problems found | Codeowner |
 
 ## Commands Reference
@@ -39,6 +41,7 @@ When you trigger a release, automation creates:
 | `/create-snapshot` | Start release attempt | PLANNED state |
 | `/discard-snapshot <reason>` | Abandon attempt | SNAPSHOT ACTIVE state |
 | `/delete-draft <reason>` | Delete before publish | DRAFT READY state |
+| `/publish-release --confirm rX.Y` | Publish the release | DRAFT READY state |
 
 Commands are posted as comments on the Release Issue.
 

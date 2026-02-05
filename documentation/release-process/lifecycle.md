@@ -77,10 +77,13 @@ This phase is ongoing until you decide to release.
 
 **What you do:**
 1. Review the draft release in GitHub Releases
-2. Click "Publish release"
+2. Post `/publish-release --confirm rX.Y` on the Release Issue (with your release tag)
+
+> **Tip:** If you forget `--confirm`, automation shows a confirmation message with the exact command to copy.
 
 **What you see:**
 - Release tag `rX.Y` created
+- Post-release sync PR created (merge it to update `main`)
 - Release Issue closed
 
 **What can block you:**
@@ -100,12 +103,13 @@ This section is a summary only. For explanations, see the sections above.
 | `/create-snapshot` | Ready to release | Creates Release PR |
 | `/discard-snapshot <reason>` | Problem found during review | Returns to start |
 | `/delete-draft <reason>` | Problem found in draft | Returns to start |
+| `/publish-release --confirm rX.Y` | Ready to publish | Publishes the release |
 
 | State | Meaning | Next step |
 |-------|---------|-----------|
 | PLANNED | Release is planned and ready | `/create-snapshot` |
 | SNAPSHOT ACTIVE | Release PR under review | Review and merge PR |
-| DRAFT READY | Draft awaiting publication | Publish the release |
+| DRAFT READY | Draft awaiting publication | `/publish-release --confirm rX.Y` |
 | PUBLISHED | Done | — |
 
 ---
