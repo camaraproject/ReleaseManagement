@@ -1,6 +1,6 @@
-# Release Creation Process (C2) — Detailed Design (MVP)
+# CAMARA Release Process (C2-C4) — Detailed Design
 
-> **Scope:** This document details the **release creation process** for CAMARA API repositories — from triggering a release through Release PR merge and draft release creation. It covers [Issue #354: C2 Automated Release Branch Creation](https://github.com/camaraproject/ReleaseManagement/issues/354) and partially extends into [Issue #355: C3 Release Tag and Artifact Creation](https://github.com/camaraproject/ReleaseManagement/issues/355) for the draft release and manual publication steps in MVP.
+> **Scope:** This document details the **release process** for CAMARA API repositories — from triggering a release through publication and post-release automation. It covers [Issue #354: C2 Automated Release Branch Creation](https://github.com/camaraproject/ReleaseManagement/issues/354) and [Issue #355: C3 Release Tag and Artifact Creation](https://github.com/camaraproject/ReleaseManagement/issues/355) including the `/publish-release` command and post-release sync to main.
 
 ---
 
@@ -62,8 +62,10 @@ These refinements are **compatible extensions** to the concept. A change request
 4. [Detailed Design](#4-detailed-design)
 5. [Bot UX Contract](#5-bot-ux-contract)
 6. [Permissions and Enforcement](#6-permissions-and-enforcement)
-7. [Open Questions](#7-open-questions)
-8. [Future Enhancements (Post-MVP)](#8-future-enhancements-post-mvp)
+7. [Release Publication (C3)](#7-release-publication-c3)
+8. [Post-Release Automation (C4)](#8-post-release-automation-c4)
+9. [Open Questions](#9-open-questions)
+10. [Future Enhancements (Post-MVP)](#10-future-enhancements-post-mvp)
 
 ---
 
@@ -605,7 +607,7 @@ Comment: /discard-snapshot API spec bug in location-verification
 Automation:
   - Closes Release PR (not merged)
   - Deletes snapshot branch (release-snapshot/r4.1-abc1234)
-  - Keeps release-review branch (release-review/r4.1-abc1234) for reference
+  - Renames release-review branch to release-review/r4.1-abc1234-discarded (preserved for reference)
   - Updates issue: records discard reason
   - Sets label to `release-state: planned`
   - Posts status comment with next steps
@@ -635,7 +637,7 @@ Comment: /delete-draft Found critical issue in generated artifacts
 Automation:
   - Deletes draft release
   - Deletes snapshot branch
-  - Keeps release-review branch for reference
+  - Renames release-review branch to {branch}-discarded (preserved for reference)
   - Sets label to `release-state: planned`
   - Posts status comment with next steps
        ↓
@@ -644,18 +646,22 @@ Fix issues, then /create-snapshot again
 
 ### 4.9 Release Status Tracking
 
-The Release Issue maintains a snapshot history:
+The Release Issue body always shows the **active snapshot** (if any) with its key links. The comment timeline serves as the audit trail for state transitions.
+
+**MVP scope:** Active snapshot block + comment timeline. No snapshot history table.
+
+**Post-MVP (backlog):** A compact snapshot history table may be added for repositories with frequent discard/retry cycles. If implemented:
 
 ```markdown
-## Release History
+## Snapshot History (post-MVP)
 
-| Snapshot Branch | Release State | Created | Discarded | Reason | Review Branch |
-|-----------------|---------------|---------|-----------|--------|---------------|
-| `r4.1-def5678` | **Active** | 2026-01-17 | — | — | `release-review/r4.1-def5678` |
-| `r4.1-abc1234` | Discarded | 2026-01-15 | 2026-01-16 | API spec bug in location-verification | `release-review/r4.1-abc1234` |
+| Snapshot | Status | Created | Reason | Review Branch |
+|----------|--------|---------|--------|---------------|
+| `r4.1-def5678` | **Active** | 2026-01-17 | — | `release-review/r4.1-def5678` |
+| `r4.1-abc1234` | Discarded | 2026-01-15 | API spec bug | `release-review/r4.1-abc1234-discarded` |
 ```
 
-Note: Discarded snapshot branches are deleted; only release-review branches are kept for reference.
+Note: Discarded snapshot branches are deleted; release-review branches are renamed with `-discarded` suffix and preserved for reference.
 
 ---
 
@@ -896,6 +902,17 @@ Emojis are used as a **single leading signal** in bot comment headers only:
 
 **Rationale**: Emojis aid quick scanning but should not clutter tables or step lists.
 
+#### D-007: Issue Body Structure
+
+The Release Issue body has two sections:
+
+1. **Human-editable section** (top): Release highlights, descriptions, notes
+2. **Automation-managed section** (bottom): State, active links, configuration, valid actions
+
+**Machine-readable markers** (e.g., `<!-- release-automation:workflow-owned -->`, `<!-- release-automation:release-tag:rX.Y -->`) must appear **inside the automation-managed section**, never in the human-editable area.
+
+**Rationale**: Users should not accidentally edit or delete workflow markers. Clear boundary prevents marker corruption.
+
 **When a Release Issue is closed in PLANNED state:**
 
 ```markdown
@@ -924,9 +941,9 @@ This Release Issue tracked a planned release derived from `release-plan.yaml`.
 | `/create-snapshot` | Maintainers, Codeowners (write/maintain/admin on repo) |
 | `/discard-snapshot` | Maintainers, Codeowners, Release Management team |
 | `/delete-draft` | Maintainers, Codeowners, Release Management team |
-| Publish draft release | Codeowners (via GitHub Releases UI) |
+| `/publish-release` | Codeowners only (admin/maintain on repo) |
 
-Permission is enforced by automation via GitHub API checks (repository permissions or team membership). Publication is a manual action in GitHub UI, restricted to codeowners with write access.
+Permission is enforced by automation via GitHub API checks (repository permissions or team membership).
 
 ### 6.2 Branch Protection
 
@@ -953,7 +970,106 @@ When a snapshot is discarded, the associated Release PR should be by automation:
 
 ---
 
-## 7. Open Questions
+## 7. Release Publication (C3)
+
+This section describes the publication of a prepared draft release, transitioning from DRAFT READY to PUBLISHED state.
+
+### 7.1 `/publish-release` Command
+
+| Aspect | Specification |
+|--------|---------------|
+| Command | `/publish-release --confirm <tag>` |
+| Allowed state | DRAFT READY only |
+| Permission | Codeowners only (admin or maintain permission) |
+| Tag parameter | Must match the draft release tag |
+
+**Two-step confirmation flow:**
+
+Publishing is a high-impact, hard-to-revert operation. To prevent accidental publication:
+
+1. `/publish-release` (without arguments) posts a confirmation message showing:
+   - Draft release tag and URL
+   - Base commit (short SHA)
+   - The exact confirm command to copy/paste
+
+2. `/publish-release --confirm <tag>` executes the publication if `<tag>` matches the draft.
+
+### 7.2 Publication Flow
+
+When `/publish-release --confirm <tag>` is executed:
+
+1. **Validate** draft release exists for `<tag>`
+2. **Finalize metadata**: Set `release_date` to current UTC timestamp in `release-metadata.yaml`
+3. **Publish release**: Update draft to published (creates tag `rX.Y`)
+4. **Create reference tag**: `src/rX.Y` on main at `src_commit_sha`
+5. **Create sync PR**: Post-release sync PR to main (see Section 8)
+6. **Cleanup branches**: Delete snapshot branch, rename release-review branch
+7. **Close issue**: Update state to PUBLISHED, close Release Issue
+
+### 7.3 Bot Messages
+
+| Template | Purpose |
+|----------|---------|
+| `publish_confirmation.md` | Confirmation required — shows draft details and confirm command |
+| `release_published.md` | Success — release URL, reference tag, sync PR link |
+| `publish_failed.md` | Error with actionable guidance |
+
+---
+
+## 8. Post-Release Automation (C4)
+
+This section describes automated actions that occur after release publication.
+
+### 8.1 Reference Tag
+
+A reference tag marks the branch point on main for potential maintenance branch creation.
+
+| Aspect | Specification |
+|--------|---------------|
+| Format | `src/rX.Y` (e.g., `src/r4.1`) |
+| Target | `src_commit_sha` on main branch |
+| Created | During `/publish-release` execution |
+
+**Purpose:** Enables future `git checkout -b maintenance/r4 src/r4.1` without commit archaeology.
+
+### 8.2 Post-Release Sync PR
+
+Automation creates a PR to sync release artifacts back to main.
+
+| Aspect | Specification |
+|--------|---------------|
+| Branch | `post-release/rX.Y` → main |
+| Content | CHANGELOG entry, README release info section |
+| Labels | `post-release`, `automated` |
+| Review | Requests CODEOWNERS review |
+| Merge | **Human approval required** (no auto-merge) |
+
+**Rationale:** Main is the planning surface; silent bot merges can create unnoticed drift. A human merge provides an "acknowledged" signal.
+
+**Note:** The codeowner who published the release can approve and merge the sync PR (they are not the PR author).
+
+**Future enhancement (post-MVP):** Optional `/publish-release --confirm <tag> --auto-merge-sync` flag to auto-merge only if CI passes, only automation-managed files change, and branch protections allow it.
+
+### 8.3 Branch Cleanup
+
+| Branch | Action |
+|--------|--------|
+| `release-snapshot/rX.Y-{sha}` | Deleted (tag preserves content) |
+| `release-review/rX.Y-{sha}` | Renamed to `{branch}-published` |
+| `post-release/rX.Y` | Deleted by GitHub on PR merge |
+
+### 8.4 Issue Closure
+
+After successful publication:
+
+1. Update STATE section with publication timestamp and release URL
+2. Update ACTIONS section: "Release published. No further actions available."
+3. Change label to `release-state:published`
+4. Close issue with reason "completed"
+
+---
+
+## 9. Open Questions
 
 1. **Environment setup** — Who configures the release-publishing environment per repository?
 
@@ -963,11 +1079,11 @@ When a snapshot is discarded, the associated Release PR should be by automation:
 
 ---
 
-## 8. Future Enhancements (Post-MVP)
+## 10. Future Enhancements (Post-MVP)
 
 The following extensions are **explicitly out of scope for the MVP** and must not affect the core process. They are documented to guide future evolution without reintroducing hidden state.
 
-### 8.1 Preview / Dry-Run Command (Non-binding)
+### 10.1 Preview / Dry-Run Command (Non-binding)
 
 If introduced later, a preview command must remain **purely informational**.
 
@@ -986,7 +1102,7 @@ If introduced later, a preview command must remain **purely informational**.
 
 **Rationale:** Allows readiness inspection without side effects. Avoids resurrecting the VALIDATED state implicitly.
 
-### 8.2 Open Pull Request Safeguard (Policy-driven)
+### 10.2 Open Pull Request Safeguard (Policy-driven)
 
 A future safeguard may control how open pull requests affect snapshot creation.
 
@@ -1001,7 +1117,7 @@ A future safeguard may control how open pull requests affect snapshot creation.
 
 **Rationale:** Makes intent explicit when releasing despite ongoing work. Allows teams to encode policy by marking PRs as draft. Keeps MVP lean while supporting stricter future governance.
 
-### 8.3 Explicit Base Branch Selection (Maintenance Releases)
+### 10.3 Explicit Base Branch Selection (Maintenance Releases)
 
 For future support of maintenance releases, the base branch could be specified explicitly.
 
@@ -1016,7 +1132,7 @@ For future support of maintenance releases, the base branch could be specified e
 
 **Rationale:** Keeps execution explicit and reproducible. Prevents hidden state in the issue. Supports maintenance releases without duplicating the state model.
 
-### 8.4 Release Readiness Check Command
+### 10.4 Release Readiness Check Command
 
 A future command to validate release readiness before merging the Release PR.
 
@@ -1030,7 +1146,7 @@ A future command to validate release readiness before merging the Release PR.
 
 **Rationale:** Provides explicit readiness validation without manual inspection. Complements the draft release checkpoint by front-loading checks.
 
-### 8.5 Final Guidance for Future Extensions
+### 10.5 Final Guidance for Future Extensions
 
 These extensions must remain opt-in and appendix-only. MVP behavior must not depend on them.
 
@@ -1046,7 +1162,7 @@ If implemented later, they must follow the same principles:
 | Requirement | Addressed By |
 |-------------|--------------|
 | M1 (Know active config) | Bot message shows config on snapshot creation |
-| M2 (See calculated versions before triggering) | **Post-MVP:** Preview/Dry-Run command (Section 8.1) |
+| M2 (See calculated versions before triggering) | **Post-MVP:** Preview/Dry-Run command (Section 10.1) |
 | M3 (Control start) | `/create-snapshot` is explicit command |
 | M4 (Abort and retry) | `/discard-snapshot` + `/create-snapshot` |
 | M5 (Refine CHANGELOG) | Release-review branch PR allows edits |
@@ -1088,10 +1204,67 @@ If implemented later, they must follow the same principles:
 
 ---
 
-## Appendix C: Command Reference (MVP)
+## Appendix C: Command Reference
 
 | Command | Allowed States | Effect |
 |---------|----------------|--------|
 | `/create-snapshot` | PLANNED | Validates HEAD, creates snapshot + release-review branches, opens PR |
 | `/discard-snapshot <reason>` | SNAPSHOT ACTIVE | Deletes snapshot branch, keeps release-review branch, returns to PLANNED |
 | `/delete-draft <reason>` | DRAFT READY | Deletes draft release and snapshot branch, returns to PLANNED |
+| `/publish-release` | DRAFT READY | Posts confirmation message with draft details |
+| `/publish-release --confirm <tag>` | DRAFT READY | Publishes release, creates reference tag, sync PR, closes issue |
+
+---
+
+## Appendix D: Complete State Model
+
+### State Transitions
+
+```
+                    release-plan.yaml
+                    target_release_type: none
+                           │
+                           ▼
+                    ┌─────────────┐
+                    │  CANCELLED  │ (terminal)
+                    └─────────────┘
+                           ▲
+                           │
+release-plan.yaml          │
+configured                 │
+      │                    │
+      ▼                    │
+┌─────────────┐            │
+│   PLANNED   │────────────┘
+└─────────────┘     target_release_type: none
+      │
+      │ /create-snapshot
+      ▼
+┌─────────────────┐
+│ SNAPSHOT ACTIVE │◄────────────┐
+└─────────────────┘             │
+      │                         │
+      │ merge Release PR        │ /discard-snapshot
+      ▼                         │
+┌─────────────────┐             │
+│   DRAFT READY   │─────────────┘
+└─────────────────┘
+      │         │
+      │         │ /delete-draft ───► PLANNED
+      │
+      │ /publish-release --confirm
+      ▼
+┌─────────────────┐
+│   PUBLISHED    │ (terminal, issue closed)
+└─────────────────┘
+```
+
+### Command-State Matrix
+
+| Command | Allowed States | Result State | Permission |
+|---------|---------------|--------------|------------|
+| `/create-snapshot` | PLANNED | SNAPSHOT ACTIVE | write |
+| `/discard-snapshot` | SNAPSHOT ACTIVE | PLANNED | write |
+| `/delete-draft` | DRAFT READY | PLANNED | write |
+| `/publish-release` | DRAFT READY | (confirmation) | admin/maintain |
+| `/publish-release --confirm <tag>` | DRAFT READY | PUBLISHED | admin/maintain |
