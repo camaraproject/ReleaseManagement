@@ -112,7 +112,7 @@ This section is a summary only. For explanations, see the sections above.
 | `/delete-draft <reason>` | Problem found in draft | Returns to start |
 | `/publish-release --confirm rX.Y` | Ready to publish | Publishes the release |
 
-| State | Meaning | Next step |
+| Release State | Meaning | Next step |
 |-------|---------|-----------|
 | PLANNED | Release is planned and ready | `/create-snapshot` |
 | SNAPSHOT ACTIVE | Release PR under review | Review and merge PR |
