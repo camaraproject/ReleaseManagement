@@ -608,7 +608,7 @@ Comment: /discard-snapshot API spec bug in location-verification
 Automation:
   - Closes Release PR (not merged)
   - Deletes snapshot branch (release-snapshot/r4.1-abc1234)
-  - Renames release-review branch to release-review/r4.1-abc1234-discarded (preserved for reference)
+  - Renames release-review branch to release-review/r4.1-abc1234-discarded (kept as read-only reference)
   - Updates issue: records discard reason
   - Sets label to `release-state: planned`
   - Posts status comment with next steps
@@ -638,7 +638,7 @@ Comment: /delete-draft Found critical issue in generated artifacts
 Automation:
   - Deletes draft release
   - Deletes snapshot branch
-  - Renames release-review branch to {branch}-discarded (preserved for reference)
+  - Renames release-review branch to {branch}-discarded (kept as read-only reference)
   - Sets label to `release-state: planned`
   - Posts status comment with next steps
        ↓
@@ -1006,7 +1006,7 @@ When `/publish-release --confirm <tag>` is executed:
 3. **Publish release**: Update draft to published (creates tag `rX.Y`)
 4. **Create reference tag**: `src/rX.Y` on main at `src_commit_sha`
 5. **Create sync PR**: Post-release sync PR to main (see Section 8)
-6. **Cleanup branches**: Delete snapshot branch, rename release-review branch
+6. **Cleanup branches**: Delete snapshot and release-review branches
 7. **Close issue**: Update state to PUBLISHED, close Release Issue
 
 ### 7.3 Bot Messages
@@ -1035,6 +1035,11 @@ A reference tag marks the branch point on main for potential maintenance branch 
 
 **Purpose:** Enables future `git checkout -b maintenance/r4 src/r4.1` without commit archaeology.
 
+**Normative requirements:**
+- The `src/rX.Y` tag is a convenience pointer only
+- The `src_commit_sha` field in `release-metadata.yaml` is the authoritative source reference
+- Tools and scripts MUST use `src_commit_sha` when the exact source commit is required
+
 ### 8.2 Post-Release Sync PR
 
 Automation creates a PR to sync release artifacts back to main.
@@ -1058,7 +1063,7 @@ Automation creates a PR to sync release artifacts back to main.
 | Branch | Action |
 |--------|--------|
 | `release-snapshot/rX.Y-{sha}` | Deleted (tag preserves content) |
-| `release-review/rX.Y-{sha}` | Renamed to `{branch}-published` |
+| `release-review/rX.Y-{sha}` | Deleted (content preserved in release tag) |
 | `post-release/rX.Y` | Deleted by GitHub on PR merge |
 
 ### 8.4 Issue Closure

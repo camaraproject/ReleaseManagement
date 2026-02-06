@@ -32,7 +32,7 @@ When you trigger a release, automation creates:
 | Review and merge Release PR | Codeowner + Release reviewer |
 | Publish release (`/publish-release --confirm rX.Y`) | Codeowner |
 | Merge post-release sync PR | Codeowner |
-| Discard or delete if problems found | Codeowner |
+| Reset attempt (`/discard-snapshot` or `/delete-draft`) | Codeowner |
 
 ## Commands Reference
 
@@ -55,7 +55,7 @@ Commands are posted as comments on the Release Issue.
 | PUBLISHED | Complete | `release-state: published` |
 | CANCELLED | Release no longer planned | `release-state: cancelled` |
 
-If a release is no longer intended, it is cancelled by setting `target_release_type: none` in `release-plan.yaml`. This is outside the normal release flow.
+To cancel a release, a codeowner sets `target_release_type: none` in `release-plan.yaml`. This is outside the normal release flow.
 
 ## Branch Model
 
@@ -65,6 +65,10 @@ Each release attempt uses two branches:
 - **Release-review branch** (`release-review/rX.Y-*`): Editable via Release PR
 
 You never interact with these directly — the Release PR is your interface.
+
+## Reference Tags
+
+After publication, automation creates a `src/rX.Y` tag on `main` pointing to the source commit. This is a convenience pointer for creating maintenance branches or comparing releases. The authoritative source commit is `src_commit_sha` in `release-metadata.yaml`.
 
 ## Source of Truth
 

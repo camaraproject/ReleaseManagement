@@ -2,11 +2,14 @@
 
 This guide walks you through releasing an API repository in CAMARA.
 
-## Before You Start
+## Quick Process Overview
 
-- [ ] `release-plan.yaml` is updated with your target release
-- [ ] All intended changes are merged to `main`
-- [ ] APIs meet their declared target statuses (Checks on main should be green)
+- [ ] Update `release-plan.yaml`
+- [ ] Ensure all intended changes are merged to `main`
+- [ ] APIs meet their declared target statuses (Checks on `main` should be green)
+- [ ] `/create-snapshot` in Release Issue
+- [ ] Review, approve and merge Release PR
+- [ ] `/publish-release` → Done
 
 ## The Release Process
 
@@ -17,7 +20,8 @@ This guide walks you through releasing an API repository in CAMARA.
 - Set `target_release_tag`, `target_release_type`, and API statuses
 
 **What you see:**
-- CI validates your plan on every PR
+- CI validates every PR on `release-plan.yaml`
+- Release Issue appears with PLANNED state
 
 → [release-plan.yaml reference](../metadata/release-plan.md)
 
@@ -31,6 +35,9 @@ This phase is ongoing until you decide to release.
 - Develop API specifications toward your planned release
 - Keep version fields set to `wip`
 - Respond to CI validation feedback
+
+**What you see:**
+- CI will validate every PR on `main` against the plan 
 
 **What can block you:**
 - Validation errors → fix and re-push
@@ -57,7 +64,7 @@ This phase is ongoing until you decide to release.
 ### 4. Review and Approve
 
 **What you do:**
-1. Review the Release PR (CHANGELOG, README)
+1. Review the Release PR (CHANGELOG)
 2. Refine documentation if needed
 3. Ensure required approvals are in place (codeowner and release reviewer)
 4. Merge the Release PR
