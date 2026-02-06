@@ -307,7 +307,7 @@ Labels use a single `release-state:` namespace to ensure mutual exclusivity and 
 | `/create-snapshot` | Validate current HEAD, create snapshot + Release PR | PLANNED only | SNAPSHOT ACTIVE (on success) |
 | `/discard-snapshot <reason>` | Discard the active snapshot | SNAPSHOT ACTIVE only | PLANNED |
 | `/delete-draft <reason>` | Delete draft release before publication | DRAFT READY only | PLANNED |
-| `/publish-release --confirm <tag>` | Publish release, create reference tag, sync PR | DRAFT READY only | PUBLISHED |
+| `/publish-release --confirm <tag>` | Publish release, create reference tag and sync PR | DRAFT READY only | PUBLISHED |
 
 **Command semantics:**
 - `/create-snapshot` validates **current HEAD at execution time**. If validation fails, no snapshot is created and state remains PLANNED. Validation errors are reported in the bot response.
@@ -1066,7 +1066,7 @@ Automation creates a PR to sync release artifacts back to main.
 | `release-review/rX.Y-{sha}` | Deleted (content preserved in release tag) |
 | `post-release/rX.Y` | Deleted by GitHub on PR merge |
 
-### 8.4 Issue Closure
+### 8.4 Release Issue Closure
 
 After successful publication:
 

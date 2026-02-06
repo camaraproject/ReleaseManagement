@@ -30,7 +30,7 @@ When you trigger a release, automation creates:
 |--------|-----|
 | Trigger release (`/create-snapshot`) | Codeowner |
 | Review and merge Release PR | Codeowner + Release reviewer |
-| Publish release (`/publish-release --confirm rX.Y`) | Codeowner |
+| Trigger release publication (`/publish-release --confirm rX.Y`) | Codeowner |
 | Merge post-release sync PR | Codeowner |
 | Reset attempt (`/discard-snapshot` or `/delete-draft`) | Codeowner |
 
