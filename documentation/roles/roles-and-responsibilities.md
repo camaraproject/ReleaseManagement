@@ -19,7 +19,7 @@
 
 | Command | Who may execute |
 |---------|----------------|
-| `/create-snapshot` | Codeowner |
-| `/discard-snapshot` | Codeowner, Release manager |
-| `/delete-draft` | Codeowner, Release manager |
-| Publish release | Codeowner |
+| `/create-snapshot` | Codeowner (or write permission) |
+| `/discard-snapshot` | Codeowner (or write permission) |
+| `/delete-draft` | Codeowner (or write permission) |
+| `/publish-release` | Codeowner only (write permission + CODEOWNERS file membership) |

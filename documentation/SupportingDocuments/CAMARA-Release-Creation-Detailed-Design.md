@@ -307,6 +307,7 @@ Labels use a single `release-state:` namespace to ensure mutual exclusivity and 
 | `/create-snapshot` | Validate current HEAD, create snapshot + Release PR | PLANNED only | SNAPSHOT ACTIVE (on success) |
 | `/discard-snapshot <reason>` | Discard the active snapshot | SNAPSHOT ACTIVE only | PLANNED |
 | `/delete-draft <reason>` | Delete draft release before publication | DRAFT READY only | PLANNED |
+| `/publish-release --confirm <tag>` | Publish release, create reference tag, sync PR | DRAFT READY only | PUBLISHED |
 
 **Command semantics:**
 - `/create-snapshot` validates **current HEAD at execution time**. If validation fails, no snapshot is created and state remains PLANNED. Validation errors are reported in the bot response.
@@ -361,7 +362,7 @@ stateDiagram-v2
     SNAPSHOT_ACTIVE --> PLANNED : /discard-snapshot
     SNAPSHOT_ACTIVE --> DRAFT_READY : Merge Release PR
     DRAFT_READY --> PLANNED : /delete-draft
-    DRAFT_READY --> PUBLISHED : Publish
+    DRAFT_READY --> PUBLISHED : /publish-release --confirm
     PUBLISHED --> [*]
     CANCELLED --> [*]
 ```
@@ -938,12 +939,14 @@ This Release Issue tracked a planned release derived from `release-plan.yaml`.
 
 | Command / Action | Who May Execute |
 |---------|-----------------|
-| `/create-snapshot` | Maintainers, Codeowners (write/maintain/admin on repo) |
-| `/discard-snapshot` | Maintainers, Codeowners, Release Management team |
-| `/delete-draft` | Maintainers, Codeowners, Release Management team |
-| `/publish-release` | Codeowners only (admin/maintain on repo) |
+| `/create-snapshot` | Codeowner (or write permission) |
+| `/discard-snapshot` | Codeowner (or write permission) |
+| `/delete-draft` | Codeowner (or write permission) |
+| `/publish-release` | Codeowner only (write permission + CODEOWNERS file membership) |
 
-Permission is enforced by automation via GitHub API checks (repository permissions or team membership).
+**Note:** In CAMARA API repositories, Codeowners have write permission while Maintainers typically have triage permission (less than Codeowners). Admins can execute any command as break-glass.
+
+Permission is enforced by automation via GitHub API permission check. For `/publish-release`, the workflow additionally verifies the user is listed in the CODEOWNERS file.
 
 ### 6.2 Branch Protection
 
@@ -980,7 +983,7 @@ This section describes the publication of a prepared draft release, transitionin
 |--------|---------------|
 | Command | `/publish-release --confirm <tag>` |
 | Allowed state | DRAFT READY only |
-| Permission | Codeowners only (admin or maintain permission) |
+| Permission | Codeowner only (write permission + CODEOWNERS file membership) |
 | Tag parameter | Must match the draft release tag |
 
 **Two-step confirmation flow:**
@@ -1214,57 +1217,3 @@ If implemented later, they must follow the same principles:
 | `/publish-release` | DRAFT READY | Posts confirmation message with draft details |
 | `/publish-release --confirm <tag>` | DRAFT READY | Publishes release, creates reference tag, sync PR, closes issue |
 
----
-
-## Appendix D: Complete State Model
-
-### State Transitions
-
-```
-                    release-plan.yaml
-                    target_release_type: none
-                           │
-                           ▼
-                    ┌─────────────┐
-                    │  CANCELLED  │ (terminal)
-                    └─────────────┘
-                           ▲
-                           │
-release-plan.yaml          │
-configured                 │
-      │                    │
-      ▼                    │
-┌─────────────┐            │
-│   PLANNED   │────────────┘
-└─────────────┘     target_release_type: none
-      │
-      │ /create-snapshot
-      ▼
-┌─────────────────┐
-│ SNAPSHOT ACTIVE │◄────────────┐
-└─────────────────┘             │
-      │                         │
-      │ merge Release PR        │ /discard-snapshot
-      ▼                         │
-┌─────────────────┐             │
-│   DRAFT READY   │─────────────┘
-└─────────────────┘
-      │         │
-      │         │ /delete-draft ───► PLANNED
-      │
-      │ /publish-release --confirm
-      ▼
-┌─────────────────┐
-│   PUBLISHED    │ (terminal, issue closed)
-└─────────────────┘
-```
-
-### Command-State Matrix
-
-| Command | Allowed States | Result State | Permission |
-|---------|---------------|--------------|------------|
-| `/create-snapshot` | PLANNED | SNAPSHOT ACTIVE | write |
-| `/discard-snapshot` | SNAPSHOT ACTIVE | PLANNED | write |
-| `/delete-draft` | DRAFT READY | PLANNED | write |
-| `/publish-release` | DRAFT READY | (confirmation) | admin/maintain |
-| `/publish-release --confirm <tag>` | DRAFT READY | PUBLISHED | admin/maintain |
