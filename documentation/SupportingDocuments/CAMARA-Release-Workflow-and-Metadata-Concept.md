@@ -217,7 +217,7 @@ After approval and Release PR merge to snapshot branch:
 2. Populates final metadata:
    - `release_date`: Current UTC timestamp
 3. Codeowner reviews draft release (description from CHANGELOG, assets)
-4. **Codeowner publishes** the release → creates git tag (e.g., `r4.1`)
+4. **Codeowner publishes** via `/publish-release --confirm <tag>` → creates git tag (e.g., `r4.1`)
 5. CI builds and publishes artifacts
 6. GitHub Release with artifacts is finalized:
    - Bundled OpenAPI specifications (later phase)
@@ -248,7 +248,7 @@ After release is tagged and published:
 - Forces explicit planning for next release cycle
 
 #### 5c. Tag reference point on `main`:
-- Create tag `src/X.Y` (e.g., `src/4.1`) on main at branch point
+- Create tag `src/rX.Y` (e.g., `src/r4.1`) on main at branch point
 - Marks commit for potential maintenance branch creation
 - Reference for comparing API changes in next release
 - Note: This is NOT a release tag, just a reference marker
