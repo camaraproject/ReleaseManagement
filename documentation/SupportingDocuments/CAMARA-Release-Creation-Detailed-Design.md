@@ -679,7 +679,7 @@ Bot comments in the Release Issue follow a 5-element structure with progressive 
 {explanation line}
 **Key artifact:** [display text](url) · **Other:** [text](url)
 
-<details><summary>Release {tag} ({short_type}{, meta_release})</summary>
+<details><summary><b>Configuration:</b> Release {tag} ({short_type}{, meta_release})</summary>
 
 | API | Version |
 |-----|---------|
@@ -688,8 +688,7 @@ Bot comments in the Release Issue follow a 5-element structure with progressive 
 **Dependencies:** Commonalities {rel}, ICM {rel}
 </details>
 
-**Valid actions:**
-- `/command` — description
+**Valid actions:**<br>• `/command` — description<br>• `/other-command` — description
 ```
 
 #### Element Presence Rules
@@ -714,6 +713,14 @@ Bot comments in the Release Issue follow a 5-element structure with progressive 
 - **Rate-limiting**: The interim comment is edited in-place, not replaced with new comments.
 - **Accessibility**: Emoji supplements the text signal; the text alone must convey success/failure.
 
+#### Whitespace Rules
+
+1. **Scan block stays dense:** no blank lines between consecutive lines in the scan block (Header → optional Explanation → optional Key links). These render as one tight paragraph block.
+2. Add **one blank line before and after** the `<details>` configuration block.
+3. After the scan block, use **at most one blank line** between subsequent major sections (i.e., between distinct message elements such as Error block, `<details>` config block, Valid actions, and any final lifecycle note). Post-processing collapses any excess blank lines.
+4. Avoid internal blank lines within an element (e.g., don't separate Key links into multiple paragraphs).
+5. **Valid actions** use compact pseudo-list (`<br>•`) instead of markdown `-` lists, avoiding the mandatory blank line that markdown list rendering introduces.
+
 #### Special Format Messages
 
 Three messages deviate from the standard skeleton:
@@ -728,7 +735,7 @@ Three messages deviate from the standard skeleton:
 
 The `<details>` block follows the same structure in all messages that include it:
 
-- **Summary line**: `Release {tag} ({short_type})` or `Release {tag} ({short_type}, {meta_release})`
+- **Summary line**: `<b>Configuration:</b> Release {tag} ({short_type})` or `<b>Configuration:</b> Release {tag} ({short_type}, {meta_release})`. The "Configuration:" prefix makes the expandable affordance explicit — a bare `Release {tag} …` reads like a standalone status line.
 - **short_type mapping**: `pre-release-alpha` → alpha, `pre-release-rc` → rc, `public-release` → public, `maintenance-release` → maintenance
 - **meta_release**: shown when non-empty; omit including comma when empty
 - **Data source** (implicit from state):
@@ -768,7 +775,7 @@ The following 15 messages cover all bot comment types. Each entry specifies the 
 | Element | Content |
 |---------|---------|
 | Header | **✅ Snapshot created — State: `snapshot-active`** |
-| Links | **Release PR:** [#{N}](url) · Snapshot: [`{id}`](branch url) · Review: [`{review_branch}`](url) · Base: `{sha}` |
+| Links | **Release PR:** [#{N}](url) · Snapshot: [`{id}`](branch url) · Base: `{sha}` |
 | Config | APIs (calculated versions), dependencies |
 | Actions | Merge [Release PR](url) to create draft release; `/discard-snapshot <reason>` |
 
@@ -788,6 +795,7 @@ The following 15 messages cover all bot comment types. Each entry specifies the 
 | Header | **🗑️ Snapshot discarded — State: `planned`** |
 | Reason | **Reason:** {user-provided reason} |
 | Links | **Preserved:** [`{review_branch}`](url) · **Deleted:** snapshot branch, Release PR closed |
+| Config | APIs (calculated versions), dependencies |
 | Actions | `/create-snapshot` — new snapshot from updated `main` |
 
 #### Draft Phase
@@ -809,6 +817,7 @@ The following 15 messages cover all bot comment types. Each entry specifies the 
 | Header | **🗑️ Draft deleted — State: `planned`** |
 | Reason | **Reason:** {user-provided reason} |
 | Links | **Preserved:** [`{review_branch}`](url) · **Deleted:** draft release, snapshot branch |
+| Config | APIs (calculated versions), dependencies |
 | Actions | `/create-snapshot` — new snapshot from updated `main` |
 
 #### Publication Phase
