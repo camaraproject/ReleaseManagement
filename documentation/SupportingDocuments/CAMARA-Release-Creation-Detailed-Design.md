@@ -287,16 +287,16 @@ States are mutually exclusive. State is derived from repository artifacts, not s
 | **SNAPSHOT ACTIVE** | Snapshot branch exists (Release PR is a consequence) | `release-state: snapshot-active` | `release-snapshot/rX.Y-*` branch exists |
 | **DRAFT READY** | Release PR merged; draft release created | `release-state: draft-ready` | Draft release exists for `rX.Y` |
 | **PUBLISHED** | Release published; tag `rX.Y` created | `release-state: published` | Tag `rX.Y` exists; issue closed |
-| **CANCELLED** | Release cancelled (no longer planned) | `release-state: cancelled` | `target_release_type: none` in `release-plan.yaml` |
+| **NOT_PLANNED** | Release not currently planned | `release-state: not-planned` | `target_release_type: none` in `release-plan.yaml` |
 
-**Terminal states:** PUBLISHED and CANCELLED are terminal. Closed issues always have one of these two labels for unambiguous reporting.
+**Terminal state:** PUBLISHED is terminal. NOT_PLANNED is reversible — updating `release-plan.yaml` restores PLANNED state.
 
 **State derivation principle:** Repository artifacts are the authoritative signals:
 - `release-plan.yaml` → PLANNED state (when `target_release_type ≠ none`)
 - Snapshot branch existence → SNAPSHOT ACTIVE state
 - Draft release existence → DRAFT READY state
 - Release tag existence → PUBLISHED state
-- `target_release_type: none` → CANCELLED state
+- `target_release_type: none` → NOT_PLANNED state
 
 Labels use a single `release-state:` namespace to ensure mutual exclusivity and enable dashboard aggregation.
 
@@ -336,7 +336,8 @@ The release automation workflow synchronizes the Release Issue when triggered by
 | (none) | `release-plan.yaml` configured | PLANNED | Automation creates Release Issue |
 | PLANNED | `/create-snapshot` (success) | SNAPSHOT ACTIVE | Validates HEAD, creates snapshot + Release PR |
 | PLANNED | `/create-snapshot` (failure) | PLANNED | Validation failed; errors shown |
-| PLANNED | `target_release_type: none` | CANCELLED | Automation updates labels |
+| PLANNED | `target_release_type: none` | NOT_PLANNED | Automation updates labels |
+| NOT_PLANNED | `target_release_type ≠ none` | PLANNED | Automation updates labels |
 | SNAPSHOT ACTIVE | `/discard-snapshot <reason>` | PLANNED | Reason required |
 | SNAPSHOT ACTIVE | Merge Release PR | DRAFT READY | |
 | DRAFT READY | `/delete-draft <reason>` | PLANNED | Reason required |
@@ -350,7 +351,7 @@ The release automation workflow synchronizes the Release Issue when triggered by
 | `/discard-snapshot` | No active snapshot | Nothing to discard |
 | `/delete-draft` | No draft exists | Nothing to delete |
 
-**Terminal states:** PUBLISHED and CANCELLED cannot transition to other states. Recovery from accidental cancellation requires manual update of `release-plan.yaml`.
+**Terminal state:** PUBLISHED cannot transition to other states. NOT_PLANNED is reversible — updating `release-plan.yaml` to `target_release_type ≠ none` restores PLANNED state.
 
 ### 3.5 State Diagram
 
@@ -358,16 +359,17 @@ The release automation workflow synchronizes the Release Issue when triggered by
 stateDiagram-v2
     [*] --> PLANNED : release-plan.yaml configured
     PLANNED --> SNAPSHOT_ACTIVE : /create-snapshot (success)
-    PLANNED --> CANCELLED : target_release_type#colon; none
+    PLANNED --> NOT_PLANNED : target_release_type#colon; none
+    NOT_PLANNED --> PLANNED : target_release_type ≠ none
+    NOT_PLANNED --> [*] : issue closed manually
     SNAPSHOT_ACTIVE --> PLANNED : /discard-snapshot
     SNAPSHOT_ACTIVE --> DRAFT_READY : Merge Release PR
     DRAFT_READY --> PLANNED : /delete-draft
     DRAFT_READY --> PUBLISHED : /publish-release --confirm
     PUBLISHED --> [*]
-    CANCELLED --> [*]
 ```
 
-**Terminal states:** PUBLISHED and CANCELLED. All closed issues have one of these labels.
+**Terminal state:** PUBLISHED. NOT_PLANNED is reversible via `release-plan.yaml` update.
 
 ### 3.6 Blocking Rules
 
@@ -388,7 +390,7 @@ The Release Issue is the command surface and audit trail. Closure behavior depen
 | SNAPSHOT ACTIVE | ❌ No | Auto-reopened with explanation |
 | DRAFT READY | ❌ No | Auto-reopened with explanation |
 | PUBLISHED | ✅ Yes | Closes normally (automatic after publication) |
-| CANCELLED | ✅ Yes | Humans close manually; already terminal |
+| NOT_PLANNED | ✅ Yes | No active artifacts; manual closure allowed |
 
 **Closing in PLANNED State:**
 
@@ -399,25 +401,21 @@ Closing a workflow-owned Release Issue in PLANNED state:
 
 Release intent remains derived only from `release-plan.yaml`. Closing the issue is a UI choice, not a state transition.
 
-**CANCELLED State Handling:**
+**NOT_PLANNED State Handling:**
 
 When `target_release_type` becomes `none` in `release-plan.yaml`:
-- Automation sets state label to `release-state: cancelled`
+- Automation sets state label to `release-state: not-planned`
 - Automation does **not** auto-close the issue
-- Humans close CANCELLED issues manually
+- Closing a NOT_PLANNED issue is allowed but not required (manual choice)
+
+**Reversibility:** NOT_PLANNED is not terminal. Updating `release-plan.yaml` to set `target_release_type ≠ none` and merging to the base branch transitions the release back to PLANNED state. Automation updates the Release Issue accordingly.
 
 **Closure Model:**
 - Automation only changes labels, not open/closed state
 - Exception: PUBLISHED state may auto-close after publication
-- CANCELLED is terminal but requires manual closure
+- NOT_PLANNED allows manual closure but is reversible via `release-plan.yaml` update
 - After a snapshot/draft exists, the issue is required as command surface — closure is blocked
 - Prevents orphaned snapshots or drafts
-
-**Recovery from CANCELLED state:**
-If a release was accidentally cancelled (via `target_release_type: none`):
-1. Update `release-plan.yaml` to set `target_release_type` to the desired value
-2. Merge the PR to the base branch
-3. Automation updates the Release Issue state to PLANNED
 
 ### 3.8 Snapshot Lifecycle
 
@@ -458,7 +456,7 @@ When a Release Issue is closed or doesn't exist, automation creates a new one un
 | Artifact | Naming | Purpose | Lifecycle |
 |----------|--------|---------|-----------|
 | `release-plan.yaml` | On `main` branch | Provide target release configuration | Persistent, updated at the start of each release cycle |
-| Release Issue | One per `rX.Y` | UI, trigger surface, audit trail | Created → closed (PUBLISHED or CANCELLED) |
+| Release Issue | One per `rX.Y` | UI, trigger surface, audit trail | Created → closed (PUBLISHED or NOT_PLANNED) or kept open in NOT_PLANNED |
 | Snapshot branch | `release-snapshot/rX.Y-<shortsha>` | Mechanical changes (automation-owned) | Created → deleted on discard, on draft release deletion or after release tag |
 | `release-metadata.yaml` | On snapshot branch | Authoritative snapshot record | Created (auto-generated) with snapshot; source of truth for this release |
 | Release-review branch | `release-review/rX.Y-<shortsha>` | Reviewable content (human-owned) | Created → kept for reference; deleted manually if no longer needed |
@@ -787,21 +785,20 @@ This issue cannot be closed while a snapshot is active. The issue serves as the 
 - `/discard-snapshot <reason>` — discard the snapshot
 ```
 
-**Release cancelled (via `target_release_type: none`):**
+**Release plan changed (via `target_release_type: none`):**
 
 ```markdown
-## 🚫 Release Cancelled
+## ℹ️ Release Plan Changed
 
-**State:** PLANNED → CANCELLED
+**State:** `not-planned`
 
-The release was cancelled due to `target_release_type: none` in `release-plan.yaml`.
+Release plan updated — `target_release_type` is now `none`.
 
 ---
 
-**If this cancellation was accidental:**
-1. Update `release-plan.yaml` to set `target_release_type` to the desired value
-2. Merge the PR to the base branch
-3. Automation will restore PLANNED state
+**To resume planning:**
+- Update `release-plan.yaml` to set `target_release_type` to the desired value
+- Merge the PR to the base branch — automation will restore PLANNED state
 ```
 
 **When `/delete-draft` succeeds (DRAFT READY → PLANNED):**
@@ -1208,7 +1205,7 @@ If implemented later, they must follow the same principles:
 | Snapshot branch | `release-snapshot/rX.Y-<shortsha>` — automation-owned, mechanical changes |
 | Release-review branch | `release-review/rX.Y-<shortsha>` — human-owned, reviewable content |
 | Release PR | PR from release-review branch to snapshot branch |
-| Terminal state | PUBLISHED or CANCELLED — closed issues always have one of these labels |
+| Terminal state | PUBLISHED — the only truly terminal state. NOT_PLANNED issues may be closed manually but can be re-planned. |
 
 ---
 
