@@ -688,7 +688,7 @@ Bot comments in the Release Issue follow a 5-element structure with progressive 
 **Dependencies:** Commonalities {rel}, ICM {rel}
 </details>
 
-**Valid actions:**<br>• `/command` — description<br>• `/other-command` — description
+**Valid actions:**<br>→ **`/primary-command` — description**<br>→ `/secondary-command` — description
 ```
 
 #### Element Presence Rules
@@ -719,7 +719,7 @@ Bot comments in the Release Issue follow a 5-element structure with progressive 
 2. Add **one blank line before and after** the `<details>` configuration block.
 3. After the scan block, use **at most one blank line** between subsequent major sections (i.e., between distinct message elements such as Error block, `<details>` config block, Valid actions, and any final lifecycle note). Post-processing collapses any excess blank lines.
 4. Avoid internal blank lines within an element (e.g., don't separate Key links into multiple paragraphs).
-5. **Valid actions** use compact pseudo-list (`<br>•`) instead of markdown `-` lists, avoiding the mandatory blank line that markdown list rendering introduces.
+5. **Valid actions** use compact pseudo-list (`<br>→`) instead of markdown `-` lists, avoiding the mandatory blank line that markdown list rendering introduces. The primary action (the one that advances the release toward publication) is **bolded**; secondary/fallback actions are not.
 
 #### Special Format Messages
 
