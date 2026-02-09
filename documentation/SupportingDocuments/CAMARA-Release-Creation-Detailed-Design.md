@@ -606,7 +606,7 @@ Comment: /discard-snapshot API spec bug in location-verification
 Automation:
   - Closes Release PR (not merged)
   - Deletes snapshot branch (release-snapshot/r4.1-abc1234)
-  - Renames release-review branch to release-review/r4.1-abc1234-discarded (kept as read-only reference)
+  - Renames release-review branch to release-review/r4.1-abc1234-preserved (kept as read-only reference)
   - Updates issue: records discard reason
   - Sets label to `release-state: planned`
   - Posts status comment with next steps
@@ -621,7 +621,7 @@ New snapshot branch: release-snapshot/r4.1-def5678
 New release-review branch: release-review/r4.1-def5678
 New Release PR opened
        ↓
-Maintainer can copy content from discarded release-review/r4.1-abc1234 if needed
+Maintainer can copy content from preserved release-review/r4.1-abc1234 if needed
 ```
 
 ### 4.8 Delete Draft Flow
@@ -636,7 +636,7 @@ Comment: /delete-draft Found critical issue in generated artifacts
 Automation:
   - Deletes draft release
   - Deletes snapshot branch
-  - Renames release-review branch to {branch}-discarded (kept as read-only reference)
+  - Renames release-review branch to {branch}-preserved (kept as read-only reference)
   - Sets label to `release-state: planned`
   - Posts status comment with next steps
        ↓
@@ -657,10 +657,10 @@ The Release Issue body always shows the **active snapshot** (if any) with its ke
 | Snapshot | Status | Created | Reason | Review Branch |
 |----------|--------|---------|--------|---------------|
 | `r4.1-def5678` | **Active** | 2026-01-17 | — | `release-review/r4.1-def5678` |
-| `r4.1-abc1234` | Discarded | 2026-01-15 | API spec bug | `release-review/r4.1-abc1234-discarded` |
+| `r4.1-abc1234` | Discarded | 2026-01-15 | API spec bug | `release-review/r4.1-abc1234-preserved` |
 ```
 
-Note: Discarded snapshot branches are deleted; release-review branches are renamed with `-discarded` suffix and preserved for reference.
+Note: Discarded snapshot branches are deleted; release-review branches are renamed with `-preserved` suffix and kept for reference.
 
 ---
 
