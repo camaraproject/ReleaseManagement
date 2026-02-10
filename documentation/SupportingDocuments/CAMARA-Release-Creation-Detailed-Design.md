@@ -412,10 +412,9 @@ When `target_release_type` becomes `none` in `release-plan.yaml`:
 
 **Closure Model:**
 - Automation only changes labels, not open/closed state
-- Exception: PUBLISHED state may auto-close after publication
-- NOT_PLANNED allows manual closure but is reversible via `release-plan.yaml` update
-- After a snapshot/draft exists, the issue is required as command surface — closure is blocked
-- Prevents orphaned snapshots or drafts
+- Exception: PUBLISHED state auto-closes after the success message is posted
+- NOT_PLANNED allows manual closure; if `release-plan.yaml` is later updated to plan a release, automation creates a new Release Issue
+- After a snapshot/draft exists, the issue is the command surface — manual closure triggers automatic reopening with explanation
 
 ### 3.8 Snapshot Lifecycle
 
@@ -504,7 +503,7 @@ When `/create-snapshot` is run, automation:
    - Creates `release-metadata.yaml` with base commit SHA and release configuration
    - Creates release-review branch `release-review/rX.Y-<shortsha>`
    - Commits automated updates for the release to CHANGELOG, README to the release-review branch
-   - Creates the Release PR: release-review → release-snapshot
+   - Creates the Release PR: release-review → release-snapshot, titled `Release Review: {repo} {tag} ({type}{, meta})` (e.g., "Release Review: QualityOnDemand r4.1 (rc, Fall26)")
    - Updates the Release Issue label to `release-state: snapshot-active`
    - Posts success comment with links and next steps in the Release Issue
 
@@ -549,10 +548,13 @@ Automation commits finalization (release_date) to snapshot
        ↓
 Automation creates draft release (no tag yet)
        ↓
-Codeowner publishes the release with the tag r4.1
+Codeowner: /publish-release --confirm r4.1
        ↓
-Delete snapshot branch manually (tag preserves content)
-Note: Automated cleanup via /publish-release command planned for C3 design
+Automation publishes release (creates tag r4.1)
+Creates reference tag src/r4.1 on main
+Creates post-release sync PR (CHANGELOG + README → main)
+Deletes snapshot and release-review branches (tag preserves content)
+Closes Release Issue
 ```
 
 ### 4.5 `release-metadata.yaml` as Source of Truth
@@ -710,7 +712,11 @@ Bot comments in the Release Issue follow a 5-element structure with progressive 
 - **Reason field**: For `/discard-snapshot` and `/delete-draft`, show user-provided reason between header and key links. Not collapsed.
 - **Error messages**: Show in code blocks, never collapsed. Must be immediately visible. Trim to most relevant errors with link to full logs.
 - **Cleanup info**: For destructive actions, show preserved/deleted items in key links line.
-- **Rate-limiting**: The interim comment is edited in-place, not replaced with new comments.
+- **3-stage feedback model**: Slash commands produce a single comment that progresses through three stages:
+  1. **Ack** (~5 seconds): Lightweight "Validating `/command`..." posted immediately after trigger detection, before state derivation or validation. Uses inline GitHub Script (no checkout or Python) for speed.
+  2. **Interim** (validated commands only): Updates the ack comment with "Processing: `/command`" and workflow link. Skipped for rejected commands — they go directly from ack to rejection.
+  3. **Result**: Final message replaces the interim (or ack) content with the outcome.
+  All three stages edit the same comment (no new comments created per command).
 - **Accessibility**: Emoji supplements the text signal; the text alone must convey success/failure.
 
 #### Whitespace Rules
@@ -744,7 +750,7 @@ The `<details>` block follows the same structure in all messages that include it
 
 ### 5.2 Message Catalog
 
-The following 15 messages cover all bot comment types. Each entry specifies the content per element of the standard structure.
+The following 16 messages cover all bot comment types. Each entry specifies the content per element of the standard structure.
 
 #### Issue Lifecycle
 
@@ -886,11 +892,15 @@ The following 15 messages cover all bot comment types. Each entry specifies the 
 
 **14. `interim_processing`** — placeholder while workflow runs (special format)
 
+Shown only for validated commands (rejected commands skip directly from ack to rejection). Updates the ack comment in-place.
+
 | Element | Content |
 |---------|---------|
 | Header | **⏳ Processing: `/{command}`** _(no state)_ |
 | Info | **Requested by:** @{user} · [View workflow run](url) |
 | Footer | "This comment will be updated with the result. If this stays visible unusually long, open the workflow run above." |
+
+**Note:** The ack stage ("Validating `/command`...") is not a bot message template — it is posted inline by the workflow before state derivation is available.
 
 **15. `internal_error`** — workflow bug (special format)
 
@@ -900,6 +910,15 @@ The following 15 messages cover all bot comment types. Each entry specifies the 
 | Info | "Command validated but no handler executed. This is a workflow bug." |
 | Links | [View workflow logs](url) |
 | Escalation | Please report to Release Management maintainers. |
+
+**16. `config_drift_warning`** — triggered by push to `release-plan.yaml` on main while snapshot or draft is active
+
+| Element | Content |
+|---------|---------|
+| Header | **⚠️ Configuration drift — State: `{state}`** |
+| Explain | `release-plan.yaml` was updated on main (PR [#{N}](url)) but the change is not reflected in the active snapshot/draft. |
+| Links | [`release-plan.yaml`](url to file on main) |
+| Actions | State-specific: (snapshot-active) `/discard-snapshot <reason>` to restart from updated config; (draft-ready) `/delete-draft <reason>` to restart |
 
 ### 5.3 UX Design Decisions
 
@@ -1089,11 +1108,12 @@ When `/publish-release --confirm <tag>` is executed:
 4. **Create reference tag**: `src/rX.Y` on main at `src_commit_sha`
 5. **Create sync PR**: Post-release sync PR to main (see Section 8)
 6. **Cleanup branches**: Delete snapshot and release-review branches
-7. **Close issue**: Update state to PUBLISHED, close Release Issue
+7. **Post success message**: `release_published` bot comment with release URL and sync PR link
+8. **Close issue**: Update state to PUBLISHED, close Release Issue (after success message)
 
 ### 7.3 Bot Messages
 
-Publication uses three of the 15 message templates defined in Section 5.2:
+Publication uses three of the 16 message templates defined in Section 5.2:
 
 | Template | Catalog # | Purpose |
 |----------|-----------|---------|
@@ -1150,14 +1170,18 @@ Automation creates a PR to sync release artifacts back to main.
 | `release-review/rX.Y-{sha}` | Deleted (content preserved in release tag) |
 | `post-release/rX.Y` | Deleted by GitHub on PR merge |
 
+**MVP note:** The review branch may already have been deleted by a codeowner before publication. If it still exists, MVP renames it to `release-review/rX.Y-{sha}-published` instead of deleting.
+
 ### 8.4 Release Issue Closure
 
-After successful publication:
+After the success message (`release_published`) is posted:
 
 1. Update STATE section with publication timestamp and release URL
 2. Update ACTIONS section: "Release published. No further actions available."
 3. Change label to `release-state:published`
 4. Close issue with reason "completed"
+
+Issue closure is the final step — it follows the success message so the user sees confirmation before the issue closes.
 
 ---
 
