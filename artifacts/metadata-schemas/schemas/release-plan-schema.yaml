@@ -22,11 +22,9 @@ properties:
         type: string
         description: |
           Release track determining how the repository participates in CAMARA releases:
-          - none: No release planned, other repository fields can be omitted
-          - independent: Release outside meta-release cycle
+          - independent: Release outside meta-release cycle (default)
           - meta-release: Participating in a CAMARA meta-release cycle (requires meta_release field)
         enum:
-          - "none"
           - "independent"
           - "meta-release"
 

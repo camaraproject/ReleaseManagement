@@ -32,7 +32,7 @@ apis:
 
 | Field | Description |
 |-------|-------------|
-| `release_track` | `none`, `independent`, or `meta-release` (`none` = no release planned) |
+| `release_track` | `independent` (default) or `meta-release` |
 | `meta_release` | Meta-release cycle (e.g., `Fall26`) — required if track is `meta-release` |
 | `target_release_tag` | Release tag (e.g., `r4.1`) |
 | `target_release_type` | `none` (no release planned), `pre-release-alpha`, `pre-release-rc`, `public-release`, `maintenance-release` |
