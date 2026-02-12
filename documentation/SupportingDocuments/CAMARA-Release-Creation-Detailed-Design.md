@@ -623,7 +623,7 @@ New snapshot branch: release-snapshot/r4.1-def5678
 New release-review branch: release-review/r4.1-def5678
 New Release PR opened
        ↓
-Maintainer can copy content from preserved release-review/r4.1-abc1234 if needed
+Maintainer can copy content from preserved release-review/r4.1-abc1234-preserved if needed
 ```
 
 ### 4.8 Delete Draft Flow
