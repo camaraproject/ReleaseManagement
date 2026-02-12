@@ -64,10 +64,9 @@ This phase is ongoing until you decide to release.
 ### 4. Review and Approve
 
 **What you do:**
-1. Review the Release PR (CHANGELOG)
-2. Refine documentation if needed
-3. Ensure required approvals are in place (codeowner and release reviewer)
-4. Merge the Release PR
+1. Review the Release PR (CHANGELOG entry for the release) and update as needed.
+2. Ensure required approvals are in place (codeowner and release reviewer)
+3. Merge the Release PR
 
 **What you see:**
 - After merge: Draft release created, issue shows "DRAFT READY"
