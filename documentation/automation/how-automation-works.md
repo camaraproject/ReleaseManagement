@@ -68,7 +68,8 @@ You never interact with these directly — the Release PR is your interface.
 
 ## Reference Tags
 
-After publication, automation creates a `src/rX.Y` tag on `main` pointing to the source commit. This is a convenience pointer for creating maintenance branches or comparing releases. The authoritative source commit is `src_commit_sha` in `release-metadata.yaml`.
+After publication, automation creates a `src/rX.Y` tag on `main` pointing to the source commit. This is a convenience pointer for creating maintenance branches or comparing releases. This tag does not need any actions from codeowners or reviewers.
+The authoritative source commit is `src_commit_sha` in `release-metadata.yaml`.```
 
 ## Source of Truth
 
