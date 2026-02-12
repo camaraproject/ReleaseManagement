@@ -405,16 +405,14 @@ Release intent remains derived only from `release-plan.yaml`. Closing the issue 
 
 When `target_release_type` becomes `none` in `release-plan.yaml`:
 - Automation sets state label to `release-state: not-planned`
-- Automation does **not** auto-close the issue
 - Closing a NOT_PLANNED issue is allowed but not required (manual choice)
 
 **Reversibility:** NOT_PLANNED is not terminal. Updating `release-plan.yaml` to set `target_release_type ≠ none` and merging to the base branch transitions the release back to PLANNED state. Automation updates the Release Issue accordingly.
 
 **Closure Model:**
-- Automation only changes labels, not open/closed state
-- Exception: PUBLISHED state auto-closes after the success message is posted
+- PUBLISHED state auto-closes after the success message is posted
 - NOT_PLANNED allows manual closure; if `release-plan.yaml` is later updated to plan a release, automation creates a new Release Issue
-- After a snapshot/draft exists, the issue is the command surface — manual closure triggers automatic reopening with explanation
+- When a snapshot/draft exists, the issue is the command surface — manual closure triggers automatic reopening with explanation
 
 ### 3.8 Snapshot Lifecycle
 
