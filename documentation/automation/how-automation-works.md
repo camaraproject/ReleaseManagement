@@ -14,7 +14,8 @@ When you trigger a release, automation creates:
 | Release-review branch | Your editable content | Via Release PR |
 | Release PR | Review checkpoint | Review and merge |
 | `release-metadata.yaml` | Release record | No (generated) |
-| Draft release | Pre-publication | Publish when ready |
+| Draft release | Pre-publication | Review, then publish |
+| Post-release sync PR | Syncs CHANGELOG and README to `main` | Review and merge |
 
 ## What Automation Guarantees
 
@@ -29,8 +30,9 @@ When you trigger a release, automation creates:
 |--------|-----|
 | Trigger release (`/create-snapshot`) | Codeowner |
 | Review and merge Release PR | Codeowner + Release reviewer |
-| Publish draft release | Codeowner |
-| Discard or delete if problems found | Codeowner |
+| Trigger release publication (`/publish-release --confirm rX.Y`) | Codeowner |
+| Merge post-release sync PR | Codeowner |
+| Reset attempt (`/discard-snapshot` or `/delete-draft`) | Codeowner |
 
 ## Commands Reference
 
@@ -39,6 +41,7 @@ When you trigger a release, automation creates:
 | `/create-snapshot` | Start release attempt | PLANNED state |
 | `/discard-snapshot <reason>` | Abandon attempt | SNAPSHOT ACTIVE state |
 | `/delete-draft <reason>` | Delete before publish | DRAFT READY state |
+| `/publish-release --confirm rX.Y` | Publish the release | DRAFT READY state |
 
 Commands are posted as comments on the Release Issue.
 
@@ -50,9 +53,9 @@ Commands are posted as comments on the Release Issue.
 | SNAPSHOT ACTIVE | Release PR exists | `release-state: snapshot-active` |
 | DRAFT READY | Draft awaiting publish | `release-state: draft-ready` |
 | PUBLISHED | Complete | `release-state: published` |
-| CANCELLED | Release no longer planned | `release-state: cancelled` |
+| NOT PLANNED | Release no longer planned | `release-state: not-planned` |
 
-If a release is no longer intended, it is cancelled by setting `target_release_type: none` in `release-plan.yaml`. This is outside the normal release flow.
+To mark a release as not planned, a codeowner sets `target_release_type: none` in `release-plan.yaml`.
 
 ## Branch Model
 
@@ -62,6 +65,11 @@ Each release attempt uses two branches:
 - **Release-review branch** (`release-review/rX.Y-*`): Editable via Release PR
 
 You never interact with these directly — the Release PR is your interface.
+
+## Reference Tags
+
+After publication, automation creates a `src/rX.Y` tag on `main` pointing to the source commit. This is a convenience pointer for creating maintenance branches or comparing releases. This tag does not need any actions from codeowners or reviewers.
+The authoritative source commit is `src_commit_sha` in `release-metadata.yaml`.```
 
 ## Source of Truth
 

@@ -45,7 +45,7 @@ These are independent numbering systems.
 | SNAPSHOT ACTIVE | Release PR under review |
 | DRAFT READY | Draft awaiting publication |
 | PUBLISHED | Release complete |
-| CANCELLED | Release no longer planned |
+| NOT PLANNED | Release no longer planned |
 
 ## Metadata Files
 
