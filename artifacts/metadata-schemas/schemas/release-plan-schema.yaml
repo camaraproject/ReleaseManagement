@@ -22,23 +22,22 @@ properties:
         type: string
         description: |
           Release track determining how the repository participates in CAMARA releases:
-          - none: No release planned, other repository fields can be omitted
-          - independent: Release outside meta-release cycle
+          - independent: Release outside meta-release cycle (default)
           - meta-release: Participating in a CAMARA meta-release cycle (requires meta_release field)
         enum:
-          - "none"
           - "independent"
           - "meta-release"
 
       meta_release:
         type: string
         description: |
-          Meta-release label (e.g., Fall26, Spring27).
+          Meta-release label (e.g., Sync26, Signal27).
           Required when release_track is "meta-release", should be omitted otherwise.
-        pattern: "^(Spring|Fall)\\d{2}$"
+        pattern: "^(Spring|Fall|Signal|Sync)\\d{2}$"
         examples:
-          - "Fall26"
-          - "Spring27"
+          - "Spring26"
+          - "Sync26"
+          - "Signal27"
 
       target_release_tag:
         type: [string, "null"]

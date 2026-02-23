@@ -19,7 +19,7 @@ repository:
   release_date: "2026-09-30T10:00:00Z"
   release_type: public-release
   src_commit_sha: 7f3a9b2c8e1d4f6a0b5c7e9d3f8a1c4e6b9d2f5a
-  release_notes: "This is the public release for the CAMARA Fall26 meta-release. It includes the stable versions of the quality-on-demand 2.0.0 API and the qos-provisioning 1.0.0 API. The qos-profiles API remains at version 1.2.0."
+  release_notes: "This is the public release for the CAMARA Sync26 meta-release. It includes the stable versions of the quality-on-demand 2.0.0 API and the qos-provisioning 1.0.0 API. The qos-profiles API remains at version 1.2.0."
 
 dependencies:
   commonalities_release: r4.4 (1.0.1)

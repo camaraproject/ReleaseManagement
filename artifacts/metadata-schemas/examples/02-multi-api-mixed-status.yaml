@@ -8,7 +8,7 @@
 
 repository:
   release_track: meta-release
-  meta_release: Fall26
+  meta_release: Sync26
   target_release_tag: r4.1
   target_release_type: pre-release-alpha
 

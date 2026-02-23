@@ -69,12 +69,11 @@ properties:
       src_commit_sha:
         type: [string, "null"]
         description: |
-          Commit SHA from main or maintenance branch from which this release
-          was created. Set to null during release preparation. Populated by
-          automation at finalization to the HEAD commit SHA of the base branch
-          at the time the release branch was created. Release branches are
-          immutable after creation - corrections require abandoning and
-          retriggering the release from updated main.
+          Source commit SHA from the base branch (main or maintenance) from
+          which this release was created. Populated by automation at snapshot
+          creation to the HEAD commit SHA of the base branch. Snapshot
+          branches are immutable after creation - corrections require
+          discarding the snapshot and retriggering from updated main.
         pattern: "^[a-f0-9]{40}$"
         examples:
           - "abcd1234efgh5678ijkl9012mnop3456qrst7890"
@@ -83,7 +82,7 @@ properties:
         type: string
         description: Optional release notes or description (manual or generated)
         examples:
-          - "Pre-release for CAMARA Fall26 meta-release."
+          - "Pre-release for CAMARA Sync26 meta-release."
           - "Maintenance release with critical bug fixes."
 
   dependencies:

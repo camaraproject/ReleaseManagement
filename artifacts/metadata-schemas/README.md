@@ -1,6 +1,6 @@
 # CAMARA Release Metadata Schemas
 
-This directory contains JSON Schema definitions and validation tools for CAMARA release metadata files.
+This directory contains JSON Schema definitions for CAMARA release metadata files.
 
 ## Overview
 
@@ -32,8 +32,6 @@ metadata-schemas/
 │   ├── 03-rc-preparation.yaml
 │   ├── 04-maintenance-release.yaml
 │   └── 05-generated-release-metadata.yaml
-├── scripts/
-│   └── validate-release-plan.py
 └── README.md
 ```
 
@@ -44,8 +42,8 @@ metadata-schemas/
 Defines the structure for `release-plan.yaml` files maintained on the main branch.
 
 **Key fields:**
-- `repository.release_track` - Release track (none, independent, meta-release)
-- `repository.meta_release` - Meta-release label (Fall26, Spring27), required when release_track is "meta-release"
+- `repository.release_track` - Release track (independent, meta-release)
+- `repository.meta_release` - Meta-release label (Sync26, Signal27), required when release_track is "meta-release"
 - `repository.target_release_tag` - CAMARA release tag this release should have (e.g., r4.1), must be the next available number in the release cycle or rN+1.1 for start of new release cycle
 - `repository.target_release_type` - Declared release type, validated by CI against API statuses (none, pre-release-alpha, pre-release-rc, public-release, maintenance-release)
 - `dependencies` - Dependencies on Commonalities and ICM releases
@@ -82,83 +80,12 @@ The [examples/](examples/) directory contains five scenarios:
 
 ## Validation
 
-### Basic Validation
+Validation of `release-plan.yaml` is performed by the [`pr_validation` workflow](https://github.com/camaraproject/tooling) in the `camaraproject/tooling` repository. The workflow validates PRs that modify `release-plan.yaml` against the schema and performs semantic checks including:
 
-Validate a metadata file against its schema:
-
-```bash
-python3 scripts/validate-release-plan.py release-plan.yaml
-```
-
-The script auto-detects whether the file is a release-plan or release-metadata and selects the appropriate schema.
-
-### With Explicit Schema
-
-```bash
-python3 scripts/validate-release-plan.py release-plan.yaml \
-  --schema schemas/release-plan-schema.yaml
-```
-
-### With File Existence Checks
-
-```bash
-python3 scripts/validate-release-plan.py release-plan.yaml --check-files
-```
-
-This checks if API definition files referenced in the metadata actually exist in the repository.
-
-### Phase 1 Validation (Release Branch PRs)
-
-```bash
-python3 scripts/validate-release-plan.py release-metadata.yaml --strict-phase1
-```
-
-Enforces that `release_date` and `src_commit_sha` are `null` during release preparation (Phase 1). Use this flag in CI during release branch PR review to prevent manual population of these fields.
-
-### Exit Codes
-
-- `0` - Validation passed
-- `1` - Validation failed (errors found)
-
-### Validation Features
-
-The validator performs:
-
-1. **Schema validation** - Checks structure, required fields, data types, and patterns
-2. **Semantic checks:**
-   - Target release type consistency with API statuses
-   - Target API status progression rules
-   - Version format alignment
-   - Two-phase workflow enforcement (with `--strict-phase1` for release-metadata)
-3. **Optional file checks** - Verifies referenced API files exist (with `--check-files`)
-
-## Using in CI
-
-Example GitHub Actions workflow:
-
-```yaml
-# Validate release-plan.yaml on main branch
-- name: Validate Release Plan
-  run: |
-    python3 -m pip install pyyaml jsonschema
-    python3 artifacts/metadata-schemas/scripts/validate-release-plan.py release-plan.yaml
-
-# Validate release-metadata.yaml on release branch (Phase 1)
-- name: Validate Release Metadata (Phase 1)
-  if: startsWith(github.head_ref, 'release/')
-  run: |
-    python3 -m pip install pyyaml jsonschema
-    python3 artifacts/metadata-schemas/scripts/validate-release-plan.py release-metadata.yaml --strict-phase1
-```
-
-### Future JavaScript Implementation
-
-The validation script is currently implemented in Python. A JavaScript version can be implemented using the `ajv` library for JSON Schema validation and `js-yaml` for YAML parsing. This will be done during the CI integration phase (Phase 1B) to align with other CAMARA validation scripts.
-
-Recommended dependencies for JavaScript version:
-- ajv (^8.12.0) - JSON Schema validator with full Draft 7 support
-- ajv-formats (^3.0.1) - Format validation (date, uri)
-- js-yaml (^4.1.0) - YAML parsing
+- Schema validation (structure, required fields, data types, patterns)
+- Release type consistency with API statuses
+- Meta-release field consistency with release track
+- API definition file existence checks (with two-tier severity)
 
 ## Key Concepts
 
@@ -171,7 +98,7 @@ Recommended dependencies for JavaScript version:
 
 Use these exact field names:
 
-- `release_track` (none, independent, meta-release)
+- `release_track` (independent or meta-release)
 - `target_release_tag` (in release-plan.yaml) / `release_tag` (in release-metadata.yaml)
 - `api_name` (not name)
 - `commonalities_release` (not commonalities_version)
@@ -182,8 +109,7 @@ Use these exact field names:
 ### Release Track
 
 **release_track** determines how the repository participates in CAMARA releases:
-- `none` - No release planned
-- `independent` - Release outside meta-release cycle
+- `independent` - Release outside meta-release cycle (default)
 - `meta-release` - Participating in a CAMARA meta-release (requires meta_release field)
 
 ### Target Release Type vs Target API Status
@@ -206,7 +132,7 @@ Use these exact field names:
 ### Meta-Release Field
 
 The `meta_release` field is only used when `release_track` is "meta-release":
-- Use meta-release labels (Fall26, Spring27) for repositories participating in meta-releases
+- Use meta-release labels (Sync26, Signal27) for repositories participating in meta-releases
 - For independent releases, use `release_track: independent` without meta_release field
 
 ### Version Fields
@@ -228,18 +154,6 @@ The schemas allow additional properties beyond those explicitly defined. This en
 
 Required fields and data types are still strictly enforced through the schema.
 
-## Dependencies
-
-The validation script requires:
-- Python 3.7+
-- pyyaml
-- jsonschema
-
-Install with:
-```bash
-pip install pyyaml jsonschema
-```
-
 ## Common Validation Errors
 
 ### Schema Errors
@@ -248,13 +162,13 @@ pip install pyyaml jsonschema
 - **Fix:** Release tags must follow format `rX.Y` where both X and Y are >= 1 (e.g., r4.1, not r0.1 or r4.0)
 
 **Error:** "meta_release does not match pattern"
-- **Fix:** Must be Fall26, Spring27, or similar pattern (SpringYY or FallYY)
+- **Fix:** Must match pattern (SpringYY, FallYY, SignalYY, or SyncYY), e.g. Sync26, Signal27
 
 **Error:** "target_api_status is not one of enum values"
 - **Fix:** Must be exactly: draft, alpha, rc, or public
 
 **Error:** "release_track is not one of enum values"
-- **Fix:** Must be exactly: none, independent, or meta-release
+- **Fix:** Must be exactly: independent or meta-release
 
 ### Semantic Errors
 
