@@ -29,7 +29,7 @@ The following table specifies which release assets are required for a given targ
 | 4  | User Stories                            |   O   |         O         |         O          |    M   | 
 | 5  | Test Cases (basic)                      |   O   |         M         |         M          |    M   | 
 | 6  | Test Cases (enhanced)                   |   O   |         O         |         O          |    M   | 
-| 7  | API description link(for marketing)     |   O   |         O         |         M          |    M   |
+| 7  | API description link (for marketing)    |   O   |         O         |         M          |    M   |
 
 ## API readiness checklist review
 
