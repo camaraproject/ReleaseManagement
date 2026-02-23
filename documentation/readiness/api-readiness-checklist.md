@@ -32,7 +32,7 @@ The following table specifies which release assets are required for a given targ
 | 6  | Test result statement                   |   O   |         O         |         O          |    M   | 
 | 7  | API description link(for marketing)     |   O   |         O         |         M          |    M   |
 
-### API readiness checklist review
+## API readiness checklist review
 
 Before releasing the API (i.e. before issueing the /create-snapshot command in the Release Issue), the availability of all required assets for the targeted API status should be checked by the team.
 If not yet available, the required release asset(s) should be added through PR(s) to `main` first.
