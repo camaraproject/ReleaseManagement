@@ -1,0 +1,483 @@
+metadata:
+  last_updated: '2026-02-26T16:16:13Z'
+  schema_version: 1.0.0
+  collector_version: 1.0.0
+  collection_stats:
+    repos_scanned: 67
+    repos_with_plan: 12
+    repos_planned: 4
+    api_calls: 91
+    duration_seconds: 11.7
+meta_releases:
+- name: Fall25
+  total_apis: 6
+  m1_achieved: 3
+  m3_achieved: 5
+  m4_achieved: 6
+- name: Spring26
+  total_apis: 1
+  m1_achieved: 0
+  m3_achieved: 0
+  m4_achieved: 0
+- name: Sync26
+  total_apis: 1
+  m1_achieved: 0
+  m3_achieved: 0
+  m4_achieved: 0
+progress:
+- repository: CallForwardingSignal
+  github_url: https://github.com/camaraproject/CallForwardingSignal
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: r3.3
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: call-forwarding-signal
+    target_api_version: 0.4.0
+    target_api_status: public
+    main_contacts:
+    - FabrizioMoggio
+    - bigludo7
+    - chinaunicomyangfan
+  state: not_planned
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: r3.3
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: r3.1
+      release_date: '2025-06-16T09:51:19Z'
+      apis:
+      - api_name: call-forwarding-signal
+        api_version: 0.4.0-alpha.1
+    m3:
+      release_tag: r3.2
+      release_date: '2025-07-16T21:31:41Z'
+      apis:
+      - api_name: call-forwarding-signal
+        api_version: 0.4.0-rc.1
+    m4:
+      release_tag: r3.3
+      release_date: '2025-09-16T14:38:30Z'
+      apis:
+      - api_name: call-forwarding-signal
+        api_version: 0.4.0
+- repository: ClickToDial
+  github_url: https://github.com/camaraproject/ClickToDial
+  release_track: independent
+  target_release_tag: r1.2
+  target_release_type: pre-release-rc
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: click-to-dial
+    target_api_version: 0.1.0
+    target_api_status: rc
+    main_contacts:
+    - YadingFang
+    - Wojiaozhenghao
+    - XunliYang
+  state: planned
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: r1.1
+  cycle_releases: {}
+- repository: ConsentInfo
+  github_url: https://github.com/camaraproject/ConsentInfo
+  release_track: independent
+  target_release_tag: r2.2
+  target_release_type: pre-release-rc
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: consent-info
+    target_api_version: 0.2.0
+    target_api_status: rc
+    main_contacts:
+    - jpengar
+    - AxelNennker
+    - sebdewet
+  state: planned
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: r1.2
+    newest_pre_release: r2.1
+  cycle_releases: {}
+- repository: ConsentManagement
+  github_url: https://github.com/camaraproject/ConsentManagement
+  release_track: independent
+  target_release_tag: r1.1
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: consent-management
+    target_api_version: 0.1.0
+    target_api_status: draft
+    main_contacts:
+    - jpengar
+    - AxelNennker
+    - sebdewet
+  state: not_planned
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases: {}
+- repository: EnergyFootprintNotification
+  github_url: https://github.com/camaraproject/EnergyFootprintNotification
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: r1.3
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: energy-footprint-notification
+    target_api_version: 0.1.0
+    target_api_status: public
+    main_contacts:
+    - FabrizioMoggio
+  state: not_planned
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: r1.3
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: r1.1
+      release_date: '2025-05-28T09:30:24Z'
+      apis:
+      - api_name: energy-footprint-notification
+        api_version: 0.1.0-alpha.1
+    m3:
+      release_tag: r1.2
+      release_date: '2025-08-01T07:51:12Z'
+      apis:
+      - api_name: energy-footprint-notification
+        api_version: null
+    m4:
+      release_tag: r1.3
+      release_date: '2025-09-15T06:25:58Z'
+      apis:
+      - api_name: energy-footprint-notification
+        api_version: 0.1.0
+- repository: IoTNetworkOptimization
+  github_url: https://github.com/camaraproject/IoTNetworkOptimization
+  release_track: independent
+  target_release_tag: r1.1
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: iot-network-optimization
+    target_api_version: 0.1.0
+    target_api_status: alpha
+    main_contacts:
+    - FabrizioMoggio
+    - varanto
+    - rkandoi
+  state: not_planned
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: r1.1
+  cycle_releases: {}
+- repository: IoTSIMFraudPrevention
+  github_url: https://github.com/camaraproject/IoTSIMFraudPrevention
+  release_track: meta-release
+  meta_release: Spring26
+  target_release_tag: r1.1
+  target_release_type: pre-release-rc
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: iot-sim-fraud-prevention
+    target_api_version: 0.1.0
+    target_api_status: rc
+    main_contacts:
+    - chenfr2-ChinaTelecom
+    - XunliYang
+  state: planned
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: iot-sim-fraud-prevention
+        api_version: null
+    m3:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: iot-sim-fraud-prevention
+        api_version: null
+    m4:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: iot-sim-fraud-prevention
+        api_version: null
+- repository: RainfallIntensity
+  github_url: https://github.com/camaraproject/RainfallIntensity
+  release_track: independent
+  target_release_tag: r1.1
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: rainfall-intensity
+    target_api_version: 0.1.0
+    target_api_status: draft
+    main_contacts:
+    - Kamran-Keykhosravi
+  state: not_planned
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases: {}
+- repository: ReleaseTest
+  github_url: https://github.com/camaraproject/ReleaseTest
+  release_track: meta-release
+  meta_release: Sync26
+  target_release_tag: r1.1
+  target_release_type: pre-release-alpha
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: release-test
+    target_api_version: 0.1.0
+    target_api_status: alpha
+    main_contacts:
+    - hdamker-bot
+  state: published
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: release-test
+        api_version: null
+    m3:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: release-test
+        api_version: null
+    m4:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: release-test
+        api_version: null
+- repository: SimpleEdgeDiscovery
+  github_url: https://github.com/camaraproject/SimpleEdgeDiscovery
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: r2.2
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: simple-edge-discovery
+    target_api_version: 2.0.0
+    target_api_status: public
+    main_contacts:
+    - Kevsy
+    - crissancas
+    - JoseMConde
+    - maheshc01
+  state: not_planned
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: r2.2
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: simple-edge-discovery
+        api_version: null
+    m3:
+      release_tag: r2.1
+      release_date: '2025-07-22T16:29:30Z'
+      apis:
+      - api_name: simple-edge-discovery
+        api_version: 2.0.0-rc.1
+    m4:
+      release_tag: r2.2
+      release_date: '2025-09-17T17:29:46Z'
+      apis:
+      - api_name: simple-edge-discovery
+        api_version: 2.0.0
+- repository: TrafficInfluence
+  github_url: https://github.com/camaraproject/TrafficInfluence
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: r1.3
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: traffic-influence
+    target_api_version: 0.10.0
+    target_api_status: public
+    main_contacts:
+    - FabrizioMoggio
+    - Kevsy
+    - JoseMConde
+  state: not_planned
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: r1.3
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: r1.1
+      release_date: '2025-06-10T15:04:41Z'
+      apis:
+      - api_name: traffic-influence
+        api_version: 0.9.0-alpha.1
+    m3:
+      release_tag: r1.2
+      release_date: '2025-08-01T10:06:24Z'
+      apis:
+      - api_name: traffic-influence
+        api_version: 0.10.0-rc.1
+    m4:
+      release_tag: r1.3
+      release_date: '2025-09-16T15:12:23Z'
+      apis:
+      - api_name: traffic-influence
+        api_version: 0.10.0
+- repository: VerifiedCaller
+  github_url: https://github.com/camaraproject/VerifiedCaller
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: r1.3
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: brand-registration
+    target_api_version: 0.1.0
+    target_api_status: public
+    main_contacts:
+    - DanXu-ChinaTelecom
+    - Jason-ZTE
+    - alpaycetin74
+    - stroncoso-quobis
+    - GillesInnov35
+  - api_name: verified-caller
+    target_api_version: 0.1.0
+    target_api_status: public
+    main_contacts:
+    - DanXu-ChinaTelecom
+    - Jason-ZTE
+    - alpaycetin74
+    - stroncoso-quobis
+    - GillesInnov35
+  state: not_planned
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: r1.3
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: brand-registration
+        api_version: null
+      - api_name: verified-caller
+        api_version: null
+    m3:
+      release_tag: r1.1
+      release_date: '2025-07-18T11:34:25Z'
+      apis:
+      - api_name: brand-registration
+        api_version: 0.1.0-rc.1
+      - api_name: verified-caller
+        api_version: 0.1.0-rc.1
+    m4:
+      release_tag: r1.3
+      release_date: '2025-09-15T15:00:09Z'
+      apis:
+      - api_name: brand-registration
+        api_version: 0.1.0
+      - api_name: verified-caller
+        api_version: 0.1.0
