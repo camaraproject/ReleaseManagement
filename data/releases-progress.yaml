@@ -1,19 +1,19 @@
 metadata:
-  last_updated: '2026-02-27T06:08:49Z'
+  last_updated: '2026-02-27T15:00:56Z'
   schema_version: 1.0.0
   collector_version: 1.0.0
   collection_stats:
     repos_scanned: 67
-    repos_with_plan: 12
+    repos_with_plan: 14
     repos_planned: 4
-    api_calls: 91
-    duration_seconds: 11.3
+    api_calls: 93
+    duration_seconds: 21.0
 meta_releases:
 - name: Fall25
-  total_apis: 6
+  total_apis: 7
   m1_achieved: 3
-  m3_achieved: 5
-  m4_achieved: 6
+  m3_achieved: 6
+  m4_achieved: 7
 - name: Spring26
   total_apis: 1
   m1_achieved: 0
@@ -25,6 +25,106 @@ meta_releases:
   m3_achieved: 0
   m4_achieved: 0
 progress:
+- repository: ApplicationEndpointDiscovery
+  github_url: https://github.com/camaraproject/ApplicationEndpointDiscovery
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: r1.2
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: application-endpoint-discovery
+    target_api_version: 0.1.0
+    target_api_status: public
+    main_contacts:
+    - gunjald
+    - Kevsy
+    - crissancas
+    - FabrizioMoggio
+    - seralogar
+    - gainsley
+    - JoseMConde
+    - maheshc01
+  state: not_planned
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: r1.2
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: application-endpoint-discovery
+        api_version: null
+    m3:
+      release_tag: r1.1
+      release_date: '2025-07-24T10:18:04Z'
+      apis:
+      - api_name: application-endpoint-discovery
+        api_version: 0.1.0-rc.1
+    m4:
+      release_tag: r1.2
+      release_date: '2025-09-16T19:23:11Z'
+      apis:
+      - api_name: application-endpoint-discovery
+        api_version: 0.1.0
+- repository: ApplicationEndpointRegistration
+  github_url: https://github.com/camaraproject/ApplicationEndpointRegistration
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: r1.2
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: application-endpoint-registration
+    target_api_version: 0.1.0
+    target_api_status: public
+    main_contacts:
+    - gunjald
+    - Kevsy
+    - crissancas
+    - FabrizioMoggio
+    - seralogar
+    - gainsley
+    - JoseMConde
+    - maheshc01
+  state: not_planned
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: r1.2
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: application-endpoint-registration
+        api_version: null
+    m3:
+      release_tag: r1.1
+      release_date: '2025-07-31T09:55:23Z'
+      apis:
+      - api_name: application-endpoint-registration
+        api_version: 0.1.0-rc.1
+    m4:
+      release_tag: r1.2
+      release_date: '2025-09-17T09:17:03Z'
+      apis:
+      - api_name: application-endpoint-registration
+        api_version: 0.1.0
 - repository: CallForwardingSignal
   github_url: https://github.com/camaraproject/CallForwardingSignal
   release_track: meta-release
@@ -261,6 +361,56 @@ progress:
       apis:
       - api_name: iot-sim-fraud-prevention
         api_version: null
+- repository: OptimalEdgeDiscovery
+  github_url: https://github.com/camaraproject/OptimalEdgeDiscovery
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: r1.2
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: optimal-edge-discovery
+    target_api_version: 0.1.0
+    target_api_status: public
+    main_contacts:
+    - gunjald
+    - Kevsy
+    - crissancas
+    - FabrizioMoggio
+    - seralogar
+    - gainsley
+    - JoseMConde
+    - maheshc01
+  state: not_planned
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: r1.2
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: optimal-edge-discovery
+        api_version: null
+    m3:
+      release_tag: r1.1
+      release_date: '2025-07-30T16:41:18Z'
+      apis:
+      - api_name: optimal-edge-discovery
+        api_version: 0.1.0-rc.1
+    m4:
+      release_tag: r1.2
+      release_date: '2025-09-17T15:32:16Z'
+      apis:
+      - api_name: optimal-edge-discovery
+        api_version: 0.1.0
 - repository: RainfallIntensity
   github_url: https://github.com/camaraproject/RainfallIntensity
   release_track: independent
@@ -419,65 +569,3 @@ progress:
       apis:
       - api_name: traffic-influence
         api_version: 0.10.0
-- repository: VerifiedCaller
-  github_url: https://github.com/camaraproject/VerifiedCaller
-  release_track: meta-release
-  meta_release: Fall25
-  target_release_tag: r1.3
-  target_release_type: none
-  dependencies:
-    commonalities_release: r3.4
-    identity_consent_management_release: r3.3
-  apis:
-  - api_name: brand-registration
-    target_api_version: 0.1.0
-    target_api_status: public
-    main_contacts:
-    - DanXu-ChinaTelecom
-    - Jason-ZTE
-    - alpaycetin74
-    - stroncoso-quobis
-    - GillesInnov35
-  - api_name: verified-caller
-    target_api_version: 0.1.0
-    target_api_status: public
-    main_contacts:
-    - DanXu-ChinaTelecom
-    - Jason-ZTE
-    - alpaycetin74
-    - stroncoso-quobis
-    - GillesInnov35
-  state: not_planned
-  artifacts:
-    snapshot_branch: null
-    release_pr: null
-    draft_release: null
-    release_issue: null
-  published_context:
-    latest_public_release: r1.3
-    newest_pre_release: null
-  cycle_releases:
-    m1:
-      release_tag: null
-      release_date: null
-      apis:
-      - api_name: brand-registration
-        api_version: null
-      - api_name: verified-caller
-        api_version: null
-    m3:
-      release_tag: r1.1
-      release_date: '2025-07-18T11:34:25Z'
-      apis:
-      - api_name: brand-registration
-        api_version: 0.1.0-rc.1
-      - api_name: verified-caller
-        api_version: 0.1.0-rc.1
-    m4:
-      release_tag: r1.3
-      release_date: '2025-09-15T15:00:09Z'
-      apis:
-      - api_name: brand-registration
-        api_version: 0.1.0
-      - api_name: verified-caller
-        api_version: 0.1.0
