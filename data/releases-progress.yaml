@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-02-28T05:52:11Z'
+  last_updated: '2026-02-28T14:42:32Z'
   schema_version: 1.0.0
   collector_version: 1.0.0
   collection_stats:
@@ -7,7 +7,7 @@ metadata:
     repos_with_plan: 15
     repos_planned: 4
     api_calls: 94
-    duration_seconds: 12.2
+    duration_seconds: 12.0
 meta_releases:
 - name: Fall25
   total_apis: 9
