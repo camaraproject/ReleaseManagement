@@ -1,13 +1,13 @@
 metadata:
-  last_updated: '2026-02-28T05:52:11Z'
+  last_updated: '2026-03-01T14:44:21Z'
   schema_version: 1.0.0
   collector_version: 1.0.0
   collection_stats:
     repos_scanned: 67
     repos_with_plan: 15
     repos_planned: 4
-    api_calls: 94
-    duration_seconds: 12.2
+    api_calls: 95
+    duration_seconds: 19.4
 meta_releases:
 - name: Fall25
   total_apis: 9
@@ -442,18 +442,21 @@ progress:
   target_release_tag: r1.1
   target_release_type: pre-release-alpha
   dependencies:
-    commonalities_release: r3.4
-    identity_consent_management_release: r3.3
+    commonalities_release: r4.1
+    identity_consent_management_release: r4.1
   apis:
   - api_name: release-test
-    target_api_version: 0.1.0
+    target_api_version: 1.0.0
     target_api_status: alpha
     main_contacts:
     - hdamker-bot
-  state: published
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r1.1-b9c2113
+    release_pr:
+      number: 19
+      state: open
+      url: https://github.com/camaraproject/ReleaseTest/pull/19
     draft_release: null
     release_issue: null
   published_context:
