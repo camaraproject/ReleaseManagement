@@ -1,19 +1,19 @@
 metadata:
-  last_updated: '2026-03-02T05:49:21Z'
+  last_updated: '2026-03-02T15:03:25Z'
   schema_version: 1.0.0
   collector_version: 1.0.0
   collection_stats:
     repos_scanned: 67
-    repos_with_plan: 15
+    repos_with_plan: 19
     repos_planned: 4
-    api_calls: 94
-    duration_seconds: 19.0
+    api_calls: 98
+    duration_seconds: 24.1
 meta_releases:
 - name: Fall25
-  total_apis: 9
+  total_apis: 11
   m1_achieved: 3
-  m3_achieved: 8
-  m4_achieved: 9
+  m3_achieved: 10
+  m4_achieved: 11
 - name: Spring26
   total_apis: 1
   m1_achieved: 0
@@ -291,6 +291,33 @@ progress:
       apis:
       - api_name: energy-footprint-notification
         api_version: 0.1.0
+- repository: IoTDeviceManagement
+  github_url: https://github.com/camaraproject/IoTDeviceManagement
+  release_track: independent
+  target_release_tag: r1.1
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: placeholder-entry
+    target_api_version: 0.1.0
+    target_api_status: draft
+    main_contacts:
+    - maheshc01
+    - chenfr2-ChinaTelecom
+    - XunliYang
+    - rkandoi
+  state: not_planned
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases: {}
 - repository: IoTNetworkOptimization
   github_url: https://github.com/camaraproject/IoTNetworkOptimization
   release_track: independent
@@ -361,6 +388,31 @@ progress:
       apis:
       - api_name: iot-sim-fraud-prevention
         api_version: null
+- repository: MultiPointVPN
+  github_url: https://github.com/camaraproject/MultiPointVPN
+  release_track: independent
+  target_release_tag: r1.1
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: multi-point-vpn
+    target_api_version: 0.1.0
+    target_api_status: draft
+    main_contacts:
+    - abd-abhisek
+    - hemantagogoi-infy
+  state: not_planned
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases: {}
 - repository: OptimalEdgeDiscovery
   github_url: https://github.com/camaraproject/OptimalEdgeDiscovery
   release_track: meta-release
@@ -435,6 +487,51 @@ progress:
     latest_public_release: null
     newest_pre_release: null
   cycle_releases: {}
+- repository: RegionDeviceCount
+  github_url: https://github.com/camaraproject/RegionDeviceCount
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: r2.2
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: region-device-count
+    target_api_version: 0.2.0
+    target_api_status: public
+    main_contacts:
+    - chinaunicomyangfan
+    - ClownsAlbert
+    - ChuanyuChen
+  state: not_planned
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: r2.2
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: region-device-count
+        api_version: null
+    m3:
+      release_tag: r2.1
+      release_date: '2025-07-25T08:52:58Z'
+      apis:
+      - api_name: region-device-count
+        api_version: 0.2.0-rc.1
+    m4:
+      release_tag: r2.2
+      release_date: '2025-09-15T08:06:27Z'
+      apis:
+      - api_name: region-device-count
+        api_version: 0.2.0
 - repository: ReleaseTest
   github_url: https://github.com/camaraproject/ReleaseTest
   release_track: meta-release
@@ -524,6 +621,52 @@ progress:
       apis:
       - api_name: simple-edge-discovery
         api_version: 2.0.0
+- repository: SubscriptionStatus
+  github_url: https://github.com/camaraproject/SubscriptionStatus
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: r1.2
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: subscription-status
+    target_api_version: 0.1.0
+    target_api_status: public
+    main_contacts:
+    - chinaunicomyangfan
+    - ClownsAlbert
+    - ChuanyuChen
+    - DanXu-ChinaTelecom
+  state: not_planned
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: r1.2
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: subscription-status
+        api_version: null
+    m3:
+      release_tag: r1.1
+      release_date: '2025-07-24T07:59:09Z'
+      apis:
+      - api_name: subscription-status
+        api_version: 0.1.0-rc.1
+    m4:
+      release_tag: r1.2
+      release_date: '2025-09-15T07:00:03Z'
+      apis:
+      - api_name: subscription-status
+        api_version: 0.1.0
 - repository: TrafficInfluence
   github_url: https://github.com/camaraproject/TrafficInfluence
   release_track: meta-release
