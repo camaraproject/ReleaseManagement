@@ -1,13 +1,13 @@
 metadata:
-  last_updated: '2026-03-02T05:49:21Z'
+  last_updated: '2026-03-02T06:09:11Z'
   schema_version: 1.0.0
   collector_version: 1.0.0
   collection_stats:
     repos_scanned: 67
-    repos_with_plan: 15
+    repos_with_plan: 16
     repos_planned: 4
-    api_calls: 94
-    duration_seconds: 19.0
+    api_calls: 95
+    duration_seconds: 19.1
 meta_releases:
 - name: Fall25
   total_apis: 9
@@ -291,6 +291,33 @@ progress:
       apis:
       - api_name: energy-footprint-notification
         api_version: 0.1.0
+- repository: IoTDeviceManagement
+  github_url: https://github.com/camaraproject/IoTDeviceManagement
+  release_track: independent
+  target_release_tag: r1.1
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: placeholder-entry
+    target_api_version: 0.1.0
+    target_api_status: draft
+    main_contacts:
+    - maheshc01
+    - chenfr2-ChinaTelecom
+    - XunliYang
+    - rkandoi
+  state: not_planned
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases: {}
 - repository: IoTNetworkOptimization
   github_url: https://github.com/camaraproject/IoTNetworkOptimization
   release_track: independent
