@@ -1,7 +1,7 @@
 metadata:
-  last_updated: '2026-03-03T11:10:49Z'
-  last_checked: '2026-03-03T11:10:49Z'
-  releases_master_updated: '2026-02-24T17:21:49.981Z'
+  last_updated: '2026-03-03T13:10:51Z'
+  last_checked: '2026-03-03T13:10:51Z'
+  releases_master_updated: '2026-03-03T12:23:27.672Z'
   schema_version: 1.2.0
   collector_version: 1.2.0
   repos_scanned: 67
@@ -553,7 +553,7 @@ progress:
     release_issue: null
   published_context:
     latest_public_release: null
-    newest_pre_release: null
+    newest_pre_release: r1.1
   cycle_releases:
     m1:
       release_tag: null
