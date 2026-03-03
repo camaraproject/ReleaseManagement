@@ -1,13 +1,11 @@
 metadata:
-  last_updated: '2026-03-02T15:03:25Z'
-  schema_version: 1.0.0
-  collector_version: 1.0.0
-  collection_stats:
-    repos_scanned: 67
-    repos_with_plan: 19
-    repos_planned: 4
-    api_calls: 98
-    duration_seconds: 24.1
+  last_updated: '2026-03-03T11:10:49Z'
+  last_checked: '2026-03-03T11:10:49Z'
+  releases_master_updated: '2026-02-24T17:21:49.981Z'
+  schema_version: 1.2.0
+  collector_version: 1.2.0
+  repos_scanned: 67
+  repos_with_plan: 19
 meta_releases:
 - name: Fall25
   total_apis: 11
@@ -392,18 +390,18 @@ progress:
   github_url: https://github.com/camaraproject/MultiPointVPN
   release_track: independent
   target_release_tag: r1.1
-  target_release_type: none
+  target_release_type: pre-release-alpha
   dependencies:
     commonalities_release: r3.4
     identity_consent_management_release: r3.3
   apis:
   - api_name: multi-point-vpn
     target_api_version: 0.1.0
-    target_api_status: draft
+    target_api_status: alpha
     main_contacts:
     - abd-abhisek
     - hemantagogoi-infy
-  state: not_planned
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
