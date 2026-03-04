@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-03-03T13:10:51Z'
-  last_checked: '2026-03-03T13:10:51Z'
+  last_updated: '2026-03-04T11:20:01Z'
+  last_checked: '2026-03-04T11:20:01Z'
   releases_master_updated: '2026-03-03T12:23:27.672Z'
   schema_version: 1.2.0
   collector_version: 1.2.0
@@ -19,7 +19,7 @@ meta_releases:
   m4_achieved: 0
 - name: Sync26
   total_apis: 1
-  m1_achieved: 0
+  m1_achieved: 1
   m3_achieved: 0
   m4_achieved: 0
 progress:
@@ -193,7 +193,25 @@ progress:
   published_context:
     latest_public_release: null
     newest_pre_release: r1.1
-  cycle_releases: {}
+  cycle_releases:
+    m1:
+      release_tag: r1.1
+      release_date: '2025-05-15T14:04:29Z'
+      apis:
+      - api_name: click-to-dial
+        api_version: 0.1.0-alpha.1
+    m3:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: click-to-dial
+        api_version: null
+    m4:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: click-to-dial
+        api_version: null
 - repository: ConsentInfo
   github_url: https://github.com/camaraproject/ConsentInfo
   release_track: independent
@@ -219,7 +237,25 @@ progress:
   published_context:
     latest_public_release: r1.2
     newest_pre_release: r2.1
-  cycle_releases: {}
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: consent-info
+        api_version: null
+    m3:
+      release_tag: r2.1
+      release_date: '2026-02-05T10:25:58Z'
+      apis:
+      - api_name: consent-info
+        api_version: 0.2.0-rc.1
+    m4:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: consent-info
+        api_version: null
 - repository: ConsentManagement
   github_url: https://github.com/camaraproject/ConsentManagement
   release_track: independent
@@ -245,7 +281,25 @@ progress:
   published_context:
     latest_public_release: null
     newest_pre_release: null
-  cycle_releases: {}
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: consent-management
+        api_version: null
+    m3:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: consent-management
+        api_version: null
+    m4:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: consent-management
+        api_version: null
 - repository: EnergyFootprintNotification
   github_url: https://github.com/camaraproject/EnergyFootprintNotification
   release_track: meta-release
@@ -315,7 +369,25 @@ progress:
   published_context:
     latest_public_release: null
     newest_pre_release: null
-  cycle_releases: {}
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: placeholder-entry
+        api_version: null
+    m3:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: placeholder-entry
+        api_version: null
+    m4:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: placeholder-entry
+        api_version: null
 - repository: IoTNetworkOptimization
   github_url: https://github.com/camaraproject/IoTNetworkOptimization
   release_track: independent
@@ -341,7 +413,25 @@ progress:
   published_context:
     latest_public_release: null
     newest_pre_release: r1.1
-  cycle_releases: {}
+  cycle_releases:
+    m1:
+      release_tag: r1.1
+      release_date: '2025-12-11T13:11:28Z'
+      apis:
+      - api_name: iot-network-optimization
+        api_version: 0.1.0-alpha.1
+    m3:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: iot-network-optimization
+        api_version: null
+    m4:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: iot-network-optimization
+        api_version: null
 - repository: IoTSIMFraudPrevention
   github_url: https://github.com/camaraproject/IoTSIMFraudPrevention
   release_track: meta-release
@@ -410,7 +500,25 @@ progress:
   published_context:
     latest_public_release: null
     newest_pre_release: null
-  cycle_releases: {}
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: multi-point-vpn
+        api_version: null
+    m3:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: multi-point-vpn
+        api_version: null
+    m4:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: multi-point-vpn
+        api_version: null
 - repository: OptimalEdgeDiscovery
   github_url: https://github.com/camaraproject/OptimalEdgeDiscovery
   release_track: meta-release
@@ -484,7 +592,25 @@ progress:
   published_context:
     latest_public_release: null
     newest_pre_release: null
-  cycle_releases: {}
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: rainfall-intensity
+        api_version: null
+    m3:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: rainfall-intensity
+        api_version: null
+    m4:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: rainfall-intensity
+        api_version: null
 - repository: RegionDeviceCount
   github_url: https://github.com/camaraproject/RegionDeviceCount
   release_track: meta-release
@@ -556,11 +682,11 @@ progress:
     newest_pre_release: r1.1
   cycle_releases:
     m1:
-      release_tag: null
-      release_date: null
+      release_tag: r1.1
+      release_date: '2026-03-01T16:00:48Z'
       apis:
       - api_name: release-test
-        api_version: null
+        api_version: 1.0.0-alpha.1
     m3:
       release_tag: null
       release_date: null
