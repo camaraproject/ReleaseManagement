@@ -1168,7 +1168,7 @@ Automation creates a PR to sync release artifacts back to main.
 
 | Aspect | Specification |
 |--------|---------------|
-| Branch | `post-release/rX.Y` → main |
+| Branch | `pr-to-main/rX.Y` → main |
 | Content | CHANGELOG entry, README release info section |
 | Labels | `post-release`, `automated` |
 | Review | Requests CODEOWNERS review |
@@ -1186,7 +1186,7 @@ Automation creates a PR to sync release artifacts back to main.
 |--------|--------|
 | `release-snapshot/rX.Y-{sha}` | Deleted (tag and pointer branch preserve content) |
 | `release-review/rX.Y-{sha}` | Deleted (content preserved in release tag) |
-| `post-release/rX.Y` | Deleted by GitHub on PR merge |
+| `pr-to-main/rX.Y` | Deleted by GitHub on PR merge |
 | `release/rX.Y` | Kept (protected pointer to tag commit) |
 | `pre-release/rX.Y` | Kept (deletable by codeowners when superseded) |
 
