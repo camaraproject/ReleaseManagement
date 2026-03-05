@@ -1,11 +1,11 @@
 metadata:
-  last_updated: '2026-03-05T06:05:36Z'
-  last_checked: '2026-03-05T06:05:36Z'
+  last_updated: '2026-03-05T14:59:51Z'
+  last_checked: '2026-03-05T14:59:51Z'
   releases_master_updated: '2026-03-03T12:23:27.672Z'
   schema_version: 1.2.0
   collector_version: 1.2.0
   repos_scanned: 67
-  repos_with_plan: 20
+  repos_with_plan: 21
 meta_releases:
 - name: Fall25
   total_apis: 12
@@ -18,7 +18,7 @@ meta_releases:
   m3_achieved: 0
   m4_achieved: 0
 - name: Sync26
-  total_apis: 1
+  total_apis: 4
   m1_achieved: 1
   m3_achieved: 0
   m4_achieved: 0
@@ -615,6 +615,80 @@ progress:
       apis:
       - api_name: optimal-edge-discovery
         api_version: 0.1.0
+- repository: QualityOnDemand
+  github_url: https://github.com/camaraproject/QualityOnDemand
+  release_track: meta-release
+  meta_release: Sync26
+  target_release_tag: r4.1
+  target_release_type: pre-release-alpha
+  dependencies:
+    commonalities_release: r4.1
+    identity_consent_management_release: r4.1
+  apis:
+  - api_name: qos-profiles
+    target_api_version: 1.2.0
+    target_api_status: alpha
+    main_contacts:
+    - hdamker
+    - eric-murray
+    - RandyLevensalor
+    - jlurien
+  - api_name: qos-provisioning
+    target_api_version: 0.4.0
+    target_api_status: alpha
+    main_contacts:
+    - hdamker
+    - eric-murray
+    - RandyLevensalor
+    - jlurien
+  - api_name: quality-on-demand
+    target_api_version: 1.2.0
+    target_api_status: alpha
+    main_contacts:
+    - hdamker
+    - eric-murray
+    - RandyLevensalor
+    - jlurien
+  state: planned
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: r3.2
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: qos-profiles
+        api_version: null
+      - api_name: qos-provisioning
+        api_version: null
+      - api_name: quality-on-demand
+        api_version: null
+    m3:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: qos-profiles
+        api_version: null
+      - api_name: qos-provisioning
+        api_version: null
+      - api_name: quality-on-demand
+        api_version: null
+    m4:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: qos-profiles
+        api_version: null
+      - api_name: qos-provisioning
+        api_version: null
+      - api_name: quality-on-demand
+        api_version: null
 - repository: RainfallIntensity
   github_url: https://github.com/camaraproject/RainfallIntensity
   release_track: independent
