@@ -1,10 +1,10 @@
 metadata:
-  last_updated: '2026-03-05T18:52:43Z'
-  last_checked: '2026-03-05T18:52:43Z'
-  releases_master_updated: '2026-03-03T12:23:27.672Z'
+  last_updated: '2026-03-06T07:35:39Z'
+  last_checked: '2026-03-06T07:35:39Z'
+  releases_master_updated: '2026-03-06T05:32:48.025Z'
   schema_version: 1.2.0
   collector_version: 1.2.0
-  repos_scanned: 67
+  repos_scanned: 66
   repos_with_plan: 21
 meta_releases:
 - name: Fall25
@@ -20,7 +20,7 @@ meta_releases:
 - name: Sync26
   total_apis: 4
   m1_achieved: 1
-  m3_achieved: 0
+  m3_achieved: 1
   m4_achieved: 0
 progress:
 - repository: ApplicationEndpointDiscovery
@@ -808,22 +808,17 @@ progress:
       - api_name: release-test
         api_version: 1.0.0-alpha.1
     m3:
-      release_tag: null
-      release_date: null
+      release_tag: r1.2
+      release_date: '2026-03-05T15:48:16Z'
       apis:
       - api_name: release-test
-        api_version: null
+        api_version: 1.0.0-rc.1
     m4:
       release_tag: null
       release_date: null
       apis:
       - api_name: release-test
         api_version: null
-  warnings:
-  - code: W003
-    message: Release r1.2 is published but not yet in releases-master.yaml — milestone
-      data may be incomplete
-    severity: warning
 - repository: SimpleEdgeDiscovery
   github_url: https://github.com/camaraproject/SimpleEdgeDiscovery
   release_track: meta-release
