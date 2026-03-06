@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-03-06T07:35:39Z'
-  last_checked: '2026-03-06T07:35:39Z'
+  last_updated: '2026-03-06T10:20:35Z'
+  last_checked: '2026-03-06T10:20:35Z'
   releases_master_updated: '2026-03-06T05:32:48.025Z'
   schema_version: 1.2.0
   collector_version: 1.2.0
@@ -213,6 +213,10 @@ progress:
       apis:
       - api_name: click-to-dial
         api_version: null
+  warnings:
+  - code: W005
+    message: Active release plan but no caller workflow installed
+    severity: warning
 - repository: ConsentInfo
   github_url: https://github.com/camaraproject/ConsentInfo
   release_track: independent
@@ -257,6 +261,10 @@ progress:
       apis:
       - api_name: consent-info
         api_version: null
+  warnings:
+  - code: W005
+    message: Active release plan but no caller workflow installed
+    severity: warning
 - repository: ConsentManagement
   github_url: https://github.com/camaraproject/ConsentManagement
   release_track: independent
@@ -477,6 +485,10 @@ progress:
       apis:
       - api_name: iot-sim-fraud-prevention
         api_version: null
+  warnings:
+  - code: W005
+    message: Active release plan but no caller workflow installed
+    severity: warning
 - repository: MultiPointVPN
   github_url: https://github.com/camaraproject/MultiPointVPN
   release_track: independent
@@ -520,6 +532,10 @@ progress:
       apis:
       - api_name: multi-point-vpn
         api_version: null
+  warnings:
+  - code: W005
+    message: Active release plan but no caller workflow installed
+    severity: warning
 - repository: NetworkSliceBooking
   github_url: https://github.com/camaraproject/NetworkSliceBooking
   release_track: meta-release
