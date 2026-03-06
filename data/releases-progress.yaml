@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-03-06T10:20:35Z'
-  last_checked: '2026-03-06T10:20:35Z'
+  last_updated: '2026-03-06T14:59:51Z'
+  last_checked: '2026-03-06T14:59:51Z'
   releases_master_updated: '2026-03-06T05:32:48.025Z'
   schema_version: 1.2.0
   collector_version: 1.2.0
@@ -261,10 +261,6 @@ progress:
       apis:
       - api_name: consent-info
         api_version: null
-  warnings:
-  - code: W005
-    message: Active release plan but no caller workflow installed
-    severity: warning
 - repository: ConsentManagement
   github_url: https://github.com/camaraproject/ConsentManagement
   release_track: independent
