@@ -1,17 +1,17 @@
 metadata:
-  last_updated: '2026-03-09T06:13:55Z'
-  last_checked: '2026-03-09T06:13:55Z'
+  last_updated: '2026-03-09T15:13:55Z'
+  last_checked: '2026-03-09T15:13:55Z'
   releases_master_updated: '2026-03-06T05:32:48.025Z'
   schema_version: 1.2.0
   collector_version: 1.2.0
   repos_scanned: 66
-  repos_with_plan: 23
+  repos_with_plan: 24
 meta_releases:
 - name: Fall25
-  total_apis: 12
+  total_apis: 15
   m1_achieved: 3
-  m3_achieved: 11
-  m4_achieved: 12
+  m3_achieved: 14
+  m4_achieved: 15
 - name: Spring26
   total_apis: 2
   m1_achieved: 1
@@ -185,7 +185,7 @@ progress:
     - YadingFang
     - Wojiaozhenghao
     - XunliYang
-  state: planned
+  state: published
   artifacts:
     snapshot_branch: null
     release_pr: null
@@ -214,8 +214,9 @@ progress:
       - api_name: click-to-dial
         api_version: null
   warnings:
-  - code: W005
-    message: Active release plan but no caller workflow installed
+  - code: W003
+    message: Release r1.2 is published but not yet in releases-master.yaml — milestone
+      data may be incomplete
     severity: warning
 - repository: ConsentInfo
   github_url: https://github.com/camaraproject/ConsentInfo
@@ -305,6 +306,80 @@ progress:
       apis:
       - api_name: consent-management
         api_version: null
+- repository: DedicatedNetworks
+  github_url: https://github.com/camaraproject/DedicatedNetworks
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: r1.2
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: dedicated-network-accesses
+    target_api_version: 0.1.0
+    target_api_status: public
+    main_contacts:
+    - tlohmar
+    - PeterKovacs2
+    - carlosromerog
+    - eric-murray
+  - api_name: dedicated-network-profiles
+    target_api_version: 0.1.0
+    target_api_status: public
+    main_contacts:
+    - tlohmar
+    - PeterKovacs2
+    - carlosromerog
+    - eric-murray
+  - api_name: dedicated-network
+    target_api_version: 0.1.0
+    target_api_status: public
+    main_contacts:
+    - tlohmar
+    - PeterKovacs2
+    - carlosromerog
+    - eric-murray
+  state: not_planned
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: r1.2
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: dedicated-network-accesses
+        api_version: null
+      - api_name: dedicated-network-profiles
+        api_version: null
+      - api_name: dedicated-network
+        api_version: null
+    m3:
+      release_tag: r1.1
+      release_date: '2025-07-21T11:45:44Z'
+      apis:
+      - api_name: dedicated-network-accesses
+        api_version: 0.1.0-rc.1
+      - api_name: dedicated-network-profiles
+        api_version: 0.1.0-rc.1
+      - api_name: dedicated-network
+        api_version: 0.1.0-rc.1
+    m4:
+      release_tag: r1.2
+      release_date: '2025-09-18T07:42:08Z'
+      apis:
+      - api_name: dedicated-network-accesses
+        api_version: 0.1.0
+      - api_name: dedicated-network-profiles
+        api_version: 0.1.0
+      - api_name: dedicated-network
+        api_version: 0.1.0
 - repository: DeviceMediaStreamingRate
   github_url: https://github.com/camaraproject/DeviceMediaStreamingRate
   release_track: independent
