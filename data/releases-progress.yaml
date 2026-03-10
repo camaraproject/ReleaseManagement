@@ -1,17 +1,17 @@
 metadata:
-  last_updated: '2026-03-10T09:27:55Z'
-  last_checked: '2026-03-10T09:27:55Z'
+  last_updated: '2026-03-10T15:13:40Z'
+  last_checked: '2026-03-10T15:13:40Z'
   releases_master_updated: '2026-03-10T09:13:23.423Z'
   schema_version: 1.2.0
   collector_version: 1.2.0
   repos_scanned: 66
-  repos_with_plan: 26
+  repos_with_plan: 27
 meta_releases:
 - name: Fall25
-  total_apis: 18
+  total_apis: 19
   m1_achieved: 3
-  m3_achieved: 17
-  m4_achieved: 18
+  m3_achieved: 18
+  m4_achieved: 19
 - name: Spring26
   total_apis: 2
   m1_achieved: 1
@@ -904,6 +904,50 @@ progress:
       release_date: '2025-09-17T15:32:16Z'
       apis:
       - api_name: optimal-edge-discovery
+        api_version: 0.1.0
+- repository: PredictiveConnectivityData
+  github_url: https://github.com/camaraproject/PredictiveConnectivityData
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: r1.2
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: predictive-connectivity-data
+    target_api_version: 0.1.0
+    target_api_status: public
+    main_contacts:
+    - eric-murray
+    - albertoramosmonagas
+  state: not_planned
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: r1.2
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: predictive-connectivity-data
+        api_version: null
+    m3:
+      release_tag: r1.1
+      release_date: '2025-07-24T08:21:30Z'
+      apis:
+      - api_name: predictive-connectivity-data
+        api_version: 0.1.0-rc.1
+    m4:
+      release_tag: r1.2
+      release_date: '2025-09-16T14:08:33Z'
+      apis:
+      - api_name: predictive-connectivity-data
         api_version: 0.1.0
 - repository: QualityOnDemand
   github_url: https://github.com/camaraproject/QualityOnDemand
