@@ -1,11 +1,11 @@
 metadata:
-  last_updated: '2026-03-09T19:43:32Z'
-  last_checked: '2026-03-09T19:43:32Z'
+  last_updated: '2026-03-10T06:03:43Z'
+  last_checked: '2026-03-10T06:03:43Z'
   releases_master_updated: '2026-03-06T05:32:48.025Z'
   schema_version: 1.2.0
   collector_version: 1.2.0
   repos_scanned: 66
-  repos_with_plan: 25
+  repos_with_plan: 26
 meta_releases:
 - name: Fall25
   total_apis: 18
@@ -383,6 +383,49 @@ progress:
         api_version: 0.1.0
       - api_name: dedicated-network
         api_version: 0.1.0
+- repository: DeviceAuthenticity
+  github_url: https://github.com/camaraproject/DeviceAuthenticity
+  release_track: independent
+  target_release_tag: r1.1
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: placeholder-entry
+    target_api_version: 0.1.0
+    target_api_status: draft
+    main_contacts:
+    - ALIIQBAL786
+    - usmanTheCoder
+  state: not_planned
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: placeholder-entry
+        api_version: null
+    m3:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: placeholder-entry
+        api_version: null
+    m4:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: placeholder-entry
+        api_version: null
 - repository: DeviceLocation
   github_url: https://github.com/camaraproject/DeviceLocation
   release_track: meta-release
