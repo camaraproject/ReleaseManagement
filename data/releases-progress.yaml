@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-03-10T07:26:14Z'
-  last_checked: '2026-03-10T07:26:14Z'
+  last_updated: '2026-03-10T08:22:00Z'
+  last_checked: '2026-03-10T08:22:00Z'
   releases_master_updated: '2026-03-10T05:33:14.157Z'
   schema_version: 1.2.0
   collector_version: 1.2.0
@@ -237,7 +237,9 @@ progress:
       state: open
       url: https://github.com/camaraproject/ConsentInfo/pull/55
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 53
+      url: https://github.com/camaraproject/ConsentInfo/issues/53
   published_context:
     latest_public_release: r1.2
     newest_pre_release: r2.1
@@ -1079,15 +1081,19 @@ progress:
     target_api_status: rc
     main_contacts:
     - hdamker-bot
-  state: snapshot_active
+  state: draft_ready
   artifacts:
     snapshot_branch: release-snapshot/r1.3-8715f84
     release_pr:
       number: 44
       state: closed
       url: https://github.com/camaraproject/ReleaseTest/pull/44
-    draft_release: null
-    release_issue: null
+    draft_release:
+      name: r1.3
+      url: https://github.com/camaraproject/ReleaseTest/releases/tag/untagged-fc9d56983ba2f2a686c9
+    release_issue:
+      number: 43
+      url: https://github.com/camaraproject/ReleaseTest/issues/43
   published_context:
     latest_public_release: null
     newest_pre_release: r1.1
