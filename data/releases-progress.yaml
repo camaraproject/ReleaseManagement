@@ -1,11 +1,11 @@
 metadata:
-  last_updated: '2026-03-10T09:27:55Z'
-  last_checked: '2026-03-10T09:27:55Z'
+  last_updated: '2026-03-11T06:06:14Z'
+  last_checked: '2026-03-11T06:06:14Z'
   releases_master_updated: '2026-03-10T09:13:23.423Z'
   schema_version: 1.2.0
   collector_version: 1.2.0
   repos_scanned: 66
-  repos_with_plan: 26
+  repos_with_plan: 27
 meta_releases:
 - name: Fall25
   total_apis: 18
@@ -13,7 +13,7 @@ meta_releases:
   m3_achieved: 17
   m4_achieved: 18
 - name: Spring26
-  total_apis: 2
+  total_apis: 4
   m1_achieved: 1
   m3_achieved: 1
   m4_achieved: 0
@@ -813,21 +813,28 @@ progress:
 - repository: NetworkSliceBooking
   github_url: https://github.com/camaraproject/NetworkSliceBooking
   release_track: meta-release
-  meta_release: Fall25
-  target_release_tag: r1.2
-  target_release_type: none
+  meta_release: Spring26
+  target_release_tag: r2.1
+  target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r3.4
-    identity_consent_management_release: r3.3
+    commonalities_release: r4.1
+    identity_consent_management_release: r4.1
   apis:
   - api_name: network-slice-booking
-    target_api_version: 0.1.0
-    target_api_status: public
+    target_api_version: 0.2.0
+    target_api_status: rc
     main_contacts:
     - chinaunicomyangfan
     - DanXu-ChinaTelecom
     - Kai-hw
-  state: not_planned
+  - api_name: network-slice-assignment
+    target_api_version: 0.1.0
+    target_api_status: rc
+    main_contacts:
+    - chinaunicomyangfan
+    - DanXu-ChinaTelecom
+    - Kai-hw
+  state: published
   artifacts:
     snapshot_branch: null
     release_pr: null
@@ -843,18 +850,29 @@ progress:
       apis:
       - api_name: network-slice-booking
         api_version: null
+      - api_name: network-slice-assignment
+        api_version: null
     m3:
-      release_tag: r1.1
-      release_date: '2025-08-01T08:01:19Z'
+      release_tag: null
+      release_date: null
       apis:
       - api_name: network-slice-booking
-        api_version: 0.1.0-rc.1
+        api_version: null
+      - api_name: network-slice-assignment
+        api_version: null
     m4:
-      release_tag: r1.2
-      release_date: '2025-09-17T01:33:48Z'
+      release_tag: null
+      release_date: null
       apis:
       - api_name: network-slice-booking
-        api_version: 0.1.0
+        api_version: null
+      - api_name: network-slice-assignment
+        api_version: null
+  warnings:
+  - code: W003
+    message: Release r2.1 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: OptimalEdgeDiscovery
   github_url: https://github.com/camaraproject/OptimalEdgeDiscovery
   release_track: meta-release
@@ -904,6 +922,50 @@ progress:
       release_date: '2025-09-17T15:32:16Z'
       apis:
       - api_name: optimal-edge-discovery
+        api_version: 0.1.0
+- repository: PredictiveConnectivityData
+  github_url: https://github.com/camaraproject/PredictiveConnectivityData
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: r1.2
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: predictive-connectivity-data
+    target_api_version: 0.1.0
+    target_api_status: public
+    main_contacts:
+    - eric-murray
+    - albertoramosmonagas
+  state: not_planned
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: r1.2
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: predictive-connectivity-data
+        api_version: null
+    m3:
+      release_tag: r1.1
+      release_date: '2025-07-24T08:21:30Z'
+      apis:
+      - api_name: predictive-connectivity-data
+        api_version: 0.1.0-rc.1
+    m4:
+      release_tag: r1.2
+      release_date: '2025-09-16T14:08:33Z'
+      apis:
+      - api_name: predictive-connectivity-data
         api_version: 0.1.0
 - repository: QualityOnDemand
   github_url: https://github.com/camaraproject/QualityOnDemand
