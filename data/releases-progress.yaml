@@ -1,7 +1,7 @@
 metadata:
-  last_updated: '2026-03-11T06:06:14Z'
-  last_checked: '2026-03-11T06:06:14Z'
-  releases_master_updated: '2026-03-10T09:13:23.423Z'
+  last_updated: '2026-03-11T15:09:02Z'
+  last_checked: '2026-03-11T15:09:02Z'
+  releases_master_updated: '2026-03-11T05:33:53.246Z'
   schema_version: 1.2.0
   collector_version: 1.2.0
   repos_scanned: 66
@@ -15,7 +15,7 @@ meta_releases:
 - name: Spring26
   total_apis: 4
   m1_achieved: 1
-  m3_achieved: 1
+  m3_achieved: 3
   m4_achieved: 0
 - name: Sync26
   total_apis: 4
@@ -842,7 +842,7 @@ progress:
     release_issue: null
   published_context:
     latest_public_release: r1.2
-    newest_pre_release: null
+    newest_pre_release: r2.1
   cycle_releases:
     m1:
       release_tag: null
@@ -853,13 +853,13 @@ progress:
       - api_name: network-slice-assignment
         api_version: null
     m3:
-      release_tag: null
-      release_date: null
+      release_tag: r2.1
+      release_date: '2026-03-11T02:25:30Z'
       apis:
       - api_name: network-slice-booking
-        api_version: null
+        api_version: 0.2.0-rc.1
       - api_name: network-slice-assignment
-        api_version: null
+        api_version: 0.1.0-rc.1
     m4:
       release_tag: null
       release_date: null
@@ -868,11 +868,6 @@ progress:
         api_version: null
       - api_name: network-slice-assignment
         api_version: null
-  warnings:
-  - code: W003
-    message: Release r2.1 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: OptimalEdgeDiscovery
   github_url: https://github.com/camaraproject/OptimalEdgeDiscovery
   release_track: meta-release
