@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-03-12T06:08:32Z'
-  last_checked: '2026-03-12T06:08:32Z'
+  last_updated: '2026-03-12T15:12:31Z'
+  last_checked: '2026-03-12T15:12:31Z'
   releases_master_updated: '2026-03-11T05:33:53.246Z'
   schema_version: 1.2.0
   collector_version: 1.2.0
@@ -229,17 +229,12 @@ progress:
     - jpengar
     - AxelNennker
     - sebdewet
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r2.2-6a47a39
-    release_pr:
-      number: 55
-      state: open
-      url: https://github.com/camaraproject/ConsentInfo/pull/55
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 53
-      url: https://github.com/camaraproject/ConsentInfo/issues/53
+    release_issue: null
   published_context:
     latest_public_release: r1.2
     newest_pre_release: r2.1
@@ -262,6 +257,11 @@ progress:
       apis:
       - api_name: consent-info
         api_version: null
+  warnings:
+  - code: W003
+    message: Release r2.2 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: ConsentManagement
   github_url: https://github.com/camaraproject/ConsentManagement
   release_track: independent
