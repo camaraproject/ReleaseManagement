@@ -1,17 +1,17 @@
 metadata:
-  last_updated: '2026-03-13T06:06:48Z'
-  last_checked: '2026-03-13T06:06:48Z'
-  releases_master_updated: '2026-03-11T05:33:53.246Z'
+  last_updated: '2026-03-14T06:03:25Z'
+  last_checked: '2026-03-14T06:03:25Z'
+  releases_master_updated: '2026-03-13T05:33:53.054Z'
   schema_version: 1.2.0
   collector_version: 1.2.0
   repos_scanned: 66
-  repos_with_plan: 29
+  repos_with_plan: 31
 meta_releases:
 - name: Fall25
-  total_apis: 20
+  total_apis: 22
   m1_achieved: 3
-  m3_achieved: 19
-  m4_achieved: 20
+  m3_achieved: 21
+  m4_achieved: 22
 - name: Spring26
   total_apis: 4
   m1_achieved: 1
@@ -123,6 +123,66 @@ progress:
       apis:
       - api_name: application-endpoint-registration
         api_version: 0.1.0
+- repository: BlockchainPublicAddress
+  github_url: https://github.com/camaraproject/BlockchainPublicAddress
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: r2.2
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: blockchain-public-address-validation
+    target_api_version: 0.1.0
+    target_api_status: public
+    main_contacts:
+    - PedroDiez
+    - grgpapadopoulos
+    - ksl4dtit
+    - rartych
+  - api_name: blockchain-public-address
+    target_api_version: 0.3.0
+    target_api_status: public
+    main_contacts:
+    - PedroDiez
+    - grgpapadopoulos
+    - ksl4dtit
+    - rartych
+  state: not_planned
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: r2.2
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: blockchain-public-address-validation
+        api_version: null
+      - api_name: blockchain-public-address
+        api_version: null
+    m3:
+      release_tag: r2.1
+      release_date: '2025-07-29T09:11:51Z'
+      apis:
+      - api_name: blockchain-public-address-validation
+        api_version: 0.1.0-rc.1
+      - api_name: blockchain-public-address
+        api_version: 0.3.0-rc.1
+    m4:
+      release_tag: r2.2
+      release_date: '2025-09-11T10:58:35Z'
+      apis:
+      - api_name: blockchain-public-address-validation
+        api_version: 0.1.0
+      - api_name: blockchain-public-address
+        api_version: 0.3.0
 - repository: CallForwardingSignal
   github_url: https://github.com/camaraproject/CallForwardingSignal
   release_track: meta-release
@@ -257,11 +317,6 @@ progress:
       apis:
       - api_name: consent-info
         api_version: null
-  warnings:
-  - code: W003
-    message: Release r2.2 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: ConsentManagement
   github_url: https://github.com/camaraproject/ConsentManagement
   release_track: independent
@@ -782,6 +837,48 @@ progress:
     - mayur007
     - clundie-CL
     - benhepworth
+  state: not_planned
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: placeholder-entry
+        api_version: null
+    m3:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: placeholder-entry
+        api_version: null
+    m4:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: placeholder-entry
+        api_version: null
+- repository: NetworkInsights
+  github_url: https://github.com/camaraproject/NetworkInsights
+  release_track: independent
+  target_release_tag: r1.1
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: placeholder-entry
+    target_api_version: 0.1.0
+    target_api_status: draft
+    main_contacts:
+    - cnzj-Gc
   state: not_planned
   artifacts:
     snapshot_branch: null
