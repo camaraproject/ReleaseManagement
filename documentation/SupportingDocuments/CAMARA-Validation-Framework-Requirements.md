@@ -170,9 +170,9 @@ The framework constructs a context object at runtime from the trigger, branch, a
 | `target_api_status` | string | release-plan.yaml `apis[].target_api_status` (per-API) |
 | `target_api_maturity` | string | Derived from `apis[].target_api_version` (per-API) |
 | `api_pattern` | string | Detected from OpenAPI spec content (per-API) |
-| `is_release_review_pr` | boolean | Detected by framework (used for profile selection, not rule applicability) |
+| `is_release_review_pr` | boolean | Detected by framework (used for profile selection; also available as applicability condition, see section 11.4) |
 
-`is_release_review_pr` is used at the framework level to select the strict profile. It is not a rule applicability condition.
+`is_release_review_pr` is used at the framework level to select the strict profile. It is also available as an optional applicability condition for checks specific to the release review context (section 11.4).
 
 ### 2.3 Execution Contexts
 
@@ -185,8 +185,8 @@ The validation framework must support these execution contexts:
 | **Dispatch (upstream repo)** | `workflow_dispatch` | advisory | write | Main (default), maintenance, release branches. Warning on non-standard branches |
 | **Dispatch (fork repo)** | `workflow_dispatch` | advisory | write (fork scope) | Fork owner triggers on own fork. Inherited — no extra work if dispatch trigger exists |
 | **Local** | CLI / script | advisory | n/a | No GitHub context; subset of rules |
-| **Release automation: snapshot** | Called by release workflow | strict | write (app token) | Gate before snapshot creation |
-| **Release automation: review PR** | `pull_request` event (push to PR branch) | strict | write or read-only | Same trigger as normal PR; profile is strict based on release review PR detection |
+| **Release automation: snapshot** | Called by release workflow | strict | write (app token) | Gate before snapshot creation (section 11.1) |
+| **Release automation: review PR** | `pull_request` event (push to PR branch) | strict | write or read-only | Same trigger as normal PR; profile is strict based on release review PR detection (section 11.3) |
 
 **Profile is independent of token permissions.** A fork-to-upstream PR gets the same **standard** profile as an upstream-branch PR. The read-only token only limits *how results are surfaced* (e.g. no check run annotations via GITHUB_TOKEN), not validation strictness. Alternative output paths for read-only contexts (workflow summary, `pull_request_target`, bot token) are a Session 4 topic.
 
@@ -214,7 +214,7 @@ The MVP replaces `pr_validation` v0 and delivers the minimum useful validation o
 
 ### Post-MVP priorities
 
-- UC-08, UC-09 (release automation strict gates) — high priority, requires strict profile; depends on PR integration being operational first
+- UC-08, UC-09 (release automation strict gates, section 11) — high priority, requires strict profile; depends on PR integration being operational first
 - UC-10 (regression testing against release branches) — rule developer tooling
 - UC-14 (repository configuration validation) — admin tooling
 - Automated cache synchronization for `code/common/` and strict version enforcement — bundling itself (ref resolution via `$ref`) is MVP scope (see section 7.3)
@@ -222,7 +222,7 @@ The MVP replaces `pr_validation` v0 and delivers the minimum useful validation o
 
 ### Independent work (not sequenced with MVP)
 
-- UC-16, UC-17 (dashboard) — Release Progress Tracker can collect last validation run results and trigger validation with appropriate permissions
+- UC-16, UC-17 (dashboard, section 12.3) — Release Progress Tracker can collect last validation run results and trigger validation with appropriate permissions
 
 ### MVP rollout model
 
@@ -630,7 +630,7 @@ Bundling integrates into the rule architecture (section 5) without requiring cha
 
 #### Relationship to snapshot creation
 
-How bundling and validation interact with release automation's snapshot branch creation — whether the framework produces the bundled content that becomes the snapshot, or validates an already-created snapshot — is a WS03 integration topic (Session 5).
+Resolved in section 11.2. The validation framework produces the bundled API specs as part of its validation pipeline (steps 2-3 above). These bundled specs are consumed by release automation for the snapshot branch — bundling happens once, during validation, and the output is handed off to release automation.
 
 ## 8. Artifact Surfacing
 
@@ -999,4 +999,179 @@ Deployment can be batched using the existing admin tooling pattern (scripted mul
 
 ---
 
-*Sections to be added: Release Automation Integration (S5), Operational Views (S5).*
+## 11. Release Automation Integration
+
+The validation framework integrates with CAMARA release automation at two points in the release lifecycle:
+
+1. **Pre-snapshot gate** (UC-08) — validation runs on the base branch before snapshot creation. Failure blocks the release process.
+2. **Release review PR validation** (UC-09) — validation runs on the release review PR with strict profile and content restrictions.
+
+Both touchpoints use the strict profile (section 2.1): errors and warnings block.
+
+### 11.1 Pre-Snapshot Validation Gate
+
+Release automation invokes validation as part of the `/create-snapshot` command, before creating any branches. The validation runs on the current HEAD of the base branch (`main` or maintenance) — this is exactly the content that will become the snapshot.
+
+**Timing and lifecycle position**: The release state is PLANNED when `/create-snapshot` is invoked. If validation fails, no snapshot branch is created and the state remains PLANNED. The codeowner fixes the reported issues and re-invokes `/create-snapshot`.
+
+**Profile**: Strict — both errors and warnings block snapshot creation.
+
+**Rationale for strict**: Once a snapshot is created, mechanical transformations are applied (version replacement, server URLs) and the content becomes immutable. Issues found post-snapshot require discarding and recreating the snapshot. Blocking on warnings at snapshot time avoids this expensive retry cycle.
+
+**Scope**: The validation framework runs all applicable checks — Spectral rules, Python consistency checks, bundling validation, and release-plan semantic checks. This subsumes the existing `validate-release-plan.py` preflight. The framework applies rule applicability conditions (section 5) with the full release context derived from `release-plan.yaml` on the checked-out branch.
+
+**Token**: The `camara-release-automation` app token is passed by the release workflow. This is token priority 1 in the layered resolution (section 9.1). The validation framework does not mint this token; it receives it from the caller.
+
+**Findings output**: Validation findings are reported in the bot's response comment on the Release Issue. The comment includes a structured findings section with error and warning counts, individual findings with fix hints, and a link to the full workflow run for diagnostic artifacts.
+
+| Aspect | Current release-plan preflight | With validation framework |
+|--------|-------------------------------|---------------------------|
+| **Checks** | release-plan.yaml schema + semantics | Full framework: Spectral, Python, bundling, release-plan |
+| **Blocking** | Errors only | Errors and warnings (strict profile) |
+| **Findings output** | Bot comment with error list | Bot comment with structured findings + fix hints |
+| **Token** | camara-release-automation app | Same (passed to framework) |
+
+### 11.2 Bundling and Snapshot Interaction
+
+This subsection resolves the deferred topic from section 7.7: how bundling and validation interact with release automation's snapshot branch creation.
+
+**The validation framework produces the bundled API specs as part of its validation pipeline (section 7.2, steps 2-3). These bundled specs are the same artifacts that become the release content on the snapshot branch.** Bundling happens exactly once — during validation. Release automation consumes the bundled output rather than re-bundling independently.
+
+On the snapshot branch, source API definition files (which contain `$ref` to `code/common/` and `code/modules/`) are **replaced** with the bundled standalone specs produced by the validation framework. This is the "swap strategy" described in the [bundling design document](https://github.com/camaraproject/ReleaseManagement/pull/436): the familiar filename (`api-name.yaml`) is retained, but the content is the fully resolved, consumer-ready artifact.
+
+#### Handoff model
+
+Two handoff models are viable:
+
+**Model A — Validation creates the snapshot branch**: The validation framework creates the snapshot branch with bundled API specs already in place. Release automation takes over the branch for mechanical transformations (version replacement, server URLs, `release-metadata.yaml` generation) and the rest of the release lifecycle.
+
+**Model B — Artifact handoff**: The validation framework uploads bundled specs as workflow artifacts (section 7.2, step 4). Release automation downloads these artifacts and commits them to the snapshot branch as part of snapshot creation.
+
+Both models avoid duplicate bundling. The choice between them is an implementation detail that depends on workflow architecture constraints. The requirement is: **bundling runs once, during validation, and the output is consumed by release automation for the snapshot.**
+
+#### Mechanical transformations after bundling
+
+Regardless of the handoff model, the mechanical transformer applies version-specific changes on top of the bundled content:
+
+- `info.version` replacement (`wip` → calculated release version)
+- Server URL version updates
+- `x-camara-commonalities` version field
+- Feature file version updates
+- Link replacements
+
+These transformations are release automation's responsibility. The validation framework validates the source content (including bundling); the mechanical transformer produces the final release-ready content.
+
+#### Cache sync at snapshot time
+
+A cache synchronization mismatch (section 7.4) is an error in strict profile, blocking snapshot creation. This ensures that `code/common/` content matches the declared `commonalities_release` version before the bundled output is produced and becomes immutable on the snapshot branch.
+
+### 11.3 Release Review PR Validation
+
+A release review PR is created by release automation on the `release-review/rX.Y-<sha>` branch, targeting the `release-snapshot/rX.Y-<sha>` branch. It contains only CHANGELOG and README changes — API specs and other files are immutable on the snapshot branch.
+
+**Detection**: The framework detects a release review PR by its target branch pattern (`release-snapshot/**`). The `is_release_review_pr` context field (section 2.2) is set to `true`, which selects the strict profile.
+
+**Profile**: Strict — same as the pre-snapshot gate. Errors and warnings block the PR.
+
+**Which checks run**: Only a subset of checks is meaningful on a release review PR:
+
+| Check category | Runs on release review PR | Rationale |
+|----------------|--------------------------|-----------|
+| CHANGELOG format validation | Yes | CHANGELOG is editable on the review branch |
+| README content validation | Yes | README is editable on the review branch |
+| File restriction check | Yes | Only CHANGELOG and README may be modified |
+| Spectral / API definition checks | No | API specs are immutable on the snapshot branch |
+| release-plan.yaml checks | No | Already validated at snapshot creation time |
+| Bundling validation | No | Source files are immutable |
+| Cache sync validation | No | Already validated at snapshot creation time |
+
+**File restriction check**: This is a release-review-specific rule. The framework examines the PR diff and produces an error if any file outside `CHANGELOG.md` (or `CHANGELOG/` directory) and `README.md` is modified. This enforces the separation between immutable snapshot content and reviewable documentation.
+
+**Token**: Standard PR trigger — the validation app token or `GITHUB_TOKEN` fallback. The `camara-release-automation` app token is not used here because this is a regular `pull_request` event, not a release workflow call.
+
+### 11.4 Context Model Notes
+
+The context field `is_release_review_pr` (section 2.2) is documented as "used for profile selection, not rule applicability." The file restriction check (section 11.3) requires `is_release_review_pr` as an applicability condition — the check applies only when this field is `true`.
+
+**Resolution**: `is_release_review_pr` retains its primary role as profile selector. It is also available as an optional applicability condition in rule metadata for checks that are specific to the release review context. This is the only check currently using it as an applicability condition.
+
+```yaml
+# File restriction check — release review PR only
+id: "060"
+name: release-review-file-restriction
+engine: python
+applicability:
+  is_release_review_pr: true
+conditional_level:
+  default: error
+description: "Release review PR may only modify CHANGELOG and README files"
+hint: "Only CHANGELOG.md (or CHANGELOG/ directory) and README.md may be modified on the release review branch. API specs and other files are immutable on the snapshot branch."
+```
+
+### 11.5 Pre-Snapshot Invocation
+
+The pre-snapshot gate follows the same input design principle as PR and dispatch contexts (section 9.4): the framework derives all release context from `release-plan.yaml` on the checked-out branch. No branch name or release tag inputs are needed.
+
+Release automation invokes the validation framework on the same branch on which `/create-snapshot` was called. The framework reads `release-plan.yaml` from that branch to derive all context fields (target release type, API statuses, Commonalities version, etc.).
+
+The only distinction is the `mode` — the framework needs to know this is a pre-snapshot invocation rather than a dispatch or PR trigger. When `mode` is `pre-snapshot`, the framework:
+- Sets `trigger_type` to `release-automation`
+- Selects the strict profile
+- Produces bundled API specs as output for consumption by release automation (section 11.2)
+- Formats findings for inclusion in a Release Issue comment (not a PR comment)
+
+The detailed output model (findings format, artifact structure) will be defined consistently across all execution contexts during document consolidation.
+
+### 11.6 Post-MVP Extensions
+
+The following integration enhancements are post-MVP:
+
+- **API-aware change summaries for release notes**: The framework could use oasdiff (section 8.6) to generate semantic change summaries (breaking changes, new endpoints, modified schemas) for inclusion in release notes or the Release Issue.
+- **Snapshot transformer validation**: The framework could validate the transformer's configuration before snapshot creation — verifying that version replacement patterns and server URL formats are correct. This goes beyond API content validation into release tooling self-validation.
+
+---
+
+## 12. Operational Views
+
+### 12.1 Repository Configuration Validation (UC-14)
+
+An admin needs to verify that an API repository is correctly configured for the validation framework. The following aspects must be checkable:
+
+- **Caller workflow**: The v1 caller workflow file exists in `.github/workflows/` and matches the expected template content
+- **Central config listing**: The repository is listed in the tooling config file (section 10.2) with a valid stage value
+- **GitHub ruleset** (stage 3 only): The v1 validation check is required in the applicable ruleset
+- **Validation app installation**: The validation GitHub App (DEC-005) is installed for the repository
+- **v0 cleanup** (post-transition): The v0 caller file has been removed after v1 is stable at stage 3
+
+### 12.2 Minimal Change Noise Principle
+
+The design choices throughout this document follow a consistent principle: **minimize the number of changes that require codeowner interaction in API repositories.** The only per-repo change required for onboarding is adding the v1 caller workflow file — a mechanical copy from `Template_API_Repository`. After that, all configuration changes happen centrally in the tooling repository (section 10.2).
+
+### 12.3 Release Manager Dashboard (UC-16, UC-17)
+
+UC-16 and UC-17 are **independent work** — the Release Progress Tracker already exists and is operational. This section defines the integration points between the validation framework and the tracker.
+
+**Compliance indication**: For each repository with validation enabled, the dashboard shows a compliance status derived from the most recent validation run on `main`:
+
+| Status | Meaning |
+|--------|---------|
+| **compliant** | No errors, no warnings (would pass strict profile) |
+| **issues** | Has warnings but no errors (would pass standard, not strict) |
+| **failing** | Has errors (would fail standard profile) |
+| **unknown** | No validation data available |
+
+**Data collection**: The tracker queries the GitHub API for the most recent completed run of the v1 validation workflow on the default branch (conclusion, URL, timestamp). No changes to the validation framework are needed for this.
+
+**On-demand trigger** (UC-17): The tracker or an admin can dispatch validation on selected repositories via `workflow_dispatch` (section 9.2) to update dashboard status.
+
+### 12.4 Cross-System Integration Map
+
+| System | Integration point | Data flow | Priority |
+|--------|------------------|-----------|----------|
+| Release automation (`/create-snapshot`) | Pre-snapshot gate (11.1) | Validation → release automation: pass/fail + findings + bundled specs | Post-MVP (high) |
+| Release automation (release review PR) | PR trigger with strict profile (11.3) | Standard PR validation flow, profile auto-selected | Post-MVP (high) |
+| Release Progress Tracker | Workflow run query (12.3) | Tracker reads validation run data from GitHub API | Independent |
+| Release Progress Tracker | Dispatch trigger (12.3) | Tracker dispatches validation via GitHub API | Independent |
+| Tooling config file | Central enable/disable (10.2) | Validation reads config at runtime | MVP |
+| GitHub rulesets | Blocking enforcement (10.4) | Ruleset references validation check name | Stage 3 |
+| Validation GitHub App | Token minting (9.1) | App provides write token for findings surfacing | MVP |
