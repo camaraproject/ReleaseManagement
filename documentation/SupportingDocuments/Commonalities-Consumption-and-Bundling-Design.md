@@ -209,16 +209,28 @@ Behavior:
 
 ## 8. Commonalities Content Expectations
 
-The preferred path is that `CAMARA_common.yaml` becomes directly consumable.
+`CAMARA_common.yaml` must be directly consumable via `$ref` without preprocessing. This requires two changes on the Commonalities side, which can be addressed independently:
 
-That implies:
+### 8.1 Placeholder Removal
 
-- removing placeholders such as `{{SPECIFIC_CODE}}` from `CAMARA_common.yaml`
-- keeping only truly generic reusable content in Commonalities
-- moving API-specific extensions into API repositories, for example via `allOf`
-- providing example/template API source files that show the intended extension model
+`CAMARA_common.yaml` currently contains placeholder patterns (`{{SPECIFIC_CODE}}`, `{{field}}`) inside Generic error response schemas and examples. These make the file unparseable as a `$ref` target because the placeholder values are not valid OpenAPI content.
 
-This is strongly preferred over building a compatibility validator around placeholder-filled shared schemas.
+The recommended approach is to **comment out** placeholder-containing lines rather than delete them:
+
+- Commented lines are ignored by YAML parsers, bundling tools, and Spectral
+- The placeholders remain visible as human-readable documentation, showing API teams where to add API-specific content
+- The Generic error responses retain their common error codes (e.g., `INVALID_ARGUMENT`, `NOT_FOUND`) as valid enum values
+- The change is minimal — approximately 30 lines across the file
+
+This makes `CAMARA_common.yaml` immediately consumable without requiring structural refactoring.
+
+### 8.2 API-Specific Error Code Extension
+
+APIs need a way to add their own error codes beyond the common ones provided by the Generic responses. This is a separate concern from placeholder removal — it does not need to be solved before `CAMARA_common.yaml` becomes consumable.
+
+Possible extension mechanisms include `allOf` composition, property overrides, or defining API-specific responses that reference only the shared `ErrorInfo` schema. The right approach may vary by API pattern and can be worked out incrementally as APIs adopt the `$ref` model.
+
+Example/template API source files should demonstrate the recommended extension pattern once it is established.
 
 ---
 
