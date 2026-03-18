@@ -16,7 +16,7 @@ This proposal recommends:
 2. **`release-plan.yaml` as source of truth:** `dependencies.commonalities_release` defines the intended Commonalities dependency.
 3. **CI-managed synchronization:** the local cached Commonalities file is treated as cache, not as a manually maintained source file.
 4. **Source-only `main`, bundled release artifacts:** bundled API definitions are not committed on `main`, but are generated for PR review and committed on snapshot/release branches and tags.
-5. **Context-dependent validation:** PR validation on `main` gives early feedback and warnings; snapshot creation applies stricter release-readiness validation and blocks on remaining drift.
+5. **In-place replacement:** source files and bundled files occupy the same path (`code/API_definitions/api-name.yaml`). On `main` the file contains `$ref`; on snapshot/release branches the same file is replaced with the standalone bundled version. There is no separate source or output directory.
 
 This design aligns Commonalities consumption with the release automation concepts already introduced for CAMARA release preparation.
 
@@ -43,6 +43,7 @@ The solution should provide:
 - **Tooling compatibility:** source files must work with standard OpenAPI tooling and local development workflows
 - **Reviewer visibility:** codeowners must be able to inspect the effective API impact, including changes caused by shared schema updates
 - **Release artifact quality:** published releases must expose complete standalone API definitions
+- **Identical layout across branches:** the repository structure does not change between `main` and release branches — only file content changes (source → bundled). Tools and processes that operate on `code/API_definitions/` work the same way regardless of branch.
 - **Low contributor friction:** the model should remain understandable and practical for normal API repository contributors
 
 ---
@@ -112,9 +113,9 @@ Bundled API definitions should **not** be committed on `main`.
 
 Instead:
 
-- `main` keeps source files only
+- `main` keeps source files only (containing `$ref` to `common/` and `modules/`)
 - PR workflows generate bundled artifacts and bundled diffs for reviewer visibility
-- release automation writes bundled standalone API definitions onto snapshot/release branches and tags
+- release automation replaces the source files in place with bundled standalone versions on snapshot/release branches and tags — the file path (`code/API_definitions/api-name.yaml`) stays the same, only the content changes
 
 ### 5.1 Rationale
 
@@ -252,10 +253,13 @@ The main missing pieces are:
 
 ### 9.1 Release Branch Strategy
 
-The release process should apply a “swap” strategy:
+The release process applies in-place replacement (see executive summary, point 5):
 
-- on `main`, `api-name.yaml` is the source file using local refs
-- on snapshot/release branches, `api-name.yaml` is replaced with the bundled standalone artifact
+- on `main`, `code/API_definitions/api-name.yaml` is the source file containing `$ref` to `common/` and `modules/`
+- on snapshot/release branches, the same file at the same path is replaced with the bundled standalone artifact — all external `$ref` resolved, internal `$ref` preserved
+- the `common/` and `modules/` directories are removed from the snapshot branch since their content is now embedded in the bundled files
+
+This follows the same pattern as the existing release automation transformer, which replaces `info.version` and server URLs in place on the snapshot branch. No separate output directory is created.
 
 This keeps the familiar filename in all contexts while maintaining a clean source model on `main`.
 
