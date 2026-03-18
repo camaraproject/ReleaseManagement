@@ -16,7 +16,7 @@ This proposal recommends:
 2. **`release-plan.yaml` as source of truth:** `dependencies.commonalities_release` defines the intended Commonalities dependency.
 3. **CI-managed synchronization:** the local cached Commonalities file is treated as cache, not as a manually maintained source file.
 4. **Source-only `main`, bundled release artifacts:** bundled API definitions are not committed on `main`, but are generated for PR review and committed on snapshot/release branches and tags.
-5. **In-place replacement:** source files and bundled files occupy the same path (`code/API_definitions/api-name.yaml`). On `main` the file contains `$ref`; on snapshot/release branches the same file is replaced with the standalone bundled version. There is no separate source or output directory.
+5. **In-place replacement:** source files and bundled files occupy the same path (`code/API_definitions/api-name.yaml`). On `main` the file may contain external `$ref` to `common/` or `modules/`; on snapshot/release branches these are replaced with the referenced content. There is no separate source or output directory.
 
 This design aligns Commonalities consumption with the release automation concepts already introduced for CAMARA release preparation.
 
@@ -115,7 +115,7 @@ Instead:
 
 - `main` keeps source files only (containing `$ref` to `common/` and `modules/`)
 - PR workflows generate bundled artifacts and bundled diffs for reviewer visibility
-- release automation replaces the source files in place with bundled standalone versions on snapshot/release branches and tags — the file path (`code/API_definitions/api-name.yaml`) stays the same, only the content changes
+- release automation replaces external `$ref` with the referenced content in place on snapshot/release branches and tags — the file path (`code/API_definitions/api-name.yaml`) stays the same
 
 ### 5.1 Rationale
 
@@ -255,8 +255,8 @@ The main missing pieces are:
 
 The release process applies in-place replacement (see executive summary, point 5):
 
-- on `main`, `code/API_definitions/api-name.yaml` is the source file containing `$ref` to `common/` and `modules/`
-- on snapshot/release branches, the same file at the same path is replaced with the bundled standalone artifact — all external `$ref` resolved, internal `$ref` preserved
+- on `main`, `code/API_definitions/api-name.yaml` is the source file which may contain external `$ref` to `common/` or `modules/`
+- on snapshot/release branches, the same file at the same path is replaced with the standalone bundled version
 - the `common/` and `modules/` directories are removed from the snapshot branch since their content is now embedded in the bundled files
 
 This follows the same pattern as the existing release automation transformer, which replaces `info.version` and server URLs in place on the snapshot branch. No separate output directory is created.
