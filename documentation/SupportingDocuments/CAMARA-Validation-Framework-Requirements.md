@@ -370,6 +370,7 @@ No per-repo inputs exist. All per-repo configuration lives in the central config
 |-------|------|----------|---------|-------------|
 | `tooling_ref_override` | string | no | *(empty)* | 40-character SHA for non-standard tooling ref. Supports testing in contexts where OIDC may not work. Documented as pilot/break-glass only. |
 | `profile` | choice | no | *(auto)* | Validation profile: `advisory`, `standard`, `strict`. Default: framework selects based on context. Dispatch users can set explicitly to see what a different profile would flag. |
+| `mode` | string | no | *(empty)* | Execution mode. Set to `pre-snapshot` by release automation to invoke validation as a pre-snapshot gate. Affects trigger type derivation, profile selection, bundled spec handoff, and findings output target. |
 
 ### 9.3 Trigger Summary
 

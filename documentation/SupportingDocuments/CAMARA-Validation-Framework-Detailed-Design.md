@@ -1,7 +1,7 @@
 # Validation Framework — Detailed Design
 
 **Status**: Work in progress
-**Last updated**: 2026-03-17
+**Last updated**: 2026-03-18
 
 > This document supplements the [Validation Framework Requirements](CAMARA-Validation-Framework-Requirements.md) with design and implementation detail for developers and architects. It is expected to migrate to the `tooling` repository alongside the implementation.
 
@@ -519,7 +519,46 @@ Separate callers allow independent lifecycle: v0 can be removed per-repo after v
 - **Caller version tag** (rejected): Would require editing the caller workflow per-repo, undermining the identical-caller-across-all-repos design (section 5.7).
 - **Tooling config file** (chosen): Version-controlled, PR-reviewable, scalable. Adding a repo is one line in a YAML file. Can hold per-repo settings beyond enable/disable (linting config subfolder, rollout stage). Satisfies UC-13 — no per-repo config changes needed.
 
-The config file schema is an implementation detail. At minimum it maps repository name to rollout stage and per-repo settings (e.g., linting config subfolder previously handled by the `configurations` input in v0).
+#### Central config file schema
+
+The central config file lives in the tooling repository and maps each API repository to its rollout stage. Spectral ruleset selection is **not** a per-repo config field — it is derived from `commonalities_release` in the repository's own `release-plan.yaml` (section 3.3).
+
+```yaml
+# validation-config.yaml in camaraproject/tooling
+version: 1
+defaults:
+  stage: disabled             # default for repositories not listed below
+fork_owners: [hdamker, rartych]  # GitHub users allowed to test in their forks
+repositories:
+  QualityOnDemand:
+    stage: standard           # stage 2: runs on PRs, standard profile
+  DeviceLocation:
+    stage: standard
+  ReleaseTest:
+    stage: standard
+  NetworkSliceBooking:
+    stage: advisory           # stage 1: dispatch only
+```
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `version` | integer | Schema version (currently `1`). Allows future schema evolution without breaking existing configs. |
+| `defaults.stage` | enum | Default stage for unlisted repositories: `disabled`, `advisory`, `standard`. |
+| `fork_owners` | array of strings | GitHub usernames allowed to run validation in their forks. When the workflow runs in a fork owned by a listed user, stage is overridden to `standard` regardless of the repository's upstream stage (section 8.2). |
+| `repositories.<name>.stage` | enum | Per-repo rollout stage override. Same values as `defaults.stage`. |
+
+**Stage mapping** (see also Requirements section 10.3):
+
+| Stage | Config value | Behavior |
+|-------|-------------|----------|
+| 0 (dark) | `disabled` | Caller deployed but reusable workflow exits immediately |
+| 1 (advisory) | `advisory` | Runs on dispatch only, advisory profile, nothing blocks |
+| 2 (standard) | `standard` | Runs on PRs and dispatch, standard profile on PRs |
+| 3 (blocking) | `standard` + ruleset | Same as stage 2; blocking is enforced by a GitHub ruleset, not the config file |
+
+**Extensibility**: Additional per-repo fields (e.g., `features`, optional overrides) can be added without a `version` bump — new fields are additive. Future candidates include `spectral_ruleset_override` and `extra_checks`.
+
+**Self-validation**: The reusable workflow validates the config file against a JSON Schema on every run. An invalid config file is a hard failure with an explicit error message naming the file and the problematic entry. This catches typos, unknown stage values, and schema drift before any validation logic runs.
 
 ### 6.3 GitHub Rulesets for Blocking
 
@@ -574,17 +613,18 @@ On the snapshot branch, source API definition files (which contain `$ref` to `co
 
 #### Handoff model
 
-Two handoff models are viable:
+The validation framework uploads bundled specs as **workflow artifacts** (artifact handoff). Release automation downloads these artifacts and commits them to the snapshot branch as part of snapshot creation. See section 9.7 for the detailed handoff sequence.
 
-**Model A — Validation creates the snapshot branch**: The validation framework creates the snapshot branch with bundled API specs already in place. Release automation takes over the branch for mechanical transformations (version replacement, server URLs, `release-metadata.yaml` generation) and the rest of the release lifecycle.
+This model was chosen over the alternative (validation creates the snapshot branch directly) because:
+- The validation reusable workflow's checkout is ephemeral — there is no mechanism to hand uncommitted file changes to a different branch without committing and pushing from within the validation job
+- Validation would need `contents: write` permission and knowledge of snapshot branch naming conventions, creating tight coupling to release automation internals
+- The artifact model keeps validation stateless: it produces files and reports results, release automation owns repository state
 
-**Model B — Artifact handoff**: The validation framework uploads bundled specs as workflow artifacts. Release automation downloads these artifacts and commits them to the snapshot branch as part of snapshot creation.
-
-Both models avoid duplicate bundling. The choice between them is an implementation detail that depends on workflow architecture constraints. The requirement is: **bundling runs once, during validation, and the output is consumed by release automation for the snapshot.**
+Bundling runs once, during validation. Release automation consumes the bundled output without re-bundling.
 
 #### Mechanical transformations after bundling
 
-Regardless of the handoff model, the mechanical transformer applies version-specific changes on top of the bundled content:
+After release automation downloads the bundled artifacts, the mechanical transformer applies version-specific changes on top of the bundled content:
 
 - `info.version` replacement (`wip` → calculated release version)
 - Server URL version updates
@@ -625,10 +665,617 @@ hint: "Only CHANGELOG.md (or CHANGELOG/ directory) and README.md may be modified
 
 Release automation invokes the validation framework on the same branch on which `/create-snapshot` was called. The framework reads `release-plan.yaml` from that branch to derive all context fields (target release type, API statuses, Commonalities version, etc.).
 
-The only distinction is the `mode` — the framework needs to know this is a pre-snapshot invocation rather than a dispatch or PR trigger. When `mode` is `pre-snapshot`, the framework:
+The only distinction is the `mode` input — a reusable workflow input (alongside `tooling_ref_override` and `profile` from Requirements section 9.2) that tells the framework this is a pre-snapshot invocation rather than a dispatch or PR trigger. Release automation passes `mode: pre-snapshot` when calling the validation workflow.
+
+When `mode` is `pre-snapshot`, the framework:
 - Sets `trigger_type` to `release-automation`
 - Selects the strict profile
 - Produces bundled API specs as output for consumption by release automation (section 7.1)
 - Formats findings for inclusion in a Release Issue comment (not a PR comment)
 
-The detailed output model (findings format, artifact structure) will be defined consistently across all execution contexts during implementation.
+The detailed output model (findings format, artifact structure) is defined in section 9.
+
+---
+
+## 8. End-to-End Processing Flow
+
+This section describes the reusable workflow's internal structure and the validation engine's processing pipeline. It covers what happens from the moment the workflow starts to the point where raw findings are collected — output formatting and surfacing are in section 9.
+
+### 8.1 Job Architecture
+
+The reusable workflow uses a **single-job design**. All steps run sequentially within one job.
+
+This differs from release automation's multi-job architecture. Release automation splits into separate jobs because its phases have fundamentally different conditional logic (trigger classification → state derivation → command validation → command execution, where each command is a separate job). The validation workflow has a single linear pipeline — context flows naturally between steps via environment variables and the shared file system within one job. Multi-job would require serializing the context object through job outputs and re-checking out the repository in each job, adding complexity without benefit.
+
+#### Step sequence
+
+| # | Step | Composite action | Skip condition |
+|---|------|-----------------|----------------|
+| 1 | Checkout repository content | — (inline) | Never |
+| 2 | Resolve tooling ref and checkout tooling | `resolve-tooling-ref` | Never |
+| 3 | Read central config and check stage | — (inline) | Never (exits here if `disabled`) |
+| 4 | Build validation context | `build-validation-context` | Never |
+| 5 | Pre-bundling validation | `run-pre-bundling-checks` | `is_release_review_pr` (section 8.6) |
+| 6 | Bundling | `run-bundling` | No external `$ref` detected; or `is_release_review_pr` |
+| 7 | Full validation | `run-full-validation` | `is_release_review_pr` (runs subset instead — section 8.6) |
+| 8 | Post-filter and output | `process-findings` | Never (always produces at least a summary) |
+
+Steps 5–7 are the engine orchestration phase (section 8.4). Step 8 is the output pipeline (section 9).
+
+### 8.2 Checkout Strategy
+
+#### Repository content checkout
+
+```yaml
+- uses: actions/checkout@v6
+  with:
+    fetch-depth: 0
+```
+
+Full history (`fetch-depth: 0`) is needed for:
+- PR diff analysis: identifying which files changed (used by `release_plan_changed` detection and file restriction check)
+- Branch type detection: examining `github.base_ref` for PR triggers
+
+For dispatch triggers, `fetch-depth: 1` would suffice, but a single checkout configuration avoids trigger-specific branching.
+
+#### Tooling checkout
+
+The tooling repository is checked out via sparse checkout at the resolved ref (section 5.6):
+
+```yaml
+- uses: actions/checkout@v6
+  with:
+    repository: camaraproject/tooling
+    ref: ${{ steps.resolve-ref.outputs.tooling_sha }}
+    sparse-checkout: |
+      linting/config
+      validation
+      shared-actions
+    path: .tooling
+```
+
+The checkout lands in `.tooling/` within the workspace. This path is used by all subsequent steps to locate linting configs, validation scripts, shared actions, and the central config file.
+
+The sparse checkout scope includes:
+- `linting/config/` — Spectral rulesets (per Commonalities version), yamllint config, gherkin-lint config
+- `validation/` — Python validation scripts, rule metadata, central config file
+- `shared-actions/` — composite actions consumed at runtime
+
+#### Central config gate
+
+Immediately after the tooling checkout, the workflow reads the central config file (section 6.2) and looks up the current repository:
+
+1. Validate the config file against its JSON Schema
+2. Extract the repository name from `github.repository` **without the owner prefix** (e.g., `camaraproject/QualityOnDemand` → `QualityOnDemand`)
+3. Look up `repositories.<repo-name>.stage` (fall back to `defaults.stage`)
+4. **Fork override**: If the workflow is running in a fork (`github.repository_owner` is not `camaraproject` or `GSMA-Open-Gateway`) and the owner is listed in `fork_owners` → override stage to `standard`. If the owner is not listed → keep the resolved stage (typically `disabled` during early rollout, which exits the workflow)
+5. If stage is `disabled`: exit the workflow with a notice in the summary ("Validation is not enabled for this repository") and set the overall result to `skipped`
+6. If stage is `advisory` and trigger is `pull_request`: exit similarly ("Validation is in advisory mode — use workflow_dispatch to run")
+7. Otherwise: continue, passing the resolved stage to subsequent steps
+
+The fork override (step 4) enables trusted testers to run full validation in their forks even before the upstream repository has been onboarded. This is especially useful during early rollout when most repos are still at `disabled`. Once upstream repos move to `standard`, the `fork_owners` list becomes less relevant — forks inherit the upstream stage.
+
+### 8.3 Context Builder
+
+The context builder assembles a unified context object from multiple sources. It follows the same principle as release automation's `BotContext`: all fields are always present in the output, with missing or inapplicable values defaulting to empty strings or `null`. Downstream consumers never need to handle missing keys.
+
+#### Branch type derivation
+
+| Pattern | Branch type | Source |
+|---------|-------------|--------|
+| `main` | `main` | `github.base_ref` (PR) or `github.ref_name` (dispatch) |
+| `release-snapshot/**` | `release` | Same |
+| `maintenance/**` | `maintenance` | Same |
+| Everything else | `feature` | Same |
+
+For `pull_request` triggers, branch type is derived from the PR's **target branch** (`github.base_ref`), not the source branch. This determines which validation rules apply to the content being merged.
+
+For `workflow_dispatch`, it is derived from the checked-out branch (`github.ref_name`).
+
+#### Trigger type derivation
+
+| Source | Trigger type |
+|--------|-------------|
+| `github.event_name == 'pull_request'` | `pr` |
+| `github.event_name == 'workflow_dispatch'` | `dispatch` |
+| `mode` input == `pre-snapshot` | `release-automation` |
+
+The `mode` input (section 7.4) is the only way the trigger type `release-automation` is set. In standard caller workflow operation, `mode` is not set and trigger type comes from the GitHub event.
+
+#### Profile selection
+
+| Trigger type | Branch type | Condition | Profile |
+|-------------|-------------|-----------|---------|
+| `dispatch` | any | — | `advisory` |
+| `pr` | `release` | `is_release_review_pr` = true | `strict` |
+| `pr` | any | — | `standard` |
+| `release-automation` | any | — | `strict` |
+
+If the `profile` input (Requirements section 9.2) is explicitly set, it overrides the auto-selected profile. This allows dispatch users to preview what a different profile would flag.
+
+#### release-plan.yaml parsing
+
+The context builder reads `release-plan.yaml` from the checked-out branch and validates it against the release-plan JSON Schema (section 1.6). Parsing extracts:
+
+- `target_release_type` — determines release context for all rules
+- `dependencies.commonalities_release` — drives Spectral ruleset selection (section 3.3)
+- `dependencies.identity_consent_management_release` — version constraint (section 3.2)
+- Per-API fields: `api_name`, `target_api_version`, `target_api_status`
+
+If `release-plan.yaml` is absent (valid for repositories not yet using release automation, or feature branches), the context builder produces a minimal context with `target_release_type: null`. Release-plan-specific checks are skipped; Spectral and yamllint still run. If the file is present but invalid, schema violations are reported as findings and processing continues with whatever fields could be parsed.
+
+#### Derived per-API fields
+
+For each API declared in `release-plan.yaml`:
+
+- **`target_api_maturity`**: Derived from `target_api_version` — `initial` if major version is 0, `stable` if >= 1 (section 1.4)
+- **`api_pattern`**: Detected from the corresponding OpenAPI spec file content in `code/API_definitions/` (section 1.4). Detection runs during context building because many downstream rules depend on it
+
+#### Spectral ruleset selection
+
+The Commonalities version declared in `release-plan.yaml` (`dependencies.commonalities_release`) determines which Spectral ruleset is used (section 3.3). The framework maps the release tag to a version line:
+
+- `commonalities_release` matching `r3.*` → `.spectral-r3.4.yaml`
+- `commonalities_release` matching `r4.*` → `.spectral-r4.yaml`
+- Future version lines added as new rulesets are created
+- If `commonalities_release` is absent or unresolvable: default to the latest ruleset (currently r4.x)
+
+This selection is derived from the repository's own `release-plan.yaml`, not from the central config. Different branches of the same repo can target different Commonalities versions.
+
+#### Detection of PR-specific context
+
+- **`is_release_review_pr`**: True when the PR targets a `release-snapshot/**` branch (section 7.3)
+- **`release_plan_changed`**: True when `release-plan.yaml` is in the PR diff. Detected via the GitHub API's changed files list for the PR. Relevant for the release-plan non-exclusivity check (section 2.2)
+
+#### Fork scenarios
+
+The validation workflow can run in forks as well as upstream:
+
+- **Fork dispatch**: A codeowner dispatches validation on their fork to check work before creating an upstream PR. Org secrets are not available in forks, so the validation app token cannot be minted — token resolution falls back to `GITHUB_TOKEN`, which has full write access within the fork's own context.
+- **Fork-internal PRs**: PRs within a fork (feature branch → fork's main) trigger the caller if deployed. Same degraded token situation as fork dispatch.
+- **Fork-to-upstream PRs**: The standard contribution path. The workflow runs in the upstream repo context (triggered by `pull_request`), so `github.repository` is the upstream repo. Org secrets are available to the reusable workflow.
+
+The context builder does not expose fork identity as a context field — no validation rule needs it. Fork vs. upstream is a workflow-level concern handled by token resolution (section 5.1).
+
+#### Context object structure
+
+```yaml
+# Validation context — all fields always present
+repository: "QualityOnDemand"    # repo name without owner prefix
+branch_type: "main"              # main | release | maintenance | feature
+trigger_type: "pr"               # pr | dispatch | release-automation
+profile: "standard"              # advisory | standard | strict
+stage: "standard"                # from central config (disabled | advisory | standard)
+
+# Release context (from release-plan.yaml; null if absent)
+target_release_type: "pre-release-rc"
+commonalities_release: "r4.1"
+icm_release: ">= r1.0"
+
+# PR-specific (null for dispatch)
+is_release_review_pr: false
+release_plan_changed: true
+pr_number: 42
+
+# Per-API contexts (array; empty if no release-plan.yaml)
+apis:
+  - api_name: "qos-booking"
+    target_api_version: "1.0.0-rc.1"
+    target_api_status: "maintained"
+    target_api_maturity: "stable"     # derived
+    api_pattern: "request-response"   # detected from spec
+    spec_file: "code/API_definitions/qos-booking.yaml"
+  - api_name: "qos-on-demand"
+    target_api_version: "0.11.0-alpha.1"
+    target_api_status: "initial"
+    target_api_maturity: "initial"
+    api_pattern: "explicit-subscription"
+    spec_file: "code/API_definitions/qos-on-demand.yaml"
+
+# Workflow metadata
+workflow_run_url: "https://github.com/camaraproject/QualityOnDemand/actions/runs/12345"
+tooling_ref: "abc1234def5678..."
+```
+
+The context object is serialized as JSON and made available to subsequent steps via an environment variable or step output.
+
+### 8.4 Engine Orchestration
+
+Engines run **sequentially** within the single job. Each step captures its findings and passes them to the post-filter.
+
+Sequential execution is appropriate because:
+- GitHub Actions steps within a job are inherently sequential
+- Parallel execution would require multi-job with artifact passing — overhead that exceeds the time saved for a 1-3 minute pipeline
+- Later steps may depend on earlier results (bundling produces input for Spectral)
+
+#### Step 5: Pre-bundling validation
+
+Runs on **source files** before any ref resolution. These checks must work regardless of whether the repo uses `$ref` or copy-paste:
+
+| Check | Engine | Target files |
+|-------|--------|-------------|
+| YAML validity | yamllint | `code/API_definitions/*.yaml` |
+| `$ref` existence and pattern validation | Python | `code/API_definitions/*.yaml` |
+| release-plan.yaml semantic checks | Python | `release-plan.yaml` |
+| Cross-file checks not dependent on schema content | Python | Various |
+
+yamllint uses a configuration from the tooling checkout (`linting/config/.yamllint.yaml`). Invalid YAML produces error-level findings that block subsequent steps — there is no point running Spectral on syntactically invalid files.
+
+If all API spec files are syntactically valid and no external `$ref` is detected, step 6 (bundling) is skipped and step 7 runs on the source files directly.
+
+#### Step 6: Bundling
+
+Conditional — only runs when external `$ref` to `code/common/` or `code/modules/` is detected in at least one API spec file.
+
+The framework invokes an **external bundling tool** — it does not implement its own OpenAPI bundler. The tool must satisfy two requirements:
+
+1. **External ref resolution only** (DEC-002): Resolve `$ref` to `code/common/`, `code/modules/`, and other local files. Preserve all internal `$ref` (`#/components/schemas/...`, `#/components/responses/...`). Full dereferencing must not be used.
+2. **Source map production**: Produce a mapping from bundled output regions back to source file locations. This is needed for line number translation in the output pipeline (section 9.5). This is a selection criterion for tool evaluation — the chosen tool must either support source maps natively or be wrappable to produce them.
+
+The specific tool choice (e.g., redocly, swagger-cli, prance, custom wrapper) is deferred to implementation, evaluated against these two requirements.
+
+**Cache sync validation** runs as part of bundling: the content of `code/common/` files is compared against the expected content for the declared `commonalities_release` version. A mismatch produces a finding — `warning` in standard profile, `error` in strict profile.
+
+**On bundling failure** (unresolvable `$ref`, missing file, tool error):
+- Report bundling error as a finding
+- Skip step 7's Spectral run on bundled output (Spectral cannot lint incomplete specs)
+- Proceed to step 8 with pre-bundling findings only
+- Overall result: `error` (incomplete evaluation)
+
+#### Step 7: Full validation
+
+Runs on the **effective input** — bundled specs (from step 6) if bundling ran, otherwise source specs.
+
+| Check | Engine | Configuration | Output format |
+|-------|--------|--------------|---------------|
+| Spectral linting | Spectral | Version-selected ruleset (section 3.3) | JSON (`--format json`) |
+| Test definition linting | gherkin-lint | `linting/config/.gherkin-lintrc` | Text or JSON |
+| Cross-field consistency | Python | Rule metadata (section 1) | Common findings model |
+| Version checks | Python | Context + spec content | Common findings model |
+| Error response structure | Python | Context + spec content | Common findings model |
+| API pattern-specific checks | Python | Context + spec content + `api_pattern` | Common findings model |
+
+**Spectral** is invoked with `--format json` to capture structured output for programmatic post-processing:
+
+```bash
+spectral lint \
+  --ruleset .tooling/linting/config/.spectral-r4.yaml \
+  --format json \
+  code/API_definitions/*.yaml \
+  > spectral-output.json
+```
+
+The JSON output provides per-finding: `code` (rule name), `path` (file), `message`, `severity` (0=error, 1=warn, 2=info, 3=hint), `range.start.line`, `range.start.character`.
+
+**Python checks** produce findings directly in the common findings model (section 8.4.1). They receive the full context object and have access to the file system for cross-file analysis.
+
+**gherkin-lint** validates test definition files in `code/Test_definitions/`. Its findings are normalized into the common model by the framework.
+
+#### 8.4.1 Common Findings Model
+
+All engine outputs are normalized into a common findings format before post-filtering:
+
+```yaml
+- rule_id: "042"                   # framework rule ID (sequential, stable)
+  engine: spectral                  # spectral | yamllint | gherkin | python
+  engine_rule: "camara-parameter-casing-convention"  # native engine rule name
+  level: error                      # engine-reported level (before post-filter)
+  message: "Path segment 'qualityOnDemand' should be kebab-case"
+  path: "code/API_definitions/qos-on-demand.yaml"
+  line: 47                          # line in source file (mapped back if bundled)
+  column: 5                         # column (if available from engine)
+  api_name: "qos-on-demand"         # which API this finding belongs to
+  hint: "Use kebab-case: /quality-on-demand/{sessionId}"
+```
+
+| Field | Source — Spectral | Source — yamllint | Source — Python |
+|-------|------------------|------------------|-----------------|
+| `rule_id` | Looked up from rule metadata by `engine_rule`; auto-assigned if no metadata | Looked up similarly | Set directly by check |
+| `engine` | `"spectral"` | `"yamllint"` | `"python"` |
+| `engine_rule` | `code` field from JSON | Rule name from output | Check function name |
+| `level` | Mapped from severity integer: 0→error, 1→warn, 2→hint, 3→hint | Mapped from yamllint severity | Set directly |
+| `message` | `message` field | Error message text | Set directly |
+| `path` | `source` field | File path from output | Set directly |
+| `line` | `range.start.line` (0-indexed → 1-indexed) | Line number from output | Set directly |
+| `column` | `range.start.character` | Column from output | Set directly (or null) |
+| `api_name` | Derived from file path | Derived from file path | Set directly |
+| `hint` | From rule metadata `hint` field (if present); otherwise engine `message` serves as hint | From rule metadata | Set directly |
+
+Spectral rules **without** explicit framework metadata entries pass through with identity mapping (section 1.3): `rule_id` is auto-assigned, `hint` defaults to the engine's `message`, and the level maps directly. This means the check inventory does not need to be complete before the framework can run — new Spectral rules work immediately.
+
+### 8.5 Composite Action Boundaries
+
+Composite actions encapsulate logic that is independently testable, reusable across contexts, or benefits from encapsulation (e.g., Python scripts with dependencies). Simple shell commands and conditional logic remain as inline workflow steps.
+
+| Action | Purpose | Key inputs | Key outputs |
+|--------|---------|-----------|-------------|
+| `resolve-tooling-ref` | OIDC-based ref resolution (section 5.6) | `tooling_ref_override` | `tooling_sha` |
+| `build-validation-context` | Context assembly (section 8.3) | Repository checkout path, tooling path, central config | Context JSON, stage, profile |
+| `run-pre-bundling-checks` | Pre-bundling validation (section 8.4 step 5) | Context JSON, source files | Findings JSON |
+| `run-bundling` | External ref resolution + cache sync (section 8.4 step 6) | Context JSON, source files, cache dir | Bundled specs, source map, findings JSON |
+| `run-full-validation` | Spectral + gherkin + Python checks (section 8.4 step 7) | Context JSON, effective input files, ruleset path | Findings JSON |
+| `process-findings` | Post-filter + output formatting (section 9) | Context JSON, all findings JSONs, token | Summary, annotations, comment, status |
+
+The `validate-release-plan` action from release automation is reused (enhanced to produce findings in the common model) rather than reimplemented. Other release automation shared actions (`resolve-tooling-ref`) are consumed directly.
+
+The boundary between "one large action" and "several small actions" per engine is an implementation choice. The table above shows the logical boundaries; implementation may merge or split actions based on testability and maintenance considerations.
+
+### 8.6 Release Review PR Short Circuit
+
+When `is_release_review_pr` is true, the processing flow is shortened:
+
+- **Skip**: Steps 5 (pre-bundling), 6 (bundling), and the Spectral/gherkin/most-Python portions of step 7
+- **Run**: CHANGELOG format check, README validation, file restriction check (section 7.3)
+- **Rationale**: API specs are immutable on the snapshot branch — Spectral checks would be redundant. Release-plan and cache sync were already validated at snapshot creation time (Requirements section 11.2)
+
+This is implemented as a conditional skip within the engine orchestration steps, not a separate workflow path. The context builder sets `is_release_review_pr` and subsequent steps check it before executing.
+
+---
+
+## 9. Output Pipeline
+
+This section covers step 8 of the processing flow (section 8.1): post-filter processing, output formatting, truncation, line number mapping, and error handling. It takes the raw findings from all engines and produces the user-visible output.
+
+### 9.1 Post-Filter Processing
+
+The post-filter evaluates each raw finding against the rule metadata (section 1) and the current validation context (section 8.3). It produces a filtered, severity-adjusted findings list ready for output formatting.
+
+**Processing steps per finding:**
+
+1. **Rule metadata lookup**: Match the finding to its framework rule metadata entry by `engine` + `engine_rule`. Python-produced findings already carry a `rule_id` and skip this step.
+
+2. **Applicability evaluation**: Apply the rule's `applicability` conditions against the current context (section 1.2). If any condition does not match, the finding is silently removed — it does not apply in this context.
+
+3. **Conditional level resolution**: Apply `conditional_level` overrides against the context (section 1.2). The first matching override determines the resolved level; if none match, the default level is used. The resolved level replaces the engine-reported level. If the resolved level is `off`, the finding is removed.
+
+4. **Pass-through**: Spectral rules without explicit framework metadata entries pass through with identity mapping (section 1.3). Their engine-reported severity becomes the resolved level, and the engine's `message` serves as the hint. This is the common case for most Spectral rules — the framework runs without requiring a complete metadata inventory.
+
+**Per-API evaluation**: Findings associated with a specific API (identified by `api_name`) are evaluated against that API's context fields (`target_api_status`, `target_api_maturity`, `api_pattern`). Repository-level findings (e.g., release-plan.yaml checks) are evaluated against the repository-level context.
+
+### 9.2 Profile Application and Blocking Decision
+
+After post-filtering, each finding has a resolved level. The active profile (section 8.3) determines which levels block:
+
+| Profile | Blocking levels | Typical context |
+|---------|----------------|-----------------|
+| `advisory` | None — nothing blocks | Dispatch (stage 1) |
+| `standard` | `error` | PR validation (stage 2) |
+| `strict` | `error` and `warn` | Pre-snapshot, release review PR |
+
+**Overall result** — one of three values:
+
+| Result | Meaning |
+|--------|---------|
+| `pass` | No blocking findings |
+| `fail` | At least one finding at a blocking level |
+| `error` | An engine failure prevented complete evaluation (section 9.6) — even if no blocking findings were collected, the result is uncertain |
+
+**Finding grouping for output**: Findings are grouped for display in the following order: by resolved level (error → warn → hint), then by API name, then by file path, then by line number. This ensures the most actionable items appear first.
+
+### 9.3 Output Formatting
+
+The framework produces output on multiple surfaces, each with different capabilities and token requirements. All surfaces are generated from the same filtered findings list.
+
+#### Workflow summary (always available)
+
+The workflow summary is the primary detailed surface. It requires no write token — it is written via `$GITHUB_STEP_SUMMARY` and is always available, even for fork PRs with read-only tokens.
+
+Structure:
+
+```markdown
+## CAMARA Validation — {result}
+
+**Profile**: {profile} | **Branch**: {branch_type} | **Trigger**: {trigger_type}
+
+### Summary
+
+| API | Errors | Warnings | Hints |
+|-----|--------|----------|-------|
+| qos-booking | 0 | 2 | 1 |
+| qos-on-demand | 1 | 0 | 3 |
+
+### Findings
+
+#### Errors
+
+| Rule | File | Line | Message | Hint |
+|------|------|------|---------|------|
+| 042 | qos-on-demand.yaml | 47 | Path segment should be kebab-case | Use: /quality-on-demand |
+
+#### Warnings
+...
+
+#### Hints
+...
+
+### Engine Status
+
+| Engine | Status | Findings |
+|--------|--------|----------|
+| Spectral | Completed | 4 |
+| yamllint | Completed | 0 |
+| Python | Completed | 3 |
+
+---
+Commit: abc1234 | Tooling: def5678 | [Full workflow run]({workflow_run_url})
+```
+
+#### Check run annotations (write token required)
+
+One annotation per finding, mapped to the source file and line number:
+
+- Annotation level: `failure` for error, `warning` for warn, `notice` for hint
+- Annotation message: includes the rule ID, engine rule name, and fix hint
+- Annotation title: rule name from metadata (or engine rule name if no metadata)
+
+GitHub limits annotations to **50 per step**. If more findings exist:
+- Prioritize: errors first, then warnings, then hints
+- Note the truncation in the workflow summary: "Showing 50 of N findings as annotations. See workflow summary for the complete list."
+
+#### PR comment (write token required)
+
+A concise summary comment on the PR — not a full findings list. Links to the workflow summary for details.
+
+```markdown
+### CAMARA Validation — {result}
+
+{errors} errors, {warnings} warnings, {hints} hints | Profile: {profile}
+
+[View full results]({workflow_run_url})
+```
+
+The comment uses a create-or-update pattern with a marker (`<!-- camara-validation -->`) to avoid duplicate comments on subsequent pushes. Each new push updates the existing comment rather than creating a new one.
+
+**Pre-snapshot context**: When invoked by release automation (`mode: pre-snapshot`), findings are formatted for inclusion in the bot's Release Issue comment (section 7.2) rather than as a standalone PR comment. The framework returns the formatted findings section to the calling workflow.
+
+#### Commit status (write token required)
+
+Commit statuses provide at-a-glance results in the PR's checks list:
+
+- **Overall status**: Context `CAMARA Validation`, state = `success` / `failure` / `error`
+- **Per-engine statuses** (optional, for diagnostics): `CAMARA Validation / Spectral`, `CAMARA Validation / yamllint`, etc. — each shows the engine's individual pass/fail state
+
+The overall status is the one referenced by GitHub rulesets for blocking (stage 3).
+
+### 9.4 Truncation Strategy
+
+GitHub limits workflow step summaries to **1 MB per step** and **1 MB total per job**. The framework must stay within this limit.
+
+**Approach**: Estimate the rendered size during summary generation. If the cumulative size approaches 900 KB:
+
+1. Show all **errors** first — never truncated
+2. Show **warnings** up to the remaining budget
+3. If budget exhausted before all warnings are shown: display a count of remaining findings and link to the full report
+4. **Hints** are shown only if budget permits after errors and warnings
+
+```markdown
+> Showing 85 of 214 findings. Full Spectral output available in
+> [workflow artifacts]({artifact_url}).
+```
+
+The full Spectral JSON output and the complete findings list (all engines) are always uploaded as **workflow artifacts** regardless of summary truncation. These artifacts are the authoritative complete record.
+
+### 9.5 Line Number Mapping
+
+When Spectral runs on bundled output (section 8.4, step 7), finding line numbers reference the bundled file, not the original source file. Annotations and summary tables must show source file locations to be actionable for developers.
+
+**Requirement on the bundling tool**: The external bundling tool (section 8.4, step 6) must produce — or be augmented to produce — a source map that records which regions of the bundled file originated from which source file and line range. This is a selection criterion for bundling tool evaluation, alongside external-ref-only resolution (DEC-002).
+
+**Design choice**: Content pulled in from external refs (e.g., schemas from `CAMARA_common.yaml`) maps back to the **`$ref` line in the source file**, not to the external file itself. The `$ref` declaration is the actionable location — it is the line the developer controls. If Spectral reports an issue at line 247 of the bundled file, and that region was pulled from an external ref declared at line 15 of the source file, the finding is reported at source line 15.
+
+**Scope**: Line number mapping is only needed for repositories that use `$ref` to `code/common/` or `code/modules/`. Copy-paste repositories have identity mapping — source and effective input are the same file.
+
+The source map format is an implementation detail. A line-offset table per external ref insertion point is sufficient for MVP.
+
+### 9.6 Error Handling
+
+**Design principle**: Always surface what succeeded; never silently skip. If an engine fails, the failure is reported explicitly and remaining engines continue.
+
+#### Engine failure
+
+When an engine crashes (Spectral error, Python exception, missing dependency):
+
+1. Catch the failure in the step (non-zero exit code or exception)
+2. Record an engine-level error finding:
+   ```yaml
+   - rule_id: "engine-failure"
+     engine: spectral           # the engine that failed
+     engine_rule: null
+     level: error
+     message: "Spectral exited with code 2: Cannot read ruleset file"
+     path: null
+     line: null
+     api_name: null
+     hint: "Check the workflow log for details"
+   ```
+3. Continue with remaining engines
+4. Set overall result to `error` (distinct from `fail` — signals incomplete evaluation)
+5. Workflow summary explicitly lists which engines succeeded and which failed (engine status table in section 9.3)
+
+Following the release automation pattern: error messages are shown in code blocks, immediately visible, not collapsed. The workflow run URL links to full logs.
+
+#### Config file missing or invalid
+
+- Config file **missing** from the tooling checkout: hard failure with an explicit error in the summary. This is a tooling repository issue, not a per-repo issue.
+- Config file **invalid** (bad YAML, unknown stage value, schema violation): hard failure naming the config file and the problematic entry. The framework does not proceed with potentially incorrect configuration.
+
+#### release-plan.yaml missing or invalid
+
+- **Missing**: The context builder produces a minimal context with `target_release_type: null`. Release-plan-specific checks (version consistency, non-exclusivity, dependency validation) are skipped. Spectral and yamllint still run on source files. This is not an error — repos without release-plan.yaml (or feature branches that haven't added one) are valid.
+- **Invalid** (present but fails schema validation): Schema violations are reported as findings. The context builder extracts whatever fields it can and continues with a partial context. Remaining checks run with the available context.
+
+#### Bundling failure
+
+When bundling fails (unresolvable `$ref`, missing file in `code/common/`, tool crash):
+
+1. Report the bundling error as a finding (error level)
+2. Skip Spectral on bundled output (step 7 Spectral) — cannot lint incomplete specs
+3. Proceed to post-filter with pre-bundling findings (step 5 results) and the bundling error
+4. Set overall result to `error` if the active profile would have required checks on bundled output
+
+Pre-bundling findings are still valuable — yamllint and ref pattern checks provide feedback even when bundling fails.
+
+#### Token minting failure
+
+When the validation app token cannot be minted (app not installed, secret missing, API error):
+
+1. Follow the layered token resolution (section 5.1) — fall back to `GITHUB_TOKEN`, then to read-only
+2. Log the degraded state in the workflow summary header: "Write surfaces unavailable — showing findings in workflow summary only"
+3. **Never** fail the workflow because of a token issue — validation results are always produced, only the surfacing degrades
+4. Check run annotations, PR comments, and commit statuses are silently skipped when no write token is available
+
+#### Failure mode summary
+
+| Failure | Behavior | Overall result |
+|---------|----------|---------------|
+| Engine crash | Record engine-failure finding, continue with remaining engines | `error` |
+| Config file missing/invalid | Hard failure, explicit error in summary | `error` (workflow exits) |
+| release-plan.yaml missing | Minimal context, skip release-plan checks, run Spectral/yamllint | Normal (`pass`/`fail`) |
+| release-plan.yaml invalid | Report violations as findings, partial context, continue | Normal (`pass`/`fail`) |
+| Bundling failure | Report error, skip bundled-output checks, show pre-bundling findings | `error` |
+| Token minting failure | Degrade surfacing, never fail the workflow | Normal (`pass`/`fail`) |
+
+### 9.7 Bundled Spec Artifacts
+
+Bundled API specs produced in step 6 (section 8.4) are a distinct output category from findings — they are build artifacts, not validation results. This section covers how they are persisted and consumed.
+
+#### Artifact upload
+
+After bundling completes (step 6), the bundled spec files are uploaded as **GitHub workflow artifacts**, regardless of whether validation passes or fails. Bundled specs are useful for review even when findings exist.
+
+Artifact naming follows a convention that identifies the content:
+
+```
+validation-bundled-specs-{commit-sha-short}
+```
+
+The artifact contains one bundled YAML file per API (retaining the original filename, e.g., `qos-booking.yaml`) plus the source map file produced by the bundling tool (section 9.5).
+
+Artifacts use the GitHub default retention period (90 days). They are available for download from the workflow run's artifact list.
+
+#### User surfacing
+
+The workflow summary (section 9.3) includes a link to the bundled spec artifacts when bundling ran:
+
+```markdown
+### Bundled Specs
+
+Bundled standalone API specs are available as [workflow artifacts]({artifact_url}).
+```
+
+This gives PR reviewers visibility into the bundled output — they can download and inspect the fully resolved specs to verify that `$ref` resolution produced the expected result. For copy-paste repositories (no bundling), this section is omitted.
+
+#### Release automation handoff (Model B)
+
+When release automation invokes validation with `mode: pre-snapshot`, it consumes the bundled spec artifacts to populate the snapshot branch. The handoff uses the **artifact model** (section 7.1, Model B):
+
+1. Release automation calls the validation reusable workflow with `mode: pre-snapshot`
+2. Validation runs the full pipeline (context → pre-bundling → bundling → full validation → output)
+3. Validation uploads bundled specs as workflow artifacts
+4. Validation returns its overall result (`pass` / `fail` / `error`) to the caller
+5. If result is `pass`: release automation downloads the bundled spec artifacts and commits them to the snapshot branch, replacing the source files that contained `$ref`
+6. If result is `fail` or `error`: release automation does not create the snapshot — findings are reported in the Release Issue comment
+
+The validation framework does not need `contents: write` permission and has no knowledge of snapshot branch naming. It produces files and reports results; release automation decides what to do with them. This keeps a clean separation: validation is stateless, release automation owns the repository state.
+
+**For non-pre-snapshot runs** (PR and dispatch triggers): bundled specs are uploaded as artifacts for reviewer inspection only. No branch creation or file replacement occurs — the artifacts are informational.
