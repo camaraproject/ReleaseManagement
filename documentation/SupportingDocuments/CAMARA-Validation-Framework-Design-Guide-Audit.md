@@ -394,6 +394,66 @@ Rules in .spectral.yaml but **NOT listed** in Linting-rules.md:
 
 ---
 
+## Prior Discussions
+
+Research of Commonalities and tooling issues/PRs (open and closed) for rationale behind identified discrepancies, gaps, and disabled rules.
+
+### Linting-rules.md discrepancies
+
+| Rule | Prior Discussion | Rationale |
+|------|-----------------|-----------|
+| camara-resource-reserved-words | [Commonalities#74](https://github.com/camaraproject/Commonalities/pull/74) (topic 13) | Documented as planned in initial linting ruleset PR (Oct 2023), confirmed as "to be developed in a later iteration." Never implemented. Gap from incremental rollout. |
+| camara-path-param-id-morphology | [Commonalities#16](https://github.com/camaraproject/Commonalities/issues/16) (naming discussion) | Listed in Linting-rules.md but not in summary table. Same incremental rollout gap. No dedicated discussion about the missing implementation. |
+| camara-property-casing-convention | [Commonalities#74](https://github.com/camaraproject/Commonalities/pull/74) (topic 6) | Documented with an explicit question: "Should it be lowerCamelCase in DG?" — indicating uncertainty about the design guide requirement. In [PR#466](https://github.com/camaraproject/Commonalities/pull/466) the summary table was updated to `Yes/Yes`, but the rule was still never added to .spectral.yml. |
+| camara-enum-casing-convention | [Commonalities#74](https://github.com/camaraproject/Commonalities/pull/74) | Explicitly marked "tbd" since Dec 2023. Linting-rules.md notes "No clear requirement" in the design guide. Deliberate deferral — r4.1 has since added explicit SCREAMING_SNAKE_CASE for error codes (section 3.2), which partially resolves this for error enums but not for general enums. |
+| camara-info-title | [Commonalities#74](https://github.com/camaraproject/Commonalities/pull/74) (topic 3); [#201](https://github.com/camaraproject/Commonalities/issues/201) / [#214](https://github.com/camaraproject/Commonalities/pull/214) | Raised as "Do we need rules for info-title; info-version?" in PR#74 review. #214 added DG guidelines (title without "API") but no linting rule followed. "tbd" since Dec 2023, unchanged. |
+| camara-info-version-format | [Commonalities#74](https://github.com/camaraproject/Commonalities/pull/74) (topic 4) | Same as info-title. Acknowledged as potential new rule. Complexity noted: format allows wip, x.y.z-alpha.n, x.y.z-rc.n. "tbd" since Dec 2023, unchanged. |
+| camara-language-spelling | None | Marked "No/No" from the very first version (Dec 2023). Never intended for implementation — would produce excessive false positives with domain-specific terminology. [#545](https://github.com/camaraproject/Commonalities/issues/545) proposes spelling checks for markdown docs, not API YAML descriptions. |
+
+### Severity alignment issues
+
+| Rule | Prior Discussion | Rationale |
+|------|-----------------|-----------|
+| camara-operationid-casing-convention (hint vs error) | [Commonalities#76](https://github.com/camaraproject/Commonalities/issues/76) (severity discussion) | Internal inconsistency within Linting-rules.md itself: section 3 says `error`, section 4 summary says `Hint`. Implementation matches `hint`. Likely a documentation error in section 3 that was never caught. |
+| camara-schema-casing-convention (warn vs MUST) | [Commonalities#76](https://github.com/camaraproject/Commonalities/issues/76) | General pattern: linting rules use lower severities than DG language suggests. MegaLinter only blocks on errors, so `warn` means "flagged but not blocking." Conservative choice during rollout. |
+
+### OWASP disabled rules
+
+All OWASP enablement decisions were individually reviewed in the master tracking issue [Commonalities#539](https://github.com/camaraproject/Commonalities/issues/539) with sub-issues [#548](https://github.com/camaraproject/Commonalities/issues/548) (api2), [#549](https://github.com/camaraproject/Commonalities/issues/549) (api3), [#551](https://github.com/camaraproject/Commonalities/issues/551) (api4), [#552](https://github.com/camaraproject/Commonalities/issues/552) (api8). Documentation landed via [PR#582](https://github.com/camaraproject/Commonalities/pull/582).
+
+| Category | Disabled Rules | Rationale |
+|----------|---------------|-----------|
+| Authentication (api2) | auth-insecure-schemes, jwt-best-practices, no-http-basic, no-api-keys-in-url | CAMARA uses only OpenID Connect (defined by ICM). These check for auth schemes never present in CAMARA specs — would never trigger. |
+| Rate limiting (api4) | rate-limit, rate-limit-retry-after, rate-limit-responses-429 | Rate limiting is implementation/API Gateway specific. No IETF standard for rate limit headers yet. Not mandated by CAMARA. |
+| CORS (api8) | define-cors-origin | CORS is implementation/API Gateway specific, not in API specs. |
+| Error 500 (api8) | define-error-responses-500 | CAMARA guidelines do NOT recommend defining 500 responses — including them could leak implementation details. |
+| Inventory (api9) | inventory-access, inventory-environment | Require vendor extensions (x-internal) and environment terms (staging, production) that CAMARA does not use. |
+| Integer limit (api4) | integer-limit | For OAS 3.1 only — CAMARA uses OAS 3.0.x. The equivalent `integer-limit-legacy` IS enabled. |
+
+### OWASP severity downgrades (api4 rules at warn)
+
+Discussed in [Commonalities#539](https://github.com/camaraproject/Commonalities/issues/539) and [PR#582](https://github.com/camaraproject/Commonalities/pull/582). Rationale: these rules introduce new requirements that existing CAMARA APIs do not yet satisfy (many APIs lack maxLength on strings, format on integers, maxItems on arrays). Making them errors immediately would break all existing API linting runs. The `warn` severity provides a transition window.
+
+- The "Target CAMARA severity" column in Linting-rules.md explicitly targets `error` for 2027 meta-releases
+- [tooling#95](https://github.com/camaraproject/tooling/pull/95) implements both current (`.spectral-owasp.yaml`) and target (`.spectral-owasp-target.yaml`) configurations
+- Commonalities' own templates were fixed in [PR#590](https://github.com/camaraproject/Commonalities/pull/590) (CAMARA_common.yaml) and [PR#591](https://github.com/camaraproject/Commonalities/pull/591) (event-subscription-template.yaml)
+- Active debate: [Commonalities#596](https://github.com/camaraproject/Commonalities/issues/596) challenges whether api4 constraints should apply to output properties at all (arguing OWASP api4 is about input validation only). Unresolved.
+
+### Other items
+
+| Topic | Prior Discussion | Finding |
+|-------|-----------------|---------|
+| Tag naming convention (Title Case) | [Commonalities#80](https://github.com/camaraproject/Commonalities/issues/80) | #80 discussed operation tag usage but not Title Case enforcement. No discussion found about linting tag casing. |
+| 403 response required | None | OWASP covers 401 only. No discussion found about requiring 403 via linting. |
+| Linting-rules.md as source of truth | [Commonalities#482](https://github.com/camaraproject/Commonalities/issues/482) (open) | Acknowledges dual location of linting config. Proposes removing Commonalities copy, keeping tooling as single source. |
+| Rule alignment umbrella | [Commonalities#532](https://github.com/camaraproject/Commonalities/issues/532) (open, Spring26) | "Review and correct artifacts to be conforming with linting rules" — focuses on template compliance, not the tbd rules. |
+
+### Cross-cutting finding
+
+The incremental rollout approach was established in [PR#74](https://github.com/camaraproject/Commonalities/pull/74) (Oct 2023), where rules were documented before implementation. Several rules from that era remain documented but not yet implemented. No existing issue specifically tracks the gap between documented rules in Linting-rules.md and implemented rules in .spectral.yml.
+
+---
+
 ## Statistics
 
 | Category | Count |
