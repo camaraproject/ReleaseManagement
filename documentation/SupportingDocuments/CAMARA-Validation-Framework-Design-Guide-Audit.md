@@ -346,7 +346,8 @@ Rules listed in Linting-rules.md but **NOT implemented** in current .spectral.ya
 | camara-enum-casing-convention | info | Missing (tbd) | Enum values UPPER_SNAKE_CASE |
 | camara-info-title | warn | Missing (tbd) | Title must not contain "API" |
 | camara-info-version-format | warn | Missing (tbd) | Version format x.y.z/wip/alpha/rc |
-| camara-language-spelling | warn | Missing (No) | Spell checking on descriptions |
+
+Note: `camara-language-spelling` is listed in Linting-rules.md as "No/No" — this is not a discrepancy but a deliberate exclusion. Spelling and description quality checks are better suited to AI-based review tools than pattern-based linting.
 
 Rules in .spectral.yaml but **NOT listed** in Linting-rules.md:
 - None found — all current .spectral.yaml rules are listed
@@ -408,7 +409,7 @@ Research of Commonalities and tooling issues/PRs (open and closed) for rationale
 | camara-enum-casing-convention | [Commonalities#74](https://github.com/camaraproject/Commonalities/pull/74) | Explicitly marked "tbd" since Dec 2023. Linting-rules.md notes "No clear requirement" in the design guide. Deliberate deferral — r4.1 has since added explicit SCREAMING_SNAKE_CASE for error codes (section 3.2), which partially resolves this for error enums but not for general enums. |
 | camara-info-title | [Commonalities#74](https://github.com/camaraproject/Commonalities/pull/74) (topic 3); [#201](https://github.com/camaraproject/Commonalities/issues/201) / [#214](https://github.com/camaraproject/Commonalities/pull/214) | Raised as "Do we need rules for info-title; info-version?" in PR#74 review. #214 added DG guidelines (title without "API") but no linting rule followed. "tbd" since Dec 2023, unchanged. |
 | camara-info-version-format | [Commonalities#74](https://github.com/camaraproject/Commonalities/pull/74) (topic 4) | Same as info-title. Acknowledged as potential new rule. Complexity noted: format allows wip, x.y.z-alpha.n, x.y.z-rc.n. "tbd" since Dec 2023, unchanged. |
-| camara-language-spelling | None | Marked "No/No" from the very first version (Dec 2023). Never intended for implementation — would produce excessive false positives with domain-specific terminology. [#545](https://github.com/camaraproject/Commonalities/issues/545) proposes spelling checks for markdown docs, not API YAML descriptions. |
+| ~~camara-language-spelling~~ | — | Not a discrepancy — see "Other items" below |
 
 ### Severity alignment issues
 
@@ -443,6 +444,7 @@ Discussed in [Commonalities#539](https://github.com/camaraproject/Commonalities/
 
 | Topic | Prior Discussion | Finding |
 |-------|-----------------|---------|
+| camara-language-spelling | None | Marked "No/No" from day one (Dec 2023). Not a discrepancy — never intended for Spectral. Spelling and description quality checks are better handled by AI-based review tools, not pattern-based linting. [#545](https://github.com/camaraproject/Commonalities/issues/545) proposes spelling checks for markdown docs, not API YAML descriptions. |
 | Tag naming convention (Title Case) | [Commonalities#80](https://github.com/camaraproject/Commonalities/issues/80) | #80 discussed operation tag usage but not Title Case enforcement. No discussion found about linting tag casing. |
 | 403 response required | None | OWASP covers 401 only. No discussion found about requiring 403 via linting. |
 | Linting-rules.md as source of truth | [Commonalities#482](https://github.com/camaraproject/Commonalities/issues/482) (open) | Acknowledges dual location of linting config. Proposes removing Commonalities copy, keeping tooling as single source. |
@@ -466,5 +468,5 @@ The incremental rollout approach was established in [PR#74](https://github.com/c
 | Multiple coverage | 15 (overlap) |
 | r4.x-only rules | 19 |
 | Changed between versions | 2 |
-| Linting-rules.md discrepancies | 7 |
+| Linting-rules.md discrepancies | 6 |
 | Severity alignment issues | 2 |
