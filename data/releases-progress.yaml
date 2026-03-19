@@ -1,11 +1,11 @@
 metadata:
-  last_updated: '2026-03-19T06:14:32Z'
-  last_checked: '2026-03-19T06:14:32Z'
+  last_updated: '2026-03-19T15:01:11Z'
+  last_checked: '2026-03-19T15:01:11Z'
   releases_master_updated: '2026-03-13T05:33:53.054Z'
   schema_version: 1.4.0
   collector_version: 1.4.0
   repos_scanned: 66
-  repos_with_plan: 34
+  repos_with_plan: 37
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -23,7 +23,7 @@ meta_releases:
   m3_achieved: 35
   m4_achieved: 36
 - name: Spring26
-  total_apis: 4
+  total_apis: 3
   m1_achieved: 1
   m3_achieved: 3
   m4_achieved: 0
@@ -853,6 +853,57 @@ progress:
       apis:
       - api_name: placeholder-entry
         api_version: null
+- repository: DeviceSwap
+  github_url: https://github.com/camaraproject/DeviceSwap
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: r3.2
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: device-swap
+    target_api_version: 1.0.0
+    target_api_status: public
+    main_contacts:
+    - bigludo7
+    - krishvenkatachalam
+    - jgarciahospital
+  state: completed
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: r3.2
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: device-swap
+        api_version: null
+    m3:
+      release_tag: r3.1
+      release_date: '2025-07-23T09:43:47Z'
+      apis:
+      - api_name: device-swap
+        api_version: 1.0.0-rc.1
+    m4:
+      release_tag: r3.2
+      release_date: '2025-09-18T11:54:24Z'
+      apis:
+      - api_name: device-swap
+        api_version: 1.0.0
+  last_published:
+    release_tag: r3.2
+    release_date: '2025-09-18T11:54:24Z'
+    apis:
+    - api_name: device-swap
+      api_version: 1.0.0
 - repository: EnergyFootprintNotification
   github_url: https://github.com/camaraproject/EnergyFootprintNotification
   release_track: meta-release
@@ -999,8 +1050,7 @@ progress:
       api_version: 0.1.0-alpha.1
 - repository: IoTSIMFraudPrevention
   github_url: https://github.com/camaraproject/IoTSIMFraudPrevention
-  release_track: meta-release
-  meta_release: Spring26
+  release_track: independent
   target_release_tag: r1.1
   target_release_type: pre-release-rc
   dependencies:
@@ -1008,6 +1058,12 @@ progress:
     identity_consent_management_release: r3.3
   apis:
   - api_name: iot-sim-fraud-prevention
+    target_api_version: 0.1.0
+    target_api_status: rc
+    main_contacts:
+    - chenfr2-ChinaTelecom
+    - XunliYang
+  - api_name: iot-sim-fraud-prevention-subscriptions
     target_api_version: 0.1.0
     target_api_status: rc
     main_contacts:
@@ -1029,17 +1085,23 @@ progress:
       apis:
       - api_name: iot-sim-fraud-prevention
         api_version: null
+      - api_name: iot-sim-fraud-prevention-subscriptions
+        api_version: null
     m3:
       release_tag: null
       release_date: null
       apis:
       - api_name: iot-sim-fraud-prevention
         api_version: null
+      - api_name: iot-sim-fraud-prevention-subscriptions
+        api_version: null
     m4:
       release_tag: null
       release_date: null
       apis:
       - api_name: iot-sim-fraud-prevention
+        api_version: null
+      - api_name: iot-sim-fraud-prevention-subscriptions
         api_version: null
   warnings:
   - code: W005
@@ -1245,6 +1307,57 @@ progress:
       api_version: 0.2.0-rc.1
     - api_name: network-slice-assignment
       api_version: 0.1.0-rc.1
+- repository: NumberVerification
+  github_url: https://github.com/camaraproject/NumberVerification
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: r3.2
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: number-verification
+    target_api_version: 2.1.0
+    target_api_status: public
+    main_contacts:
+    - bigludo7
+    - fernandopradocabrillo
+    - AxelNennker
+  state: completed
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: r3.2
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: number-verification
+        api_version: null
+    m3:
+      release_tag: r3.1
+      release_date: '2025-07-18T09:18:23Z'
+      apis:
+      - api_name: number-verification
+        api_version: 2.1.0-rc.1
+    m4:
+      release_tag: r3.2
+      release_date: '2025-09-12T09:55:34Z'
+      apis:
+      - api_name: number-verification
+        api_version: 2.1.0
+  last_published:
+    release_tag: r3.2
+    release_date: '2025-09-12T09:55:34Z'
+    apis:
+    - api_name: number-verification
+      api_version: 2.1.0
 - repository: OptimalEdgeDiscovery
   github_url: https://github.com/camaraproject/OptimalEdgeDiscovery
   release_track: meta-release
@@ -1301,6 +1414,56 @@ progress:
     apis:
     - api_name: optimal-edge-discovery
       api_version: 0.1.0
+- repository: OTPValidation
+  github_url: https://github.com/camaraproject/OTPValidation
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: r3.2
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: one-time-password-sms
+    target_api_version: 1.1.1
+    target_api_status: public
+    main_contacts:
+    - bigludo7
+    - fernandopradocabrillo
+  state: completed
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: r3.2
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: one-time-password-sms
+        api_version: null
+    m3:
+      release_tag: r3.1
+      release_date: '2025-07-24T08:58:13Z'
+      apis:
+      - api_name: one-time-password-sms
+        api_version: 1.1.1-rc.3
+    m4:
+      release_tag: r3.2
+      release_date: '2025-09-16T09:27:12Z'
+      apis:
+      - api_name: one-time-password-sms
+        api_version: 1.1.1
+  last_published:
+    release_tag: r3.2
+    release_date: '2025-09-16T09:27:12Z'
+    apis:
+    - api_name: one-time-password-sms
+      api_version: 1.1.1
 - repository: PredictiveConnectivityData
   github_url: https://github.com/camaraproject/PredictiveConnectivityData
   release_track: meta-release
@@ -3053,51 +3216,6 @@ progress:
   source: historical
 - repository: DeviceSwap
   github_url: https://github.com/camaraproject/DeviceSwap
-  release_track: meta-release
-  meta_release: Fall25
-  target_release_tag: null
-  target_release_type: null
-  apis:
-  - api_name: device-swap
-    target_api_version: 1.0.0
-    target_api_status: ''
-  state: historical
-  artifacts:
-    snapshot_branch: null
-    release_pr: null
-    draft_release: null
-    release_issue: null
-  published_context:
-    latest_public_release: null
-    newest_pre_release: null
-  cycle_releases:
-    m1:
-      release_tag: null
-      release_date: null
-      apis:
-      - api_name: device-swap
-        api_version: null
-    m3:
-      release_tag: r3.1
-      release_date: '2025-07-23T09:43:47Z'
-      apis:
-      - api_name: device-swap
-        api_version: 1.0.0-rc.1
-    m4:
-      release_tag: r3.2
-      release_date: '2025-09-18T11:54:24Z'
-      apis:
-      - api_name: device-swap
-        api_version: 1.0.0
-  last_published:
-    release_tag: r3.2
-    release_date: '2025-09-18T11:54:24Z'
-    apis:
-    - api_name: device-swap
-      api_version: 1.0.0
-  source: historical
-- repository: DeviceSwap
-  github_url: https://github.com/camaraproject/DeviceSwap
   release_track: independent
   target_release_tag: null
   target_release_type: null
@@ -3827,51 +3945,6 @@ progress:
 - repository: NumberVerification
   github_url: https://github.com/camaraproject/NumberVerification
   release_track: meta-release
-  meta_release: Fall25
-  target_release_tag: null
-  target_release_type: null
-  apis:
-  - api_name: number-verification
-    target_api_version: 2.1.0
-    target_api_status: ''
-  state: historical
-  artifacts:
-    snapshot_branch: null
-    release_pr: null
-    draft_release: null
-    release_issue: null
-  published_context:
-    latest_public_release: null
-    newest_pre_release: null
-  cycle_releases:
-    m1:
-      release_tag: null
-      release_date: null
-      apis:
-      - api_name: number-verification
-        api_version: null
-    m3:
-      release_tag: r3.1
-      release_date: '2025-07-18T09:18:23Z'
-      apis:
-      - api_name: number-verification
-        api_version: 2.1.0-rc.1
-    m4:
-      release_tag: r3.2
-      release_date: '2025-09-12T09:55:34Z'
-      apis:
-      - api_name: number-verification
-        api_version: 2.1.0
-  last_published:
-    release_tag: r3.2
-    release_date: '2025-09-12T09:55:34Z'
-    apis:
-    - api_name: number-verification
-      api_version: 2.1.0
-  source: historical
-- repository: NumberVerification
-  github_url: https://github.com/camaraproject/NumberVerification
-  release_track: meta-release
   meta_release: Spring25
   target_release_tag: null
   target_release_type: null
@@ -3958,51 +4031,6 @@ progress:
     apis:
     - api_name: one-time-password-sms
       api_version: 1.0.0
-  source: historical
-- repository: OTPValidation
-  github_url: https://github.com/camaraproject/OTPValidation
-  release_track: meta-release
-  meta_release: Fall25
-  target_release_tag: null
-  target_release_type: null
-  apis:
-  - api_name: one-time-password-sms
-    target_api_version: 1.1.1
-    target_api_status: ''
-  state: historical
-  artifacts:
-    snapshot_branch: null
-    release_pr: null
-    draft_release: null
-    release_issue: null
-  published_context:
-    latest_public_release: null
-    newest_pre_release: null
-  cycle_releases:
-    m1:
-      release_tag: null
-      release_date: null
-      apis:
-      - api_name: one-time-password-sms
-        api_version: null
-    m3:
-      release_tag: r3.1
-      release_date: '2025-07-24T08:58:13Z'
-      apis:
-      - api_name: one-time-password-sms
-        api_version: 1.1.1-rc.3
-    m4:
-      release_tag: r3.2
-      release_date: '2025-09-16T09:27:12Z'
-      apis:
-      - api_name: one-time-password-sms
-        api_version: 1.1.1
-  last_published:
-    release_tag: r3.2
-    release_date: '2025-09-16T09:27:12Z'
-    apis:
-    - api_name: one-time-password-sms
-      api_version: 1.1.1
   source: historical
 - repository: OTPValidation
   github_url: https://github.com/camaraproject/OTPValidation
