@@ -198,6 +198,13 @@ Remaining inventory work:
 - Filename conventions: kebab-case, matches api-name (filesystem)
 - CONFLICT error code deprecated warning (r4.x)
 
+**Gherkin-lint (test definition files):**
+- Structural rules: named features and scenarios, unique names, non-empty backgrounds, scenarios with examples
+- Step ordering: Given → When → Then, use `And` for repeated keywords
+- Tagging: required tags, no restricted tags (@watch, @wip), no duplicates
+- Formatting: indentation, no trailing spaces, no multiple empty lines
+- Limits: max 50 scenarios per file, max 250 character names
+
 **Manual + prompt:**
 - Data minimization compliance
 - Meaningful description quality (beyond presence checks)
@@ -994,18 +1001,18 @@ All engine outputs are normalized into a common findings format before post-filt
   hint: "Use kebab-case: /quality-on-demand/{sessionId}"
 ```
 
-| Field | Source — Spectral | Source — yamllint | Source — Python |
-|-------|------------------|------------------|-----------------|
-| `rule_id` | Looked up from rule metadata by `engine_rule`; auto-assigned if no metadata | Looked up similarly | Set directly by check |
-| `engine` | `"spectral"` | `"yamllint"` | `"python"` |
-| `engine_rule` | `code` field from JSON | Rule name from output | Check function name |
-| `level` | Mapped from severity integer: 0→error, 1→warn, 2→hint, 3→hint | Mapped from yamllint severity | Set directly |
-| `message` | `message` field | Error message text | Set directly |
-| `path` | `source` field | File path from output | Set directly |
-| `line` | `range.start.line` (0-indexed → 1-indexed) | Line number from output | Set directly |
-| `column` | `range.start.character` | Column from output | Set directly (or null) |
-| `api_name` | Derived from file path | Derived from file path | Set directly |
-| `hint` | From rule metadata `hint` field (if present); otherwise engine `message` serves as hint | From rule metadata | Set directly |
+| Field | Source — Spectral | Source — yamllint | Source — gherkin-lint | Source — Python |
+|-------|------------------|------------------|----------------------|-----------------|
+| `rule_id` | Looked up from rule metadata by `engine_rule`; auto-assigned if no metadata | Looked up similarly | Looked up similarly | Set directly by check |
+| `engine` | `"spectral"` | `"yamllint"` | `"gherkin"` | `"python"` |
+| `engine_rule` | `code` field from JSON | Rule name from output | Rule name from output | Check function name |
+| `level` | Mapped from severity integer: 0→error, 1→warn, 2→hint, 3→hint | Mapped from yamllint severity | Mapped from gherkin-lint severity | Set directly |
+| `message` | `message` field | Error message text | Error message text | Set directly |
+| `path` | `source` field | File path from output | File path from output | Set directly |
+| `line` | `range.start.line` (0-indexed → 1-indexed) | Line number from output | Line number from output | Set directly |
+| `column` | `range.start.character` | Column from output | Column from output (or null) | Set directly (or null) |
+| `api_name` | Derived from file path | Derived from file path | Derived from file path | Set directly |
+| `hint` | From rule metadata `hint` field (if present); otherwise engine `message` serves as hint | From rule metadata | From rule metadata | Set directly |
 
 Spectral rules **without** explicit framework metadata entries pass through with identity mapping (section 1.3): `rule_id` is auto-assigned, `hint` defaults to the engine's `message`, and the level maps directly. This means the check inventory does not need to be complete before the framework can run — new Spectral rules work immediately.
 
