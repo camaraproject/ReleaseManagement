@@ -197,6 +197,7 @@ Remaining inventory work:
 - License and x-camara-commonalities consistency across API files (cross-file)
 - Filename conventions: kebab-case, matches api-name (filesystem)
 - CONFLICT error code deprecated warning (r4.x)
+- User story file existence in `documentation/API_documentation/` (conditional: mandatory for stable public APIs per API Readiness Checklist)
 
 **Gherkin-lint (test definition files):**
 - Structural rules: named features and scenarios, unique names, non-empty backgrounds, scenarios with examples
@@ -208,7 +209,7 @@ Remaining inventory work:
 **Manual + prompt:**
 - Data minimization compliance
 - Meaningful description quality (beyond presence checks)
-- User story adequacy
+- User story adequacy (content quality; file existence is checked automatically for stable public APIs)
 - Breaking change justification
 
 **Obsolete (handled by release automation):**
