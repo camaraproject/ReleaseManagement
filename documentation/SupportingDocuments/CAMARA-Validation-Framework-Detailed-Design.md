@@ -160,7 +160,7 @@ Summary of check areas identified so far, pending the Commonalities audit for co
 - Security: no secrets in path/query parameters
 - HTTP method validity, no request body on GET/DELETE
 - Unused components detection
-- *New*: info.version format (wip/alpha.n/rc.n/public), XCorrelator pattern, phone number format, device object structure
+- *New*: info.version format (wip/alpha.n/rc.n/public), XCorrelator pattern, phone number format, device object structure, no info.contact field, check externalDocs format
 
 **Python (new):**
 - Server URL version consistency with info.version (cross-field)
