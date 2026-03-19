@@ -137,43 +137,69 @@ The framework must accept exactly the values defined in these schemas. Any chang
 
 ### 2.1 Inventory Status
 
-The per-rule inventory is **not yet complete**. The following work is required:
+The per-rule inventory is based on a Commonalities audit that examined `CAMARA-API-Design-Guide.md` and `CAMARA-API-Event-Subscription-and-Notification-Guide.md` at both r3.4 and r4.1 versions, cross-referenced against the existing Spectral rules (17 CAMARA custom + core OAS), the OWASP rules from [tooling#95](https://github.com/camaraproject/tooling/pull/95), the `Linting-rules.md` maintained in Commonalities, and the deprecated `api_review_validator_v0_6.py` (80 checks).
 
-1. **Commonalities audit** (dependency): Examine `CAMARA-API-Design-Guide.md` and `CAMARA-API-Event-Subscription-and-Notification-Guide.md` at both r3.4 and r4.1/r4.2 versions to:
-   - Identify checks not yet covered by any engine
-   - Validate existing Spectral rules against the current design guide
-   - Identify rules that changed between Commonalities releases
+The audit identified 106 machine-checkable rules total: 26 already covered by existing Spectral, 17 by OWASP rules (tooling#95, not yet merged), 28 by the v0_6 validator only, and 20 gaps with no current implementation. Of the 106 rules, 19 are r4.x-only (not applicable to r3.4 repositories), 2 changed between versions, and 7 rules listed in `Linting-rules.md` are not yet implemented in the `.spectral.yaml` configuration.
 
-2. **Existing rule classification**: Map each current Spectral rule to the framework metadata model (applicability, conditional level, hints). The existing Spectral severity levels are assumed valid for now; detailed severity review is deferred.
+Remaining inventory work:
+- **Existing rule classification**: Map each current Spectral rule to the framework metadata model (applicability, conditional level, hints). The existing Spectral severity levels are assumed valid for now; detailed severity review is deferred.
 
-3. **api-review v0.6 coverage**: The deprecated `api_review_validator_v0_6.py` (~43 checks) was a monolithic implementation used manually by release reviewers for the Fall25 meta-release. Its checks serve as input for identifying Python-needed validations not covered by Spectral.
+### 2.2 Check Areas by Engine
 
-### 2.2 Known Check Areas by Engine
-
-Summary of check areas identified so far, pending the Commonalities audit for completeness:
-
-**Spectral (existing + new):**
+**Spectral (existing rules):**
 - OpenAPI version enforcement (3.0.3)
-- Naming conventions (e.g. paths: kebab-case, schemas: PascalCase, operationId: camelCase, enums: UPPER_SNAKE_CASE, headers: kebab-case)
+- Naming conventions (see Appendix A for full list: paths, schemas, operationId, plus gaps for properties, enums, tags)
 - Required descriptions (operations, parameters, responses, properties)
-- Reserved words detection
+- Reserved words detection (language-specific + HTTP method names in resource paths)
 - Security: no secrets in path/query parameters
 - HTTP method validity, no request body on GET/DELETE
 - Unused components detection
-- *New*: info.version format (wip/alpha.n/rc.n/public), XCorrelator pattern, phone number format, device object structure, no info.contact field, check externalDocs format
+- Discriminator on oneOf/anyOf (deprecated in r4.x, now hint)
+- Schema type attribute presence
 
-**Python (new):**
+**Spectral (new rules needed):**
+- info.version format (wip/alpha.n/rc.n/semver)
+- info.title must not contain "API"
+- info.contact and info.termsOfService must be absent
+- externalDocs presence and format
+- x-correlator header presence and pattern
+- Error code format: not numeric, SCREAMING_SNAKE_CASE (r4.x), API_NAME.SPECIFIC_CODE pattern
+- 403 response required on all operations
+- Array items must have description (r4.x)
+- Tag names: Title Case convention
+- Property names: lowerCamelCase (listed in Linting-rules.md, not yet implemented)
+- Enum values: UPPER_SNAKE_CASE (listed in Linting-rules.md, not yet implemented)
+- Subscription API schemas: specversion enum, protocol enum, sink HTTPS, notification content-type
+
+**OWASP Spectral rules (from [tooling#95](https://github.com/camaraproject/tooling/pull/95), r4.x-only):**
+- String limits: maxLength/enum/const (warn, target error)
+- Array limits: maxItems (warn, target error)
+- Integer limits: format + minimum/maximum (warn, target error)
+- String restriction: format/pattern/enum/const (warn)
+- Security: no credentials in URL, no HTTP scheme, write-restricted, read-restricted, short-lived access tokens, no numeric IDs, admin security unique
+- Error responses: 401 required (error), error validation response (warn)
+- Additional properties: constrained or disabled (warn)
+
+**Python (cross-field, cross-file, and context-dependent):**
 - Server URL version consistency with info.version (cross-field)
 - Version must be wip on main, must not be wip on release branches (context-dependent)
 - release-plan.yaml non-exclusivity check (PR diff analysis)
 - release-plan.yaml schema and semantic validation (existing, to be integrated)
-- Error response structure and code compliance (cross-schema)
+- Error response structure: ErrorInfo schema compliance, $ref resolution (cross-schema)
+- info.description: authorization and error response template sections (normalized text matching)
+- Security scheme validation: openIdConnect named 'openId', notificationsBearerAuth for callbacks
+- Scope naming: api-name:[resource:]action pattern, subscription-specific scopes
+- Event type format: org.camaraproject.\<api\>.\<version\>.\<event\> (subscription APIs)
+- Subscription API structure: required operations, sinkCredential not in responses
 - Test file existence and version alignment (cross-file)
 - CHANGELOG format and link tag-locking (file content analysis)
-- API pattern-specific checks: subscription endpoints, CloudEvents format, event type naming (structural + semantic)
+- Common schema consistency across API files (cross-file; partially obsolete with bundling)
+- License and x-camara-commonalities consistency across API files (cross-file)
+- Filename conventions: kebab-case, matches api-name (filesystem)
+- CONFLICT error code deprecated warning (r4.x)
 
 **Manual + prompt:**
-- Data minimization compliance (GEN-009, GEN-010)
+- Data minimization compliance
 - Meaningful description quality (beyond presence checks)
 - User story adequacy
 - Breaking change justification
@@ -597,9 +623,9 @@ The v1 caller workflow is deployed by copying from `Template_API_Repository` to 
 
 Deployment can be batched using the existing admin tooling pattern (scripted multi-repo operations). The caller can be deployed to all repos at once in stage 0 (dark) — it has no effect until the repo is listed in the config file.
 
-### 6.7 WP-01 Relationship
+### 6.7 Relationship to tooling#121
 
-WP-01 (tooling#121) fixes ref consistency in the existing v0 reusable workflow. It validates the OIDC ref resolution pattern that v1 reuses and adds the `tooling_ref_override` break-glass input. WP-01 does not change the v0 caller — callers still call `@v0`. The v1 reusable workflow reuses the same ref resolution pattern with the hardcoded version fallback (section 5.6).
+[tooling#121](https://github.com/camaraproject/tooling/pull/121) fixes ref consistency in the existing v0 reusable workflow. It validates the OIDC ref resolution pattern that v1 reuses and adds the `tooling_ref_override` break-glass input. tooling#121 does not change the v0 caller — callers still call `@v0`. The v1 reusable workflow reuses the same ref resolution pattern with the hardcoded version fallback (section 5.6).
 
 ---
 
@@ -909,7 +935,7 @@ Conditional — only runs when external `$ref` to `code/common/` or `code/module
 
 The framework invokes an **external bundling tool** — it does not implement its own OpenAPI bundler. The tool must satisfy two requirements:
 
-1. **External ref resolution only** (DEC-002): Resolve `$ref` to `code/common/`, `code/modules/`, and other local files. Preserve all internal `$ref` (`#/components/schemas/...`, `#/components/responses/...`). Full dereferencing must not be used.
+1. **External ref resolution only** (see section 3.1): Resolve `$ref` to `code/common/`, `code/modules/`, and other local files. Preserve all internal `$ref` (`#/components/schemas/...`, `#/components/responses/...`). Full dereferencing must not be used.
 2. **Source map production**: Produce a mapping from bundled output regions back to source file locations. This is needed for line number translation in the output pipeline (section 9.5). This is a selection criterion for tool evaluation — the chosen tool must either support source maps natively or be wrappable to produce them.
 
 The specific tool choice (e.g., redocly, swagger-cli, prance, custom wrapper) is deferred to implementation, evaluated against these two requirements.
@@ -1159,7 +1185,7 @@ The full Spectral JSON output and the complete findings list (all engines) are a
 
 When Spectral runs on bundled output (section 8.4, step 7), finding line numbers reference the bundled file, not the original source file. Annotations and summary tables must show source file locations to be actionable for developers.
 
-**Requirement on the bundling tool**: The external bundling tool (section 8.4, step 6) must produce — or be augmented to produce — a source map that records which regions of the bundled file originated from which source file and line range. This is a selection criterion for bundling tool evaluation, alongside external-ref-only resolution (DEC-002).
+**Requirement on the bundling tool**: The external bundling tool (section 8.4, step 6) must produce — or be augmented to produce — a source map that records which regions of the bundled file originated from which source file and line range. This is a selection criterion for bundling tool evaluation, alongside external-ref-only resolution (see section 3.1).
 
 **Design choice**: Content pulled in from external refs (e.g., schemas from `CAMARA_common.yaml`) maps back to the **`$ref` line in the source file**, not to the external file itself. The `$ref` declaration is the actionable location — it is the line the developer controls. If Spectral reports an issue at line 247 of the bundled file, and that region was pulled from an external ref declared at line 15 of the source file, the finding is reported at source line 15.
 
@@ -1279,3 +1305,25 @@ When release automation invokes validation with `mode: pre-snapshot`, it consume
 The validation framework does not need `contents: write` permission and has no knowledge of snapshot branch naming. It produces files and reports results; release automation decides what to do with them. This keeps a clean separation: validation is stateless, release automation owns the repository state.
 
 **For non-pre-snapshot runs** (PR and dispatch triggers): bundled specs are uploaded as artifacts for reviewer inspection only. No branch creation or file replacement occurs — the artifacts are informational.
+
+---
+
+## Appendix A: Naming Conventions
+
+Complete naming convention rules from CAMARA-API-Design-Guide.md and CAMARA-API-Event-Subscription-and-Notification-Guide.md, with current Spectral rule coverage.
+
+| Element | Convention | Example | DG Section | Spectral Rule | Status |
+|---------|-----------|---------|------------|---------------|--------|
+| Paths (URLs) | kebab-case | `/customer-segments` | 5.7.1 | camara-parameter-casing-convention (error) | Implemented |
+| Path parameters | {entityId} form | `{userId}`, `{accountId}` | 5.7.1 | camara-path-param-id (warn) | Implemented (morphology rule missing) |
+| Schemas | PascalCase | `ErrorInfo`, `DeviceResponse` | 5.8.1 | camara-schema-casing-convention (warn) | Implemented |
+| operationId | camelCase | `helloWorld`, `retrieveLocation` | 5.7.2 | camara-operationid-casing-convention | Implemented (severity: hint vs error in Linting-rules.md) |
+| Properties | lowerCamelCase | `sessionId`, `phoneNumber` | 5.7.4 | camara-property-casing-convention (error) | Listed in Linting-rules.md, not in .spectral.yaml |
+| Enum values | UPPER_SNAKE_CASE | `INVALID_ARGUMENT`, `PERMISSION_DENIED` | 3.2 | camara-enum-casing-convention (info) | Listed in Linting-rules.md, not in .spectral.yaml |
+| Error codes | SCREAMING_SNAKE_CASE | `UNAUTHENTICATED`, `NOT_FOUND` | 3.2 | — | Gap (r4.x explicit requirement) |
+| API-specific error codes | API_NAME.SPECIFIC_CODE | `CARRIER_BILLING.PAYMENT_DENIED` | 3.2.1 | — | Gap |
+| Tags | Title Case with spaces | `Quality On Demand` | 5.7.3 | — | Gap |
+| Headers | kebab-case | `x-correlator` | 5.8.5 | — | Implied by convention, no rule |
+| API name | kebab-case | `location-verification` | 1.2 | — | v0_6 validator only |
+| Scope names | kebab-case with : separators | `qod:sessions:create` | 6.6 | — | v0_6 validator only |
+| Event type | org.camaraproject.\<api\>.\<ver\>.\<event\> | `org.camaraproject.device-roaming-subscriptions.v1.roaming-status` | Event Guide 3.1 | — | Gap |
