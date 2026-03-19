@@ -154,7 +154,7 @@ Summary of check areas identified so far, pending the Commonalities audit for co
 
 **Spectral (existing + new):**
 - OpenAPI version enforcement (3.0.3)
-- Naming conventions (paths: kebab-case, schemas: PascalCase, operationId: camelCase)
+- Naming conventions (e.g. paths: kebab-case, schemas: PascalCase, operationId: camelCase, enums: UPPER_SNAKE_CASE, headers: kebab-case)
 - Required descriptions (operations, parameters, responses, properties)
 - Reserved words detection
 - Security: no secrets in path/query parameters
