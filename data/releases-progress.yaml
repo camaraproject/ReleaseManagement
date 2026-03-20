@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-03-19T15:01:11Z'
-  last_checked: '2026-03-19T15:01:11Z'
+  last_updated: '2026-03-20T06:09:18Z'
+  last_checked: '2026-03-20T06:09:18Z'
   releases_master_updated: '2026-03-13T05:33:53.054Z'
   schema_version: 1.4.0
   collector_version: 1.4.0
@@ -1103,10 +1103,6 @@ progress:
         api_version: null
       - api_name: iot-sim-fraud-prevention-subscriptions
         api_version: null
-  warnings:
-  - code: W005
-    message: Active release plan but no caller workflow installed
-    severity: warning
 - repository: MultiPointVPN
   github_url: https://github.com/camaraproject/MultiPointVPN
   release_track: independent
@@ -1741,19 +1737,19 @@ progress:
   github_url: https://github.com/camaraproject/SessionInsights
   release_track: independent
   target_release_tag: r1.1
-  target_release_type: none
+  target_release_type: pre-release-alpha
   dependencies:
     commonalities_release: r3.4
     identity_consent_management_release: r3.3
   apis:
-  - api_name: placeholder-entry
+  - api_name: session-insights
     target_api_version: 0.1.0
-    target_api_status: draft
+    target_api_status: alpha
     main_contacts:
     - benhepworth
     - maheshc01
     - kevsy
-  state: not_planned
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
@@ -1767,20 +1763,24 @@ progress:
       release_tag: null
       release_date: null
       apis:
-      - api_name: placeholder-entry
+      - api_name: session-insights
         api_version: null
     m3:
       release_tag: null
       release_date: null
       apis:
-      - api_name: placeholder-entry
+      - api_name: session-insights
         api_version: null
     m4:
       release_tag: null
       release_date: null
       apis:
-      - api_name: placeholder-entry
+      - api_name: session-insights
         api_version: null
+  warnings:
+  - code: W005
+    message: Active release plan but no caller workflow installed
+    severity: warning
 - repository: SimpleEdgeDiscovery
   github_url: https://github.com/camaraproject/SimpleEdgeDiscovery
   release_track: meta-release
