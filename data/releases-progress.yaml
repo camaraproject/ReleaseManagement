@@ -1,11 +1,11 @@
 metadata:
-  last_updated: '2026-03-20T06:09:18Z'
-  last_checked: '2026-03-20T06:09:18Z'
+  last_updated: '2026-03-22T06:09:02Z'
+  last_checked: '2026-03-22T06:09:02Z'
   releases_master_updated: '2026-03-13T05:33:53.054Z'
   schema_version: 1.4.0
   collector_version: 1.4.0
   repos_scanned: 66
-  repos_with_plan: 37
+  repos_with_plan: 38
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -1074,7 +1074,9 @@ progress:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 31
+      url: https://github.com/camaraproject/IoTSIMFraudPrevention/issues/31
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -1509,6 +1511,70 @@ progress:
     release_date: '2025-09-16T14:08:33Z'
     apis:
     - api_name: predictive-connectivity-data
+      api_version: 0.1.0
+- repository: QoSBooking
+  github_url: https://github.com/camaraproject/QoSBooking
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: r1.2
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: qos-booking-and-assignment
+    target_api_version: 0.1.0
+    target_api_status: public
+    main_contacts:
+    - Masa8106
+    - jlurien
+  - api_name: qos-booking
+    target_api_version: 0.1.0
+    target_api_status: public
+    main_contacts:
+    - Masa8106
+    - jlurien
+  state: completed
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: r1.2
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: qos-booking-and-assignment
+        api_version: null
+      - api_name: qos-booking
+        api_version: null
+    m3:
+      release_tag: r1.1
+      release_date: '2025-07-17T16:26:18Z'
+      apis:
+      - api_name: qos-booking-and-assignment
+        api_version: 0.1.0-rc.1
+      - api_name: qos-booking
+        api_version: 0.1.0-rc.1
+    m4:
+      release_tag: r1.2
+      release_date: '2025-09-12T10:30:04Z'
+      apis:
+      - api_name: qos-booking-and-assignment
+        api_version: 0.1.0
+      - api_name: qos-booking
+        api_version: 0.1.0
+  last_published:
+    release_tag: r1.2
+    release_date: '2025-09-12T10:30:04Z'
+    apis:
+    - api_name: qos-booking-and-assignment
+      api_version: 0.1.0
+    - api_name: qos-booking
       api_version: 0.1.0
 - repository: QualityOnDemand
   github_url: https://github.com/camaraproject/QualityOnDemand
@@ -4211,62 +4277,6 @@ progress:
     apis:
     - api_name: population-density-data
       api_version: 0.2.0
-  source: historical
-- repository: QoSBooking
-  github_url: https://github.com/camaraproject/QoSBooking
-  release_track: meta-release
-  meta_release: Fall25
-  target_release_tag: null
-  target_release_type: null
-  apis:
-  - api_name: qos-booking-and-assignment
-    target_api_version: 0.1.0
-    target_api_status: ''
-  - api_name: qos-booking
-    target_api_version: 0.1.0
-    target_api_status: ''
-  state: historical
-  artifacts:
-    snapshot_branch: null
-    release_pr: null
-    draft_release: null
-    release_issue: null
-  published_context:
-    latest_public_release: null
-    newest_pre_release: null
-  cycle_releases:
-    m1:
-      release_tag: null
-      release_date: null
-      apis:
-      - api_name: qos-booking-and-assignment
-        api_version: null
-      - api_name: qos-booking
-        api_version: null
-    m3:
-      release_tag: r1.1
-      release_date: '2025-07-17T16:26:18Z'
-      apis:
-      - api_name: qos-booking-and-assignment
-        api_version: 0.1.0-rc.1
-      - api_name: qos-booking
-        api_version: 0.1.0-rc.1
-    m4:
-      release_tag: r1.2
-      release_date: '2025-09-12T10:30:04Z'
-      apis:
-      - api_name: qos-booking-and-assignment
-        api_version: 0.1.0
-      - api_name: qos-booking
-        api_version: 0.1.0
-  last_published:
-    release_tag: r1.2
-    release_date: '2025-09-12T10:30:04Z'
-    apis:
-    - api_name: qos-booking-and-assignment
-      api_version: 0.1.0
-    - api_name: qos-booking
-      api_version: 0.1.0
   source: historical
 - repository: QualityOnDemand
   github_url: https://github.com/camaraproject/QualityOnDemand
