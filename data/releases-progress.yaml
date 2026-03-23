@@ -1,7 +1,7 @@
 metadata:
-  last_updated: '2026-03-23T06:43:42Z'
-  last_checked: '2026-03-23T06:43:42Z'
-  releases_master_updated: '2026-03-13T05:33:53.054Z'
+  last_updated: '2026-03-23T20:53:58Z'
+  last_checked: '2026-03-23T20:53:58Z'
+  releases_master_updated: '2026-03-23T19:28:45.630Z'
   schema_version: 1.4.0
   collector_version: 1.4.0
   repos_scanned: 66
@@ -406,7 +406,7 @@ progress:
     release_issue: null
   published_context:
     latest_public_release: null
-    newest_pre_release: r1.1
+    newest_pre_release: r1.2
   cycle_releases:
     m1:
       release_tag: r1.1
@@ -516,20 +516,15 @@ progress:
     - jpengar
     - AxelNennker
     - sebdewet
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r2.3-7fba564
-    release_pr:
-      number: 62
-      state: open
-      url: https://github.com/camaraproject/ConsentInfo/pull/62
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 61
-      url: https://github.com/camaraproject/ConsentInfo/issues/61
+    release_issue: null
   published_context:
-    latest_public_release: r1.2
-    newest_pre_release: r2.1
+    latest_public_release: r2.3
+    newest_pre_release: null
   cycle_releases:
     m1:
       release_tag: null
@@ -544,17 +539,17 @@ progress:
       - api_name: consent-info
         api_version: 0.2.0-rc.1
     m4:
-      release_tag: null
-      release_date: null
+      release_tag: r2.3
+      release_date: '2026-03-23T12:56:54Z'
       apis:
       - api_name: consent-info
-        api_version: null
+        api_version: 0.2.0
   last_published:
-    release_tag: r2.2
-    release_date: '2026-03-12T15:04:24Z'
+    release_tag: r2.3
+    release_date: '2026-03-23T12:56:54Z'
     apis:
     - api_name: consent-info
-      api_version: 0.2.0-rc.2
+      api_version: 0.2.0
   snapshot_api_versions:
     consent-info: 0.2.0
 - repository: ConsentManagement
@@ -1783,7 +1778,7 @@ progress:
       url: https://github.com/camaraproject/ReleaseTest/issues/46
   published_context:
     latest_public_release: null
-    newest_pre_release: r1.1
+    newest_pre_release: r1.3
   cycle_releases:
     m1:
       release_tag: r1.1
