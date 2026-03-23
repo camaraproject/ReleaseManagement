@@ -3,7 +3,8 @@
 **Date**: 2026-03-19
 **Scope**: Machine-checkable rules from CAMARA-API-Design-Guide.md and CAMARA-API-Event-Subscription-and-Notification-Guide.md
 **Versions compared**: r3.4 (Commonalities 0.5) vs r4.1 (Commonalities 0.6)
-
+**Conventions**:
+The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in RFC 2119.
 ## Methodology
 
 1. Walked both design guides section by section, extracting every machine-checkable requirement
