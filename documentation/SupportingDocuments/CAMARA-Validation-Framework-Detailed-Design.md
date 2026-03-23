@@ -1299,9 +1299,9 @@ Bundled standalone API specs are available as [workflow artifacts]({artifact_url
 
 This gives PR reviewers visibility into the bundled output — they can download and inspect the fully resolved specs to verify that `$ref` resolution produced the expected result. For copy-paste repositories (no bundling), this section is omitted.
 
-#### Release automation handoff (Model B)
+#### Release automation handoff
 
-When release automation invokes validation with `mode: pre-snapshot`, it consumes the bundled spec artifacts to populate the snapshot branch. The handoff uses the **artifact model** (section 7.1, Model B):
+When release automation invokes validation with `mode: pre-snapshot`, it consumes the bundled spec artifacts to populate the snapshot branch. The handoff uses the **artifact model** (section 7.1):
 
 1. Release automation calls the validation reusable workflow with `mode: pre-snapshot`
 2. Validation runs the full pipeline (context → pre-bundling → bundling → full validation → output)
