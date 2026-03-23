@@ -133,6 +133,7 @@
 | TG-051 | Test file URLs SHOULD have leading slash | v0_6: V6-080 | python | Style convention (LOW severity) |
 | TG-052 | Operation-specific test filenames MUST reference valid operationIds | v0_6: V6-076 | python | Cross-file: filename ↔ API spec |
 | TG-053 | Orphan test files (not matching any API name) MUST be flagged | v0_6: V6-077 | python | Multi-file name matching |
+| TG-066 | If operation-specific test files are used, all operationIds MUST be covered | gap | python | Completeness check: `{api-name}-{operationId}.feature` for every operationId (RC and later) |
 
 ---
 

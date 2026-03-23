@@ -168,7 +168,7 @@ Remaining inventory work:
 - Array items must have description (r4.x)
 - Tag names: Title Case convention
 - Property names: lowerCamelCase (listed in Linting-rules.md, not yet implemented)
-- Enum values: UPPER_SNAKE_CASE (listed in Linting-rules.md, not yet implemented)
+- Enum values: SCREAMING_SNAKE_CASE (listed in Linting-rules.md, not yet implemented)
 - Subscription API schemas: specversion enum, protocol enum, sink HTTPS, notification content-type
 
 **OWASP Spectral rules (from [tooling#95](https://github.com/camaraproject/tooling/pull/95), r4.x-only):**
@@ -1327,7 +1327,7 @@ Complete naming convention rules from CAMARA-API-Design-Guide.md and CAMARA-API-
 | Schemas | PascalCase | `ErrorInfo`, `DeviceResponse` | 5.8.1 | camara-schema-casing-convention (warn) | Implemented |
 | operationId | camelCase | `helloWorld`, `retrieveLocation` | 5.7.2 | camara-operationid-casing-convention | Implemented (severity: hint vs error in Linting-rules.md) |
 | Properties | lowerCamelCase | `sessionId`, `phoneNumber` | 5.7.4 | camara-property-casing-convention (error) | Listed in Linting-rules.md, not in .spectral.yaml |
-| Enum values | UPPER_SNAKE_CASE | `INVALID_ARGUMENT`, `PERMISSION_DENIED` | 3.2 | camara-enum-casing-convention (info) | Listed in Linting-rules.md, not in .spectral.yaml |
+| Enum values | SCREAMING_SNAKE_CASE | `INVALID_ARGUMENT`, `PERMISSION_DENIED` | 3.2 | camara-enum-casing-convention (info) | Listed in Linting-rules.md, not in .spectral.yaml |
 | Error codes | SCREAMING_SNAKE_CASE | `UNAUTHENTICATED`, `NOT_FOUND` | 3.2 | — | Gap (r4.x explicit requirement) |
 | API-specific error codes | API_NAME.SPECIFIC_CODE | `CARRIER_BILLING.PAYMENT_DENIED` | 3.2.1 | — | Gap |
 | Tags | Title Case with spaces | `Quality On Demand` | 5.7.3 | — | Gap |
@@ -1335,3 +1335,4 @@ Complete naming convention rules from CAMARA-API-Design-Guide.md and CAMARA-API-
 | API name | kebab-case | `location-verification` | 1.2 | — | v0_6 validator only |
 | Scope names | kebab-case with : separators | `qod:sessions:create` | 6.6 | — | v0_6 validator only |
 | Event type | org.camaraproject.\<api\>.\<ver\>.\<event\> | `org.camaraproject.device-roaming-subscriptions.v1.roaming-status` | Event Guide 3.1 | — | Gap |
+| Examples (named) | SCREAMING_SNAKE_CASE | `SESSION_CREATION_EXAMPLE_WITH_DEVICE_RESPONSE` | OAS 3.0.3 | — | Gap |

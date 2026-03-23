@@ -243,7 +243,7 @@ Consolidated from design guide sections. This is the full set for the detailed d
 | Schemas | PascalCase | camara-schema-casing-convention | 5.8.1 | Implemented (warn) |
 | operationId | camelCase | camara-operationid-casing-convention | 5.7.2 | Implemented (hint; should be error per Linting-rules.md) |
 | Properties | lowerCamelCase | camara-property-casing-convention | 5.7.4 | **Not in .spectral.yaml** (Linting-rules.md: error) |
-| Enum values | UPPER_SNAKE_CASE (macro) | camara-enum-casing-convention | 3.2 | **Not in .spectral.yaml** (Linting-rules.md: info, tbd) |
+| Enum values | SCREAMING_SNAKE_CASE | camara-enum-casing-convention | 3.2 | **Not in .spectral.yaml** (Linting-rules.md: info, tbd) |
 | Tags | Title Case (with spaces) | — | 5.7.3 | **Gap** — no rule exists |
 | Headers | kebab-case | — | 5.8.5 | **Gap** — implied by x-correlator convention |
 | Scope names | kebab-case with : separators | — | 6.6 | v0_6 only (V6-050) |
@@ -251,6 +251,7 @@ Consolidated from design guide sections. This is the full set for the detailed d
 | Event type | org.camaraproject.\<api\>.\<ver\>.\<event\> | — | Event Guide 3.1 | **Gap** |
 | Error codes | SCREAMING_SNAKE_CASE | — | 3.2 | **Gap** (r4.x-only explicit) |
 | API-specific error codes | API_NAME.SPECIFIC_CODE | — | 3.2.1 | **Gap** |
+| Examples (named) | SCREAMING_SNAKE_CASE | — | OAS 3.0.3 | **Gap** |
 
 ---
 
@@ -280,7 +281,7 @@ Consolidated from design guide sections. This is the full set for the detailed d
 | DG-098 | License identical across API files | v0_6: V6-069 | python | both | |
 | DG-099 | x-camara-commonalities identical across API files | v0_6: V6-070 | python | both | |
 | DG-100 | Test directory exists | v0_6: V6-071 | python | both | |
-| DG-101 | Test files exist for each API | v0_6: V6-072 | python | both | |
+| DG-101 | Test files exist for each API | v0_6: V6-072 | python | both | See testing guidelines audit TG-004, TG-052, TG-066 for operation-specific file naming and completeness |
 | DG-102 | Test file version alignment | v0_6: V6-073 | python | both | |
 | DG-103 | Filename uses kebab-case | v0_6: V6-058 | python | both | |
 | DG-104 | Filename matches api-name in server URL | v0_6: V6-059 | python | both | |
@@ -343,7 +344,7 @@ Rules listed in Linting-rules.md but **NOT implemented** in current .spectral.ya
 | camara-resource-reserved-words | warn | Missing | Resource names must not contain HTTP method names |
 | camara-path-param-id-morphology | warn | Missing | Consistent {entityId} morphology |
 | camara-property-casing-convention | error | Missing | Property names lowerCamelCase |
-| camara-enum-casing-convention | info | Missing (tbd) | Enum values UPPER_SNAKE_CASE |
+| camara-enum-casing-convention | info | Missing (tbd) | Enum values SCREAMING_SNAKE_CASE |
 | camara-info-title | warn | Missing (tbd) | Title must not contain "API" |
 | camara-info-version-format | warn | Missing (tbd) | Version format x.y.z/wip/alpha/rc |
 
