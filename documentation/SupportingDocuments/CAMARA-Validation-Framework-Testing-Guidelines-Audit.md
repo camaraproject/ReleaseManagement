@@ -3,7 +3,8 @@
 **Date**: 2026-03-19
 **Scope**: Machine-checkable rules from API-Testing-Guidelines.md
 **Sources**: API-Testing-Guidelines.md, .gherkin-lintrc (25 rules), api_review_validator_v0_6.py (test checks V6-071–V6-080)
-
+**Conventions**:
+The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in RFC 2119.
 ## Methodology
 
 1. Walked API-Testing-Guidelines.md section by section, extracting every machine-checkable requirement
