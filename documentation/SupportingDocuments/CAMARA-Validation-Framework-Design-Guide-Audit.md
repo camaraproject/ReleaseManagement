@@ -260,7 +260,7 @@ Consolidated from design guide sections. This is the full set for the detailed d
 |----|------|----------|-----------|---------|-------|
 | DG-086 | Event type MUST follow org.camaraproject.\<api\>.\<ver\>.\<event\> | gap (v0_6 partial) | python | both | |
 | DG-087 | specversion MUST be "1.0" enum | gap | spectral | both | |
-| DG-088 | Subscription API filename MUST append "subscriptions" | gap | python | both | Filesystem check |
+| DG-088 | Subscription API filename MUST append "-subscriptions" | gap | python | both | Filesystem check |
 | DG-089 | Explicit subscriptions: 4 operations (POST/GET/GET{id}/DELETE) | v0_6: V6-065/V6-066 | python | both | |
 | DG-090 | protocol attribute MUST be "HTTP" | gap | spectral | both | Enum constraint |
 | DG-091 | sink MUST use HTTPS URI | gap | spectral | both | |
