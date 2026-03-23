@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-03-22T06:09:02Z'
-  last_checked: '2026-03-22T06:09:02Z'
+  last_updated: '2026-03-23T06:43:42Z'
+  last_checked: '2026-03-23T06:43:42Z'
   releases_master_updated: '2026-03-13T05:33:53.054Z'
   schema_version: 1.4.0
   collector_version: 1.4.0
@@ -23,7 +23,7 @@ meta_releases:
   m3_achieved: 35
   m4_achieved: 36
 - name: Spring26
-  total_apis: 3
+  total_apis: 5
   m1_achieved: 1
   m3_achieved: 3
   m4_achieved: 0
@@ -1199,14 +1199,20 @@ progress:
         api_version: null
 - repository: NetworkInsights
   github_url: https://github.com/camaraproject/NetworkInsights
-  release_track: independent
+  release_track: meta-release
+  meta_release: Spring26
   target_release_tag: r1.1
   target_release_type: none
   dependencies:
-    commonalities_release: r3.4
-    identity_consent_management_release: r3.3
+    commonalities_release: r4.1
+    identity_consent_management_release: r4.1
   apis:
-  - api_name: placeholder-entry
+  - api_name: network-health-assessment
+    target_api_version: 0.1.0
+    target_api_status: draft
+    main_contacts:
+    - cnzj-Gc
+  - api_name: network-traffic-analysis
     target_api_version: 0.1.0
     target_api_status: draft
     main_contacts:
@@ -1225,19 +1231,25 @@ progress:
       release_tag: null
       release_date: null
       apis:
-      - api_name: placeholder-entry
+      - api_name: network-health-assessment
+        api_version: null
+      - api_name: network-traffic-analysis
         api_version: null
     m3:
       release_tag: null
       release_date: null
       apis:
-      - api_name: placeholder-entry
+      - api_name: network-health-assessment
+        api_version: null
+      - api_name: network-traffic-analysis
         api_version: null
     m4:
       release_tag: null
       release_date: null
       apis:
-      - api_name: placeholder-entry
+      - api_name: network-health-assessment
+        api_version: null
+      - api_name: network-traffic-analysis
         api_version: null
 - repository: NetworkSliceBooking
   github_url: https://github.com/camaraproject/NetworkSliceBooking
