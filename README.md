@@ -23,22 +23,23 @@ It contains the Release Management released documents and assests in the **docum
    - [Automated API Release Process](/documentation/release-process/) - the automated release process for API repositories.
    - [API Readiness Checklist](/documentation/readiness/api-readiness-checklist.md) - the checklist to ensure release readiness of the API according to its version (alpha, release-candidate, public).
    - In each API repository, the [CHANGELOG folder](/CHANGELOG) holds a file per release that tracks the CHANGELOG history across the API versions. Part of the content is generatedy by automation.
-
-For the reference documentation on API versioning, please see "Versioning" section in the API Design Guidelines document in [Commonalities](https://github.com/camaraproject/Commonalities).
-
-The [CHANGELOG.md](/CHANGELOG.md) file provides the CHANGELOG history between releases of the Release Management repository.  
+   - For the reference documentation on API versioning, please see "Versioning" section in the API Design Guidelines document in [Commonalities](https://github.com/camaraproject/Commonalities).
 
 ## Release Management Wiki
 
-Beyond the above reference release management documentation in GitHub, additional information is available on the [Release Managament wiki](https://lf-camaraproject.atlassian.net/wiki/x/VA7e). In particula you can find there information about:
+Beyond the above reference release management documentation in GitHub, additional information is available on the [Release Managament wiki](https://lf-camaraproject.atlassian.net/wiki/x/VA7e). In particular, you can find there information about:
 
 * **Meta-releases**
 
-  * [Meta-releases](https://lf-camaraproject.atlassian.net/wiki/x/bmTe)
-  * [Meta-release Process](https://lf-camaraproject.atlassian.net/wiki/x/Zwne)
+  * [Meta-releases](https://lf-camaraproject.atlassian.net/wiki/x/bmTe) - List of ongoing and past meta-releases and their contained APIs.
+  * [Meta-release Process](https://lf-camaraproject.atlassian.net/wiki/x/Zwne) - the meta-release milestone description and their related activities and time-line.
 
 * **Commonalities and ICM releases**
-  * More information about processes and release numbering for Commonalities and ICM can be found here: [Commonalities and ICM Release Process](https://lf-camaraproject.atlassian.net/wiki/spaces/CAM/pages/14551399/Meta-release+Process#Commonalities-and-ICM)
+  * [Commonalities and ICM Release Process](https://lf-camaraproject.atlassian.net/wiki/spaces/CAM/pages/14551399/Meta-release+Process#Commonalities-and-ICM) - More information about processes and release numbering for Commonalities and ICM releases. 
+
+## Release Management repository
+
+The [CHANGELOG.md](/CHANGELOG.md) file provides the CHANGELOG history between releases of the Release Management repository.  
 
 ## Contributing
 * Meetings are held virtually
