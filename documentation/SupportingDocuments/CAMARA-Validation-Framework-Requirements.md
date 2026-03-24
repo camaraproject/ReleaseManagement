@@ -98,7 +98,7 @@ A rule is skipped silently if its conditions don't match the current context. Mu
 | Field | Type | Values | Source |
 |-------|------|--------|--------|
 | `branch_types` | array | `main`, `release`, `maintenance`, `feature` | Target branch (PR) or checked branch (dispatch) |
-| `trigger_types` | array | `pr`, `dispatch`, `release-automation` | How validation was invoked |
+| `trigger_types` | array | `pr`, `dispatch`, `release-automation`, `local` | How validation was invoked |
 | `target_release_type` | array | `none`, `pre-release-alpha`, `pre-release-rc`, `public-release`, `maintenance-release` | `repository.target_release_type` in release-plan.yaml |
 | `target_api_status` | array | `draft`, `alpha`, `rc`, `public` | `apis[].target_api_status` in release-plan.yaml (per-API) |
 | `target_api_maturity` | array | `initial` (0.x.y), `stable` (x.y.z, x>=1) | Derived from `apis[].target_api_version` |
@@ -157,11 +157,11 @@ The MVP replaces `pr_validation` v0 and delivers the minimum useful validation o
 
 ### MVP includes
 
-- UC-01 through UC-07 (contributor and codeowner use cases)
+- UC-01, UC-02, UC-04 through UC-07 (contributor and codeowner use cases)
 - UC-13 (incremental rollout with central config)
 - UC-15 (feature branch testing with pinned refs)
 - Profiles: advisory and standard
-- Execution contexts: PR (fork-to-upstream), PR (upstream branch), dispatch (upstream repo), dispatch (fork repo)
+- Execution contexts: PR (fork-to-upstream), PR (upstream branch), dispatch (upstream repo), dispatch (fork repo), local (design guardrails only — see Detailed Design Appendix B)
 - Existing Spectral rules and YAML linting
 - Understandable output with fix hints
 - Caller workflow with all triggers from day one (PR, dispatch), deployed alongside `pr_validation` v0
@@ -170,6 +170,7 @@ The MVP replaces `pr_validation` v0 and delivers the minimum useful validation o
 ### Post-MVP priorities
 
 - UC-08, UC-09 (release automation strict gates, section 11) — high priority, requires strict profile; depends on PR integration being operational first
+- UC-03 (local validation) — framework design supports it (Detailed Design Appendix B), entry point and tooling are post-MVP
 - UC-10 (regression testing against release branches) — rule developer tooling
 - UC-14 (repository configuration validation) — admin tooling
 - Automated cache synchronization for `code/common/` and strict version enforcement — bundling itself (ref resolution via `$ref`) is MVP scope (section 6)

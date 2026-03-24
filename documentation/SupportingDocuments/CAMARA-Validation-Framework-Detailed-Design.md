@@ -22,7 +22,7 @@ hint: "Use kebab-case for all path segments: /my-resource/{resourceId}"
 
 applicability:               # only list fields that constrain; omitted = no constraint
   branch_types: [main, release]
-  trigger_types: [pr, dispatch]
+  trigger_types: [pr, dispatch, local]
   # ... further conditions as needed
 
 conditional_level:
@@ -870,7 +870,7 @@ The context builder does not expose fork identity as a context field — no vali
 # Validation context — all fields always present
 repository: "QualityOnDemand"    # repo name without owner prefix
 branch_type: "main"              # main | release | maintenance | feature
-trigger_type: "pr"               # pr | dispatch | release-automation
+trigger_type: "pr"               # pr | dispatch | release-automation | local
 profile: "standard"              # advisory | standard | strict
 stage: "standard"                # from central config (disabled | advisory | standard)
 
@@ -1331,3 +1331,87 @@ Complete naming convention rules from CAMARA-API-Design-Guide.md and CAMARA-API-
 | Scope names | kebab-case with : separators | `qod:sessions:create` | 6.6 | — | v0_6 validator only |
 | Event type | org.camaraproject.\<api\>.\<ver\>.\<event\> | `org.camaraproject.device-roaming-subscriptions.v1.roaming-status` | Event Guide 3.1 | — | Gap |
 | Examples (named) | SCREAMING_SNAKE_CASE | `SESSION_CREATION_EXAMPLE_WITH_DEVICE_RESPONSE` | OAS 3.0.3 | — | Gap |
+
+---
+
+## Appendix B: Local Validation Considerations
+
+This appendix addresses UC-03 ("Run most validation rules locally, on local clones, via scripts"). Its purpose is not to design the local CLI — that is implementation work — but to identify where the framework implementation must stay modular to avoid duplicated effort when local tooling is built.
+
+### B.1 Scope
+
+**In scope:** Implementation guardrails for the framework that keep local reuse viable.
+
+**Out of scope:** Entry point design (script, CLI, Makefile), tooling distribution and versioning for local use, local cache management for Commonalities artifacts, IDE integration, performance targets.
+
+### B.2 Environment Boundary
+
+The 8 processing steps (section 8) fall into three categories:
+
+**Environment-neutral** — reusable locally without modification:
+
+- Spectral engine invocation and output parsing
+- Python check execution
+- Bundling pipeline (external ref resolution, cache sync validation)
+- Rule metadata lookup and condition evaluation
+- Post-filter: applicability matching, conditional level resolution, profile application
+- Findings list construction
+
+**Workflow-only** — require GitHub infrastructure:
+
+- Tooling ref resolution (OIDC `job_workflow_sha`, version tag fallback)
+- Central config lookup (tooling checkout, repository stage)
+- PR metadata detection (`is_release_review_pr` from target branch, `release_plan_changed` from PR diff API)
+- Output surfacing: check run annotations, PR comments, commit status
+
+**Adaptable** — work locally with alternative input:
+
+- Context building: branch type is derivable from `git branch --show-current` using the same pattern logic. Trigger type and PR-specific fields need sensible defaults (see B.4)
+- Repository checkout: a local clone replaces the workflow checkout step
+
+### B.3 `local` Trigger Type
+
+The `trigger_types` vocabulary (section 1.1) includes `local` alongside `pr`, `dispatch`, and `release-automation`.
+
+Semantics:
+- Profile is always `advisory` (nothing blocks)
+- No GitHub event context, no PR metadata
+- `is_release_review_pr` defaults to `false`
+- `release_plan_changed` defaults to `null` (unknown — rules requiring it are skipped)
+
+Most rules have no `trigger_types` constraint and apply in all contexts including `local`. Rules that explicitly list only `[pr]` are automatically excluded.
+
+### B.4 Local Context Derivation
+
+How context fields map when running locally (no GitHub event):
+
+| Field | Workflow source | Local source | Notes |
+|-------|-----------|-------------|-------|
+| `branch_type` | `github.base_ref` / `github.ref_name` | `git branch --show-current` | Same pattern-matching logic |
+| `trigger_type` | GitHub event name / `mode` input | Fixed: `local` | |
+| `profile` | Derived from trigger type | Fixed: `advisory` | |
+| `stage` | Central config lookup | Not applicable | Local runs are not gated by rollout stage |
+| `target_release_type` | release-plan.yaml | release-plan.yaml | Identical |
+| `commonalities_release` | release-plan.yaml | release-plan.yaml | Identical — drives Spectral ruleset selection |
+| `icm_release` | release-plan.yaml | release-plan.yaml | Identical |
+| `target_api_status` | release-plan.yaml (per-API) | release-plan.yaml (per-API) | Identical |
+| `target_api_maturity` | Derived from version | Derived from version | Identical |
+| `api_pattern` | Detected from spec content | Detected from spec content | Identical |
+| `is_release_review_pr` | PR target branch | Fixed: `false` | |
+| `release_plan_changed` | PR diff via API | Fixed: `null` | Rules requiring this are skipped |
+
+The majority of context fields (8 of 12) are file-derived and work identically in both environments. The workflow-only fields (`stage`, `is_release_review_pr`, `release_plan_changed`) degrade to safe defaults that skip inapplicable rules rather than producing incorrect results.
+
+### B.5 Implementation Guardrails
+
+These constraints apply to the framework implementation to preserve local reusability:
+
+1. **Engine invocation must be callable without GitHub context.** Spectral and Python check runners accept file paths and a context object as inputs. They must not read `GITHUB_EVENT_PATH`, `GITHUB_OUTPUT`, or other Actions environment variables directly. Workflow-level steps pass these values in; engines do not reach for them.
+
+2. **Context construction must be separable from GitHub event parsing.** The context builder must support being fed from either a GitHub event payload or from local defaults combined with git-derived values. A clean boundary: the workflow caller resolves GitHub-specific inputs and hands them to the context builder; the builder itself is environment-neutral.
+
+3. **Output formatting must support terminal output.** The post-filter produces a structured findings list. Rendering to workflow summary markdown and rendering to terminal are separate formatters behind a common findings-list interface. The terminal formatter is the natural output for local runs.
+
+4. **Bundling must not depend on the workflow artifacts API.** The bundling pipeline reads files and writes files. Artifact upload is a separate workflow step, not embedded in the bundler. Locally, bundled output is written to a directory.
+
+5. **Rule metadata and Spectral rulesets must be loadable from a local path.** The reusable workflow resolves tooling via OIDC ref or version tag and checks out into `.tooling/`. Locally, the user either has a tooling clone or a downloaded copy. The engine invocation code must accept a configurable base path for rule metadata and rulesets, not hardcode the `.tooling/` checkout location.
