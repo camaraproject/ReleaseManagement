@@ -267,13 +267,8 @@ The mapping from `release-plan.yaml.dependencies.commonalities_release` to the c
 **ICM** (version compatibility constraint):
 Identity and Consent Management schemas are currently contained within Commonalities files — there are no separate ICM files to cache. The `dependencies.identity_consent_management_release` in `release-plan.yaml` is a version compatibility constraint (potentially `>= x.y.z`) rather than a file-caching relationship. The exact nature of this dependency requires further discussion.
 
-**Sub-project commons** (extensible, declared per repository):
-Sub-projects may define common schemas shared across their API repositories (e.g., a device API family sharing common device type definitions). These dependencies must be declarable without requiring changes to the automation tooling. Each sub-project dependency requires:
-- Source repository
-- Release tag or version
-- Array of files to consume
-
-This extensible model requires a dependency declaration format, either within `release-plan.yaml` or as a separate manifest. The schema design is a follow-up topic for the bundling design document.
+**Cross-repository commons** (possible future extension):
+In the future, groups of related API repositories may share common schemas beyond those provided by Commonalities (e.g., QoS-related type definitions shared between quality-on-demand and qos-profiles). How such cross-repository schemas would be organized — in a dedicated common repository, within API repositories themselves, or as additional files in the Commonalities repository — is an open question outside the scope of this design. The framework architecture should not preclude this extension, but no implementation is needed until a concrete use case is agreed.
 
 #### File caching strategy
 
