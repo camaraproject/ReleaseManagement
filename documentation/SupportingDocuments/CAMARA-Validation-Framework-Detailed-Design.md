@@ -892,12 +892,12 @@ apis:
     target_api_maturity: "stable"     # derived
     api_pattern: "request-response"   # detected from spec
     spec_file: "code/API_definitions/qos-booking.yaml"
-  - api_name: "qos-on-demand"
+  - api_name: "quality-on-demand"
     target_api_version: "0.11.0-alpha.1"
     target_api_status: "initial"
     target_api_maturity: "initial"
     api_pattern: "explicit-subscription"
-    spec_file: "code/API_definitions/qos-on-demand.yaml"
+    spec_file: "code/API_definitions/quality-on-demand.yaml"
 
 # Workflow metadata
 workflow_run_url: "https://github.com/camaraproject/QualityOnDemand/actions/runs/12345"
@@ -990,10 +990,10 @@ All engine outputs are normalized into a common findings format before post-filt
   engine_rule: "camara-parameter-casing-convention"  # native engine rule name
   level: error                      # engine-reported level (before post-filter)
   message: "Path segment 'qualityOnDemand' should be kebab-case"
-  path: "code/API_definitions/qos-on-demand.yaml"
+  path: "code/API_definitions/quality-on-demand.yaml"
   line: 47                          # line in source file (mapped back if bundled)
   column: 5                         # column (if available from engine)
-  api_name: "qos-on-demand"         # which API this finding belongs to
+  api_name: "quality-on-demand"         # which API this finding belongs to
   hint: "Use kebab-case: /quality-on-demand/{sessionId}"
 ```
 
@@ -1101,7 +1101,7 @@ Structure:
 | API | Errors | Warnings | Hints |
 |-----|--------|----------|-------|
 | qos-booking | 0 | 2 | 1 |
-| qos-on-demand | 1 | 0 | 3 |
+| quality-on-demand | 1 | 0 | 3 |
 
 ### Findings
 
@@ -1109,7 +1109,7 @@ Structure:
 
 | Rule | File | Line | Message | Hint |
 |------|------|------|---------|------|
-| 042 | qos-on-demand.yaml | 47 | Path segment should be kebab-case | Use: /quality-on-demand |
+| 042 | quality-on-demand.yaml | 47 | Path segment should be kebab-case | Use: /quality-on-demand |
 
 #### Warnings
 ...
