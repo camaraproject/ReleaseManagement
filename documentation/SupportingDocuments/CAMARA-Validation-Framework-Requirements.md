@@ -198,6 +198,10 @@ The validation rules are derived from the following upstream documents. Rules mu
 **Commonalities** (version-dependent — r3.4 = v0.6.x, r4.1/r4.2 = v0.7.x):
 - `CAMARA-API-Design-Guide.md` — API design rules, versioning, error handling, naming conventions
 - `CAMARA-API-Event-Subscription-and-Notification-Guide.md` — subscription and notification patterns
+- `API-Testing-Guidelines.md` — test file structure, naming, and content requirements
+- `artifacts/CAMARA_common.yaml` — canonical common schemas (bundling reference)
+
+Further Commonalities artifacts (API template, subscription template) can be added after the Commonalities restructuring ([Commonalities#603](https://github.com/camaraproject/Commonalities/issues/603)) has landed and files are stable.
 
 **Release Management:**
 - `release-plan-schema.yaml` — field definitions and allowed values for release-plan.yaml
