@@ -319,7 +319,7 @@ Placeholder replacement with defined values could be introduced together with bu
 
 Bundling integrates into the rule architecture (Requirements section 5) without requiring changes to the context model or rule metadata:
 
-- **Step assignment**: Each rule runs in either step 1 (pre-bundling validation) or step 3 (full validation). Assignment is an implementation detail — the framework knows which checks belong to which step.
+- **Pipeline step assignment**: Each rule runs in either pipeline step 1 (pre-bundling validation) or step 3 (full validation) as defined in Requirements section 6.2. Assignment is an implementation detail — the framework knows which checks belong to which step.
 - **No new context fields**: The context model from Requirements section 2.2 is sufficient. Whether external refs existed and were resolved is an implementation concern, not a rule applicability condition.
 - **Cache sync is a check, not context**: The cache synchronization validation (section 3.2) produces findings (warning or error depending on profile). It is not a context field consumed by other rules.
 - **Spectral ruleset selection**: The `commonalities_release` field (already in the context model) drives Spectral ruleset pre-selection (section 3.3). No additional metadata is needed.
