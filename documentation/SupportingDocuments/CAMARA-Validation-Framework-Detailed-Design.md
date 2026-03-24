@@ -229,7 +229,7 @@ Remaining inventory work:
 
 The framework uses **bundling** (external ref resolution only), not full dereferencing:
 
-- **Bundling**: Resolves external `$ref` — pulls content from `code/common/`, `code/modules/`, and other local files into the document. Internal `$ref` (`#/components/schemas/...`, `#/components/responses/...`) are preserved.
+- **Bundling**: Resolves each external `$ref` by placing the referenced component into the appropriate `components/` subsection of the output document and replacing the external `$ref` with an internal `$ref` (e.g., `$ref: '../common/CAMARA_common.yaml#/components/schemas/ErrorInfo'` becomes `$ref: '#/components/schemas/ErrorInfo'`). This applies to all component types — schemas, securitySchemes, headers, parameters, responses, examples — not just schemas. When the same external component is referenced multiple times, it is included once and all references point to the single internal definition (deduplication). Internal `$ref` already present in the source are preserved unchanged.
 - **Full dereferencing**: Resolves all `$ref` including internal ones, producing a flat document with zero `$ref` and massive duplication. The framework must **not** use full dereferencing.
 
 Preserving internal `$ref` ensures that:
@@ -941,12 +941,14 @@ If all API spec files are syntactically valid and no external `$ref` is detected
 
 Conditional — only runs when external `$ref` to `code/common/` or `code/modules/` is detected in at least one API spec file.
 
-The framework invokes an **external bundling tool** — it does not implement its own OpenAPI bundler. The tool must satisfy two requirements:
+The framework invokes an **external bundling tool** — it does not implement its own OpenAPI bundler. The tool must satisfy the following requirements:
 
 1. **External ref resolution only** (see section 3.1): Resolve `$ref` to `code/common/`, `code/modules/`, and other local files. Preserve all internal `$ref` (`#/components/schemas/...`, `#/components/responses/...`). Full dereferencing must not be used.
-2. **Source map production**: Produce a mapping from bundled output regions back to source file locations. This is needed for line number translation in the output pipeline (section 9.5). This is a selection criterion for tool evaluation — the chosen tool must either support source maps natively or be wrappable to produce them.
+2. **Component-based inclusion**: Each resolved external `$ref` must be placed into the appropriate `components/` subsection (schemas, securitySchemes, headers, parameters, responses, examples) and replaced with an internal `$ref` pointing to that component. Raw JSON pointer inlining (where the first occurrence is expanded in place and subsequent references point to that arbitrary location) is not acceptable — it breaks Spectral rules that expect components in their standard locations.
+3. **Deduplication**: When the same external component is referenced from multiple locations, the tool must include it once in `components/` and replace all occurrences with internal `$ref` to that single definition.
+4. **Source map production**: Produce a mapping from bundled output regions back to source file locations. This is needed for line number translation in the output pipeline (section 9.5). This is a selection criterion for tool evaluation — the chosen tool must either support source maps natively or be wrappable to produce them.
 
-The specific tool choice (e.g., redocly, swagger-cli, prance, custom wrapper) is deferred to implementation, evaluated against these two requirements.
+The specific tool choice (e.g., Redocly CLI, vacuum, custom wrapper) is deferred to implementation, evaluated against these requirements.
 
 **Cache sync validation** runs as part of bundling: the content of `code/common/` files is compared against the expected content for the declared `commonalities_release` version. A mismatch produces a finding — `warning` in standard profile, `error` in strict profile.
 
