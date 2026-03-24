@@ -465,6 +465,7 @@ A release review PR is created by release automation on the `release-review/rX.Y
 | release-plan.yaml checks | No | Already validated at snapshot creation time |
 | Bundling validation | No | Source files are immutable |
 | Cache sync validation | No | Already validated at snapshot creation time |
+| Release readiness checks (artifact presence by target API status) | No | Already validated at snapshot creation time; artifacts cannot be added or removed on the snapshot branch |
 
 **File restriction check**: The framework examines the PR diff and produces an error if any file outside `CHANGELOG.md` (or `CHANGELOG/` directory) and `README.md` is modified.
 
