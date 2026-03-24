@@ -16,38 +16,29 @@ Repository to describe, develop, document and test the Release Management proces
 
 ## Release Process Information
 
-**The Release Management documents describe the CAMARA meta-release and API release processes, contibute the API versioning guidelines, and provides the artifacts for use by API Sub projects to release an API version.**
+**The Release Management documentation describes the CAMARA meta-release and API release processes, contibutes the API versioning guidelines, and provides the artifacts for use by API Sub projects to release an API version.**
 
 It contains the Release Management released documents and assests in the **documentation** folder:
-   - [API_Release_Guidelines.md](/documentation/API_Release_Guidelines.md) - An extract of the API release management process from the CAMARA wiki.
-   - [API-Readiness-Checklist.md](/documentation/API-Readiness-Checklist.md) - The checklist to ensure release readiness of the API according to its version (alpha, release-candidate, public).
-   - [CHANGELOG_TEMPLATE.md](/documentation/CHANGELOG_TEMPLATE.md) - The template for creating CHANGELOG history of an API repository.
-
-It also contains the following in the **documentation/SupportingDocuments** folder:
-   - [CHANGELOG_EXAMPLE.md](/documentation/SupportingDocuments/CHANGELOG_EXAMPLE.md) - Pointers to example CHANGELOG.md files over multiple releases created following the release management guidelines.
+   - [Release process documentation overview](documentation/README.md) - the main entry point for release management process documentation.
+   - [Automated API Release Process](/documentation/release-process/) - the automated release process for API repositories.
+   - [API Readiness Checklist](/documentation/readiness/api-readiness-checklist.md) - the checklist to ensure release readiness of the API according to its version (alpha, release-candidate, public).
+   - In each API repository, the [CHANGELOG folder](/CHANGELOG) holds a file per release that tracks the CHANGELOG history across the API versions. Part of the content is generatedy by automation.
 
 For the reference documentation on API versioning, please see "Versioning" section in the API Design Guidelines document in [Commonalities](https://github.com/camaraproject/Commonalities).
 
-The [CHANGELOG.md](/CHANGELOG.md) file describes the differences between releases of the Release Management repository.  
+The [CHANGELOG.md](/CHANGELOG.md) file provides the CHANGELOG history between releases of the Release Management repository.  
 
 ## Release Management Wiki
 
-Beyond the above reference release management information in GitHub, more information on the release process is available on the wiki.
+Beyond the above reference release management documentation in GitHub, additional information is available on the [Release Managament wiki](https://lf-camaraproject.atlassian.net/wiki/x/VA7e). In particula you can find there information about:
 
-* **Meta-releases of CAMARA**
+* **Meta-releases**
 
-  * [Meta-release Plans](https://lf-camaraproject.atlassian.net/wiki/x/bmTe)
+  * [Meta-releases](https://lf-camaraproject.atlassian.net/wiki/x/bmTe)
   * [Meta-release Process](https://lf-camaraproject.atlassian.net/wiki/x/Zwne)
 
-* **API release management**
-  * [API Release Process](https://lf-camaraproject.atlassian.net/wiki/x/jine)
-  * [API Release Tracking Process](https://lf-camaraproject.atlassian.net/wiki/x/ZhHe)
-  * [More on API Readiness Checklist](https://lf-camaraproject.atlassian.net/wiki/spaces/CAM/pages/14559630/API+Release+Process#API-readiness-checklist)
-  * [More on API Versioning](https://lf-camaraproject.atlassian.net/wiki/x/3yLe)
-
-More information about processes and release numbering for Commonalities and ICM can be found here:
-
-  * [Commonalities and ICM Release Process](https://lf-camaraproject.atlassian.net/wiki/spaces/CAM/pages/14551399/Meta-release+Process#Commonalities-and-ICM)
+* **Commonalities and ICM releases**
+  * More information about processes and release numbering for Commonalities and ICM can be found here: [Commonalities and ICM Release Process](https://lf-camaraproject.atlassian.net/wiki/spaces/CAM/pages/14551399/Meta-release+Process#Commonalities-and-ICM)
 
 ## Contributing
 * Meetings are held virtually
