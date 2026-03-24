@@ -260,11 +260,9 @@ In the MVP, some parts may still be manual — providing the correct copy in `co
 Three categories of shared schema dependencies exist, each with different characteristics:
 
 **Commonalities** (well-known, hardcoded in tooling):
-The Commonalities repository provides shared schemas that are well-known to automation tooling. Currently two files are relevant:
-- `CAMARA_common.yaml` — common data types, error responses, headers
-- `notification-as-cloud-event.yaml` — CloudEvents notification schema
+The Commonalities repository provides shared schemas that are well-known to automation tooling. The primary file is `CAMARA_common.yaml` (common data types, error responses, headers, security schemes). The exact set of common files and their directory structure within the Commonalities repository is subject to the ongoing restructuring ([Commonalities#603](https://github.com/camaraproject/Commonalities/issues/603)) and may evolve — the tooling must not assume a fixed file list but should be configurable per Commonalities version.
 
-These files, their source location in the Commonalities repository, and the mapping from `release-plan.yaml.dependencies.commonalities_release` to the correct version are built into the tooling. No per-repository configuration is needed.
+The mapping from `release-plan.yaml.dependencies.commonalities_release` to the correct source files and their locations is built into the tooling. No per-repository configuration is needed.
 
 **ICM** (version compatibility constraint):
 Identity and Consent Management schemas are currently contained within Commonalities files — there are no separate ICM files to cache. The `dependencies.identity_consent_management_release` in `release-plan.yaml` is a version compatibility constraint (potentially `>= x.y.z`) rather than a file-caching relationship. The exact nature of this dependency requires further discussion.
