@@ -31,11 +31,11 @@ Beyond the above reference release management documentation in GitHub, additiona
 
 * **Meta-releases**
 
-  * [Meta-releases](https://lf-camaraproject.atlassian.net/wiki/x/bmTe) - List of ongoing and past meta-releases and their contained APIs.
+  * [Meta-releases](https://lf-camaraproject.atlassian.net/wiki/x/bmTe) - list of ongoing and past meta-releases and their contained APIs.
   * [Meta-release Process](https://lf-camaraproject.atlassian.net/wiki/x/Zwne) - the meta-release milestone description and their related activities and time-line.
 
 * **Commonalities and ICM releases**
-  * [Commonalities and ICM Release Process](https://lf-camaraproject.atlassian.net/wiki/spaces/CAM/pages/14551399/Meta-release+Process#Commonalities-and-ICM) - More information about processes and release numbering for Commonalities and ICM releases. 
+  * [Commonalities and ICM Release Process](https://lf-camaraproject.atlassian.net/wiki/spaces/CAM/pages/14551399/Meta-release+Process#Commonalities-and-ICM) - more information about processes and release numbering for Commonalities and ICM releases. 
 
 ## Release Management repository
 
