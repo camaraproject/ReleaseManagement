@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-03-26T06:40:16Z'
-  last_checked: '2026-03-26T06:40:16Z'
+  last_updated: '2026-03-26T08:31:28Z'
+  last_checked: '2026-03-26T08:31:28Z'
   releases_master_updated: '2026-03-23T21:37:46.224Z'
   schema_version: 1.4.0
   collector_version: 1.4.0
@@ -1828,7 +1828,9 @@ progress:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 81
+      url: https://github.com/camaraproject/SessionInsights/issues/81
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -1851,10 +1853,6 @@ progress:
       apis:
       - api_name: session-insights
         api_version: null
-  warnings:
-  - code: W005
-    message: Active release plan but no caller workflow installed
-    severity: warning
 - repository: SimpleEdgeDiscovery
   github_url: https://github.com/camaraproject/SimpleEdgeDiscovery
   release_track: meta-release
