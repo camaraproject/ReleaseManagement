@@ -1,7 +1,7 @@
 metadata:
-  last_updated: '2026-03-23T20:53:58Z'
-  last_checked: '2026-03-23T20:53:58Z'
-  releases_master_updated: '2026-03-23T19:28:45.630Z'
+  last_updated: '2026-03-26T06:40:16Z'
+  last_checked: '2026-03-26T06:40:16Z'
+  releases_master_updated: '2026-03-23T21:37:46.224Z'
   schema_version: 1.4.0
   collector_version: 1.4.0
   repos_scanned: 66
@@ -23,7 +23,7 @@ meta_releases:
   m3_achieved: 35
   m4_achieved: 36
 - name: Spring26
-  total_apis: 5
+  total_apis: 3
   m1_achieved: 1
   m3_achieved: 3
   m4_achieved: 0
@@ -1194,30 +1194,31 @@ progress:
         api_version: null
 - repository: NetworkInsights
   github_url: https://github.com/camaraproject/NetworkInsights
-  release_track: meta-release
-  meta_release: Spring26
+  release_track: independent
   target_release_tag: r1.1
-  target_release_type: none
+  target_release_type: pre-release-alpha
   dependencies:
     commonalities_release: r4.1
-    identity_consent_management_release: r4.1
+    identity_consent_management_release: r4.2
   apis:
   - api_name: network-health-assessment
     target_api_version: 0.1.0
-    target_api_status: draft
+    target_api_status: alpha
     main_contacts:
     - cnzj-Gc
   - api_name: network-traffic-analysis
     target_api_version: 0.1.0
-    target_api_status: draft
+    target_api_status: alpha
     main_contacts:
     - cnzj-Gc
-  state: not_planned
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 43
+      url: https://github.com/camaraproject/NetworkInsights/issues/43
   published_context:
     latest_public_release: null
     newest_pre_release: null
