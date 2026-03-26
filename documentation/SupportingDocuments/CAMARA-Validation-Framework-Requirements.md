@@ -89,7 +89,7 @@ The profile (section 2.1) then determines which levels block. This separates thr
 | **error** | Must be fixed | standard, strict |
 | **warn** | Should be fixed | strict |
 | **hint** | Recommendation, never blocking | *(none)* |
-| **off** | Suppressed, finding not shown | *(n/a)* |
+| **muted** | Suppressed, finding not shown | *(n/a)* |
 
 #### Applicability conditions
 
@@ -110,7 +110,7 @@ Range comparison for `commonalities_release` uses `packaging.specifiers` (Python
 
 #### Conditional level
 
-`default` is always present. `overrides` is a list of `{condition, level}` pairs evaluated in order; first match wins. Conditions use the same field/value model as applicability (AND across fields, OR within arrays). The level `off` can be used in overrides to suppress a finding in specific contexts.
+`default` is always present. `overrides` is a list of `{condition, level}` pairs evaluated in order; first match wins. Conditions use the same field/value model as applicability (AND across fields, OR within arrays). The level `muted` can be used in overrides to suppress a finding in specific contexts.
 
 #### Execution context
 

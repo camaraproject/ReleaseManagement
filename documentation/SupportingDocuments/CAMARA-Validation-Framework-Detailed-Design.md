@@ -52,7 +52,7 @@ conditional_level:
   overrides:
     - condition:
         target_api_status: [draft]
-      level: off
+      level: muted
 ```
 
 ### 1.2 Condition Evaluation
@@ -83,7 +83,7 @@ The framework uses Spectral's severity names (`error`, `warn`, `hint`) as its na
 | `warn` | `warn` | Identity |
 | `hint` | `hint` | Identity |
 | `info` | `hint` | Mapped (rarely used) |
-| `off` | `off` | Identity (disable rule) |
+| `off` | `muted` | Mapped (disable rule) |
 
 Spectral rules already include `message` fields with fix guidance. Therefore, **Spectral rules that do not need context-dependent severity or applicability filtering do not require explicit framework metadata entries**. Their findings pass through with direct severity mapping and native messages.
 
@@ -1057,7 +1057,7 @@ The post-filter evaluates each raw finding against the rule metadata (section 1)
 
 2. **Applicability evaluation**: Apply the rule's `applicability` conditions against the current context (section 1.2). If any condition does not match, the finding is silently removed — it does not apply in this context.
 
-3. **Conditional level resolution**: Apply `conditional_level` overrides against the context (section 1.2). The first matching override determines the resolved level; if none match, the default level is used. The resolved level replaces the engine-reported level. If the resolved level is `off`, the finding is removed.
+3. **Conditional level resolution**: Apply `conditional_level` overrides against the context (section 1.2). The first matching override determines the resolved level; if none match, the default level is used. The resolved level replaces the engine-reported level. If the resolved level is `muted`, the finding is removed.
 
 4. **Pass-through**: Spectral rules without explicit framework metadata entries pass through with identity mapping (section 1.3). Their engine-reported severity becomes the resolved level, the engine's `message` is preserved, and no `hint` is added. This is the common case for most Spectral rules — the framework runs without requiring a complete metadata inventory.
 
