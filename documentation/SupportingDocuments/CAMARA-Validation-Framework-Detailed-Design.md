@@ -1,7 +1,7 @@
 # Validation Framework — Detailed Design
 
 **Status**: Work in progress
-**Last updated**: 2026-03-18
+**Last updated**: 2026-03-26
 
 > This document supplements the [Validation Framework Requirements](CAMARA-Validation-Framework-Requirements.md) with design and implementation detail for developers and architects. It is expected to migrate to the `tooling` repository alongside the implementation.
 
@@ -18,7 +18,8 @@ id: "042"                    # flat sequential ID, stable across engine changes
 name: path-kebab-case        # human-readable name
 engine: spectral             # spectral | yamllint | gherkin | python | manual
 engine_rule: "camara-parameter-casing-convention"  # native engine rule ID (if applicable)
-hint: "Use kebab-case for all path segments: /my-resource/{resourceId}"
+message_override: null                       # replaces engine message entirely (optional, rare)
+hint: "Use kebab-case for all path segments: /my-resource/{resourceId}"  # additional fix guidance alongside engine message (optional)
 
 applicability:               # only list fields that constrain; omitted = no constraint
   branch_types: [main, release]
@@ -89,7 +90,7 @@ Spectral rules already include `message` fields with fix guidance. Therefore, **
 Framework metadata is only needed for Spectral rules when:
 - The level should change based on context (e.g., error on release branch, hint on feature branch)
 - The rule should be suppressed in certain contexts (applicability filtering)
-- The fix hint should be overridden or augmented
+- The engine message should be replaced (`message_override`) or additional fix guidance should be added (`hint`)
 
 This minimizes the metadata surface: only rules with context-dependent behavior need explicit entries.
 
@@ -685,7 +686,7 @@ applicability:
 conditional_level:
   default: error
 description: "Release review PR may only modify CHANGELOG and README files"
-hint: "Only CHANGELOG.md (or CHANGELOG/ directory) and README.md may be modified on the release review branch. API specs and other files are immutable on the snapshot branch."
+hint: "Only CHANGELOG.md (or CHANGELOG/ directory) and README.md may be modified on the release review branch. API specs and other files are immutable on the snapshot branch."  # additional guidance shown alongside the engine message
 ```
 
 ### 7.4 Pre-Snapshot Invocation Detail
@@ -994,7 +995,7 @@ All engine outputs are normalized into a common findings format before post-filt
   line: 47                          # line in source file (mapped back if bundled)
   column: 5                         # column (if available from engine)
   api_name: "quality-on-demand"         # which API this finding belongs to
-  hint: "Use kebab-case: /quality-on-demand/{sessionId}"
+  hint: "Use kebab-case: /quality-on-demand/{sessionId}"  # additional fix guidance (from rule metadata, optional)
 ```
 
 | Field | Source — Spectral | Source — yamllint | Source — gherkin-lint | Source — Python |
@@ -1008,9 +1009,10 @@ All engine outputs are normalized into a common findings format before post-filt
 | `line` | `range.start.line` (0-indexed → 1-indexed) | Line number from output | Line number from output | Set directly |
 | `column` | `range.start.character` | Column from output | Column from output (or null) | Set directly (or null) |
 | `api_name` | Derived from file path | Derived from file path | Derived from file path | Set directly |
-| `hint` | From rule metadata `hint` field (if present); otherwise engine `message` serves as hint | From rule metadata | From rule metadata | Set directly |
+| `message` (post-filter) | If rule metadata has `message_override`: replaces engine message. Otherwise: engine message preserved | Same | Same | Set directly (no override) |
+| `hint` | From rule metadata `hint` field (optional additional fix guidance); absent if no metadata or no hint defined | From rule metadata | From rule metadata | Set directly (optional) |
 
-Spectral rules **without** explicit framework metadata entries pass through with identity mapping (section 1.3): `rule_id` is auto-assigned, `hint` defaults to the engine's `message`, and the level maps directly. This means the check inventory does not need to be complete before the framework can run — new Spectral rules work immediately.
+Spectral rules **without** explicit framework metadata entries pass through with identity mapping (section 1.3): `rule_id` is auto-assigned, the engine's `message` is preserved, no `hint` is added, and the level maps directly. This means the check inventory does not need to be complete before the framework can run — new Spectral rules work immediately.
 
 ### 8.5 Composite Action Boundaries
 
@@ -1057,7 +1059,7 @@ The post-filter evaluates each raw finding against the rule metadata (section 1)
 
 3. **Conditional level resolution**: Apply `conditional_level` overrides against the context (section 1.2). The first matching override determines the resolved level; if none match, the default level is used. The resolved level replaces the engine-reported level. If the resolved level is `off`, the finding is removed.
 
-4. **Pass-through**: Spectral rules without explicit framework metadata entries pass through with identity mapping (section 1.3). Their engine-reported severity becomes the resolved level, and the engine's `message` serves as the hint. This is the common case for most Spectral rules — the framework runs without requiring a complete metadata inventory.
+4. **Pass-through**: Spectral rules without explicit framework metadata entries pass through with identity mapping (section 1.3). Their engine-reported severity becomes the resolved level, the engine's `message` is preserved, and no `hint` is added. This is the common case for most Spectral rules — the framework runs without requiring a complete metadata inventory.
 
 **Per-API evaluation**: Findings associated with a specific API (identified by `api_name`) are evaluated against that API's context fields (`target_api_status`, `target_api_maturity`, `api_pattern`). Repository-level findings (e.g., release-plan.yaml checks) are evaluated against the repository-level context.
 
@@ -1134,7 +1136,7 @@ Commit: abc1234 | Tooling: def5678 | [Full workflow run]({workflow_run_url})
 One annotation per finding, mapped to the source file and line number:
 
 - Annotation level: `failure` for error, `warning` for warn, `notice` for hint
-- Annotation message: includes the rule ID, engine rule name, and fix hint
+- Annotation message: includes the rule ID, engine rule name, message (or `message_override` if set), and hint (if present)
 - Annotation title: rule name from metadata (or engine rule name if no metadata)
 
 GitHub limits annotations to **50 per step**. If more findings exist:
