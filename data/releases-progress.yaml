@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-03-26T08:31:28Z'
-  last_checked: '2026-03-26T08:31:28Z'
+  last_updated: '2026-03-27T06:41:57Z'
+  last_checked: '2026-03-27T06:41:57Z'
   releases_master_updated: '2026-03-23T21:37:46.224Z'
   schema_version: 1.4.0
   collector_version: 1.4.0
@@ -1143,10 +1143,6 @@ progress:
       apis:
       - api_name: multi-point-vpn
         api_version: null
-  warnings:
-  - code: W005
-    message: Active release plan but no caller workflow installed
-    severity: warning
 - repository: NetworkAccessManagement
   github_url: https://github.com/camaraproject/NetworkAccessManagement
   release_track: independent
@@ -1766,13 +1762,10 @@ progress:
     target_api_status: rc
     main_contacts:
     - hdamker-bot
-  state: snapshot_active
+  state: planned
   artifacts:
-    snapshot_branch: release-snapshot/r1.4-a543923
-    release_pr:
-      number: 47
-      state: open
-      url: https://github.com/camaraproject/ReleaseTest/pull/47
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
     release_issue:
       number: 46
@@ -1805,8 +1798,6 @@ progress:
     apis:
     - api_name: release-test
       api_version: 1.0.0-rc.2
-  snapshot_api_versions:
-    release-test: 1.0.0-rc.3
 - repository: SessionInsights
   github_url: https://github.com/camaraproject/SessionInsights
   release_track: independent
