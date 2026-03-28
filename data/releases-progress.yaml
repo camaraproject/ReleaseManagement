@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-03-27T06:41:57Z'
-  last_checked: '2026-03-27T06:41:57Z'
+  last_updated: '2026-03-28T06:14:15Z'
+  last_checked: '2026-03-28T06:14:15Z'
   releases_master_updated: '2026-03-23T21:37:46.224Z'
   schema_version: 1.4.0
   collector_version: 1.4.0
@@ -1120,7 +1120,9 @@ progress:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 22
+      url: https://github.com/camaraproject/MultiPointVPN/issues/22
   published_context:
     latest_public_release: null
     newest_pre_release: null
