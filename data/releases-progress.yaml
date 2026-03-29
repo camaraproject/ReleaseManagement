@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-03-28T06:14:15Z'
-  last_checked: '2026-03-28T06:14:15Z'
+  last_updated: '2026-03-29T06:38:07Z'
+  last_checked: '2026-03-29T06:38:07Z'
   releases_master_updated: '2026-03-23T21:37:46.224Z'
   schema_version: 1.4.0
   collector_version: 1.4.0
@@ -28,9 +28,9 @@ meta_releases:
   m3_achieved: 3
   m4_achieved: 0
 - name: Sync26
-  total_apis: 4
-  m1_achieved: 1
-  m3_achieved: 1
+  total_apis: 5
+  m1_achieved: 2
+  m3_achieved: 2
   m4_achieved: 0
 progress:
 - repository: ApplicationEndpointDiscovery
@@ -1764,6 +1764,11 @@ progress:
     target_api_status: rc
     main_contacts:
     - hdamker-bot
+  - api_name: sample-service
+    target_api_version: 0.1.0
+    target_api_status: alpha
+    main_contacts:
+    - hdamker-bot
   state: planned
   artifacts:
     snapshot_branch: null
@@ -1782,17 +1787,23 @@ progress:
       apis:
       - api_name: release-test
         api_version: 1.0.0-alpha.1
+      - api_name: sample-service
+        api_version: null
     m3:
       release_tag: r1.2
       release_date: '2026-03-05T15:48:16Z'
       apis:
       - api_name: release-test
         api_version: 1.0.0-rc.1
+      - api_name: sample-service
+        api_version: null
     m4:
       release_tag: null
       release_date: null
       apis:
       - api_name: release-test
+        api_version: null
+      - api_name: sample-service
         api_version: null
   last_published:
     release_tag: r1.3
@@ -1800,6 +1811,8 @@ progress:
     apis:
     - api_name: release-test
       api_version: 1.0.0-rc.2
+    - api_name: sample-service
+      api_version: null
 - repository: SessionInsights
   github_url: https://github.com/camaraproject/SessionInsights
   release_track: independent
