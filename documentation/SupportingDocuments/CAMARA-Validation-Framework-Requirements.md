@@ -1,7 +1,7 @@
 # Validation Framework — Requirements
 
 **Status**: Work in progress
-**Last updated**: 2026-03-17
+**Last updated**: 2026-03-31
 
 > For design and implementation detail, see [Validation Framework — Detailed Design](CAMARA-Validation-Framework-Detailed-Design.md).
 
@@ -295,8 +295,8 @@ The validation **profile** (advisory, standard, strict) controls which findings 
 
 When `code/common/` exists, the framework validates that cached files match the declared dependency versions in `release-plan.yaml`. Mismatch severity depends on the profile:
 
-- **standard** (PR): warning — codeowner is informed, merge is not blocked
-- **strict** (release automation): error — snapshot creation is blocked
+- **standard** profile: warning — codeowner is informed, merge is not blocked
+- **strict** profile: error — blocks the workflow (used when `release_profile` is set to `strict`)
 
 If no `code/common/` directory exists, the sync check is skipped. In the MVP, cache management may be manual; the validation check still applies regardless of how the cache was populated.
 
@@ -389,9 +389,9 @@ No per-repo inputs exist. All per-repo configuration lives in the central config
 
 | Trigger | Target branches | Default profile |
 |---------|----------------|-----------------|
-| `pull_request` | `main`, `release-snapshot/**`, `maintenance/**` | standard (strict for release review PRs) |
-| `workflow_dispatch` | Any branch | advisory |
-| Release automation call | Base branch (`main` or maintenance) | strict |
+| `pull_request` | `main`, `release-snapshot/**`, `maintenance/**` | `pr_profile` from config (`release_profile` for release review PRs) |
+| `workflow_dispatch` | Any branch | advisory (hardcoded) |
+| Release automation call | Base branch (`main` or maintenance) | `release_profile` from config |
 
 ---
 

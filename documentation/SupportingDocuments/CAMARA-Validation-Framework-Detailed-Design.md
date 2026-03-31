@@ -1,7 +1,7 @@
 # Validation Framework — Detailed Design
 
 **Status**: Work in progress
-**Last updated**: 2026-03-26
+**Last updated**: 2026-03-31
 
 > This document supplements the [Validation Framework Requirements](CAMARA-Validation-Framework-Requirements.md) with design and implementation detail for developers and architects. It is expected to migrate to the `tooling` repository alongside the implementation.
 
@@ -396,9 +396,9 @@ on:
       - maintenance/**
 ```
 
-- **`main`**: Standard development PRs. Profile: standard (or strict if release review PR detected)
-- **`release-snapshot/**`**: Release review PRs created by release automation on snapshot branches. Profile: strict
-- **`maintenance/**`**: Maintenance branch PRs. Profile: standard
+- **`main`**: Standard development PRs. Profile: `pr_profile` from config (default: standard)
+- **`release-snapshot/**`**: Release review PRs created by release automation on snapshot branches. Profile: `release_profile` from config (default: standard)
+- **`maintenance/**`**: Maintenance branch PRs. Profile: `pr_profile` from config (default: standard)
 
 Default event types (`opened`, `synchronize`, `reopened`) are sufficient. The framework validates code content, not PR metadata — `edited` (title/body changes) is not needed.
 
