@@ -61,13 +61,20 @@ UC-17: Trigger a validation check on selected repositories to update dashboard s
 
 ### 2.1 Validation Profiles
 
-Three profiles control blocking behavior. The framework selects the profile automatically based on how validation is invoked.
+Three profiles control blocking behavior:
 
-| Profile | Blocking behavior | Typical trigger |
-|---------|-------------------|-----------------|
-| **advisory** | Nothing blocks; all findings shown | Local run, dispatch |
-| **standard** | `error` blocks; `warn` and `hint` shown | PR (fork-to-upstream or upstream branch) |
-| **strict** | `error` and `warn` block; `hint` shown | Release automation gates (snapshot, release review PR) |
+| Profile | Blocking behavior | Typical use |
+|---------|-------------------|-------------|
+| **advisory** | Nothing blocks; all findings shown | Dispatch, local run (hardcoded) |
+| **standard** | `error` blocks; `warn` and `hint` shown | Default for PRs and release gates |
+| **strict** | `error` and `warn` block; `hint` shown | Configurable for release gates during stabilization |
+
+Profile selection is **config-driven** for PR and release contexts. The central config file (section 10.2) provides two per-repo profile fields:
+
+- `pr_profile` — used for PR-triggered validation (default: `standard`)
+- `release_profile` — used for pre-snapshot validation and release review PRs (default: `standard`)
+
+Dispatch and local triggers always use `advisory` regardless of config. An explicit `profile` input on the workflow overrides config-driven selection.
 
 ### 2.2 Rule Model
 
@@ -135,15 +142,15 @@ The validation framework must support these execution contexts:
 
 | Context | Trigger | Profile | Token | Notes |
 |---------|---------|---------|-------|-------|
-| **PR (fork-to-upstream)** | `pull_request` event | standard | read-only | Default GitHub behavior: fork PRs get read-only GITHUB_TOKEN regardless of author's repo permissions. Limits output options (no check run annotations, no PR comments via token) |
-| **PR (upstream branch)** | `pull_request` event | standard | write | PR from upstream branch. Note: codeowners should normally use forks too |
-| **Dispatch (upstream repo)** | `workflow_dispatch` | advisory | write | Main (default), maintenance, release branches. Warning on non-standard branches |
-| **Dispatch (fork repo)** | `workflow_dispatch` | advisory | write (fork scope) | Fork owner triggers on own fork. Inherited — no extra work if dispatch trigger exists |
-| **Local** | CLI / script | advisory | n/a | No GitHub context; subset of rules |
-| **Release automation: snapshot** | Called by release workflow | strict | write (app token) | Gate before snapshot creation (section 11.1) |
-| **Release automation: review PR** | `pull_request` event (push to PR branch) | strict | write or read-only | Same trigger as normal PR; profile is strict based on release review PR detection (section 11.2) |
+| **PR (fork-to-upstream)** | `pull_request` event | `pr_profile` from config (default: standard) | read-only | Default GitHub behavior: fork PRs get read-only GITHUB_TOKEN regardless of author's repo permissions. Limits output options (no check run annotations, no PR comments via token) |
+| **PR (upstream branch)** | `pull_request` event | `pr_profile` from config (default: standard) | write | PR from upstream branch. Note: codeowners should normally use forks too |
+| **Dispatch (upstream repo)** | `workflow_dispatch` | advisory (hardcoded) | write | Main (default), maintenance, release branches. Warning on non-standard branches |
+| **Dispatch (fork repo)** | `workflow_dispatch` | advisory (hardcoded) | write (fork scope) | Fork owner triggers on own fork. Inherited — no extra work if dispatch trigger exists |
+| **Local** | CLI / script | advisory (hardcoded) | n/a | No GitHub context; subset of rules |
+| **Release automation: snapshot** | Called by release workflow | `release_profile` from config (default: standard) | write (app token) | Gate before snapshot creation (section 11.1) |
+| **Release automation: review PR** | `pull_request` event (push to PR branch) | `release_profile` from config (default: standard) | write or read-only | Same trigger as normal PR; profile based on release review PR detection (section 11.2) |
 
-**Profile is independent of token permissions.** A fork-to-upstream PR gets the same **standard** profile as an upstream-branch PR. The read-only token only limits *how results are surfaced* (e.g. no check run annotations via GITHUB_TOKEN), not validation strictness.
+**Profile is independent of token permissions.** A fork-to-upstream PR gets the same profile as an upstream-branch PR. The read-only token only limits *how results are surfaced* (e.g. no check run annotations via GITHUB_TOKEN), not validation strictness.
 
 **Dispatch is always advisory.** Dispatch runs have nothing to block (except the workflow itself). They surface errors, warnings, and hints for the user to review.
 
@@ -413,11 +420,19 @@ The config file controls the validation stage per repository:
 | Stage | Config value | Behavior |
 |-------|-------------|----------|
 | **0: dark** | `disabled` (or not listed) | Caller deployed, reusable workflow exits immediately |
-| **1: advisory** | `advisory` | Runs on dispatch only, all findings shown, nothing blocks |
-| **2: standard** | `standard` | Runs on PRs and dispatch, standard profile on PRs |
-| **3: blocking** | `standard` + GitHub ruleset | Same as stage 2, plus GitHub ruleset requires the v1 check to pass for PR merge |
+| **1: advisory** | `advisory` | Runs on dispatch only, advisory profile, nothing blocks |
+| **2: enabled** | `enabled` | Runs on PRs and dispatch, profile from config |
 
-Stage 3 is the combination of the config file setting (`standard`) and a GitHub ruleset. The config file does not control blocking — rulesets do. This separation keeps the config file focused on validation behavior and rulesets focused on merge policy.
+The config file does not control merge blocking. Merge blocking is enforced by a **GitHub ruleset** (org-level or per-repo) that requires the v1 validation check to pass. This separation keeps the config file focused on validation behavior and rulesets focused on merge policy. Any repository at stage `enabled` can optionally have a blocking ruleset — the two concerns are independent.
+
+In addition to stage, the config file provides per-repo profile settings:
+
+| Field | Default | Description |
+|-------|---------|-------------|
+| `pr_profile` | `standard` | Profile for PR-triggered validation |
+| `release_profile` | `standard` | Profile for pre-snapshot and release review PR validation |
+
+These fields allow tuning validation strictness per repository without changing the stage.
 
 ---
 

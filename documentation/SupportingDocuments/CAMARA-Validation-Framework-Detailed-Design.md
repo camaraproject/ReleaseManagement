@@ -549,7 +549,7 @@ Separate callers allow independent lifecycle: v0 can be removed per-repo after v
 
 #### Central config file schema
 
-The central config file lives in the tooling repository and maps each API repository to its rollout stage. Spectral ruleset selection is **not** a per-repo config field — it is derived from `commonalities_release` in the repository's own `release-plan.yaml` (section 3.3).
+The central config file lives in the tooling repository and maps each API repository to its rollout stage and profile settings. Spectral ruleset selection is **not** a per-repo config field — it is derived from `commonalities_release` in the repository's own `release-plan.yaml` (section 3.3).
 
 ```yaml
 # validation-config.yaml in camaraproject/tooling
@@ -559,21 +559,27 @@ defaults:
 fork_owners: [hdamker, rartych]  # GitHub users allowed to test in their forks
 repositories:
   QualityOnDemand:
-    stage: standard           # stage 2: runs on PRs, standard profile
+    stage: enabled            # runs on PRs and dispatch
+    pr_profile: standard      # errors block on PRs
+    release_profile: standard # errors block on release gates
   DeviceLocation:
-    stage: standard
+    stage: enabled
   ReleaseTest:
-    stage: standard
+    stage: enabled
   NetworkSliceBooking:
-    stage: advisory           # stage 1: dispatch only
+    stage: advisory           # dispatch only
 ```
 
 | Field | Type | Description |
 |-------|------|-------------|
 | `version` | integer | Schema version (currently `1`). Allows future schema evolution without breaking existing configs. |
-| `defaults.stage` | enum | Default stage for unlisted repositories: `disabled`, `advisory`, `standard`. |
-| `fork_owners` | array of strings | GitHub usernames allowed to run validation in their forks. When the workflow runs in a fork owned by a listed user, stage is overridden to `standard` regardless of the repository's upstream stage (section 8.2). |
+| `defaults.stage` | enum | Default stage for unlisted repositories: `disabled`, `advisory`, `enabled`. |
+| `defaults.pr_profile` | enum | Default profile for PR validation: `advisory`, `standard`, `strict`. If omitted, defaults to `standard`. |
+| `defaults.release_profile` | enum | Default profile for pre-snapshot and release review PR validation: `advisory`, `standard`, `strict`. If omitted, defaults to `standard`. |
+| `fork_owners` | array of strings | GitHub usernames allowed to run validation in their forks. When the workflow runs in a fork owned by a listed user, stage is overridden to `enabled` regardless of the repository's upstream stage (section 8.2). |
 | `repositories.<name>.stage` | enum | Per-repo rollout stage override. Same values as `defaults.stage`. |
+| `repositories.<name>.pr_profile` | enum | Per-repo PR profile override. Same values as `defaults.pr_profile`. |
+| `repositories.<name>.release_profile` | enum | Per-repo release profile override. Same values as `defaults.release_profile`. |
 
 **Stage mapping** (see also Requirements section 10.3):
 
@@ -581,8 +587,9 @@ repositories:
 |-------|-------------|----------|
 | 0 (dark) | `disabled` | Caller deployed but reusable workflow exits immediately |
 | 1 (advisory) | `advisory` | Runs on dispatch only, advisory profile, nothing blocks |
-| 2 (standard) | `standard` | Runs on PRs and dispatch, standard profile on PRs |
-| 3 (blocking) | `standard` + ruleset | Same as stage 2; blocking is enforced by a GitHub ruleset, not the config file |
+| 2 (enabled) | `enabled` | Runs on PRs and dispatch, profile from config |
+
+Merge blocking is enforced by a **GitHub ruleset** (section 6.3), not by a config stage. Any repository at stage `enabled` can optionally have a blocking ruleset — the two concerns are independent.
 
 **Extensibility**: Additional per-repo fields (e.g., `features`, optional overrides) can be added without a `version` bump — new fields are additive. Future candidates include `spectral_ruleset_override` and `extra_checks`.
 
@@ -776,12 +783,13 @@ Immediately after the tooling checkout, the workflow reads the central config fi
 1. Validate the config file against its JSON Schema
 2. Extract the repository name from `github.repository` **without the owner prefix** (e.g., `camaraproject/QualityOnDemand` → `QualityOnDemand`)
 3. Look up `repositories.<repo-name>.stage` (fall back to `defaults.stage`)
-4. **Fork override**: If the workflow is running in a fork (`github.repository_owner` is not `camaraproject` or `GSMA-Open-Gateway`) and the owner is listed in `fork_owners` → override stage to `standard`. If the owner is not listed → keep the resolved stage (typically `disabled` during early rollout, which exits the workflow)
-5. If stage is `disabled`: exit the workflow with a notice in the summary ("Validation is not enabled for this repository") and set the overall result to `skipped`
-6. If stage is `advisory` and trigger is `pull_request`: exit similarly ("Validation is in advisory mode — use workflow_dispatch to run")
-7. Otherwise: continue, passing the resolved stage to subsequent steps
+4. **Fork override**: If the workflow is running in a fork (`github.repository_owner` is not `camaraproject` or `GSMA-Open-Gateway`) and the owner is listed in `fork_owners` → override stage to `enabled`. If the owner is not listed → keep the resolved stage (typically `disabled` during early rollout, which exits the workflow)
+5. **Profile resolution**: Resolve `pr_profile` and `release_profile` from the repository's config entry, falling back to `defaults.pr_profile` and `defaults.release_profile`, then to `standard` if omitted
+6. If stage is `disabled`: exit the workflow with a notice in the summary ("Validation is not enabled for this repository") and set the overall result to `skipped`
+7. If stage is `advisory` and trigger is `pull_request`: exit similarly ("Validation is in advisory mode — use workflow_dispatch to run")
+8. Otherwise: continue, passing the resolved stage and profile settings to subsequent steps
 
-The fork override (step 4) enables trusted testers to run full validation in their forks even before the upstream repository has been onboarded. This is especially useful during early rollout when most repos are still at `disabled`. Once upstream repos move to `standard`, the `fork_owners` list becomes less relevant — forks inherit the upstream stage.
+The fork override (step 4) enables trusted testers to run full validation in their forks even before the upstream repository has been onboarded. This is especially useful during early rollout when most repos are still at `disabled`. Once upstream repos move to `enabled`, the `fork_owners` list becomes less relevant — forks inherit the upstream stage.
 
 ### 8.3 Context Builder
 
@@ -812,14 +820,17 @@ The `mode` input (section 7.4) is the only way the trigger type `release-automat
 
 #### Profile selection
 
-| Trigger type | Branch type | Condition | Profile |
-|-------------|-------------|-----------|---------|
-| `dispatch` | any | — | `advisory` |
-| `pr` | `release` | `is_release_review_pr` = true | `strict` |
-| `pr` | any | — | `standard` |
-| `release-automation` | any | — | `strict` |
+Profile selection is config-driven for PR and release contexts. The central config (section 6.2) provides `pr_profile` and `release_profile` per repository, with defaults.
 
-If the `profile` input (Requirements section 9.2) is explicitly set, it overrides the auto-selected profile. This allows dispatch users to preview what a different profile would flag.
+| Trigger type | Condition | Profile source | Default |
+|-------------|-----------|---------------|---------|
+| `dispatch` | — | Hardcoded | `advisory` |
+| `local` | — | Hardcoded | `advisory` |
+| `pr` | `is_release_review_pr` = true | `release_profile` from config | `standard` |
+| `pr` | — | `pr_profile` from config | `standard` |
+| `release-automation` | — | `release_profile` from config | `standard` |
+
+If the `profile` input (Requirements section 9.2) is explicitly set, it overrides the config-driven profile. This allows dispatch users to preview what a different profile would flag.
 
 #### release-plan.yaml parsing
 
@@ -873,7 +884,7 @@ repository: "QualityOnDemand"    # repo name without owner prefix
 branch_type: "main"              # main | release | maintenance | feature
 trigger_type: "pr"               # pr | dispatch | release-automation | local
 profile: "standard"              # advisory | standard | strict
-stage: "standard"                # from central config (disabled | advisory | standard)
+stage: "enabled"                 # from central config (disabled | advisory | enabled)
 
 # Release context (from release-plan.yaml; null if absent)
 target_release_type: "pre-release-rc"
@@ -1069,9 +1080,11 @@ After post-filtering, each finding has a resolved level. The active profile (sec
 
 | Profile | Blocking levels | Typical context |
 |---------|----------------|-----------------|
-| `advisory` | None — nothing blocks | Dispatch (stage 1) |
-| `standard` | `error` | PR validation (stage 2) |
-| `strict` | `error` and `warn` | Pre-snapshot, release review PR |
+| `advisory` | None — nothing blocks | Dispatch, local (hardcoded) |
+| `standard` | `error` | Default for PRs (`pr_profile`) and release gates (`release_profile`) |
+| `strict` | `error` and `warn` | Configurable via `release_profile` for pre-snapshot and release review |
+
+Profile selection is config-driven for PR and release contexts (section 6.2). Dispatch and local triggers always use `advisory` regardless of config.
 
 **Overall result** — one of three values:
 
