@@ -279,18 +279,17 @@ The framework validates the repository layout and `$ref` patterns used in API so
 
 The framework applies a uniform validation flow regardless of context:
 
-1. **Pre-bundling validation** (always runs on source files): YAML validity, ref existence and pattern validation, release-plan.yaml consistency checks, cross-file checks that do not depend on schema content
-2. **Bundling** (if `$ref` to `code/common/` or `code/modules/` is detected): Resolve all external refs and produce a standalone spec per API. Internal `$ref` (`#/components/...`) are preserved. The framework uses bundling (external ref resolution only), not full dereferencing.
-3. **Full validation** (runs on the effective input — bundled output when refs are present, source directly when no refs): Full Spectral ruleset, Python checks that depend on schema content, standalone API spec validation
-4. **Artifact surfacing**: Upload bundled specs as workflow artifacts or make them available for further processing (section 7)
+1. **Engine validation** (always runs on source files): All engines run sequentially on source files — yamllint (YAML validity), Spectral (OpenAPI linting with version-selected ruleset), Python checks (cross-field consistency, version alignment, release-plan semantics), gherkin-lint (test definition linting). Spectral CLI natively follows external `$ref` during linting and reports findings with correct source file and line numbers.
+2. **Post-filter and output**: Findings are filtered by applicability and conditional level, profile blocking is applied, and results are surfaced via workflow summary, Check Run annotations, PR comments, and commit status.
+3. **Bundling** (post-validation, if `$ref` to `code/common/` or `code/modules/` is detected): Produce standalone bundled specs per API as diagnostic artifacts for reviewer inspection. Internal `$ref` (`#/components/...`) are preserved. The framework uses bundling (external ref resolution only), not full dereferencing.
 
-The validation **profile** (advisory, standard, strict) controls which findings block; it does not change which steps run.
+The validation **profile** (advisory, standard, strict) controls which findings block; it does not change which engines run.
 
-**Bundling failure**: If the bundling step fails (e.g., unresolvable `$ref`, missing file), the framework reports the failure as an error. Full validation is skipped; only pre-bundling results are available.
+**Bundling is output, not prerequisite**: Spectral natively follows `$ref` to `code/common/` and other local files, so bundling is not required before linting. Bundled specs are produced as review artifacts and uploaded as workflow artifacts (section 7).
 
-**Repositories without `$ref`**: Repositories using the copy-paste model skip step 2. Source files are standalone by construction, so the full Spectral ruleset runs directly on source. No bundling overhead is introduced.
+**Repositories without `$ref`**: Repositories using the copy-paste model skip the bundling step. Source files are standalone by construction. No bundling overhead is introduced.
 
-**Bundling happens once**: The bundled API specs produced during validation are consumed by release automation for the snapshot branch. Release automation does not re-bundle independently.
+**Bundling for release artifacts**: Release automation bundles independently during snapshot creation to produce the standalone release-ready specs. The validation framework's bundled artifacts are for reviewer inspection only and are not consumed by release automation.
 
 ### 6.3 Cache Synchronization
 
@@ -314,11 +313,13 @@ If no `code/common/` directory exists, the sync check is skipped. In the MVP, ca
 The framework produces bundled artifacts for reviewer visibility. The [bundling design document](https://github.com/camaraproject/ReleaseManagement/pull/436) defines a priority order:
 
 1. **Source diff** — primary review surface, no framework action needed (standard git diff)
-2. **Bundled artifact** — the framework uploads the bundled standalone API spec as a GitHub workflow artifact for each API affected by the PR
-3. **Bundled diff** — a diff between the bundled API from the PR base and the bundled API from the PR head, uploaded as a workflow artifact or included in the workflow summary
+2. **Bundled artifact** — the framework uploads the bundled standalone API spec as a GitHub workflow artifact for each API with external `$ref`
+3. **Bundled diff** — a diff between the bundled API from the PR base and the bundled API from the PR head, uploaded as a workflow artifact or included in the workflow summary (post-MVP)
 4. **API-aware summary** — optional semantic change summary (post-MVP)
 
-**Line number mapping**: When checks run on bundled output, findings report line numbers in the bundled file. The framework must map finding locations back to source file and line number, so that findings are actionable.
+Bundled artifacts are diagnostic and review aids — they allow PR reviewers to inspect the fully resolved specs. They are not consumed by release automation (which bundles independently during snapshot creation).
+
+Since all engines run on source files (section 6.2), findings already reference source file locations directly. No line number mapping from bundled to source is needed.
 
 **API-aware change summaries**: The framework should support pluggable diff tools for generating semantic change summaries (breaking changes, new endpoints, modified schemas). This capability is post-MVP.
 
