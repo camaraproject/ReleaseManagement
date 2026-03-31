@@ -644,26 +644,25 @@ Deployment can be batched using the existing admin tooling pattern (scripted mul
 
 ## 7. Release Automation Implementation
 
-### 7.1 Bundling and Snapshot Interaction
+### 7.1 Two-Gate Defense-in-Depth Model
 
-The validation framework produces the bundled API specs as part of its validation pipeline (Requirements section 6.2, steps 2-3). These bundled specs are the same artifacts that become the release content on the snapshot branch. Bundling happens exactly once — during validation. Release automation consumes the bundled output rather than re-bundling independently.
+The validation framework and release automation form a **two-gate model** that provides independent validation at two points in the release lifecycle:
 
-On the snapshot branch, source API definition files (which contain `$ref` to `code/common/` and `code/modules/`) are **replaced** with the bundled standalone specs produced by the validation framework. This is the "swap strategy" described in the [bundling design document](https://github.com/camaraproject/ReleaseManagement/pull/436): the familiar filename (`api-name.yaml`) is retained, but the content is the fully resolved, consumer-ready artifact.
+**Gate 1: Pre-snapshot validation** (section 7.4) — Validation runs on the source branch before snapshot creation, invoked by the `/create-snapshot` command. This catches issues in the source content (API specs, release-plan, test files) before the snapshot becomes immutable.
 
-#### Handoff model
+**Gate 2: Release review PR validation** (section 8.6) — When the release review PR is created on the snapshot branch, the validation workflow triggers automatically with full scope. This catches issues introduced by the snapshot creation process (bundling errors, transformation mistakes, version string malformations).
 
-The validation framework uploads bundled specs as **workflow artifacts** (artifact handoff). Release automation downloads these artifacts and commits them to the snapshot branch as part of snapshot creation. See section 9.7 for the detailed handoff sequence.
+Together, the two gates ensure that both the source content and the transformed snapshot content are validated independently.
 
-This model was chosen over the alternative (validation creates the snapshot branch directly) because:
-- The validation reusable workflow's checkout is ephemeral — there is no mechanism to hand uncommitted file changes to a different branch without committing and pushing from within the validation job
-- Validation would need `contents: write` permission and knowledge of snapshot branch naming conventions, creating tight coupling to release automation internals
-- The artifact model keeps validation stateless: it produces files and reports results, release automation owns repository state
+#### Bundling responsibility
 
-Bundling runs once, during validation. Release automation consumes the bundled output without re-bundling.
+Release automation bundles independently during snapshot creation. On the snapshot branch, source API definition files (which contain `$ref` to `code/common/` and `code/modules/`) are **replaced** with bundled standalone specs. This is the "swap strategy" described in the [bundling design document](https://github.com/camaraproject/ReleaseManagement/pull/436): the familiar filename (`api-name.yaml`) is retained, but the content is the fully resolved, consumer-ready artifact.
 
-#### Mechanical transformations after bundling
+The validation framework does not produce bundled specs for release automation consumption. Its bundled artifacts (section 9.7) are diagnostic and reviewer aids only. This clean separation keeps validation stateless — it produces findings and diagnostic files, release automation owns repository state.
 
-After release automation downloads the bundled artifacts, the mechanical transformer applies version-specific changes on top of the bundled content:
+#### Mechanical transformations
+
+During snapshot creation, release automation applies version-specific changes after bundling:
 
 - `info.version` replacement (`wip` → calculated release version)
 - Server URL version updates
@@ -671,17 +670,13 @@ After release automation downloads the bundled artifacts, the mechanical transfo
 - Feature file version updates
 - Link replacements
 
-These transformations are release automation's responsibility. The validation framework validates the source content (including bundling); the mechanical transformer produces the final release-ready content.
-
-#### Cache sync at snapshot time
-
-A cache synchronization mismatch is an error in strict profile, blocking snapshot creation. This ensures that `code/common/` content matches the declared `commonalities_release` version before the bundled output is produced and becomes immutable on the snapshot branch.
+These transformations are release automation's responsibility. The validation framework validates the source content; release automation produces the final release-ready content. Gate 2 then validates the transformed result.
 
 ### 7.2 Token and Findings Output for Pre-Snapshot
 
-**Token**: The `camara-release-automation` app token is passed by the release workflow. This is token priority 1 in the layered resolution (section 5.1). The validation framework does not mint this token; it receives it from the caller.
+**Token**: The `camara-release-automation` app token is available in the release automation workflow context. The validation framework runs within this context via the shared `run-validation` composite action (section 8.5).
 
-**Findings output**: Validation findings are reported in the bot's response comment on the Release Issue. The comment includes a structured findings section with error and warning counts, individual findings with fix hints, and a link to the full workflow run for diagnostic artifacts.
+**Findings output**: Validation findings are reported in the bot's response comment on the Release Issue. The release automation workflow reads the validation output files (`summary.md`, `result.json`) from the shared action's output directory and includes the findings in its Release Issue comment.
 
 ### 7.3 File Restriction Check
 
@@ -702,15 +697,15 @@ hint: "Only CHANGELOG.md (or CHANGELOG/ directory) and README.md may be modified
 
 ### 7.4 Pre-Snapshot Invocation Detail
 
-Release automation invokes the validation framework on the same branch on which `/create-snapshot` was called. The framework reads `release-plan.yaml` from that branch to derive all context fields (target release type, API statuses, Commonalities version, etc.).
-
-The only distinction is the `mode` input — a reusable workflow input (alongside `tooling_ref_override` and `profile` from Requirements section 9.2) that tells the framework this is a pre-snapshot invocation rather than a dispatch or PR trigger. Release automation passes `mode: pre-snapshot` when calling the validation workflow.
+Release automation invokes the validation framework via the shared `run-validation` composite action (section 8.5) with `mode: pre-snapshot`. The framework reads `release-plan.yaml` from the checked-out branch to derive all context fields (target release type, API statuses, Commonalities version, etc.).
 
 When `mode` is `pre-snapshot`, the framework:
 - Sets `trigger_type` to `release-automation`
-- Selects the strict profile
-- Produces bundled API specs as output for consumption by release automation (section 7.1)
-- Formats findings for inclusion in a Release Issue comment (not a PR comment)
+- Selects the `release_profile` from the central config (default: `standard`)
+- Runs the full engine pipeline on source files
+- Writes output files (result, summary, findings) to the output directory
+
+The release automation workflow reads the `should_fail` output from the shared action. If `true`, snapshot creation is aborted and findings are included in the Release Issue comment. If `false`, release automation proceeds with bundling and snapshot creation.
 
 The detailed output model (findings format, artifact structure) is defined in section 9.
 
@@ -1026,15 +1021,19 @@ Tooling ref resolution (section 5.6) is implemented as inline workflow steps usi
 
 Per-engine composite actions (pre-bundling, bundling, full-validation, process-findings) were not created — the Python orchestrator handles engine sequencing internally, which simplifies dependency management and testing.
 
-### 8.6 Release Review PR Short Circuit
+### 8.6 Release Review PR — Full Scope Validation
 
-When `is_release_review_pr` is true, the processing flow is shortened:
+When `is_release_review_pr` is true, the framework runs the **complete validation pipeline** — all engines at full scope. This provides the second gate in the two-gate defense-in-depth model (section 7.1).
 
-- **Skip**: Steps 5 (pre-bundling), 6 (bundling), and the Spectral/gherkin/most-Python portions of step 7
-- **Run**: CHANGELOG format check, README validation, file restriction check (section 7.3)
-- **Rationale**: API specs are immutable on the snapshot branch — Spectral checks would be redundant. Release-plan and cache sync were already validated at snapshot creation time (Requirements section 11.2)
+**Profile**: Determined by `release_profile` from the central config (same as pre-snapshot gate).
 
-This is implemented as a conditional skip within the engine orchestration steps, not a separate workflow path. The context builder sets `is_release_review_pr` and subsequent steps check it before executing.
+**Context on snapshot branches**: On the snapshot branch, `release-plan.yaml` is absent — it is removed by the snapshot creator during snapshot creation. The context builder falls back to `release-metadata.yaml` (generated by release automation and present on the snapshot branch) to populate the validation context:
+- `commonalities_release` for Spectral ruleset selection (section 3.3)
+- Per-API metadata (`target_api_version`, `target_api_status`) for Python check context
+
+**File restriction check**: The `is_release_review_pr` flag remains an applicability condition for the file restriction check (section 7.3), which errors if files outside CHANGELOG and README are modified.
+
+**Defense-in-depth rationale**: Running full scope on release-review PRs catches issues introduced by the snapshot creation process — bundling errors, version transformation mistakes, server URL malformations — that could not have been caught by the pre-snapshot gate, which validates source content before these transformations occur.
 
 ---
 

@@ -439,52 +439,48 @@ These fields allow tuning validation strictness per repository without changing 
 
 ## 11. Release Automation Integration
 
-The validation framework integrates with CAMARA release automation at two points in the release lifecycle:
+The validation framework integrates with CAMARA release automation at two points in the release lifecycle, forming a **two-gate defense-in-depth model**:
 
 1. **Pre-snapshot gate** (UC-08) — validation runs on the base branch before snapshot creation. Failure blocks the release process.
-2. **Release review PR validation** (UC-09) — validation runs on the release review PR with strict profile and content restrictions.
+2. **Release review PR validation** (UC-09) — validation runs on the release review PR with full scope.
 
-Both touchpoints use the strict profile (section 2.1): errors and warnings block.
+Both touchpoints use the `release_profile` from the central config (section 10.3, default: `standard`). Together, they provide two independent validation passes: the pre-snapshot gate catches issues in source content on the base branch, while the release-review PR gate catches any issues introduced by the snapshot creation process (bundling, version transformations).
 
 ### 11.1 Pre-Snapshot Validation Gate
 
-Release automation invokes validation as part of the `/create-snapshot` command, before creating any branches. The validation runs on the current HEAD of the base branch — this is exactly the content that will become the snapshot.
+Release automation invokes validation as part of the `/create-snapshot` command, before creating any branches. The validation runs on the current HEAD of the base branch via the shared `run-validation` composite action with `mode: pre-snapshot`.
 
 **Timing**: The release state is PLANNED when `/create-snapshot` is invoked. If validation fails, no snapshot branch is created and the state remains PLANNED.
 
-**Profile**: Strict — both errors and warnings block snapshot creation. Rationale: once a snapshot is created, content becomes immutable. Issues found post-snapshot require discarding and recreating the snapshot.
+**Profile**: Determined by `release_profile` from the central config (default: `standard`). During stabilization, repositories may set `release_profile: strict` to block on warnings.
 
-**Scope**: The validation framework runs all applicable checks — Spectral rules, Python consistency checks, bundling validation, and release-plan semantic checks. This subsumes the existing `validate-release-plan.py` preflight.
+**Scope**: The validation framework runs all applicable checks — Spectral rules, Python consistency checks, and release-plan semantic checks. Release automation bundles independently during snapshot creation — the validation framework does not produce bundled specs for release automation consumption.
 
 | Aspect | Current release-plan preflight | With validation framework |
 |--------|-------------------------------|---------------------------|
-| **Checks** | release-plan.yaml schema + semantics | Full framework: Spectral, Python, bundling, release-plan |
-| **Blocking** | Errors only | Errors and warnings (strict profile) |
+| **Checks** | release-plan.yaml schema + semantics | Full framework: Spectral, Python, release-plan |
+| **Blocking** | Errors only | Depends on `release_profile` (errors for standard, errors + warnings for strict) |
 | **Findings output** | Bot comment with error list | Bot comment with structured findings + fix hints |
 | **Token** | camara-release-automation app | Same (passed to framework) |
 
 ### 11.2 Release Review PR Validation
 
-A release review PR is created by release automation on the `release-review/rX.Y-<sha>` branch, targeting the `release-snapshot/rX.Y-<sha>` branch. It contains only CHANGELOG and README changes — API specs and other files are immutable on the snapshot branch.
+A release review PR is created by release automation on the `release-review/rX.Y-<sha>` branch, targeting the `release-snapshot/rX.Y-<sha>` branch.
 
 **Detection**: The framework detects a release review PR by its target branch pattern (`release-snapshot/**`).
 
-**Profile**: Strict — errors and warnings block the PR.
+**Profile**: Determined by `release_profile` from the central config (same as pre-snapshot gate).
 
-**Which checks run**: Only a subset of checks is meaningful on a release review PR:
+**Scope**: The release review PR runs **full validation** — all engines (yamllint, Spectral, Python checks, gherkin-lint) at full scope. This provides a second validation pass on the snapshot content, catching any issues introduced by the snapshot creation process (bundling, version transformations, server URL replacement).
 
-| Check category | Runs on release review PR | Rationale |
-|----------------|--------------------------|-----------|
-| CHANGELOG format validation | Yes | CHANGELOG is editable on the review branch |
-| README content validation | Yes | README is editable on the review branch |
-| File restriction check | Yes | Only CHANGELOG and README may be modified |
-| Spectral / API definition checks | No | API specs are immutable on the snapshot branch |
-| release-plan.yaml checks | No | Already validated at snapshot creation time |
-| Bundling validation | No | Source files are immutable |
-| Cache sync validation | No | Already validated at snapshot creation time |
-| Release readiness checks (artifact presence by target API status) | No | Already validated at snapshot creation time; artifacts cannot be added or removed on the snapshot branch |
+**Context on snapshot branches**: On the snapshot branch, `release-plan.yaml` is absent (removed by the snapshot creator). The context builder falls back to `release-metadata.yaml` (generated by release automation) to populate the validation context — Commonalities version for Spectral ruleset selection, per-API metadata for Python checks.
 
-**File restriction check**: The framework examines the PR diff and produces an error if any file outside `CHANGELOG.md` (or `CHANGELOG/` directory) and `README.md` is modified.
+**File restriction check**: In addition to full validation, the file restriction check examines the PR diff and produces an error if any file outside `CHANGELOG.md` (or `CHANGELOG/` directory) and `README.md` is modified. This check uses the `is_release_review_pr` applicability condition.
+
+**Defense-in-depth rationale**: While the pre-snapshot gate (section 11.1) validates source content before snapshot creation, the release review PR provides a second gate that validates the transformed snapshot content. This catches:
+- Bundling issues (broken `$ref` resolution, missing components)
+- Transformation errors (malformed version strings, incorrect server URLs)
+- Any issues that existed on the base branch but were not caught by the pre-snapshot gate
 
 ### 11.3 Pre-Snapshot Invocation
 
@@ -507,9 +503,9 @@ An admin needs to verify that an API repository is correctly configured for the 
 
 - **Caller workflow**: The v1 caller workflow file exists in `.github/workflows/` and matches the expected template content
 - **Central config listing**: The repository is listed in the tooling config file (section 10.2) with a valid stage value
-- **GitHub ruleset** (stage 3 only): The v1 validation check is required in the applicable ruleset
+- **GitHub ruleset** (if blocking enforcement desired): The v1 validation check is required in the applicable ruleset
 - **Validation app installation**: The validation GitHub App is installed for the repository
-- **v0 cleanup** (post-transition): The v0 caller file has been removed after v1 is stable at stage 3
+- **v0 cleanup** (post-transition): The v0 caller file has been removed after v1 is stable with blocking ruleset
 
 ### 12.2 Minimal Change Noise Principle
 
