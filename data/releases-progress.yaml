@@ -1,11 +1,11 @@
 metadata:
-  last_updated: '2026-03-29T06:38:07Z'
-  last_checked: '2026-03-29T06:38:07Z'
+  last_updated: '2026-04-01T06:57:02Z'
+  last_checked: '2026-04-01T06:57:02Z'
   releases_master_updated: '2026-03-23T21:37:46.224Z'
   schema_version: 1.4.0
   collector_version: 1.4.0
   repos_scanned: 66
-  repos_with_plan: 38
+  repos_with_plan: 39
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -723,6 +723,56 @@ progress:
       apis:
       - api_name: placeholder-entry
         api_version: null
+- repository: DeviceIdentifier
+  github_url: https://github.com/camaraproject/DeviceIdentifier
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: r2.2
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: device-identifier
+    target_api_version: 0.3.0
+    target_api_status: public
+    main_contacts:
+    - eric-murray
+    - Kevsy
+  state: completed
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: r2.2
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: device-identifier
+        api_version: null
+    m3:
+      release_tag: r2.1
+      release_date: '2025-07-22T11:13:38Z'
+      apis:
+      - api_name: device-identifier
+        api_version: 0.3.0-rc.1
+    m4:
+      release_tag: r2.2
+      release_date: '2025-09-16T16:22:11Z'
+      apis:
+      - api_name: device-identifier
+        api_version: 0.3.0
+  last_published:
+    release_tag: r2.2
+    release_date: '2025-09-16T16:22:11Z'
+    apis:
+    - api_name: device-identifier
+      api_version: 0.3.0
 - repository: DeviceLocation
   github_url: https://github.com/camaraproject/DeviceLocation
   release_track: meta-release
@@ -1774,9 +1824,7 @@ progress:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue:
-      number: 46
-      url: https://github.com/camaraproject/ReleaseTest/issues/46
+    release_issue: null
   published_context:
     latest_public_release: null
     newest_pre_release: r1.3
@@ -2777,51 +2825,6 @@ progress:
       api_version: 0.1.0
     - api_name: device-data-volume
       api_version: 0.1.0
-  source: historical
-- repository: DeviceIdentifier
-  github_url: https://github.com/camaraproject/DeviceIdentifier
-  release_track: meta-release
-  meta_release: Fall25
-  target_release_tag: null
-  target_release_type: null
-  apis:
-  - api_name: device-identifier
-    target_api_version: 0.3.0
-    target_api_status: ''
-  state: historical
-  artifacts:
-    snapshot_branch: null
-    release_pr: null
-    draft_release: null
-    release_issue: null
-  published_context:
-    latest_public_release: null
-    newest_pre_release: null
-  cycle_releases:
-    m1:
-      release_tag: null
-      release_date: null
-      apis:
-      - api_name: device-identifier
-        api_version: null
-    m3:
-      release_tag: r2.1
-      release_date: '2025-07-22T11:13:38Z'
-      apis:
-      - api_name: device-identifier
-        api_version: 0.3.0-rc.1
-    m4:
-      release_tag: r2.2
-      release_date: '2025-09-16T16:22:11Z'
-      apis:
-      - api_name: device-identifier
-        api_version: 0.3.0
-  last_published:
-    release_tag: r2.2
-    release_date: '2025-09-16T16:22:11Z'
-    apis:
-    - api_name: device-identifier
-      api_version: 0.3.0
   source: historical
 - repository: DeviceIdentifier
   github_url: https://github.com/camaraproject/DeviceIdentifier
