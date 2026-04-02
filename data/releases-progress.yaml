@@ -1,11 +1,11 @@
 metadata:
-  last_updated: '2026-04-02T06:44:20Z'
-  last_checked: '2026-04-02T06:44:20Z'
+  last_updated: '2026-04-02T08:03:53Z'
+  last_checked: '2026-04-02T08:03:53Z'
   releases_master_updated: '2026-03-23T21:37:46.224Z'
   schema_version: 1.4.0
   collector_version: 1.4.0
   repos_scanned: 66
-  repos_with_plan: 39
+  repos_with_plan: 45
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -28,7 +28,7 @@ meta_releases:
   m3_achieved: 3
   m4_achieved: 0
 - name: Sync26
-  total_apis: 6
+  total_apis: 9
   m1_achieved: 3
   m3_achieved: 3
   m4_achieved: 0
@@ -434,6 +434,74 @@ progress:
       api_version: 0.1.0-rc.1
   snapshot_api_versions:
     click-to-dial: 0.1.0-rc.1
+- repository: ConnectedNetworkType
+  github_url: https://github.com/camaraproject/ConnectedNetworkType
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: r1.2
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: connected-network-type-subscriptions
+    target_api_version: 0.2.0
+    target_api_status: public
+    main_contacts:
+    - eric-murray
+    - bigludo7
+    - sachinvodafone
+    - akoshunyadi
+  - api_name: connected-network-type
+    target_api_version: 0.2.0
+    target_api_status: public
+    main_contacts:
+    - eric-murray
+    - bigludo7
+    - sachinvodafone
+    - akoshunyadi
+  state: completed
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: r1.2
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: connected-network-type-subscriptions
+        api_version: null
+      - api_name: connected-network-type
+        api_version: null
+    m3:
+      release_tag: r1.1
+      release_date: '2025-07-18T15:40:21Z'
+      apis:
+      - api_name: connected-network-type-subscriptions
+        api_version: 0.2.0-rc.1
+      - api_name: connected-network-type
+        api_version: 0.2.0-rc.1
+    m4:
+      release_tag: r1.2
+      release_date: '2025-09-16T16:21:44Z'
+      apis:
+      - api_name: connected-network-type-subscriptions
+        api_version: 0.2.0
+      - api_name: connected-network-type
+        api_version: 0.2.0
+  last_published:
+    release_tag: r1.2
+    release_date: '2025-09-16T16:21:44Z'
+    apis:
+    - api_name: connected-network-type-subscriptions
+      api_version: 0.2.0
+    - api_name: connected-network-type
+      api_version: 0.2.0
 - repository: ConnectivityInsights
   github_url: https://github.com/camaraproject/ConnectivityInsights
   release_track: meta-release
@@ -596,6 +664,57 @@ progress:
       apis:
       - api_name: consent-management
         api_version: null
+- repository: CustomerInsights
+  github_url: https://github.com/camaraproject/CustomerInsights
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: r2.2
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: customer-insights
+    target_api_version: 0.2.0
+    target_api_status: public
+    main_contacts:
+    - PedroDiez
+    - KevScarr
+    - rartych
+  state: completed
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: r2.2
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: customer-insights
+        api_version: null
+    m3:
+      release_tag: r2.1
+      release_date: '2025-07-11T13:03:43Z'
+      apis:
+      - api_name: customer-insights
+        api_version: 0.2.0-rc.1
+    m4:
+      release_tag: r2.2
+      release_date: '2025-09-11T10:31:53Z'
+      apis:
+      - api_name: customer-insights
+        api_version: 0.2.0
+  last_published:
+    release_tag: r2.2
+    release_date: '2025-09-11T10:31:53Z'
+    apis:
+    - api_name: customer-insights
+      api_version: 0.2.0
 - repository: DedicatedNetworks
   github_url: https://github.com/camaraproject/DedicatedNetworks
   release_track: meta-release
@@ -898,6 +1017,142 @@ progress:
       apis:
       - api_name: placeholder-entry
         api_version: null
+- repository: DeviceReachabilityStatus
+  github_url: https://github.com/camaraproject/DeviceReachabilityStatus
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: r1.2
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: device-reachability-status-subscriptions
+    target_api_version: 0.8.0
+    target_api_status: public
+    main_contacts:
+    - eric-murray
+    - bigludo7
+    - sachinvodafone
+    - akoshunyadi
+  - api_name: device-reachability-status
+    target_api_version: 1.1.0
+    target_api_status: public
+    main_contacts:
+    - eric-murray
+    - bigludo7
+    - sachinvodafone
+    - akoshunyadi
+  state: completed
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: r1.2
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: device-reachability-status-subscriptions
+        api_version: null
+      - api_name: device-reachability-status
+        api_version: null
+    m3:
+      release_tag: r1.1
+      release_date: '2025-07-18T07:21:01Z'
+      apis:
+      - api_name: device-reachability-status-subscriptions
+        api_version: 0.8.0-rc.1
+      - api_name: device-reachability-status
+        api_version: 1.1.0-rc.2
+    m4:
+      release_tag: r1.2
+      release_date: '2025-09-16T12:14:22Z'
+      apis:
+      - api_name: device-reachability-status-subscriptions
+        api_version: 0.8.0
+      - api_name: device-reachability-status
+        api_version: 1.1.0
+  last_published:
+    release_tag: r1.2
+    release_date: '2025-09-16T12:14:22Z'
+    apis:
+    - api_name: device-reachability-status-subscriptions
+      api_version: 0.8.0
+    - api_name: device-reachability-status
+      api_version: 1.1.0
+- repository: DeviceRoamingStatus
+  github_url: https://github.com/camaraproject/DeviceRoamingStatus
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: r1.2
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: device-roaming-status-subscriptions
+    target_api_version: 0.8.0
+    target_api_status: public
+    main_contacts:
+    - eric-murray
+    - bigludo7
+    - sachinvodafone
+    - akoshunyadi
+  - api_name: device-roaming-status
+    target_api_version: 1.1.0
+    target_api_status: public
+    main_contacts:
+    - eric-murray
+    - bigludo7
+    - sachinvodafone
+    - akoshunyadi
+  state: completed
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: r1.2
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: device-roaming-status-subscriptions
+        api_version: null
+      - api_name: device-roaming-status
+        api_version: null
+    m3:
+      release_tag: r1.1
+      release_date: '2025-07-17T15:49:44Z'
+      apis:
+      - api_name: device-roaming-status-subscriptions
+        api_version: 0.8.0-rc.1
+      - api_name: device-roaming-status
+        api_version: 1.1.0-rc.2
+    m4:
+      release_tag: r1.2
+      release_date: '2025-09-16T11:51:25Z'
+      apis:
+      - api_name: device-roaming-status-subscriptions
+        api_version: 0.8.0
+      - api_name: device-roaming-status
+        api_version: 1.1.0
+  last_published:
+    release_tag: r1.2
+    release_date: '2025-09-16T11:51:25Z'
+    apis:
+    - api_name: device-roaming-status-subscriptions
+      api_version: 0.8.0
+    - api_name: device-roaming-status
+      api_version: 1.1.0
 - repository: DeviceSwap
   github_url: https://github.com/camaraproject/DeviceSwap
   release_track: meta-release
@@ -1150,6 +1405,57 @@ progress:
         api_version: null
       - api_name: iot-sim-fraud-prevention-subscriptions
         api_version: null
+- repository: KnowYourCustomerAgeVerification
+  github_url: https://github.com/camaraproject/KnowYourCustomerAgeVerification
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: r1.3
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: kyc-age-verification
+    target_api_version: 0.2.1
+    target_api_status: public
+    main_contacts:
+    - ToshiWakayama-KDDI
+    - fernandopradocabrillo
+    - GillesInnov35
+  state: completed
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: r1.3
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: kyc-age-verification
+        api_version: null
+    m3:
+      release_tag: r1.2
+      release_date: '2025-08-12T08:08:24Z'
+      apis:
+      - api_name: kyc-age-verification
+        api_version: 0.2.1-rc.2
+    m4:
+      release_tag: r1.3
+      release_date: '2025-09-14T03:25:04Z'
+      apis:
+      - api_name: kyc-age-verification
+        api_version: 0.2.1
+  last_published:
+    release_tag: r1.3
+    release_date: '2025-09-14T03:25:04Z'
+    apis:
+    - api_name: kyc-age-verification
+      api_version: 0.2.1
 - repository: MultiPointVPN
   github_url: https://github.com/camaraproject/MultiPointVPN
   release_track: independent
@@ -2213,6 +2519,84 @@ progress:
       api_version: 0.1.0
     - api_name: verified-caller
       api_version: 0.1.0
+- repository: WebRTC
+  github_url: https://github.com/camaraproject/WebRTC
+  release_track: meta-release
+  meta_release: Sync26
+  target_release_tag: r3.1
+  target_release_type: pre-release-rc
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: webrtc-call-handling
+    target_api_version: 0.4.0
+    target_api_status: public
+    main_contacts:
+    - stroncoso
+    - pradeepachar-mavenir
+    - deepakjaiswal1
+    - teikuran
+  - api_name: webrtc-events
+    target_api_version: 0.3.0
+    target_api_status: public
+    main_contacts:
+    - stroncoso
+    - pradeepachar-mavenir
+    - deepakjaiswal1
+    - teikuran
+  - api_name: webrtc-registration
+    target_api_version: 0.4.0
+    target_api_status: public
+    main_contacts:
+    - stroncoso
+    - pradeepachar-mavenir
+    - deepakjaiswal1
+    - teikuran
+  state: planned
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: r2.2
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: webrtc-call-handling
+        api_version: null
+      - api_name: webrtc-events
+        api_version: null
+      - api_name: webrtc-registration
+        api_version: null
+    m3:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: webrtc-call-handling
+        api_version: null
+      - api_name: webrtc-events
+        api_version: null
+      - api_name: webrtc-registration
+        api_version: null
+    m4:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: webrtc-call-handling
+        api_version: null
+      - api_name: webrtc-events
+        api_version: null
+      - api_name: webrtc-registration
+        api_version: null
+  warnings:
+  - code: W005
+    message: Active release plan but no caller workflow installed
+    severity: warning
 - repository: BlockchainPublicAddress
   github_url: https://github.com/camaraproject/BlockchainPublicAddress
   release_track: meta-release
@@ -2460,62 +2844,6 @@ progress:
     - api_name: carrier-billing
       api_version: 0.4.0
   source: historical
-- repository: ConnectedNetworkType
-  github_url: https://github.com/camaraproject/ConnectedNetworkType
-  release_track: meta-release
-  meta_release: Fall25
-  target_release_tag: null
-  target_release_type: null
-  apis:
-  - api_name: connected-network-type-subscriptions
-    target_api_version: 0.2.0
-    target_api_status: ''
-  - api_name: connected-network-type
-    target_api_version: 0.2.0
-    target_api_status: ''
-  state: historical
-  artifacts:
-    snapshot_branch: null
-    release_pr: null
-    draft_release: null
-    release_issue: null
-  published_context:
-    latest_public_release: null
-    newest_pre_release: null
-  cycle_releases:
-    m1:
-      release_tag: null
-      release_date: null
-      apis:
-      - api_name: connected-network-type-subscriptions
-        api_version: null
-      - api_name: connected-network-type
-        api_version: null
-    m3:
-      release_tag: r1.1
-      release_date: '2025-07-18T15:40:21Z'
-      apis:
-      - api_name: connected-network-type-subscriptions
-        api_version: 0.2.0-rc.1
-      - api_name: connected-network-type
-        api_version: 0.2.0-rc.1
-    m4:
-      release_tag: r1.2
-      release_date: '2025-09-16T16:21:44Z'
-      apis:
-      - api_name: connected-network-type-subscriptions
-        api_version: 0.2.0
-      - api_name: connected-network-type
-        api_version: 0.2.0
-  last_published:
-    release_tag: r1.2
-    release_date: '2025-09-16T16:21:44Z'
-    apis:
-    - api_name: connected-network-type-subscriptions
-      api_version: 0.2.0
-    - api_name: connected-network-type
-      api_version: 0.2.0
-  source: historical
 - repository: ConnectivityInsights
   github_url: https://github.com/camaraproject/ConnectivityInsights
   release_track: meta-release
@@ -2694,51 +3022,6 @@ progress:
     apis:
     - api_name: consent-info
       api_version: 0.1.0
-  source: historical
-- repository: CustomerInsights
-  github_url: https://github.com/camaraproject/CustomerInsights
-  release_track: meta-release
-  meta_release: Fall25
-  target_release_tag: null
-  target_release_type: null
-  apis:
-  - api_name: customer-insights
-    target_api_version: 0.2.0
-    target_api_status: ''
-  state: historical
-  artifacts:
-    snapshot_branch: null
-    release_pr: null
-    draft_release: null
-    release_issue: null
-  published_context:
-    latest_public_release: null
-    newest_pre_release: null
-  cycle_releases:
-    m1:
-      release_tag: null
-      release_date: null
-      apis:
-      - api_name: customer-insights
-        api_version: null
-    m3:
-      release_tag: r2.1
-      release_date: '2025-07-11T13:03:43Z'
-      apis:
-      - api_name: customer-insights
-        api_version: 0.2.0-rc.1
-    m4:
-      release_tag: r2.2
-      release_date: '2025-09-11T10:31:53Z'
-      apis:
-      - api_name: customer-insights
-        api_version: 0.2.0
-  last_published:
-    release_tag: r2.2
-    release_date: '2025-09-11T10:31:53Z'
-    apis:
-    - api_name: customer-insights
-      api_version: 0.2.0
   source: historical
 - repository: CustomerInsights
   github_url: https://github.com/camaraproject/CustomerInsights
@@ -3019,118 +3302,6 @@ progress:
       api_version: 0.4.0
     - api_name: location-verification
       api_version: 2.0.0
-  source: historical
-- repository: DeviceReachabilityStatus
-  github_url: https://github.com/camaraproject/DeviceReachabilityStatus
-  release_track: meta-release
-  meta_release: Fall25
-  target_release_tag: null
-  target_release_type: null
-  apis:
-  - api_name: device-reachability-status-subscriptions
-    target_api_version: 0.8.0
-    target_api_status: ''
-  - api_name: device-reachability-status
-    target_api_version: 1.1.0
-    target_api_status: ''
-  state: historical
-  artifacts:
-    snapshot_branch: null
-    release_pr: null
-    draft_release: null
-    release_issue: null
-  published_context:
-    latest_public_release: null
-    newest_pre_release: null
-  cycle_releases:
-    m1:
-      release_tag: null
-      release_date: null
-      apis:
-      - api_name: device-reachability-status-subscriptions
-        api_version: null
-      - api_name: device-reachability-status
-        api_version: null
-    m3:
-      release_tag: r1.1
-      release_date: '2025-07-18T07:21:01Z'
-      apis:
-      - api_name: device-reachability-status-subscriptions
-        api_version: 0.8.0-rc.1
-      - api_name: device-reachability-status
-        api_version: 1.1.0-rc.2
-    m4:
-      release_tag: r1.2
-      release_date: '2025-09-16T12:14:22Z'
-      apis:
-      - api_name: device-reachability-status-subscriptions
-        api_version: 0.8.0
-      - api_name: device-reachability-status
-        api_version: 1.1.0
-  last_published:
-    release_tag: r1.2
-    release_date: '2025-09-16T12:14:22Z'
-    apis:
-    - api_name: device-reachability-status-subscriptions
-      api_version: 0.8.0
-    - api_name: device-reachability-status
-      api_version: 1.1.0
-  source: historical
-- repository: DeviceRoamingStatus
-  github_url: https://github.com/camaraproject/DeviceRoamingStatus
-  release_track: meta-release
-  meta_release: Fall25
-  target_release_tag: null
-  target_release_type: null
-  apis:
-  - api_name: device-roaming-status-subscriptions
-    target_api_version: 0.8.0
-    target_api_status: ''
-  - api_name: device-roaming-status
-    target_api_version: 1.1.0
-    target_api_status: ''
-  state: historical
-  artifacts:
-    snapshot_branch: null
-    release_pr: null
-    draft_release: null
-    release_issue: null
-  published_context:
-    latest_public_release: null
-    newest_pre_release: null
-  cycle_releases:
-    m1:
-      release_tag: null
-      release_date: null
-      apis:
-      - api_name: device-roaming-status-subscriptions
-        api_version: null
-      - api_name: device-roaming-status
-        api_version: null
-    m3:
-      release_tag: r1.1
-      release_date: '2025-07-17T15:49:44Z'
-      apis:
-      - api_name: device-roaming-status-subscriptions
-        api_version: 0.8.0-rc.1
-      - api_name: device-roaming-status
-        api_version: 1.1.0-rc.2
-    m4:
-      release_tag: r1.2
-      release_date: '2025-09-16T11:51:25Z'
-      apis:
-      - api_name: device-roaming-status-subscriptions
-        api_version: 0.8.0
-      - api_name: device-roaming-status
-        api_version: 1.1.0
-  last_published:
-    release_tag: r1.2
-    release_date: '2025-09-16T11:51:25Z'
-    apis:
-    - api_name: device-roaming-status-subscriptions
-      api_version: 0.8.0
-    - api_name: device-roaming-status
-      api_version: 1.1.0
   source: historical
 - repository: DeviceStatus
   github_url: https://github.com/camaraproject/DeviceStatus
@@ -3566,51 +3737,6 @@ progress:
       api_version: 0.3.0
     - api_name: kyc-match
       api_version: 0.3.0
-  source: historical
-- repository: KnowYourCustomerAgeVerification
-  github_url: https://github.com/camaraproject/KnowYourCustomerAgeVerification
-  release_track: meta-release
-  meta_release: Fall25
-  target_release_tag: null
-  target_release_type: null
-  apis:
-  - api_name: kyc-age-verification
-    target_api_version: 0.2.1
-    target_api_status: ''
-  state: historical
-  artifacts:
-    snapshot_branch: null
-    release_pr: null
-    draft_release: null
-    release_issue: null
-  published_context:
-    latest_public_release: null
-    newest_pre_release: null
-  cycle_releases:
-    m1:
-      release_tag: null
-      release_date: null
-      apis:
-      - api_name: kyc-age-verification
-        api_version: null
-    m3:
-      release_tag: r1.2
-      release_date: '2025-08-12T08:08:24Z'
-      apis:
-      - api_name: kyc-age-verification
-        api_version: 0.2.1-rc.2
-    m4:
-      release_tag: r1.3
-      release_date: '2025-09-14T03:25:04Z'
-      apis:
-      - api_name: kyc-age-verification
-        api_version: 0.2.1
-  last_published:
-    release_tag: r1.3
-    release_date: '2025-09-14T03:25:04Z'
-    apis:
-    - api_name: kyc-age-verification
-      api_version: 0.2.1
   source: historical
 - repository: KnowYourCustomerFill-in
   github_url: https://github.com/camaraproject/KnowYourCustomerFill-in
