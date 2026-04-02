@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-04-01T06:57:02Z'
-  last_checked: '2026-04-01T06:57:02Z'
+  last_updated: '2026-04-02T06:44:20Z'
+  last_checked: '2026-04-02T06:44:20Z'
   releases_master_updated: '2026-03-23T21:37:46.224Z'
   schema_version: 1.4.0
   collector_version: 1.4.0
@@ -28,9 +28,9 @@ meta_releases:
   m3_achieved: 3
   m4_achieved: 0
 - name: Sync26
-  total_apis: 5
-  m1_achieved: 2
-  m3_achieved: 2
+  total_apis: 6
+  m1_achieved: 3
+  m3_achieved: 3
   m4_achieved: 0
 progress:
 - repository: ApplicationEndpointDiscovery
@@ -1816,7 +1816,12 @@ progress:
     - hdamker-bot
   - api_name: sample-service
     target_api_version: 0.1.0
-    target_api_status: alpha
+    target_api_status: rc
+    main_contacts:
+    - hdamker-bot
+  - api_name: sample-service-subscriptions
+    target_api_version: 0.1.0
+    target_api_status: rc
     main_contacts:
     - hdamker-bot
   state: planned
@@ -1824,7 +1829,9 @@ progress:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 60
+      url: https://github.com/camaraproject/ReleaseTest/issues/60
   published_context:
     latest_public_release: null
     newest_pre_release: r1.3
@@ -1837,6 +1844,8 @@ progress:
         api_version: 1.0.0-alpha.1
       - api_name: sample-service
         api_version: null
+      - api_name: sample-service-subscriptions
+        api_version: null
     m3:
       release_tag: r1.2
       release_date: '2026-03-05T15:48:16Z'
@@ -1844,6 +1853,8 @@ progress:
       - api_name: release-test
         api_version: 1.0.0-rc.1
       - api_name: sample-service
+        api_version: null
+      - api_name: sample-service-subscriptions
         api_version: null
     m4:
       release_tag: null
@@ -1853,6 +1864,8 @@ progress:
         api_version: null
       - api_name: sample-service
         api_version: null
+      - api_name: sample-service-subscriptions
+        api_version: null
   last_published:
     release_tag: r1.3
     release_date: '2026-03-10T09:09:24Z'
@@ -1860,6 +1873,8 @@ progress:
     - api_name: release-test
       api_version: 1.0.0-rc.2
     - api_name: sample-service
+      api_version: null
+    - api_name: sample-service-subscriptions
       api_version: null
 - repository: SessionInsights
   github_url: https://github.com/camaraproject/SessionInsights
