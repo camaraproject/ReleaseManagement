@@ -1,11 +1,11 @@
 metadata:
-  last_updated: '2026-04-02T08:03:53Z'
-  last_checked: '2026-04-02T08:03:53Z'
+  last_updated: '2026-04-03T06:41:26Z'
+  last_checked: '2026-04-03T06:41:26Z'
   releases_master_updated: '2026-03-23T21:37:46.224Z'
   schema_version: 1.4.0
   collector_version: 1.4.0
   repos_scanned: 66
-  repos_with_plan: 45
+  repos_with_plan: 48
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -1456,6 +1456,108 @@ progress:
     apis:
     - api_name: kyc-age-verification
       api_version: 0.2.1
+- repository: KnowYourCustomerFill-in
+  github_url: https://github.com/camaraproject/KnowYourCustomerFill-in
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: r1.3
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: kyc-fill-in
+    target_api_version: 0.4.1
+    target_api_status: public
+    main_contacts:
+    - ToshiWakayama-KDDI
+    - fernandopradocabrillo
+    - GillesInnov35
+  state: completed
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: r1.3
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: kyc-fill-in
+        api_version: null
+    m3:
+      release_tag: r1.1
+      release_date: '2025-07-22T09:43:39Z'
+      apis:
+      - api_name: kyc-fill-in
+        api_version: 0.4.0-rc.1
+    m4:
+      release_tag: r1.2
+      release_date: '2025-09-15T02:58:21Z'
+      apis:
+      - api_name: kyc-fill-in
+        api_version: 0.4.0
+  last_published:
+    release_tag: r1.3
+    release_date: '2025-12-15T09:02:43Z'
+    apis:
+    - api_name: kyc-fill-in
+      api_version: 0.4.1
+- repository: KnowYourCustomerMatch
+  github_url: https://github.com/camaraproject/KnowYourCustomerMatch
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: r1.2
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: kyc-match
+    target_api_version: 0.4.0
+    target_api_status: public
+    main_contacts:
+    - ToshiWakayama-KDDI
+    - fernandopradocabrillo
+    - GillesInnov35
+  state: completed
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: r1.2
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: kyc-match
+        api_version: null
+    m3:
+      release_tag: r1.1
+      release_date: '2025-07-22T09:51:48Z'
+      apis:
+      - api_name: kyc-match
+        api_version: 0.4.0-rc.1
+    m4:
+      release_tag: r1.2
+      release_date: '2025-09-14T03:35:29Z'
+      apis:
+      - api_name: kyc-match
+        api_version: 0.4.0
+  last_published:
+    release_tag: r1.2
+    release_date: '2025-09-14T03:35:29Z'
+    apis:
+    - api_name: kyc-match
+      api_version: 0.4.0
 - repository: MultiPointVPN
   github_url: https://github.com/camaraproject/MultiPointVPN
   release_track: independent
@@ -2130,10 +2232,13 @@ progress:
     target_api_status: rc
     main_contacts:
     - hdamker-bot
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r1.4-bbeb6cf
+    release_pr:
+      number: 65
+      state: open
+      url: https://github.com/camaraproject/ReleaseTest/pull/65
     draft_release: null
     release_issue:
       number: 60
@@ -2182,6 +2287,10 @@ progress:
       api_version: null
     - api_name: sample-service-subscriptions
       api_version: null
+  snapshot_api_versions:
+    release-test: 1.0.0-rc.3
+    sample-service: 0.1.0-rc.1
+    sample-service-subscriptions: 0.1.0-rc.1
 - repository: SessionInsights
   github_url: https://github.com/camaraproject/SessionInsights
   release_track: independent
@@ -2398,6 +2507,58 @@ progress:
     apis:
     - api_name: subscription-status
       api_version: 0.1.0
+- repository: Tenure
+  github_url: https://github.com/camaraproject/Tenure
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: r2.2
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: kyc-tenure
+    target_api_version: 0.2.0
+    target_api_status: public
+    main_contacts:
+    - eric-murray
+    - GillesInnov35
+    - grgpapadopoulos
+    - fernandopradocabrillo
+  state: completed
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: r2.2
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis:
+      - api_name: kyc-tenure
+        api_version: null
+    m3:
+      release_tag: r2.1
+      release_date: '2025-07-17T10:37:29Z'
+      apis:
+      - api_name: kyc-tenure
+        api_version: 0.2.0-rc.1
+    m4:
+      release_tag: r2.2
+      release_date: '2025-09-19T12:07:15Z'
+      apis:
+      - api_name: kyc-tenure
+        api_version: 0.2.0
+  last_published:
+    release_tag: r2.2
+    release_date: '2025-09-19T12:07:15Z'
+    apis:
+    - api_name: kyc-tenure
+      api_version: 0.2.0
 - repository: TrafficInfluence
   github_url: https://github.com/camaraproject/TrafficInfluence
   release_track: meta-release
@@ -3738,96 +3899,6 @@ progress:
     - api_name: kyc-match
       api_version: 0.3.0
   source: historical
-- repository: KnowYourCustomerFill-in
-  github_url: https://github.com/camaraproject/KnowYourCustomerFill-in
-  release_track: meta-release
-  meta_release: Fall25
-  target_release_tag: null
-  target_release_type: null
-  apis:
-  - api_name: kyc-fill-in
-    target_api_version: 0.4.0
-    target_api_status: ''
-  state: historical
-  artifacts:
-    snapshot_branch: null
-    release_pr: null
-    draft_release: null
-    release_issue: null
-  published_context:
-    latest_public_release: null
-    newest_pre_release: null
-  cycle_releases:
-    m1:
-      release_tag: null
-      release_date: null
-      apis:
-      - api_name: kyc-fill-in
-        api_version: null
-    m3:
-      release_tag: r1.1
-      release_date: '2025-07-22T09:43:39Z'
-      apis:
-      - api_name: kyc-fill-in
-        api_version: 0.4.0-rc.1
-    m4:
-      release_tag: r1.2
-      release_date: '2025-09-15T02:58:21Z'
-      apis:
-      - api_name: kyc-fill-in
-        api_version: 0.4.0
-  last_published:
-    release_tag: r1.3
-    release_date: '2025-12-15T09:02:43Z'
-    apis:
-    - api_name: kyc-fill-in
-      api_version: 0.4.1
-  source: historical
-- repository: KnowYourCustomerMatch
-  github_url: https://github.com/camaraproject/KnowYourCustomerMatch
-  release_track: meta-release
-  meta_release: Fall25
-  target_release_tag: null
-  target_release_type: null
-  apis:
-  - api_name: kyc-match
-    target_api_version: 0.4.0
-    target_api_status: ''
-  state: historical
-  artifacts:
-    snapshot_branch: null
-    release_pr: null
-    draft_release: null
-    release_issue: null
-  published_context:
-    latest_public_release: null
-    newest_pre_release: null
-  cycle_releases:
-    m1:
-      release_tag: null
-      release_date: null
-      apis:
-      - api_name: kyc-match
-        api_version: null
-    m3:
-      release_tag: r1.1
-      release_date: '2025-07-22T09:51:48Z'
-      apis:
-      - api_name: kyc-match
-        api_version: 0.4.0-rc.1
-    m4:
-      release_tag: r1.2
-      release_date: '2025-09-14T03:35:29Z'
-      apis:
-      - api_name: kyc-match
-        api_version: 0.4.0
-  last_published:
-    release_tag: r1.2
-    release_date: '2025-09-14T03:35:29Z'
-    apis:
-    - api_name: kyc-match
-      api_version: 0.4.0
-  source: historical
 - repository: ModelAsAService
   github_url: https://github.com/camaraproject/ModelAsAService
   release_track: meta-release
@@ -4836,51 +4907,6 @@ progress:
     apis:
     - api_name: simple-edge-discovery
       api_version: 1.0.0
-  source: historical
-- repository: Tenure
-  github_url: https://github.com/camaraproject/Tenure
-  release_track: meta-release
-  meta_release: Fall25
-  target_release_tag: null
-  target_release_type: null
-  apis:
-  - api_name: kyc-tenure
-    target_api_version: 0.2.0
-    target_api_status: ''
-  state: historical
-  artifacts:
-    snapshot_branch: null
-    release_pr: null
-    draft_release: null
-    release_issue: null
-  published_context:
-    latest_public_release: null
-    newest_pre_release: null
-  cycle_releases:
-    m1:
-      release_tag: null
-      release_date: null
-      apis:
-      - api_name: kyc-tenure
-        api_version: null
-    m3:
-      release_tag: r2.1
-      release_date: '2025-07-17T10:37:29Z'
-      apis:
-      - api_name: kyc-tenure
-        api_version: 0.2.0-rc.1
-    m4:
-      release_tag: r2.2
-      release_date: '2025-09-19T12:07:15Z'
-      apis:
-      - api_name: kyc-tenure
-        api_version: 0.2.0
-  last_published:
-    release_tag: r2.2
-    release_date: '2025-09-19T12:07:15Z'
-    apis:
-    - api_name: kyc-tenure
-      api_version: 0.2.0
   source: historical
 - repository: Tenure
   github_url: https://github.com/camaraproject/Tenure
