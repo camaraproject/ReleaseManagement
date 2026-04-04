@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-04-03T06:41:26Z'
-  last_checked: '2026-04-03T06:41:26Z'
+  last_updated: '2026-04-04T06:15:47Z'
+  last_checked: '2026-04-04T06:15:47Z'
   releases_master_updated: '2026-03-23T21:37:46.224Z'
   schema_version: 1.4.0
   collector_version: 1.4.0
@@ -2236,9 +2236,9 @@ progress:
   artifacts:
     snapshot_branch: release-snapshot/r1.4-bbeb6cf
     release_pr:
-      number: 65
+      number: 66
       state: open
-      url: https://github.com/camaraproject/ReleaseTest/pull/65
+      url: https://github.com/camaraproject/ReleaseTest/pull/66
     draft_release: null
     release_issue:
       number: 60
