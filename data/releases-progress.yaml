@@ -1,11 +1,13 @@
 metadata:
-  last_updated: '2026-04-04T06:15:47Z'
-  last_checked: '2026-04-04T06:15:47Z'
+  last_updated: '2026-04-04T12:43:02Z'
+  last_checked: '2026-04-04T12:43:02Z'
   releases_master_updated: '2026-03-23T21:37:46.224Z'
-  schema_version: 1.4.0
-  collector_version: 1.4.0
+  schema_version: 1.5.0
+  collector_version: 1.5.0
   repos_scanned: 66
   repos_with_plan: 48
+  repos_fully_onboarded: 8
+  repos_with_release_issue: 5
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -68,9 +70,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: application-endpoint-discovery
-        api_version: null
+      apis: []
     m3:
       release_tag: r1.1
       release_date: '2025-07-24T10:18:04Z'
@@ -124,9 +124,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: application-endpoint-registration
-        api_version: null
+      apis: []
     m3:
       release_tag: r1.1
       release_date: '2025-07-31T09:55:23Z'
@@ -175,9 +173,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: application-profiles
-        api_version: null
+      apis: []
     m3:
       release_tag: r1.1
       release_date: '2025-07-29T16:08:11Z'
@@ -235,11 +231,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: blockchain-public-address-validation
-        api_version: null
-      - api_name: blockchain-public-address
-        api_version: null
+      apis: []
     m3:
       release_tag: r2.1
       release_date: '2025-07-29T09:11:51Z'
@@ -352,11 +344,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: carrier-billing-refund
-        api_version: null
-      - api_name: carrier-billing
-        api_version: null
+      apis: []
     m3:
       release_tag: r3.1
       release_date: '2025-07-18T13:41:49Z'
@@ -423,9 +411,7 @@ progress:
     m4:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: click-to-dial
-        api_version: null
+      apis: []
   last_published:
     release_tag: r1.2
     release_date: '2026-03-09T15:09:22Z'
@@ -473,11 +459,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: connected-network-type-subscriptions
-        api_version: null
-      - api_name: connected-network-type
-        api_version: null
+      apis: []
     m3:
       release_tag: r1.1
       release_date: '2025-07-18T15:40:21Z'
@@ -539,11 +521,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: connectivity-insights-subscriptions
-        api_version: null
-      - api_name: connectivity-insights
-        api_version: null
+      apis: []
     m3:
       release_tag: r3.1
       release_date: '2025-08-01T11:12:36Z'
@@ -597,9 +575,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: consent-info
-        api_version: null
+      apis: []
     m3:
       release_tag: r2.1
       release_date: '2026-02-05T10:25:58Z'
@@ -649,21 +625,15 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: consent-management
-        api_version: null
+      apis: []
     m3:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: consent-management
-        api_version: null
+      apis: []
     m4:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: consent-management
-        api_version: null
+      apis: []
 - repository: CustomerInsights
   github_url: https://github.com/camaraproject/CustomerInsights
   release_track: meta-release
@@ -694,9 +664,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: customer-insights
-        api_version: null
+      apis: []
     m3:
       release_tag: r2.1
       release_date: '2025-07-11T13:03:43Z'
@@ -762,13 +730,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: dedicated-network-accesses
-        api_version: null
-      - api_name: dedicated-network-profiles
-        api_version: null
-      - api_name: dedicated-network
-        api_version: null
+      apis: []
     m3:
       release_tag: r1.1
       release_date: '2025-07-21T11:45:44Z'
@@ -827,21 +789,15 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: placeholder-entry
-        api_version: null
+      apis: []
     m3:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: placeholder-entry
-        api_version: null
+      apis: []
     m4:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: placeholder-entry
-        api_version: null
+      apis: []
 - repository: DeviceIdentifier
   github_url: https://github.com/camaraproject/DeviceIdentifier
   release_track: meta-release
@@ -871,9 +827,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: device-identifier
-        api_version: null
+      apis: []
     m3:
       release_tag: r2.1
       release_date: '2025-07-22T11:13:38Z'
@@ -936,13 +890,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: geofencing-subscriptions
-        api_version: null
-      - api_name: location-retrieval
-        api_version: null
-      - api_name: location-verification
-        api_version: null
+      apis: []
     m3:
       release_tag: r3.1
       release_date: '2025-07-17T14:45:50Z'
@@ -1002,21 +950,15 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: placeholder-entry
-        api_version: null
+      apis: []
     m3:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: placeholder-entry
-        api_version: null
+      apis: []
     m4:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: placeholder-entry
-        api_version: null
+      apis: []
 - repository: DeviceReachabilityStatus
   github_url: https://github.com/camaraproject/DeviceReachabilityStatus
   release_track: meta-release
@@ -1056,11 +998,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: device-reachability-status-subscriptions
-        api_version: null
-      - api_name: device-reachability-status
-        api_version: null
+      apis: []
     m3:
       release_tag: r1.1
       release_date: '2025-07-18T07:21:01Z'
@@ -1124,11 +1062,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: device-roaming-status-subscriptions
-        api_version: null
-      - api_name: device-roaming-status
-        api_version: null
+      apis: []
     m3:
       release_tag: r1.1
       release_date: '2025-07-17T15:49:44Z'
@@ -1183,9 +1117,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: device-swap
-        api_version: null
+      apis: []
     m3:
       release_tag: r3.1
       release_date: '2025-07-23T09:43:47Z'
@@ -1239,8 +1171,8 @@ progress:
       release_tag: r1.2
       release_date: '2025-08-01T07:51:12Z'
       apis:
-      - api_name: energy-footprint-notification
-        api_version: null
+      - api_name: energy-footprint
+        api_version: 0.1.0-rc.1
     m4:
       release_tag: r1.3
       release_date: '2025-09-15T06:25:58Z'
@@ -1283,21 +1215,15 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: placeholder-entry
-        api_version: null
+      apis: []
     m3:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: placeholder-entry
-        api_version: null
+      apis: []
     m4:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: placeholder-entry
-        api_version: null
+      apis: []
 - repository: IoTNetworkOptimization
   github_url: https://github.com/camaraproject/IoTNetworkOptimization
   release_track: independent
@@ -1333,15 +1259,11 @@ progress:
     m3:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: iot-network-optimization
-        api_version: null
+      apis: []
     m4:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: iot-network-optimization
-        api_version: null
+      apis: []
   last_published:
     release_tag: r1.1
     release_date: '2025-12-11T13:11:28Z'
@@ -1384,27 +1306,15 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: iot-sim-fraud-prevention
-        api_version: null
-      - api_name: iot-sim-fraud-prevention-subscriptions
-        api_version: null
+      apis: []
     m3:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: iot-sim-fraud-prevention
-        api_version: null
-      - api_name: iot-sim-fraud-prevention-subscriptions
-        api_version: null
+      apis: []
     m4:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: iot-sim-fraud-prevention
-        api_version: null
-      - api_name: iot-sim-fraud-prevention-subscriptions
-        api_version: null
+      apis: []
 - repository: KnowYourCustomerAgeVerification
   github_url: https://github.com/camaraproject/KnowYourCustomerAgeVerification
   release_track: meta-release
@@ -1435,9 +1345,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: kyc-age-verification
-        api_version: null
+      apis: []
     m3:
       release_tag: r1.2
       release_date: '2025-08-12T08:08:24Z'
@@ -1486,9 +1394,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: kyc-fill-in
-        api_version: null
+      apis: []
     m3:
       release_tag: r1.1
       release_date: '2025-07-22T09:43:39Z'
@@ -1537,9 +1443,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: kyc-match
-        api_version: null
+      apis: []
     m3:
       release_tag: r1.1
       release_date: '2025-07-22T09:51:48Z'
@@ -1588,21 +1492,15 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: multi-point-vpn
-        api_version: null
+      apis: []
     m3:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: multi-point-vpn
-        api_version: null
+      apis: []
     m4:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: multi-point-vpn
-        api_version: null
+      apis: []
 - repository: NetworkAccessManagement
   github_url: https://github.com/camaraproject/NetworkAccessManagement
   release_track: independent
@@ -1633,21 +1531,15 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: placeholder-entry
-        api_version: null
+      apis: []
     m3:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: placeholder-entry
-        api_version: null
+      apis: []
     m4:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: placeholder-entry
-        api_version: null
+      apis: []
 - repository: NetworkInsights
   github_url: https://github.com/camaraproject/NetworkInsights
   release_track: independent
@@ -1682,27 +1574,15 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: network-health-assessment
-        api_version: null
-      - api_name: network-traffic-analysis
-        api_version: null
+      apis: []
     m3:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: network-health-assessment
-        api_version: null
-      - api_name: network-traffic-analysis
-        api_version: null
+      apis: []
     m4:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: network-health-assessment
-        api_version: null
-      - api_name: network-traffic-analysis
-        api_version: null
+      apis: []
 - repository: NetworkSliceBooking
   github_url: https://github.com/camaraproject/NetworkSliceBooking
   release_track: meta-release
@@ -1740,35 +1620,27 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: network-slice-booking
-        api_version: null
-      - api_name: network-slice-assignment
-        api_version: null
+      apis: []
     m3:
       release_tag: r2.1
       release_date: '2026-03-11T02:25:30Z'
       apis:
-      - api_name: network-slice-booking
-        api_version: 0.2.0-rc.1
       - api_name: network-slice-assignment
         api_version: 0.1.0-rc.1
+      - api_name: network-slice-booking
+        api_version: 0.2.0-rc.1
     m4:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: network-slice-booking
-        api_version: null
-      - api_name: network-slice-assignment
-        api_version: null
+      apis: []
   last_published:
     release_tag: r2.1
     release_date: '2026-03-11T02:25:30Z'
     apis:
-    - api_name: network-slice-booking
-      api_version: 0.2.0-rc.1
     - api_name: network-slice-assignment
       api_version: 0.1.0-rc.1
+    - api_name: network-slice-booking
+      api_version: 0.2.0-rc.1
 - repository: NumberVerification
   github_url: https://github.com/camaraproject/NumberVerification
   release_track: meta-release
@@ -1799,9 +1671,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: number-verification
-        api_version: null
+      apis: []
     m3:
       release_tag: r3.1
       release_date: '2025-07-18T09:18:23Z'
@@ -1855,9 +1725,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: optimal-edge-discovery
-        api_version: null
+      apis: []
     m3:
       release_tag: r1.1
       release_date: '2025-07-30T16:41:18Z'
@@ -1905,9 +1773,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: one-time-password-sms
-        api_version: null
+      apis: []
     m3:
       release_tag: r3.1
       release_date: '2025-07-24T08:58:13Z'
@@ -1955,9 +1821,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: predictive-connectivity-data
-        api_version: null
+      apis: []
     m3:
       release_tag: r1.1
       release_date: '2025-07-24T08:21:30Z'
@@ -2011,11 +1875,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: qos-booking-and-assignment
-        api_version: null
-      - api_name: qos-booking
-        api_version: null
+      apis: []
     m3:
       release_tag: r1.1
       release_date: '2025-07-17T16:26:18Z'
@@ -2087,33 +1947,15 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: qos-profiles
-        api_version: null
-      - api_name: qos-provisioning
-        api_version: null
-      - api_name: quality-on-demand
-        api_version: null
+      apis: []
     m3:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: qos-profiles
-        api_version: null
-      - api_name: qos-provisioning
-        api_version: null
-      - api_name: quality-on-demand
-        api_version: null
+      apis: []
     m4:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: qos-profiles
-        api_version: null
-      - api_name: qos-provisioning
-        api_version: null
-      - api_name: quality-on-demand
-        api_version: null
+      apis: []
 - repository: RainfallIntensity
   github_url: https://github.com/camaraproject/RainfallIntensity
   release_track: independent
@@ -2141,21 +1983,15 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: rainfall-intensity
-        api_version: null
+      apis: []
     m3:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: rainfall-intensity
-        api_version: null
+      apis: []
     m4:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: rainfall-intensity
-        api_version: null
+      apis: []
 - repository: RegionDeviceCount
   github_url: https://github.com/camaraproject/RegionDeviceCount
   release_track: meta-release
@@ -2186,9 +2022,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: region-device-count
-        api_version: null
+      apis: []
     m3:
       release_tag: r2.1
       release_date: '2025-07-25T08:52:58Z'
@@ -2253,40 +2087,22 @@ progress:
       apis:
       - api_name: release-test
         api_version: 1.0.0-alpha.1
-      - api_name: sample-service
-        api_version: null
-      - api_name: sample-service-subscriptions
-        api_version: null
     m3:
       release_tag: r1.2
       release_date: '2026-03-05T15:48:16Z'
       apis:
       - api_name: release-test
         api_version: 1.0.0-rc.1
-      - api_name: sample-service
-        api_version: null
-      - api_name: sample-service-subscriptions
-        api_version: null
     m4:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: release-test
-        api_version: null
-      - api_name: sample-service
-        api_version: null
-      - api_name: sample-service-subscriptions
-        api_version: null
+      apis: []
   last_published:
     release_tag: r1.3
     release_date: '2026-03-10T09:09:24Z'
     apis:
     - api_name: release-test
       api_version: 1.0.0-rc.2
-    - api_name: sample-service
-      api_version: null
-    - api_name: sample-service-subscriptions
-      api_version: null
   snapshot_api_versions:
     release-test: 1.0.0-rc.3
     sample-service: 0.1.0-rc.1
@@ -2322,21 +2138,15 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: session-insights
-        api_version: null
+      apis: []
     m3:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: session-insights
-        api_version: null
+      apis: []
     m4:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: session-insights
-        api_version: null
+      apis: []
 - repository: SimpleEdgeDiscovery
   github_url: https://github.com/camaraproject/SimpleEdgeDiscovery
   release_track: meta-release
@@ -2368,9 +2178,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: simple-edge-discovery
-        api_version: null
+      apis: []
     m3:
       release_tag: r2.1
       release_date: '2025-07-22T16:29:30Z'
@@ -2426,11 +2234,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: sim-swap-subscriptions
-        api_version: null
-      - api_name: sim-swap
-        api_version: null
+      apis: []
     m3:
       release_tag: r3.1
       release_date: '2025-07-18T09:52:55Z'
@@ -2486,9 +2290,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: subscription-status
-        api_version: null
+      apis: []
     m3:
       release_tag: r1.1
       release_date: '2025-07-24T07:59:09Z'
@@ -2538,9 +2340,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: kyc-tenure
-        api_version: null
+      apis: []
     m3:
       release_tag: r2.1
       release_date: '2025-07-17T10:37:29Z'
@@ -2651,11 +2451,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: brand-registration
-        api_version: null
-      - api_name: verified-caller
-        api_version: null
+      apis: []
     m3:
       release_tag: r1.1
       release_date: '2025-07-18T11:34:25Z'
@@ -2727,33 +2523,15 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: webrtc-call-handling
-        api_version: null
-      - api_name: webrtc-events
-        api_version: null
-      - api_name: webrtc-registration
-        api_version: null
+      apis: []
     m3:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: webrtc-call-handling
-        api_version: null
-      - api_name: webrtc-events
-        api_version: null
-      - api_name: webrtc-registration
-        api_version: null
+      apis: []
     m4:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: webrtc-call-handling
-        api_version: null
-      - api_name: webrtc-events
-        api_version: null
-      - api_name: webrtc-registration
-        api_version: null
+      apis: []
   warnings:
   - code: W005
     message: Active release plan but no caller workflow installed
@@ -2781,9 +2559,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: blockchain-public-address
-        api_version: null
+      apis: []
     m3:
       release_tag: r1.1
       release_date: '2025-02-20T07:58:47Z'
@@ -2826,9 +2602,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: call-forwarding-signal
-        api_version: null
+      apis: []
     m3:
       release_tag: r1.1
       release_date: '2024-07-19T11:48:23Z'
@@ -2871,9 +2645,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: call-forwarding-signal
-        api_version: null
+      apis: []
     m3:
       release_tag: r2.1
       release_date: '2025-02-11T08:54:20Z'
@@ -2919,19 +2691,15 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: carrier-billing-refund
-        api_version: null
-      - api_name: carrier-billing
-        api_version: null
+      apis: []
     m3:
       release_tag: r1.1
       release_date: '2024-08-13T13:15:38Z'
       apis:
-      - api_name: carrier-billing-refund
-        api_version: 0.1.0-rc.1
       - api_name: carrier-billing
         api_version: 0.3.0-rc.1
+      - api_name: carrier-billing-refund
+        api_version: 0.1.0-rc.1
     m4:
       release_tag: r1.2
       release_date: '2024-09-05T15:39:42Z'
@@ -2975,11 +2743,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: carrier-billing-refund
-        api_version: null
-      - api_name: carrier-billing
-        api_version: null
+      apis: []
     m3:
       release_tag: r2.1
       release_date: '2025-01-30T17:29:07Z'
@@ -3034,21 +2798,15 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: application-profiles
-        api_version: null
-      - api_name: connectivity-insights-subscriptions
-        api_version: null
-      - api_name: connectivity-insights
-        api_version: null
+      apis: []
     m3:
       release_tag: r1.1
       release_date: '2024-08-23T16:54:17Z'
       apis:
       - api_name: application-profiles
         api_version: 0.3.0-rc.1
-      - api_name: connectivity-insights-subscriptions
-        api_version: null
+      - api_name: v0.4rc1
+        api_version: 0.4.0-rc.1
       - api_name: connectivity-insights
         api_version: 0.4.0-rc.1
     m4:
@@ -3101,13 +2859,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: application-profiles
-        api_version: null
-      - api_name: connectivity-insights-subscriptions
-        api_version: null
-      - api_name: connectivity-insights
-        api_version: null
+      apis: []
     m3:
       release_tag: r2.1
       release_date: '2025-02-18T15:52:17Z'
@@ -3162,9 +2914,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: consent-info
-        api_version: null
+      apis: []
     m3:
       release_tag: r1.1
       release_date: '2025-07-11T12:49:50Z'
@@ -3207,9 +2957,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: customer-insights
-        api_version: null
+      apis: []
     m3:
       release_tag: r1.1
       release_date: '2025-02-07T13:08:06Z'
@@ -3359,13 +3107,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: geofencing-subscriptions
-        api_version: null
-      - api_name: location-retrieval
-        api_version: null
-      - api_name: location-verification
-        api_version: null
+      apis: []
     m3:
       release_tag: r1.1
       release_date: '2024-08-09T08:18:03Z'
@@ -3426,13 +3168,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: geofencing-subscriptions
-        api_version: null
-      - api_name: location-retrieval
-        api_version: null
-      - api_name: location-verification
-        api_version: null
+      apis: []
     m3:
       release_tag: r2.1
       release_date: '2025-02-05T10:18:17Z'
@@ -3496,15 +3232,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: device-reachability-status-subscriptions
-        api_version: null
-      - api_name: device-reachability-status
-        api_version: null
-      - api_name: device-roaming-status-subscriptions
-        api_version: null
-      - api_name: device-roaming-status
-        api_version: null
+      apis: []
     m3:
       release_tag: r1.1
       release_date: '2024-08-02T06:43:41Z'
@@ -3580,19 +3308,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: connected-network-type-subscriptions
-        api_version: null
-      - api_name: connected-network-type
-        api_version: null
-      - api_name: device-reachability-status-subscriptions
-        api_version: null
-      - api_name: device-reachability-status
-        api_version: null
-      - api_name: device-roaming-status-subscriptions
-        api_version: null
-      - api_name: device-roaming-status
-        api_version: null
+      apis: []
     m3:
       release_tag: r2.1
       release_date: '2025-02-14T21:28:48Z'
@@ -3664,9 +3380,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: device-swap
-        api_version: null
+      apis: []
     m3:
       release_tag: r1.1
       release_date: '2024-10-30T11:19:23Z'
@@ -3709,9 +3423,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: device-swap
-        api_version: null
+      apis: []
     m3:
       release_tag: r2.1
       release_date: '2025-02-13T09:05:11Z'
@@ -3754,9 +3466,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: home-devices-qod
-        api_version: null
+      apis: []
     m3:
       release_tag: r1.1
       release_date: '2024-08-05T11:47:40Z'
@@ -3802,11 +3512,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: kyc-fill-in
-        api_version: null
-      - api_name: kyc-match
-        api_version: null
+      apis: []
     m3:
       release_tag: r1.1
       release_date: '2024-08-13T10:09:52Z'
@@ -3861,13 +3567,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: kyc-age-verification
-        api_version: null
-      - api_name: kyc-fill-in
-        api_version: null
-      - api_name: kyc-match
-        api_version: null
+      apis: []
     m3:
       release_tag: r2.1
       release_date: '2025-02-13T10:27:25Z'
@@ -3928,13 +3628,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: knowledge-base
-        api_version: null
-      - api_name: qa-assistant-manage
-        api_version: null
-      - api_name: qa-assistant-service
-        api_version: null
+      apis: []
     m3:
       release_tag: r1.1
       release_date: '2025-07-24T10:54:35Z'
@@ -3989,9 +3683,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: most-frequent-location
-        api_version: null
+      apis: []
     m3:
       release_tag: r2.1
       release_date: '2025-07-30T07:42:05Z'
@@ -4033,9 +3725,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: most-frequent-location
-        api_version: null
+      apis: []
     m3:
       release_tag: r1.1
       release_date: '2024-12-11T09:41:11Z'
@@ -4078,9 +3768,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: network-slice-booking
-        api_version: null
+      apis: []
     m3:
       release_tag: r1.1
       release_date: '2025-08-01T08:01:19Z'
@@ -4123,9 +3811,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: number-recycling
-        api_version: null
+      apis: []
     m3:
       release_tag: r2.1
       release_date: '2025-07-28T17:59:55Z'
@@ -4168,9 +3854,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: number-recycling
-        api_version: null
+      apis: []
     m3:
       release_tag: r1.1
       release_date: '2025-02-18T21:33:53Z'
@@ -4213,9 +3897,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: number-verification
-        api_version: null
+      apis: []
     m3:
       release_tag: r1.1
       release_date: '2024-08-16T17:25:41Z'
@@ -4258,9 +3940,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: number-verification
-        api_version: null
+      apis: []
     m3:
       release_tag: r2.1
       release_date: '2025-02-17T22:50:26Z'
@@ -4303,9 +3983,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: one-time-password-sms
-        api_version: null
+      apis: []
     m3:
       release_tag: r1.1
       release_date: '2024-08-08T10:14:37Z'
@@ -4348,9 +4026,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: one-time-password-sms
-        api_version: null
+      apis: []
     m3:
       release_tag: r2.1
       release_date: '2025-02-11T10:32:45Z'
@@ -4393,9 +4069,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: population-density-data
-        api_version: null
+      apis: []
     m3:
       release_tag: r1.1
       release_date: '2024-08-02T11:21:21Z'
@@ -4438,9 +4112,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: population-density-data
-        api_version: null
+      apis: []
     m3:
       release_tag: r3.1
       release_date: '2025-07-29T08:25:07Z'
@@ -4483,9 +4155,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: population-density-data
-        api_version: null
+      apis: []
     m3:
       release_tag: r2.1
       release_date: '2025-02-10T11:51:33Z'
@@ -4534,13 +4204,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: qod-provisioning
-        api_version: null
-      - api_name: qos-profiles
-        api_version: null
-      - api_name: quality-on-demand
-        api_version: null
+      apis: []
     m3:
       release_tag: r1.1
       release_date: '2024-08-09T13:30:59Z'
@@ -4601,13 +4265,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: qos-profiles
-        api_version: null
-      - api_name: qos-provisioning
-        api_version: null
-      - api_name: quality-on-demand
-        api_version: null
+      apis: []
     m3:
       release_tag: r3.1
       release_date: '2025-07-17T14:22:52Z'
@@ -4668,13 +4326,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: qod-provisioning
-        api_version: null
-      - api_name: qos-profiles
-        api_version: null
-      - api_name: quality-on-demand
-        api_version: null
+      apis: []
     m3:
       release_tag: r2.1
       release_date: '2025-02-10T19:19:28Z'
@@ -4729,21 +4381,15 @@ progress:
     m1:
       release_tag: r1.1
       release_date: '2025-02-13T09:46:14Z'
-      apis:
-      - api_name: region-device-count
-        api_version: null
+      apis: []
     m3:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: region-device-count
-        api_version: null
+      apis: []
     m4:
       release_tag: r1.2
       release_date: '2025-03-12T06:07:28Z'
-      apis:
-      - api_name: region-device-count
-        api_version: null
+      apis: []
   last_published:
     release_tag: r1.3
     release_date: '2025-06-04T11:39:59Z'
@@ -4785,11 +4431,7 @@ progress:
     m3:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: sim-swap-subscriptions
-        api_version: null
-      - api_name: sim-swap
-        api_version: null
+      apis: []
     m4:
       release_tag: r1.2
       release_date: '2024-09-12T15:07:04Z'
@@ -4833,11 +4475,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: sim-swap-subscriptions
-        api_version: null
-      - api_name: sim-swap
-        api_version: null
+      apis: []
     m3:
       release_tag: r2.1
       release_date: '2025-02-13T16:00:08Z'
@@ -4886,9 +4524,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: simple-edge-discovery
-        api_version: null
+      apis: []
     m3:
       release_tag: r1.1
       release_date: '2024-07-30T17:33:27Z'
@@ -4931,9 +4567,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: kyc-tenure
-        api_version: null
+      apis: []
     m3:
       release_tag: r1.1
       release_date: '2025-01-24T11:36:06Z'
@@ -4982,13 +4616,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: webrtc-call-handling
-        api_version: null
-      - api_name: webrtc-events
-        api_version: null
-      - api_name: webrtc-registration
-        api_version: null
+      apis: []
     m3:
       release_tag: r2.1
       release_date: '2025-07-30T08:02:14Z'
@@ -5049,13 +4677,7 @@ progress:
     m1:
       release_tag: null
       release_date: null
-      apis:
-      - api_name: webrtc-call-handling
-        api_version: null
-      - api_name: webrtc-events
-        api_version: null
-      - api_name: webrtc-registration
-        api_version: null
+      apis: []
     m3:
       release_tag: r1.1
       release_date: '2025-02-17T11:57:15Z'
@@ -5064,6 +4686,8 @@ progress:
         api_version: 0.2.0-rc.1
       - api_name: webrtc-events
         api_version: 0.1.0-rc.1
+      - api_name: vwip
+        api_version: 0.1.1
       - api_name: webrtc-registration
         api_version: 0.2.0-rc.1
     m4:
