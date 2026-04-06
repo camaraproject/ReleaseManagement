@@ -1,11 +1,11 @@
 metadata:
-  last_updated: '2026-04-04T12:43:02Z'
-  last_checked: '2026-04-04T12:43:02Z'
+  last_updated: '2026-04-06T07:05:36Z'
+  last_checked: '2026-04-06T07:05:36Z'
   releases_master_updated: '2026-03-23T21:37:46.224Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
   repos_scanned: 66
-  repos_with_plan: 48
+  repos_with_plan: 49
   repos_fully_onboarded: 8
   repos_with_release_issue: 5
 meta_releases:
@@ -1641,6 +1641,55 @@ progress:
       api_version: 0.1.0-rc.1
     - api_name: network-slice-booking
       api_version: 0.2.0-rc.1
+- repository: NumberRecycling
+  github_url: https://github.com/camaraproject/NumberRecycling
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: r2.2
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: number-recycling
+    target_api_version: 0.2.0
+    target_api_status: public
+    main_contacts:
+    - eric-murray
+    - Masa8106
+    - grgpapadopoulos
+  state: completed
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: r2.2
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis: []
+    m3:
+      release_tag: r2.1
+      release_date: '2025-07-28T17:59:55Z'
+      apis:
+      - api_name: number-recycling
+        api_version: 0.2.0-rc.1
+    m4:
+      release_tag: r2.2
+      release_date: '2025-09-11T11:13:24Z'
+      apis:
+      - api_name: number-recycling
+        api_version: 0.2.0
+  last_published:
+    release_tag: r2.2
+    release_date: '2025-09-11T11:13:24Z'
+    apis:
+    - api_name: number-recycling
+      api_version: 0.2.0
 - repository: NumberVerification
   github_url: https://github.com/camaraproject/NumberVerification
   release_track: meta-release
@@ -3787,49 +3836,6 @@ progress:
     apis:
     - api_name: network-slice-booking
       api_version: 0.1.0
-  source: historical
-- repository: NumberRecycling
-  github_url: https://github.com/camaraproject/NumberRecycling
-  release_track: meta-release
-  meta_release: Fall25
-  target_release_tag: null
-  target_release_type: null
-  apis:
-  - api_name: number-recycling
-    target_api_version: 0.2.0
-    target_api_status: ''
-  state: historical
-  artifacts:
-    snapshot_branch: null
-    release_pr: null
-    draft_release: null
-    release_issue: null
-  published_context:
-    latest_public_release: null
-    newest_pre_release: null
-  cycle_releases:
-    m1:
-      release_tag: null
-      release_date: null
-      apis: []
-    m3:
-      release_tag: r2.1
-      release_date: '2025-07-28T17:59:55Z'
-      apis:
-      - api_name: number-recycling
-        api_version: 0.2.0-rc.1
-    m4:
-      release_tag: r2.2
-      release_date: '2025-09-11T11:13:24Z'
-      apis:
-      - api_name: number-recycling
-        api_version: 0.2.0
-  last_published:
-    release_tag: r2.2
-    release_date: '2025-09-11T11:13:24Z'
-    apis:
-    - api_name: number-recycling
-      api_version: 0.2.0
   source: historical
 - repository: NumberRecycling
   github_url: https://github.com/camaraproject/NumberRecycling
