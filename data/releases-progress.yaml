@@ -1,11 +1,11 @@
 metadata:
-  last_updated: '2026-04-06T07:05:36Z'
-  last_checked: '2026-04-06T07:05:36Z'
+  last_updated: '2026-04-07T06:48:58Z'
+  last_checked: '2026-04-07T06:48:58Z'
   releases_master_updated: '2026-03-23T21:37:46.224Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
   repos_scanned: 66
-  repos_with_plan: 49
+  repos_with_plan: 50
   repos_fully_onboarded: 8
   repos_with_release_issue: 5
 meta_releases:
@@ -2308,6 +2308,42 @@ progress:
       api_version: 0.3.0
     - api_name: sim-swap
       api_version: 2.1.0
+- repository: SponsoredData
+  github_url: https://github.com/camaraproject/SponsoredData
+  release_track: independent
+  target_release_tag: r1.1
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: sponsored-data
+    target_api_version: 0.1.0
+    target_api_status: draft
+    main_contacts:
+    - jafilippini1
+  state: not_planned
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis: []
+    m3:
+      release_tag: null
+      release_date: null
+      apis: []
+    m4:
+      release_tag: null
+      release_date: null
+      apis: []
 - repository: SubscriptionStatus
   github_url: https://github.com/camaraproject/SubscriptionStatus
   release_track: meta-release
