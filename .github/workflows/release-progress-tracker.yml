@@ -16,7 +16,7 @@ name: Release Progress Tracker
 
 on:
   schedule:
-    - cron: '23 5 * * *'   # Daily at 05:23 UTC
+    - cron: '23 3 * * *'   # Daily at 03:23 UTC
   workflow_dispatch:
     inputs:
       debug:
