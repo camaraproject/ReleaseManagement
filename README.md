@@ -10,28 +10,22 @@
 Repository to describe, develop, document and test the Release Management process.
 
 ## Scope
-* Guidelines and artefacts for Release Management in CAMARA
+* This repository provides the Guidelines and artifacts for Release Management in CAMARA. The automation process leverages support from the `project-administration` and the `tooling` repositories. Release Management documentation and artifacts cover:
+  - the automated API release process
+  - the artifacts enabling the automated API release process
+  - the CAMARA meta-release process
+  - the Commonalities and ICM release process
+  - the API versioning guidelines (input to Commonalities)
 * Describe, develop, document and apply the deliverables
 * Started: November 2023
-
-## Introduction
-
-The Release Management documentation describes 
-
-- the automated API release process
-- the CAMARA meta-release process
-- the Commonalities and ICM release process
-- the API versioning guidelines (input to Commonalities)
-- the artifacts enabling the automatied API release process
-
-NOTE: the automation process also leverages support from the `project-administration` and the `tooling` repositories. 
 
 ## API Release Process
 
 API Release Process documentation and artifacts are located in the [**`documentation`**](documentation/README.md) folder of the Release Management repository:
    - [**CAMARA Release Process Documentation**](documentation/README.md) - the main entry point for automated release process documentation.
-   - [API Readiness Checklist](/documentation/readiness/api-readiness-checklist.md) - the checklist that defines release readiness of the API according to its terget release status (alpha, release-candidate, public).
-   - For the reference documentation on API versioning, please see "Versioning" section in the CAMARA API Design Guidelines document in [Commonalities](https://github.com/camaraproject/Commonalities).
+   - [API Readiness Checklist](/documentation/readiness/api-readiness-checklist.md) - the checklist that defines release readiness of the API according to its target release status (alpha, release-candidate, public).
+
+The reference documentation on **API versioning** can be found in the "Versioning" section in the CAMARA API Design Guidelines document in [Commonalities](https://github.com/camaraproject/Commonalities).
 
 ## Release Management Wiki
 
