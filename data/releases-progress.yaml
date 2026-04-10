@@ -1,11 +1,11 @@
 metadata:
-  last_updated: '2026-04-09T05:23:51Z'
-  last_checked: '2026-04-09T05:23:51Z'
+  last_updated: '2026-04-10T05:36:20Z'
+  last_checked: '2026-04-10T05:36:20Z'
   releases_master_updated: '2026-04-08T06:06:39.141Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
   repos_scanned: 67
-  repos_with_plan: 53
+  repos_with_plan: 54
   repos_fully_onboarded: 8
   repos_with_release_issue: 5
 meta_releases:
@@ -1532,6 +1532,75 @@ progress:
     apis:
     - api_name: kyc-match
       api_version: 0.4.0
+- repository: ModelAsAService
+  github_url: https://github.com/camaraproject/ModelAsAService
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: r1.2
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: knowledge-base
+    target_api_version: 0.1.0
+    target_api_status: public
+    main_contacts:
+    - lihaojie-CMCC
+  - api_name: qa-assistant-manage
+    target_api_version: 0.1.0
+    target_api_status: public
+    main_contacts:
+    - lihaojie-CMCC
+  - api_name: qa-assistant-service
+    target_api_version: 0.1.0
+    target_api_status: public
+    main_contacts:
+    - lihaojie-CMCC
+  state: completed
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: r1.2
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis: []
+    m3:
+      release_tag: r1.1
+      release_date: '2025-07-24T10:54:35Z'
+      apis:
+      - api_name: knowledge-base
+        api_version: 0.1.0-rc.1
+      - api_name: qa-assistant-manage
+        api_version: 0.1.0-rc.1
+      - api_name: qa-assistant-service
+        api_version: 0.1.0-rc.1
+    m4:
+      release_tag: r1.2
+      release_date: '2025-09-18T14:51:41Z'
+      apis:
+      - api_name: knowledge-base
+        api_version: 0.1.0
+      - api_name: qa-assistant-manage
+        api_version: 0.1.0
+      - api_name: qa-assistant-service
+        api_version: 0.1.0
+  last_published:
+    release_tag: r1.2
+    release_date: '2025-09-18T14:51:41Z'
+    apis:
+    - api_name: knowledge-base
+      api_version: 0.1.0
+    - api_name: qa-assistant-manage
+      api_version: 0.1.0
+    - api_name: qa-assistant-service
+      api_version: 0.1.0
 - repository: MultiPointVPN
   github_url: https://github.com/camaraproject/MultiPointVPN
   release_track: independent
@@ -3795,67 +3864,6 @@ progress:
       api_version: 0.3.0
     - api_name: kyc-match
       api_version: 0.3.0
-  source: historical
-- repository: ModelAsAService
-  github_url: https://github.com/camaraproject/ModelAsAService
-  release_track: meta-release
-  meta_release: Fall25
-  target_release_tag: null
-  target_release_type: null
-  apis:
-  - api_name: knowledge-base
-    target_api_version: 0.1.0
-    target_api_status: ''
-  - api_name: qa-assistant-manage
-    target_api_version: 0.1.0
-    target_api_status: ''
-  - api_name: qa-assistant-service
-    target_api_version: 0.1.0
-    target_api_status: ''
-  state: historical
-  artifacts:
-    snapshot_branch: null
-    release_pr: null
-    draft_release: null
-    release_issue: null
-  published_context:
-    latest_public_release: null
-    newest_pre_release: null
-  cycle_releases:
-    m1:
-      release_tag: null
-      release_date: null
-      apis: []
-    m3:
-      release_tag: r1.1
-      release_date: '2025-07-24T10:54:35Z'
-      apis:
-      - api_name: knowledge-base
-        api_version: 0.1.0-rc.1
-      - api_name: qa-assistant-manage
-        api_version: 0.1.0-rc.1
-      - api_name: qa-assistant-service
-        api_version: 0.1.0-rc.1
-    m4:
-      release_tag: r1.2
-      release_date: '2025-09-18T14:51:41Z'
-      apis:
-      - api_name: knowledge-base
-        api_version: 0.1.0
-      - api_name: qa-assistant-manage
-        api_version: 0.1.0
-      - api_name: qa-assistant-service
-        api_version: 0.1.0
-  last_published:
-    release_tag: r1.2
-    release_date: '2025-09-18T14:51:41Z'
-    apis:
-    - api_name: knowledge-base
-      api_version: 0.1.0
-    - api_name: qa-assistant-manage
-      api_version: 0.1.0
-    - api_name: qa-assistant-service
-      api_version: 0.1.0
   source: historical
 - repository: MostFrequentLocation
   github_url: https://github.com/camaraproject/MostFrequentLocation
