@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-04-11T05:10:13Z'
-  last_checked: '2026-04-11T05:10:13Z'
+  last_updated: '2026-04-12T05:33:41Z'
+  last_checked: '2026-04-12T05:33:41Z'
   releases_master_updated: '2026-04-08T06:06:39.141Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
@@ -30,9 +30,9 @@ meta_releases:
   m3_achieved: 3
   m4_achieved: 0
 - name: Sync26
-  total_apis: 9
-  m1_achieved: 3
-  m3_achieved: 3
+  total_apis: 10
+  m1_achieved: 4
+  m3_achieved: 4
   m4_achieved: 0
 progress:
 - repository: ApplicationEndpointDiscovery
@@ -2303,13 +2303,15 @@ progress:
     target_api_status: rc
     main_contacts:
     - hdamker-bot
-  state: snapshot_active
+  - api_name: sample-implicit-events
+    target_api_version: 0.1.0
+    target_api_status: rc
+    main_contacts:
+    - hdamker-bot
+  state: planned
   artifacts:
-    snapshot_branch: release-snapshot/r1.4-681a728
-    release_pr:
-      number: 70
-      state: open
-      url: https://github.com/camaraproject/ReleaseTest/pull/70
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
     release_issue:
       number: 60
@@ -2340,10 +2342,6 @@ progress:
     apis:
     - api_name: release-test
       api_version: 1.0.0-rc.2
-  snapshot_api_versions:
-    release-test: 1.0.0-rc.3
-    sample-service: 0.1.0-rc.1
-    sample-service-subscriptions: 0.1.0-rc.1
 - repository: SessionInsights
   github_url: https://github.com/camaraproject/SessionInsights
   release_track: independent
