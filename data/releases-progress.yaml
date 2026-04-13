@@ -1,12 +1,12 @@
 metadata:
-  last_updated: '2026-04-12T21:45:08Z'
-  last_checked: '2026-04-12T21:45:08Z'
+  last_updated: '2026-04-13T05:59:46Z'
+  last_checked: '2026-04-13T05:59:46Z'
   releases_master_updated: '2026-04-12T21:39:31.289Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
   repos_scanned: 62
-  repos_new: 6
-  repos_with_plan: 54
+  repos_new: 5
+  repos_with_plan: 55
   repos_fully_onboarded: 8
   repos_with_release_issue: 4
 meta_releases:
@@ -1137,6 +1137,44 @@ progress:
     apis:
     - api_name: device-swap
       api_version: 1.0.0
+- repository: DeviceVisitLocation
+  github_url: https://github.com/camaraproject/DeviceVisitLocation
+  release_track: independent
+  target_release_tag: r1.1
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: device-visit-location
+    target_api_version: 0.1.0
+    target_api_status: draft
+    main_contacts:
+    - chinaunicomyangfan
+    - ChinaUnicomXiaoDongrui
+    - FabrizioMoggio
+  state: not_planned
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis: []
+    m3:
+      release_tag: null
+      release_date: null
+      apis: []
+    m4:
+      release_tag: null
+      release_date: null
+      apis: []
 - repository: EdgeApplicationManagement
   github_url: https://github.com/camaraproject/EdgeApplicationManagement
   release_track: independent
