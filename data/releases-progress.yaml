@@ -1,13 +1,14 @@
 metadata:
-  last_updated: '2026-04-12T05:33:41Z'
-  last_checked: '2026-04-12T05:33:41Z'
-  releases_master_updated: '2026-04-08T06:06:39.141Z'
+  last_updated: '2026-04-12T21:45:08Z'
+  last_checked: '2026-04-12T21:45:08Z'
+  releases_master_updated: '2026-04-12T21:39:31.289Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
-  repos_scanned: 67
+  repos_scanned: 62
+  repos_new: 6
   repos_with_plan: 54
   repos_fully_onboarded: 8
-  repos_with_release_issue: 5
+  repos_with_release_issue: 4
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -30,9 +31,9 @@ meta_releases:
   m3_achieved: 3
   m4_achieved: 0
 - name: Sync26
-  total_apis: 10
-  m1_achieved: 4
-  m3_achieved: 4
+  total_apis: 6
+  m1_achieved: 0
+  m3_achieved: 0
   m4_achieved: 0
 progress:
 - repository: ApplicationEndpointDiscovery
@@ -2280,68 +2281,70 @@ progress:
       api_version: 0.2.0
 - repository: ReleaseTest
   github_url: https://github.com/camaraproject/ReleaseTest
-  release_track: meta-release
-  meta_release: Sync26
-  target_release_tag: r1.4
-  target_release_type: pre-release-rc
+  release_track: independent
+  target_release_tag: r1.1
+  target_release_type: pre-release-alpha
   dependencies:
     commonalities_release: r4.1
     identity_consent_management_release: r4.1
   apis:
-  - api_name: release-test
-    target_api_version: 1.0.0
-    target_api_status: rc
-    main_contacts:
-    - hdamker-bot
   - api_name: sample-service
     target_api_version: 0.1.0
-    target_api_status: rc
+    target_api_status: alpha
     main_contacts:
     - hdamker-bot
   - api_name: sample-service-subscriptions
     target_api_version: 0.1.0
-    target_api_status: rc
+    target_api_status: alpha
     main_contacts:
     - hdamker-bot
   - api_name: sample-implicit-events
     target_api_version: 0.1.0
-    target_api_status: rc
+    target_api_status: alpha
     main_contacts:
     - hdamker-bot
-  state: planned
+  state: published
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue:
-      number: 60
-      url: https://github.com/camaraproject/ReleaseTest/issues/60
+    release_issue: null
   published_context:
     latest_public_release: null
-    newest_pre_release: r1.3
+    newest_pre_release: r1.1
   cycle_releases:
     m1:
       release_tag: r1.1
-      release_date: '2026-03-01T16:00:48Z'
+      release_date: '2026-04-12T20:20:59Z'
       apis:
-      - api_name: release-test
-        api_version: 1.0.0-alpha.1
+      - api_name: sample-service
+        api_version: 0.1.0-alpha.1
+      - api_name: sample-service-subscriptions
+        api_version: 0.1.0-alpha.1
+      - api_name: sample-implicit-events
+        api_version: 0.1.0-alpha.1
     m3:
-      release_tag: r1.2
-      release_date: '2026-03-05T15:48:16Z'
-      apis:
-      - api_name: release-test
-        api_version: 1.0.0-rc.1
+      release_tag: null
+      release_date: null
+      apis: []
     m4:
       release_tag: null
       release_date: null
       apis: []
   last_published:
-    release_tag: r1.3
-    release_date: '2026-03-10T09:09:24Z'
+    release_tag: r1.1
+    release_date: '2026-04-12T20:20:59Z'
     apis:
-    - api_name: release-test
-      api_version: 1.0.0-rc.2
+    - api_name: sample-service
+      api_version: 0.1.0-alpha.1
+    - api_name: sample-service-subscriptions
+      api_version: 0.1.0-alpha.1
+    - api_name: sample-implicit-events
+      api_version: 0.1.0-alpha.1
+  snapshot_api_versions:
+    sample-service: 0.1.0-alpha.1
+    sample-service-subscriptions: 0.1.0-alpha.1
+    sample-implicit-events: 0.1.0-alpha.1
 - repository: SessionInsights
   github_url: https://github.com/camaraproject/SessionInsights
   release_track: independent
@@ -3472,7 +3475,7 @@ progress:
       api_version: 2.0.0
   source: historical
 - repository: DeviceStatus
-  github_url: https://github.com/camaraproject/DeviceStatus
+  github_url: ''
   release_track: meta-release
   meta_release: Fall24
   target_release_tag: null
@@ -3542,7 +3545,7 @@ progress:
       api_version: 0.6.1
   source: historical
 - repository: DeviceStatus
-  github_url: https://github.com/camaraproject/DeviceStatus
+  github_url: ''
   release_track: meta-release
   meta_release: Spring25
   target_release_tag: null
@@ -3715,7 +3718,7 @@ progress:
       api_version: 0.2.0
   source: historical
 - repository: HomeDevicesQoD
-  github_url: https://github.com/camaraproject/HomeDevicesQoD
+  github_url: ''
   release_track: meta-release
   meta_release: Fall24
   target_release_tag: null
@@ -3758,7 +3761,7 @@ progress:
       api_version: 0.4.0
   source: historical
 - repository: KnowYourCustomer
-  github_url: https://github.com/camaraproject/KnowYourCustomer
+  github_url: ''
   release_track: meta-release
   meta_release: Fall24
   target_release_tag: null
@@ -3810,7 +3813,7 @@ progress:
       api_version: 0.2.1
   source: historical
 - repository: KnowYourCustomer
-  github_url: https://github.com/camaraproject/KnowYourCustomer
+  github_url: ''
   release_track: meta-release
   meta_release: Spring25
   target_release_tag: null
