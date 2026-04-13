@@ -10,44 +10,40 @@
 Repository to describe, develop, document and test the Release Management process.
 
 ## Scope
-* Guidelines and assets for Release Management in CAMARA
+* This repository provides the Guidelines and artifacts for Release Management in CAMARA. The automation process leverages support from the `project-administration` and the `tooling` repositories. Release Management documentation and artifacts cover:
+  - the automated API release process
+  - the artifacts enabling the automated API release process
+  - the CAMARA meta-release process
+  - the Commonalities and ICM release process
+  - the API versioning guidelines (input to Commonalities)
 * Describe, develop, document and apply the deliverables
 * Started: November 2023
 
-## Release Process Information
+## API Release Process
 
-**The Release Management documents describe the CAMARA meta-release and API release processes, contibute the API versioning guidelines, and provides the artifacts for use by API Sub projects to release an API version.**
+API Release Process documentation and artifacts are located in the [**`documentation`**](documentation/README.md) folder of the Release Management repository:
+   - [**CAMARA Release Process Documentation**](documentation/README.md) - the main entry point for automated release process documentation.
+   - [API Readiness Checklist](/documentation/readiness/api-readiness-checklist.md) - the checklist that defines release readiness of the API according to its target release status (alpha, release-candidate, public).
 
-It contains the Release Management released documents and assests in the **documentation** folder:
-   - [API_Release_Guidelines.md](/documentation/API_Release_Guidelines.md) - An extract of the API release management process from the CAMARA wiki.
-   - [API-Readiness-Checklist.md](/documentation/API-Readiness-Checklist.md) - The checklist to ensure release readiness of the API according to its version (alpha, release-candidate, public).
-   - [CHANGELOG_TEMPLATE.md](/documentation/CHANGELOG_TEMPLATE.md) - The template for creating CHANGELOG history of an API repository.
-
-It also contains the following in the **documentation/SupportingDocuments** folder:
-   - [CHANGELOG_EXAMPLE.md](/documentation/SupportingDocuments/CHANGELOG_EXAMPLE.md) - Pointers to example CHANGELOG.md files over multiple releases created following the release management guidelines.
-
-For the reference documentation on API versioning, please see "Versioning" section in the API Design Guidelines document in [Commonalities](https://github.com/camaraproject/Commonalities).
-
-The [CHANGELOG.md](/CHANGELOG.md) file describes the differences between releases of the Release Management repository.  
+The reference documentation on **API versioning** can be found in the "Versioning" section in the CAMARA API Design Guidelines document in [Commonalities](https://github.com/camaraproject/Commonalities).
 
 ## Release Management Wiki
 
-Beyond the above reference release management information in GitHub, more information on the release process is available on the wiki.
+Beyond the above reference release management documentation in GitHub, additional information is available on the [Release Management wiki](https://lf-camaraproject.atlassian.net/wiki/x/VA7e). In particular, you can find there information about:
 
-* **Meta-releases of CAMARA**
+* **Meta-release process**
 
-  * [Meta-release Plans](https://lf-camaraproject.atlassian.net/wiki/x/bmTe)
-  * [Meta-release Process](https://lf-camaraproject.atlassian.net/wiki/x/Zwne)
+  * [Meta-releases](https://lf-camaraproject.atlassian.net/wiki/x/bmTe) - list of ongoing and past meta-releases, their contained APIs and their associated Commonalities and ICM releases.
+  * [Meta-release Process](https://lf-camaraproject.atlassian.net/wiki/x/Zwne) - the meta-release milestone description and their related activities and time-line.
 
-* **API release management**
-  * [API Release Process](https://lf-camaraproject.atlassian.net/wiki/x/jine)
-  * [API Release Tracking Process](https://lf-camaraproject.atlassian.net/wiki/x/ZhHe)
-  * [More on API Readiness Checklist](https://lf-camaraproject.atlassian.net/wiki/spaces/CAM/pages/14559630/API+Release+Process#API-readiness-checklist)
-  * [More on API Versioning](https://lf-camaraproject.atlassian.net/wiki/x/3yLe)
+* **Commonalities and ICM release process**
+  * [Commonalities and ICM Release Process](https://lf-camaraproject.atlassian.net/wiki/spaces/CAM/pages/14551399/Meta-release+Process#Commonalities-and-ICM) - more information about processes and release numbering for Commonalities and ICM releases. 
 
-More information about processes and release numbering for Commonalities and ICM can be found here:
+## Release Management repository
 
-  * [Commonalities and ICM Release Process](https://lf-camaraproject.atlassian.net/wiki/spaces/CAM/pages/14551399/Meta-release+Process#Commonalities-and-ICM)
+The [CHANGELOG.md](/CHANGELOG.md) file provides the CHANGELOG history between releases of the Release Management repository. 
+
+The automated release process has been introduced with the Spring26 meta-release.
 
 ## Contributing
 * Meetings are held virtually
