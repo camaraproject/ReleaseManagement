@@ -220,7 +220,7 @@ After approval and Release PR merge to snapshot branch:
 4. **Codeowner publishes** via `/publish-release --confirm <tag>` → creates git tag (e.g., `r4.1`)
 5. CI builds and publishes artifacts
 6. GitHub Release with artifacts is finalized:
-   - Bundled OpenAPI specifications (later phase)
+   - Standalone OpenAPI specifications (bundled on the snapshot branch, included in the auto-generated source archive)
    - Generated documentation
    - Release metadata files
 

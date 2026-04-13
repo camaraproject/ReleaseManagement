@@ -1,7 +1,7 @@
 # Validation Framework — Requirements
 
 **Status**: Work in progress
-**Last updated**: 2026-03-17
+**Last updated**: 2026-03-31
 
 > For design and implementation detail, see [Validation Framework — Detailed Design](CAMARA-Validation-Framework-Detailed-Design.md).
 
@@ -61,13 +61,20 @@ UC-17: Trigger a validation check on selected repositories to update dashboard s
 
 ### 2.1 Validation Profiles
 
-Three profiles control blocking behavior. The framework selects the profile automatically based on how validation is invoked.
+Three profiles control blocking behavior:
 
-| Profile | Blocking behavior | Typical trigger |
-|---------|-------------------|-----------------|
-| **advisory** | Nothing blocks; all findings shown | Local run, dispatch |
-| **standard** | `error` blocks; `warn` and `hint` shown | PR (fork-to-upstream or upstream branch) |
-| **strict** | `error` and `warn` block; `hint` shown | Release automation gates (snapshot, release review PR) |
+| Profile | Blocking behavior | Typical use |
+|---------|-------------------|-------------|
+| **advisory** | Nothing blocks; all findings shown | Dispatch, local run (hardcoded) |
+| **standard** | `error` blocks; `warn` and `hint` shown | Default for PRs and release gates |
+| **strict** | `error` and `warn` block; `hint` shown | Configurable for release gates during stabilization |
+
+Profile selection is **config-driven** for PR and release contexts. The central config file (section 10.2) provides two per-repo profile fields:
+
+- `pr_profile` — used for PR-triggered validation (default: `standard`)
+- `release_profile` — used for pre-snapshot validation and release review PRs (default: `standard`)
+
+Dispatch and local triggers always use `advisory` regardless of config. An explicit `profile` input on the workflow overrides config-driven selection.
 
 ### 2.2 Rule Model
 
@@ -89,7 +96,7 @@ The profile (section 2.1) then determines which levels block. This separates thr
 | **error** | Must be fixed | standard, strict |
 | **warn** | Should be fixed | strict |
 | **hint** | Recommendation, never blocking | *(none)* |
-| **off** | Suppressed, finding not shown | *(n/a)* |
+| **muted** | Suppressed, finding not shown | *(n/a)* |
 
 #### Applicability conditions
 
@@ -110,7 +117,7 @@ Range comparison for `commonalities_release` uses `packaging.specifiers` (Python
 
 #### Conditional level
 
-`default` is always present. `overrides` is a list of `{condition, level}` pairs evaluated in order; first match wins. Conditions use the same field/value model as applicability (AND across fields, OR within arrays). The level `off` can be used in overrides to suppress a finding in specific contexts.
+`default` is always present. `overrides` is a list of `{condition, level}` pairs evaluated in order; first match wins. Conditions use the same field/value model as applicability (AND across fields, OR within arrays). The level `muted` can be used in overrides to suppress a finding in specific contexts.
 
 #### Execution context
 
@@ -135,15 +142,15 @@ The validation framework must support these execution contexts:
 
 | Context | Trigger | Profile | Token | Notes |
 |---------|---------|---------|-------|-------|
-| **PR (fork-to-upstream)** | `pull_request` event | standard | read-only | Default GitHub behavior: fork PRs get read-only GITHUB_TOKEN regardless of author's repo permissions. Limits output options (no check run annotations, no PR comments via token) |
-| **PR (upstream branch)** | `pull_request` event | standard | write | PR from upstream branch. Note: codeowners should normally use forks too |
-| **Dispatch (upstream repo)** | `workflow_dispatch` | advisory | write | Main (default), maintenance, release branches. Warning on non-standard branches |
-| **Dispatch (fork repo)** | `workflow_dispatch` | advisory | write (fork scope) | Fork owner triggers on own fork. Inherited — no extra work if dispatch trigger exists |
-| **Local** | CLI / script | advisory | n/a | No GitHub context; subset of rules |
-| **Release automation: snapshot** | Called by release workflow | strict | write (app token) | Gate before snapshot creation (section 11.1) |
-| **Release automation: review PR** | `pull_request` event (push to PR branch) | strict | write or read-only | Same trigger as normal PR; profile is strict based on release review PR detection (section 11.2) |
+| **PR (fork-to-upstream)** | `pull_request` event | `pr_profile` from config (default: standard) | read-only | Default GitHub behavior: fork PRs get read-only GITHUB_TOKEN regardless of author's repo permissions. Limits output options (no check run annotations, no PR comments via token) |
+| **PR (upstream branch)** | `pull_request` event | `pr_profile` from config (default: standard) | write | PR from upstream branch. Note: codeowners should normally use forks too |
+| **Dispatch (upstream repo)** | `workflow_dispatch` | advisory (hardcoded) | write | Main (default), maintenance, release branches. Warning on non-standard branches |
+| **Dispatch (fork repo)** | `workflow_dispatch` | advisory (hardcoded) | write (fork scope) | Fork owner triggers on own fork. Inherited — no extra work if dispatch trigger exists |
+| **Local** | CLI / script | advisory (hardcoded) | n/a | No GitHub context; subset of rules |
+| **Release automation: snapshot** | Called by release workflow | `release_profile` from config (default: standard) | write (app token) | Gate before snapshot creation (section 11.1) |
+| **Release automation: review PR** | `pull_request` event (push to PR branch) | `release_profile` from config (default: standard) | write or read-only | Same trigger as normal PR; profile based on release review PR detection (section 11.2) |
 
-**Profile is independent of token permissions.** A fork-to-upstream PR gets the same **standard** profile as an upstream-branch PR. The read-only token only limits *how results are surfaced* (e.g. no check run annotations via GITHUB_TOKEN), not validation strictness.
+**Profile is independent of token permissions.** A fork-to-upstream PR gets the same profile as an upstream-branch PR. The read-only token only limits *how results are surfaced* (e.g. no check run annotations via GITHUB_TOKEN), not validation strictness.
 
 **Dispatch is always advisory.** Dispatch runs have nothing to block (except the workflow itself). They surface errors, warnings, and hints for the user to review.
 
@@ -272,25 +279,24 @@ The framework validates the repository layout and `$ref` patterns used in API so
 
 The framework applies a uniform validation flow regardless of context:
 
-1. **Pre-bundling validation** (always runs on source files): YAML validity, ref existence and pattern validation, release-plan.yaml consistency checks, cross-file checks that do not depend on schema content
-2. **Bundling** (if `$ref` to `code/common/` or `code/modules/` is detected): Resolve all external refs and produce a standalone spec per API. Internal `$ref` (`#/components/...`) are preserved. The framework uses bundling (external ref resolution only), not full dereferencing.
-3. **Full validation** (runs on the effective input — bundled output when refs are present, source directly when no refs): Full Spectral ruleset, Python checks that depend on schema content, standalone API spec validation
-4. **Artifact surfacing**: Upload bundled specs as workflow artifacts or make them available for further processing (section 7)
+1. **Engine validation** (always runs on source files): All engines run sequentially on source files — yamllint (YAML validity), Spectral (OpenAPI linting with version-selected ruleset), Python checks (cross-field consistency, version alignment, release-plan semantics), gherkin-lint (test definition linting). Spectral CLI natively follows external `$ref` during linting and reports findings with correct source file and line numbers.
+2. **Post-filter and output**: Findings are filtered by applicability and conditional level, profile blocking is applied, and results are surfaced via workflow summary, Check Run annotations, PR comments, and commit status.
+3. **Bundling** (post-validation, if `$ref` to `code/common/` or `code/modules/` is detected): Produce standalone bundled specs per API as diagnostic artifacts for reviewer inspection. Internal `$ref` (`#/components/...`) are preserved. The framework uses bundling (external ref resolution only), not full dereferencing.
 
-The validation **profile** (advisory, standard, strict) controls which findings block; it does not change which steps run.
+The validation **profile** (advisory, standard, strict) controls which findings block; it does not change which engines run.
 
-**Bundling failure**: If the bundling step fails (e.g., unresolvable `$ref`, missing file), the framework reports the failure as an error. Full validation is skipped; only pre-bundling results are available.
+**Bundling is output, not prerequisite**: Spectral natively follows `$ref` to `code/common/` and other local files, so bundling is not required before linting. Bundled specs are produced as review artifacts and uploaded as workflow artifacts (section 7).
 
-**Repositories without `$ref`**: Repositories using the copy-paste model skip step 2. Source files are standalone by construction, so the full Spectral ruleset runs directly on source. No bundling overhead is introduced.
+**Repositories without `$ref`**: Repositories using the copy-paste model skip the bundling step. Source files are standalone by construction. No bundling overhead is introduced.
 
-**Bundling happens once**: The bundled API specs produced during validation are consumed by release automation for the snapshot branch. Release automation does not re-bundle independently.
+**Bundling for release artifacts**: Release automation bundles independently during snapshot creation to produce the standalone release-ready specs. The validation framework's bundled artifacts are for reviewer inspection only and are not consumed by release automation.
 
 ### 6.3 Cache Synchronization
 
 When `code/common/` exists, the framework validates that cached files match the declared dependency versions in `release-plan.yaml`. Mismatch severity depends on the profile:
 
-- **standard** (PR): warning — codeowner is informed, merge is not blocked
-- **strict** (release automation): error — snapshot creation is blocked
+- **standard** profile: warning — codeowner is informed, merge is not blocked
+- **strict** profile: error — blocks the workflow (used when `release_profile` is set to `strict`)
 
 If no `code/common/` directory exists, the sync check is skipped. In the MVP, cache management may be manual; the validation check still applies regardless of how the cache was populated.
 
@@ -307,11 +313,13 @@ If no `code/common/` directory exists, the sync check is skipped. In the MVP, ca
 The framework produces bundled artifacts for reviewer visibility. The [bundling design document](https://github.com/camaraproject/ReleaseManagement/pull/436) defines a priority order:
 
 1. **Source diff** — primary review surface, no framework action needed (standard git diff)
-2. **Bundled artifact** — the framework uploads the bundled standalone API spec as a GitHub workflow artifact for each API affected by the PR
-3. **Bundled diff** — a diff between the bundled API from the PR base and the bundled API from the PR head, uploaded as a workflow artifact or included in the workflow summary
+2. **Bundled artifact** — the framework uploads the bundled standalone API spec as a GitHub workflow artifact for each API with external `$ref`
+3. **Bundled diff** — a diff between the bundled API from the PR base and the bundled API from the PR head, uploaded as a workflow artifact or included in the workflow summary (post-MVP)
 4. **API-aware summary** — optional semantic change summary (post-MVP)
 
-**Line number mapping**: When checks run on bundled output, findings report line numbers in the bundled file. The framework must map finding locations back to source file and line number, so that findings are actionable.
+Bundled artifacts are diagnostic and review aids — they allow PR reviewers to inspect the fully resolved specs. They are not consumed by release automation (which bundles independently during snapshot creation).
+
+Since all engines run on source files (section 6.2), findings already reference source file locations directly. No line number mapping from bundled to source is needed.
 
 **API-aware change summaries**: The framework should support pluggable diff tools for generating semantic change summaries (breaking changes, new endpoints, modified schemas). This capability is post-MVP.
 
@@ -381,9 +389,9 @@ No per-repo inputs exist. All per-repo configuration lives in the central config
 
 | Trigger | Target branches | Default profile |
 |---------|----------------|-----------------|
-| `pull_request` | `main`, `release-snapshot/**`, `maintenance/**` | standard (strict for release review PRs) |
-| `workflow_dispatch` | Any branch | advisory |
-| Release automation call | Base branch (`main` or maintenance) | strict |
+| `pull_request` | `main`, `release-snapshot/**`, `maintenance/**` | `pr_profile` from config (`release_profile` for release review PRs) |
+| `workflow_dispatch` | Any branch | advisory (hardcoded) |
+| Release automation call | Base branch (`main` or maintenance) | `release_profile` from config |
 
 ---
 
@@ -413,62 +421,66 @@ The config file controls the validation stage per repository:
 | Stage | Config value | Behavior |
 |-------|-------------|----------|
 | **0: dark** | `disabled` (or not listed) | Caller deployed, reusable workflow exits immediately |
-| **1: advisory** | `advisory` | Runs on dispatch only, all findings shown, nothing blocks |
-| **2: standard** | `standard` | Runs on PRs and dispatch, standard profile on PRs |
-| **3: blocking** | `standard` + GitHub ruleset | Same as stage 2, plus GitHub ruleset requires the v1 check to pass for PR merge |
+| **1: advisory** | `advisory` | Runs on dispatch only, advisory profile, nothing blocks |
+| **2: enabled** | `enabled` | Runs on PRs and dispatch, profile from config |
 
-Stage 3 is the combination of the config file setting (`standard`) and a GitHub ruleset. The config file does not control blocking — rulesets do. This separation keeps the config file focused on validation behavior and rulesets focused on merge policy.
+The config file does not control merge blocking. Merge blocking is enforced by a **GitHub ruleset** (org-level or per-repo) that requires the v1 validation check to pass. This separation keeps the config file focused on validation behavior and rulesets focused on merge policy. Any repository at stage `enabled` can optionally have a blocking ruleset — the two concerns are independent.
+
+In addition to stage, the config file provides per-repo profile settings:
+
+| Field | Default | Description |
+|-------|---------|-------------|
+| `pr_profile` | `standard` | Profile for PR-triggered validation |
+| `release_profile` | `standard` | Profile for pre-snapshot and release review PR validation |
+
+These fields allow tuning validation strictness per repository without changing the stage.
 
 ---
 
 ## 11. Release Automation Integration
 
-The validation framework integrates with CAMARA release automation at two points in the release lifecycle:
+The validation framework integrates with CAMARA release automation at two points in the release lifecycle, forming a **two-gate defense-in-depth model**:
 
 1. **Pre-snapshot gate** (UC-08) — validation runs on the base branch before snapshot creation. Failure blocks the release process.
-2. **Release review PR validation** (UC-09) — validation runs on the release review PR with strict profile and content restrictions.
+2. **Release review PR validation** (UC-09) — validation runs on the release review PR with full scope.
 
-Both touchpoints use the strict profile (section 2.1): errors and warnings block.
+Both touchpoints use the `release_profile` from the central config (section 10.3, default: `standard`). Together, they provide two independent validation passes: the pre-snapshot gate catches issues in source content on the base branch, while the release-review PR gate catches any issues introduced by the snapshot creation process (bundling, version transformations).
 
 ### 11.1 Pre-Snapshot Validation Gate
 
-Release automation invokes validation as part of the `/create-snapshot` command, before creating any branches. The validation runs on the current HEAD of the base branch — this is exactly the content that will become the snapshot.
+Release automation invokes validation as part of the `/create-snapshot` command, before creating any branches. The validation runs on the current HEAD of the base branch via the shared `run-validation` composite action with `mode: pre-snapshot`.
 
 **Timing**: The release state is PLANNED when `/create-snapshot` is invoked. If validation fails, no snapshot branch is created and the state remains PLANNED.
 
-**Profile**: Strict — both errors and warnings block snapshot creation. Rationale: once a snapshot is created, content becomes immutable. Issues found post-snapshot require discarding and recreating the snapshot.
+**Profile**: Determined by `release_profile` from the central config (default: `standard`). During stabilization, repositories may set `release_profile: strict` to block on warnings.
 
-**Scope**: The validation framework runs all applicable checks — Spectral rules, Python consistency checks, bundling validation, and release-plan semantic checks. This subsumes the existing `validate-release-plan.py` preflight.
+**Scope**: The validation framework runs all applicable checks — Spectral rules, Python consistency checks, and release-plan semantic checks. Release automation bundles independently during snapshot creation — the validation framework does not produce bundled specs for release automation consumption.
 
 | Aspect | Current release-plan preflight | With validation framework |
 |--------|-------------------------------|---------------------------|
-| **Checks** | release-plan.yaml schema + semantics | Full framework: Spectral, Python, bundling, release-plan |
-| **Blocking** | Errors only | Errors and warnings (strict profile) |
+| **Checks** | release-plan.yaml schema + semantics | Full framework: Spectral, Python, release-plan |
+| **Blocking** | Errors only | Depends on `release_profile` (errors for standard, errors + warnings for strict) |
 | **Findings output** | Bot comment with error list | Bot comment with structured findings + fix hints |
 | **Token** | camara-release-automation app | Same (passed to framework) |
 
 ### 11.2 Release Review PR Validation
 
-A release review PR is created by release automation on the `release-review/rX.Y-<sha>` branch, targeting the `release-snapshot/rX.Y-<sha>` branch. It contains only CHANGELOG and README changes — API specs and other files are immutable on the snapshot branch.
+A release review PR is created by release automation on the `release-review/rX.Y-<sha>` branch, targeting the `release-snapshot/rX.Y-<sha>` branch.
 
 **Detection**: The framework detects a release review PR by its target branch pattern (`release-snapshot/**`).
 
-**Profile**: Strict — errors and warnings block the PR.
+**Profile**: Determined by `release_profile` from the central config (same as pre-snapshot gate).
 
-**Which checks run**: Only a subset of checks is meaningful on a release review PR:
+**Scope**: The release review PR runs **full validation** — all engines (yamllint, Spectral, Python checks, gherkin-lint) at full scope. This provides a second validation pass on the snapshot content, catching any issues introduced by the snapshot creation process (bundling, version transformations, server URL replacement).
 
-| Check category | Runs on release review PR | Rationale |
-|----------------|--------------------------|-----------|
-| CHANGELOG format validation | Yes | CHANGELOG is editable on the review branch |
-| README content validation | Yes | README is editable on the review branch |
-| File restriction check | Yes | Only CHANGELOG and README may be modified |
-| Spectral / API definition checks | No | API specs are immutable on the snapshot branch |
-| release-plan.yaml checks | No | Already validated at snapshot creation time |
-| Bundling validation | No | Source files are immutable |
-| Cache sync validation | No | Already validated at snapshot creation time |
-| Release readiness checks (artifact presence by target API status) | No | Already validated at snapshot creation time; artifacts cannot be added or removed on the snapshot branch |
+**Context on snapshot branches**: On the snapshot branch, `release-plan.yaml` is absent (removed by the snapshot creator). The context builder falls back to `release-metadata.yaml` (generated by release automation) to populate the validation context — Commonalities version for Spectral ruleset selection, per-API metadata for Python checks.
 
-**File restriction check**: The framework examines the PR diff and produces an error if any file outside `CHANGELOG.md` (or `CHANGELOG/` directory) and `README.md` is modified.
+**File restriction check**: In addition to full validation, the file restriction check examines the PR diff and produces an error if any file outside `CHANGELOG.md` (or `CHANGELOG/` directory) and `README.md` is modified. This check uses the `is_release_review_pr` applicability condition.
+
+**Defense-in-depth rationale**: While the pre-snapshot gate (section 11.1) validates source content before snapshot creation, the release review PR provides a second gate that validates the transformed snapshot content. This catches:
+- Bundling issues (broken `$ref` resolution, missing components)
+- Transformation errors (malformed version strings, incorrect server URLs)
+- Any issues that existed on the base branch but were not caught by the pre-snapshot gate
 
 ### 11.3 Pre-Snapshot Invocation
 
@@ -491,9 +503,9 @@ An admin needs to verify that an API repository is correctly configured for the 
 
 - **Caller workflow**: The v1 caller workflow file exists in `.github/workflows/` and matches the expected template content
 - **Central config listing**: The repository is listed in the tooling config file (section 10.2) with a valid stage value
-- **GitHub ruleset** (stage 3 only): The v1 validation check is required in the applicable ruleset
+- **GitHub ruleset** (if blocking enforcement desired): The v1 validation check is required in the applicable ruleset
 - **Validation app installation**: The validation GitHub App is installed for the repository
-- **v0 cleanup** (post-transition): The v0 caller file has been removed after v1 is stable at stage 3
+- **v0 cleanup** (post-transition): The v0 caller file has been removed after v1 is stable with blocking ruleset
 
 ### 12.2 Minimal Change Noise Principle
 
