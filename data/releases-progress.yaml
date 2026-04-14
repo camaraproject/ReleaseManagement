@@ -1,14 +1,14 @@
 metadata:
-  last_updated: '2026-04-12T21:45:08Z'
-  last_checked: '2026-04-12T21:45:08Z'
+  last_updated: '2026-04-14T05:35:06Z'
+  last_checked: '2026-04-14T05:35:06Z'
   releases_master_updated: '2026-04-12T21:39:31.289Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
   repos_scanned: 62
   repos_new: 6
   repos_with_plan: 54
-  repos_fully_onboarded: 8
-  repos_with_release_issue: 4
+  repos_fully_onboarded: 9
+  repos_with_release_issue: 5
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -1699,10 +1699,13 @@ progress:
     target_api_status: alpha
     main_contacts:
     - cnzj-Gc
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r1.1-9295e48
+    release_pr:
+      number: 44
+      state: open
+      url: https://github.com/camaraproject/NetworkInsights/pull/44
     draft_release: null
     release_issue:
       number: 43
@@ -1723,6 +1726,9 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    network-health-assessment: 0.1.0-alpha.1
+    network-traffic-analysis: 0.1.0-alpha.1
 - repository: NetworkSliceBooking
   github_url: https://github.com/camaraproject/NetworkSliceBooking
   release_track: meta-release
@@ -2789,7 +2795,9 @@ progress:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 155
+      url: https://github.com/camaraproject/WebRTC/issues/155
   published_context:
     latest_public_release: r2.2
     newest_pre_release: null
@@ -2806,10 +2814,6 @@ progress:
       release_tag: null
       release_date: null
       apis: []
-  warnings:
-  - code: W005
-    message: Active release plan but no caller workflow installed
-    severity: warning
 - repository: BlockchainPublicAddress
   github_url: https://github.com/camaraproject/BlockchainPublicAddress
   release_track: meta-release
