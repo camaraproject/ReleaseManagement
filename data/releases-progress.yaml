@@ -1,12 +1,12 @@
 metadata:
-  last_updated: '2026-04-14T05:35:06Z'
-  last_checked: '2026-04-14T05:35:06Z'
+  last_updated: '2026-04-15T05:35:00Z'
+  last_checked: '2026-04-15T05:35:00Z'
   releases_master_updated: '2026-04-12T21:39:31.289Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
   repos_scanned: 62
-  repos_new: 6
-  repos_with_plan: 54
+  repos_new: 5
+  repos_with_plan: 55
   repos_fully_onboarded: 9
   repos_with_release_issue: 5
 meta_releases:
@@ -308,6 +308,43 @@ progress:
     apis:
     - api_name: call-forwarding-signal
       api_version: 0.4.0
+- repository: CapabilitiesAndRuntimeRestrictions
+  github_url: https://github.com/camaraproject/CapabilitiesAndRuntimeRestrictions
+  release_track: independent
+  target_release_tag: r1.1
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: capabilities-and-restrictions
+    target_api_version: 0.1.0
+    target_api_status: draft
+    main_contacts:
+    - gmuratk
+    - lbertz02
+  state: not_planned
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis: []
+    m3:
+      release_tag: null
+      release_date: null
+      apis: []
+    m4:
+      release_tag: null
+      release_date: null
+      apis: []
 - repository: CarrierBillingCheckOut
   github_url: https://github.com/camaraproject/CarrierBillingCheckOut
   release_track: meta-release
