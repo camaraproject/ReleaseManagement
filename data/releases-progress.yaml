@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-04-15T05:35:00Z'
-  last_checked: '2026-04-15T05:35:00Z'
+  last_updated: '2026-04-16T05:40:22Z'
+  last_checked: '2026-04-16T05:40:22Z'
   releases_master_updated: '2026-04-12T21:39:31.289Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
@@ -1736,17 +1736,12 @@ progress:
     target_api_status: alpha
     main_contacts:
     - cnzj-Gc
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r1.1-9295e48
-    release_pr:
-      number: 44
-      state: open
-      url: https://github.com/camaraproject/NetworkInsights/pull/44
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 43
-      url: https://github.com/camaraproject/NetworkInsights/issues/43
+    release_issue: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -1766,6 +1761,11 @@ progress:
   snapshot_api_versions:
     network-health-assessment: 0.1.0-alpha.1
     network-traffic-analysis: 0.1.0-alpha.1
+  warnings:
+  - code: W003
+    message: Release r1.1 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: NetworkSliceBooking
   github_url: https://github.com/camaraproject/NetworkSliceBooking
   release_track: meta-release
@@ -2325,7 +2325,7 @@ progress:
 - repository: ReleaseTest
   github_url: https://github.com/camaraproject/ReleaseTest
   release_track: independent
-  target_release_tag: r1.1
+  target_release_tag: r1.2
   target_release_type: pre-release-alpha
   dependencies:
     commonalities_release: r4.1
@@ -2346,12 +2346,14 @@ progress:
     target_api_status: alpha
     main_contacts:
     - hdamker-bot
-  state: published
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 80
+      url: https://github.com/camaraproject/ReleaseTest/issues/80
   published_context:
     latest_public_release: null
     newest_pre_release: r1.1
@@ -2384,10 +2386,6 @@ progress:
       api_version: 0.1.0-alpha.1
     - api_name: sample-implicit-events
       api_version: 0.1.0-alpha.1
-  snapshot_api_versions:
-    sample-service: 0.1.0-alpha.1
-    sample-service-subscriptions: 0.1.0-alpha.1
-    sample-implicit-events: 0.1.0-alpha.1
 - repository: SessionInsights
   github_url: https://github.com/camaraproject/SessionInsights
   release_track: independent
@@ -2404,10 +2402,13 @@ progress:
     - benhepworth
     - maheshc01
     - kevsy
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r1.1-7223bcf
+    release_pr:
+      number: 89
+      state: open
+      url: https://github.com/camaraproject/SessionInsights/pull/89
     draft_release: null
     release_issue:
       number: 81
@@ -2428,6 +2429,8 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    session-insights: 0.1.0-alpha.1
 - repository: SimpleEdgeDiscovery
   github_url: https://github.com/camaraproject/SimpleEdgeDiscovery
   release_track: meta-release
