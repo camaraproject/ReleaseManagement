@@ -1,7 +1,7 @@
 metadata:
-  last_updated: '2026-04-16T05:40:22Z'
-  last_checked: '2026-04-16T05:40:22Z'
-  releases_master_updated: '2026-04-12T21:39:31.289Z'
+  last_updated: '2026-04-17T14:56:48Z'
+  last_checked: '2026-04-17T14:56:48Z'
+  releases_master_updated: '2026-04-16T05:18:28.435Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
   repos_scanned: 62
@@ -1744,12 +1744,16 @@ progress:
     release_issue: null
   published_context:
     latest_public_release: null
-    newest_pre_release: null
+    newest_pre_release: r1.1
   cycle_releases:
     m1:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r1.1
+      release_date: '2026-04-16T01:13:01Z'
+      apis:
+      - api_name: network-health-assessment
+        api_version: 0.1.0-alpha.1
+      - api_name: network-traffic-analysis
+        api_version: 0.1.0-alpha.1
     m3:
       release_tag: null
       release_date: null
@@ -1758,14 +1762,17 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  last_published:
+    release_tag: r1.1
+    release_date: '2026-04-16T01:13:01Z'
+    apis:
+    - api_name: network-health-assessment
+      api_version: 0.1.0-alpha.1
+    - api_name: network-traffic-analysis
+      api_version: 0.1.0-alpha.1
   snapshot_api_versions:
     network-health-assessment: 0.1.0-alpha.1
     network-traffic-analysis: 0.1.0-alpha.1
-  warnings:
-  - code: W003
-    message: Release r1.1 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: NetworkSliceBooking
   github_url: https://github.com/camaraproject/NetworkSliceBooking
   release_track: meta-release
@@ -2328,8 +2335,8 @@ progress:
   target_release_tag: r1.2
   target_release_type: pre-release-alpha
   dependencies:
-    commonalities_release: r4.1
-    identity_consent_management_release: r4.1
+    commonalities_release: r4.2
+    identity_consent_management_release: r4.2
   apis:
   - api_name: sample-service
     target_api_version: 0.1.0
@@ -2352,8 +2359,8 @@ progress:
     release_pr: null
     draft_release: null
     release_issue:
-      number: 80
-      url: https://github.com/camaraproject/ReleaseTest/issues/80
+      number: 83
+      url: https://github.com/camaraproject/ReleaseTest/issues/83
   published_context:
     latest_public_release: null
     newest_pre_release: r1.1
