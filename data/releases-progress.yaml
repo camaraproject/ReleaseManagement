@@ -1,13 +1,13 @@
 metadata:
-  last_updated: '2026-04-16T05:40:22Z'
-  last_checked: '2026-04-16T05:40:22Z'
-  releases_master_updated: '2026-04-12T21:39:31.289Z'
+  last_updated: '2026-04-17T05:39:33Z'
+  last_checked: '2026-04-17T05:39:33Z'
+  releases_master_updated: '2026-04-16T05:18:28.435Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
   repos_scanned: 62
   repos_new: 5
-  repos_with_plan: 55
-  repos_fully_onboarded: 9
+  repos_with_plan: 53
+  repos_fully_onboarded: 7
   repos_with_release_issue: 5
 meta_releases:
 - name: Fall24
@@ -25,11 +25,6 @@ meta_releases:
   m1_achieved: 2
   m3_achieved: 35
   m4_achieved: 36
-- name: Spring26
-  total_apis: 3
-  m1_achieved: 1
-  m3_achieved: 3
-  m4_achieved: 0
 - name: Sync26
   total_apis: 6
   m1_achieved: 0
@@ -407,57 +402,6 @@ progress:
       api_version: 0.3.0
     - api_name: carrier-billing
       api_version: 0.5.0
-- repository: ClickToDial
-  github_url: https://github.com/camaraproject/ClickToDial
-  release_track: meta-release
-  meta_release: Spring26
-  target_release_tag: r1.2
-  target_release_type: pre-release-rc
-  dependencies:
-    commonalities_release: r4.1
-    identity_consent_management_release: r4.1
-  apis:
-  - api_name: click-to-dial
-    target_api_version: 0.1.0
-    target_api_status: rc
-    main_contacts:
-    - YadingFang
-    - Wojiaozhenghao
-    - XunliYang
-  state: published
-  artifacts:
-    snapshot_branch: null
-    release_pr: null
-    draft_release: null
-    release_issue: null
-  published_context:
-    latest_public_release: null
-    newest_pre_release: r1.2
-  cycle_releases:
-    m1:
-      release_tag: r1.1
-      release_date: '2025-05-15T14:04:29Z'
-      apis:
-      - api_name: click-to-dial
-        api_version: 0.1.0-alpha.1
-    m3:
-      release_tag: r1.2
-      release_date: '2026-03-09T15:09:22Z'
-      apis:
-      - api_name: click-to-dial
-        api_version: 0.1.0-rc.1
-    m4:
-      release_tag: null
-      release_date: null
-      apis: []
-  last_published:
-    release_tag: r1.2
-    release_date: '2026-03-09T15:09:22Z'
-    apis:
-    - api_name: click-to-dial
-      api_version: 0.1.0-rc.1
-  snapshot_api_versions:
-    click-to-dial: 0.1.0-rc.1
 - repository: ConnectedNetworkType
   github_url: https://github.com/camaraproject/ConnectedNetworkType
   release_track: meta-release
@@ -1744,86 +1688,35 @@ progress:
     release_issue: null
   published_context:
     latest_public_release: null
-    newest_pre_release: null
+    newest_pre_release: r1.1
   cycle_releases:
     m1:
-      release_tag: null
-      release_date: null
-      apis: []
-    m3:
-      release_tag: null
-      release_date: null
-      apis: []
-    m4:
-      release_tag: null
-      release_date: null
-      apis: []
-  snapshot_api_versions:
-    network-health-assessment: 0.1.0-alpha.1
-    network-traffic-analysis: 0.1.0-alpha.1
-  warnings:
-  - code: W003
-    message: Release r1.1 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
-- repository: NetworkSliceBooking
-  github_url: https://github.com/camaraproject/NetworkSliceBooking
-  release_track: meta-release
-  meta_release: Spring26
-  target_release_tag: r2.1
-  target_release_type: pre-release-rc
-  dependencies:
-    commonalities_release: r4.1
-    identity_consent_management_release: r4.1
-  apis:
-  - api_name: network-slice-booking
-    target_api_version: 0.2.0
-    target_api_status: rc
-    main_contacts:
-    - chinaunicomyangfan
-    - DanXu-ChinaTelecom
-    - Kai-hw
-  - api_name: network-slice-assignment
-    target_api_version: 0.1.0
-    target_api_status: rc
-    main_contacts:
-    - chinaunicomyangfan
-    - DanXu-ChinaTelecom
-    - Kai-hw
-  state: published
-  artifacts:
-    snapshot_branch: null
-    release_pr: null
-    draft_release: null
-    release_issue: null
-  published_context:
-    latest_public_release: r1.2
-    newest_pre_release: r2.1
-  cycle_releases:
-    m1:
-      release_tag: null
-      release_date: null
-      apis: []
-    m3:
-      release_tag: r2.1
-      release_date: '2026-03-11T02:25:30Z'
+      release_tag: r1.1
+      release_date: '2026-04-16T01:13:01Z'
       apis:
-      - api_name: network-slice-assignment
-        api_version: 0.1.0-rc.1
-      - api_name: network-slice-booking
-        api_version: 0.2.0-rc.1
+      - api_name: network-health-assessment
+        api_version: 0.1.0-alpha.1
+      - api_name: network-traffic-analysis
+        api_version: 0.1.0-alpha.1
+    m3:
+      release_tag: null
+      release_date: null
+      apis: []
     m4:
       release_tag: null
       release_date: null
       apis: []
   last_published:
-    release_tag: r2.1
-    release_date: '2026-03-11T02:25:30Z'
+    release_tag: r1.1
+    release_date: '2026-04-16T01:13:01Z'
     apis:
-    - api_name: network-slice-assignment
-      api_version: 0.1.0-rc.1
-    - api_name: network-slice-booking
-      api_version: 0.2.0-rc.1
+    - api_name: network-health-assessment
+      api_version: 0.1.0-alpha.1
+    - api_name: network-traffic-analysis
+      api_version: 0.1.0-alpha.1
+  snapshot_api_versions:
+    network-health-assessment: 0.1.0-alpha.1
+    network-traffic-analysis: 0.1.0-alpha.1
 - repository: NumberRecycling
   github_url: https://github.com/camaraproject/NumberRecycling
   release_track: meta-release
@@ -3087,6 +2980,48 @@ progress:
     - api_name: carrier-billing
       api_version: 0.4.0
   source: historical
+- repository: ClickToDial
+  github_url: https://github.com/camaraproject/ClickToDial
+  release_track: independent
+  target_release_tag: null
+  target_release_type: null
+  apis:
+  - api_name: click-to-dial
+    target_api_version: 0.1.0-rc.1
+    target_api_status: ''
+  state: historical
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: r1.1
+      release_date: '2025-05-15T14:04:29Z'
+      apis:
+      - api_name: click-to-dial
+        api_version: 0.1.0-alpha.1
+    m3:
+      release_tag: r1.2
+      release_date: '2026-03-09T15:09:22Z'
+      apis:
+      - api_name: click-to-dial
+        api_version: 0.1.0-rc.1
+    m4:
+      release_tag: null
+      release_date: null
+      apis: []
+  last_published:
+    release_tag: r1.2
+    release_date: '2026-03-09T15:09:22Z'
+    apis:
+    - api_name: click-to-dial
+      api_version: 0.1.0-rc.1
+  source: historical
 - repository: ConnectivityInsights
   github_url: https://github.com/camaraproject/ConnectivityInsights
   release_track: meta-release
@@ -4044,6 +3979,53 @@ progress:
     apis:
     - api_name: network-slice-booking
       api_version: 0.1.0
+  source: historical
+- repository: NetworkSliceBooking
+  github_url: https://github.com/camaraproject/NetworkSliceBooking
+  release_track: independent
+  target_release_tag: null
+  target_release_type: null
+  apis:
+  - api_name: network-slice-assignment
+    target_api_version: 0.1.0-rc.1
+    target_api_status: ''
+  - api_name: network-slice-booking
+    target_api_version: 0.2.0-rc.1
+    target_api_status: ''
+  state: historical
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis: []
+    m3:
+      release_tag: r2.1
+      release_date: '2026-03-11T02:25:30Z'
+      apis:
+      - api_name: network-slice-assignment
+        api_version: 0.1.0-rc.1
+      - api_name: network-slice-booking
+        api_version: 0.2.0-rc.1
+    m4:
+      release_tag: null
+      release_date: null
+      apis: []
+  last_published:
+    release_tag: r2.1
+    release_date: '2026-03-11T02:25:30Z'
+    apis:
+    - api_name: network-slice-assignment
+      api_version: 0.1.0-rc.1
+    - api_name: network-slice-booking
+      api_version: 0.2.0-rc.1
   source: historical
 - repository: NumberRecycling
   github_url: https://github.com/camaraproject/NumberRecycling
