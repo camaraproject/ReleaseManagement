@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-04-19T05:39:03Z'
-  last_checked: '2026-04-19T05:39:03Z'
+  last_updated: '2026-04-21T05:38:12Z'
+  last_checked: '2026-04-21T05:38:12Z'
   releases_master_updated: '2026-04-16T05:18:28.435Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
@@ -2359,8 +2359,8 @@ progress:
     release_pr: null
     draft_release: null
     release_issue:
-      number: 86
-      url: https://github.com/camaraproject/ReleaseTest/issues/86
+      number: 90
+      url: https://github.com/camaraproject/ReleaseTest/issues/90
   published_context:
     latest_public_release: null
     newest_pre_release: r1.1
