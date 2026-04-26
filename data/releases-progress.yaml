@@ -1,7 +1,7 @@
 metadata:
-  last_updated: '2026-04-25T05:24:16Z'
-  last_checked: '2026-04-25T05:24:16Z'
-  releases_master_updated: '2026-04-23T18:15:22.215Z'
+  last_updated: '2026-04-26T05:54:38Z'
+  last_checked: '2026-04-26T05:54:38Z'
+  releases_master_updated: '2026-04-25T05:01:25.648Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
   repos_scanned: 62
@@ -2359,17 +2359,20 @@ progress:
     target_api_status: alpha
     main_contacts:
     - hdamker-bot
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r1.3-88af55c
+    release_pr:
+      number: 124
+      state: open
+      url: https://github.com/camaraproject/ReleaseTest/pull/124
     draft_release: null
     release_issue:
-      number: 115
-      url: https://github.com/camaraproject/ReleaseTest/issues/115
+      number: 123
+      url: https://github.com/camaraproject/ReleaseTest/issues/123
   published_context:
     latest_public_release: null
-    newest_pre_release: r1.1
+    newest_pre_release: r1.2
   cycle_releases:
     m1:
       release_tag: r1.1
@@ -2390,15 +2393,19 @@ progress:
       release_date: null
       apis: []
   last_published:
-    release_tag: r1.1
-    release_date: '2026-04-12T20:20:59Z'
+    release_tag: r1.2
+    release_date: '2026-04-24T08:24:10Z'
     apis:
     - api_name: sample-service
-      api_version: 0.1.0-alpha.1
+      api_version: 0.1.0-alpha.2
     - api_name: sample-service-subscriptions
-      api_version: 0.1.0-alpha.1
+      api_version: 0.1.0-alpha.2
     - api_name: sample-implicit-events
-      api_version: 0.1.0-alpha.1
+      api_version: 0.1.0-alpha.2
+  snapshot_api_versions:
+    sample-service: 0.1.0-alpha.3
+    sample-service-subscriptions: 0.1.0-alpha.3
+    sample-implicit-events: 0.1.0-alpha.3
 - repository: SessionInsights
   github_url: https://github.com/camaraproject/SessionInsights
   release_track: independent
