@@ -1,14 +1,14 @@
 metadata:
-  last_updated: '2026-04-25T05:24:16Z'
-  last_checked: '2026-04-25T05:24:16Z'
-  releases_master_updated: '2026-04-23T18:15:22.215Z'
+  last_updated: '2026-04-27T06:12:45Z'
+  last_checked: '2026-04-27T06:12:45Z'
+  releases_master_updated: '2026-04-25T05:01:25.648Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
   repos_scanned: 62
   repos_new: 5
   repos_with_plan: 55
   repos_fully_onboarded: 10
-  repos_with_release_issue: 5
+  repos_with_release_issue: 4
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -1399,17 +1399,12 @@ progress:
     main_contacts:
     - chenfr2-ChinaTelecom
     - XunliYang
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r1.1-b7773ee
-    release_pr:
-      number: 39
-      state: open
-      url: https://github.com/camaraproject/IoTSIMFraudPrevention/pull/39
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 31
-      url: https://github.com/camaraproject/IoTSIMFraudPrevention/issues/31
+    release_issue: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -1429,6 +1424,11 @@ progress:
   snapshot_api_versions:
     iot-sim-fraud-prevention: 0.1.0-rc.1
     iot-sim-fraud-prevention-subscriptions: 0.1.0-rc.1
+  warnings:
+  - code: W003
+    message: Release r1.1 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: KnowYourCustomerAgeVerification
   github_url: https://github.com/camaraproject/KnowYourCustomerAgeVerification
   release_track: meta-release
@@ -2365,11 +2365,11 @@ progress:
     release_pr: null
     draft_release: null
     release_issue:
-      number: 115
-      url: https://github.com/camaraproject/ReleaseTest/issues/115
+      number: 123
+      url: https://github.com/camaraproject/ReleaseTest/issues/123
   published_context:
     latest_public_release: null
-    newest_pre_release: r1.1
+    newest_pre_release: r1.2
   cycle_releases:
     m1:
       release_tag: r1.1
@@ -2390,15 +2390,15 @@ progress:
       release_date: null
       apis: []
   last_published:
-    release_tag: r1.1
-    release_date: '2026-04-12T20:20:59Z'
+    release_tag: r1.2
+    release_date: '2026-04-24T08:24:10Z'
     apis:
     - api_name: sample-service
-      api_version: 0.1.0-alpha.1
+      api_version: 0.1.0-alpha.2
     - api_name: sample-service-subscriptions
-      api_version: 0.1.0-alpha.1
+      api_version: 0.1.0-alpha.2
     - api_name: sample-implicit-events
-      api_version: 0.1.0-alpha.1
+      api_version: 0.1.0-alpha.2
 - repository: SessionInsights
   github_url: https://github.com/camaraproject/SessionInsights
   release_track: independent
