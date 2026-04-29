@@ -1,14 +1,14 @@
 metadata:
-  last_updated: '2026-04-28T07:49:16Z'
-  last_checked: '2026-04-28T07:49:16Z'
+  last_updated: '2026-04-29T06:10:34Z'
+  last_checked: '2026-04-29T06:10:34Z'
   releases_master_updated: '2026-04-28T05:46:21.364Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
   repos_scanned: 62
-  repos_new: 5
-  repos_with_plan: 55
+  repos_new: 3
+  repos_with_plan: 57
   repos_fully_onboarded: 10
-  repos_with_release_issue: 3
+  repos_with_release_issue: 4
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -2339,7 +2339,7 @@ progress:
 - repository: ReleaseTest
   github_url: https://github.com/camaraproject/ReleaseTest
   release_track: independent
-  target_release_tag: r1.3
+  target_release_tag: r1.4
   target_release_type: pre-release-alpha
   dependencies:
     commonalities_release: r4.2
@@ -2360,12 +2360,14 @@ progress:
     target_api_status: alpha
     main_contacts:
     - hdamker-bot
-  state: published
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 135
+      url: https://github.com/camaraproject/ReleaseTest/issues/135
   published_context:
     latest_public_release: null
     newest_pre_release: r1.3
@@ -2398,10 +2400,6 @@ progress:
       api_version: 0.1.0-alpha.3
     - api_name: sample-implicit-events
       api_version: 0.1.0-alpha.3
-  snapshot_api_versions:
-    sample-service: 0.1.0-alpha.3
-    sample-service-subscriptions: 0.1.0-alpha.3
-    sample-implicit-events: 0.1.0-alpha.3
 - repository: SessionInsights
   github_url: https://github.com/camaraproject/SessionInsights
   release_track: independent
@@ -2813,6 +2811,78 @@ progress:
       api_version: 0.1.0
     - api_name: verified-caller
       api_version: 0.1.0
+- repository: VoiceNotification
+  github_url: https://github.com/camaraproject/VoiceNotification
+  release_track: independent
+  target_release_tag: r1.1
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: placeholder-entry
+    target_api_version: 0.1.0
+    target_api_status: draft
+    main_contacts:
+    - niu-chinauicom
+  state: not_planned
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis: []
+    m3:
+      release_tag: null
+      release_date: null
+      apis: []
+    m4:
+      release_tag: null
+      release_date: null
+      apis: []
+- repository: VoiceVerificationCode
+  github_url: https://github.com/camaraproject/VoiceVerificationCode
+  release_track: independent
+  target_release_tag: r1.1
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: placeholder-entry
+    target_api_version: 0.1.0
+    target_api_status: draft
+    main_contacts:
+    - niu-chinauicom
+  state: not_planned
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis: []
+    m3:
+      release_tag: null
+      release_date: null
+      apis: []
+    m4:
+      release_tag: null
+      release_date: null
+      apis: []
 - repository: WebRTC
   github_url: https://github.com/camaraproject/WebRTC
   release_track: meta-release
