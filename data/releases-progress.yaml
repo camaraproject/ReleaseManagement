@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-04-29T17:04:56Z'
-  last_checked: '2026-04-29T17:04:56Z'
+  last_updated: '2026-04-30T06:15:15Z'
+  last_checked: '2026-04-30T06:15:15Z'
   releases_master_updated: '2026-04-28T05:46:21.364Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
@@ -8,7 +8,7 @@ metadata:
   repos_new: 3
   repos_with_plan: 57
   repos_fully_onboarded: 11
-  repos_with_release_issue: 5
+  repos_with_release_issue: 6
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -1381,30 +1381,35 @@ progress:
 - repository: IoTSIMFraudPrevention
   github_url: https://github.com/camaraproject/IoTSIMFraudPrevention
   release_track: independent
-  target_release_tag: r1.1
-  target_release_type: pre-release-rc
+  target_release_tag: r1.2
+  target_release_type: public-release
   dependencies:
     commonalities_release: r3.4
     identity_consent_management_release: r3.3
   apis:
   - api_name: iot-sim-fraud-prevention
     target_api_version: 0.1.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - chenfr2-ChinaTelecom
     - XunliYang
   - api_name: iot-sim-fraud-prevention-subscriptions
     target_api_version: 0.1.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - chenfr2-ChinaTelecom
     - XunliYang
-  state: published
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r1.2-bfd4d4b
+    release_pr:
+      number: 45
+      state: open
+      url: https://github.com/camaraproject/IoTSIMFraudPrevention/pull/45
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 44
+      url: https://github.com/camaraproject/IoTSIMFraudPrevention/issues/44
   published_context:
     latest_public_release: null
     newest_pre_release: r1.1
@@ -1434,8 +1439,8 @@ progress:
     - api_name: iot-sim-fraud-prevention-subscriptions
       api_version: 0.1.0-rc.1
   snapshot_api_versions:
-    iot-sim-fraud-prevention: 0.1.0-rc.1
-    iot-sim-fraud-prevention-subscriptions: 0.1.0-rc.1
+    iot-sim-fraud-prevention: 0.1.0
+    iot-sim-fraud-prevention-subscriptions: 0.1.0
 - repository: KnowYourCustomerAgeVerification
   github_url: https://github.com/camaraproject/KnowYourCustomerAgeVerification
   release_track: meta-release
