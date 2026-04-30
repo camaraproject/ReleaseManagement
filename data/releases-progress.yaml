@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-04-30T16:56:46Z'
-  last_checked: '2026-04-30T16:56:46Z'
+  last_updated: '2026-04-30T20:13:33Z'
+  last_checked: '2026-04-30T20:13:33Z'
   releases_master_updated: '2026-04-28T05:46:21.364Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
@@ -2340,7 +2340,7 @@ progress:
 - repository: ReleaseTest
   github_url: https://github.com/camaraproject/ReleaseTest
   release_track: independent
-  target_release_tag: r1.4
+  target_release_tag: r1.5
   target_release_type: pre-release-alpha
   dependencies:
     commonalities_release: r4.2
@@ -2348,17 +2348,17 @@ progress:
   apis:
   - api_name: sample-service
     target_api_version: 0.1.0
-    target_api_status: alpha
+    target_api_status: rc
     main_contacts:
     - hdamker-bot
   - api_name: sample-service-subscriptions
     target_api_version: 0.1.0
-    target_api_status: alpha
+    target_api_status: rc
     main_contacts:
     - hdamker-bot
   - api_name: sample-implicit-events
     target_api_version: 0.1.0
-    target_api_status: alpha
+    target_api_status: rc
     main_contacts:
     - hdamker-bot
   state: planned
@@ -2367,8 +2367,8 @@ progress:
     release_pr: null
     draft_release: null
     release_issue:
-      number: 135
-      url: https://github.com/camaraproject/ReleaseTest/issues/135
+      number: 143
+      url: https://github.com/camaraproject/ReleaseTest/issues/143
   published_context:
     latest_public_release: null
     newest_pre_release: r1.3
