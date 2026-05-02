@@ -1,7 +1,7 @@
 metadata:
-  last_updated: '2026-04-30T20:13:33Z'
-  last_checked: '2026-04-30T20:13:33Z'
-  releases_master_updated: '2026-04-28T05:46:21.364Z'
+  last_updated: '2026-05-02T05:46:30Z'
+  last_checked: '2026-05-02T05:46:30Z'
+  releases_master_updated: '2026-05-01T05:56:10.037Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
   repos_scanned: 62
@@ -2371,7 +2371,7 @@ progress:
       url: https://github.com/camaraproject/ReleaseTest/issues/143
   published_context:
     latest_public_release: null
-    newest_pre_release: r1.3
+    newest_pre_release: r1.4
   cycle_releases:
     m1:
       release_tag: r1.1
@@ -2392,15 +2392,15 @@ progress:
       release_date: null
       apis: []
   last_published:
-    release_tag: r1.3
-    release_date: '2026-04-27T11:07:04Z'
+    release_tag: r1.4
+    release_date: '2026-04-30T19:26:32Z'
     apis:
     - api_name: sample-service
-      api_version: 0.1.0-alpha.3
+      api_version: 0.1.0-alpha.4
     - api_name: sample-service-subscriptions
-      api_version: 0.1.0-alpha.3
+      api_version: 0.1.0-alpha.4
     - api_name: sample-implicit-events
-      api_version: 0.1.0-alpha.3
+      api_version: 0.1.0-alpha.4
 - repository: SessionInsights
   github_url: https://github.com/camaraproject/SessionInsights
   release_track: independent
