@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-05-02T05:46:30Z'
-  last_checked: '2026-05-02T05:46:30Z'
+  last_updated: '2026-05-03T17:36:26Z'
+  last_checked: '2026-05-03T17:36:26Z'
   releases_master_updated: '2026-05-01T05:56:10.037Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
@@ -58,7 +58,7 @@ progress:
     - gainsley
     - JoseMConde
     - maheshc01
-  state: completed
+  state: not_planned
   artifacts:
     snapshot_branch: null
     release_pr: null
@@ -112,7 +112,7 @@ progress:
     - gainsley
     - JoseMConde
     - maheshc01
-  state: completed
+  state: not_planned
   artifacts:
     snapshot_branch: null
     release_pr: null
@@ -161,7 +161,7 @@ progress:
     - maheshc01
     - Kevsy
     - urvika-v
-  state: completed
+  state: not_planned
   artifacts:
     snapshot_branch: null
     release_pr: null
@@ -219,7 +219,7 @@ progress:
     - grgpapadopoulos
     - ksl4dtit
     - rartych
-  state: completed
+  state: not_planned
   artifacts:
     snapshot_branch: null
     release_pr: null
@@ -274,7 +274,7 @@ progress:
     - FabrizioMoggio
     - bigludo7
     - chinaunicomyangfan
-  state: completed
+  state: not_planned
   artifacts:
     snapshot_branch: null
     release_pr: null
@@ -369,7 +369,7 @@ progress:
     - PedroDiez
     - ToshiWakayama-KDDI
     - bigludo7
-  state: completed
+  state: not_planned
   artifacts:
     snapshot_branch: null
     release_pr: null
@@ -484,7 +484,7 @@ progress:
     - bigludo7
     - sachinvodafone
     - akoshunyadi
-  state: completed
+  state: not_planned
   artifacts:
     snapshot_branch: null
     release_pr: null
@@ -546,7 +546,7 @@ progress:
     - maheshc01
     - kevsy
     - urvika-v
-  state: completed
+  state: not_planned
   artifacts:
     snapshot_branch: null
     release_pr: null
@@ -747,7 +747,7 @@ progress:
     - PeterKovacs2
     - carlosromerog
     - eric-murray
-  state: completed
+  state: not_planned
   artifacts:
     snapshot_branch: null
     release_pr: null
@@ -899,7 +899,7 @@ progress:
     - bigludo7
     - jlurien
     - maxl2287
-  state: completed
+  state: not_planned
   artifacts:
     snapshot_branch: null
     release_pr: null
@@ -1007,7 +1007,7 @@ progress:
     - bigludo7
     - sachinvodafone
     - akoshunyadi
-  state: completed
+  state: not_planned
   artifacts:
     snapshot_branch: null
     release_pr: null
@@ -1071,7 +1071,7 @@ progress:
     - bigludo7
     - sachinvodafone
     - akoshunyadi
-  state: completed
+  state: not_planned
   artifacts:
     snapshot_branch: null
     release_pr: null
@@ -1126,7 +1126,7 @@ progress:
     - bigludo7
     - krishvenkatachalam
     - jgarciahospital
-  state: completed
+  state: not_planned
   artifacts:
     snapshot_branch: null
     release_pr: null
@@ -1213,7 +1213,7 @@ progress:
     target_api_status: public
     main_contacts:
     - FabrizioMoggio
-  state: completed
+  state: not_planned
   artifacts:
     snapshot_branch: null
     release_pr: null
@@ -1448,7 +1448,7 @@ progress:
     - ToshiWakayama-KDDI
     - fernandopradocabrillo
     - GillesInnov35
-  state: completed
+  state: not_planned
   artifacts:
     snapshot_branch: null
     release_pr: null
@@ -1497,7 +1497,7 @@ progress:
     - ToshiWakayama-KDDI
     - fernandopradocabrillo
     - GillesInnov35
-  state: completed
+  state: not_planned
   artifacts:
     snapshot_branch: null
     release_pr: null
@@ -1546,7 +1546,7 @@ progress:
     - ToshiWakayama-KDDI
     - fernandopradocabrillo
     - GillesInnov35
-  state: completed
+  state: not_planned
   artifacts:
     snapshot_branch: null
     release_pr: null
@@ -1603,7 +1603,7 @@ progress:
     target_api_status: public
     main_contacts:
     - lihaojie-CMCC
-  state: completed
+  state: not_planned
   artifacts:
     snapshot_branch: null
     release_pr: null
@@ -1856,7 +1856,7 @@ progress:
     - eric-murray
     - Masa8106
     - grgpapadopoulos
-  state: completed
+  state: not_planned
   artifacts:
     snapshot_branch: null
     release_pr: null
@@ -1905,7 +1905,7 @@ progress:
     - bigludo7
     - fernandopradocabrillo
     - AxelNennker
-  state: completed
+  state: not_planned
   artifacts:
     snapshot_branch: null
     release_pr: null
@@ -1959,7 +1959,7 @@ progress:
     - gainsley
     - JoseMConde
     - maheshc01
-  state: completed
+  state: not_planned
   artifacts:
     snapshot_branch: null
     release_pr: null
@@ -2007,7 +2007,7 @@ progress:
     main_contacts:
     - bigludo7
     - fernandopradocabrillo
-  state: completed
+  state: not_planned
   artifacts:
     snapshot_branch: null
     release_pr: null
@@ -2056,7 +2056,7 @@ progress:
     - sachinvodafone
     - jgarciahospital
     - maheshc01
-  state: completed
+  state: not_planned
   artifacts:
     snapshot_branch: null
     release_pr: null
@@ -2104,7 +2104,7 @@ progress:
     main_contacts:
     - eric-murray
     - albertoramosmonagas
-  state: completed
+  state: not_planned
   artifacts:
     snapshot_branch: null
     release_pr: null
@@ -2158,7 +2158,7 @@ progress:
     main_contacts:
     - Masa8106
     - jlurien
-  state: completed
+  state: not_planned
   artifacts:
     snapshot_branch: null
     release_pr: null
@@ -2305,7 +2305,7 @@ progress:
     - chinaunicomyangfan
     - ClownsAlbert
     - ChuanyuChen
-  state: completed
+  state: not_planned
   artifacts:
     snapshot_branch: null
     release_pr: null
@@ -2521,7 +2521,7 @@ progress:
     - bigludo7
     - fernandopradocabrillo
     - maxl2287
-  state: completed
+  state: not_planned
   artifacts:
     snapshot_branch: null
     release_pr: null
@@ -2613,7 +2613,7 @@ progress:
     - ClownsAlbert
     - ChuanyuChen
     - DanXu-ChinaTelecom
-  state: completed
+  state: not_planned
   artifacts:
     snapshot_branch: null
     release_pr: null
@@ -2663,7 +2663,7 @@ progress:
     - GillesInnov35
     - grgpapadopoulos
     - fernandopradocabrillo
-  state: completed
+  state: not_planned
   artifacts:
     snapshot_branch: null
     release_pr: null
@@ -2712,7 +2712,7 @@ progress:
     - FabrizioMoggio
     - Kevsy
     - JoseMConde
-  state: completed
+  state: not_planned
   artifacts:
     snapshot_branch: null
     release_pr: null
@@ -2774,7 +2774,7 @@ progress:
     - alpaycetin74
     - stroncoso-quobis
     - GillesInnov35
-  state: completed
+  state: not_planned
   artifacts:
     snapshot_branch: null
     release_pr: null
