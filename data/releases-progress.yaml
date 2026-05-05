@@ -1,12 +1,12 @@
 metadata:
-  last_updated: '2026-05-05T06:00:59Z'
-  last_checked: '2026-05-05T06:00:59Z'
+  last_updated: '2026-05-05T07:22:10Z'
+  last_checked: '2026-05-05T07:22:10Z'
   releases_master_updated: '2026-05-01T05:56:10.037Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
   repos_scanned: 62
-  repos_new: 3
-  repos_with_plan: 57
+  repos_new: 0
+  repos_with_plan: 62
   repos_fully_onboarded: 13
   repos_with_release_issue: 8
 meta_releases:
@@ -828,6 +828,70 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+- repository: DeviceDataVolume
+  github_url: https://github.com/camaraproject/DeviceDataVolume
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: r1.3
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: device-data-volume-subscriptions
+    target_api_version: 0.1.0
+    target_api_status: public
+    main_contacts:
+    - maxl2287
+    - sachinvodafone
+  - api_name: device-data-volume
+    target_api_version: 0.1.0
+    target_api_status: public
+    main_contacts:
+    - maxl2287
+    - sachinvodafone
+  state: not_planned
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: r1.3
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: r1.1
+      release_date: '2025-01-16T16:32:33Z'
+      apis:
+      - api_name: device-data-volume-subscriptions
+        api_version: 0.1.0-alpha.1
+      - api_name: device-data-volume
+        api_version: 0.1.0-alpha.1
+    m3:
+      release_tag: r1.2
+      release_date: '2025-07-25T14:22:52Z'
+      apis:
+      - api_name: device-data-volume-subscriptions
+        api_version: 0.1.0-rc.1
+      - api_name: device-data-volume
+        api_version: 0.1.0-rc.1
+    m4:
+      release_tag: r1.3
+      release_date: '2025-09-12T09:19:47Z'
+      apis:
+      - api_name: device-data-volume-subscriptions
+        api_version: 0.1.0
+      - api_name: device-data-volume
+        api_version: 0.1.0
+  last_published:
+    release_tag: r1.3
+    release_date: '2025-09-12T09:19:47Z'
+    apis:
+    - api_name: device-data-volume-subscriptions
+      api_version: 0.1.0
+    - api_name: device-data-volume
+      api_version: 0.1.0
 - repository: DeviceIdentifier
   github_url: https://github.com/camaraproject/DeviceIdentifier
   release_track: meta-release
@@ -1158,6 +1222,44 @@ progress:
     apis:
     - api_name: device-swap
       api_version: 1.0.0
+- repository: DeviceVisitLocation
+  github_url: https://github.com/camaraproject/DeviceVisitLocation
+  release_track: independent
+  target_release_tag: r1.1
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: placeholder-entry
+    target_api_version: 0.1.0
+    target_api_status: draft
+    main_contacts:
+    - chinaunicomyangfan
+    - ChinaUnicomXiaoDongrui
+    - FabrizioMoggio
+  state: not_planned
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis: []
+    m3:
+      release_tag: null
+      release_date: null
+      apis: []
+    m4:
+      release_tag: null
+      release_date: null
+      apis: []
 - repository: EdgeApplicationManagement
   github_url: https://github.com/camaraproject/EdgeApplicationManagement
   release_track: independent
@@ -1247,6 +1349,43 @@ progress:
     apis:
     - api_name: energy-footprint-notification
       api_version: 0.1.0
+- repository: eSimRemoteManagement
+  github_url: https://github.com/camaraproject/eSimRemoteManagement
+  release_track: independent
+  target_release_tag: r1.1
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: placeholder-entry
+    target_api_version: 0.1.0
+    target_api_status: draft
+    main_contacts:
+    - SentianSun
+    - ChinaUnicomXiaoDongrui
+  state: not_planned
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis: []
+    m3:
+      release_tag: null
+      release_date: null
+      apis: []
+    m4:
+      release_tag: null
+      release_date: null
+      apis: []
 - repository: HighThroughputElasticNetworks
   github_url: https://github.com/camaraproject/HighThroughputElasticNetworks
   release_track: independent
@@ -1261,6 +1400,42 @@ progress:
     target_api_status: draft
     main_contacts:
     - wangruobei
+  state: not_planned
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis: []
+    m3:
+      release_tag: null
+      release_date: null
+      apis: []
+    m4:
+      release_tag: null
+      release_date: null
+      apis: []
+- repository: InHomeDeviceManagement
+  github_url: https://github.com/camaraproject/InHomeDeviceManagement
+  release_track: independent
+  target_release_tag: r1.1
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: placeholder-entry
+    target_api_version: 0.1.0
+    target_api_status: draft
+    main_contacts:
+    - ravim95-eng
   state: not_planned
   artifacts:
     snapshot_branch: null
@@ -1647,6 +1822,55 @@ progress:
       api_version: 0.1.0
     - api_name: qa-assistant-service
       api_version: 0.1.0
+- repository: MostFrequentLocation
+  github_url: https://github.com/camaraproject/MostFrequentLocation
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: r2.2
+  target_release_type: none
+  dependencies:
+    commonalities_release: r3.4
+    identity_consent_management_release: r3.3
+  apis:
+  - api_name: most-frequent-location
+    target_api_version: 0.2.0
+    target_api_status: public
+    main_contacts:
+    - chinaunicomyangfan
+    - fernandopradocabrillo
+    - FabrizioMoggio
+  state: not_planned
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: r2.2
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis: []
+    m3:
+      release_tag: r2.1
+      release_date: '2025-07-30T07:42:05Z'
+      apis:
+      - api_name: most-frequent-location
+        api_version: 0.2.0-rc.1
+    m4:
+      release_tag: r2.2
+      release_date: '2025-09-16T15:16:15Z'
+      apis:
+      - api_name: most-frequent-location
+        api_version: 0.2.0
+  last_published:
+    release_tag: r2.2
+    release_date: '2025-09-16T15:16:15Z'
+    apis:
+    - api_name: most-frequent-location
+      api_version: 0.2.0
 - repository: MultiPointVPN
   github_url: https://github.com/camaraproject/MultiPointVPN
   release_track: independent
@@ -3426,62 +3650,6 @@ progress:
     - api_name: customer-insights
       api_version: 0.1.1
   source: historical
-- repository: DeviceDataVolume
-  github_url: https://github.com/camaraproject/DeviceDataVolume
-  release_track: meta-release
-  meta_release: Fall25
-  target_release_tag: null
-  target_release_type: null
-  apis:
-  - api_name: device-data-volume-subscriptions
-    target_api_version: 0.1.0
-    target_api_status: ''
-  - api_name: device-data-volume
-    target_api_version: 0.1.0
-    target_api_status: ''
-  state: historical
-  artifacts:
-    snapshot_branch: null
-    release_pr: null
-    draft_release: null
-    release_issue: null
-  published_context:
-    latest_public_release: null
-    newest_pre_release: null
-  cycle_releases:
-    m1:
-      release_tag: r1.1
-      release_date: '2025-01-16T16:32:33Z'
-      apis:
-      - api_name: device-data-volume-subscriptions
-        api_version: 0.1.0-alpha.1
-      - api_name: device-data-volume
-        api_version: 0.1.0-alpha.1
-    m3:
-      release_tag: r1.2
-      release_date: '2025-07-25T14:22:52Z'
-      apis:
-      - api_name: device-data-volume-subscriptions
-        api_version: 0.1.0-rc.1
-      - api_name: device-data-volume
-        api_version: 0.1.0-rc.1
-    m4:
-      release_tag: r1.3
-      release_date: '2025-09-12T09:19:47Z'
-      apis:
-      - api_name: device-data-volume-subscriptions
-        api_version: 0.1.0
-      - api_name: device-data-volume
-        api_version: 0.1.0
-  last_published:
-    release_tag: r1.3
-    release_date: '2025-09-12T09:19:47Z'
-    apis:
-    - api_name: device-data-volume-subscriptions
-      api_version: 0.1.0
-    - api_name: device-data-volume
-      api_version: 0.1.0
-  source: historical
 - repository: DeviceIdentifier
   github_url: https://github.com/camaraproject/DeviceIdentifier
   release_track: meta-release
@@ -4090,49 +4258,6 @@ progress:
       api_version: 0.3.0
     - api_name: kyc-match
       api_version: 0.3.0
-  source: historical
-- repository: MostFrequentLocation
-  github_url: https://github.com/camaraproject/MostFrequentLocation
-  release_track: meta-release
-  meta_release: Fall25
-  target_release_tag: null
-  target_release_type: null
-  apis:
-  - api_name: most-frequent-location
-    target_api_version: 0.2.0
-    target_api_status: ''
-  state: historical
-  artifacts:
-    snapshot_branch: null
-    release_pr: null
-    draft_release: null
-    release_issue: null
-  published_context:
-    latest_public_release: null
-    newest_pre_release: null
-  cycle_releases:
-    m1:
-      release_tag: null
-      release_date: null
-      apis: []
-    m3:
-      release_tag: r2.1
-      release_date: '2025-07-30T07:42:05Z'
-      apis:
-      - api_name: most-frequent-location
-        api_version: 0.2.0-rc.1
-    m4:
-      release_tag: r2.2
-      release_date: '2025-09-16T15:16:15Z'
-      apis:
-      - api_name: most-frequent-location
-        api_version: 0.2.0
-  last_published:
-    release_tag: r2.2
-    release_date: '2025-09-16T15:16:15Z'
-    apis:
-    - api_name: most-frequent-location
-      api_version: 0.2.0
   source: historical
 - repository: MostFrequentLocation
   github_url: https://github.com/camaraproject/MostFrequentLocation
