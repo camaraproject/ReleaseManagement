@@ -1,14 +1,14 @@
 metadata:
-  last_updated: '2026-05-05T07:22:10Z'
-  last_checked: '2026-05-05T07:22:10Z'
+  last_updated: '2026-05-05T15:14:31Z'
+  last_checked: '2026-05-05T15:14:31Z'
   releases_master_updated: '2026-05-01T05:56:10.037Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
   repos_scanned: 62
   repos_new: 0
   repos_with_plan: 62
-  repos_fully_onboarded: 13
-  repos_with_release_issue: 8
+  repos_fully_onboarded: 14
+  repos_with_release_issue: 9
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -638,24 +638,26 @@ progress:
   github_url: https://github.com/camaraproject/ConsentManagement
   release_track: independent
   target_release_tag: r1.1
-  target_release_type: none
+  target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r3.4
-    identity_consent_management_release: r3.3
+    commonalities_release: r4.2
+    identity_consent_management_release: r4.2
   apis:
   - api_name: consent-management
     target_api_version: 0.1.0
-    target_api_status: draft
+    target_api_status: rc
     main_contacts:
     - jpengar
     - AxelNennker
     - sebdewet
-  state: not_planned
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 25
+      url: https://github.com/camaraproject/ConsentManagement/issues/25
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -3120,7 +3122,7 @@ progress:
   apis:
   - api_name: webrtc-call-handling
     target_api_version: 0.4.0
-    target_api_status: public
+    target_api_status: rc
     main_contacts:
     - stroncoso
     - pradeepachar-mavenir
@@ -3128,7 +3130,7 @@ progress:
     - teikuran
   - api_name: webrtc-events
     target_api_version: 0.3.0
-    target_api_status: public
+    target_api_status: rc
     main_contacts:
     - stroncoso
     - pradeepachar-mavenir
@@ -3136,7 +3138,7 @@ progress:
     - teikuran
   - api_name: webrtc-registration
     target_api_version: 0.4.0
-    target_api_status: public
+    target_api_status: rc
     main_contacts:
     - stroncoso
     - pradeepachar-mavenir
