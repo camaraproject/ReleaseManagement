@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-05-06T06:16:05Z'
-  last_checked: '2026-05-06T06:16:05Z'
+  last_updated: '2026-05-07T06:21:26Z'
+  last_checked: '2026-05-07T06:21:26Z'
   releases_master_updated: '2026-05-01T05:56:10.037Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
@@ -8,7 +8,7 @@ metadata:
   repos_new: 0
   repos_with_plan: 62
   repos_fully_onboarded: 14
-  repos_with_release_issue: 9
+  repos_with_release_issue: 11
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -411,25 +411,27 @@ progress:
   github_url: https://github.com/camaraproject/ClickToDial
   release_track: meta-release
   meta_release: Spring26
-  target_release_tag: r1.2
-  target_release_type: pre-release-rc
+  target_release_tag: r1.3
+  target_release_type: public-release
   dependencies:
-    commonalities_release: r4.1
-    identity_consent_management_release: r4.1
+    commonalities_release: r4.2
+    identity_consent_management_release: r4.2
   apis:
   - api_name: click-to-dial
     target_api_version: 0.1.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - YadingFang
     - Wojiaozhenghao
     - XunliYang
-  state: published
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 94
+      url: https://github.com/camaraproject/ClickToDial/issues/94
   published_context:
     latest_public_release: null
     newest_pre_release: r1.2
@@ -456,8 +458,6 @@ progress:
     apis:
     - api_name: click-to-dial
       api_version: 0.1.0-rc.1
-  snapshot_api_versions:
-    click-to-dial: 0.1.0-rc.1
 - repository: ConnectedNetworkType
   github_url: https://github.com/camaraproject/ConnectedNetworkType
   release_track: meta-release
@@ -2011,32 +2011,34 @@ progress:
   github_url: https://github.com/camaraproject/NetworkSliceBooking
   release_track: meta-release
   meta_release: Spring26
-  target_release_tag: r2.1
-  target_release_type: pre-release-rc
+  target_release_tag: r2.2
+  target_release_type: public-release
   dependencies:
-    commonalities_release: r4.1
-    identity_consent_management_release: r4.1
+    commonalities_release: r4.2
+    identity_consent_management_release: r4.2
   apis:
   - api_name: network-slice-booking
     target_api_version: 0.2.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - chinaunicomyangfan
     - DanXu-ChinaTelecom
     - Kai-hw
   - api_name: network-slice-assignment
     target_api_version: 0.1.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - chinaunicomyangfan
     - DanXu-ChinaTelecom
     - Kai-hw
-  state: published
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 112
+      url: https://github.com/camaraproject/NetworkSliceBooking/issues/112
   published_context:
     latest_public_release: r1.2
     newest_pre_release: r2.1
