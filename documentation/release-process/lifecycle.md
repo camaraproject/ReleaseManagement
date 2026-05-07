@@ -64,7 +64,10 @@ This phase is ongoing until you decide to release.
 ### 4. Review and Approve
 
 **What you do:**
-1. Review the Release PR (CHANGELOG entry for the release) and update as needed.
+1. Review the Release PR and complete the CHANGELOG entry:
+   - The automation generates `CHANGELOG/CHANGELOG-rX.md` on the release-review branch with placeholder text in the Added/Changed/Fixed/Removed sections
+   - Fill in those sections by committing directly to the release-review branch
+   - Do **not** create a separate PR to `main` for the CHANGELOG — the post-release sync PR (created automatically after publish) will bring it back to `main`
 2. Ensure required approvals are in place (codeowner and release reviewer)
 3. Merge the Release PR
 
@@ -92,6 +95,16 @@ This phase is ongoing until you decide to release.
 - Pointer branch created (`release/rX.Y` or `pre-release/rX.Y`) at the tag commit
 - Post-release sync PR created (merge it to update `main`)
 - Release Issue closed
+
+**After merging the post-release sync PR:**
+
+Three branches remain after a successful publish. Here is what to do with each:
+
+| Branch | Purpose | Action |
+|--------|---------|--------|
+| `release-review/rX.Y-<id>-published` | The completed release-review branch, renamed on publish | Delete |
+| `pr-to-main/rX.Y` | Source branch for the post-release sync PR | Delete after sync PR is merged |
+| `pre-release/rX.Y` (or `release/rX.Y`) | Pointer to the release tag | Keep as long as the release is listed in the repo README |
 
 **What can block you:**
 - Issue found in draft:
