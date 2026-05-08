@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-05-07T06:21:26Z'
-  last_checked: '2026-05-07T06:21:26Z'
+  last_updated: '2026-05-08T05:38:27Z'
+  last_checked: '2026-05-08T05:38:27Z'
   releases_master_updated: '2026-05-01T05:56:10.037Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
@@ -412,22 +412,25 @@ progress:
   release_track: meta-release
   meta_release: Spring26
   target_release_tag: r1.3
-  target_release_type: public-release
+  target_release_type: pre-release-rc
   dependencies:
     commonalities_release: r4.2
     identity_consent_management_release: r4.2
   apis:
   - api_name: click-to-dial
     target_api_version: 0.1.0
-    target_api_status: public
+    target_api_status: rc
     main_contacts:
     - YadingFang
     - Wojiaozhenghao
     - XunliYang
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r1.3-4cd13e8
+    release_pr:
+      number: 97
+      state: open
+      url: https://github.com/camaraproject/ClickToDial/pull/97
     draft_release: null
     release_issue:
       number: 94
@@ -458,6 +461,8 @@ progress:
     apis:
     - api_name: click-to-dial
       api_version: 0.1.0-rc.1
+  snapshot_api_versions:
+    click-to-dial: 0.1.0-rc.2
 - repository: ConnectedNetworkType
   github_url: https://github.com/camaraproject/ConnectedNetworkType
   release_track: meta-release
@@ -1954,28 +1959,33 @@ progress:
 - repository: NetworkInsights
   github_url: https://github.com/camaraproject/NetworkInsights
   release_track: independent
-  target_release_tag: r1.1
-  target_release_type: pre-release-alpha
+  target_release_tag: r1.2
+  target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r4.1
+    commonalities_release: r4.2
     identity_consent_management_release: r4.2
   apis:
   - api_name: network-health-assessment
     target_api_version: 0.1.0
-    target_api_status: alpha
+    target_api_status: rc
     main_contacts:
     - cnzj-Gc
   - api_name: network-traffic-analysis
     target_api_version: 0.1.0
-    target_api_status: alpha
+    target_api_status: rc
     main_contacts:
     - cnzj-Gc
-  state: published
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r1.2-fb84d07
+    release_pr:
+      number: 53
+      state: open
+      url: https://github.com/camaraproject/NetworkInsights/pull/53
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 52
+      url: https://github.com/camaraproject/NetworkInsights/issues/52
   published_context:
     latest_public_release: null
     newest_pre_release: r1.1
@@ -2005,36 +2015,39 @@ progress:
     - api_name: network-traffic-analysis
       api_version: 0.1.0-alpha.1
   snapshot_api_versions:
-    network-health-assessment: 0.1.0-alpha.1
-    network-traffic-analysis: 0.1.0-alpha.1
+    network-health-assessment: 0.1.0-rc.1
+    network-traffic-analysis: 0.1.0-rc.1
 - repository: NetworkSliceBooking
   github_url: https://github.com/camaraproject/NetworkSliceBooking
   release_track: meta-release
   meta_release: Spring26
   target_release_tag: r2.2
-  target_release_type: public-release
+  target_release_type: pre-release-rc
   dependencies:
     commonalities_release: r4.2
     identity_consent_management_release: r4.2
   apis:
   - api_name: network-slice-booking
     target_api_version: 0.2.0
-    target_api_status: public
+    target_api_status: rc
     main_contacts:
     - chinaunicomyangfan
     - DanXu-ChinaTelecom
     - Kai-hw
   - api_name: network-slice-assignment
     target_api_version: 0.1.0
-    target_api_status: public
+    target_api_status: rc
     main_contacts:
     - chinaunicomyangfan
     - DanXu-ChinaTelecom
     - Kai-hw
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.2-4fc6024
+    release_pr:
+      number: 115
+      state: open
+      url: https://github.com/camaraproject/NetworkSliceBooking/pull/115
     draft_release: null
     release_issue:
       number: 112
@@ -2067,6 +2080,9 @@ progress:
       api_version: 0.1.0-rc.1
     - api_name: network-slice-booking
       api_version: 0.2.0-rc.1
+  snapshot_api_versions:
+    network-slice-booking: 0.2.0-rc.2
+    network-slice-assignment: 0.1.0-rc.2
 - repository: NumberRecycling
   github_url: https://github.com/camaraproject/NumberRecycling
   release_track: meta-release
@@ -2645,17 +2661,12 @@ progress:
     - benhepworth
     - maheshc01
     - kevsy
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r1.1-7223bcf
-    release_pr:
-      number: 89
-      state: open
-      url: https://github.com/camaraproject/SessionInsights/pull/89
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 81
-      url: https://github.com/camaraproject/SessionInsights/issues/81
+    release_issue: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -2674,6 +2685,11 @@ progress:
       apis: []
   snapshot_api_versions:
     session-insights: 0.1.0-alpha.1
+  warnings:
+  - code: W003
+    message: Release r1.1 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: SimpleEdgeDiscovery
   github_url: https://github.com/camaraproject/SimpleEdgeDiscovery
   release_track: meta-release
