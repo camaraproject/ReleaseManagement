@@ -8,8 +8,9 @@ This guide walks you through releasing an API repository in CAMARA.
 - [ ] Ensure all intended changes are merged to `main`
 - [ ] APIs meet their declared target statuses (Checks on `main` should be green)
 - [ ] `/create-snapshot` in Release Issue
-- [ ] Review, update as needed, approve and merge Release PR
-- [ ] `/publish-release` → Done
+- [ ] Edit `CHANGELOG-rX.md` on the release-review branch, get approvals, merge Release PR
+- [ ] `/publish-release`
+- [ ] Merge post-release sync PR → Done
 
 ## The Release Process
 
@@ -61,18 +62,23 @@ This phase is ongoing until you decide to release.
 
 ---
 
-### 4. Review and Approve
+### 4. Edit and Review
 
 **What you do:**
-1. Review the Release PR (CHANGELOG entry for the release) and update as needed.
-2. Ensure required approvals are in place (codeowner and release reviewer)
-3. Merge the Release PR
+
+1. **Edit `CHANGELOG-rX.md` on the release-review branch.**
+   - The automation pre-fills it with a temporary section listing the PRs merged since the previous release, plus placeholder Added / Changed / Fixed / Removed sections (each marked `_To be filled during release review_`).
+   - Move the entries from the temporary section into the appropriate placeholder sections (or drop sections that don't apply) and commit directly to the release-review branch.
+2. **Ensure required approvals are in place** (codeowner and release reviewer). The release reviewer reviews the Release PR; address CHANGELOG feedback with further commits to the release-review branch.
+3. **Merge the Release PR.**
+
+> **Do not** open a separate PR to `main` for the CHANGELOG — the post-release sync PR (step 6) carries it back to `main` automatically.
 
 **What you see:**
 - After merge: Draft release created, issue shows "DRAFT READY"
 
 **What can block you:**
-- Issue found in API specification:
+- Issue found in API specification (or anything beyond `CHANGELOG-rX.md` and `README.md`):
   1. Post `/discard-snapshot <reason>` on the Release Issue
   2. Fix the issue on `main`
   3. Post `/create-snapshot` to start fresh
@@ -89,8 +95,9 @@ This phase is ongoing until you decide to release.
 
 **What you see:**
 - Release tag `rX.Y` created
-- Pointer branch created (`release/rX.Y` or `pre-release/rX.Y`) at the tag commit
-- Post-release sync PR created (merge it to update `main`)
+- Pointer branch (`release/rX.Y` or `pre-release/rX.Y`) created at the tag commit
+- Snapshot and release-review branches deleted automatically
+- Post-release sync PR opened
 - Release Issue closed
 
 **What can block you:**
@@ -98,6 +105,17 @@ This phase is ongoing until you decide to release.
   1. Post `/delete-draft <reason>` on the Release Issue
   2. Fix the issue on `main`
   3. Post `/create-snapshot` to start fresh
+
+---
+
+### 6. Post-Release Sync
+
+**What you do:**
+1. Review and merge the post-release sync PR. It carries `CHANGELOG-rX.md` and the automation-updated `README.md` back to `main`.
+2. Delete the source branch `pr-to-main/rX.Y` — you can use GitHub's "Delete branch" button on the merged PR.
+
+**What you see:**
+- `main` is in sync with the published release. The pointer branch (`release/rX.Y` or `pre-release/rX.Y`) remains as the browseable view of the release.
 
 ---
 
