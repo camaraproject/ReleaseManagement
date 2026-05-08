@@ -39,7 +39,7 @@ These are independent numbering systems.
 
 **Release pointer branch:** A branch (`release/rX.Y` for public releases, `pre-release/rX.Y` for pre-releases) created by the automation at the release tag commit. Prevents the GitHub "commit does not belong to any branch" warning when browsing the tag tree view.
 
-**Release-review branch:** The editable branch created by the automation at snapshot time, named `release-review/rX.Y-<snapshot-id>`. Where `CHANGELOG-rX.md` is completed during release review. Deleted by the automation on `/publish-release`.
+**Release-review branch:** An editable branch created by the automation at snapshot time, named `release-review/rX.Y-<snapshot-id>`. The `CHANGELOG-rX.md` is completed here during release review. This branch is deleted by the automation when `/publish-release` is run.
 
 **Pr-to-main branch:** The source branch for the post-release sync PR, named `pr-to-main/rX.Y`. Created automatically on publish to carry `CHANGELOG-rX.md` and the automation-updated `README.md` back to `main`. Codeowner deletes it after the sync PR is merged.
 
