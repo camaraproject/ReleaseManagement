@@ -1,14 +1,14 @@
 metadata:
-  last_updated: '2026-05-08T05:38:27Z'
-  last_checked: '2026-05-08T05:38:27Z'
-  releases_master_updated: '2026-05-01T05:56:10.037Z'
+  last_updated: '2026-05-09T06:02:25Z'
+  last_checked: '2026-05-09T06:02:25Z'
+  releases_master_updated: '2026-05-08T05:18:07.520Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
   repos_scanned: 62
   repos_new: 0
   repos_with_plan: 62
   repos_fully_onboarded: 14
-  repos_with_release_issue: 11
+  repos_with_release_issue: 10
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -424,17 +424,12 @@ progress:
     - YadingFang
     - Wojiaozhenghao
     - XunliYang
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r1.3-4cd13e8
-    release_pr:
-      number: 97
-      state: open
-      url: https://github.com/camaraproject/ClickToDial/pull/97
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 94
-      url: https://github.com/camaraproject/ClickToDial/issues/94
+    release_issue: null
   published_context:
     latest_public_release: null
     newest_pre_release: r1.2
@@ -463,6 +458,11 @@ progress:
       api_version: 0.1.0-rc.1
   snapshot_api_versions:
     click-to-dial: 0.1.0-rc.2
+  warnings:
+  - code: W003
+    message: Release r1.3 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: ConnectedNetworkType
   github_url: https://github.com/camaraproject/ConnectedNetworkType
   release_track: meta-release
@@ -2669,12 +2669,14 @@ progress:
     release_issue: null
   published_context:
     latest_public_release: null
-    newest_pre_release: null
+    newest_pre_release: r1.1
   cycle_releases:
     m1:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r1.1
+      release_date: '2026-05-07T09:55:28Z'
+      apis:
+      - api_name: session-insights
+        api_version: 0.1.0-alpha.1
     m3:
       release_tag: null
       release_date: null
@@ -2683,13 +2685,14 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  last_published:
+    release_tag: r1.1
+    release_date: '2026-05-07T09:55:28Z'
+    apis:
+    - api_name: session-insights
+      api_version: 0.1.0-alpha.1
   snapshot_api_versions:
     session-insights: 0.1.0-alpha.1
-  warnings:
-  - code: W003
-    message: Release r1.1 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: SimpleEdgeDiscovery
   github_url: https://github.com/camaraproject/SimpleEdgeDiscovery
   release_track: meta-release
