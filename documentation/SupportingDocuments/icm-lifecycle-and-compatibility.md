@@ -23,7 +23,6 @@ Terms defined in the CAMARA Commonalities glossary (API, API Consumer, API Provi
 - **ICM-compatibility** (umbrella): both aspects together. Successful integration of an API Consumer with an API Provider requires both to hold.
 - **ICM version**: a Semantic Versioning (SemVer 2.0) compliant version number with major, minor and patch components, identifying a specific set of ICM artefacts. Starting with ICM 1.0.0, major-version increments indicate breaking changes for API definitions, API deployments, or both — changes that cannot be expressed additively.
 - **ICM lifecycle states**: Supported / Deprecated / Retired / Revoked are the four possible lifecycle states of an ICM version (see §6). Lifecycle states apply per ICM version.
-- **Preferred**: a label — not a state — applied to exactly one Supported ICM version at any given time, recommending it as the ICM version API Providers should deploy (see §6).
 - **ICM governance**: the decision process to transition an ICM version to a different lifecycle state (see §6).
 - **Exception (waiver)**: a time-bound, governance-approved authorization that permits a specific (API version, ICM version) pair outside the normal ICM-compatibility guarantee.
 - **Compatibility matrix**: the derived artifact listing which (API version, ICM version) pairs are ICM-compatible at a given point in time (see §11).
@@ -114,8 +113,6 @@ Note: the "API version" and "API deployment" columns describe consequences withi
 
 The planned state-transition sequence is Supported → Deprecated → Retired. Revoked is entered as an exceptional action outside this sequence and requires an explicit replacement version.
 
-**Preferred** is not a lifecycle state but a label applied to exactly one Supported ICM version at any given time, recommending it as the ICM version API Providers should deploy. The Preferred label is assigned by governance and MAY be reassigned to a newer Supported ICM version either at its public release or at a later governance decision. Reassignment of the Preferred label is not automatic. An ICM version that loses the Preferred label remains in the Supported state until governance transitions it to Deprecated.
-
 For Supported major ICM versions, governance MAY transition specific minor or patch versions to Deprecated, Retired, or Revoked when they should no longer be used as a floor — for example, when known ambiguities or defects are resolved in a later minor version, or when a critical defect requires replacing a specific patch version. Such per-version transitions do not impact ICM-compatibility of API versions or API deployments — later minor ICM versions remain compatible with earlier ones by SemVer — but they influence the "lowest Supported minor" used in §7.2 and are relevant for API deployments.
 
 Note: the term "Retired" aligns with the API lifecycle terminology proposed in [ReleaseManagement#459](https://github.com/camaraproject/ReleaseManagement/issues/459), so that ICM and API lifecycles use the same vocabulary for the terminal state.
@@ -126,12 +123,12 @@ Note: Deprecation or Retirement of an ICM major does not by itself Deprecate or 
 
 | Parameter | Suggested starting value | Notes |
 |---|---|---|
-| Duration of Supported state after losing Preferred label | ≥ 18 months | Time a major remains Supported after losing the Preferred label before it enters Deprecated. During this period, API Providers plan to move to the newer ICM major. |
-| Duration of Deprecated state | ≥ 12 months | Active migration period before the major is Retired |
-| Concurrent support requirement | Major holding the Preferred label + most recent other Supported major | Applies to CAMARA-compliant API Providers during this period |
-| Security kill-switch | Conditions permitting acceleration of any state transition | Explicit governance action per incident; see §13 |
+| Duration of Supported state for an ICM major after its successor is published | ≥ 18 months | After a newer major ICM version is published, the previous major remains Supported for at least this period before governance transitions it to Deprecated. During this period, API Providers plan to migrate to the newer ICM major. |
+| Duration of Deprecated state | ≥ 12 months | Active migration period for deployments before the major is Retired. |
+| Concurrent support requirement | Latest published Supported major ICM version + most recent previous Supported major (during overlap) | Applies to CAMARA-compliant API Providers during this period. |
+| Security kill-switch | Conditions permitting acceleration of any state transition | Explicit governance action per incident; see §13. |
 
-These values are starting points for WG discussion. The duration during which a major holds the Preferred label is a separate governance decision, typically driven by when the next major is ready.
+These values are starting points for WG discussion.
 
 ### 6.3 Publication of state
 
@@ -207,7 +204,7 @@ An API definition might technically work against an ICM version that the compati
 
 CAMARA-compliant API Providers MUST:
 
-1. Implement the ICM version currently holding the Preferred label.
+1. Implement the latest published Supported major ICM version.
 2. During the period in which a previous ICM major remains in the Supported state, also implement that major, so that API versions targeting either Supported major can be served.
 3. Publish the ICM versions they implement, in a form that API Consumers can discover (for example via Provider metadata, onboarding documentation, or the standard `info.description` template mandated by Commonalities).
 4. Publish **two separate compliance statements**:
@@ -326,7 +323,6 @@ The following require WG agreement before this guideline is adopted:
 9. **ICM ↔ Commonalities coupling** — ICM design info reaches API definitions through the CAMARA Commonalities API Design Guide (§3.4). Open question: how tightly must the Commonalities and ICM lifecycles couple? Options include mandating a new Commonalities release for each ICM design info change, moving ICM design artifacts into the ICM repository to decouple, or letting Commonalities itself declare a `x-camara-min-icm`. This is a coordination question between the ICM and Commonalities Working Groups.
 10. **Example content for the §6.4 release-note tables** — Tables A and B in §6.4 are stubs awaiting concrete examples from ICM governance. The exact column layout will be refined once examples are filled in.
 11. **Cross-major ICM-compatibility assessment — process and timing** — when in the meta-release cycle is the cross-major assessment performed for existing API versions (Signal? Sync? at the moment the new ICM major is announced?), who is responsible for the technical evaluation (API Sub Project? Release Management? ICM WG?), and how is the resulting decision recorded in the compatibility matrix.
-12. **Provider deployment timeline after Preferred designation** — once governance assigns the Preferred label to a newer Supported ICM version, what is the maximum period before CAMARA-compliant API Providers MUST implement it (§8 item 1)? A placeholder value is needed in §6.2 and should be agreed by the WG.
 
 ---
 
