@@ -22,7 +22,7 @@ This guide walks you through releasing an API repository in CAMARA.
 
 **What you see:**
 - CI validates every PR on `release-plan.yaml`
-- Release Issue appears with PLANNED state
+- Release Issue appears with PLANNED state, after a change of release-plan.yaml is merged with a `target_release_type` other than `None`
 
 → [release-plan.yaml reference](../metadata/release-plan.md)
 
