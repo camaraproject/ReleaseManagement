@@ -48,7 +48,7 @@ This phase is ongoing until you decide to release.
 ### 3. Create the Release
 
 **What you do:**
-1. Go to the automatically created Release Issue for your target release (rX.Y). The Release Issue is created when merging the updated `release-plan.yaml` into `main` branch (Step 1).
+1. Go to the automatically created Release Issue (cf. Step 1) for your target release (rX.Y)
 2. Post `/create-snapshot` as a comment
 
 **What you see:**
