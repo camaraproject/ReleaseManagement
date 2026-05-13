@@ -374,7 +374,8 @@ A dedicated GitHub App handles write surfaces for validation. This is a **separa
 | **EasyCLA** | Not needed (no commits) | Required (commits to repos with CLA enforcement) |
 
 Org-level configuration:
-- `vars.VALIDATION_APP_ID` — app ID (org variable)
+- `vars.VALIDATION_APP_CLIENT_ID` — app client ID (org variable)
+- `vars.VALIDATION_APP_SLUG` — app slug, used for bot username (org variable)
 - `secrets.VALIDATION_APP_PRIVATE_KEY` — app private key (org secret)
 
 The validation app is introduced from day one (MVP) to establish consistent bot identity and avoid caller workflow changes later.
@@ -530,7 +531,7 @@ The reusable workflow uses a floating version tag (`v1`) analogous to v0's `v0` 
 The caller passes `secrets: inherit`. The reusable workflow uses:
 - `GITHUB_TOKEN` — inherited, for checkout and fallback write surfaces
 - Org secrets for validation app token minting (`VALIDATION_APP_PRIVATE_KEY`) — accessed via `secrets` context
-- Org variables for app identity (`VALIDATION_APP_ID`) — accessed via `vars` context
+- Org variables for app identity (`VALIDATION_APP_CLIENT_ID`, `VALIDATION_APP_SLUG`) — accessed via `vars` context
 
 ---
 
