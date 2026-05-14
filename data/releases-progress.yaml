@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-05-13T06:36:01Z'
-  last_checked: '2026-05-13T06:36:01Z'
+  last_updated: '2026-05-14T06:34:54Z'
+  last_checked: '2026-05-14T06:34:54Z'
   releases_master_updated: '2026-05-12T05:54:53.551Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
@@ -1929,10 +1929,13 @@ progress:
     - mayur007
     - clundie-CL
     - benhepworth
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.1-fdbc216
+    release_pr:
+      number: 139
+      state: open
+      url: https://github.com/camaraproject/NetworkAccessManagement/pull/139
     draft_release: null
     release_issue:
       number: 132
@@ -1953,6 +1956,8 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    network-access-management: 0.2.0-alpha.1
 - repository: NetworkInsights
   github_url: https://github.com/camaraproject/NetworkInsights
   release_track: independent
@@ -2034,11 +2039,11 @@ progress:
     - Kai-hw
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r2.2-4fc6024
+    snapshot_branch: release-snapshot/r2.2-a4d3418
     release_pr:
-      number: 115
+      number: 121
       state: open
-      url: https://github.com/camaraproject/NetworkSliceBooking/pull/115
+      url: https://github.com/camaraproject/NetworkSliceBooking/pull/121
     draft_release: null
     release_issue:
       number: 112
