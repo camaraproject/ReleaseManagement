@@ -98,7 +98,7 @@ The framework consumes Spectral output as structured data (JSON), not terminal t
 
 Spectral CLI natively follows external `$ref` during linting — it resolves references to `code/common/`, `code/modules/`, and other local files, validates the referenced content, and reports findings with the correct source file and line number. No pre-bundling is required for Spectral to lint specs with external refs.
 
-**External file findings**: When Spectral reports a finding in an external file (outside `code/API_definitions/`, e.g., `code/common/CAMARA_common.yaml`), the finding is downgraded to `hint` level. These findings are not directly actionable by the API developer — they originate from shared schemas maintained in Commonalities. The hint ensures visibility without blocking the PR.
+**External file findings**: When Spectral reports a finding on a file under the Commonalities cache prefix (`code/common/`, e.g., `code/common/CAMARA_common.yaml`), the finding is downgraded to `hint` level. These findings are not directly actionable by the API developer — they originate from shared schemas maintained in Commonalities. The hint ensures visibility without blocking the PR. Findings on repo-owned files reached via `$ref` (e.g. schema fragments under `code/modules/`) keep their native Spectral severity, since they are actionable by the API developer.
 
 See section 3.1 (Spectral and `$ref` Interaction) for the broader bundling context.
 
@@ -952,7 +952,7 @@ spectral lint \
 
 The JSON output provides per-finding: `code` (rule name), `path` (file), `message`, `severity` (0=error, 1=warn, 2=info, 3=hint), `range.start.line`, `range.start.character`.
 
-Spectral CLI natively follows external `$ref` during linting. For `$ref` repos, findings from external files (outside `code/API_definitions/`) are downgraded to `hint` level (section 1.3) since they are not directly actionable by the API developer.
+Spectral CLI natively follows external `$ref` during linting. For `$ref` repos, findings on files under the Commonalities cache prefix (`code/common/`) are downgraded to `hint` level (section 1.3) since they are not directly actionable by the API developer; findings on repo-owned files (e.g. `code/modules/`) keep their native severity.
 
 #### Python checks
 
@@ -1188,7 +1188,7 @@ The full Spectral JSON output and the complete findings list (all engines) are a
 
 All engines run on source files (section 8.4), so findings already reference source file locations directly. No line number mapping or source maps are needed.
 
-**Spectral and external `$ref`**: Spectral CLI natively follows external `$ref` during linting and reports findings with the correct source file and line number. When Spectral reports a finding in an external file (e.g., `code/common/CAMARA_common.yaml`), the finding references the external file path and line. The Spectral adapter detects findings from files outside `code/API_definitions/` and downgrades them to `hint` level (section 1.3).
+**Spectral and external `$ref`**: Spectral CLI natively follows external `$ref` during linting and reports findings with the correct source file and line number. When Spectral reports a finding in an external file (e.g., `code/common/CAMARA_common.yaml`), the finding references the external file path and line. The Spectral adapter detects findings from files under the Commonalities cache prefix (`code/common/`) and downgrades them to `hint` level (section 1.3); findings on repo-owned `$ref` targets (e.g. `code/modules/`) keep their native severity.
 
 **Other engines**: yamllint, Python checks, and gherkin-lint operate on source files directly. Their findings always reference source locations.
 
