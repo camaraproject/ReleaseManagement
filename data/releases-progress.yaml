@@ -1,7 +1,7 @@
 metadata:
-  last_updated: '2026-05-14T06:34:54Z'
-  last_checked: '2026-05-14T06:34:54Z'
-  releases_master_updated: '2026-05-12T05:54:53.551Z'
+  last_updated: '2026-05-15T07:12:17Z'
+  last_checked: '2026-05-15T07:12:17Z'
+  releases_master_updated: '2026-05-15T06:48:36.039Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
   repos_scanned: 62
@@ -2580,7 +2580,7 @@ progress:
 - repository: ReleaseTest
   github_url: https://github.com/camaraproject/ReleaseTest
   release_track: independent
-  target_release_tag: r1.6
+  target_release_tag: r1.1
   target_release_type: pre-release-alpha
   dependencies:
     commonalities_release: r4.2
@@ -2588,17 +2588,17 @@ progress:
   apis:
   - api_name: sample-service
     target_api_version: 0.1.0
-    target_api_status: rc
+    target_api_status: alpha
     main_contacts:
     - hdamker-bot
   - api_name: sample-service-subscriptions
     target_api_version: 0.1.0
-    target_api_status: rc
+    target_api_status: alpha
     main_contacts:
     - hdamker-bot
   - api_name: sample-implicit-events
     target_api_version: 0.1.0
-    target_api_status: rc
+    target_api_status: alpha
     main_contacts:
     - hdamker-bot
   state: planned
@@ -2607,22 +2607,16 @@ progress:
     release_pr: null
     draft_release: null
     release_issue:
-      number: 160
-      url: https://github.com/camaraproject/ReleaseTest/issues/160
+      number: 179
+      url: https://github.com/camaraproject/ReleaseTest/issues/179
   published_context:
     latest_public_release: null
-    newest_pre_release: r1.5
+    newest_pre_release: null
   cycle_releases:
     m1:
-      release_tag: r1.1
-      release_date: '2026-04-12T20:20:59Z'
-      apis:
-      - api_name: sample-service
-        api_version: 0.1.0-alpha.1
-      - api_name: sample-service-subscriptions
-        api_version: 0.1.0-alpha.1
-      - api_name: sample-implicit-events
-        api_version: 0.1.0-alpha.1
+      release_tag: null
+      release_date: null
+      apis: []
     m3:
       release_tag: null
       release_date: null
@@ -2631,16 +2625,6 @@ progress:
       release_tag: null
       release_date: null
       apis: []
-  last_published:
-    release_tag: r1.5
-    release_date: '2026-05-11T12:37:45Z'
-    apis:
-    - api_name: sample-service
-      api_version: 0.1.0-rc.1
-    - api_name: sample-service-subscriptions
-      api_version: 0.1.0-rc.1
-    - api_name: sample-implicit-events
-      api_version: 0.1.0-rc.1
 - repository: SessionInsights
   github_url: https://github.com/camaraproject/SessionInsights
   release_track: independent
