@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-05-15T07:12:17Z'
-  last_checked: '2026-05-15T07:12:17Z'
+  last_updated: '2026-05-16T06:09:53Z'
+  last_checked: '2026-05-16T06:09:53Z'
   releases_master_updated: '2026-05-15T06:48:36.039Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
@@ -1977,10 +1977,13 @@ progress:
     target_api_status: rc
     main_contacts:
     - cnzj-Gc
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r1.2-a5e16b7
+    release_pr:
+      number: 57
+      state: open
+      url: https://github.com/camaraproject/NetworkInsights/pull/57
     draft_release: null
     release_issue:
       number: 52
@@ -2013,6 +2016,9 @@ progress:
       api_version: 0.1.0-alpha.1
     - api_name: network-traffic-analysis
       api_version: 0.1.0-alpha.1
+  snapshot_api_versions:
+    network-health-assessment: 0.1.0-rc.1
+    network-traffic-analysis: 0.1.0-rc.1
 - repository: NetworkSliceBooking
   github_url: https://github.com/camaraproject/NetworkSliceBooking
   release_track: meta-release
