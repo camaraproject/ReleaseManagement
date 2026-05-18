@@ -22,7 +22,7 @@ This guide walks you through releasing an API repository in CAMARA.
 
 **What you see:**
 - CI validates every PR on `release-plan.yaml`
-- Release Issue appears with PLANNED state
+- Release Issue appears with PLANNED state, after a change of release-plan.yaml is merged with a `target_release_type` other than `None`
 
 → [release-plan.yaml reference](../metadata/release-plan.md)
 
@@ -48,7 +48,7 @@ This phase is ongoing until you decide to release.
 ### 3. Create the Release
 
 **What you do:**
-1. Go to the automatically created Release Issue for your target release (rX.Y)
+1. Go to the automatically created Release Issue (cf. Step 1) for your target release (rX.Y)
 2. Post `/create-snapshot` as a comment
 
 **What you see:**
