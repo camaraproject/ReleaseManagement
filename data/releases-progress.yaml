@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-05-16T06:09:53Z'
-  last_checked: '2026-05-16T06:09:53Z'
+  last_updated: '2026-05-18T07:08:55Z'
+  last_checked: '2026-05-18T07:08:55Z'
   releases_master_updated: '2026-05-15T06:48:36.039Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
@@ -1568,11 +1568,11 @@ progress:
     - XunliYang
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r1.2-bfd4d4b
+    snapshot_branch: release-snapshot/r1.2-e5096ec
     release_pr:
-      number: 45
+      number: 52
       state: open
-      url: https://github.com/camaraproject/IoTSIMFraudPrevention/pull/45
+      url: https://github.com/camaraproject/IoTSIMFraudPrevention/pull/52
     draft_release: null
     release_issue:
       number: 44
