@@ -121,7 +121,7 @@ For Supported major ICM versions, governance MAY transition specific minor or pa
 
 Note: the term "Retired" aligns with the API lifecycle terminology, so that ICM and API lifecycles use the same vocabulary for the terminal state.
 
-Note: Deprecation or Retirement of a major ICM version does not by itself Deprecate or Retire the API versions that reference it in their `x-camara-min-icm` field. It only changes the corresponding entries in the ICM-compatibility matrix. API version lifecycle (Deprecation, Retirement at the API level) is governed independently by CAMARA's API lifecycle process (see tbd [API lifecycle states](https://github.com/camaraproject/ReleaseManagement/issues/459)).
+Note: Deprecation or Retirement of an ICM version does not by itself Deprecate or Retire the API versions that reference it in their `x-camara-min-icm` field. It only changes the corresponding entries in the ICM-compatibility matrix. API version lifecycle (Deprecation, Retirement at the API level) is governed independently by CAMARA's API lifecycle process (see tbd [API lifecycle states](https://github.com/camaraproject/ReleaseManagement/issues/459)).
 
 ### 5.3 Governance parameters for ICM lifecycle states
 
@@ -140,7 +140,7 @@ These values are starting points for WG discussion. <!-- to be removed when WG a
 
 The lifecycle state is published in each ICM version's release notes, as a table in the release notes template. No separate governance artifact is required. Each ICM version release carries the lifecycle state for all ICM versions. State transitions are committed at ICM public release unless an out-of-cycle governance action specifies otherwise.
 
-A machine-readable schema for the published lifecycle state of ICM versions may be defined later to support automated tooling. Until then, the ICM version release notes are the single authoritative source.
+The published lifecycle state must be available in machine-readable form for the §6.3 CAMARA validation rule to consume. Until a schema is defined, the ICM version release notes are the single authoritative source — readable by humans but not by tooling.
 
 #### 5.4.2 ICM version change tables
 
@@ -198,9 +198,9 @@ x-camara-min-icm = max (
 ```
 
 For APIs with no ICM-version-specific feature dependencies beyond what Commonalities mandates, the second element is not applicable which reduces the rule to `max (lowest Supported ICM version at API version public release, lowest ICM version required by the Commonalities version declared in `x-camara-commonalities`). 
-Publishing a new version of such an API therefore always raises its `x-camara-min-icm` version to the latest Supported major(?) ICM version. _(Note tdg: TBC not fully sure this is correct)_
+Publishing a new version of such an API therefore always raises its `x-camara-min-icm` to a Supported ICM version.
 
-An API Provider cannot declare a newly deployed API version as ICM-compatible while offering only a Deprecated or Retired major ICM version, even if the API version would technically work with those older ICM versions.
+An API Provider cannot declare a newly deployed API version as ICM-compatible while offering only a Deprecated or Retired ICM version, even if the API version would technically work with those older ICM versions.
 
 Past API versions retain their published `x-camara-min-icm` value (fixed at API public release) even if the lowest Supported ICM version moves upward over time. The API version remain ICM-compatible by default with any minor ot patch updates of the ICM version. ICM-compatibility across different major ICM versions is assessed by governance per §6.1.
 
@@ -210,6 +210,8 @@ A CAMARA linting rule, run at API release time, reads the current ICM state (fro
 1. `x-camara-min-icm` is present in the API definition.
 2. Its value is a syntactically valid SemVer 2.0 version.
 3. The value refers to a Supported ICM version at API version public release.
+
+This rule depends on the ICM lifecycle state being published in machine-readable form (see §5.4.1).
 
 ## 7. API deployment ICM-compatibility - details
 
@@ -278,9 +280,9 @@ The matrix lists one row per released public API version and one column per rele
 
 ```
 ICM-compatibility (API vX, ICM vY) =
-  ICM vY.major == API vX x-camara-min-icm.major)
-  AND ICM vY >= API vX x-camara-min-icm
-  AND ICM vY is in state {Supported, Deprecated}
+  ( ICM vY.major == API vX x-camara-min-icm.major
+    AND ICM vY >= API vX x-camara-min-icm
+    AND ICM vY is in state {Supported, Deprecated} )
   OR a governance decision extends the API vX ICM-compatibility to vY.major
   OR a governance approved, time-bound ICM-compatibility exception exists
 ```
@@ -314,7 +316,7 @@ State for 0.x versions is assigned by ICM governance as a one-time exercise. The
 
 ## 11. Exception mechanism
 
-Exceptions are time-bound ICM-compatibility changes granted by governance:
+Exceptions are time-bound ICM-compatibility authorizations granted by governance:
 
 Exceptions shall be documented by Release Management using governance decision records with the following information:
 
