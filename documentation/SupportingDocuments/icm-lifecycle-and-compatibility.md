@@ -25,7 +25,7 @@ Terms defined in the CAMARA Commonalities glossary (API, API Consumer, API Provi
 - **ICM lifecycle states**: Supported / Deprecated / Retired / Revoked are the four possible lifecycle states of an ICM version (see §5). Lifecycle states apply per ICM version.
 - **ICM governance**: the decision process to transition an ICM version to a different lifecycle state (see §5).
 - **Exception (waiver)**: a time-bound, governance-approved authorization that permits a specific (API version, ICM version) pair outside the normal ICM-compatibility guarantee.
-- **Compatibility matrix**: the derived artifact listing which (API version, ICM version) pairs are ICM-compatible at a given point in time (see §10).
+- **Compatibility matrix**: the derived artifact listing which (API version, ICM version) pairs are ICM-compatible at a given point in time (see §9).
 
 ## 3. ICM-compatibility — two aspects, two responsibilities
 
@@ -37,7 +37,7 @@ ICM-compatibility has two distinct aspects. Each has its own scope, governance, 
 
 - **Owned and governed by CAMARA.** ICM design info is codified by the CAMARA Commonalities API Design Guide, which mandates how an API definition must align with ICM. API Sub Projects produce API versions that conform.
 - **Signaled by `x-camara-min-icm`** (§6) declared in the API version's OAS file at API public release time.
-- **Maintained in the compatibility matrix** (§10) — published, governed at CAMARA level, and authoritative for which (API version, ICM version) pairs are CAMARA-compliant from the design-time perspective.
+- **Maintained in the compatibility matrix** (§9) — published, governed at CAMARA level, and authoritative for which (API version, ICM version) pairs are CAMARA-compliant from the design-time perspective.
 
 ### 3.2 Deployment ICM-compatibility (runtime)
 
@@ -71,7 +71,7 @@ ICM design info changes do not reach API definitions directly. The path is:
 2. Commonalities updates the API Design Guide (and other relevant artifacts) to mandate the new design info for API definitions.
 3. API Sub Projects update their API versions to align with the new Commonalities API Design Guide.
 
-This means an ICM design info change typically also triggers a Commonalities update. How tightly ICM and Commonalities lifecycles must be coupled is an open item (see §13).
+This means an ICM design info change typically also triggers a Commonalities update. How tightly ICM and Commonalities lifecycles must be coupled is an open item (see §12).
 
 ## 4. ICM versioning
 
@@ -90,8 +90,6 @@ Both types of changes are captured in the ICM version according to standard SemV
 
 An ICM change to API deployment info that invalidates existing API deployments requires a major ICM version release, even if no new API versions are required. ICM versioning is not focused only on preserving API version ICM-compatibility.
 
-The transition to 1.0.0 should coincide with a scope-baseline review of the ICM documents, declaring the then-current definitions as the stable starting point. Pre-1.0 versions are handled by the Legacy section (§11).
-
 ## 5. ICM version lifecycle states and governance
 
 ### 5.1 ICM version lifecycle states - definitions
@@ -105,7 +103,7 @@ The table below summarizes the meaning of each state for the ICM version itself,
 | **Supported** | OK to use | may be used as `x-camara-min-icm` | may operate against this ICM version |
 | **Deprecated** | Sunset announced (planned end of life); migration window active | SHOULD NOT be used as `x-camara-min-icm` | may continue to operate against this ICM version |
 | **Retired** | Terminal (end of life) | is no longer ICM-compatible; MUST evolve to a Supported ICM version or be Retired at the API level | is no longer ICM-compatible; MUST migrate to an ICM-compatible deployment with a Supported ICM version |
-| **Revoked** | Terminal (exceptional end-of-life); replaced by a later minor or patch version due to defects or security issues and MUST NOT be used; governance names the replacement version | MUST re-establish ICM-compatibility with a Supported ICM version | MUST migrate to a Supported ICM version and ICM-compatible deployment |
+| **Revoked** | Terminal (exceptional end-of-life); replaced by another (earlier or later) minor or patch version due to defects or security issues and MUST NOT be used; governance names the replacement version | MUST re-establish ICM-compatibility with a Supported ICM version | MUST migrate to a Supported ICM version and ICM-compatible deployment |
 
 Note: the "API version" and "API deployment" columns describe impacts (in CAMARA governance scope) on ICM-compatibility of API versions as declared in the ICM-compatibility matrix and on ICM-compatibility of API deployments. Use outside that scope is not governed by this guideline.
 
@@ -132,9 +130,9 @@ Note: Deprecation or Retirement of a major ICM version does not by itself Deprec
 | Duration of Supported state (of a major ICM version after its successor major ICM version is published) | ≥ 18 months | After a newer major ICM version is published, the previous major remains Supported for at least this period before governance transitions it to Deprecated. During this period, API Providers are expected to plan migration to the newer major ICM version. |
 | Duration of Deprecated state | ≥ 12 months | Active migration period for API deployments before the major ICM version is Retired and impacts the API deployment's ICM-compatibility |
 | Concurrent support requirement by API deployments | API Providers shall continue to deploy the most recent previous Supported major ICM version next to the latest published Supported major ICM version while this previous ICM major version is still Supported (see period defined above) | Applies to ICM-compatible API deployments during this period. |
-| Security exception | Conditions permitting acceleration of any state transition | Explicit governance action per incident; see §12. |
+| Security exception | Conditions permitting acceleration of any state transition | Explicit governance action per incident; see §11. |
 
-These values are starting points for WG discussion.
+These values are starting points for WG discussion. <!-- to be removed when WG agrees -->
 
 ### 5.4 ICM version - Release notes
 
@@ -160,7 +158,7 @@ In addition to the lifecycle state table, each ICM release MUST document **break
 |---|---|---|---|
 | _example to fill in: e.g., "0.3.0 introduces 300s client-assertion lifetime cap"_ | _what changed_ | _which deployment behavior_ | _what Provider and Consumer need to do_ |
 
-The exact column layout is subject to refinement once concrete examples are filled in (see §13).
+The exact column layout is subject to refinement once concrete examples are filled in (see §12).
 
 ## 6. API version ICM-compatibility - details
 
@@ -217,7 +215,7 @@ A CAMARA linting rule, run at API release time, reads the current ICM state (fro
 
 This section describes the governance of API deployment ICM-compatibility (runtime).
 
-An API definition might technically work against an ICM version that the compatibility matrix (§10) does not record as CAMARA-compliant — for example, a Retired or Revoked ICM version still running somewhere. Such pairings are outside CAMARA governance and cannot be claimed as CAMARA compliant.
+An API definition might technically work against an ICM version that the compatibility matrix (§9) does not record as CAMARA-compliant — for example, a Retired or Revoked ICM version still running somewhere. Such pairings are outside CAMARA governance and cannot be claimed as CAMARA compliant.
 
 ### 7.1 API Provider responsibilities
 
@@ -225,7 +223,7 @@ To achieve ICM-compatibility of their API deployment, API Providers MUST:
 
 1. Implement a Supported ICM version.
 2. When a new major ICM version is published and is in Supported state, plan implementation of that ICM version. During the period in which the previous major ICM version remains in the Supported state, keep that major ICM version running in parallel, so that API versions targeting either Supported ICM version can be deployed.
-3. Publish the ICM versions they implement, in a form that API Consumers can discover (for example via Provider metadata, onboarding documentation, or the standard `info.description` template mandated by Commonalities).
+3. Publish the ICM versions they implement, in a form that API Consumers can discover (for example via Provider metadata or onboarding documentation).
 4. Publish **two separate ICM-compatibility statements**:
    - **API version ICM-compatibility**: for each API version offered.
    - **API deployment ICM-compatibility**: the major ICM versions implemented.
@@ -242,20 +240,9 @@ The API Consumer determines the applicable ICM version through Provider metadata
 
 The API Consumer is responsible for ensuring that its own implementation matches both the announced ICM version and the API version.
 
-## 8. Aggregator role
+## 8. ICM version release cadence
 
-Aggregators accept a variety of supplier offering pairs (API version, ICM version) and present API Consumers with a narrower, consistent set of API offerings — typically two or three API versions and one or two major ICM versions. This approach gives API Consumers time to migrate with respect to both ICM version changes and API version changes.
-
-Aggregators operate as ecosystem normalizers:
-- They MAY wrap or transform between major ICM versions (for example, accepting ICM v2 assertions from API Consumers while calling ICM v1 API Providers, or vice versa).
-- They MAY narrow the set of API Providers to those operating with the specific major ICM versions the aggregator chooses to offer to API Consumers.
-- They MAY encourage convergence among their API Providers toward a common set of (API version, ICM version) pairs by aligning their commercial onboarding and support processes accordingly.
-
-This guideline recognizes aggregators as a first-class actor in the CAMARA ecosystem. The ICM-compatibility matrix of (API version, ICM version) pairs across suppliers is a consequence of API and ICM versions evolving on independent cadences; aggregators handle matrix reduction for their API Consumers, and CAMARA governance provides the baseline on which both API Providers and aggregators operate.
-
-## 9. ICM version release cadence
-
-### 9.1 Signal / Sync alignment
+### 8.1 Signal / Sync alignment
 
 The Signal meta-release is used for 
 - planning and releasing a new ICM version as needed
@@ -269,14 +256,14 @@ ICM releases are done at Signal meta-release (first half of each year); API rele
 2. **Signal → Sync (~6 months)**: API Providers move their ICM implementation forward; API Sub Projects produce new API versions.
 3. **Sync Year N**: new API versions are released, declaring in their `x-camara-min-icm` the newly Supported ICM version if the API version uses new features that the ICM version introduces.
 
-### 9.2 Out-of-cycle ICM releases
+### 8.2 Out-of-cycle ICM releases
 
 Out-of-cycle ICM releases are allowed and sometimes required, e.g., for security patches, defect corrections, or urgent regulatory changes. These changes impact the ICM version as per SemVer guidelines. 
 
 ICM version lifecycle state transitions may occur off-cycle in security-driven cases, or on explicit governance decision.
 
 
-## 10. ICM-compatibility matrix
+## 9. ICM-compatibility matrix
 
 The ICM-compatibility matrix between API versions and ICM versions is maintained as a **derived artifact**, computed automatically from:
 - API definition declarations (`x-camara-min-icm` in each published API version).
@@ -287,7 +274,7 @@ The ICM-compatibility matrix between API versions and ICM versions is maintained
 
 The matrix lists one row per released public API version and one column per released public ICM version. It records which pairs (API version, ICM version) are ICM-compatible.
 
-### 10.1 ICM-compatibility matrix derivation
+### 9.1 ICM-compatibility matrix derivation
 
 ```
 ICM-compatibility (API vX, ICM vY) =
@@ -302,18 +289,18 @@ The lifecycle state condition applies to the specific ICM version `vY`, inheriti
 
 The matrix of ICM-compatible pairs (API version, ICM version) are the combinations that API Providers may offer and API Consumers may consume.
 
-### 10.2 ICM-compatibility matrix - ownership
+### 9.2 ICM-compatibility matrix - ownership
 
 The ICM-compatibility matrix is published by Release Management. It is computed, not hand-edited. Only exceptions require human governance action.
 
-### 10.3 ICM-compatibility matrix - updates
+### 9.3 ICM-compatibility matrix - updates
 
 ICM-compatibility matrix updates are triggered by:
 - New ICM version public release (lifecycle state of other ICM versions may change).
 - New API version public release (new row added to the matrix; existing rows unchanged).
 - Exception granted, modified, or expired.
 
-## 11. Legacy ICM 0.x handling
+## 10. Legacy ICM 0.x handling
 
 This guideline's SemVer-based rules take effect with starting with ICM version 1.0.0. For the pre-v1.0.0 versions, Release Management publishes a one-time historical record documenting which ICM v0.x.y versions introduced client-facing breaking changes:
 
@@ -325,7 +312,7 @@ This guideline's SemVer-based rules take effect with starting with ICM version 1
 
 State for 0.x versions is assigned by ICM governance as a one-time exercise. The full SemVer discipline does not apply retroactively to pre-1.0 versions.
 
-## 12. Exception mechanism
+## 11. Exception mechanism
 
 Exceptions are time-bound ICM-compatibility changes granted by governance:
 
@@ -339,12 +326,12 @@ Exceptions shall be documented by Release Management using governance decision r
 
 Exceptions are the only mechanism by which a (API version, ICM version) pair can be considered ICM-compatible despite violating the ICM-compatibility rules. Exceptions will appear in the ICM-compatibility matrix with an explicit annotation.
 
-## 13. Open governance decisions
+## 12. Open governance decisions
 
 The following require WG agreement before this guideline is adopted:
 
 1. **Exact durations** for the Supported and Deprecated state durations (§5.3).
-2. **Transition to ICM 1.0.0** — what constitutes the scope baseline; when it is declared; who signs off.
+2. **Transition to ICM 1.0.0** — what constitutes the scope baseline (declaring the then-current definitions of the ICM documents as the stable starting point); when it is declared; who signs off. Pre-1.0 versions are handled by the Legacy section (§10).
 3. **Signal vs. out-of-cycle policy** — which ICM changes can be out-of-cycle vs. must align with Signal.
 4. **Exception grant process** — who requests, who approves, how documented.
 5. **ICM-compatibility statement**; define templates for API version ICM-compatibility and API implementation ICM-compatibility statements; audit process.
@@ -366,11 +353,3 @@ The following require WG agreement before this guideline is adopted:
 - **The ICM-compatibility matrix is derived by automation**, not hand-maintained.
 - **Signal/Sync cadence is a lead-time mechanism**, not a governance gate.
 - **ICM design info reaches API definitions via Commonalities**, not directly (§3.4).
-
-## Appendix B: What this guideline intentionally does not do
-
-- Does not define a detailed state-machine with per-minor-version state assignments. States are per-major.
-- Does not require any `x-camara-icm` structured block with multiple fields. A single flat string suffices.
-- Does not introduce a "re-release without `info.version` change" mechanism. The `x-camara-min-icm` value is publication-time fixed.
-- Does not mandate that ICM majors align with Signal meta-releases. Strongly suggested, not required.
-- Does not prescribe the implementation mechanism by which an API Provider serves multiple ICM majors. Only behavioral requirements apply.
