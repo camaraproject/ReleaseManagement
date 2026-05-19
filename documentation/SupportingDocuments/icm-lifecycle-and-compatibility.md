@@ -17,26 +17,26 @@ The guideline recognizes operational reality: API Providers offer the same API v
 Terms defined in the CAMARA Commonalities glossary (API, API Consumer, API Provider, meta-release, semantic versioning, scope, etc.) are not repeated here. This section defines terms specific to this guideline.
 
 - **ICM design info**: information defined by an ICM version that applies to API definitions at API design time — scope format, `securitySchemes` syntax, mandatory `info.description` text, schemas, operations, and similar OAS-level constructs. Supported by guidelines from CAMARA Commonalities (the API Design Guide and related artifacts) for use by API Sub Projects. CAMARA-governed.
-- **ICM deployment info**: information defined by an ICM version that applies to deployments at runtime — auth flows, grant types, assertion format and lifetime, token processing, claim handling, and similar runtime behaviors negotiated between an API Provider and API Consumer. API-Provider-governed in the contractual relationship with API Consumers.
-- **API version ICM-compatibility**: the guarantee that an API version's OAS definition respects the ICM design info of a given ICM version. A property of the API definition relative to an ICM version.
-- **Deployment ICM-compatibility**: the guarantee that an API Provider's or API Consumer's deployment (a) deploys ICM-compatible API versions and (b) implements the ICM deployment info of the ICM version it claims to operate under.
-- **ICM-compatibility** (umbrella): both aspects together. Successful integration of an API Consumer with an API Provider requires both to hold.
+- **ICM deployment info**: information defined by an ICM version that applies to API deployments (including at API Provider/Consumer design time and at runtime) — auth flows, grant types, assertion format and lifetime, token processing, claim handling, and similar behaviors agreed between an API Provider and API Consumer. API-Provider-governed in their contractual relationship with API Consumers.
+- **API version ICM-compatibility**: the guarantee that an API version's OAS definition respects the ICM design info of a given ICM version. A property of the API definition relative to an ICM version declared in its `x-camara-min-icm` field.
+- **API deployment ICM-compatibility**: the guarantee that an API Provider's or API Consumer's deployment (a) deploys ICM-compatible API versions and (b) implements the ICM deployment info of the ICM version it claims to operate under.
+- **ICM-compatibility** (umbrella): both API version and API deployment ICM-compatibility together. Successful integration of an API Consumer with an API Provider requires both to hold.
 - **ICM version**: a Semantic Versioning (SemVer 2.0) compliant version number with major, minor and patch components, identifying a specific set of ICM artefacts. Starting with ICM 1.0.0, major-version increments indicate breaking changes for API definitions, API deployments, or both — changes that cannot be expressed additively.
 - **ICM lifecycle states**: Supported / Deprecated / Retired / Revoked are the four possible lifecycle states of an ICM version (see §5). Lifecycle states apply per ICM version.
 - **ICM governance**: the decision process to transition an ICM version to a different lifecycle state (see §5).
 - **Exception (waiver)**: a time-bound, governance-approved authorization that permits a specific (API version, ICM version) pair outside the normal ICM-compatibility guarantee.
 - **Compatibility matrix**: the derived artifact listing which (API version, ICM version) pairs are ICM-compatible at a given point in time (see §9).
 
-## 3. ICM-compatibility — two aspects, two responsibilities
+## 3. ICM-compatibility
 
-ICM-compatibility has two distinct aspects. Each has its own scope, governance, and signaling mechanism, and each can be impacted by a given ICM change independently of the other.
+ICM-compatibility concerns two distinct sets of information defined by an ICM version, referred to as ICM design info and ICM deployment info. Each set has its own scope, governance, and signaling mechanism, and each or both can be changed in a given ICM version independently of the other.
 
 ### 3.1 API version ICM-compatibility (design-time)
 
 **An API version is ICM-compatible with an ICM version when its OAS definition respects the ICM design info of that ICM version** — its scope format, `securitySchemes` shape, schemas, operations, and `info.description` text use constructs and conventions defined by the ICM version.
 
-- **Owned and governed by CAMARA.** ICM design info is codified by the CAMARA Commonalities API Design Guide, which mandates how an API definition must align with ICM. API Sub Projects produce API versions that conform.
-- **Signaled by `x-camara-min-icm`** (§6) declared in the API version's OAS file at API public release time.
+- **Owned and governed by CAMARA.** ICM design info is codified by the CAMARA Commonalities API Design Guide, which mandates how an API definition must align with ICM. API Sub Projects produce API versions that conform to the ICM version by following these guidelines.
+- **Declared via `x-camara-min-icm`** (§6) in the API version's OAS file at API public release time.
 - **Maintained in the compatibility matrix** (§9) — published, governed at CAMARA level, and authoritative for which (API version, ICM version) pairs are CAMARA-compliant from the design-time perspective.
 
 ### 3.2 Deployment ICM-compatibility (runtime)
