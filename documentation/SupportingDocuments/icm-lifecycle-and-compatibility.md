@@ -136,13 +136,15 @@ Note: Deprecation or Retirement of a major ICM version does not by itself Deprec
 
 These values are starting points for WG discussion.
 
-### 5.4 Publication of state
+### 5.4 ICM version - Release notes
+
+#### 5.4.1 Publication of lifecycle state
 
 The lifecycle state is published in each ICM version's release notes, as a table in the release notes template. No separate governance artifact is required. Each ICM version release carries the lifecycle state for all ICM versions. State transitions are committed at ICM public release unless an out-of-cycle governance action specifies otherwise.
 
 A machine-readable schema for the published lifecycle state of ICM versions may be defined later to support automated tooling. Until then, the ICM version release notes are the single authoritative source.
 
-### 5.5 ICM release notes — design info and deployment info change tables
+#### 5.4.2 ICM version change tables
 
 In addition to the lifecycle state table, each ICM release MUST document **breaking changes** introduced in that ICM version, split by ICM design info changes and ICM deployment info changes, covering the two aspects of ICM-compatibility (§3). Non-breaking changes (additive features, clarifications) are documented in the regular CHANGELOG and do not require entries in the tables below.
 
@@ -350,7 +352,7 @@ The following require WG agreement before this guideline is adopted:
 7. **Handling of the ICM 0.x transition** — state assignments for existing 0.x versions; end date for 0.x support.
 8. **Maximum number of concurrent non-Retired major ICM versions** — whether to cap this to bound API Provider operational complexity when major ICM versions arrive in quick succession (for example, in a security-driven scenario), and how Retirement acceleration would be triggered if the cap is exceeded.
 9. **ICM ↔ Commonalities coupling** — ICM design info reaches API definitions through the CAMARA Commonalities API Design Guide (§3.4). Open question: how tightly must the Commonalities and ICM lifecycles couple? Options include mandating a new Commonalities release for each ICM design info change, moving ICM design artifacts into the ICM repository to decouple, or letting Commonalities itself declare a `x-camara-min-icm`. This is a coordination question between the ICM and Commonalities Working Groups.
-10. **Example content for the §5.5 release-note tables** — Tables A and B in §5.5 are stubs awaiting concrete examples from ICM governance. The exact column layout will be refined once examples are filled in.
+10. **Example content for the §5.4.2 release-note tables** — Tables A and B in §5.4.2 are stubs awaiting concrete examples from ICM governance. The exact column layout will be refined once examples are filled in.
 11. **Cross-major ICM-compatibility assessment — process and timing** — when in the meta-release cycle is the cross-major-ICM versions assessment performed for existing API versions (Signal? Sync? at the moment the new major ICM version is announced/released?), who is responsible for the technical evaluation (API Sub Project? Release Management? ICM WG?), and how is the resulting decision recorded in the ICM-compatibility matrix.
 
 ---
