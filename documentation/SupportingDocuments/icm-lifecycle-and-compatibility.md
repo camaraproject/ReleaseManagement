@@ -274,7 +274,6 @@ ICM releases outside of the Sync meta-releases are allowed and sometimes require
 
 ICM version lifecycle state transitions may occur off-cycle in security-driven cases, or on explicit governance decision.
 
-
 ## 9. ICM-compatibility matrix
 
 The ICM-compatibility matrix recorde compatibility by designe between API versions and ICM versions. The matrix is maintained as a **derived artifact**, computed automatically from:
@@ -316,7 +315,7 @@ ICM-compatibility matrix updates are triggered by:
 
 The ICM-compatibility matrix is published by Release Management. It is computed, not hand-edited. Only exceptions require human governance action.
 
-## 12. Exception mechanism
+## 10. Exception mechanism
 
 Exceptions are time-bound ICM-compatibility authorizations granted by governance. 
 
@@ -342,12 +341,12 @@ This guideline's SemVer-based rules take effect starting with ICM version 1.0.0.
 
 The lifecycle state for pre-1.0.0 ICM versions is assigned by governance also as a one-time exercise. The full SemVer discipline does not apply retroactively to pre-1.0.0 ICM versions.
 
-## 12. Open governance decisions
+## 12. Open governance points for decussion/decision
 
 The following require WG agreement before this guideline is adopted:
 
 1. **Exact durations** for the Supported and Deprecated state durations (§5.3).
-2. **Transition to ICM 1.0.0** — what constitutes the scope baseline (declaring the then-current definitions of the ICM documents as the stable starting point); when it is declared; who signs off. Pre-1.0 versions are handled by the Legacy section (§10).
+2. **Transition to ICM 1.0.0** — what constitutes the scope baseline (declaring the then-current definitions of the ICM documents as the stable starting point); when it is declared; who signs off. Pre-1.0.0 versions are handled by the previous section (§10).
 3. **Signal vs. out-of-cycle policy** — which ICM changes can be out-of-cycle vs. must align with Signal.
 4. **Exception grant process** — who requests, who approves, how documented.
 5. **ICM-compatibility statement**; define templates for API version ICM-compatibility and API implementation ICM-compatibility statements; audit process.
@@ -357,14 +356,16 @@ The following require WG agreement before this guideline is adopted:
 9. **ICM ↔ Commonalities coupling** — ICM design info reaches API definitions through the CAMARA Commonalities API Design Guide (§3.4). Open question: how tightly must the Commonalities and ICM lifecycles couple? Options include mandating a new Commonalities release for each ICM design info change, moving ICM design artifacts into the ICM repository to decouple, or letting Commonalities itself declare a `x-camara-min-icm`. This is a coordination question between the ICM and Commonalities Working Groups.
 10. **Example content for the §5.4.2 release-note tables** — Tables A and B in §5.4.2 are stubs awaiting concrete examples from ICM governance. The exact column layout will be refined once examples are filled in.
 11. **Cross-major ICM-compatibility assessment — process and timing** — when in the meta-release cycle is the cross-major-ICM versions assessment performed for existing API versions (Signal? Sync? at the moment the new major ICM version is announced/released?), who is responsible for the technical evaluation (API Sub Project? Release Management? ICM WG?), and how is the resulting decision recorded in the ICM-compatibility matrix.
+12. **ICM release notes template** request to Release Management to define a machine readible template with formatting for required sections with e.g. lifecycle state table, breaking changees table A and B, standard CHANGELOG section (Add, Changed, Removed), etc.
+13. **ICM info descriptions**: Add detailed list of ICM design and deployment info.
 
 ---
 
 ## Appendix A: Key positions
 
 - **ICM-compatibility has two distinct aspects** — design-time (API version, governed by CAMARA via Commonalities) and runtime (deployment, governed by API Provider). See §3.
-- **A meta-release is not the unit of ICM-compatibility.** ICM-compatibility of individual (API version, ICM version) pairs are constrained by lifecycle states and by governance decisions/exceptions.
-- **`x-camara-min-icm`** is introduced as an OpenAPI extension carried by each API definition, independent of `x-camara-commonalities`.
+- **A meta-release is not the unit of ICM-compatibility.** ICM-compatibility of individual (API version, ICM version) pairs are constrained by lifecycle states and by governance decisions / exceptions.
+- **`x-camara-min-icm`** is introduced as an OpenAPI extension carried by each API version definition, independent of `x-camara-commonalities`.
 - **API Provider ICM-compatibility must cover both **API version ICM-compatibility** and **API deployment ICM-compatibility**.
 - **The ICM-compatibility matrix is derived by automation**, not hand-maintained.
 - **Signal/Sync cadence is a lead-time mechanism**, not a governance gate.
