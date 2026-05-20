@@ -117,7 +117,7 @@ The Revoked state is entered through an exceptional transition decided by govern
 
 Governance MAY transition specific minor or patch ICM versions to Deprecated, Retired, or Revoked when they should no longer be used. 
 - For example, when known ambiguities or defects are resolved in a later minor ICM version, or when a critical defect requires replacing a specific patch ICM version. Such per-version transitions do not impact ICM-compatibility of API versions or API deployments. 
-- Later minor ICM versions remain compatible with earlier ones by SemVer, but they influence the "lowest" Supported ICM version used in §6.2 and are relevant for API deployments.
+- Later minor ICM versions remain compatible with earlier ones by SemVer, but they influence the "lowest" Supported ICM version used in §6.4 and are relevant for API deployments.
 
 Note: the term "Retired" aligns with the API lifecycle terminology, so that ICM and API lifecycles use the same vocabulary for the terminal state.
 
@@ -130,7 +130,7 @@ Note: Deprecation or Retirement of an ICM version does not by itself Deprecate o
 | Duration of Supported state (for previous major ICM version, starting when a new major ICM verison is released) | 18 months | Once a newer major ICM version is published, ICM versions with the previous major version number remain Supported for this period before governance transitions them to Deprecated. During this period, API Providers are expected to plan migration to the newer major ICM version. |
 | Duration of Deprecated state | 12 months | Active migration period for API deployments before a Deprecated ICM version is Retired; impacts API version ICM-compatibility |
 | Concurrent support requirement by API deployments | API Providers shall continue to deploy the most recent previous Supported major ICM version next to the latest published Supported major ICM version (see period defined above) | Applies to ICM-compatible API deployments during this period. |
-| Exceptions | Conditions permitting governed ICM lifcycle state transition  | Explicit and recorded governance action per exception; see §11. |
+| Exceptions | Conditions permitting governed ICM lifcycle state transition  | Explicit and recorded governance action per exception; see §10. |
 
 These values are starting points for WG discussion. <!-- to be removed when WG agrees -->
 
@@ -140,7 +140,7 @@ These values are starting points for WG discussion. <!-- to be removed when WG a
 
 The lifecycle state is published in each ICM version's release notes, as a table in the release notes template. No separate governance artifact is required. Each ICM version release carries the lifecycle state for all ICM versions. State transitions are committed at ICM public release unless an out-of-cycle governance action specifies otherwise.
 
-The published lifecycle state must be available in machine-readable form for the CAMARA validation support to consume (§6.3). Until a schema is defined, the ICM version release notes are the single authoritative source — readable by humans but not by tooling.
+The published lifecycle state must be available in machine-readable form for the CAMARA validation support to consume (§6.5). Until a schema is defined, the ICM version release notes are the single authoritative source — readable by humans but not by tooling.
 
 #### 5.4.2 ICM version change tables
 
@@ -202,14 +202,14 @@ To maintain ICM-compatibility of API versions, an API designer must release an u
 At each API version public release (new major, minor, or patch), the API Sub Project determines the value using the fommowing formula:
 
 ```
-x-camara-min-icm = **max** (
+x-camara-min-icm = max (
   lowest Supported ICM version at API version public release,
   lowest Supported ICM version containing all features this API's definition requires,
   ICM version required by the Commonalities version declared in `x-camara-commonalities`
 )
 ```
 
-For APIs with no ICM-version-specific feature dependencies beyond what Commonalities mandates, the second element is not applicable. This reduces the formula to `max (lowest Supported ICM version at API version public release, lowest ICM version required by the Commonalities version declared in `x-camara-commonalities`). 
+For APIs with no ICM-version-specific feature dependencies beyond what Commonalities mandates, the second element is not applicable. This reduces the formula to `max (lowest Supported ICM version at API version public release, lowest ICM version required by the Commonalities version declared in x-camara-commonalities)`. 
 Therefore, this formula ensures that releasing a new version of such an API always raises its `x-camara-min-icm` to a Supported ICM version.
 
 ### 6.5 CAMARA validation support
@@ -346,7 +346,7 @@ The lifecycle state for pre-1.0.0 ICM versions is assigned by governance also as
 The following require WG agreement before this guideline is adopted:
 
 1. **Exact durations** for the Supported and Deprecated state durations (§5.3).
-2. **Transition to ICM 1.0.0** — what constitutes the scope baseline (declaring the then-current definitions of the ICM documents as the stable starting point); when it is declared; who signs off. Pre-1.0.0 versions are handled by the previous section (§10).
+2. **Transition to ICM 1.0.0** — what constitutes the scope baseline (declaring the then-current definitions of the ICM documents as the stable starting point); when it is declared; who signs off. Pre-1.0.0 versions are handled by the previous section (§11).
 3. **Signal vs. out-of-cycle policy** — which ICM changes can be out-of-cycle vs. must align with Signal.
 4. **Exception grant process** — who requests, who approves, how documented.
 5. **ICM-compatibility statement**; define templates for API version ICM-compatibility and API implementation ICM-compatibility statements; audit process.
