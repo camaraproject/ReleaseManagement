@@ -16,9 +16,9 @@ The guideline recognizes operational reality: API Providers offer the same API v
 
 Terms defined in the CAMARA Commonalities glossary (API, API Consumer, API Provider, meta-release, semantic versioning, scope, etc.) are not repeated here. This section defines terms specific to this guideline.
 
-- **ICM design info**: information defined by an ICM version that applies to API definitions at API design time — scope format, `securitySchemes` syntax, mandatory `info.description` text, schemas, operations, and similar OAS-level constructs. Supported by guidelines from CAMARA Commonalities (the API Design Guide and related artifacts) for use by API Sub Projects. CAMARA-governed.
+- **ICM design info**: information defined by an ICM version that applies to API definitions at API design time — e.g. scope format, `securitySchemes` syntax, mandatory `info.description` text, schemas, operations, and similar OAS-level constructs. Supported by guidelines from CAMARA Commonalities (the API Design Guide and related artifacts) for use by API Sub Projects. CAMARA-governed.
 - **ICM deployment info**: information defined by an ICM version that applies to API deployments (including at API Provider/Consumer design time and at runtime) — auth flows, grant types, assertion format and lifetime, token processing, claim handling, and similar behaviors agreed between an API Provider and API Consumer. API-Provider-governed in their contractual relationship with API Consumers.
-- **API version ICM-compatibility**: the guarantee that an API version's OAS definition respects the ICM design info of a given ICM version. A property of the API definition relative to an ICM version declared in its `x-camara-min-icm` field.
+- **API version ICM-compatibility**: the guarantee that an API version's definition respects the ICM design info of a given ICM version. A property of the API definition relative to an ICM version declared in its `x-camara-min-icm` field.
 - **API deployment ICM-compatibility**: the guarantee that an API Provider's or API Consumer's deployment (a) deploys ICM-compatible API versions and (b) implements the ICM deployment info of the ICM version it claims to operate under.
 - **ICM-compatibility** (umbrella): both API version and API deployment ICM-compatibility together. Successful integration of an API Consumer with an API Provider requires both to hold.
 - **ICM version**: a Semantic Versioning (SemVer 2.0) compliant version number with major, minor and patch components, identifying a specific set of ICM artefacts. Starting with ICM 1.0.0, major-version increments indicate breaking changes for API definitions, API deployments, or both — changes that cannot be expressed additively.
@@ -29,17 +29,17 @@ Terms defined in the CAMARA Commonalities glossary (API, API Consumer, API Provi
 
 ## 3. ICM-compatibility
 
-ICM-compatibility concerns two distinct sets of information defined by an ICM version, referred to as ICM design info and ICM deployment info. Each set has its own scope, governance, and signaling mechanism, and each or both can be changed in a given ICM version independently of the other.
+ICM-compatibility concerns two distinct classes of information defined by an ICM version, referred to as ICM design info and ICM deployment info. Each class has its own scope, governance, and announcement mechanism, and either or both can be changed in a given ICM version independently of the other.
 
 ### 3.1 API version ICM-compatibility (design-time)
 
-**An API version is ICM-compatible with an ICM version when its OAS definition respects the ICM design info of that ICM version** — its scope format, `securitySchemes` shape, schemas, operations, and `info.description` text use constructs and conventions defined by the ICM version.
+**An API version is ICM-compatible with an ICM version when its definition respects the ICM design info of that ICM version** — its scope format, `securitySchemes` shape, schemas, operations, and `info.description` text use constructs and conventions defined by the ICM version.
 
 - **Owned and governed by CAMARA.** ICM design info is codified by the CAMARA Commonalities API Design Guide, which mandates how an API definition must align with ICM. API Sub Projects produce API versions that conform to the ICM version by following these guidelines.
-- **Declared via `x-camara-min-icm`** (§6) in the API version's OAS file at API public release time.
-- **Maintained in the compatibility matrix** (§9) — published, governed at CAMARA level, and authoritative for which (API version, ICM version) pairs are CAMARA-compliant from the design-time perspective.
+- **Declared via `x-camara-min-icm`** (§6) in the API version's definition file at API public release time.
+- **Maintained in the compatibility matrix** (§9) The matrix governs API version ICM-compatibility (design-time) — published, governed at CAMARA level, and authoritative for which (API version, ICM version) pairs are ICM-compatible from the API design perspective.
 
-### 3.2 Deployment ICM-compatibility (runtime)
+### 3.2 API deployment ICM-compatibility (runtime)
 
 **An API Provider's or API Consumer's deployment is ICM-compatible with an ICM version when (a) it deploys ICM-compatible API versions, and (b) the runtime interactions between API Consumer and API Provider implement the ICM deployment info of that ICM version** — auth flows, grant types, assertion format and lifetime, token processing, and claim handling.
 
@@ -57,7 +57,7 @@ Maintaining ICM-compatibility as API versions and ICM versions evolve is a joint
   - the API Provider must implement an ICM version that allows ICM-compatibility of all deployed API versions (runtime).
 - The API Consumer is responsible for ensuring that its own implementation matches the ICM version deployed by the API Provider, as well as the deployed API version.
 
-A change in ICM version may impact either or both sets of ICM information independently:
+A change in ICM version may impact either or both classes of ICM information independently:
 
 - **A change to ICM design info** (for example, a new scope format) → the API definition may need updating → triggers a new API version for impacted APIs (see §6.1). API Consumers consuming the new API version must adapt their requests to the new format.
 - **A change to ICM deployment info** (for example, tightening assertion lifetime) → API Provider deployments and API Consumer implementations must update → does NOT by itself imply a new API version. The API definition is unchanged; only the runtime behavior changes.
@@ -77,7 +77,7 @@ This means an ICM design info change typically also triggers a Commonalities upd
 
 This guideline assumes ICM adopts strict SemVer versioning starting with its 1.0.0 release. 
 
-ICM versioning relates to the changes made to the two classes of ICM information that impact ICM-compatibility: APIs design info and API deployment info (§3):
+ICM versioning relates to the types of changes made to the two classes of ICM information that impact ICM-compatibility: ICM design info and ICM deployment info (§3):
 
 - changes that break **API version ICM-compatibility** — affecting ICM design info (scope format, `securitySchemes` syntax, schemas, operations), requiring API versions to be updated;
 - changes that break **API deployment ICM-compatibility** — affecting ICM deployment info (auth flows, grant types, assertion format and lifetime, token processing), requiring API Provider and Consumer implementations to be updated, independently of the API version.
@@ -86,24 +86,24 @@ Both types of changes are captured in the ICM version according to standard SemV
 
 - **Major version (1.x.y → 2.0.0)**: reserved for breaking changes that cannot be expressed additively. These may be due to ICM design info changes (for example, replacement of a mandatory security schema, an incompatible scope format, removal of a required claim), to ICM deployment info changes (for example, mandatory new authentication rules, an assertion lifetime cap that rejects existing Consumers), or both. Major ICM versions should be deliberately rare and driven by security or regulatory necessity.
 - **Minor version change (1.x.y → 1.x+1.0)**: additive only. No breaking change, but minor change to ICM design info (preserves API version ICM-compatibility), or no breaking change, but minor change to ICM deployment info (preserves API deployment ICM-compatibility). For example, new optional flows, new optional claims, new recommendations permitted. Minor changes must not reject previously ICM-compatible API deployment behavior, as these may only apply in a major ICM version change.
-- **Patch version (1.2.3 → 1.2.4)**: editorial or defect corrections with no impact on either API design info or API deployment info.
+- **Patch version (1.2.3 → 1.2.4)**: documentation or defect corrections leading to patch API versions (maintain API version ICM-compatibility), and with no impact on API deployment ICM-compatibility. Example: update of the ICM mandatory text for the API version info.description field.
 
-An ICM change to API deployment info that invalidates existing API deployments requires a major ICM version release, even if no new API versions are required. ICM versioning is not focused only on preserving API version ICM-compatibility.
+An change to ICM deployment info that invalidates existing API deployments requires a major ICM version release, even if no new API versions are required. ICM versioning is not focused only on preserving API version ICM-compatibility.
 
 ## 5. ICM version lifecycle states and governance
 
 ### 5.1 ICM version lifecycle states - definitions
 
-Each ICM version is in exactly one lifecycle state at any given time. States apply per ICM version. A  new major ICM version enters the Supported state at its public release. Subsequent minor or patch versions inherit the state of their major ICM version by default. Governance MAY explicitly transition a specific minor or patch version to a different state.
+Each ICM version is in exactly one lifecycle state at any given time. States apply per ICM version. A  new major ICM version enters the Supported state at its public release. Subsequent minor or patch versions inherit the state of their major ICM version by default. Governance MAY explicitly transition a specific version to a different state.
 
 The table below summarizes the meaning of each state for the ICM version itself, and its consequences for API versions and API deployments.
 
 | State | ICM version | API version | API deployment |
 |---|---|---|---|
-| **Supported** | OK to use | may be used as `x-camara-min-icm` | may operate against this ICM version |
-| **Deprecated** | Sunset announced (planned end of life); migration window active | SHOULD NOT be used as `x-camara-min-icm` | may continue to operate against this ICM version |
+| **Supported** | OK to use | may use this ICM version as `x-camara-min-icm` | may operate against this ICM version |
+| **Deprecated** | Sunset announced (planned end of life); migration window active | SHOULD NOT use this ICM version as `x-camara-min-icm` | may continue to operate against this ICM version |
 | **Retired** | Terminal (end of life) | is no longer ICM-compatible; MUST evolve to a Supported ICM version or be Retired at the API level | is no longer ICM-compatible; MUST migrate to an ICM-compatible deployment with a Supported ICM version |
-| **Revoked** | Terminal (exceptional end-of-life); replaced by another (earlier or later) minor or patch version due to defects or security issues and MUST NOT be used; governance names the replacement version | MUST re-establish ICM-compatibility with a Supported ICM version | MUST migrate to a Supported ICM version and ICM-compatible deployment |
+| **Revoked** | Terminal (exceptional end-of-life); explicitly replaced by an earlier or later ICM version due to defects or security issues and MUST NOT be used; governance names the replacement version | MUST re-establish ICM-compatibility with a Supported ICM version | MUST migrate to a Supported ICM version and ICM-compatible deployment |
 
 Note: the "API version" and "API deployment" columns describe impacts (in CAMARA governance scope) on ICM-compatibility of API versions as declared in the ICM-compatibility matrix and on ICM-compatibility of API deployments. Use outside that scope is not governed by this guideline.
 
@@ -115,9 +115,9 @@ Supported → Deprecated → Retired
 
 The Revoked state is entered through an exceptional transition decided by governance outside the planned sequence and requires an explicit replacement version to be identified.
 
-For Supported major ICM versions, governance MAY transition specific minor or patch ICM versions to Deprecated, Retired, or Revoked when they should no longer be used. 
+Governance MAY transition specific minor or patch ICM versions to Deprecated, Retired, or Revoked when they should no longer be used. 
 - For example, when known ambiguities or defects are resolved in a later minor ICM version, or when a critical defect requires replacing a specific patch ICM version. Such per-version transitions do not impact ICM-compatibility of API versions or API deployments. 
-- Later minor ICM versions remain compatible with earlier ones by SemVer, but they influence the "lowest" Supported minor ICM version used in §6.2 and are relevant for API deployments.
+- Later minor ICM versions remain compatible with earlier ones by SemVer, but they influence the "lowest" Supported ICM version used in §6.2 and are relevant for API deployments.
 
 Note: the term "Retired" aligns with the API lifecycle terminology, so that ICM and API lifecycles use the same vocabulary for the terminal state.
 
@@ -127,10 +127,10 @@ Note: Deprecation or Retirement of an ICM version does not by itself Deprecate o
 
 | Parameter | Suggested starting value | Notes |
 |---|---|---|
-| Duration of Supported state (of a major ICM version after its successor major ICM version is published) | ≥ 18 months | After a newer major ICM version is published, the previous major remains Supported for at least this period before governance transitions it to Deprecated. During this period, API Providers are expected to plan migration to the newer major ICM version. |
-| Duration of Deprecated state | ≥ 12 months | Active migration period for API deployments before the major ICM version is Retired and impacts the API deployment's ICM-compatibility |
+| Duration of Supported state (of previous Supported ICM versions after a successor major ICM version is published) | ≥ 18 months | Once a newer major ICM version is published, ICM versions with the previous major version number remain Supported for at least this period before governance transitions them to Deprecated. During this period, API Providers are expected to plan migration to the newer major ICM version. |
+| Duration of Deprecated state | ≥ 12 months | Active migration period for API deployments before a Deprecated ICM version is Retired; impacts API version ICM-compatibility |
 | Concurrent support requirement by API deployments | API Providers shall continue to deploy the most recent previous Supported major ICM version next to the latest published Supported major ICM version while this previous ICM major version is still Supported (see period defined above) | Applies to ICM-compatible API deployments during this period. |
-| Security exception | Conditions permitting acceleration of any state transition | Explicit governance action per incident; see §11. |
+| Exceptions | Conditions permitting governed ICM lifcycle state transition  | Explicit and recorded governance action per exception; see §11. |
 
 These values are starting points for WG discussion. <!-- to be removed when WG agrees -->
 
@@ -217,7 +217,7 @@ This rule depends on the ICM lifecycle state being published in machine-readable
 
 This section describes the governance of API deployment ICM-compatibility (runtime).
 
-An API definition might technically work against an ICM version that the compatibility matrix (§9) does not record as CAMARA-compliant — for example, a Retired or Revoked ICM version still running somewhere. Such pairings are outside CAMARA governance and cannot be claimed as CAMARA compliant.
+An API definition might technically work against an ICM version that the compatibility matrix (§9) does not record as ICM-compatible — for example, a Retired or Revoked ICM version still running somewhere. Such pairings are outside CAMARA governance and are not supported by CAMARA.
 
 ### 7.1 API Provider responsibilities
 
