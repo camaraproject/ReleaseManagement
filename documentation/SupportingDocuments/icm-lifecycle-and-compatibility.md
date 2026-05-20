@@ -232,15 +232,15 @@ An API definition might technically work against an ICM version that the compati
 To achieve ICM-compatibility of their API deployment, API Providers MUST:
 
 1. Implement a Supported ICM version.
-2. When a new major ICM version is published and is in Supported state, plan implementation of that ICM version. During the period in which the previous major ICM version remains in the Supported state, keep that major ICM version running in parallel, so that API versions targeting either Supported ICM version can be deployed.
-3. Publish the ICM versions they implement, in a form that API Consumers can discover (for example via Provider metadata or onboarding documentation).
-4. Publish **two separate ICM-compatibility statements**:
+2. When a new major ICM version is published and is in Supported state, plan implementation of that ICM version. During the period in which the previous major ICM version remains in the Supported state, keep that major ICM version running in parallel, so that API Providers and Consumers can plan the migration of impacted API versions.
+3. Announce the ICM versions they implement, in a form that API Consumers can discover (for example via Provider metadata or onboarding documentation).
+4. Publish an **ICM-compatibility statement** covering:
    - **API version ICM-compatibility**: for each API version offered.
-   - **API deployment ICM-compatibility**: the major ICM versions implemented.
+   - **API deployment ICM-compatibility**: the ICM versions implemented.
 
-These two statements together constitute the API Provider's ICM-compatibility declaration.
+This statement declares the API Provider's ICM-compatibility baseline.
 
-The mechanism by which an API Provider implements multiple ICM major versions concurrently is an implementation choice and is not prescribed by this guideline; what matters is that each implemented ICM version is clearly announced by the API Provider for use by API Consumers during the relevant migration period.
+The mechanism by which an API Provider provides multiple major ICM versions concurrently is an implementation choice and is not prescribed by this guideline; what matters is that each implemented ICM version is clearly announced by the API Provider for use by API Consumers during the relevant migration period.
 
 An API Provider cannot declare a newly deployed API version as ICM-compatible when offering only a Deprecated or Retired ICM version, even if the API version would technically work with those older ICM versions.
 
@@ -248,7 +248,7 @@ An API Provider cannot declare a newly deployed API version as ICM-compatible wh
 
 Successful API deployments requires the API Consumer to implement its side of the ICM deployment info — auth flows, grant types, assertion format and lifetime, token processing — consistently with the ICM version implemented by the API Provider it interacts with. 
 
-The API Consumer determines the applicable ICM version through Provider metadata and onboarding artifacts, not through the API version alone. API Consumers are not bound by this guideline directly.
+The API Consumer determines the applicable ICM version through Provider metadata or onboarding artifacts, not through the API version alone. API Consumers are not bound by this guideline directly.
 
 The API Consumer is responsible for ensuring that its own implementation matches both the announced ICM version and the API version.
 
