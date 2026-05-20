@@ -254,11 +254,11 @@ The API Consumer is responsible for ensuring that its own implementation matches
 
 ## 8. ICM version release cadence
 
-### 8.1 Signal / Sync alignment
+### 8.1 Signal / Sync meta-release alignment
 
-The Signal meta-release is used for 
-- planning and releasing a new ICM version as needed
-- deciding and recording previous ICM version lifecycle transitions (lifecycle state table)
+The Signal meta-release is used to 
+- plan and release a new ICM version per evolving requirements
+- decide and record previous ICM version lifecycle transitions (lifecycle state table)
 
 New ICM versions MAY be introduced outside Signal meta-releases (out-of-cycle) if required.
 
@@ -270,47 +270,51 @@ ICM releases are done at Signal meta-release (first half of each year); API rele
 
 ### 8.2 Out-of-cycle ICM releases
 
-Out-of-cycle ICM releases are allowed and sometimes required, e.g., for security patches, defect corrections, or urgent regulatory changes. These changes impact the ICM version as per SemVer guidelines. 
+ICM releases outside of the Sync meta-releases are allowed and sometimes required, e.g., for security patches, defect corrections, or urgent regulatory changes. These changes impact the ICM version as per SemVer guidelines. 
 
 ICM version lifecycle state transitions may occur off-cycle in security-driven cases, or on explicit governance decision.
 
 
 ## 9. ICM-compatibility matrix
 
-The ICM-compatibility matrix between API versions and ICM versions is maintained as a **derived artifact**, computed automatically from:
+The ICM-compatibility matrix recorde compatibility by designe between API versions and ICM versions. The matrix is maintained as a **derived artifact**, computed automatically from:
 - API definition declarations (`x-camara-min-icm` in each published API version).
 - ICM version lifecycle state table (from the latest ICM version release notes), including any per-version overrides.
-- Exceptions (if any).
-- Governance decisions may exceptionally extend an API version's ICM-compatibility to cover an additional major ICM version.
-- Governance decisions may exceptionally extend the duration of an ICM version's Supported or Deprecated lifecycle state. This extends the duration of API version ICM compatibility accordingly.
+- Exception records (if any).
+  - Governance decisions may exceptionally extend an API version's ICM-compatibility to cover an additional major ICM version.
+  - Governance decisions may exceptionally extend the duration of an ICM version's Supported or Deprecated lifecycle state. This extends the duration of API version ICM compatibility accordingly.
 
 The matrix lists one row per released public API version and one column per released public ICM version. It records which pairs (API version, ICM version) are ICM-compatible.
 
 ### 9.1 ICM-compatibility matrix derivation
+
+The following rule defines how the matrix entries (ICM-compatibility for a pair (API version, ICM version)) are calculated:
 
 ```
 ICM-compatibility (API vX, ICM vY) =
   ( ICM vY.major == API vX x-camara-min-icm.major
     AND ICM vY >= API vX x-camara-min-icm
     AND ICM vY is in state {Supported, Deprecated} )
-  OR a governance decision extends the API vX ICM-compatibility to vY.major
-  OR a governance approved, time-bound ICM-compatibility exception exists
+  OR a governance decision extends the API vX ICM-compatibility to ICM vY.major
+  OR a governance approved, time-bound ICM-compatibility exception exists for (API vX, ICM vY)
 ```
 
-The lifecycle state condition applies to the specific ICM version `vY`, inheriting from its major ICM version unless a per-version override is in place. ICM versions in the Retired or Revoked state are excluded from the ICM-compatibility matrix, unless an approved exception has been decided.
+The lifecycle state condition applies to the specific ICM version `vY`, inherited from its major ICM version, unless a per-version override is in place. 
 
-The matrix of ICM-compatible pairs (API version, ICM version) are the combinations that API Providers may offer and API Consumers may consume.
+ICM versions in the Retired or Revoked state are excluded from the ICM-compatibility matrix, unless an approved exception has been decided.
 
-### 9.2 ICM-compatibility matrix - ownership
+The matrix of ICM-compatible pairs (API version, ICM version) are the CAMARA-supported combinations that API Providers may offer and API Consumers may consume.
 
-The ICM-compatibility matrix is published by Release Management. It is computed, not hand-edited. Only exceptions require human governance action.
-
-### 9.3 ICM-compatibility matrix - updates
+### 9.2 ICM-compatibility matrix - updates
 
 ICM-compatibility matrix updates are triggered by:
 - New ICM version public release (lifecycle state of other ICM versions may change).
 - New API version public release (new row added to the matrix; existing rows unchanged).
 - Exception granted, modified, or expired.
+
+### 9.3 ICM-compatibility matrix - ownership
+
+The ICM-compatibility matrix is published by Release Management. It is computed, not hand-edited. Only exceptions require human governance action.
 
 ## 10. Legacy ICM 0.x handling
 
