@@ -295,7 +295,7 @@ ICM-compatibility (API vX, ICM vY) =
   ( ICM vY.major == API vX x-camara-min-icm.major
     AND ICM vY >= API vX x-camara-min-icm
     AND ICM vY is in state {Supported, Deprecated} )
-  OR a governance decision extends the API vX ICM-compatibility to ICM vY.major
+  OR a governance decision extends ICM-compatibility to (API vX, ICM vY.major)
   OR a governance approved, time-bound ICM-compatibility exception exists for (API vX, ICM vY)
 ```
 
@@ -316,23 +316,11 @@ ICM-compatibility matrix updates are triggered by:
 
 The ICM-compatibility matrix is published by Release Management. It is computed, not hand-edited. Only exceptions require human governance action.
 
-## 10. Legacy ICM 0.x handling
+## 12. Exception mechanism
 
-This guideline's SemVer-based rules take effect with starting with ICM version 1.0.0. For the pre-v1.0.0 versions, Release Management publishes a one-time historical record documenting which ICM v0.x.y versions introduced client-facing breaking changes:
+Exceptions are time-bound ICM-compatibility authorizations granted by governance. 
 
-| ICM transition | Client-facing forward break? | Source PRs |
-|---|---|---|
-| 0.2.0 → 0.3.0 | Yes — client-assertion lifetime cap | [#216](https://github.com/camaraproject/IdentityAndConsentManagement/pull/216) |
-| 0.3.0 → 0.4.0 | Yes — mandatory signed-request fields; error-code rename | [#285](https://github.com/camaraproject/IdentityAndConsentManagement/pull/285), [#287](https://github.com/camaraproject/IdentityAndConsentManagement/pull/287) |
-| 0.4.0 → 0.5.0 | No — additive | — |
-
-State for 0.x versions is assigned by ICM governance as a one-time exercise. The full SemVer discipline does not apply retroactively to pre-1.0 versions.
-
-## 11. Exception mechanism
-
-Exceptions are time-bound ICM-compatibility authorizations granted by governance:
-
-Exceptions shall be documented by Release Management using governance decision records with the following information:
+Exceptions shall be documented by Release Management using exception decision records with the following information:
 
 - **Scope**: specific (API version, ICM version) pair, or a range.
 - **Justification**: required — operational necessity, regulatory requirement, or security consideration.
@@ -340,7 +328,19 @@ Exceptions shall be documented by Release Management using governance decision r
 - **Owner**: named API Sub Project or provider responsible for remediation by expiry.
 - **Expiry**: automatic. No "ongoing exception" mechanism.
 
-Exceptions are the only mechanism by which a (API version, ICM version) pair can be considered ICM-compatible despite violating the ICM-compatibility rules. Exceptions will appear in the ICM-compatibility matrix with an explicit annotation.
+Exceptions are the only mechanism by which an (API version, ICM version) pair can be considered ICM-compatible despite violating the ICM-compatibility rules. Exceptions will appear in the ICM-compatibility matrix with an explicit annotation.
+
+## 11. ICM 0.x handling
+
+This guideline's SemVer-based rules take effect starting with ICM version 1.0.0. For the pre-1.0.0 ICM versions, the one-time historical table below documents which ICM version 0.x.y introduced client-facing breaking changes:
+
+| ICM transition | Client-facing forward break? | Source PRs |
+|---|---|---|
+| 0.2.0 → 0.3.0 | Yes — client-assertion lifetime cap | [#216](https://github.com/camaraproject/IdentityAndConsentManagement/pull/216) |
+| 0.3.0 → 0.4.0 | Yes — mandatory signed-request fields; error-code rename | [#285](https://github.com/camaraproject/IdentityAndConsentManagement/pull/285), [#287](https://github.com/camaraproject/IdentityAndConsentManagement/pull/287) |
+| 0.4.0 → 0.5.0 | No — additive | — |
+
+The lifecycle state for pre-1.0.0 ICM versions is assigned by governance also as a one-time exercise. The full SemVer discipline does not apply retroactively to pre-1.0.0 ICM versions.
 
 ## 12. Open governance decisions
 
