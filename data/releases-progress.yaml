@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-05-19T06:58:59Z'
-  last_checked: '2026-05-19T06:58:59Z'
+  last_updated: '2026-05-21T07:04:36Z'
+  last_checked: '2026-05-21T07:04:36Z'
   releases_master_updated: '2026-05-15T06:48:36.039Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
@@ -756,10 +756,13 @@ progress:
     - PeterKovacs2
     - carlosromerog
     - eric-murray
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.1-85f4668
+    release_pr:
+      number: 108
+      state: open
+      url: https://github.com/camaraproject/DedicatedNetworks/pull/108
     draft_release: null
     release_issue:
       number: 107
@@ -780,6 +783,11 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    dedicated-network-accesses: 0.2.0-alpha.1
+    dedicated-network-profiles: 0.2.0-alpha.1
+    dedicated-network: 0.2.0-alpha.1
+    dedicated-network-areas: 0.1.0-alpha.1
 - repository: DeviceAuthenticity
   github_url: https://github.com/camaraproject/DeviceAuthenticity
   release_track: independent
