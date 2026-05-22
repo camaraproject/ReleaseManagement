@@ -1,13 +1,13 @@
 metadata:
-  last_updated: '2026-05-21T07:04:36Z'
-  last_checked: '2026-05-21T07:04:36Z'
+  last_updated: '2026-05-22T07:00:05Z'
+  last_checked: '2026-05-22T07:00:05Z'
   releases_master_updated: '2026-05-15T06:48:36.039Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
   repos_scanned: 62
   repos_new: 0
   repos_with_plan: 62
-  repos_fully_onboarded: 16
+  repos_fully_onboarded: 17
   repos_with_release_issue: 12
 meta_releases:
 - name: Fall24
@@ -31,7 +31,7 @@ meta_releases:
   m3_achieved: 3
   m4_achieved: 0
 - name: Sync26
-  total_apis: 8
+  total_apis: 10
   m1_achieved: 0
   m3_achieved: 0
   m4_achieved: 0
@@ -1008,24 +1008,26 @@ progress:
   github_url: https://github.com/camaraproject/DeviceMediaStreamingRate
   release_track: independent
   target_release_tag: r1.1
-  target_release_type: none
+  target_release_type: pre-release-alpha
   dependencies:
-    commonalities_release: r3.4
-    identity_consent_management_release: r3.3
+    commonalities_release: r4.2
+    identity_consent_management_release: r4.2
   apis:
-  - api_name: placeholder-entry
+  - api_name: media-streaming-rate
     target_api_version: 0.1.0
-    target_api_status: draft
+    target_api_status: alpha
     main_contacts:
     - maxl2287
     - sachinvodafone
     - maheshc01
-  state: not_planned
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 26
+      url: https://github.com/camaraproject/DeviceMediaStreamingRate/issues/26
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -1972,17 +1974,12 @@ progress:
     target_api_status: rc
     main_contacts:
     - cnzj-Gc
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r1.2-a5e16b7
-    release_pr:
-      number: 57
-      state: open
-      url: https://github.com/camaraproject/NetworkInsights/pull/57
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 52
-      url: https://github.com/camaraproject/NetworkInsights/issues/52
+    release_issue: null
   published_context:
     latest_public_release: null
     newest_pre_release: r1.1
@@ -2014,6 +2011,11 @@ progress:
   snapshot_api_versions:
     network-health-assessment: 0.1.0-rc.1
     network-traffic-analysis: 0.1.0-rc.1
+  warnings:
+  - code: W003
+    message: Release r1.2 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: NetworkSliceBooking
   github_url: https://github.com/camaraproject/NetworkSliceBooking
   release_track: meta-release
@@ -2977,29 +2979,27 @@ progress:
 - repository: VerifiedCaller
   github_url: https://github.com/camaraproject/VerifiedCaller
   release_track: meta-release
-  meta_release: Fall25
-  target_release_tag: r1.3
+  meta_release: Sync26
+  target_release_tag: r2.1
   target_release_type: none
   dependencies:
-    commonalities_release: r3.4
-    identity_consent_management_release: r3.3
+    commonalities_release: r4.2
+    identity_consent_management_release: r4.2
   apis:
   - api_name: brand-registration
-    target_api_version: 0.1.0
-    target_api_status: public
+    target_api_version: 0.2.0
+    target_api_status: alpha
     main_contacts:
-    - DanXu-ChinaTelecom
-    - Jason-ZTE
     - alpaycetin74
+    - olsi-korkuti
     - stroncoso-quobis
     - GillesInnov35
   - api_name: verified-caller
-    target_api_version: 0.1.0
-    target_api_status: public
+    target_api_version: 0.2.0
+    target_api_status: alpha
     main_contacts:
-    - DanXu-ChinaTelecom
-    - Jason-ZTE
     - alpaycetin74
+    - olsi-korkuti
     - stroncoso-quobis
     - GillesInnov35
   state: not_planned
@@ -3017,29 +3017,13 @@ progress:
       release_date: null
       apis: []
     m3:
-      release_tag: r1.1
-      release_date: '2025-07-18T11:34:25Z'
-      apis:
-      - api_name: brand-registration
-        api_version: 0.1.0-rc.1
-      - api_name: verified-caller
-        api_version: 0.1.0-rc.1
+      release_tag: null
+      release_date: null
+      apis: []
     m4:
-      release_tag: r1.3
-      release_date: '2025-09-15T15:00:09Z'
-      apis:
-      - api_name: brand-registration
-        api_version: 0.1.0
-      - api_name: verified-caller
-        api_version: 0.1.0
-  last_published:
-    release_tag: r1.3
-    release_date: '2025-09-15T15:00:09Z'
-    apis:
-    - api_name: brand-registration
-      api_version: 0.1.0
-    - api_name: verified-caller
-      api_version: 0.1.0
+      release_tag: null
+      release_date: null
+      apis: []
 - repository: VoiceNotification
   github_url: https://github.com/camaraproject/VoiceNotification
   release_track: independent
@@ -5120,6 +5104,58 @@ progress:
     release_date: '2025-03-11T08:37:12Z'
     apis:
     - api_name: kyc-tenure
+      api_version: 0.1.0
+  source: historical
+- repository: VerifiedCaller
+  github_url: https://github.com/camaraproject/VerifiedCaller
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: null
+  target_release_type: null
+  apis:
+  - api_name: brand-registration
+    target_api_version: 0.1.0
+    target_api_status: ''
+  - api_name: verified-caller
+    target_api_version: 0.1.0
+    target_api_status: ''
+  state: historical
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis: []
+    m3:
+      release_tag: r1.1
+      release_date: '2025-07-18T11:34:25Z'
+      apis:
+      - api_name: brand-registration
+        api_version: 0.1.0-rc.1
+      - api_name: verified-caller
+        api_version: 0.1.0-rc.1
+    m4:
+      release_tag: r1.3
+      release_date: '2025-09-15T15:00:09Z'
+      apis:
+      - api_name: brand-registration
+        api_version: 0.1.0
+      - api_name: verified-caller
+        api_version: 0.1.0
+  last_published:
+    release_tag: r1.3
+    release_date: '2025-09-15T15:00:09Z'
+    apis:
+    - api_name: brand-registration
+      api_version: 0.1.0
+    - api_name: verified-caller
       api_version: 0.1.0
   source: historical
 - repository: WebRTC
