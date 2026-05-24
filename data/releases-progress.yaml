@@ -1,7 +1,7 @@
 metadata:
-  last_updated: '2026-05-22T07:00:05Z'
-  last_checked: '2026-05-22T07:00:05Z'
-  releases_master_updated: '2026-05-15T06:48:36.039Z'
+  last_updated: '2026-05-24T06:49:06Z'
+  last_checked: '2026-05-24T06:49:06Z'
+  releases_master_updated: '2026-05-22T06:33:49.302Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
   repos_scanned: 62
@@ -31,7 +31,7 @@ meta_releases:
   m3_achieved: 3
   m4_achieved: 0
 - name: Sync26
-  total_apis: 10
+  total_apis: 12
   m1_achieved: 0
   m3_achieved: 0
   m4_achieved: 0
@@ -640,7 +640,7 @@ progress:
   target_release_tag: r1.1
   target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r4.2
+    commonalities_release: r4.3
     identity_consent_management_release: r4.2
   apis:
   - api_name: consent-management
@@ -1047,30 +1047,30 @@ progress:
 - repository: DeviceReachabilityStatus
   github_url: https://github.com/camaraproject/DeviceReachabilityStatus
   release_track: meta-release
-  meta_release: Fall25
-  target_release_tag: r1.2
-  target_release_type: none
+  meta_release: Sync26
+  target_release_tag: r2.1
+  target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r3.4
-    identity_consent_management_release: r3.3
+    commonalities_release: r4.2
+    identity_consent_management_release: r4.2
   apis:
   - api_name: device-reachability-status-subscriptions
-    target_api_version: 0.8.0
-    target_api_status: public
+    target_api_version: 0.9.0
+    target_api_status: rc
     main_contacts:
     - eric-murray
     - bigludo7
     - sachinvodafone
     - akoshunyadi
   - api_name: device-reachability-status
-    target_api_version: 1.1.0
-    target_api_status: public
+    target_api_version: 1.2.0
+    target_api_status: rc
     main_contacts:
     - eric-murray
     - bigludo7
     - sachinvodafone
     - akoshunyadi
-  state: not_planned
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
@@ -1085,29 +1085,17 @@ progress:
       release_date: null
       apis: []
     m3:
-      release_tag: r1.1
-      release_date: '2025-07-18T07:21:01Z'
-      apis:
-      - api_name: device-reachability-status-subscriptions
-        api_version: 0.8.0-rc.1
-      - api_name: device-reachability-status
-        api_version: 1.1.0-rc.2
+      release_tag: null
+      release_date: null
+      apis: []
     m4:
-      release_tag: r1.2
-      release_date: '2025-09-16T12:14:22Z'
-      apis:
-      - api_name: device-reachability-status-subscriptions
-        api_version: 0.8.0
-      - api_name: device-reachability-status
-        api_version: 1.1.0
-  last_published:
-    release_tag: r1.2
-    release_date: '2025-09-16T12:14:22Z'
-    apis:
-    - api_name: device-reachability-status-subscriptions
-      api_version: 0.8.0
-    - api_name: device-reachability-status
-      api_version: 1.1.0
+      release_tag: null
+      release_date: null
+      apis: []
+  warnings:
+  - code: W005
+    message: Active release plan but no caller workflow installed
+    severity: warning
 - repository: DeviceRoamingStatus
   github_url: https://github.com/camaraproject/DeviceRoamingStatus
   release_track: meta-release
@@ -1982,7 +1970,7 @@ progress:
     release_issue: null
   published_context:
     latest_public_release: null
-    newest_pre_release: r1.1
+    newest_pre_release: r1.2
   cycle_releases:
     m1:
       release_tag: r1.1
@@ -1993,29 +1981,28 @@ progress:
       - api_name: network-traffic-analysis
         api_version: 0.1.0-alpha.1
     m3:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r1.2
+      release_date: '2026-05-22T03:21:06Z'
+      apis:
+      - api_name: network-health-assessment
+        api_version: 0.1.0-rc.1
+      - api_name: network-traffic-analysis
+        api_version: 0.1.0-rc.1
     m4:
       release_tag: null
       release_date: null
       apis: []
   last_published:
-    release_tag: r1.1
-    release_date: '2026-04-16T01:13:01Z'
+    release_tag: r1.2
+    release_date: '2026-05-22T03:21:06Z'
     apis:
     - api_name: network-health-assessment
-      api_version: 0.1.0-alpha.1
+      api_version: 0.1.0-rc.1
     - api_name: network-traffic-analysis
-      api_version: 0.1.0-alpha.1
+      api_version: 0.1.0-rc.1
   snapshot_api_versions:
     network-health-assessment: 0.1.0-rc.1
     network-traffic-analysis: 0.1.0-rc.1
-  warnings:
-  - code: W003
-    message: Release r1.2 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: NetworkSliceBooking
   github_url: https://github.com/camaraproject/NetworkSliceBooking
   release_track: meta-release
@@ -2586,7 +2573,7 @@ progress:
   target_release_tag: r1.1
   target_release_type: pre-release-alpha
   dependencies:
-    commonalities_release: r4.2
+    commonalities_release: r4.3
     identity_consent_management_release: r4.2
   apis:
   - api_name: sample-service
@@ -3908,6 +3895,58 @@ progress:
       api_version: 0.4.0
     - api_name: location-verification
       api_version: 2.0.0
+  source: historical
+- repository: DeviceReachabilityStatus
+  github_url: https://github.com/camaraproject/DeviceReachabilityStatus
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: null
+  target_release_type: null
+  apis:
+  - api_name: device-reachability-status-subscriptions
+    target_api_version: 0.8.0
+    target_api_status: ''
+  - api_name: device-reachability-status
+    target_api_version: 1.1.0
+    target_api_status: ''
+  state: historical
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis: []
+    m3:
+      release_tag: r1.1
+      release_date: '2025-07-18T07:21:01Z'
+      apis:
+      - api_name: device-reachability-status-subscriptions
+        api_version: 0.8.0-rc.1
+      - api_name: device-reachability-status
+        api_version: 1.1.0-rc.2
+    m4:
+      release_tag: r1.2
+      release_date: '2025-09-16T12:14:22Z'
+      apis:
+      - api_name: device-reachability-status-subscriptions
+        api_version: 0.8.0
+      - api_name: device-reachability-status
+        api_version: 1.1.0
+  last_published:
+    release_tag: r1.2
+    release_date: '2025-09-16T12:14:22Z'
+    apis:
+    - api_name: device-reachability-status-subscriptions
+      api_version: 0.8.0
+    - api_name: device-reachability-status
+      api_version: 1.1.0
   source: historical
 - repository: DeviceStatus
   github_url: ''
