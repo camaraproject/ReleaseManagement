@@ -127,7 +127,7 @@ Note: Deprecation or Retirement of an ICM version does not by itself Deprecate o
 
 | Parameter | Suggested starting value | Notes |
 |---|---|---|
-| Duration of Supported state (for previous major ICM version, starting when a new major ICM verison is released) | 18 months | Once a newer major ICM version is published, ICM versions with the previous major version number remain Supported for this period before governance transitions them to Deprecated. During this period, API Providers are expected to plan migration to the newer major ICM version. |
+| Duration of Supported state (for previous major ICM version, starting when a new major ICM version is released) | 18 months | Once a newer major ICM version is published, ICM versions with the previous major version number remain Supported for this period before governance transitions them to Deprecated. During this period, API Providers are expected to plan migration to the newer major ICM version. |
 | Duration of Deprecated state | 12 months | Active migration period for API deployments before a Deprecated ICM version is Retired; impacts API version ICM-compatibility |
 | Concurrent support requirement by API deployments | API Providers shall continue to deploy the most recent previous Supported major ICM version next to the latest published Supported major ICM version (see period defined above) | Applies to ICM-compatible API deployments during this period. |
 | Exceptions | Conditions permitting governed ICM lifecycle state transition  | Explicit and recorded governance action per exception; see §10. |
@@ -178,7 +178,7 @@ This declared ICM version is the ICM version that the API definition relies on a
 
 - The value of `x-camara-min-icm` field must be a SemVer valid ICM version.
 - It identifies the ICM version that this API is initially compatible with by design (e.g., `1.2.0`). The API version is guaranteed ICM-compatible with any higher ICM version that has the same major version number. ICM-compatibility with different higher major ICM versions must be assessed at ICM version public release and may be extended on governance decision as described below.
-- Fixed at API public release. Does never change after the API version is released.
+- Fixed at API public release. Never changes after the API version is released.
 
 ### 6.2 ICM governance responsibilities 
 
