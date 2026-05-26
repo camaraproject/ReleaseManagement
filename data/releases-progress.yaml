@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-05-26T06:58:14Z'
-  last_checked: '2026-05-26T06:58:14Z'
+  last_updated: '2026-05-26T15:35:26Z'
+  last_checked: '2026-05-26T15:35:26Z'
   releases_master_updated: '2026-05-25T06:54:30.090Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
@@ -8,7 +8,7 @@ metadata:
   repos_new: 0
   repos_with_plan: 62
   repos_fully_onboarded: 17
-  repos_with_release_issue: 11
+  repos_with_release_issue: 10
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -756,17 +756,12 @@ progress:
     - PeterKovacs2
     - carlosromerog
     - eric-murray
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r2.1-85f4668
-    release_pr:
-      number: 108
-      state: open
-      url: https://github.com/camaraproject/DedicatedNetworks/pull/108
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 107
-      url: https://github.com/camaraproject/DedicatedNetworks/issues/107
+    release_issue: null
   published_context:
     latest_public_release: r1.2
     newest_pre_release: null
@@ -788,6 +783,11 @@ progress:
     dedicated-network-profiles: 0.2.0-alpha.1
     dedicated-network: 0.2.0-alpha.1
     dedicated-network-areas: 0.1.0-alpha.1
+  warnings:
+  - code: W003
+    message: Release r2.1 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: DeviceAuthenticity
   github_url: https://github.com/camaraproject/DeviceAuthenticity
   release_track: independent
