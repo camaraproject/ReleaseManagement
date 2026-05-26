@@ -86,7 +86,7 @@ Both types of changes are captured in the ICM version according to standard SemV
 
 - **Major version (1.x.y → 2.0.0)**: reserved for breaking changes that cannot be expressed additively. These may be due to ICM design info changes (for example, replacement of a mandatory security schema, an incompatible scope format, removal of a required claim), to ICM deployment info changes (for example, mandatory new authentication rules, an assertion lifetime cap that rejects existing Consumers), or both. Major ICM versions should be deliberately rare and driven by security or regulatory necessity.
 - **Minor version change (1.x.y → 1.x+1.0)**: additive only. No breaking change, but minor change to ICM design info (preserves API version ICM-compatibility), or no breaking change, but minor change to ICM deployment info (preserves API deployment ICM-compatibility). For example, new optional flows, new optional claims, new recommendations permitted. Minor changes must not reject previously ICM-compatible API deployment behavior, as these may only apply in a major ICM version change.
-- **Patch version (1.2.3 → 1.2.4)**: documentation or defect corrections leading to patch API versions (maintain API version ICM-compatibility), and with no impact on API deployment ICM-compatibility. Example: update of the ICM mandatory text for the API version info.description field.
+- **Patch version (1.2.3 → 1.2.4)**: documentation or defect corrections that may require patch API versions to incorporate (e.g., update of the ICM mandatory text in the API version's `info.description` field), and with no impact on API deployment ICM-compatibility.
 
 A change to ICM deployment info that invalidates existing API deployments requires a major ICM version release, even if no new API versions are required. ICM versioning is not focused only on preserving API version ICM-compatibility.
 
@@ -174,7 +174,7 @@ info:
   x-camara-min-icm: 1.2.0
 ```
 
-This declared ICM version is the ICM version that the API definition relies on and which is Supported at the time of public release of this API version. 
+This declared ICM version is the lowest ICM version that the API definition relies on and which is Supported at the time of public release of this API version.
 
 - The value of `x-camara-min-icm` field must be a SemVer valid ICM version.
 - It identifies the ICM version that this API is initially compatible with by design (e.g., `1.2.0`). The API version is guaranteed ICM-compatible with any higher ICM version that has the same major version number. ICM-compatibility with different higher major ICM versions must be assessed at ICM version public release and may be extended on governance decision as described below.
@@ -184,13 +184,13 @@ This declared ICM version is the ICM version that the API definition relies on a
 
 When a new major ICM version is publicly released, the ICM-compatibility of each API version in the ICM-compatibility matrix with respect to this new ICM version needs to be assessed by governance:
 - API versions that do not rely on impacted ICM design info may be declared ICM-compatible with the new major ICM version through an explicit governance decision. This is recorded in the ICM-compatibility matrix.
-- API versions that do rely on the impacted ICM design info must release a new major API version with the new major ICM version in their `x-camara-min-icm` field. This new pair will be added to the ICM-compatibility matrix.
+- API versions that do rely on the impacted ICM design info must release a new API version with the new major ICM version in their `x-camara-min-icm` field. This new pair will be added to the ICM-compatibility matrix.
 
 Example: `x-camara-min-icm: 1.2.0` declared in an API definition means that the API version depends on ICM design info from ICM version 1.2.0 onward. The definition is guaranteed ICM-compatible with any Supported or Deprecated ICM version ≥ 1.2.0 with the same major version number (e.g. with 1.2.1, 1.3.0, but not with 2.0.0). Whether an API version remains ICM-compatible with a subsequent ICM version 2.0.0 is a governance assessment made at the time of the ICM 2.0.0 public version release.
 
 ### 6.3 API designer responsibilities
 
-To maintain ICM-compatibility of API versions, an API designer must release an update of the API version when it is no longer ICM-compatible. This incompatibility may be due to:
+Per §3.3, an API designer must release an update of the API version when it is no longer ICM-compatible. This incompatibility may be due to:
 
 - Lifecycle state change of the referenced ICM version to Retired or Revoked. API designers must release a new API version referencing a Supported ICM version.
 - Availability of a new major ICM version with changes that break either or both:
@@ -205,7 +205,7 @@ At each API version public release (new major, minor, or patch), the API Sub Pro
 x-camara-min-icm = max (
   lowest Supported ICM version at API version public release,
   lowest Supported ICM version containing all features this API's definition requires,
-  ICM version required by the Commonalities version declared in `x-camara-commonalities`
+  lowest ICM version required by the Commonalities version declared in `x-camara-commonalities`
 )
 ```
 
@@ -232,7 +232,7 @@ An API definition might technically work against an ICM version that the compati
 To achieve ICM-compatibility of their API deployment, API Providers MUST:
 
 1. Implement a Supported ICM version.
-2. When a new major ICM version is published and is in Supported state, plan implementation of that ICM version. During the period in which the previous major ICM version remains in the Supported state, keep that major ICM version running in parallel, so that API Providers and Consumers can plan the migration of impacted API versions.
+2. When a new major ICM version is published and is in Supported state, plan implementation of that ICM version. During the period in which the previous major ICM version remains in the Supported state, keep that major ICM version running in parallel, so that API versions targeting either Supported major ICM version remain deployable while API Providers and Consumers plan migration of impacted API versions.
 3. Announce the ICM versions they implement, in a form that API Consumers can discover (for example via Provider metadata or onboarding documentation).
 4. Publish an **ICM-compatibility statement** covering:
    - **API version ICM-compatibility**: for each API version offered.
