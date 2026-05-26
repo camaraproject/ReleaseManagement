@@ -1,7 +1,7 @@
 metadata:
-  last_updated: '2026-05-25T08:00:58Z'
-  last_checked: '2026-05-25T08:00:58Z'
-  releases_master_updated: '2026-05-22T06:33:49.302Z'
+  last_updated: '2026-05-26T06:58:14Z'
+  last_checked: '2026-05-26T06:58:14Z'
+  releases_master_updated: '2026-05-25T06:54:30.090Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
   repos_scanned: 62
@@ -2035,7 +2035,7 @@ progress:
     release_issue: null
   published_context:
     latest_public_release: r1.2
-    newest_pre_release: r2.1
+    newest_pre_release: r2.2
   cycle_releases:
     m1:
       release_tag: null
@@ -2054,21 +2054,16 @@ progress:
       release_date: null
       apis: []
   last_published:
-    release_tag: r2.1
-    release_date: '2026-03-11T02:25:30Z'
+    release_tag: r2.2
+    release_date: '2026-05-25T02:43:46Z'
     apis:
-    - api_name: network-slice-assignment
-      api_version: 0.1.0-rc.1
     - api_name: network-slice-booking
-      api_version: 0.2.0-rc.1
+      api_version: 0.2.0-rc.2
+    - api_name: network-slice-assignment
+      api_version: 0.1.0-rc.2
   snapshot_api_versions:
     network-slice-booking: 0.2.0-rc.2
     network-slice-assignment: 0.1.0-rc.2
-  warnings:
-  - code: W003
-    message: Release r2.2 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: NumberRecycling
   github_url: https://github.com/camaraproject/NumberRecycling
   release_track: meta-release
