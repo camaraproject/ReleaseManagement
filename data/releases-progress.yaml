@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-05-26T15:35:26Z'
-  last_checked: '2026-05-26T15:35:26Z'
+  last_updated: '2026-05-27T07:17:01Z'
+  last_checked: '2026-05-27T07:17:01Z'
   releases_master_updated: '2026-05-25T06:54:30.090Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
@@ -1551,14 +1551,16 @@ progress:
     main_contacts:
     - chenfr2-ChinaTelecom
     - XunliYang
-  state: snapshot_active
+  state: draft_ready
   artifacts:
     snapshot_branch: release-snapshot/r1.2-e5096ec
     release_pr:
       number: 52
-      state: open
+      state: closed
       url: https://github.com/camaraproject/IoTSIMFraudPrevention/pull/52
-    draft_release: null
+    draft_release:
+      name: r1.2
+      url: https://github.com/camaraproject/IoTSIMFraudPrevention/releases/tag/untagged-affa4b869130bc35ccda
     release_issue:
       number: 44
       url: https://github.com/camaraproject/IoTSIMFraudPrevention/issues/44
