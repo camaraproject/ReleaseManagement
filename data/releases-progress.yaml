@@ -1,14 +1,14 @@
 metadata:
-  last_updated: '2026-05-29T07:06:39Z'
-  last_checked: '2026-05-29T07:06:39Z'
-  releases_master_updated: '2026-05-28T06:39:12.402Z'
+  last_updated: '2026-05-29T18:12:19Z'
+  last_checked: '2026-05-29T18:12:19Z'
+  releases_master_updated: '2026-05-29T06:41:15.098Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
   repos_scanned: 62
   repos_new: 0
   repos_with_plan: 62
-  repos_fully_onboarded: 17
-  repos_with_release_issue: 10
+  repos_fully_onboarded: 18
+  repos_with_release_issue: 11
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -31,7 +31,7 @@ meta_releases:
   m3_achieved: 3
   m4_achieved: 0
 - name: Sync26
-  total_apis: 13
+  total_apis: 19
   m1_achieved: 0
   m3_achieved: 0
   m4_achieved: 0
@@ -957,30 +957,30 @@ progress:
 - repository: DeviceLocation
   github_url: https://github.com/camaraproject/DeviceLocation
   release_track: meta-release
-  meta_release: Fall25
-  target_release_tag: r3.2
+  meta_release: Sync26
+  target_release_tag: r4.1
   target_release_type: none
   dependencies:
-    commonalities_release: r3.4
-    identity_consent_management_release: r3.3
+    commonalities_release: r4.2
+    identity_consent_management_release: r4.2
   apis:
   - api_name: geofencing-subscriptions
-    target_api_version: 0.5.0
-    target_api_status: public
+    target_api_version: 0.6.0
+    target_api_status: alpha
     main_contacts:
     - bigludo7
     - jlurien
     - maxl2287
   - api_name: location-retrieval
-    target_api_version: 0.5.0
-    target_api_status: public
+    target_api_version: 1.0.0
+    target_api_status: alpha
     main_contacts:
     - bigludo7
     - jlurien
     - maxl2287
   - api_name: location-verification
-    target_api_version: 3.0.0
-    target_api_status: public
+    target_api_version: 3.1.0
+    target_api_status: alpha
     main_contacts:
     - bigludo7
     - jlurien
@@ -1000,35 +1000,13 @@ progress:
       release_date: null
       apis: []
     m3:
-      release_tag: r3.1
-      release_date: '2025-07-17T14:45:50Z'
-      apis:
-      - api_name: geofencing-subscriptions
-        api_version: 0.5.0-rc.1
-      - api_name: location-retrieval
-        api_version: 0.5.0-rc.1
-      - api_name: location-verification
-        api_version: 3.0.0-rc.1
+      release_tag: null
+      release_date: null
+      apis: []
     m4:
-      release_tag: r3.2
-      release_date: '2025-09-16T11:41:00Z'
-      apis:
-      - api_name: geofencing-subscriptions
-        api_version: 0.5.0
-      - api_name: location-retrieval
-        api_version: 0.5.0
-      - api_name: location-verification
-        api_version: 3.0.0
-  last_published:
-    release_tag: r3.2
-    release_date: '2025-09-16T11:41:00Z'
-    apis:
-    - api_name: geofencing-subscriptions
-      api_version: 0.5.0
-    - api_name: location-retrieval
-      api_version: 0.5.0
-    - api_name: location-verification
-      api_version: 3.0.0
+      release_tag: null
+      release_date: null
+      apis: []
 - repository: DeviceMediaStreamingRate
   github_url: https://github.com/camaraproject/DeviceMediaStreamingRate
   release_track: independent
@@ -1902,10 +1880,13 @@ progress:
     main_contacts:
     - abd-abhisek
     - hemantagogoi-infy
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r1.1-528ba29
+    release_pr:
+      number: 28
+      state: open
+      url: https://github.com/camaraproject/MultiPointVPN/pull/28
     draft_release: null
     release_issue:
       number: 22
@@ -1926,32 +1907,37 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    multi-point-vpn: 0.1.0-alpha.1
 - repository: NetworkAccessManagement
   github_url: https://github.com/camaraproject/NetworkAccessManagement
-  release_track: independent
-  target_release_tag: r2.1
-  target_release_type: pre-release-alpha
+  release_track: meta-release
+  meta_release: Sync26
+  target_release_tag: r3.1
+  target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r4.2
+    commonalities_release: r4.3
     identity_consent_management_release: r4.2
   apis:
   - api_name: network-access-management
-    target_api_version: 0.2.0
-    target_api_status: alpha
+    target_api_version: 0.3.0
+    target_api_status: rc
     main_contacts:
     - caubut-charter
     - mayur007
     - clundie-CL
     - benhepworth
-  state: published
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 146
+      url: https://github.com/camaraproject/NetworkAccessManagement/issues/146
   published_context:
     latest_public_release: null
-    newest_pre_release: null
+    newest_pre_release: r2.1
   cycle_releases:
     m1:
       release_tag: null
@@ -1965,13 +1951,6 @@ progress:
       release_tag: null
       release_date: null
       apis: []
-  snapshot_api_versions:
-    network-access-management: 0.2.0-alpha.1
-  warnings:
-  - code: W003
-    message: Release r2.1 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: NetworkInsights
   github_url: https://github.com/camaraproject/NetworkInsights
   release_track: independent
@@ -2382,31 +2361,33 @@ progress:
 - repository: QoSBooking
   github_url: https://github.com/camaraproject/QoSBooking
   release_track: meta-release
-  meta_release: Fall25
-  target_release_tag: r1.2
-  target_release_type: none
+  meta_release: Sync26
+  target_release_tag: r2.1
+  target_release_type: pre-release-alpha
   dependencies:
-    commonalities_release: r3.4
-    identity_consent_management_release: r3.3
+    commonalities_release: r4.3
+    identity_consent_management_release: r4.2
   apis:
   - api_name: qos-booking-and-assignment
-    target_api_version: 0.1.0
-    target_api_status: public
+    target_api_version: 0.2.0
+    target_api_status: alpha
     main_contacts:
     - Masa8106
     - jlurien
   - api_name: qos-booking
-    target_api_version: 0.1.0
-    target_api_status: public
+    target_api_version: 0.2.0
+    target_api_status: alpha
     main_contacts:
     - Masa8106
     - jlurien
-  state: not_planned
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 94
+      url: https://github.com/camaraproject/QoSBooking/issues/94
   published_context:
     latest_public_release: r1.2
     newest_pre_release: null
@@ -2416,29 +2397,13 @@ progress:
       release_date: null
       apis: []
     m3:
-      release_tag: r1.1
-      release_date: '2025-07-17T16:26:18Z'
-      apis:
-      - api_name: qos-booking-and-assignment
-        api_version: 0.1.0-rc.1
-      - api_name: qos-booking
-        api_version: 0.1.0-rc.1
+      release_tag: null
+      release_date: null
+      apis: []
     m4:
-      release_tag: r1.2
-      release_date: '2025-09-12T10:30:04Z'
-      apis:
-      - api_name: qos-booking-and-assignment
-        api_version: 0.1.0
-      - api_name: qos-booking
-        api_version: 0.1.0
-  last_published:
-    release_tag: r1.2
-    release_date: '2025-09-12T10:30:04Z'
-    apis:
-    - api_name: qos-booking-and-assignment
-      api_version: 0.1.0
-    - api_name: qos-booking
-      api_version: 0.1.0
+      release_tag: null
+      release_date: null
+      apis: []
 - repository: QualityOnDemand
   github_url: https://github.com/camaraproject/QualityOnDemand
   release_track: meta-release
@@ -2604,14 +2569,12 @@ progress:
     target_api_status: alpha
     main_contacts:
     - hdamker-bot
-  state: planned
+  state: published
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue:
-      number: 179
-      url: https://github.com/camaraproject/ReleaseTest/issues/179
+    release_issue: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -2628,6 +2591,15 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    sample-service: 0.1.0-alpha.1
+    sample-service-subscriptions: 0.1.0-alpha.1
+    sample-implicit-events: 0.1.0-alpha.1
+  warnings:
+  - code: W003
+    message: Release r1.1 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: SessionInsights
   github_url: https://github.com/camaraproject/SessionInsights
   release_track: independent
@@ -3851,6 +3823,67 @@ progress:
 - repository: DeviceLocation
   github_url: https://github.com/camaraproject/DeviceLocation
   release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: null
+  target_release_type: null
+  apis:
+  - api_name: geofencing-subscriptions
+    target_api_version: 0.5.0
+    target_api_status: ''
+  - api_name: location-retrieval
+    target_api_version: 0.5.0
+    target_api_status: ''
+  - api_name: location-verification
+    target_api_version: 3.0.0
+    target_api_status: ''
+  state: historical
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis: []
+    m3:
+      release_tag: r3.1
+      release_date: '2025-07-17T14:45:50Z'
+      apis:
+      - api_name: geofencing-subscriptions
+        api_version: 0.5.0-rc.1
+      - api_name: location-retrieval
+        api_version: 0.5.0-rc.1
+      - api_name: location-verification
+        api_version: 3.0.0-rc.1
+    m4:
+      release_tag: r3.2
+      release_date: '2025-09-16T11:41:00Z'
+      apis:
+      - api_name: geofencing-subscriptions
+        api_version: 0.5.0
+      - api_name: location-retrieval
+        api_version: 0.5.0
+      - api_name: location-verification
+        api_version: 3.0.0
+  last_published:
+    release_tag: r3.2
+    release_date: '2025-09-16T11:41:00Z'
+    apis:
+    - api_name: geofencing-subscriptions
+      api_version: 0.5.0
+    - api_name: location-retrieval
+      api_version: 0.5.0
+    - api_name: location-verification
+      api_version: 3.0.0
+  source: historical
+- repository: DeviceLocation
+  github_url: https://github.com/camaraproject/DeviceLocation
+  release_track: meta-release
   meta_release: Spring25
   target_release_tag: null
   target_release_type: null
@@ -4402,6 +4435,46 @@ progress:
     - api_name: most-frequent-location
       api_version: 0.1.0
   source: historical
+- repository: NetworkAccessManagement
+  github_url: https://github.com/camaraproject/NetworkAccessManagement
+  release_track: independent
+  target_release_tag: null
+  target_release_type: null
+  apis:
+  - api_name: network-access-management
+    target_api_version: 0.2.0-alpha.1
+    target_api_status: ''
+  state: historical
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: r2.1
+      release_date: '2026-05-28T15:15:46Z'
+      apis:
+      - api_name: network-access-management
+        api_version: 0.2.0-alpha.1
+    m3:
+      release_tag: null
+      release_date: null
+      apis: []
+    m4:
+      release_tag: null
+      release_date: null
+      apis: []
+  last_published:
+    release_tag: r2.1
+    release_date: '2026-05-28T15:15:46Z'
+    apis:
+    - api_name: network-access-management
+      api_version: 0.2.0-alpha.1
+  source: historical
 - repository: NetworkSliceBooking
   github_url: https://github.com/camaraproject/NetworkSliceBooking
   release_track: meta-release
@@ -4788,6 +4861,58 @@ progress:
     apis:
     - api_name: population-density-data
       api_version: 0.2.0
+  source: historical
+- repository: QoSBooking
+  github_url: https://github.com/camaraproject/QoSBooking
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: null
+  target_release_type: null
+  apis:
+  - api_name: qos-booking-and-assignment
+    target_api_version: 0.1.0
+    target_api_status: ''
+  - api_name: qos-booking
+    target_api_version: 0.1.0
+    target_api_status: ''
+  state: historical
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis: []
+    m3:
+      release_tag: r1.1
+      release_date: '2025-07-17T16:26:18Z'
+      apis:
+      - api_name: qos-booking-and-assignment
+        api_version: 0.1.0-rc.1
+      - api_name: qos-booking
+        api_version: 0.1.0-rc.1
+    m4:
+      release_tag: r1.2
+      release_date: '2025-09-12T10:30:04Z'
+      apis:
+      - api_name: qos-booking-and-assignment
+        api_version: 0.1.0
+      - api_name: qos-booking
+        api_version: 0.1.0
+  last_published:
+    release_tag: r1.2
+    release_date: '2025-09-12T10:30:04Z'
+    apis:
+    - api_name: qos-booking-and-assignment
+      api_version: 0.1.0
+    - api_name: qos-booking
+      api_version: 0.1.0
   source: historical
 - repository: QualityOnDemand
   github_url: https://github.com/camaraproject/QualityOnDemand
