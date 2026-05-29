@@ -1,14 +1,14 @@
 metadata:
-  last_updated: '2026-05-27T07:17:01Z'
-  last_checked: '2026-05-27T07:17:01Z'
-  releases_master_updated: '2026-05-25T06:54:30.090Z'
+  last_updated: '2026-05-28T07:06:08Z'
+  last_checked: '2026-05-28T07:06:08Z'
+  releases_master_updated: '2026-05-27T06:48:11.849Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
   repos_scanned: 62
   repos_new: 0
   repos_with_plan: 62
   repos_fully_onboarded: 17
-  repos_with_release_issue: 10
+  repos_with_release_issue: 9
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -31,7 +31,7 @@ meta_releases:
   m3_achieved: 3
   m4_achieved: 0
 - name: Sync26
-  total_apis: 12
+  total_apis: 13
   m1_achieved: 0
   m3_achieved: 0
   m4_achieved: 0
@@ -764,12 +764,20 @@ progress:
     release_issue: null
   published_context:
     latest_public_release: r1.2
-    newest_pre_release: null
+    newest_pre_release: r2.1
   cycle_releases:
     m1:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r2.1
+      release_date: '2026-05-26T09:40:59Z'
+      apis:
+      - api_name: dedicated-network-accesses
+        api_version: 0.2.0-alpha.1
+      - api_name: dedicated-network-profiles
+        api_version: 0.2.0-alpha.1
+      - api_name: dedicated-network
+        api_version: 0.2.0-alpha.1
+      - api_name: dedicated-network-areas
+        api_version: 0.1.0-alpha.1
     m3:
       release_tag: null
       release_date: null
@@ -778,16 +786,23 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  last_published:
+    release_tag: r2.1
+    release_date: '2026-05-26T09:40:59Z'
+    apis:
+    - api_name: dedicated-network-accesses
+      api_version: 0.2.0-alpha.1
+    - api_name: dedicated-network-profiles
+      api_version: 0.2.0-alpha.1
+    - api_name: dedicated-network
+      api_version: 0.2.0-alpha.1
+    - api_name: dedicated-network-areas
+      api_version: 0.1.0-alpha.1
   snapshot_api_versions:
     dedicated-network-accesses: 0.2.0-alpha.1
     dedicated-network-profiles: 0.2.0-alpha.1
     dedicated-network: 0.2.0-alpha.1
     dedicated-network-areas: 0.1.0-alpha.1
-  warnings:
-  - code: W003
-    message: Release r2.1 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: DeviceAuthenticity
   github_url: https://github.com/camaraproject/DeviceAuthenticity
   release_track: independent
@@ -1253,8 +1268,8 @@ progress:
   target_release_tag: r1.1
   target_release_type: pre-release-alpha
   dependencies:
-    commonalities_release: r4.2
-    identity_consent_management_release: r4.1
+    commonalities_release: r4.3
+    identity_consent_management_release: r4.2
   apis:
   - api_name: edge-application-management
     target_api_version: 0.1.0
@@ -1551,19 +1566,12 @@ progress:
     main_contacts:
     - chenfr2-ChinaTelecom
     - XunliYang
-  state: draft_ready
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r1.2-e5096ec
-    release_pr:
-      number: 52
-      state: closed
-      url: https://github.com/camaraproject/IoTSIMFraudPrevention/pull/52
-    draft_release:
-      name: r1.2
-      url: https://github.com/camaraproject/IoTSIMFraudPrevention/releases/tag/untagged-affa4b869130bc35ccda
-    release_issue:
-      number: 44
-      url: https://github.com/camaraproject/IoTSIMFraudPrevention/issues/44
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
   published_context:
     latest_public_release: null
     newest_pre_release: r1.1
@@ -1595,6 +1603,11 @@ progress:
   snapshot_api_versions:
     iot-sim-fraud-prevention: 0.1.0
     iot-sim-fraud-prevention-subscriptions: 0.1.0
+  warnings:
+  - code: W003
+    message: Release r1.2 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: KnowYourCustomerAgeVerification
   github_url: https://github.com/camaraproject/KnowYourCustomerAgeVerification
   release_track: meta-release
@@ -2118,16 +2131,16 @@ progress:
 - repository: NumberVerification
   github_url: https://github.com/camaraproject/NumberVerification
   release_track: meta-release
-  meta_release: Fall25
-  target_release_tag: r3.2
+  meta_release: Sync26
+  target_release_tag: r4.1
   target_release_type: none
   dependencies:
-    commonalities_release: r3.4
-    identity_consent_management_release: r3.3
+    commonalities_release: r4.3
+    identity_consent_management_release: r4.2
   apis:
   - api_name: number-verification
-    target_api_version: 2.1.0
-    target_api_status: public
+    target_api_version: 2.1.1
+    target_api_status: alpha
     main_contacts:
     - bigludo7
     - fernandopradocabrillo
@@ -2147,23 +2160,13 @@ progress:
       release_date: null
       apis: []
     m3:
-      release_tag: r3.1
-      release_date: '2025-07-18T09:18:23Z'
-      apis:
-      - api_name: number-verification
-        api_version: 2.1.0-rc.1
+      release_tag: null
+      release_date: null
+      apis: []
     m4:
-      release_tag: r3.2
-      release_date: '2025-09-12T09:55:34Z'
-      apis:
-      - api_name: number-verification
-        api_version: 2.1.0
-  last_published:
-    release_tag: r3.2
-    release_date: '2025-09-12T09:55:34Z'
-    apis:
-    - api_name: number-verification
-      api_version: 2.1.0
+      release_tag: null
+      release_date: null
+      apis: []
 - repository: OptimalEdgeDiscovery
   github_url: https://github.com/camaraproject/OptimalEdgeDiscovery
   release_track: meta-release
@@ -4514,6 +4517,49 @@ progress:
     apis:
     - api_name: number-verification
       api_version: 1.0.0
+  source: historical
+- repository: NumberVerification
+  github_url: https://github.com/camaraproject/NumberVerification
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: null
+  target_release_type: null
+  apis:
+  - api_name: number-verification
+    target_api_version: 2.1.0
+    target_api_status: ''
+  state: historical
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis: []
+    m3:
+      release_tag: r3.1
+      release_date: '2025-07-18T09:18:23Z'
+      apis:
+      - api_name: number-verification
+        api_version: 2.1.0-rc.1
+    m4:
+      release_tag: r3.2
+      release_date: '2025-09-12T09:55:34Z'
+      apis:
+      - api_name: number-verification
+        api_version: 2.1.0
+  last_published:
+    release_tag: r3.2
+    release_date: '2025-09-12T09:55:34Z'
+    apis:
+    - api_name: number-verification
+      api_version: 2.1.0
   source: historical
 - repository: NumberVerification
   github_url: https://github.com/camaraproject/NumberVerification
