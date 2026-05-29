@@ -1,14 +1,14 @@
 metadata:
-  last_updated: '2026-05-28T07:06:08Z'
-  last_checked: '2026-05-28T07:06:08Z'
-  releases_master_updated: '2026-05-27T06:48:11.849Z'
+  last_updated: '2026-05-29T07:06:39Z'
+  last_checked: '2026-05-29T07:06:39Z'
+  releases_master_updated: '2026-05-28T06:39:12.402Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
   repos_scanned: 62
   repos_new: 0
   repos_with_plan: 62
   repos_fully_onboarded: 17
-  repos_with_release_issue: 9
+  repos_with_release_issue: 10
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -411,25 +411,30 @@ progress:
   github_url: https://github.com/camaraproject/ClickToDial
   release_track: meta-release
   meta_release: Spring26
-  target_release_tag: r1.3
-  target_release_type: pre-release-rc
+  target_release_tag: r1.4
+  target_release_type: public-release
   dependencies:
-    commonalities_release: r4.2
+    commonalities_release: r4.3
     identity_consent_management_release: r4.2
   apis:
   - api_name: click-to-dial
     target_api_version: 0.1.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - YadingFang
     - Wojiaozhenghao
     - XunliYang
-  state: published
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r1.4-b2308cb
+    release_pr:
+      number: 106
+      state: open
+      url: https://github.com/camaraproject/ClickToDial/pull/106
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 105
+      url: https://github.com/camaraproject/ClickToDial/issues/105
   published_context:
     latest_public_release: null
     newest_pre_release: r1.3
@@ -457,7 +462,7 @@ progress:
     - api_name: click-to-dial
       api_version: 0.1.0-rc.2
   snapshot_api_versions:
-    click-to-dial: 0.1.0-rc.2
+    click-to-dial: 0.1.0
 - repository: ConnectedNetworkType
   github_url: https://github.com/camaraproject/ConnectedNetworkType
   release_track: meta-release
@@ -650,10 +655,13 @@ progress:
     - jpengar
     - AxelNennker
     - sebdewet
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r1.1-578d21f
+    release_pr:
+      number: 30
+      state: open
+      url: https://github.com/camaraproject/ConsentManagement/pull/30
     draft_release: null
     release_issue:
       number: 25
@@ -674,6 +682,8 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    consent-management: 0.1.0-rc.1
 - repository: CustomerInsights
   github_url: https://github.com/camaraproject/CustomerInsights
   release_track: meta-release
@@ -1278,10 +1288,13 @@ progress:
     - JoseMConde
     - Seralogar
     - Kevsy
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r1.1-dd8469e
+    release_pr:
+      number: 34
+      state: open
+      url: https://github.com/camaraproject/EdgeApplicationManagement/pull/34
     draft_release: null
     release_issue:
       number: 21
@@ -1302,6 +1315,8 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    edge-application-management: 0.1.0-alpha.1
 - repository: EnergyFootprintNotification
   github_url: https://github.com/camaraproject/EnergyFootprintNotification
   release_track: meta-release
@@ -1573,8 +1588,8 @@ progress:
     draft_release: null
     release_issue: null
   published_context:
-    latest_public_release: null
-    newest_pre_release: r1.1
+    latest_public_release: r1.2
+    newest_pre_release: null
   cycle_releases:
     m1:
       release_tag: null
@@ -1589,25 +1604,24 @@ progress:
       - api_name: iot-sim-fraud-prevention-subscriptions
         api_version: 0.1.0-rc.1
     m4:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r1.2
+      release_date: '2026-05-28T01:55:36Z'
+      apis:
+      - api_name: iot-sim-fraud-prevention
+        api_version: 0.1.0
+      - api_name: iot-sim-fraud-prevention-subscriptions
+        api_version: 0.1.0
   last_published:
-    release_tag: r1.1
-    release_date: '2026-04-27T01:17:04Z'
+    release_tag: r1.2
+    release_date: '2026-05-28T01:55:36Z'
     apis:
     - api_name: iot-sim-fraud-prevention
-      api_version: 0.1.0-rc.1
+      api_version: 0.1.0
     - api_name: iot-sim-fraud-prevention-subscriptions
-      api_version: 0.1.0-rc.1
+      api_version: 0.1.0
   snapshot_api_versions:
     iot-sim-fraud-prevention: 0.1.0
     iot-sim-fraud-prevention-subscriptions: 0.1.0
-  warnings:
-  - code: W003
-    message: Release r1.2 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: KnowYourCustomerAgeVerification
   github_url: https://github.com/camaraproject/KnowYourCustomerAgeVerification
   release_track: meta-release
@@ -1929,17 +1943,12 @@ progress:
     - mayur007
     - clundie-CL
     - benhepworth
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r2.1-fdbc216
-    release_pr:
-      number: 139
-      state: open
-      url: https://github.com/camaraproject/NetworkAccessManagement/pull/139
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 132
-      url: https://github.com/camaraproject/NetworkAccessManagement/issues/132
+    release_issue: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -1958,6 +1967,11 @@ progress:
       apis: []
   snapshot_api_versions:
     network-access-management: 0.2.0-alpha.1
+  warnings:
+  - code: W003
+    message: Release r2.1 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: NetworkInsights
   github_url: https://github.com/camaraproject/NetworkInsights
   release_track: independent
@@ -2022,32 +2036,34 @@ progress:
   github_url: https://github.com/camaraproject/NetworkSliceBooking
   release_track: meta-release
   meta_release: Spring26
-  target_release_tag: r2.2
-  target_release_type: pre-release-rc
+  target_release_tag: r2.3
+  target_release_type: public-release
   dependencies:
-    commonalities_release: r4.2
+    commonalities_release: r4.3
     identity_consent_management_release: r4.2
   apis:
   - api_name: network-slice-booking
     target_api_version: 0.2.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - chinaunicomyangfan
     - DanXu-ChinaTelecom
     - Kai-hw
   - api_name: network-slice-assignment
     target_api_version: 0.1.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - chinaunicomyangfan
     - DanXu-ChinaTelecom
     - Kai-hw
-  state: published
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 129
+      url: https://github.com/camaraproject/NetworkSliceBooking/issues/129
   published_context:
     latest_public_release: r1.2
     newest_pre_release: r2.2
@@ -2076,9 +2092,6 @@ progress:
       api_version: 0.2.0-rc.2
     - api_name: network-slice-assignment
       api_version: 0.1.0-rc.2
-  snapshot_api_versions:
-    network-slice-booking: 0.2.0-rc.2
-    network-slice-assignment: 0.1.0-rc.2
 - repository: NumberRecycling
   github_url: https://github.com/camaraproject/NumberRecycling
   release_track: meta-release
