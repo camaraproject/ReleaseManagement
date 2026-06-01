@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-05-31T07:08:39Z'
-  last_checked: '2026-05-31T07:08:39Z'
+  last_updated: '2026-06-01T08:48:11Z'
+  last_checked: '2026-06-01T08:48:11Z'
   releases_master_updated: '2026-05-30T06:02:59.858Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
@@ -8,7 +8,7 @@ metadata:
   repos_new: 0
   repos_with_plan: 62
   repos_fully_onboarded: 19
-  repos_with_release_issue: 13
+  repos_with_release_issue: 15
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -31,8 +31,8 @@ meta_releases:
   m3_achieved: 3
   m4_achieved: 0
 - name: Sync26
-  total_apis: 22
-  m1_achieved: 0
+  total_apis: 26
+  m1_achieved: 4
   m3_achieved: 0
   m4_achieved: 0
 progress:
@@ -713,16 +713,17 @@ progress:
       apis: []
 - repository: DedicatedNetworks
   github_url: https://github.com/camaraproject/DedicatedNetworks
-  release_track: independent
-  target_release_tag: r2.1
-  target_release_type: pre-release-alpha
+  release_track: meta-release
+  meta_release: Sync26
+  target_release_tag: r2.2
+  target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r3.4
-    identity_consent_management_release: r3.3
+    commonalities_release: r4.3
+    identity_consent_management_release: r4.2
   apis:
   - api_name: dedicated-network-accesses
     target_api_version: 0.2.0
-    target_api_status: alpha
+    target_api_status: rc
     main_contacts:
     - tlohmar
     - PeterKovacs2
@@ -730,7 +731,7 @@ progress:
     - eric-murray
   - api_name: dedicated-network-profiles
     target_api_version: 0.2.0
-    target_api_status: alpha
+    target_api_status: rc
     main_contacts:
     - tlohmar
     - PeterKovacs2
@@ -738,7 +739,7 @@ progress:
     - eric-murray
   - api_name: dedicated-network
     target_api_version: 0.2.0
-    target_api_status: alpha
+    target_api_status: rc
     main_contacts:
     - tlohmar
     - PeterKovacs2
@@ -746,18 +747,20 @@ progress:
     - eric-murray
   - api_name: dedicated-network-areas
     target_api_version: 0.1.0
-    target_api_status: alpha
+    target_api_status: rc
     main_contacts:
     - tlohmar
     - PeterKovacs2
     - carlosromerog
     - eric-murray
-  state: published
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 116
+      url: https://github.com/camaraproject/DedicatedNetworks/issues/116
   published_context:
     latest_public_release: r1.2
     newest_pre_release: r2.1
@@ -794,11 +797,6 @@ progress:
       api_version: 0.2.0-alpha.1
     - api_name: dedicated-network-areas
       api_version: 0.1.0-alpha.1
-  snapshot_api_versions:
-    dedicated-network-accesses: 0.2.0-alpha.1
-    dedicated-network-profiles: 0.2.0-alpha.1
-    dedicated-network: 0.2.0-alpha.1
-    dedicated-network-areas: 0.1.0-alpha.1
 - repository: DeviceAuthenticity
   github_url: https://github.com/camaraproject/DeviceAuthenticity
   release_track: independent
@@ -1945,28 +1943,30 @@ progress:
 - repository: NetworkInsights
   github_url: https://github.com/camaraproject/NetworkInsights
   release_track: independent
-  target_release_tag: r1.2
-  target_release_type: pre-release-rc
+  target_release_tag: r1.3
+  target_release_type: public-release
   dependencies:
-    commonalities_release: r4.2
+    commonalities_release: r4.3
     identity_consent_management_release: r4.2
   apis:
   - api_name: network-health-assessment
     target_api_version: 0.1.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - cnzj-Gc
   - api_name: network-traffic-analysis
     target_api_version: 0.1.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - cnzj-Gc
-  state: published
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 61
+      url: https://github.com/camaraproject/NetworkInsights/issues/61
   published_context:
     latest_public_release: null
     newest_pre_release: r1.2
@@ -1999,9 +1999,6 @@ progress:
       api_version: 0.1.0-rc.1
     - api_name: network-traffic-analysis
       api_version: 0.1.0-rc.1
-  snapshot_api_versions:
-    network-health-assessment: 0.1.0-rc.1
-    network-traffic-analysis: 0.1.0-rc.1
 - repository: NetworkSliceBooking
   github_url: https://github.com/camaraproject/NetworkSliceBooking
   release_track: meta-release
