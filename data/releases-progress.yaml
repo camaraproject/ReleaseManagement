@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-06-02T07:33:59Z'
-  last_checked: '2026-06-02T07:33:59Z'
+  last_updated: '2026-06-02T15:11:50Z'
+  last_checked: '2026-06-02T15:11:50Z'
   releases_master_updated: '2026-06-02T07:10:41.056Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
@@ -8,7 +8,7 @@ metadata:
   repos_new: 0
   repos_with_plan: 62
   repos_fully_onboarded: 22
-  repos_with_release_issue: 17
+  repos_with_release_issue: 16
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -1240,17 +1240,12 @@ progress:
     - JoseMConde
     - Seralogar
     - Kevsy
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r1.1-dd8469e
-    release_pr:
-      number: 34
-      state: open
-      url: https://github.com/camaraproject/EdgeApplicationManagement/pull/34
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 21
-      url: https://github.com/camaraproject/EdgeApplicationManagement/issues/21
+    release_issue: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -1269,6 +1264,11 @@ progress:
       apis: []
   snapshot_api_versions:
     edge-application-management: 0.1.0-alpha.1
+  warnings:
+  - code: W003
+    message: Release r1.1 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: EnergyFootprintNotification
   github_url: https://github.com/camaraproject/EnergyFootprintNotification
   release_track: meta-release
@@ -3071,8 +3071,8 @@ progress:
   target_release_tag: r3.1
   target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r3.4
-    identity_consent_management_release: r3.3
+    commonalities_release: r4.2
+    identity_consent_management_release: r4.2
   apis:
   - api_name: webrtc-call-handling
     target_api_version: 0.4.0
