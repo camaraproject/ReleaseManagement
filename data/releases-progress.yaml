@@ -1,14 +1,14 @@
 metadata:
-  last_updated: '2026-06-01T08:48:11Z'
-  last_checked: '2026-06-01T08:48:11Z'
-  releases_master_updated: '2026-05-30T06:02:59.858Z'
+  last_updated: '2026-06-02T07:33:59Z'
+  last_checked: '2026-06-02T07:33:59Z'
+  releases_master_updated: '2026-06-02T07:10:41.056Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
   repos_scanned: 62
   repos_new: 0
   repos_with_plan: 62
-  repos_fully_onboarded: 19
-  repos_with_release_issue: 15
+  repos_fully_onboarded: 22
+  repos_with_release_issue: 17
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -29,9 +29,9 @@ meta_releases:
   total_apis: 3
   m1_achieved: 1
   m3_achieved: 3
-  m4_achieved: 0
+  m4_achieved: 1
 - name: Sync26
-  total_apis: 26
+  total_apis: 28
   m1_achieved: 4
   m3_achieved: 0
   m4_achieved: 0
@@ -424,20 +424,15 @@ progress:
     - YadingFang
     - Wojiaozhenghao
     - XunliYang
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r1.4-b2308cb
-    release_pr:
-      number: 106
-      state: open
-      url: https://github.com/camaraproject/ClickToDial/pull/106
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 105
-      url: https://github.com/camaraproject/ClickToDial/issues/105
+    release_issue: null
   published_context:
-    latest_public_release: null
-    newest_pre_release: r1.3
+    latest_public_release: r1.4
+    newest_pre_release: null
   cycle_releases:
     m1:
       release_tag: r1.1
@@ -452,15 +447,17 @@ progress:
       - api_name: click-to-dial
         api_version: 0.1.0-rc.1
     m4:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r1.4
+      release_date: '2026-06-01T17:46:34Z'
+      apis:
+      - api_name: click-to-dial
+        api_version: 0.1.0
   last_published:
-    release_tag: r1.3
-    release_date: '2026-05-08T09:38:48Z'
+    release_tag: r1.4
+    release_date: '2026-06-01T17:46:34Z'
     apis:
     - api_name: click-to-dial
-      api_version: 0.1.0-rc.2
+      api_version: 0.1.0
   snapshot_api_versions:
     click-to-dial: 0.1.0
 - repository: ConnectedNetworkType
@@ -943,9 +940,9 @@ progress:
   release_track: meta-release
   meta_release: Sync26
   target_release_tag: r4.1
-  target_release_type: none
+  target_release_type: pre-release-alpha
   dependencies:
-    commonalities_release: r4.2
+    commonalities_release: r4.3
     identity_consent_management_release: r4.2
   apis:
   - api_name: geofencing-subscriptions
@@ -969,12 +966,14 @@ progress:
     - bigludo7
     - jlurien
     - maxl2287
-  state: not_planned
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 404
+      url: https://github.com/camaraproject/DeviceLocation/issues/404
   published_context:
     latest_public_release: r3.2
     newest_pre_release: null
@@ -1091,35 +1090,37 @@ progress:
 - repository: DeviceRoamingStatus
   github_url: https://github.com/camaraproject/DeviceRoamingStatus
   release_track: meta-release
-  meta_release: Fall25
-  target_release_tag: r1.2
-  target_release_type: none
+  meta_release: Sync26
+  target_release_tag: r2.1
+  target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r3.4
-    identity_consent_management_release: r3.3
+    commonalities_release: r4.3
+    identity_consent_management_release: r4.2
   apis:
   - api_name: device-roaming-status-subscriptions
-    target_api_version: 0.8.0
-    target_api_status: public
+    target_api_version: 0.9.0
+    target_api_status: rc
     main_contacts:
     - eric-murray
     - bigludo7
     - sachinvodafone
     - akoshunyadi
   - api_name: device-roaming-status
-    target_api_version: 1.1.0
-    target_api_status: public
+    target_api_version: 1.2.0
+    target_api_status: rc
     main_contacts:
     - eric-murray
     - bigludo7
     - sachinvodafone
     - akoshunyadi
-  state: not_planned
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 76
+      url: https://github.com/camaraproject/DeviceRoamingStatus/issues/76
   published_context:
     latest_public_release: r1.2
     newest_pre_release: null
@@ -1129,29 +1130,13 @@ progress:
       release_date: null
       apis: []
     m3:
-      release_tag: r1.1
-      release_date: '2025-07-17T15:49:44Z'
-      apis:
-      - api_name: device-roaming-status-subscriptions
-        api_version: 0.8.0-rc.1
-      - api_name: device-roaming-status
-        api_version: 1.1.0-rc.2
+      release_tag: null
+      release_date: null
+      apis: []
     m4:
-      release_tag: r1.2
-      release_date: '2025-09-16T11:51:25Z'
-      apis:
-      - api_name: device-roaming-status-subscriptions
-        api_version: 0.8.0
-      - api_name: device-roaming-status
-        api_version: 1.1.0
-  last_published:
-    release_tag: r1.2
-    release_date: '2025-09-16T11:51:25Z'
-    apis:
-    - api_name: device-roaming-status-subscriptions
-      api_version: 0.8.0
-    - api_name: device-roaming-status
-      api_version: 1.1.0
+      release_tag: null
+      release_date: null
+      apis: []
 - repository: DeviceSwap
   github_url: https://github.com/camaraproject/DeviceSwap
   release_track: meta-release
@@ -1446,25 +1431,30 @@ progress:
   github_url: https://github.com/camaraproject/IoTDeviceManagement
   release_track: independent
   target_release_tag: r1.1
-  target_release_type: none
+  target_release_type: pre-release-alpha
   dependencies:
-    commonalities_release: r3.4
-    identity_consent_management_release: r3.3
+    commonalities_release: r4.3
+    identity_consent_management_release: r4.2
   apis:
-  - api_name: placeholder-entry
+  - api_name: esim-profile-management
     target_api_version: 0.1.0
-    target_api_status: draft
+    target_api_status: alpha
     main_contacts:
     - maheshc01
     - chenfr2-ChinaTelecom
     - XunliYang
     - rkandoi
-  state: not_planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r1.1-c924333
+    release_pr:
+      number: 40
+      state: open
+      url: https://github.com/camaraproject/IoTDeviceManagement/pull/40
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 38
+      url: https://github.com/camaraproject/IoTDeviceManagement/issues/38
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -1481,6 +1471,8 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    esim-profile-management: 0.1.0-alpha.1
 - repository: IoTNetworkOptimization
   github_url: https://github.com/camaraproject/IoTNetworkOptimization
   release_track: independent
@@ -1959,10 +1951,13 @@ progress:
     target_api_status: public
     main_contacts:
     - cnzj-Gc
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r1.3-c3d6055
+    release_pr:
+      number: 68
+      state: open
+      url: https://github.com/camaraproject/NetworkInsights/pull/68
     draft_release: null
     release_issue:
       number: 61
@@ -1999,6 +1994,9 @@ progress:
       api_version: 0.1.0-rc.1
     - api_name: network-traffic-analysis
       api_version: 0.1.0-rc.1
+  snapshot_api_versions:
+    network-health-assessment: 0.1.0
+    network-traffic-analysis: 0.1.0
 - repository: NetworkSliceBooking
   github_url: https://github.com/camaraproject/NetworkSliceBooking
   release_track: meta-release
@@ -2023,10 +2021,13 @@ progress:
     - chinaunicomyangfan
     - DanXu-ChinaTelecom
     - Kai-hw
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.3-e64cf3d
+    release_pr:
+      number: 133
+      state: open
+      url: https://github.com/camaraproject/NetworkSliceBooking/pull/133
     draft_release: null
     release_issue:
       number: 129
@@ -2059,6 +2060,9 @@ progress:
       api_version: 0.2.0-rc.2
     - api_name: network-slice-assignment
       api_version: 0.1.0-rc.2
+  snapshot_api_versions:
+    network-slice-booking: 0.2.0
+    network-slice-assignment: 0.1.0
 - repository: NumberRecycling
   github_url: https://github.com/camaraproject/NumberRecycling
   release_track: meta-release
@@ -4036,6 +4040,58 @@ progress:
     - api_name: device-reachability-status-subscriptions
       api_version: 0.8.0
     - api_name: device-reachability-status
+      api_version: 1.1.0
+  source: historical
+- repository: DeviceRoamingStatus
+  github_url: https://github.com/camaraproject/DeviceRoamingStatus
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: null
+  target_release_type: null
+  apis:
+  - api_name: device-roaming-status-subscriptions
+    target_api_version: 0.8.0
+    target_api_status: ''
+  - api_name: device-roaming-status
+    target_api_version: 1.1.0
+    target_api_status: ''
+  state: historical
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis: []
+    m3:
+      release_tag: r1.1
+      release_date: '2025-07-17T15:49:44Z'
+      apis:
+      - api_name: device-roaming-status-subscriptions
+        api_version: 0.8.0-rc.1
+      - api_name: device-roaming-status
+        api_version: 1.1.0-rc.2
+    m4:
+      release_tag: r1.2
+      release_date: '2025-09-16T11:51:25Z'
+      apis:
+      - api_name: device-roaming-status-subscriptions
+        api_version: 0.8.0
+      - api_name: device-roaming-status
+        api_version: 1.1.0
+  last_published:
+    release_tag: r1.2
+    release_date: '2025-09-16T11:51:25Z'
+    apis:
+    - api_name: device-roaming-status-subscriptions
+      api_version: 0.8.0
+    - api_name: device-roaming-status
       api_version: 1.1.0
   source: historical
 - repository: DeviceStatus
