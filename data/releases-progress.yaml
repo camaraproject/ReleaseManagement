@@ -1,14 +1,14 @@
 metadata:
-  last_updated: '2026-06-03T08:31:50Z'
-  last_checked: '2026-06-03T08:31:50Z'
-  releases_master_updated: '2026-06-03T07:25:57.151Z'
+  last_updated: '2026-06-04T08:03:12Z'
+  last_checked: '2026-06-04T08:03:12Z'
+  releases_master_updated: '2026-06-04T07:10:10.645Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
   repos_scanned: 62
   repos_new: 0
   repos_with_plan: 62
-  repos_fully_onboarded: 23
-  repos_with_release_issue: 16
+  repos_fully_onboarded: 25
+  repos_with_release_issue: 18
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -29,9 +29,9 @@ meta_releases:
   total_apis: 3
   m1_achieved: 1
   m3_achieved: 3
-  m4_achieved: 1
+  m4_achieved: 3
 - name: Sync26
-  total_apis: 29
+  total_apis: 32
   m1_achieved: 4
   m3_achieved: 0
   m4_achieved: 0
@@ -1737,34 +1737,36 @@ progress:
 - repository: ModelAsAService
   github_url: https://github.com/camaraproject/ModelAsAService
   release_track: meta-release
-  meta_release: Fall25
-  target_release_tag: r1.2
-  target_release_type: none
+  meta_release: Sync26
+  target_release_tag: r2.1
+  target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r3.4
-    identity_consent_management_release: r3.3
+    commonalities_release: r4.3
+    identity_consent_management_release: r4.2
   apis:
   - api_name: knowledge-base
-    target_api_version: 0.1.0
-    target_api_status: public
+    target_api_version: 0.2.0
+    target_api_status: rc
     main_contacts:
     - lihaojie-CMCC
   - api_name: qa-assistant-manage
-    target_api_version: 0.1.0
-    target_api_status: public
+    target_api_version: 0.2.0
+    target_api_status: rc
     main_contacts:
     - lihaojie-CMCC
   - api_name: qa-assistant-service
-    target_api_version: 0.1.0
-    target_api_status: public
+    target_api_version: 0.2.0
+    target_api_status: rc
     main_contacts:
     - lihaojie-CMCC
-  state: not_planned
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 32
+      url: https://github.com/camaraproject/ModelAsAService/issues/32
   published_context:
     latest_public_release: r1.2
     newest_pre_release: null
@@ -1774,35 +1776,13 @@ progress:
       release_date: null
       apis: []
     m3:
-      release_tag: r1.1
-      release_date: '2025-07-24T10:54:35Z'
-      apis:
-      - api_name: knowledge-base
-        api_version: 0.1.0-rc.1
-      - api_name: qa-assistant-manage
-        api_version: 0.1.0-rc.1
-      - api_name: qa-assistant-service
-        api_version: 0.1.0-rc.1
+      release_tag: null
+      release_date: null
+      apis: []
     m4:
-      release_tag: r1.2
-      release_date: '2025-09-18T14:51:41Z'
-      apis:
-      - api_name: knowledge-base
-        api_version: 0.1.0
-      - api_name: qa-assistant-manage
-        api_version: 0.1.0
-      - api_name: qa-assistant-service
-        api_version: 0.1.0
-  last_published:
-    release_tag: r1.2
-    release_date: '2025-09-18T14:51:41Z'
-    apis:
-    - api_name: knowledge-base
-      api_version: 0.1.0
-    - api_name: qa-assistant-manage
-      api_version: 0.1.0
-    - api_name: qa-assistant-service
-      api_version: 0.1.0
+      release_tag: null
+      release_date: null
+      apis: []
 - repository: MostFrequentLocation
   github_url: https://github.com/camaraproject/MostFrequentLocation
   release_track: meta-release
@@ -1957,13 +1937,10 @@ progress:
     target_api_status: public
     main_contacts:
     - cnzj-Gc
-  state: snapshot_active
+  state: planned
   artifacts:
-    snapshot_branch: release-snapshot/r1.3-c3d6055
-    release_pr:
-      number: 68
-      state: open
-      url: https://github.com/camaraproject/NetworkInsights/pull/68
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
     release_issue:
       number: 61
@@ -2000,9 +1977,6 @@ progress:
       api_version: 0.1.0-rc.1
     - api_name: network-traffic-analysis
       api_version: 0.1.0-rc.1
-  snapshot_api_versions:
-    network-health-assessment: 0.1.0
-    network-traffic-analysis: 0.1.0
 - repository: NetworkSliceBooking
   github_url: https://github.com/camaraproject/NetworkSliceBooking
   release_track: meta-release
@@ -2027,20 +2001,15 @@ progress:
     - chinaunicomyangfan
     - DanXu-ChinaTelecom
     - Kai-hw
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r2.3-e64cf3d
-    release_pr:
-      number: 133
-      state: open
-      url: https://github.com/camaraproject/NetworkSliceBooking/pull/133
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 129
-      url: https://github.com/camaraproject/NetworkSliceBooking/issues/129
+    release_issue: null
   published_context:
-    latest_public_release: r1.2
-    newest_pre_release: r2.2
+    latest_public_release: r2.3
+    newest_pre_release: null
   cycle_releases:
     m1:
       release_tag: null
@@ -2055,17 +2024,21 @@ progress:
       - api_name: network-slice-booking
         api_version: 0.2.0-rc.1
     m4:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r2.3
+      release_date: '2026-06-04T06:15:02Z'
+      apis:
+      - api_name: network-slice-booking
+        api_version: 0.2.0
+      - api_name: network-slice-assignment
+        api_version: 0.1.0
   last_published:
-    release_tag: r2.2
-    release_date: '2026-05-25T02:43:46Z'
+    release_tag: r2.3
+    release_date: '2026-06-04T06:15:02Z'
     apis:
     - api_name: network-slice-booking
-      api_version: 0.2.0-rc.2
+      api_version: 0.2.0
     - api_name: network-slice-assignment
-      api_version: 0.1.0-rc.2
+      api_version: 0.1.0
   snapshot_api_versions:
     network-slice-booking: 0.2.0
     network-slice-assignment: 0.1.0
@@ -2399,14 +2372,14 @@ progress:
   release_track: meta-release
   meta_release: Sync26
   target_release_tag: r4.1
-  target_release_type: none
+  target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r4.1
+    commonalities_release: r4.3
     identity_consent_management_release: r4.1
   apis:
   - api_name: qos-profiles
     target_api_version: 1.2.0
-    target_api_status: alpha
+    target_api_status: rc
     main_contacts:
     - hdamker
     - eric-murray
@@ -2414,7 +2387,7 @@ progress:
     - jlurien
   - api_name: qos-provisioning
     target_api_version: 0.4.0
-    target_api_status: alpha
+    target_api_status: rc
     main_contacts:
     - hdamker
     - eric-murray
@@ -2422,18 +2395,20 @@ progress:
     - jlurien
   - api_name: quality-on-demand
     target_api_version: 1.2.0
-    target_api_status: alpha
+    target_api_status: rc
     main_contacts:
     - hdamker
     - eric-murray
     - RandyLevensalor
     - jlurien
-  state: not_planned
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 567
+      url: https://github.com/camaraproject/QualityOnDemand/issues/567
   published_context:
     latest_public_release: r3.2
     newest_pre_release: null
@@ -2538,7 +2513,7 @@ progress:
 - repository: ReleaseTest
   github_url: https://github.com/camaraproject/ReleaseTest
   release_track: independent
-  target_release_tag: r1.1
+  target_release_tag: r1.2
   target_release_type: pre-release-alpha
   dependencies:
     commonalities_release: r4.3
@@ -2559,12 +2534,14 @@ progress:
     target_api_status: alpha
     main_contacts:
     - hdamker-bot
-  state: published
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 191
+      url: https://github.com/camaraproject/ReleaseTest/issues/191
   published_context:
     latest_public_release: null
     newest_pre_release: r1.1
@@ -2597,10 +2574,6 @@ progress:
       api_version: 0.1.0-alpha.1
     - api_name: sample-implicit-events
       api_version: 0.1.0-alpha.1
-  snapshot_api_versions:
-    sample-service: 0.1.0-alpha.1
-    sample-service-subscriptions: 0.1.0-alpha.1
-    sample-implicit-events: 0.1.0-alpha.1
 - repository: SessionInsights
   github_url: https://github.com/camaraproject/SessionInsights
   release_track: meta-release
@@ -4490,6 +4463,67 @@ progress:
       api_version: 0.3.0
     - api_name: kyc-match
       api_version: 0.3.0
+  source: historical
+- repository: ModelAsAService
+  github_url: https://github.com/camaraproject/ModelAsAService
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: null
+  target_release_type: null
+  apis:
+  - api_name: knowledge-base
+    target_api_version: 0.1.0
+    target_api_status: ''
+  - api_name: qa-assistant-manage
+    target_api_version: 0.1.0
+    target_api_status: ''
+  - api_name: qa-assistant-service
+    target_api_version: 0.1.0
+    target_api_status: ''
+  state: historical
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis: []
+    m3:
+      release_tag: r1.1
+      release_date: '2025-07-24T10:54:35Z'
+      apis:
+      - api_name: knowledge-base
+        api_version: 0.1.0-rc.1
+      - api_name: qa-assistant-manage
+        api_version: 0.1.0-rc.1
+      - api_name: qa-assistant-service
+        api_version: 0.1.0-rc.1
+    m4:
+      release_tag: r1.2
+      release_date: '2025-09-18T14:51:41Z'
+      apis:
+      - api_name: knowledge-base
+        api_version: 0.1.0
+      - api_name: qa-assistant-manage
+        api_version: 0.1.0
+      - api_name: qa-assistant-service
+        api_version: 0.1.0
+  last_published:
+    release_tag: r1.2
+    release_date: '2025-09-18T14:51:41Z'
+    apis:
+    - api_name: knowledge-base
+      api_version: 0.1.0
+    - api_name: qa-assistant-manage
+      api_version: 0.1.0
+    - api_name: qa-assistant-service
+      api_version: 0.1.0
   source: historical
 - repository: MostFrequentLocation
   github_url: https://github.com/camaraproject/MostFrequentLocation
