@@ -1,14 +1,14 @@
 metadata:
-  last_updated: '2026-06-04T08:03:12Z'
-  last_checked: '2026-06-04T08:03:12Z'
+  last_updated: '2026-06-05T07:49:53Z'
+  last_checked: '2026-06-05T07:49:53Z'
   releases_master_updated: '2026-06-04T07:10:10.645Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
   repos_scanned: 62
   repos_new: 0
   repos_with_plan: 62
-  repos_fully_onboarded: 25
-  repos_with_release_issue: 18
+  repos_fully_onboarded: 27
+  repos_with_release_issue: 20
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -1069,7 +1069,9 @@ progress:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 62
+      url: https://github.com/camaraproject/DeviceReachabilityStatus/issues/62
   published_context:
     latest_public_release: r1.2
     newest_pre_release: null
@@ -1086,10 +1088,6 @@ progress:
       release_tag: null
       release_date: null
       apis: []
-  warnings:
-  - code: W005
-    message: Active release plan but no caller workflow installed
-    severity: warning
 - repository: DeviceRoamingStatus
   github_url: https://github.com/camaraproject/DeviceRoamingStatus
   release_track: meta-release
@@ -2196,7 +2194,7 @@ progress:
   apis:
   - api_name: one-time-password-sms
     target_api_version: 2.0.0
-    target_api_status: public
+    target_api_status: alpha
     main_contacts:
     - bigludo7
     - fernandopradocabrillo
@@ -2920,9 +2918,9 @@ progress:
   release_track: meta-release
   meta_release: Sync26
   target_release_tag: r2.1
-  target_release_type: none
+  target_release_type: pre-release-alpha
   dependencies:
-    commonalities_release: r4.2
+    commonalities_release: r4.3
     identity_consent_management_release: r4.2
   apis:
   - api_name: brand-registration
@@ -2941,12 +2939,14 @@ progress:
     - olsi-korkuti
     - stroncoso-quobis
     - GillesInnov35
-  state: not_planned
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 110
+      url: https://github.com/camaraproject/VerifiedCaller/issues/110
   published_context:
     latest_public_release: r1.3
     newest_pre_release: null
