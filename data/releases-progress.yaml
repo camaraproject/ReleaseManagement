@@ -1,14 +1,14 @@
 metadata:
-  last_updated: '2026-06-07T07:16:09Z'
-  last_checked: '2026-06-07T07:16:09Z'
-  releases_master_updated: '2026-06-04T07:10:10.645Z'
+  last_updated: '2026-06-07T08:52:49Z'
+  last_checked: '2026-06-07T08:52:49Z'
+  releases_master_updated: '2026-06-07T06:50:38.735Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
   repos_scanned: 62
   repos_new: 0
   repos_with_plan: 62
   repos_fully_onboarded: 28
-  repos_with_release_issue: 21
+  repos_with_release_issue: 22
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -2498,7 +2498,7 @@ progress:
 - repository: ReleaseTest
   github_url: https://github.com/camaraproject/ReleaseTest
   release_track: independent
-  target_release_tag: r1.2
+  target_release_tag: r1.3
   target_release_type: pre-release-alpha
   dependencies:
     commonalities_release: r4.3
@@ -2519,15 +2519,17 @@ progress:
     target_api_status: alpha
     main_contacts:
     - hdamker-bot
-  state: published
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 202
+      url: https://github.com/camaraproject/ReleaseTest/issues/202
   published_context:
     latest_public_release: null
-    newest_pre_release: r1.1
+    newest_pre_release: r1.2
   cycle_releases:
     m1:
       release_tag: r1.1
@@ -2548,24 +2550,15 @@ progress:
       release_date: null
       apis: []
   last_published:
-    release_tag: r1.1
-    release_date: '2026-05-29T13:39:43Z'
+    release_tag: r1.2
+    release_date: '2026-06-06T15:47:36Z'
     apis:
     - api_name: sample-service
-      api_version: 0.1.0-alpha.1
+      api_version: 0.1.0-alpha.2
     - api_name: sample-service-subscriptions
-      api_version: 0.1.0-alpha.1
+      api_version: 0.1.0-alpha.2
     - api_name: sample-implicit-events
-      api_version: 0.1.0-alpha.1
-  snapshot_api_versions:
-    sample-service: 0.1.0-alpha.2
-    sample-service-subscriptions: 0.1.0-alpha.2
-    sample-implicit-events: 0.1.0-alpha.2
-  warnings:
-  - code: W003
-    message: Release r1.2 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
+      api_version: 0.1.0-alpha.2
 - repository: SessionInsights
   github_url: https://github.com/camaraproject/SessionInsights
   release_track: meta-release
