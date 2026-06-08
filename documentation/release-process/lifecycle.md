@@ -67,8 +67,8 @@ This phase is ongoing until you decide to release.
 **What you do:**
 
 1. **Edit `CHANGELOG-rX.md` on the release-review branch.**
-   - The automation pre-fills it with a temporary section listing the PRs merged since the previous release, plus placeholder Added / Changed / Fixed / Removed sections (each marked `_To be filled during release review_`).
-   - Move the entries from the temporary section into the appropriate placeholder sections (or drop sections that don't apply) and commit directly to the release-review branch.
+   - The automation pre-fills it with a temporary section listing the PRs merged since the relevant previous release, plus — for each API in the release — a generated first sentence describing that API's version and Added / Changed / Fixed / Removed sections each defaulting to `N/A`.
+   - For each API, move the relevant entries from the temporary section into that API's sections, replacing `N/A` with entries as applicable and leaving `N/A` where a category has no changes. Refine the generated first sentence if needed. Commit directly to the release-review branch.
 2. **Ensure required approvals are in place** (codeowner and release reviewer). The release reviewer reviews the Release PR; address CHANGELOG feedback with further commits to the release-review branch.
 3. **Merge the Release PR.**
 
