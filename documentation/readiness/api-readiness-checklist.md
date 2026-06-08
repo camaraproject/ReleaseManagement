@@ -64,7 +64,7 @@ Before issuing `/create-snapshot` on the Release Issue, codeowners must verify t
 
 - **`release-plan.yaml` content matches intent**: Check that API names, target versions, target statuses, and release type in `release-plan.yaml` are correct
 - **Dependency versions are current**: Commonalities and ICM dependency versions in `release-plan.yaml` should reference the latest recommended releases
-- **CI checks are green**: Spectral linting and PR validation should pass on `main`
+- **Validation checks pass**: Spectral linting and PR validation must pass on `main` - see below for handling validation results
 - **All intended PRs are merged**: Implementation work should be complete on `main`
 - **SemVer is correct**: Breaking changes are only allowed in initial versions (v0.x) or new major versions
 - **Release assets are provided**: All mandatory assets for the declared target API status(s) are in place (see matrix above)
@@ -72,6 +72,14 @@ Before issuing `/create-snapshot` on the Release Issue, codeowners must verify t
 These items appear as a preparation checklist in the Release Issue while it is in PLANNED state. They are reminders, not automated gates — the codeowner is responsible for verifying them before proceeding.
 
 > **Note**: During development on `main`, API version fields in the YAML definitions must stay as `wip`. The release automation process replaces them with the correct version numbers and applicable extensions during snapshot creation.
+
+### Handling validation results 
+
+Validation results must be handled as early as possible, and at the latest before the final rc pre-release, as follows:
+
+- Errors MUST be fixed (errors block snapshot creation).
+- Warnings MUST be fixed, or explicitly deferred by documenting them in an issue (copying the validation summary lines) with a deferral reason per line. For example, for stable APIs, a warning that would need a breaking change while no major version update is planned is a valid deferral reason.
+- Hints MUST be checked and MAY be fixed (hints do not block snapshot creataion nor a release-review).
 
 ## Release Readiness Reviews
 
@@ -86,6 +94,7 @@ Codeowners verify content accuracy:
 - API definitions are correct and complete for the target status
 - Test cases cover the intended API behavior
 - Documentation is adequate for the target audience
+- Document deferred warnings and the reason in an issue.
 
 ### Release Management Review
 
@@ -94,6 +103,7 @@ Release management reviewers verify process compliance:
 - CHANGELOG follows the release documentation rules
 - Breaking changes are documented and version updates follow SemVer rules
 - All mandatory release assets for the declared API(s) status(es) are present as per the checklist
+- Check and decide whether the warning deferrals are acceptable
 
 **During the automation introduction phase**, release management additionally verifies:
 
