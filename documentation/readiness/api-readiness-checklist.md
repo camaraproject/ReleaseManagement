@@ -9,6 +9,7 @@ Before an API repository can be released, codeowners must ensure that certain as
 - Defines the required release assets and their expected locations
 - Specifies which assets are mandatory (M) or optional (O) per API status
 - Clarifies the division of responsibility: **codeowners prepare** the assets, **automation validates** what it can, and **release management reviewers** verify the rest
+- Explains how to handle CAMARA Validation results (errors, warnings and hints)
 
 Release readiness is tracked through `release-plan.yaml` configuration, release content preparation as indicated in the Release Issue, and the review checklist in the Release PR.
 
@@ -104,12 +105,6 @@ Release management reviewers verify process compliance:
 - Breaking changes are documented and version updates follow SemVer rules
 - All mandatory release assets for the declared API(s) status(es) are present as per the checklist
 - Check and decide whether the warning deferrals are acceptable
-
-**During the automation introduction phase**, release management additionally verifies:
-
-- `release-metadata.yaml` content is correct
-- API version generation was done correctly by automation (server URLs, references, version fields)
-- README update looks correct (release tag, versions, latest vs pre-release)
 
 The Release PR contains a status-specific review checklist that reflects the requirements for the repository's release type.
 
