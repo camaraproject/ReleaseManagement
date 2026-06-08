@@ -95,7 +95,7 @@ Codeowners verify content accuracy:
 - API definitions are correct and complete for the target status
 - Test cases cover the intended API behavior
 - Documentation is adequate for the target audience
-- Document deferred warnings and the reason in an issue.
+- Any remaining warnings are documented in an issue stating an explicit deferreal reason
 
 ### Release Management Review
 
@@ -104,7 +104,7 @@ Release management reviewers verify process compliance:
 - CHANGELOG follows the release documentation rules
 - Breaking changes are documented and version updates follow SemVer rules
 - All mandatory release assets for the declared API(s) status(es) are present as per the checklist
-- Check and decide whether the warning deferrals are acceptable
+- All remaining warnings have an acceptable deferral reason
 
 The Release PR contains a status-specific review checklist that reflects the requirements for the repository's release type.
 
