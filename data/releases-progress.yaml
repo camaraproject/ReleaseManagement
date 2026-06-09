@@ -1,14 +1,14 @@
 metadata:
-  last_updated: '2026-06-09T07:01:27Z'
-  last_checked: '2026-06-09T07:01:27Z'
+  last_updated: '2026-06-09T15:18:41Z'
+  last_checked: '2026-06-09T15:18:41Z'
   releases_master_updated: '2026-06-07T06:50:38.735Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
   repos_scanned: 62
   repos_new: 0
   repos_with_plan: 62
-  repos_fully_onboarded: 29
-  repos_with_release_issue: 24
+  repos_fully_onboarded: 30
+  repos_with_release_issue: 25
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -31,7 +31,7 @@ meta_releases:
   m3_achieved: 3
   m4_achieved: 3
 - name: Sync26
-  total_apis: 38
+  total_apis: 39
   m1_achieved: 5
   m3_achieved: 0
   m4_achieved: 0
@@ -1417,14 +1417,16 @@ progress:
     - chenfr2-ChinaTelecom
     - XunliYang
     - rkandoi
-  state: snapshot_active
+  state: draft_ready
   artifacts:
     snapshot_branch: release-snapshot/r1.1-c924333
     release_pr:
       number: 40
-      state: open
+      state: closed
       url: https://github.com/camaraproject/IoTDeviceManagement/pull/40
-    draft_release: null
+    draft_release:
+      name: r1.1
+      url: https://github.com/camaraproject/IoTDeviceManagement/releases/tag/untagged-ea0f9175eb29cd2fa4e1
     release_issue:
       number: 38
       url: https://github.com/camaraproject/IoTDeviceManagement/issues/38
@@ -2243,25 +2245,27 @@ progress:
 - repository: PredictiveConnectivityData
   github_url: https://github.com/camaraproject/PredictiveConnectivityData
   release_track: meta-release
-  meta_release: Fall25
-  target_release_tag: r1.2
-  target_release_type: none
+  meta_release: Sync26
+  target_release_tag: r2.1
+  target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r3.4
-    identity_consent_management_release: r3.3
+    commonalities_release: r4.3
+    identity_consent_management_release: r4.2
   apis:
   - api_name: predictive-connectivity-data
-    target_api_version: 0.1.0
-    target_api_status: public
+    target_api_version: 0.2.0
+    target_api_status: rc
     main_contacts:
     - eric-murray
     - albertoramosmonagas
-  state: not_planned
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 56
+      url: https://github.com/camaraproject/PredictiveConnectivityData/issues/56
   published_context:
     latest_public_release: r1.2
     newest_pre_release: null
@@ -2271,23 +2275,13 @@ progress:
       release_date: null
       apis: []
     m3:
-      release_tag: r1.1
-      release_date: '2025-07-24T08:21:30Z'
-      apis:
-      - api_name: predictive-connectivity-data
-        api_version: 0.1.0-rc.1
+      release_tag: null
+      release_date: null
+      apis: []
     m4:
-      release_tag: r1.2
-      release_date: '2025-09-16T14:08:33Z'
-      apis:
-      - api_name: predictive-connectivity-data
-        api_version: 0.1.0
-  last_published:
-    release_tag: r1.2
-    release_date: '2025-09-16T14:08:33Z'
-    apis:
-    - api_name: predictive-connectivity-data
-      api_version: 0.1.0
+      release_tag: null
+      release_date: null
+      apis: []
 - repository: QoSBooking
   github_url: https://github.com/camaraproject/QoSBooking
   release_track: meta-release
@@ -5103,6 +5097,49 @@ progress:
     apis:
     - api_name: population-density-data
       api_version: 0.2.0
+  source: historical
+- repository: PredictiveConnectivityData
+  github_url: https://github.com/camaraproject/PredictiveConnectivityData
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: null
+  target_release_type: null
+  apis:
+  - api_name: predictive-connectivity-data
+    target_api_version: 0.1.0
+    target_api_status: ''
+  state: historical
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis: []
+    m3:
+      release_tag: r1.1
+      release_date: '2025-07-24T08:21:30Z'
+      apis:
+      - api_name: predictive-connectivity-data
+        api_version: 0.1.0-rc.1
+    m4:
+      release_tag: r1.2
+      release_date: '2025-09-16T14:08:33Z'
+      apis:
+      - api_name: predictive-connectivity-data
+        api_version: 0.1.0
+  last_published:
+    release_tag: r1.2
+    release_date: '2025-09-16T14:08:33Z'
+    apis:
+    - api_name: predictive-connectivity-data
+      api_version: 0.1.0
   source: historical
 - repository: QoSBooking
   github_url: https://github.com/camaraproject/QoSBooking
