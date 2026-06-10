@@ -76,11 +76,13 @@ These items appear as a preparation checklist in the Release Issue while it is i
 
 ### Handling validation results 
 
-Validation results must be handled as early as possible, and at the latest before the final rc pre-release, as follows:
+Validation results must be handled as early as possible (controlled in each pre-release) as follows:
 
 - Errors MUST be fixed (errors block snapshot creation).
 - Warnings MUST be fixed, or explicitly deferred by documenting them in an issue (copying the validation summary lines) with a deferral reason per line. For example, for stable APIs, a warning that would need a breaking change while no major version update is planned is a valid deferral reason.
 - Hints MUST be checked and MAY be fixed (hints do not block snapshot creataion nor a release-review).
+
+Any warnings remaining in the final rc pre-release must have a valid deferral reason documented and needs to be approved by Release Management.
 
 ## Release Readiness Reviews
 
