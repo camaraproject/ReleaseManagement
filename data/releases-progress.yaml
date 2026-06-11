@@ -1,14 +1,14 @@
 metadata:
-  last_updated: '2026-06-09T15:18:41Z'
-  last_checked: '2026-06-09T15:18:41Z'
+  last_updated: '2026-06-10T07:51:08Z'
+  last_checked: '2026-06-10T07:51:08Z'
   releases_master_updated: '2026-06-07T06:50:38.735Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
   repos_scanned: 62
   repos_new: 0
   repos_with_plan: 62
-  repos_fully_onboarded: 30
-  repos_with_release_issue: 25
+  repos_fully_onboarded: 31
+  repos_with_release_issue: 26
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -31,7 +31,7 @@ meta_releases:
   m3_achieved: 3
   m4_achieved: 3
 - name: Sync26
-  total_apis: 39
+  total_apis: 41
   m1_achieved: 5
   m3_achieved: 0
   m4_achieved: 0
@@ -2620,33 +2620,35 @@ progress:
 - repository: SimSwap
   github_url: https://github.com/camaraproject/SimSwap
   release_track: meta-release
-  meta_release: Fall25
-  target_release_tag: r3.3
-  target_release_type: none
+  meta_release: Sync26
+  target_release_tag: r4.1
+  target_release_type: pre-release-alpha
   dependencies:
-    commonalities_release: r3.4
-    identity_consent_management_release: r3.3
+    commonalities_release: r4.3
+    identity_consent_management_release: r4.2
   apis:
   - api_name: sim-swap-subscriptions
-    target_api_version: 0.3.0
+    target_api_version: 0.4.0
     target_api_status: public
     main_contacts:
     - bigludo7
     - fernandopradocabrillo
     - maxl2287
   - api_name: sim-swap
-    target_api_version: 2.1.0
+    target_api_version: 2.2.0
     target_api_status: public
     main_contacts:
     - bigludo7
     - fernandopradocabrillo
     - maxl2287
-  state: not_planned
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 270
+      url: https://github.com/camaraproject/SimSwap/issues/270
   published_context:
     latest_public_release: r3.3
     newest_pre_release: null
@@ -2656,29 +2658,13 @@ progress:
       release_date: null
       apis: []
     m3:
-      release_tag: r3.1
-      release_date: '2025-07-18T09:52:55Z'
-      apis:
-      - api_name: sim-swap-subscriptions
-        api_version: 0.3.0-rc.1
-      - api_name: sim-swap
-        api_version: 2.1.0-rc.2
+      release_tag: null
+      release_date: null
+      apis: []
     m4:
-      release_tag: r3.2
-      release_date: '2025-09-17T15:10:21Z'
-      apis:
-      - api_name: sim-swap-subscriptions
-        api_version: 0.3.0
-      - api_name: sim-swap
-        api_version: 2.1.0
-  last_published:
-    release_tag: r3.3
-    release_date: '2025-12-01T10:30:21Z'
-    apis:
-    - api_name: sim-swap-subscriptions
-      api_version: 0.3.0
-    - api_name: sim-swap
-      api_version: 2.1.0
+      release_tag: null
+      release_date: null
+      apis: []
 - repository: SponsoredData
   github_url: https://github.com/camaraproject/SponsoredData
   release_track: independent
@@ -5506,6 +5492,58 @@ progress:
       api_version: 0.1.2
     - api_name: sim-swap
       api_version: 1.0.0
+  source: historical
+- repository: SimSwap
+  github_url: https://github.com/camaraproject/SimSwap
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: null
+  target_release_type: null
+  apis:
+  - api_name: sim-swap-subscriptions
+    target_api_version: 0.3.0
+    target_api_status: ''
+  - api_name: sim-swap
+    target_api_version: 2.1.0
+    target_api_status: ''
+  state: historical
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis: []
+    m3:
+      release_tag: r3.1
+      release_date: '2025-07-18T09:52:55Z'
+      apis:
+      - api_name: sim-swap-subscriptions
+        api_version: 0.3.0-rc.1
+      - api_name: sim-swap
+        api_version: 2.1.0-rc.2
+    m4:
+      release_tag: r3.2
+      release_date: '2025-09-17T15:10:21Z'
+      apis:
+      - api_name: sim-swap-subscriptions
+        api_version: 0.3.0
+      - api_name: sim-swap
+        api_version: 2.1.0
+  last_published:
+    release_tag: r3.3
+    release_date: '2025-12-01T10:30:21Z'
+    apis:
+    - api_name: sim-swap-subscriptions
+      api_version: 0.3.0
+    - api_name: sim-swap
+      api_version: 2.1.0
   source: historical
 - repository: SimSwap
   github_url: https://github.com/camaraproject/SimSwap
