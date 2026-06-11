@@ -1,14 +1,14 @@
 metadata:
-  last_updated: '2026-06-10T07:51:08Z'
-  last_checked: '2026-06-10T07:51:08Z'
+  last_updated: '2026-06-11T08:19:04Z'
+  last_checked: '2026-06-11T08:19:04Z'
   releases_master_updated: '2026-06-07T06:50:38.735Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
   repos_scanned: 62
   repos_new: 0
   repos_with_plan: 62
-  repos_fully_onboarded: 31
-  repos_with_release_issue: 26
+  repos_fully_onboarded: 34
+  repos_with_release_issue: 29
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -31,7 +31,7 @@ meta_releases:
   m3_achieved: 3
   m4_achieved: 3
 - name: Sync26
-  total_apis: 41
+  total_apis: 44
   m1_achieved: 5
   m3_achieved: 0
   m4_achieved: 0
@@ -882,10 +882,13 @@ progress:
     main_contacts:
     - eric-murray
     - Kevsy
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r3.1-8b2e295
+    release_pr:
+      number: 172
+      state: open
+      url: https://github.com/camaraproject/DeviceIdentifier/pull/172
     draft_release: null
     release_issue:
       number: 163
@@ -906,33 +909,35 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    device-identifier: 0.4.0-alpha.1
 - repository: DeviceLocation
   github_url: https://github.com/camaraproject/DeviceLocation
   release_track: meta-release
   meta_release: Sync26
   target_release_tag: r4.1
-  target_release_type: pre-release-alpha
+  target_release_type: pre-release-rc
   dependencies:
     commonalities_release: r4.3
     identity_consent_management_release: r4.2
   apis:
   - api_name: geofencing-subscriptions
     target_api_version: 0.6.0
-    target_api_status: alpha
+    target_api_status: rc
     main_contacts:
     - bigludo7
     - jlurien
     - maxl2287
   - api_name: location-retrieval
     target_api_version: 1.0.0
-    target_api_status: alpha
+    target_api_status: rc
     main_contacts:
     - bigludo7
     - jlurien
     - maxl2287
   - api_name: location-verification
     target_api_version: 3.1.0
-    target_api_status: alpha
+    target_api_status: rc
     main_contacts:
     - bigludo7
     - jlurien
@@ -1906,10 +1911,13 @@ progress:
     target_api_status: public
     main_contacts:
     - cnzj-Gc
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r1.3-25a39b7
+    release_pr:
+      number: 77
+      state: open
+      url: https://github.com/camaraproject/NetworkInsights/pull/77
     draft_release: null
     release_issue:
       number: 61
@@ -1946,6 +1954,9 @@ progress:
       api_version: 0.1.0-rc.1
     - api_name: network-traffic-analysis
       api_version: 0.1.0-rc.1
+  snapshot_api_versions:
+    network-health-assessment: 0.1.0
+    network-traffic-analysis: 0.1.0
 - repository: NetworkSliceBooking
   github_url: https://github.com/camaraproject/NetworkSliceBooking
   release_track: meta-release
@@ -2014,26 +2025,28 @@ progress:
 - repository: NumberRecycling
   github_url: https://github.com/camaraproject/NumberRecycling
   release_track: meta-release
-  meta_release: Fall25
-  target_release_tag: r2.2
-  target_release_type: none
+  meta_release: Sync26
+  target_release_tag: r3.1
+  target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r3.4
-    identity_consent_management_release: r3.3
+    commonalities_release: r4.3
+    identity_consent_management_release: r4.2
   apis:
   - api_name: number-recycling
-    target_api_version: 0.2.0
-    target_api_status: public
+    target_api_version: 0.3.0
+    target_api_status: rc
     main_contacts:
     - eric-murray
     - Masa8106
     - grgpapadopoulos
-  state: not_planned
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 100
+      url: https://github.com/camaraproject/NumberRecycling/issues/100
   published_context:
     latest_public_release: r2.2
     newest_pre_release: null
@@ -2043,23 +2056,13 @@ progress:
       release_date: null
       apis: []
     m3:
-      release_tag: r2.1
-      release_date: '2025-07-28T17:59:55Z'
-      apis:
-      - api_name: number-recycling
-        api_version: 0.2.0-rc.1
+      release_tag: null
+      release_date: null
+      apis: []
     m4:
-      release_tag: r2.2
-      release_date: '2025-09-11T11:13:24Z'
-      apis:
-      - api_name: number-recycling
-        api_version: 0.2.0
-  last_published:
-    release_tag: r2.2
-    release_date: '2025-09-11T11:13:24Z'
-    apis:
-    - api_name: number-recycling
-      api_version: 0.2.0
+      release_tag: null
+      release_date: null
+      apis: []
 - repository: NumberVerification
   github_url: https://github.com/camaraproject/NumberVerification
   release_track: meta-release
@@ -2196,26 +2199,28 @@ progress:
 - repository: PopulationDensityData
   github_url: https://github.com/camaraproject/PopulationDensityData
   release_track: meta-release
-  meta_release: Fall25
-  target_release_tag: r3.2
-  target_release_type: none
+  meta_release: Sync26
+  target_release_tag: r4.1
+  target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r3.4
-    identity_consent_management_release: r3.3
+    commonalities_release: r4.3
+    identity_consent_management_release: r4.2
   apis:
   - api_name: population-density-data
-    target_api_version: 0.3.0
-    target_api_status: public
+    target_api_version: 1.0.0
+    target_api_status: rc
     main_contacts:
     - sachinvodafone
     - jgarciahospital
     - maheshc01
-  state: not_planned
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 125
+      url: https://github.com/camaraproject/PopulationDensityData/issues/125
   published_context:
     latest_public_release: r3.2
     newest_pre_release: null
@@ -2225,23 +2230,13 @@ progress:
       release_date: null
       apis: []
     m3:
-      release_tag: r3.1
-      release_date: '2025-07-29T08:25:07Z'
-      apis:
-      - api_name: population-density-data
-        api_version: 0.3.0-rc.1
+      release_tag: null
+      release_date: null
+      apis: []
     m4:
-      release_tag: r3.2
-      release_date: '2025-09-10T08:54:28Z'
-      apis:
-      - api_name: population-density-data
-        api_version: 0.3.0
-  last_published:
-    release_tag: r3.2
-    release_date: '2025-09-10T08:54:28Z'
-    apis:
-    - api_name: population-density-data
-      api_version: 0.3.0
+      release_tag: null
+      release_date: null
+      apis: []
 - repository: PredictiveConnectivityData
   github_url: https://github.com/camaraproject/PredictiveConnectivityData
   release_track: meta-release
@@ -2754,27 +2749,29 @@ progress:
 - repository: Tenure
   github_url: https://github.com/camaraproject/Tenure
   release_track: meta-release
-  meta_release: Fall25
-  target_release_tag: r2.2
-  target_release_type: none
+  meta_release: Sync26
+  target_release_tag: r3.1
+  target_release_type: pre-release-alpha
   dependencies:
-    commonalities_release: r3.4
-    identity_consent_management_release: r3.3
+    commonalities_release: r4.3
+    identity_consent_management_release: r4.2
   apis:
   - api_name: kyc-tenure
-    target_api_version: 0.2.0
-    target_api_status: public
+    target_api_version: 0.3.0
+    target_api_status: alpha
     main_contacts:
     - eric-murray
     - GillesInnov35
     - grgpapadopoulos
     - fernandopradocabrillo
-  state: not_planned
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 74
+      url: https://github.com/camaraproject/Tenure/issues/74
   published_context:
     latest_public_release: r2.2
     newest_pre_release: null
@@ -2784,23 +2781,13 @@ progress:
       release_date: null
       apis: []
     m3:
-      release_tag: r2.1
-      release_date: '2025-07-17T10:37:29Z'
-      apis:
-      - api_name: kyc-tenure
-        api_version: 0.2.0-rc.1
+      release_tag: null
+      release_date: null
+      apis: []
     m4:
-      release_tag: r2.2
-      release_date: '2025-09-19T12:07:15Z'
-      apis:
-      - api_name: kyc-tenure
-        api_version: 0.2.0
-  last_published:
-    release_tag: r2.2
-    release_date: '2025-09-19T12:07:15Z'
-    apis:
-    - api_name: kyc-tenure
-      api_version: 0.2.0
+      release_tag: null
+      release_date: null
+      apis: []
 - repository: TrafficInfluence
   github_url: https://github.com/camaraproject/TrafficInfluence
   release_track: meta-release
@@ -4700,6 +4687,49 @@ progress:
 - repository: NumberRecycling
   github_url: https://github.com/camaraproject/NumberRecycling
   release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: null
+  target_release_type: null
+  apis:
+  - api_name: number-recycling
+    target_api_version: 0.2.0
+    target_api_status: ''
+  state: historical
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis: []
+    m3:
+      release_tag: r2.1
+      release_date: '2025-07-28T17:59:55Z'
+      apis:
+      - api_name: number-recycling
+        api_version: 0.2.0-rc.1
+    m4:
+      release_tag: r2.2
+      release_date: '2025-09-11T11:13:24Z'
+      apis:
+      - api_name: number-recycling
+        api_version: 0.2.0
+  last_published:
+    release_tag: r2.2
+    release_date: '2025-09-11T11:13:24Z'
+    apis:
+    - api_name: number-recycling
+      api_version: 0.2.0
+  source: historical
+- repository: NumberRecycling
+  github_url: https://github.com/camaraproject/NumberRecycling
+  release_track: meta-release
   meta_release: Spring25
   target_release_tag: null
   target_release_type: null
@@ -5040,6 +5070,49 @@ progress:
     apis:
     - api_name: population-density-data
       api_version: 0.1.1
+  source: historical
+- repository: PopulationDensityData
+  github_url: https://github.com/camaraproject/PopulationDensityData
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: null
+  target_release_type: null
+  apis:
+  - api_name: population-density-data
+    target_api_version: 0.3.0
+    target_api_status: ''
+  state: historical
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis: []
+    m3:
+      release_tag: r3.1
+      release_date: '2025-07-29T08:25:07Z'
+      apis:
+      - api_name: population-density-data
+        api_version: 0.3.0-rc.1
+    m4:
+      release_tag: r3.2
+      release_date: '2025-09-10T08:54:28Z'
+      apis:
+      - api_name: population-density-data
+        api_version: 0.3.0
+  last_published:
+    release_tag: r3.2
+    release_date: '2025-09-10T08:54:28Z'
+    apis:
+    - api_name: population-density-data
+      api_version: 0.3.0
   source: historical
 - repository: PopulationDensityData
   github_url: https://github.com/camaraproject/PopulationDensityData
@@ -5682,6 +5755,49 @@ progress:
     apis:
     - api_name: simple-edge-discovery
       api_version: 2.0.1
+  source: historical
+- repository: Tenure
+  github_url: https://github.com/camaraproject/Tenure
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: null
+  target_release_type: null
+  apis:
+  - api_name: kyc-tenure
+    target_api_version: 0.2.0
+    target_api_status: ''
+  state: historical
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis: []
+    m3:
+      release_tag: r2.1
+      release_date: '2025-07-17T10:37:29Z'
+      apis:
+      - api_name: kyc-tenure
+        api_version: 0.2.0-rc.1
+    m4:
+      release_tag: r2.2
+      release_date: '2025-09-19T12:07:15Z'
+      apis:
+      - api_name: kyc-tenure
+        api_version: 0.2.0
+  last_published:
+    release_tag: r2.2
+    release_date: '2025-09-19T12:07:15Z'
+    apis:
+    - api_name: kyc-tenure
+      api_version: 0.2.0
   source: historical
 - repository: Tenure
   github_url: https://github.com/camaraproject/Tenure
