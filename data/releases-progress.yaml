@@ -1,7 +1,7 @@
 metadata:
-  last_updated: '2026-06-11T08:19:04Z'
-  last_checked: '2026-06-11T08:19:04Z'
-  releases_master_updated: '2026-06-07T06:50:38.735Z'
+  last_updated: '2026-06-12T08:05:23Z'
+  last_checked: '2026-06-12T08:05:23Z'
+  releases_master_updated: '2026-06-12T07:07:44.598Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
   repos_scanned: 62
@@ -32,7 +32,7 @@ meta_releases:
   m4_achieved: 3
 - name: Sync26
   total_apis: 44
-  m1_achieved: 5
+  m1_achieved: 6
   m3_achieved: 0
   m4_achieved: 0
 progress:
@@ -870,37 +870,36 @@ progress:
   github_url: https://github.com/camaraproject/DeviceIdentifier
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r3.1
-  target_release_type: pre-release-alpha
+  target_release_tag: r3.2
+  target_release_type: pre-release-rc
   dependencies:
     commonalities_release: r4.3
     identity_consent_management_release: r4.2
   apis:
   - api_name: device-identifier
     target_api_version: 0.4.0
-    target_api_status: alpha
+    target_api_status: rc
     main_contacts:
     - eric-murray
     - Kevsy
-  state: snapshot_active
+  state: planned
   artifacts:
-    snapshot_branch: release-snapshot/r3.1-8b2e295
-    release_pr:
-      number: 172
-      state: open
-      url: https://github.com/camaraproject/DeviceIdentifier/pull/172
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
     release_issue:
-      number: 163
-      url: https://github.com/camaraproject/DeviceIdentifier/issues/163
+      number: 176
+      url: https://github.com/camaraproject/DeviceIdentifier/issues/176
   published_context:
     latest_public_release: r2.2
-    newest_pre_release: null
+    newest_pre_release: r3.1
   cycle_releases:
     m1:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r3.1
+      release_date: '2026-06-11T09:59:39Z'
+      apis:
+      - api_name: device-identifier
+        api_version: 0.4.0-alpha.1
     m3:
       release_tag: null
       release_date: null
@@ -909,8 +908,12 @@ progress:
       release_tag: null
       release_date: null
       apis: []
-  snapshot_api_versions:
-    device-identifier: 0.4.0-alpha.1
+  last_published:
+    release_tag: r3.1
+    release_date: '2026-06-11T09:59:39Z'
+    apis:
+    - api_name: device-identifier
+      api_version: 0.4.0-alpha.1
 - repository: DeviceLocation
   github_url: https://github.com/camaraproject/DeviceLocation
   release_track: meta-release
@@ -2764,10 +2767,13 @@ progress:
     - GillesInnov35
     - grgpapadopoulos
     - fernandopradocabrillo
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r3.1-2030fcc
+    release_pr:
+      number: 77
+      state: open
+      url: https://github.com/camaraproject/Tenure/pull/77
     draft_release: null
     release_issue:
       number: 74
@@ -2788,6 +2794,8 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    kyc-tenure: 0.3.0-alpha.1
 - repository: TrafficInfluence
   github_url: https://github.com/camaraproject/TrafficInfluence
   release_track: meta-release
