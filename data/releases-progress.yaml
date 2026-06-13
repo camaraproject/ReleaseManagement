@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-06-12T08:05:23Z'
-  last_checked: '2026-06-12T08:05:23Z'
+  last_updated: '2026-06-13T07:09:27Z'
+  last_checked: '2026-06-13T07:09:27Z'
   releases_master_updated: '2026-06-12T07:07:44.598Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
@@ -842,10 +842,13 @@ progress:
     main_contacts:
     - maxl2287
     - sachinvodafone
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.1-14c3473
+    release_pr:
+      number: 86
+      state: open
+      url: https://github.com/camaraproject/DeviceDataVolume/pull/86
     draft_release: null
     release_issue:
       number: 80
@@ -866,6 +869,9 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    device-data-volume-subscriptions: 0.2.0-rc.1
+    device-data-volume: 0.2.0-rc.1
 - repository: DeviceIdentifier
   github_url: https://github.com/camaraproject/DeviceIdentifier
   release_track: meta-release
@@ -1826,11 +1832,11 @@ progress:
     - hemantagogoi-infy
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r1.1-528ba29
+    snapshot_branch: release-snapshot/r1.1-1a0177d
     release_pr:
-      number: 28
+      number: 30
       state: open
-      url: https://github.com/camaraproject/MultiPointVPN/pull/28
+      url: https://github.com/camaraproject/MultiPointVPN/pull/30
     draft_release: null
     release_issue:
       number: 22
