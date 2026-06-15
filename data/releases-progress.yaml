@@ -1,14 +1,14 @@
 metadata:
-  last_updated: '2026-06-13T07:09:27Z'
-  last_checked: '2026-06-13T07:09:27Z'
+  last_updated: '2026-06-15T09:41:02Z'
+  last_checked: '2026-06-15T09:41:02Z'
   releases_master_updated: '2026-06-12T07:07:44.598Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
   repos_scanned: 62
   repos_new: 0
   repos_with_plan: 62
-  repos_fully_onboarded: 34
-  repos_with_release_issue: 29
+  repos_fully_onboarded: 35
+  repos_with_release_issue: 30
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -31,7 +31,7 @@ meta_releases:
   m3_achieved: 3
   m4_achieved: 3
 - name: Sync26
-  total_apis: 44
+  total_apis: 45
   m1_achieved: 6
   m3_achieved: 0
   m4_achieved: 0
@@ -1027,7 +1027,7 @@ progress:
   target_release_tag: r2.1
   target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r4.2
+    commonalities_release: r4.3
     identity_consent_management_release: r4.2
   apis:
   - api_name: device-reachability-status-subscriptions
@@ -2708,27 +2708,29 @@ progress:
 - repository: SubscriptionStatus
   github_url: https://github.com/camaraproject/SubscriptionStatus
   release_track: meta-release
-  meta_release: Fall25
-  target_release_tag: r1.2
-  target_release_type: none
+  meta_release: Sync26
+  target_release_tag: r2.0
+  target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r3.4
-    identity_consent_management_release: r3.3
+    commonalities_release: r4.3
+    identity_consent_management_release: r4.2
   apis:
   - api_name: subscription-status
-    target_api_version: 0.1.0
-    target_api_status: public
+    target_api_version: 0.2.0
+    target_api_status: rc
     main_contacts:
     - chinaunicomyangfan
     - ClownsAlbert
     - ChuanyuChen
     - DanXu-ChinaTelecom
-  state: not_planned
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 32
+      url: https://github.com/camaraproject/SubscriptionStatus/issues/32
   published_context:
     latest_public_release: r1.2
     newest_pre_release: null
@@ -2738,23 +2740,13 @@ progress:
       release_date: null
       apis: []
     m3:
-      release_tag: r1.1
-      release_date: '2025-07-24T07:59:09Z'
-      apis:
-      - api_name: subscription-status
-        api_version: 0.1.0-rc.1
+      release_tag: null
+      release_date: null
+      apis: []
     m4:
-      release_tag: r1.2
-      release_date: '2025-09-15T07:00:03Z'
-      apis:
-      - api_name: subscription-status
-        api_version: 0.1.0
-  last_published:
-    release_tag: r1.2
-    release_date: '2025-09-15T07:00:03Z'
-    apis:
-    - api_name: subscription-status
-      api_version: 0.1.0
+      release_tag: null
+      release_date: null
+      apis: []
 - repository: Tenure
   github_url: https://github.com/camaraproject/Tenure
   release_track: meta-release
@@ -5769,6 +5761,49 @@ progress:
     apis:
     - api_name: simple-edge-discovery
       api_version: 2.0.1
+  source: historical
+- repository: SubscriptionStatus
+  github_url: https://github.com/camaraproject/SubscriptionStatus
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: null
+  target_release_type: null
+  apis:
+  - api_name: subscription-status
+    target_api_version: 0.1.0
+    target_api_status: ''
+  state: historical
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis: []
+    m3:
+      release_tag: r1.1
+      release_date: '2025-07-24T07:59:09Z'
+      apis:
+      - api_name: subscription-status
+        api_version: 0.1.0-rc.1
+    m4:
+      release_tag: r1.2
+      release_date: '2025-09-15T07:00:03Z'
+      apis:
+      - api_name: subscription-status
+        api_version: 0.1.0
+  last_published:
+    release_tag: r1.2
+    release_date: '2025-09-15T07:00:03Z'
+    apis:
+    - api_name: subscription-status
+      api_version: 0.1.0
   source: historical
 - repository: Tenure
   github_url: https://github.com/camaraproject/Tenure
