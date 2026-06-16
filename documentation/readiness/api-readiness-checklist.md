@@ -76,11 +76,11 @@ These items appear as a preparation checklist in the Release Issue while it is i
 
 ### Handling validation results 
 
-Validation results must be handled as early as possible (controlled in each pre-release) as follows:
+Validation results must be handled as early as possible during each release preparation, and no later than before the final rc pre-release:
 
 - Errors MUST be fixed (errors block snapshot creation).
-- Warnings MUST be fixed, or explicitly deferred by documenting them in an issue (copying the validation summary lines) with a deferral reason per line. For example, for stable APIs, a warning that would need a breaking change while no major version update is planned is a valid deferral reason.
-- Hints MUST be checked and MAY be fixed (hints do not block snapshot creataion nor a release-review).
+- Warnings MUST be fixed or explicitly deferred by documenting them in one or more issues. The issue(s) must copy the relevant validation summary lines and include the deferral reason(s). For stable APIs, a warning that would require a breaking change while no major version update is planned is a valid deferral reason.
+- Hints MUST be checked and MAY be fixed. Hints do not block snapshot creation or Release PR review.
 
 Any warnings remaining in the final rc pre-release must have a valid deferral reason documented and need to be approved by Release Management.
 
@@ -97,7 +97,7 @@ Codeowners verify content accuracy:
 - API definitions are correct and complete for the target status
 - Test cases cover the intended API behavior
 - Documentation is adequate for the target audience
-- Any remaining warnings are documented in an issue stating an explicit deferreal reason
+- Any remaining warnings are documented in one or more issues, with the relevant validation summary lines and deferral reason(s)
 
 ### Release Management Review
 
@@ -106,7 +106,7 @@ Release management reviewers verify process compliance:
 - CHANGELOG follows the release documentation rules
 - Breaking changes are documented and version updates follow SemVer rules
 - All mandatory release assets for the declared API(s) status(es) are present as per the checklist
-- All remaining warnings have an acceptable deferral reason
+- All remaining warnings have been documented and have acceptable deferral reasons
 
 The Release PR contains a status-specific review checklist that reflects the requirements for the repository's release type.
 
