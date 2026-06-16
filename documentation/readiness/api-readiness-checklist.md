@@ -9,6 +9,7 @@ Before an API repository can be released, codeowners must ensure that certain as
 - Defines the required release assets and their expected locations
 - Specifies which assets are mandatory (M) or optional (O) per API status
 - Clarifies the division of responsibility: **codeowners prepare** the assets, **automation validates** what it can, and **release management reviewers** verify the rest
+- Explains how to handle CAMARA Validation results (errors, warnings and hints)
 
 Release readiness is tracked through `release-plan.yaml` configuration, release content preparation as indicated in the Release Issue, and the review checklist in the Release PR.
 
@@ -64,7 +65,7 @@ Before issuing `/create-snapshot` on the Release Issue, codeowners must verify t
 
 - **`release-plan.yaml` content matches intent**: Check that API names, target versions, target statuses, and release type in `release-plan.yaml` are correct
 - **Dependency versions are current**: Commonalities and ICM dependency versions in `release-plan.yaml` should reference the latest recommended releases
-- **CI checks are green**: Spectral linting and PR validation should pass on `main`
+- **Validation checks pass**: Spectral linting and PR validation must pass on `main` - see below for handling validation results
 - **All intended PRs are merged**: Implementation work should be complete on `main`
 - **SemVer is correct**: Breaking changes are only allowed in initial versions (v0.x) or new major versions
 - **Release assets are provided**: All mandatory assets for the declared target API status(s) are in place (see matrix above)
@@ -72,6 +73,16 @@ Before issuing `/create-snapshot` on the Release Issue, codeowners must verify t
 These items appear as a preparation checklist in the Release Issue while it is in PLANNED state. They are reminders, not automated gates — the codeowner is responsible for verifying them before proceeding.
 
 > **Note**: During development on `main`, API version fields in the YAML definitions must stay as `wip`. The release automation process replaces them with the correct version numbers and applicable extensions during snapshot creation.
+
+### Handling validation results 
+
+Validation results must be handled as early as possible during each release preparation, and no later than before the final rc pre-release:
+
+- Errors MUST be fixed (errors block snapshot creation).
+- Warnings MUST be fixed or explicitly deferred by documenting them in one or more issues. The issue(s) must copy the relevant validation summary lines and include the deferral reason(s). For stable APIs, a warning that would require a breaking change while no major version update is planned is a valid deferral reason.
+- Hints MUST be checked and MAY be fixed. Hints do not block snapshot creation or Release PR review.
+
+Any warnings remaining in the final rc pre-release must have a valid deferral reason documented and need to be approved by Release Management.
 
 ## Release Readiness Reviews
 
@@ -86,6 +97,7 @@ Codeowners verify content accuracy:
 - API definitions are correct and complete for the target status
 - Test cases cover the intended API behavior
 - Documentation is adequate for the target audience
+- Any remaining warnings are documented in one or more issues, with the relevant validation summary lines and deferral reason(s)
 
 ### Release Management Review
 
@@ -94,12 +106,7 @@ Release management reviewers verify process compliance:
 - CHANGELOG follows the release documentation rules
 - Breaking changes are documented and version updates follow SemVer rules
 - All mandatory release assets for the declared API(s) status(es) are present as per the checklist
-
-**During the automation introduction phase**, release management additionally verifies:
-
-- `release-metadata.yaml` content is correct
-- API version generation was done correctly by automation (server URLs, references, version fields)
-- README update looks correct (release tag, versions, latest vs pre-release)
+- All remaining warnings have been documented and have acceptable deferral reasons
 
 The Release PR contains a status-specific review checklist that reflects the requirements for the repository's release type.
 
