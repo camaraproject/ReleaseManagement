@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-06-15T09:41:02Z'
-  last_checked: '2026-06-15T09:41:02Z'
+  last_updated: '2026-06-16T09:06:54Z'
+  last_checked: '2026-06-16T09:06:54Z'
   releases_master_updated: '2026-06-12T07:07:44.598Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
@@ -1821,8 +1821,8 @@ progress:
   target_release_tag: r1.1
   target_release_type: pre-release-alpha
   dependencies:
-    commonalities_release: r3.4
-    identity_consent_management_release: r3.3
+    commonalities_release: r4.3
+    identity_consent_management_release: r4.2
   apis:
   - api_name: multi-point-vpn
     target_api_version: 0.1.0
@@ -1830,13 +1830,10 @@ progress:
     main_contacts:
     - abd-abhisek
     - hemantagogoi-infy
-  state: snapshot_active
+  state: planned
   artifacts:
-    snapshot_branch: release-snapshot/r1.1-1a0177d
-    release_pr:
-      number: 30
-      state: open
-      url: https://github.com/camaraproject/MultiPointVPN/pull/30
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
     release_issue:
       number: 22
@@ -1857,8 +1854,6 @@ progress:
       release_tag: null
       release_date: null
       apis: []
-  snapshot_api_versions:
-    multi-point-vpn: 0.1.0-alpha.1
 - repository: NetworkAccessManagement
   github_url: https://github.com/camaraproject/NetworkAccessManagement
   release_track: meta-release
