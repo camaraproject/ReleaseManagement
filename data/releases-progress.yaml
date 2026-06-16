@@ -1,14 +1,14 @@
 metadata:
-  last_updated: '2026-06-16T09:06:54Z'
-  last_checked: '2026-06-16T09:06:54Z'
+  last_updated: '2026-06-16T15:36:24Z'
+  last_checked: '2026-06-16T15:36:24Z'
   releases_master_updated: '2026-06-12T07:07:44.598Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
   repos_scanned: 62
   repos_new: 0
   repos_with_plan: 62
-  repos_fully_onboarded: 35
-  repos_with_release_issue: 30
+  repos_fully_onboarded: 38
+  repos_with_release_issue: 34
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -31,7 +31,7 @@ meta_releases:
   m3_achieved: 3
   m4_achieved: 3
 - name: Sync26
-  total_apis: 45
+  total_apis: 49
   m1_achieved: 6
   m3_achieved: 0
   m4_achieved: 0
@@ -1510,31 +1510,34 @@ progress:
       api_version: 0.1.0-alpha.1
 - repository: IoTSIMFraudPrevention
   github_url: https://github.com/camaraproject/IoTSIMFraudPrevention
-  release_track: independent
-  target_release_tag: r1.2
-  target_release_type: public-release
+  release_track: meta-release
+  meta_release: Sync26
+  target_release_tag: r2.1
+  target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r3.4
-    identity_consent_management_release: r3.3
+    commonalities_release: r4.3
+    identity_consent_management_release: r4.2
   apis:
   - api_name: iot-sim-fraud-prevention
-    target_api_version: 0.1.0
-    target_api_status: public
+    target_api_version: 0.2.0
+    target_api_status: rc
     main_contacts:
     - chenfr2-ChinaTelecom
     - XunliYang
   - api_name: iot-sim-fraud-prevention-subscriptions
-    target_api_version: 0.1.0
-    target_api_status: public
+    target_api_version: 0.2.0
+    target_api_status: rc
     main_contacts:
     - chenfr2-ChinaTelecom
     - XunliYang
-  state: published
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 57
+      url: https://github.com/camaraproject/IoTSIMFraudPrevention/issues/57
   published_context:
     latest_public_release: r1.2
     newest_pre_release: null
@@ -1544,55 +1547,38 @@ progress:
       release_date: null
       apis: []
     m3:
-      release_tag: r1.1
-      release_date: '2026-04-27T01:17:04Z'
-      apis:
-      - api_name: iot-sim-fraud-prevention
-        api_version: 0.1.0-rc.1
-      - api_name: iot-sim-fraud-prevention-subscriptions
-        api_version: 0.1.0-rc.1
+      release_tag: null
+      release_date: null
+      apis: []
     m4:
-      release_tag: r1.2
-      release_date: '2026-05-28T01:55:36Z'
-      apis:
-      - api_name: iot-sim-fraud-prevention
-        api_version: 0.1.0
-      - api_name: iot-sim-fraud-prevention-subscriptions
-        api_version: 0.1.0
-  last_published:
-    release_tag: r1.2
-    release_date: '2026-05-28T01:55:36Z'
-    apis:
-    - api_name: iot-sim-fraud-prevention
-      api_version: 0.1.0
-    - api_name: iot-sim-fraud-prevention-subscriptions
-      api_version: 0.1.0
-  snapshot_api_versions:
-    iot-sim-fraud-prevention: 0.1.0
-    iot-sim-fraud-prevention-subscriptions: 0.1.0
+      release_tag: null
+      release_date: null
+      apis: []
 - repository: KnowYourCustomerAgeVerification
   github_url: https://github.com/camaraproject/KnowYourCustomerAgeVerification
   release_track: meta-release
-  meta_release: Fall25
-  target_release_tag: r1.3
-  target_release_type: none
+  meta_release: Sync26
+  target_release_tag: r2.1
+  target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r3.4
-    identity_consent_management_release: r3.3
+    commonalities_release: r4.3
+    identity_consent_management_release: r4.2
   apis:
   - api_name: kyc-age-verification
-    target_api_version: 0.2.1
-    target_api_status: public
+    target_api_version: 0.3.0
+    target_api_status: rc
     main_contacts:
     - ToshiWakayama-KDDI
     - fernandopradocabrillo
     - GillesInnov35
-  state: not_planned
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 45
+      url: https://github.com/camaraproject/KnowYourCustomerAgeVerification/issues/45
   published_context:
     latest_public_release: r1.3
     newest_pre_release: null
@@ -1602,23 +1588,13 @@ progress:
       release_date: null
       apis: []
     m3:
-      release_tag: r1.2
-      release_date: '2025-08-12T08:08:24Z'
-      apis:
-      - api_name: kyc-age-verification
-        api_version: 0.2.1-rc.2
+      release_tag: null
+      release_date: null
+      apis: []
     m4:
-      release_tag: r1.3
-      release_date: '2025-09-14T03:25:04Z'
-      apis:
-      - api_name: kyc-age-verification
-        api_version: 0.2.1
-  last_published:
-    release_tag: r1.3
-    release_date: '2025-09-14T03:25:04Z'
-    apis:
-    - api_name: kyc-age-verification
-      api_version: 0.2.1
+      release_tag: null
+      release_date: null
+      apis: []
 - repository: KnowYourCustomerFill-in
   github_url: https://github.com/camaraproject/KnowYourCustomerFill-in
   release_track: meta-release
@@ -1671,26 +1647,28 @@ progress:
 - repository: KnowYourCustomerMatch
   github_url: https://github.com/camaraproject/KnowYourCustomerMatch
   release_track: meta-release
-  meta_release: Fall25
-  target_release_tag: r1.2
-  target_release_type: none
+  meta_release: Sync26
+  target_release_tag: r2.1
+  target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r3.4
-    identity_consent_management_release: r3.3
+    commonalities_release: r4.3
+    identity_consent_management_release: r4.2
   apis:
   - api_name: kyc-match
-    target_api_version: 0.4.0
-    target_api_status: public
+    target_api_version: 0.5.0
+    target_api_status: rc
     main_contacts:
     - ToshiWakayama-KDDI
     - fernandopradocabrillo
     - GillesInnov35
-  state: not_planned
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 79
+      url: https://github.com/camaraproject/KnowYourCustomerMatch/issues/79
   published_context:
     latest_public_release: r1.2
     newest_pre_release: null
@@ -1700,23 +1678,13 @@ progress:
       release_date: null
       apis: []
     m3:
-      release_tag: r1.1
-      release_date: '2025-07-22T09:51:48Z'
-      apis:
-      - api_name: kyc-match
-        api_version: 0.4.0-rc.1
+      release_tag: null
+      release_date: null
+      apis: []
     m4:
-      release_tag: r1.2
-      release_date: '2025-09-14T03:35:29Z'
-      apis:
-      - api_name: kyc-match
-        api_version: 0.4.0
-  last_published:
-    release_tag: r1.2
-    release_date: '2025-09-14T03:35:29Z'
-    apis:
-    - api_name: kyc-match
-      api_version: 0.4.0
+      release_tag: null
+      release_date: null
+      apis: []
 - repository: ModelAsAService
   github_url: https://github.com/camaraproject/ModelAsAService
   release_track: meta-release
@@ -2072,7 +2040,7 @@ progress:
   release_track: meta-release
   meta_release: Sync26
   target_release_tag: r4.1
-  target_release_type: none
+  target_release_type: pre-release-alpha
   dependencies:
     commonalities_release: r4.3
     identity_consent_management_release: r4.2
@@ -2084,12 +2052,14 @@ progress:
     - bigludo7
     - fernandopradocabrillo
     - AxelNennker
-  state: not_planned
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 236
+      url: https://github.com/camaraproject/NumberVerification/issues/236
   published_context:
     latest_public_release: r3.2
     newest_pre_release: null
@@ -2628,14 +2598,14 @@ progress:
   apis:
   - api_name: sim-swap-subscriptions
     target_api_version: 0.4.0
-    target_api_status: public
+    target_api_status: alpha
     main_contacts:
     - bigludo7
     - fernandopradocabrillo
     - maxl2287
   - api_name: sim-swap
     target_api_version: 2.2.0
-    target_api_status: public
+    target_api_status: alpha
     main_contacts:
     - bigludo7
     - fernandopradocabrillo
@@ -2996,10 +2966,13 @@ progress:
     - pradeepachar-mavenir
     - deepakjaiswal1
     - teikuran
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r3.1-a9f1a4b
+    release_pr:
+      number: 176
+      state: open
+      url: https://github.com/camaraproject/WebRTC/pull/176
     draft_release: null
     release_issue:
       number: 155
@@ -3020,6 +2993,10 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    webrtc-call-handling: 0.4.0-rc.1
+    webrtc-events: 0.3.0-rc.1
+    webrtc-registration: 0.4.0-rc.1
 - repository: BlockchainPublicAddress
   github_url: https://github.com/camaraproject/BlockchainPublicAddress
   release_track: meta-release
@@ -4386,6 +4363,57 @@ progress:
     - api_name: home-devices-qod
       api_version: 0.4.0
   source: historical
+- repository: IoTSIMFraudPrevention
+  github_url: https://github.com/camaraproject/IoTSIMFraudPrevention
+  release_track: independent
+  target_release_tag: null
+  target_release_type: null
+  apis:
+  - api_name: iot-sim-fraud-prevention
+    target_api_version: 0.1.0
+    target_api_status: ''
+  - api_name: iot-sim-fraud-prevention-subscriptions
+    target_api_version: 0.1.0
+    target_api_status: ''
+  state: historical
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis: []
+    m3:
+      release_tag: r1.1
+      release_date: '2026-04-27T01:17:04Z'
+      apis:
+      - api_name: iot-sim-fraud-prevention
+        api_version: 0.1.0-rc.1
+      - api_name: iot-sim-fraud-prevention-subscriptions
+        api_version: 0.1.0-rc.1
+    m4:
+      release_tag: r1.2
+      release_date: '2026-05-28T01:55:36Z'
+      apis:
+      - api_name: iot-sim-fraud-prevention
+        api_version: 0.1.0
+      - api_name: iot-sim-fraud-prevention-subscriptions
+        api_version: 0.1.0
+  last_published:
+    release_tag: r1.2
+    release_date: '2026-05-28T01:55:36Z'
+    apis:
+    - api_name: iot-sim-fraud-prevention
+      api_version: 0.1.0
+    - api_name: iot-sim-fraud-prevention-subscriptions
+      api_version: 0.1.0
+  source: historical
 - repository: KnowYourCustomer
   github_url: ''
   release_track: meta-release
@@ -4498,6 +4526,92 @@ progress:
       api_version: 0.3.0
     - api_name: kyc-match
       api_version: 0.3.0
+  source: historical
+- repository: KnowYourCustomerAgeVerification
+  github_url: https://github.com/camaraproject/KnowYourCustomerAgeVerification
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: null
+  target_release_type: null
+  apis:
+  - api_name: kyc-age-verification
+    target_api_version: 0.2.1
+    target_api_status: ''
+  state: historical
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis: []
+    m3:
+      release_tag: r1.2
+      release_date: '2025-08-12T08:08:24Z'
+      apis:
+      - api_name: kyc-age-verification
+        api_version: 0.2.1-rc.2
+    m4:
+      release_tag: r1.3
+      release_date: '2025-09-14T03:25:04Z'
+      apis:
+      - api_name: kyc-age-verification
+        api_version: 0.2.1
+  last_published:
+    release_tag: r1.3
+    release_date: '2025-09-14T03:25:04Z'
+    apis:
+    - api_name: kyc-age-verification
+      api_version: 0.2.1
+  source: historical
+- repository: KnowYourCustomerMatch
+  github_url: https://github.com/camaraproject/KnowYourCustomerMatch
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: null
+  target_release_type: null
+  apis:
+  - api_name: kyc-match
+    target_api_version: 0.4.0
+    target_api_status: ''
+  state: historical
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis: []
+    m3:
+      release_tag: r1.1
+      release_date: '2025-07-22T09:51:48Z'
+      apis:
+      - api_name: kyc-match
+        api_version: 0.4.0-rc.1
+    m4:
+      release_tag: r1.2
+      release_date: '2025-09-14T03:35:29Z'
+      apis:
+      - api_name: kyc-match
+        api_version: 0.4.0
+  last_published:
+    release_tag: r1.2
+    release_date: '2025-09-14T03:35:29Z'
+    apis:
+    - api_name: kyc-match
+      api_version: 0.4.0
   source: historical
 - repository: ModelAsAService
   github_url: https://github.com/camaraproject/ModelAsAService
