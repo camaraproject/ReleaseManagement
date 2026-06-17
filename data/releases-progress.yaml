@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-06-16T15:36:24Z'
-  last_checked: '2026-06-16T15:36:24Z'
+  last_updated: '2026-06-17T08:40:02Z'
+  last_checked: '2026-06-17T08:40:02Z'
   releases_master_updated: '2026-06-12T07:07:44.598Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
@@ -1885,11 +1885,11 @@ progress:
     - cnzj-Gc
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r1.3-25a39b7
+    snapshot_branch: release-snapshot/r1.3-101e5d3
     release_pr:
-      number: 77
+      number: 80
       state: open
-      url: https://github.com/camaraproject/NetworkInsights/pull/77
+      url: https://github.com/camaraproject/NetworkInsights/pull/80
     draft_release: null
     release_issue:
       number: 61
