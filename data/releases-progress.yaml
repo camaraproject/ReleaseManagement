@@ -1,14 +1,14 @@
 metadata:
-  last_updated: '2026-06-17T08:40:02Z'
-  last_checked: '2026-06-17T08:40:02Z'
+  last_updated: '2026-06-18T08:23:06Z'
+  last_checked: '2026-06-18T08:23:06Z'
   releases_master_updated: '2026-06-12T07:07:44.598Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
   repos_scanned: 62
   repos_new: 0
   repos_with_plan: 62
-  repos_fully_onboarded: 38
-  repos_with_release_issue: 34
+  repos_fully_onboarded: 39
+  repos_with_release_issue: 36
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -26,12 +26,12 @@ meta_releases:
   m3_achieved: 35
   m4_achieved: 36
 - name: Spring26
-  total_apis: 3
-  m1_achieved: 1
-  m3_achieved: 3
-  m4_achieved: 3
+  total_apis: 2
+  m1_achieved: 0
+  m3_achieved: 2
+  m4_achieved: 2
 - name: Sync26
-  total_apis: 49
+  total_apis: 51
   m1_achieved: 6
   m3_achieved: 0
   m4_achieved: 0
@@ -410,56 +410,44 @@ progress:
 - repository: ClickToDial
   github_url: https://github.com/camaraproject/ClickToDial
   release_track: meta-release
-  meta_release: Spring26
-  target_release_tag: r1.4
-  target_release_type: public-release
+  meta_release: Sync26
+  target_release_tag: r2.1
+  target_release_type: pre-release-rc
   dependencies:
     commonalities_release: r4.3
     identity_consent_management_release: r4.2
   apis:
   - api_name: click-to-dial
-    target_api_version: 0.1.0
-    target_api_status: public
+    target_api_version: 0.2.0
+    target_api_status: rc
     main_contacts:
     - YadingFang
     - Wojiaozhenghao
     - XunliYang
-  state: published
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 109
+      url: https://github.com/camaraproject/ClickToDial/issues/109
   published_context:
     latest_public_release: r1.4
     newest_pre_release: null
   cycle_releases:
     m1:
-      release_tag: r1.1
-      release_date: '2025-05-15T14:04:29Z'
-      apis:
-      - api_name: click-to-dial
-        api_version: 0.1.0-alpha.1
+      release_tag: null
+      release_date: null
+      apis: []
     m3:
-      release_tag: r1.2
-      release_date: '2026-03-09T15:09:22Z'
-      apis:
-      - api_name: click-to-dial
-        api_version: 0.1.0-rc.1
+      release_tag: null
+      release_date: null
+      apis: []
     m4:
-      release_tag: r1.4
-      release_date: '2026-06-01T17:46:34Z'
-      apis:
-      - api_name: click-to-dial
-        api_version: 0.1.0
-  last_published:
-    release_tag: r1.4
-    release_date: '2026-06-01T17:46:34Z'
-    apis:
-    - api_name: click-to-dial
-      api_version: 0.1.0
-  snapshot_api_versions:
-    click-to-dial: 0.1.0
+      release_tag: null
+      release_date: null
+      apis: []
 - repository: ConnectedNetworkType
   github_url: https://github.com/camaraproject/ConnectedNetworkType
   release_track: meta-release
@@ -522,14 +510,14 @@ progress:
   apis:
   - api_name: connectivity-insights-subscriptions
     target_api_version: 0.7.0
-    target_api_status: public
+    target_api_status: rc
     main_contacts:
     - maheshc01
     - kevsy
     - urvika-v
   - api_name: connectivity-insights
     target_api_version: 0.7.0
-    target_api_status: public
+    target_api_status: rc
     main_contacts:
     - maheshc01
     - kevsy
@@ -1224,10 +1212,13 @@ progress:
     - JoseMConde
     - Seralogar
     - Kevsy
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r1.2-e3c2aff
+    release_pr:
+      number: 40
+      state: open
+      url: https://github.com/camaraproject/EdgeApplicationManagement/pull/40
     draft_release: null
     release_issue:
       number: 39
@@ -1256,6 +1247,8 @@ progress:
     apis:
     - api_name: edge-application-management
       api_version: 0.1.0-alpha.1
+  snapshot_api_versions:
+    edge-application-management: 0.1.0-rc.1
 - repository: EnergyFootprintNotification
   github_url: https://github.com/camaraproject/EnergyFootprintNotification
   release_track: meta-release
@@ -1598,26 +1591,27 @@ progress:
 - repository: KnowYourCustomerFill-in
   github_url: https://github.com/camaraproject/KnowYourCustomerFill-in
   release_track: meta-release
-  meta_release: Fall25
-  target_release_tag: r1.3
-  target_release_type: none
+  meta_release: Sync26
+  target_release_tag: r2.1
+  target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r3.4
-    identity_consent_management_release: r3.3
+    commonalities_release: r4.3
+    identity_consent_management_release: r4.2
   apis:
   - api_name: kyc-fill-in
-    target_api_version: 0.4.1
-    target_api_status: public
+    target_api_version: 0.5.0
+    target_api_status: rc
     main_contacts:
     - ToshiWakayama-KDDI
-    - fernandopradocabrillo
     - GillesInnov35
-  state: not_planned
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 54
+      url: https://github.com/camaraproject/KnowYourCustomerFill-in/issues/54
   published_context:
     latest_public_release: r1.3
     newest_pre_release: null
@@ -1627,23 +1621,13 @@ progress:
       release_date: null
       apis: []
     m3:
-      release_tag: r1.1
-      release_date: '2025-07-22T09:43:39Z'
-      apis:
-      - api_name: kyc-fill-in
-        api_version: 0.4.0-rc.1
+      release_tag: null
+      release_date: null
+      apis: []
     m4:
-      release_tag: r1.2
-      release_date: '2025-09-15T02:58:21Z'
-      apis:
-      - api_name: kyc-fill-in
-        api_version: 0.4.0
-  last_published:
-    release_tag: r1.3
-    release_date: '2025-12-15T09:02:43Z'
-    apis:
-    - api_name: kyc-fill-in
-      api_version: 0.4.1
+      release_tag: null
+      release_date: null
+      apis: []
 - repository: KnowYourCustomerMatch
   github_url: https://github.com/camaraproject/KnowYourCustomerMatch
   release_track: meta-release
@@ -1798,10 +1782,13 @@ progress:
     main_contacts:
     - abd-abhisek
     - hemantagogoi-infy
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r1.1-d274cfd
+    release_pr:
+      number: 41
+      state: open
+      url: https://github.com/camaraproject/MultiPointVPN/pull/41
     draft_release: null
     release_issue:
       number: 22
@@ -1822,6 +1809,8 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    multi-point-vpn: 0.1.0-alpha.1
 - repository: NetworkAccessManagement
   github_url: https://github.com/camaraproject/NetworkAccessManagement
   release_track: meta-release
@@ -2017,8 +2006,8 @@ progress:
     release_pr: null
     draft_release: null
     release_issue:
-      number: 100
-      url: https://github.com/camaraproject/NumberRecycling/issues/100
+      number: 103
+      url: https://github.com/camaraproject/NumberRecycling/issues/103
   published_context:
     latest_public_release: r2.2
     newest_pre_release: null
@@ -2674,7 +2663,7 @@ progress:
   github_url: https://github.com/camaraproject/SubscriptionStatus
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r2.0
+  target_release_tag: r2.1
   target_release_type: pre-release-rc
   dependencies:
     commonalities_release: r4.3
@@ -2694,8 +2683,8 @@ progress:
     release_pr: null
     draft_release: null
     release_issue:
-      number: 32
-      url: https://github.com/camaraproject/SubscriptionStatus/issues/32
+      number: 34
+      url: https://github.com/camaraproject/SubscriptionStatus/issues/34
   published_context:
     latest_public_release: r1.2
     newest_pre_release: null
@@ -3229,6 +3218,50 @@ progress:
       api_version: 0.2.0
     - api_name: carrier-billing
       api_version: 0.4.0
+  source: historical
+- repository: ClickToDial
+  github_url: https://github.com/camaraproject/ClickToDial
+  release_track: independent
+  target_release_tag: null
+  target_release_type: null
+  apis:
+  - api_name: click-to-dial
+    target_api_version: 0.1.0
+    target_api_status: ''
+  state: historical
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: r1.1
+      release_date: '2025-05-15T14:04:29Z'
+      apis:
+      - api_name: click-to-dial
+        api_version: 0.1.0-alpha.1
+    m3:
+      release_tag: r1.2
+      release_date: '2026-03-09T15:09:22Z'
+      apis:
+      - api_name: click-to-dial
+        api_version: 0.1.0-rc.1
+    m4:
+      release_tag: r1.4
+      release_date: '2026-06-01T17:46:34Z'
+      apis:
+      - api_name: click-to-dial
+        api_version: 0.1.0
+  last_published:
+    release_tag: r1.4
+    release_date: '2026-06-01T17:46:34Z'
+    apis:
+    - api_name: click-to-dial
+      api_version: 0.1.0
   source: historical
 - repository: ConnectedNetworkType
   github_url: https://github.com/camaraproject/ConnectedNetworkType
@@ -4569,6 +4602,49 @@ progress:
     apis:
     - api_name: kyc-age-verification
       api_version: 0.2.1
+  source: historical
+- repository: KnowYourCustomerFill-in
+  github_url: https://github.com/camaraproject/KnowYourCustomerFill-in
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: null
+  target_release_type: null
+  apis:
+  - api_name: kyc-fill-in
+    target_api_version: 0.4.0
+    target_api_status: ''
+  state: historical
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis: []
+    m3:
+      release_tag: r1.1
+      release_date: '2025-07-22T09:43:39Z'
+      apis:
+      - api_name: kyc-fill-in
+        api_version: 0.4.0-rc.1
+    m4:
+      release_tag: r1.2
+      release_date: '2025-09-15T02:58:21Z'
+      apis:
+      - api_name: kyc-fill-in
+        api_version: 0.4.0
+  last_published:
+    release_tag: r1.3
+    release_date: '2025-12-15T09:02:43Z'
+    apis:
+    - api_name: kyc-fill-in
+      api_version: 0.4.1
   source: historical
 - repository: KnowYourCustomerMatch
   github_url: https://github.com/camaraproject/KnowYourCustomerMatch
