@@ -1,14 +1,14 @@
 metadata:
-  last_updated: '2026-06-19T08:43:44Z'
-  last_checked: '2026-06-19T08:43:44Z'
-  releases_master_updated: '2026-06-12T07:07:44.598Z'
+  last_updated: '2026-06-19T17:48:15Z'
+  last_checked: '2026-06-19T17:48:15Z'
+  releases_master_updated: '2026-06-19T15:58:21.495Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
-  repos_scanned: 62
+  repos_scanned: 61
   repos_new: 0
-  repos_with_plan: 62
-  repos_fully_onboarded: 39
-  repos_with_release_issue: 37
+  repos_with_plan: 61
+  repos_fully_onboarded: 38
+  repos_with_release_issue: 36
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -26,10 +26,10 @@ meta_releases:
   m3_achieved: 35
   m4_achieved: 36
 - name: Spring26
-  total_apis: 2
-  m1_achieved: 0
-  m3_achieved: 2
-  m4_achieved: 2
+  total_apis: 3
+  m1_achieved: 1
+  m3_achieved: 3
+  m4_achieved: 3
 - name: Sync26
   total_apis: 51
   m1_achieved: 6
@@ -2429,70 +2429,6 @@ progress:
     apis:
     - api_name: region-device-count
       api_version: 0.2.0
-- repository: ReleaseTest
-  github_url: https://github.com/camaraproject/ReleaseTest
-  release_track: independent
-  target_release_tag: r1.3
-  target_release_type: pre-release-alpha
-  dependencies:
-    commonalities_release: r4.3
-    identity_consent_management_release: r4.2
-  apis:
-  - api_name: sample-service
-    target_api_version: 0.1.0
-    target_api_status: alpha
-    main_contacts:
-    - hdamker-bot
-  - api_name: sample-service-subscriptions
-    target_api_version: 0.1.0
-    target_api_status: alpha
-    main_contacts:
-    - hdamker-bot
-  - api_name: sample-implicit-events
-    target_api_version: 0.1.0
-    target_api_status: alpha
-    main_contacts:
-    - hdamker-bot
-  state: planned
-  artifacts:
-    snapshot_branch: null
-    release_pr: null
-    draft_release: null
-    release_issue:
-      number: 202
-      url: https://github.com/camaraproject/ReleaseTest/issues/202
-  published_context:
-    latest_public_release: null
-    newest_pre_release: r1.2
-  cycle_releases:
-    m1:
-      release_tag: r1.1
-      release_date: '2026-05-29T13:39:43Z'
-      apis:
-      - api_name: sample-service
-        api_version: 0.1.0-alpha.1
-      - api_name: sample-service-subscriptions
-        api_version: 0.1.0-alpha.1
-      - api_name: sample-implicit-events
-        api_version: 0.1.0-alpha.1
-    m3:
-      release_tag: null
-      release_date: null
-      apis: []
-    m4:
-      release_tag: null
-      release_date: null
-      apis: []
-  last_published:
-    release_tag: r1.2
-    release_date: '2026-06-06T15:47:36Z'
-    apis:
-    - api_name: sample-service
-      api_version: 0.1.0-alpha.2
-    - api_name: sample-service-subscriptions
-      api_version: 0.1.0-alpha.2
-    - api_name: sample-implicit-events
-      api_version: 0.1.0-alpha.2
 - repository: SessionInsights
   github_url: https://github.com/camaraproject/SessionInsights
   release_track: meta-release
@@ -3221,7 +3157,8 @@ progress:
   source: historical
 - repository: ClickToDial
   github_url: https://github.com/camaraproject/ClickToDial
-  release_track: independent
+  release_track: meta-release
+  meta_release: Spring26
   target_release_tag: null
   target_release_type: null
   apis:
