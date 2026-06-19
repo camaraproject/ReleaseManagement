@@ -81,7 +81,7 @@ This phase is ongoing until you decide to release.
      - adjust the generated first sentence if needed.
      - commit these changes directly to the release-review branch.
 
-2. **Ensure required approvals are in place** (codeowner and release reviewer). After the release reviewer reviews the Release PR, the codeowners address feedback on the CHANGELOG with further commits to the release-review branch, until release reviewer approval is obtained.
+2. **Ensure required approvals are in place** (codeowner and release reviewer). Codeowners address release-reviewer CHANGELOG feedback on the release-review branch until approval is obtained.
 
 3. **Merge the Release PR.**
 
