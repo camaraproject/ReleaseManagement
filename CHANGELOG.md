@@ -2,11 +2,46 @@
 
 ## Table of Contents
 
+- **[r4.1](#r41)**
 - **[r3.1](#r31)**
 - **[r2.2](#r22)**
 - **[r2.1](#r21)**
 - **[r1.2](#r12)**
 - **[r1.1](#r11)**
+
+# r4.1
+
+## Release Notes
+
+**This release captures the Release Management documents with version 0.5.0 as
+the baseline for Sync26 and the forward-looking r4.x release process.**
+
+This release consolidates the automated API release process documentation,
+metadata schema artifacts, release progress tracking data, and validation
+framework design material that landed after r3.1. It provides the Release
+Management repository baseline for API teams preparing Sync26 releases and for
+the continued evolution of the r4.x release process.
+
+### Added
+
+* Add the release workflow and metadata foundation, including concept material, release metadata schemas, and release plan schema artifacts by @hdamker in https://github.com/camaraproject/ReleaseManagement/pull/275 and https://github.com/camaraproject/ReleaseManagement/pull/339
+* Add the automated release process documentation set, covering release creation, release publication, post-release sync, bot UX, API readiness checklist content, and pointer branch documentation by @hdamker in https://github.com/camaraproject/ReleaseManagement/pull/362, https://github.com/camaraproject/ReleaseManagement/pull/364, https://github.com/camaraproject/ReleaseManagement/pull/370, https://github.com/camaraproject/ReleaseManagement/pull/374, https://github.com/camaraproject/ReleaseManagement/pull/392, and https://github.com/camaraproject/ReleaseManagement/pull/394
+* Add validation framework reference material, including Commonalities consumption and bundling design, requirements, detailed design, design-guide audit, and testing-guidelines audit by @hdamker in https://github.com/camaraproject/ReleaseManagement/pull/436, https://github.com/camaraproject/ReleaseManagement/pull/447, and https://github.com/camaraproject/ReleaseManagement/pull/463
+* Add release progress tracker workflow and generated progress data by @hdamker in https://github.com/camaraproject/ReleaseManagement/pull/391
+* Add the automated release process update presentation by @tanjadegroot in https://github.com/camaraproject/ReleaseManagement/pull/424
+
+### Changed
+
+* Refine release lifecycle and readiness documentation for the edit/review split, post-release sync step, CHANGELOG handling, breaking changes handling, validation results, warning deferrals, and API description requirements by @hdamker and @tanjadegroot in https://github.com/camaraproject/ReleaseManagement/pull/523, https://github.com/camaraproject/ReleaseManagement/pull/569, and https://github.com/camaraproject/ReleaseManagement/pull/586
+* Update README content for the current Release Management documentation structure by @tanjadegroot in https://github.com/camaraproject/ReleaseManagement/pull/460
+* Align naming and branch terminology with Sync26/Signal27, source branch terminology, and release branch naming by @hdamker in https://github.com/camaraproject/ReleaseManagement/pull/382, https://github.com/camaraproject/ReleaseManagement/pull/384, https://github.com/camaraproject/ReleaseManagement/pull/386, and https://github.com/camaraproject/ReleaseManagement/pull/402
+* Maintain release progress tracker data through Release Collector bot updates
+
+### Removed
+
+* Remove the unused API review trigger workflow by @hdamker in https://github.com/camaraproject/ReleaseManagement/pull/488
+
+**Full Changelog**: https://github.com/camaraproject/ReleaseManagement/compare/r3.1...r4.1
 
 # r3.1
 
