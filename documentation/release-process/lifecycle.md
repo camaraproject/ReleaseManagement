@@ -70,19 +70,20 @@ This phase is ongoing until you decide to release.
    - The automation provides a temporary section listing all the PRs merged since the relevant previous release. 
    - For each API in the release, automation generates
      - a first sentence describing the API version
-     - a second sentence stating the comparison baseline for this API with the appropriate previous release (also shown in the "Release contents" table). This line should not be changed.
+     - when available, a second sentence stating the comparison target for this API (matching the `Comparison target` value in the Release PR's "Release contents" table). This line should not be changed.
      - the "update" sections: Breaking changes / Added / Changed / Fixed / Removed (by defaulting set to `N/A`).
    - For each API,
      - move the relevant entries from the temporary section into that API's update sections, replacing `N/A` or leaving `N/A` when a section has no changes.
+     - for first-time APIs or APIs without a comparison target, typically fill only the Added section.
      - adjust the generated first sentence if needed.
      - commit these changes directly to the release-review branch.
-   - Codeowners complete the Breaking changes, Added, Changed, Fixed, and Removed sections during release review as foolows:
+   - Codeowners complete the Breaking changes, Added, Changed, Fixed, and Removed sections during release review as follows:
      - copy PRs relevant to API Consumers from the temporary section into the applicable update sections.
      - breaking changes are to be listed both in the Breaking changes section and in their normal update section.
      - leave `N/A` in the Breaking changes section only when there are no breaking changes or compatibility risks for that API.
      - for stable post-1.0.0 minor or patch releases, the Breaking changes section may also disclose compatibility risks (without implying any SemVer-breaking change).
 
-2. **Ensure required approvals are in place** (codeowner and release reviewer). The release reviewer reviews the Release PR; addresses CHANGELOG feedback with further commits to the release-review branch.
+2. **Ensure required approvals are in place** (codeowner and release reviewer). The release reviewer reviews the Release PR; address CHANGELOG feedback with further commits to the release-review branch.
 3. **Merge the Release PR.**
 
 > **Do not** open a separate PR to `main` for the CHANGELOG — the post-release sync PR (step 6) carries it back to `main` automatically.
