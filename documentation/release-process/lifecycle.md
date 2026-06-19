@@ -67,9 +67,22 @@ This phase is ongoing until you decide to release.
 **What you do:**
 
 1. **Edit `CHANGELOG-rX.md` on the release-review branch.**
-   - The automation pre-fills it with a temporary section listing the PRs merged since the relevant previous release, plus — for each API in the release — a generated first sentence describing that API's version and Added / Changed / Fixed / Removed sections each defaulting to `N/A`.
-   - For each API, move the relevant entries from the temporary section into that API's sections, replacing `N/A` with entries as applicable and leaving `N/A` where a category has no changes. Refine the generated first sentence if needed. Commit directly to the release-review branch.
-2. **Ensure required approvals are in place** (codeowner and release reviewer). The release reviewer reviews the Release PR; address CHANGELOG feedback with further commits to the release-review branch.
+   - Automation generates the following input in the CHANGELOG-rX.md for this release:
+     - a temporary section (removed on release) listing all the PRs merged since the relevant previous release, and, for each API, 
+     - a first sentence describing the API version
+     - when available, a second sentence stating the comparison target for this API (matching the `Comparison target` value in the Release PR's "Release contents" table). This line should not be changed.
+     - the "update" sections: Breaking changes / Added / Changed / Fixed / Removed (by defaulting set to `N/A`).
+   - Codeowners complete the Breaking changes, Added, Changed, Fixed, and Removed sections for each API during release review as follows:
+     - copy or move the relevant entries from the temporary section into that API's update sections, replacing `N/A`, or leave `N/A` when a section has no changes. In particular for breaking changes:
+       - list breaking changes both in the Breaking changes section and in their normal update section.
+       - leave `N/A` in the Breaking changes section only when there are no breaking changes or compatibility risks for that API.
+       - for stable post-1.0.0 minor or patch releases, the Breaking changes section may also disclose compatibility risks (without implying any SemVer-breaking change).
+     - for first-time APIs or APIs without a comparison target, typically fill only the Added section.
+     - adjust the generated first sentence if needed.
+     - commit these changes directly to the release-review branch.
+
+2. **Ensure required approvals are in place** (codeowner and release reviewer). Codeowners address release-reviewer CHANGELOG feedback on the release-review branch until approval is obtained.
+
 3. **Merge the Release PR.**
 
 > **Do not** open a separate PR to `main` for the CHANGELOG — the post-release sync PR (step 6) carries it back to `main` automatically.
