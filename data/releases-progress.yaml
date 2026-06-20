@@ -1,7 +1,7 @@
 metadata:
-  last_updated: '2026-06-19T17:48:15Z'
-  last_checked: '2026-06-19T17:48:15Z'
-  releases_master_updated: '2026-06-19T15:58:21.495Z'
+  last_updated: '2026-06-20T07:11:06Z'
+  last_checked: '2026-06-20T07:11:06Z'
+  releases_master_updated: '2026-06-19T17:57:41.135Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
   repos_scanned: 61
@@ -2245,20 +2245,20 @@ progress:
   release_track: meta-release
   meta_release: Sync26
   target_release_tag: r2.1
-  target_release_type: pre-release-alpha
+  target_release_type: pre-release-rc
   dependencies:
     commonalities_release: r4.3
     identity_consent_management_release: r4.2
   apis:
   - api_name: qos-booking-and-assignment
     target_api_version: 0.2.0
-    target_api_status: alpha
+    target_api_status: rc
     main_contacts:
     - Masa8106
     - jlurien
   - api_name: qos-booking
     target_api_version: 0.2.0
-    target_api_status: alpha
+    target_api_status: rc
     main_contacts:
     - Masa8106
     - jlurien
