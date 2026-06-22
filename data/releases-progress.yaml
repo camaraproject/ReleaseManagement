@@ -1,7 +1,7 @@
 metadata:
-  last_updated: '2026-06-20T07:11:06Z'
-  last_checked: '2026-06-20T07:11:06Z'
-  releases_master_updated: '2026-06-19T17:57:41.135Z'
+  last_updated: '2026-06-22T09:26:17Z'
+  last_checked: '2026-06-22T09:26:17Z'
+  releases_master_updated: '2026-06-21T17:08:30.639Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
   repos_scanned: 61
@@ -1874,11 +1874,11 @@ progress:
     - cnzj-Gc
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r1.3-101e5d3
+    snapshot_branch: release-snapshot/r1.3-9f76793
     release_pr:
-      number: 80
+      number: 82
       state: open
-      url: https://github.com/camaraproject/NetworkInsights/pull/80
+      url: https://github.com/camaraproject/NetworkInsights/pull/82
     draft_release: null
     release_issue:
       number: 61
@@ -2761,10 +2761,13 @@ progress:
     - olsi-korkuti
     - stroncoso-quobis
     - GillesInnov35
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.1-49df5c1
+    release_pr:
+      number: 116
+      state: open
+      url: https://github.com/camaraproject/VerifiedCaller/pull/116
     draft_release: null
     release_issue:
       number: 110
@@ -2785,6 +2788,9 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    brand-registration: 0.2.0-alpha.1
+    verified-caller: 0.2.0-alpha.1
 - repository: VoiceNotification
   github_url: https://github.com/camaraproject/VoiceNotification
   release_track: independent
