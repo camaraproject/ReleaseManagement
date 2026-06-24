@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-06-23T07:02:15Z'
-  last_checked: '2026-06-23T07:02:15Z'
+  last_updated: '2026-06-24T07:00:07Z'
+  last_checked: '2026-06-24T07:00:07Z'
   releases_master_updated: '2026-06-21T17:08:30.639Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
@@ -424,10 +424,13 @@ progress:
     - YadingFang
     - Wojiaozhenghao
     - XunliYang
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.1-7b347a9
+    release_pr:
+      number: 112
+      state: open
+      url: https://github.com/camaraproject/ClickToDial/pull/112
     draft_release: null
     release_issue:
       number: 109
@@ -448,6 +451,8 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    click-to-dial: 0.2.0-rc.1
 - repository: ConnectedNetworkType
   github_url: https://github.com/camaraproject/ConnectedNetworkType
   release_track: meta-release
@@ -2646,31 +2651,28 @@ progress:
   github_url: https://github.com/camaraproject/Tenure
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r3.1
-  target_release_type: pre-release-alpha
+  target_release_tag: r3.2
+  target_release_type: pre-release-rc
   dependencies:
     commonalities_release: r4.3
     identity_consent_management_release: r4.2
   apis:
   - api_name: kyc-tenure
     target_api_version: 0.3.0
-    target_api_status: alpha
+    target_api_status: rc
     main_contacts:
     - eric-murray
     - GillesInnov35
     - grgpapadopoulos
     - fernandopradocabrillo
-  state: snapshot_active
+  state: planned
   artifacts:
-    snapshot_branch: release-snapshot/r3.1-2030fcc
-    release_pr:
-      number: 77
-      state: open
-      url: https://github.com/camaraproject/Tenure/pull/77
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
     release_issue:
-      number: 74
-      url: https://github.com/camaraproject/Tenure/issues/74
+      number: 84
+      url: https://github.com/camaraproject/Tenure/issues/84
   published_context:
     latest_public_release: r2.2
     newest_pre_release: null
@@ -2687,8 +2689,6 @@ progress:
       release_tag: null
       release_date: null
       apis: []
-  snapshot_api_versions:
-    kyc-tenure: 0.3.0-alpha.1
 - repository: TrafficInfluence
   github_url: https://github.com/camaraproject/TrafficInfluence
   release_track: meta-release
@@ -2766,10 +2766,13 @@ progress:
     - olsi-korkuti
     - stroncoso-quobis
     - GillesInnov35
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.1-f41f679
+    release_pr:
+      number: 120
+      state: open
+      url: https://github.com/camaraproject/VerifiedCaller/pull/120
     draft_release: null
     release_issue:
       number: 110
@@ -2790,6 +2793,9 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    brand-registration: 0.2.0-alpha.1
+    verified-caller: 0.2.0-alpha.1
 - repository: VoiceNotification
   github_url: https://github.com/camaraproject/VoiceNotification
   release_track: independent
