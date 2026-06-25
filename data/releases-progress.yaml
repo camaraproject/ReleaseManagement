@@ -1,14 +1,14 @@
 metadata:
-  last_updated: '2026-06-24T07:00:07Z'
-  last_checked: '2026-06-24T07:00:07Z'
-  releases_master_updated: '2026-06-21T17:08:30.639Z'
+  last_updated: '2026-06-25T06:59:56Z'
+  last_checked: '2026-06-25T06:59:56Z'
+  releases_master_updated: '2026-06-24T06:31:15.560Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
   repos_scanned: 61
   repos_new: 0
   repos_with_plan: 61
   repos_fully_onboarded: 38
-  repos_with_release_issue: 36
+  repos_with_release_issue: 35
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -31,9 +31,9 @@ meta_releases:
   m3_achieved: 3
   m4_achieved: 3
 - name: Sync26
-  total_apis: 51
-  m1_achieved: 6
-  m3_achieved: 0
+  total_apis: 53
+  m1_achieved: 9
+  m3_achieved: 2
   m4_achieved: 0
 progress:
 - repository: ApplicationEndpointDiscovery
@@ -1860,7 +1860,8 @@ progress:
       apis: []
 - repository: NetworkInsights
   github_url: https://github.com/camaraproject/NetworkInsights
-  release_track: independent
+  release_track: meta-release
+  meta_release: Sync26
   target_release_tag: r1.3
   target_release_type: public-release
   dependencies:
@@ -1877,17 +1878,12 @@ progress:
     target_api_status: public
     main_contacts:
     - cnzj-Gc
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r1.3-9f76793
-    release_pr:
-      number: 82
-      state: open
-      url: https://github.com/camaraproject/NetworkInsights/pull/82
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 61
-      url: https://github.com/camaraproject/NetworkInsights/issues/61
+    release_issue: null
   published_context:
     latest_public_release: null
     newest_pre_release: r1.2
@@ -1923,6 +1919,11 @@ progress:
   snapshot_api_versions:
     network-health-assessment: 0.1.0
     network-traffic-analysis: 0.1.0
+  warnings:
+  - code: W003
+    message: Release r1.3 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: NetworkSliceBooking
   github_url: https://github.com/camaraproject/NetworkSliceBooking
   release_track: meta-release
@@ -2675,12 +2676,14 @@ progress:
       url: https://github.com/camaraproject/Tenure/issues/84
   published_context:
     latest_public_release: r2.2
-    newest_pre_release: null
+    newest_pre_release: r3.1
   cycle_releases:
     m1:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r3.1
+      release_date: '2026-06-23T12:07:05Z'
+      apis:
+      - api_name: kyc-tenure
+        api_version: 0.3.0-alpha.1
     m3:
       release_tag: null
       release_date: null
@@ -2689,6 +2692,12 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  last_published:
+    release_tag: r3.1
+    release_date: '2026-06-23T12:07:05Z'
+    apis:
+    - api_name: kyc-tenure
+      api_version: 0.3.0-alpha.1
 - repository: TrafficInfluence
   github_url: https://github.com/camaraproject/TrafficInfluence
   release_track: meta-release
