@@ -1,14 +1,14 @@
 metadata:
-  last_updated: '2026-06-25T06:59:56Z'
-  last_checked: '2026-06-25T06:59:56Z'
-  releases_master_updated: '2026-06-24T06:31:15.560Z'
+  last_updated: '2026-06-26T07:06:38Z'
+  last_checked: '2026-06-26T07:06:38Z'
+  releases_master_updated: '2026-06-25T06:34:24.297Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
   repos_scanned: 61
   repos_new: 0
   repos_with_plan: 61
-  repos_fully_onboarded: 38
-  repos_with_release_issue: 35
+  repos_fully_onboarded: 37
+  repos_with_release_issue: 34
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -31,9 +31,9 @@ meta_releases:
   m3_achieved: 3
   m4_achieved: 3
 - name: Sync26
-  total_apis: 53
-  m1_achieved: 9
-  m3_achieved: 2
+  total_apis: 52
+  m1_achieved: 6
+  m3_achieved: 0
   m4_achieved: 0
 progress:
 - repository: ApplicationEndpointDiscovery
@@ -1202,8 +1202,7 @@ progress:
       apis: []
 - repository: EdgeApplicationManagement
   github_url: https://github.com/camaraproject/EdgeApplicationManagement
-  release_track: meta-release
-  meta_release: Sync26
+  release_track: independent
   target_release_tag: r1.2
   target_release_type: pre-release-rc
   dependencies:
@@ -1219,11 +1218,11 @@ progress:
     - Kevsy
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r1.2-e3c2aff
+    snapshot_branch: release-snapshot/r1.2-1b54865
     release_pr:
-      number: 40
+      number: 42
       state: open
-      url: https://github.com/camaraproject/EdgeApplicationManagement/pull/40
+      url: https://github.com/camaraproject/EdgeApplicationManagement/pull/42
     draft_release: null
     release_issue:
       number: 39
@@ -1821,27 +1820,41 @@ progress:
   release_track: meta-release
   meta_release: Sync26
   target_release_tag: r3.1
-  target_release_type: pre-release-rc
+  target_release_type: none
   dependencies:
     commonalities_release: r4.3
     identity_consent_management_release: r4.2
   apis:
   - api_name: network-access-management
     target_api_version: 0.3.0
-    target_api_status: rc
+    target_api_status: draft
     main_contacts:
     - caubut-charter
     - mayur007
     - clundie-CL
     - benhepworth
-  state: planned
+  - api_name: network-access-devices
+    target_api_version: 0.3.0
+    target_api_status: draft
+    main_contacts:
+    - caubut-charter
+    - mayur007
+    - clundie-CL
+    - benhepworth
+  - api_name: network-access-domains
+    target_api_version: 0.3.0
+    target_api_status: draft
+    main_contacts:
+    - caubut-charter
+    - mayur007
+    - clundie-CL
+    - benhepworth
+  state: not_planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue:
-      number: 146
-      url: https://github.com/camaraproject/NetworkAccessManagement/issues/146
+    release_issue: null
   published_context:
     latest_public_release: null
     newest_pre_release: r2.1
@@ -1860,8 +1873,7 @@ progress:
       apis: []
 - repository: NetworkInsights
   github_url: https://github.com/camaraproject/NetworkInsights
-  release_track: meta-release
-  meta_release: Sync26
+  release_track: independent
   target_release_tag: r1.3
   target_release_type: public-release
   dependencies:
@@ -1885,8 +1897,8 @@ progress:
     draft_release: null
     release_issue: null
   published_context:
-    latest_public_release: null
-    newest_pre_release: r1.2
+    latest_public_release: r1.3
+    newest_pre_release: null
   cycle_releases:
     m1:
       release_tag: r1.1
@@ -1905,25 +1917,24 @@ progress:
       - api_name: network-traffic-analysis
         api_version: 0.1.0-rc.1
     m4:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r1.3
+      release_date: '2026-06-25T00:45:46Z'
+      apis:
+      - api_name: network-health-assessment
+        api_version: 0.1.0
+      - api_name: network-traffic-analysis
+        api_version: 0.1.0
   last_published:
-    release_tag: r1.2
-    release_date: '2026-05-22T03:21:06Z'
+    release_tag: r1.3
+    release_date: '2026-06-25T00:45:46Z'
     apis:
     - api_name: network-health-assessment
-      api_version: 0.1.0-rc.1
+      api_version: 0.1.0
     - api_name: network-traffic-analysis
-      api_version: 0.1.0-rc.1
+      api_version: 0.1.0
   snapshot_api_versions:
     network-health-assessment: 0.1.0
     network-traffic-analysis: 0.1.0
-  warnings:
-  - code: W003
-    message: Release r1.3 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: NetworkSliceBooking
   github_url: https://github.com/camaraproject/NetworkSliceBooking
   release_track: meta-release
@@ -2457,10 +2468,13 @@ progress:
     - benhepworth
     - maheshc01
     - kevsy
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.1-fb4a91c
+    release_pr:
+      number: 102
+      state: open
+      url: https://github.com/camaraproject/SessionInsights/pull/102
     draft_release: null
     release_issue:
       number: 100
@@ -2481,6 +2495,8 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    session-insights: 0.2.0-rc.1
 - repository: SimpleEdgeDiscovery
   github_url: https://github.com/camaraproject/SimpleEdgeDiscovery
   release_track: meta-release
