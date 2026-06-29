@@ -1,14 +1,14 @@
 metadata:
-  last_updated: '2026-06-26T07:06:38Z'
-  last_checked: '2026-06-26T07:06:38Z'
+  last_updated: '2026-06-29T08:30:16Z'
+  last_checked: '2026-06-29T08:30:16Z'
   releases_master_updated: '2026-06-25T06:34:24.297Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
   repos_scanned: 61
   repos_new: 0
   repos_with_plan: 61
-  repos_fully_onboarded: 37
-  repos_with_release_issue: 34
+  repos_fully_onboarded: 38
+  repos_with_release_issue: 36
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -31,7 +31,7 @@ meta_releases:
   m3_achieved: 3
   m4_achieved: 3
 - name: Sync26
-  total_apis: 52
+  total_apis: 55
   m1_achieved: 6
   m3_achieved: 0
   m4_achieved: 0
@@ -260,54 +260,44 @@ progress:
 - repository: CallForwardingSignal
   github_url: https://github.com/camaraproject/CallForwardingSignal
   release_track: meta-release
-  meta_release: Fall25
-  target_release_tag: r3.3
-  target_release_type: none
+  meta_release: Sync26
+  target_release_tag: r4.1
+  target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r3.4
-    identity_consent_management_release: r3.3
+    commonalities_release: r4.3
+    identity_consent_management_release: r4.2
   apis:
   - api_name: call-forwarding-signal
-    target_api_version: 0.4.0
-    target_api_status: public
+    target_api_version: 0.5.0
+    target_api_status: rc
     main_contacts:
     - FabrizioMoggio
     - bigludo7
     - chinaunicomyangfan
-  state: not_planned
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 227
+      url: https://github.com/camaraproject/CallForwardingSignal/issues/227
   published_context:
     latest_public_release: r3.3
     newest_pre_release: null
   cycle_releases:
     m1:
-      release_tag: r3.1
-      release_date: '2025-06-16T09:51:19Z'
-      apis:
-      - api_name: call-forwarding-signal
-        api_version: 0.4.0-alpha.1
+      release_tag: null
+      release_date: null
+      apis: []
     m3:
-      release_tag: r3.2
-      release_date: '2025-07-16T21:31:41Z'
-      apis:
-      - api_name: call-forwarding-signal
-        api_version: 0.4.0-rc.1
+      release_tag: null
+      release_date: null
+      apis: []
     m4:
-      release_tag: r3.3
-      release_date: '2025-09-16T14:38:30Z'
-      apis:
-      - api_name: call-forwarding-signal
-        api_version: 0.4.0
-  last_published:
-    release_tag: r3.3
-    release_date: '2025-09-16T14:38:30Z'
-    apis:
-    - api_name: call-forwarding-signal
-      api_version: 0.4.0
+      release_tag: null
+      release_date: null
+      apis: []
 - repository: CapabilitiesAndRuntimeRestrictions
   github_url: https://github.com/camaraproject/CapabilitiesAndRuntimeRestrictions
   release_track: independent
@@ -1216,13 +1206,10 @@ progress:
     - JoseMConde
     - Seralogar
     - Kevsy
-  state: snapshot_active
+  state: planned
   artifacts:
-    snapshot_branch: release-snapshot/r1.2-1b54865
-    release_pr:
-      number: 42
-      state: open
-      url: https://github.com/camaraproject/EdgeApplicationManagement/pull/42
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
     release_issue:
       number: 39
@@ -1251,8 +1238,6 @@ progress:
     apis:
     - api_name: edge-application-management
       api_version: 0.1.0-alpha.1
-  snapshot_api_versions:
-    edge-application-management: 0.1.0-rc.1
 - repository: EnergyFootprintNotification
   github_url: https://github.com/camaraproject/EnergyFootprintNotification
   release_track: meta-release
@@ -1698,10 +1683,13 @@ progress:
     target_api_status: rc
     main_contacts:
     - lihaojie-CMCC
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.1-e8fdc70
+    release_pr:
+      number: 35
+      state: open
+      url: https://github.com/camaraproject/ModelAsAService/pull/35
     draft_release: null
     release_issue:
       number: 32
@@ -1722,6 +1710,10 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    knowledge-base: 0.2.0-rc.1
+    qa-assistant-manage: 0.2.0-rc.1
+    qa-assistant-service: 0.2.0-rc.1
 - repository: MostFrequentLocation
   github_url: https://github.com/camaraproject/MostFrequentLocation
   release_track: meta-release
@@ -1873,68 +1865,54 @@ progress:
       apis: []
 - repository: NetworkInsights
   github_url: https://github.com/camaraproject/NetworkInsights
-  release_track: independent
-  target_release_tag: r1.3
-  target_release_type: public-release
+  release_track: meta-release
+  meta_release: Sync26
+  target_release_tag: r2.1
+  target_release_type: pre-release-rc
   dependencies:
     commonalities_release: r4.3
     identity_consent_management_release: r4.2
   apis:
   - api_name: network-health-assessment
-    target_api_version: 0.1.0
-    target_api_status: public
+    target_api_version: 0.2.0
+    target_api_status: rc
     main_contacts:
     - cnzj-Gc
   - api_name: network-traffic-analysis
-    target_api_version: 0.1.0
-    target_api_status: public
+    target_api_version: 0.2.0
+    target_api_status: rc
     main_contacts:
     - cnzj-Gc
-  state: published
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.1-bd43f63
+    release_pr:
+      number: 89
+      state: open
+      url: https://github.com/camaraproject/NetworkInsights/pull/89
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 88
+      url: https://github.com/camaraproject/NetworkInsights/issues/88
   published_context:
     latest_public_release: r1.3
     newest_pre_release: null
   cycle_releases:
     m1:
-      release_tag: r1.1
-      release_date: '2026-04-16T01:13:01Z'
-      apis:
-      - api_name: network-health-assessment
-        api_version: 0.1.0-alpha.1
-      - api_name: network-traffic-analysis
-        api_version: 0.1.0-alpha.1
+      release_tag: null
+      release_date: null
+      apis: []
     m3:
-      release_tag: r1.2
-      release_date: '2026-05-22T03:21:06Z'
-      apis:
-      - api_name: network-health-assessment
-        api_version: 0.1.0-rc.1
-      - api_name: network-traffic-analysis
-        api_version: 0.1.0-rc.1
+      release_tag: null
+      release_date: null
+      apis: []
     m4:
-      release_tag: r1.3
-      release_date: '2026-06-25T00:45:46Z'
-      apis:
-      - api_name: network-health-assessment
-        api_version: 0.1.0
-      - api_name: network-traffic-analysis
-        api_version: 0.1.0
-  last_published:
-    release_tag: r1.3
-    release_date: '2026-06-25T00:45:46Z'
-    apis:
-    - api_name: network-health-assessment
-      api_version: 0.1.0
-    - api_name: network-traffic-analysis
-      api_version: 0.1.0
+      release_tag: null
+      release_date: null
+      apis: []
   snapshot_api_versions:
-    network-health-assessment: 0.1.0
-    network-traffic-analysis: 0.1.0
+    network-health-assessment: 0.2.0-rc.1
+    network-traffic-analysis: 0.2.0-rc.1
 - repository: NetworkSliceBooking
   github_url: https://github.com/camaraproject/NetworkSliceBooking
   release_track: meta-release
@@ -3043,6 +3021,51 @@ progress:
     apis:
     - api_name: call-forwarding-signal
       api_version: 0.2.0
+  source: historical
+- repository: CallForwardingSignal
+  github_url: https://github.com/camaraproject/CallForwardingSignal
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: null
+  target_release_type: null
+  apis:
+  - api_name: call-forwarding-signal
+    target_api_version: 0.4.0
+    target_api_status: ''
+  state: historical
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: r3.1
+      release_date: '2025-06-16T09:51:19Z'
+      apis:
+      - api_name: call-forwarding-signal
+        api_version: 0.4.0-alpha.1
+    m3:
+      release_tag: r3.2
+      release_date: '2025-07-16T21:31:41Z'
+      apis:
+      - api_name: call-forwarding-signal
+        api_version: 0.4.0-rc.1
+    m4:
+      release_tag: r3.3
+      release_date: '2025-09-16T14:38:30Z'
+      apis:
+      - api_name: call-forwarding-signal
+        api_version: 0.4.0
+  last_published:
+    release_tag: r3.3
+    release_date: '2025-09-16T14:38:30Z'
+    apis:
+    - api_name: call-forwarding-signal
+      api_version: 0.4.0
   source: historical
 - repository: CallForwardingSignal
   github_url: https://github.com/camaraproject/CallForwardingSignal
@@ -4804,6 +4827,61 @@ progress:
     apis:
     - api_name: network-access-management
       api_version: 0.2.0-alpha.1
+  source: historical
+- repository: NetworkInsights
+  github_url: https://github.com/camaraproject/NetworkInsights
+  release_track: independent
+  target_release_tag: null
+  target_release_type: null
+  apis:
+  - api_name: network-health-assessment
+    target_api_version: 0.1.0
+    target_api_status: ''
+  - api_name: network-traffic-analysis
+    target_api_version: 0.1.0
+    target_api_status: ''
+  state: historical
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: r1.1
+      release_date: '2026-04-16T01:13:01Z'
+      apis:
+      - api_name: network-health-assessment
+        api_version: 0.1.0-alpha.1
+      - api_name: network-traffic-analysis
+        api_version: 0.1.0-alpha.1
+    m3:
+      release_tag: r1.2
+      release_date: '2026-05-22T03:21:06Z'
+      apis:
+      - api_name: network-health-assessment
+        api_version: 0.1.0-rc.1
+      - api_name: network-traffic-analysis
+        api_version: 0.1.0-rc.1
+    m4:
+      release_tag: r1.3
+      release_date: '2026-06-25T00:45:46Z'
+      apis:
+      - api_name: network-health-assessment
+        api_version: 0.1.0
+      - api_name: network-traffic-analysis
+        api_version: 0.1.0
+  last_published:
+    release_tag: r1.3
+    release_date: '2026-06-25T00:45:46Z'
+    apis:
+    - api_name: network-health-assessment
+      api_version: 0.1.0
+    - api_name: network-traffic-analysis
+      api_version: 0.1.0
   source: historical
 - repository: NetworkSliceBooking
   github_url: https://github.com/camaraproject/NetworkSliceBooking
