@@ -1,13 +1,13 @@
 metadata:
-  last_updated: '2026-06-29T08:30:16Z'
-  last_checked: '2026-06-29T08:30:16Z'
+  last_updated: '2026-06-30T07:06:37Z'
+  last_checked: '2026-06-30T07:06:37Z'
   releases_master_updated: '2026-06-25T06:34:24.297Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
   repos_scanned: 61
   repos_new: 0
   repos_with_plan: 61
-  repos_fully_onboarded: 38
+  repos_fully_onboarded: 39
   repos_with_release_issue: 36
 meta_releases:
 - name: Fall24
@@ -31,7 +31,7 @@ meta_releases:
   m3_achieved: 3
   m4_achieved: 3
 - name: Sync26
-  total_apis: 55
+  total_apis: 54
   m1_achieved: 6
   m3_achieved: 0
   m4_achieved: 0
@@ -656,10 +656,13 @@ progress:
     - PedroDiez
     - KevScarr
     - rartych
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r3.1-44c1fae
+    release_pr:
+      number: 84
+      state: open
+      url: https://github.com/camaraproject/CustomerInsights/pull/84
     draft_release: null
     release_issue:
       number: 73
@@ -680,6 +683,8 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    customer-insights: 0.3.0-rc.1
 - repository: DedicatedNetworks
   github_url: https://github.com/camaraproject/DedicatedNetworks
   release_track: meta-release
@@ -1812,22 +1817,14 @@ progress:
   release_track: meta-release
   meta_release: Sync26
   target_release_tag: r3.1
-  target_release_type: none
+  target_release_type: pre-release-rc
   dependencies:
     commonalities_release: r4.3
     identity_consent_management_release: r4.2
   apis:
-  - api_name: network-access-management
-    target_api_version: 0.3.0
-    target_api_status: draft
-    main_contacts:
-    - caubut-charter
-    - mayur007
-    - clundie-CL
-    - benhepworth
   - api_name: network-access-devices
     target_api_version: 0.3.0
-    target_api_status: draft
+    target_api_status: rc
     main_contacts:
     - caubut-charter
     - mayur007
@@ -1835,18 +1832,23 @@ progress:
     - benhepworth
   - api_name: network-access-domains
     target_api_version: 0.3.0
-    target_api_status: draft
+    target_api_status: rc
     main_contacts:
     - caubut-charter
     - mayur007
     - clundie-CL
     - benhepworth
-  state: not_planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r3.1-99c6b06
+    release_pr:
+      number: 164
+      state: open
+      url: https://github.com/camaraproject/NetworkAccessManagement/pull/164
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 146
+      url: https://github.com/camaraproject/NetworkAccessManagement/issues/146
   published_context:
     latest_public_release: null
     newest_pre_release: r2.1
@@ -1863,6 +1865,9 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    network-access-devices: 0.3.0-rc.1
+    network-access-domains: 0.3.0-rc.1
 - repository: NetworkInsights
   github_url: https://github.com/camaraproject/NetworkInsights
   release_track: meta-release
@@ -2769,17 +2774,12 @@ progress:
     - olsi-korkuti
     - stroncoso-quobis
     - GillesInnov35
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r2.1-f41f679
-    release_pr:
-      number: 120
-      state: open
-      url: https://github.com/camaraproject/VerifiedCaller/pull/120
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 110
-      url: https://github.com/camaraproject/VerifiedCaller/issues/110
+    release_issue: null
   published_context:
     latest_public_release: r1.3
     newest_pre_release: null
@@ -2799,6 +2799,11 @@ progress:
   snapshot_api_versions:
     brand-registration: 0.2.0-alpha.1
     verified-caller: 0.2.0-alpha.1
+  warnings:
+  - code: W003
+    message: Release r2.1 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: VoiceNotification
   github_url: https://github.com/camaraproject/VoiceNotification
   release_track: independent
