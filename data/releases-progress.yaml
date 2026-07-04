@@ -1,7 +1,7 @@
 metadata:
-  last_updated: '2026-06-30T07:06:37Z'
-  last_checked: '2026-06-30T07:06:37Z'
-  releases_master_updated: '2026-06-25T06:34:24.297Z'
+  last_updated: '2026-07-04T08:23:29Z'
+  last_checked: '2026-07-04T08:23:29Z'
+  releases_master_updated: '2026-07-01T06:54:32.288Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
   repos_scanned: 61
@@ -31,8 +31,8 @@ meta_releases:
   m3_achieved: 3
   m4_achieved: 3
 - name: Sync26
-  total_apis: 54
-  m1_achieved: 6
+  total_apis: 53
+  m1_achieved: 8
   m3_achieved: 0
   m4_achieved: 0
 progress:
@@ -607,10 +607,13 @@ progress:
     - jpengar
     - AxelNennker
     - sebdewet
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r1.2-c50a0d5
+    release_pr:
+      number: 35
+      state: open
+      url: https://github.com/camaraproject/ConsentManagement/pull/35
     draft_release: null
     release_issue:
       number: 34
@@ -639,6 +642,8 @@ progress:
     apis:
     - api_name: consent-management
       api_version: 0.1.0-rc.1
+  snapshot_api_versions:
+    consent-management: 0.1.0
 - repository: CustomerInsights
   github_url: https://github.com/camaraproject/CustomerInsights
   release_track: meta-release
@@ -1211,10 +1216,13 @@ progress:
     - JoseMConde
     - Seralogar
     - Kevsy
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r1.2-7924d48
+    release_pr:
+      number: 45
+      state: open
+      url: https://github.com/camaraproject/EdgeApplicationManagement/pull/45
     draft_release: null
     release_issue:
       number: 39
@@ -1243,6 +1251,8 @@ progress:
     apis:
     - api_name: edge-application-management
       api_version: 0.1.0-alpha.1
+  snapshot_api_versions:
+    edge-application-management: 0.1.0-rc.1
 - repository: EnergyFootprintNotification
   github_url: https://github.com/camaraproject/EnergyFootprintNotification
   release_track: meta-release
@@ -1418,27 +1428,22 @@ progress:
     - chenfr2-ChinaTelecom
     - XunliYang
     - rkandoi
-  state: draft_ready
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r1.1-c924333
-    release_pr:
-      number: 40
-      state: closed
-      url: https://github.com/camaraproject/IoTDeviceManagement/pull/40
-    draft_release:
-      name: r1.1
-      url: https://github.com/camaraproject/IoTDeviceManagement/releases/tag/untagged-ea0f9175eb29cd2fa4e1
-    release_issue:
-      number: 38
-      url: https://github.com/camaraproject/IoTDeviceManagement/issues/38
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
   published_context:
     latest_public_release: null
-    newest_pre_release: null
+    newest_pre_release: r1.1
   cycle_releases:
     m1:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r1.1
+      release_date: '2026-06-30T07:59:58Z'
+      apis:
+      - api_name: esim-profile-management
+        api_version: 0.1.0-alpha.1
     m3:
       release_tag: null
       release_date: null
@@ -1447,6 +1452,12 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  last_published:
+    release_tag: r1.1
+    release_date: '2026-06-30T07:59:58Z'
+    apis:
+    - api_name: esim-profile-management
+      api_version: 0.1.0-alpha.1
   snapshot_api_versions:
     esim-profile-management: 0.1.0-alpha.1
 - repository: IoTNetworkOptimization
@@ -2267,14 +2278,17 @@ progress:
     main_contacts:
     - Masa8106
     - jlurien
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.1-8f1611a
+    release_pr:
+      number: 109
+      state: open
+      url: https://github.com/camaraproject/QoSBooking/pull/109
     draft_release: null
     release_issue:
-      number: 94
-      url: https://github.com/camaraproject/QoSBooking/issues/94
+      number: 108
+      url: https://github.com/camaraproject/QoSBooking/issues/108
   published_context:
     latest_public_release: r1.2
     newest_pre_release: null
@@ -2291,6 +2305,9 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    qos-booking-and-assignment: 0.2.0-rc.1
+    qos-booking: 0.2.0-rc.1
 - repository: QualityOnDemand
   github_url: https://github.com/camaraproject/QualityOnDemand
   release_track: meta-release
@@ -2331,8 +2348,8 @@ progress:
     release_pr: null
     draft_release: null
     release_issue:
-      number: 567
-      url: https://github.com/camaraproject/QualityOnDemand/issues/567
+      number: 583
+      url: https://github.com/camaraproject/QualityOnDemand/issues/583
   published_context:
     latest_public_release: r3.2
     newest_pre_release: null
@@ -2752,15 +2769,15 @@ progress:
   github_url: https://github.com/camaraproject/VerifiedCaller
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r2.1
-  target_release_type: pre-release-alpha
+  target_release_tag: r2.2
+  target_release_type: pre-release-rc
   dependencies:
     commonalities_release: r4.3
     identity_consent_management_release: r4.2
   apis:
   - api_name: brand-registration
     target_api_version: 0.2.0
-    target_api_status: alpha
+    target_api_status: rc
     main_contacts:
     - alpaycetin74
     - olsi-korkuti
@@ -2768,26 +2785,32 @@ progress:
     - GillesInnov35
   - api_name: verified-caller
     target_api_version: 0.2.0
-    target_api_status: alpha
+    target_api_status: rc
     main_contacts:
     - alpaycetin74
     - olsi-korkuti
     - stroncoso-quobis
     - GillesInnov35
-  state: published
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 128
+      url: https://github.com/camaraproject/VerifiedCaller/issues/128
   published_context:
     latest_public_release: r1.3
-    newest_pre_release: null
+    newest_pre_release: r2.1
   cycle_releases:
     m1:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r2.1
+      release_date: '2026-06-30T06:06:19Z'
+      apis:
+      - api_name: brand-registration
+        api_version: 0.2.0-alpha.1
+      - api_name: verified-caller
+        api_version: 0.2.0-alpha.1
     m3:
       release_tag: null
       release_date: null
@@ -2796,14 +2819,14 @@ progress:
       release_tag: null
       release_date: null
       apis: []
-  snapshot_api_versions:
-    brand-registration: 0.2.0-alpha.1
-    verified-caller: 0.2.0-alpha.1
-  warnings:
-  - code: W003
-    message: Release r2.1 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
+  last_published:
+    release_tag: r2.1
+    release_date: '2026-06-30T06:06:19Z'
+    apis:
+    - api_name: brand-registration
+      api_version: 0.2.0-alpha.1
+    - api_name: verified-caller
+      api_version: 0.2.0-alpha.1
 - repository: VoiceNotification
   github_url: https://github.com/camaraproject/VoiceNotification
   release_track: independent
@@ -2894,14 +2917,6 @@ progress:
     - pradeepachar-mavenir
     - deepakjaiswal1
     - teikuran
-  - api_name: webrtc-events
-    target_api_version: 0.3.0
-    target_api_status: rc
-    main_contacts:
-    - stroncoso
-    - pradeepachar-mavenir
-    - deepakjaiswal1
-    - teikuran
   - api_name: webrtc-registration
     target_api_version: 0.4.0
     target_api_status: rc
@@ -2910,13 +2925,10 @@ progress:
     - pradeepachar-mavenir
     - deepakjaiswal1
     - teikuran
-  state: snapshot_active
+  state: planned
   artifacts:
-    snapshot_branch: release-snapshot/r3.1-a9f1a4b
-    release_pr:
-      number: 176
-      state: open
-      url: https://github.com/camaraproject/WebRTC/pull/176
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
     release_issue:
       number: 155
@@ -2937,10 +2949,6 @@ progress:
       release_tag: null
       release_date: null
       apis: []
-  snapshot_api_versions:
-    webrtc-call-handling: 0.4.0-rc.1
-    webrtc-events: 0.3.0-rc.1
-    webrtc-registration: 0.4.0-rc.1
 - repository: BlockchainPublicAddress
   github_url: https://github.com/camaraproject/BlockchainPublicAddress
   release_track: meta-release
