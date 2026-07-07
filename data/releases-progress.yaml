@@ -1,14 +1,14 @@
 metadata:
-  last_updated: '2026-07-04T08:23:29Z'
-  last_checked: '2026-07-04T08:23:29Z'
+  last_updated: '2026-07-07T06:59:32Z'
+  last_checked: '2026-07-07T06:59:32Z'
   releases_master_updated: '2026-07-01T06:54:32.288Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
   repos_scanned: 61
   repos_new: 0
   repos_with_plan: 61
-  repos_fully_onboarded: 39
-  repos_with_release_issue: 36
+  repos_fully_onboarded: 43
+  repos_with_release_issue: 40
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -31,7 +31,7 @@ meta_releases:
   m3_achieved: 3
   m4_achieved: 3
 - name: Sync26
-  total_apis: 53
+  total_apis: 58
   m1_achieved: 8
   m3_achieved: 0
   m4_achieved: 0
@@ -39,16 +39,16 @@ progress:
 - repository: ApplicationEndpointDiscovery
   github_url: https://github.com/camaraproject/ApplicationEndpointDiscovery
   release_track: meta-release
-  meta_release: Fall25
-  target_release_tag: r1.2
-  target_release_type: none
+  meta_release: Sync26
+  target_release_tag: r2.1
+  target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r3.4
-    identity_consent_management_release: r3.3
+    commonalities_release: r4.3
+    identity_consent_management_release: r4.2
   apis:
   - api_name: application-endpoint-discovery
-    target_api_version: 0.1.0
-    target_api_status: public
+    target_api_version: 0.2.0
+    target_api_status: rc
     main_contacts:
     - gunjald
     - Kevsy
@@ -58,12 +58,14 @@ progress:
     - gainsley
     - JoseMConde
     - maheshc01
-  state: not_planned
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 39
+      url: https://github.com/camaraproject/ApplicationEndpointDiscovery/issues/39
   published_context:
     latest_public_release: r1.2
     newest_pre_release: null
@@ -73,36 +75,26 @@ progress:
       release_date: null
       apis: []
     m3:
-      release_tag: r1.1
-      release_date: '2025-07-24T10:18:04Z'
-      apis:
-      - api_name: application-endpoint-discovery
-        api_version: 0.1.0-rc.1
+      release_tag: null
+      release_date: null
+      apis: []
     m4:
-      release_tag: r1.2
-      release_date: '2025-09-16T19:23:11Z'
-      apis:
-      - api_name: application-endpoint-discovery
-        api_version: 0.1.0
-  last_published:
-    release_tag: r1.2
-    release_date: '2025-09-16T19:23:11Z'
-    apis:
-    - api_name: application-endpoint-discovery
-      api_version: 0.1.0
+      release_tag: null
+      release_date: null
+      apis: []
 - repository: ApplicationEndpointRegistration
   github_url: https://github.com/camaraproject/ApplicationEndpointRegistration
   release_track: meta-release
-  meta_release: Fall25
-  target_release_tag: r1.2
-  target_release_type: none
+  meta_release: Sync26
+  target_release_tag: r2.1
+  target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r3.4
-    identity_consent_management_release: r3.3
+    commonalities_release: r4.3
+    identity_consent_management_release: r4.2
   apis:
   - api_name: application-endpoint-registration
-    target_api_version: 0.1.0
-    target_api_status: public
+    target_api_version: 0.2.0
+    target_api_status: rc
     main_contacts:
     - gunjald
     - Kevsy
@@ -112,12 +104,14 @@ progress:
     - gainsley
     - JoseMConde
     - maheshc01
-  state: not_planned
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 37
+      url: https://github.com/camaraproject/ApplicationEndpointRegistration/issues/37
   published_context:
     latest_public_release: r1.2
     newest_pre_release: null
@@ -127,46 +121,38 @@ progress:
       release_date: null
       apis: []
     m3:
-      release_tag: r1.1
-      release_date: '2025-07-31T09:55:23Z'
-      apis:
-      - api_name: application-endpoint-registration
-        api_version: 0.1.0-rc.1
+      release_tag: null
+      release_date: null
+      apis: []
     m4:
-      release_tag: r1.2
-      release_date: '2025-09-17T09:17:03Z'
-      apis:
-      - api_name: application-endpoint-registration
-        api_version: 0.1.0
-  last_published:
-    release_tag: r1.2
-    release_date: '2025-09-17T09:17:03Z'
-    apis:
-    - api_name: application-endpoint-registration
-      api_version: 0.1.0
+      release_tag: null
+      release_date: null
+      apis: []
 - repository: ApplicationProfiles
   github_url: https://github.com/camaraproject/ApplicationProfiles
   release_track: meta-release
-  meta_release: Fall25
-  target_release_tag: r1.2
-  target_release_type: none
+  meta_release: Sync26
+  target_release_tag: r2.1
+  target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r3.4
-    identity_consent_management_release: r3.3
+    commonalities_release: r4.3
+    identity_consent_management_release: r4.2
   apis:
   - api_name: application-profiles
-    target_api_version: 0.5.0
-    target_api_status: public
+    target_api_version: 0.6.0
+    target_api_status: rc
     main_contacts:
     - maheshc01
     - Kevsy
     - urvika-v
-  state: not_planned
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 31
+      url: https://github.com/camaraproject/ApplicationProfiles/issues/31
   published_context:
     latest_public_release: r1.2
     newest_pre_release: null
@@ -176,23 +162,13 @@ progress:
       release_date: null
       apis: []
     m3:
-      release_tag: r1.1
-      release_date: '2025-07-29T16:08:11Z'
-      apis:
-      - api_name: application-profiles
-        api_version: 0.5.0-rc.1
+      release_tag: null
+      release_date: null
+      apis: []
     m4:
-      release_tag: r1.2
-      release_date: '2025-09-17T15:37:44Z'
-      apis:
-      - api_name: application-profiles
-        api_version: 0.5.0
-  last_published:
-    release_tag: r1.2
-    release_date: '2025-09-17T15:37:44Z'
-    apis:
-    - api_name: application-profiles
-      api_version: 0.5.0
+      release_tag: null
+      release_date: null
+      apis: []
 - repository: BlockchainPublicAddress
   github_url: https://github.com/camaraproject/BlockchainPublicAddress
   release_track: meta-release
@@ -2084,16 +2060,16 @@ progress:
 - repository: OptimalEdgeDiscovery
   github_url: https://github.com/camaraproject/OptimalEdgeDiscovery
   release_track: meta-release
-  meta_release: Fall25
-  target_release_tag: r1.2
-  target_release_type: none
+  meta_release: Sync26
+  target_release_tag: r2.1
+  target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r3.4
-    identity_consent_management_release: r3.3
+    commonalities_release: r4.3
+    identity_consent_management_release: r4.2
   apis:
   - api_name: optimal-edge-discovery
-    target_api_version: 0.1.0
-    target_api_status: public
+    target_api_version: 0.2.0
+    target_api_status: rc
     main_contacts:
     - gunjald
     - Kevsy
@@ -2103,12 +2079,14 @@ progress:
     - gainsley
     - JoseMConde
     - maheshc01
-  state: not_planned
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 44
+      url: https://github.com/camaraproject/OptimalEdgeDiscovery/issues/44
   published_context:
     latest_public_release: r1.2
     newest_pre_release: null
@@ -2118,23 +2096,13 @@ progress:
       release_date: null
       apis: []
     m3:
-      release_tag: r1.1
-      release_date: '2025-07-30T16:41:18Z'
-      apis:
-      - api_name: optimal-edge-discovery
-        api_version: 0.1.0-rc.1
+      release_tag: null
+      release_date: null
+      apis: []
     m4:
-      release_tag: r1.2
-      release_date: '2025-09-17T15:32:16Z'
-      apis:
-      - api_name: optimal-edge-discovery
-        api_version: 0.1.0
-  last_published:
-    release_tag: r1.2
-    release_date: '2025-09-17T15:32:16Z'
-    apis:
-    - api_name: optimal-edge-discovery
-      api_version: 0.1.0
+      release_tag: null
+      release_date: null
+      apis: []
 - repository: OTPValidation
   github_url: https://github.com/camaraproject/OTPValidation
   release_track: meta-release
@@ -2514,10 +2482,13 @@ progress:
     - Kevsy
     - JoseMConde
     - maheshc01
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r3.1-5541755
+    release_pr:
+      number: 186
+      state: open
+      url: https://github.com/camaraproject/SimpleEdgeDiscovery/pull/186
     draft_release: null
     release_issue:
       number: 169
@@ -2538,6 +2509,8 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    simple-edge-discovery: 2.1.0-rc.2
 - repository: SimSwap
   github_url: https://github.com/camaraproject/SimSwap
   release_track: meta-release
@@ -2906,11 +2879,19 @@ progress:
   target_release_tag: r3.1
   target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r4.2
+    commonalities_release: r4.3
     identity_consent_management_release: r4.2
   apis:
   - api_name: webrtc-call-handling
     target_api_version: 0.4.0
+    target_api_status: rc
+    main_contacts:
+    - stroncoso
+    - pradeepachar-mavenir
+    - deepakjaiswal1
+    - teikuran
+  - api_name: webrtc-events-subscriptions
+    target_api_version: 0.3.0
     target_api_status: rc
     main_contacts:
     - stroncoso
@@ -2949,6 +2930,135 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+- repository: ApplicationEndpointDiscovery
+  github_url: https://github.com/camaraproject/ApplicationEndpointDiscovery
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: null
+  target_release_type: null
+  apis:
+  - api_name: application-endpoint-discovery
+    target_api_version: 0.1.0
+    target_api_status: ''
+  state: historical
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis: []
+    m3:
+      release_tag: r1.1
+      release_date: '2025-07-24T10:18:04Z'
+      apis:
+      - api_name: application-endpoint-discovery
+        api_version: 0.1.0-rc.1
+    m4:
+      release_tag: r1.2
+      release_date: '2025-09-16T19:23:11Z'
+      apis:
+      - api_name: application-endpoint-discovery
+        api_version: 0.1.0
+  last_published:
+    release_tag: r1.2
+    release_date: '2025-09-16T19:23:11Z'
+    apis:
+    - api_name: application-endpoint-discovery
+      api_version: 0.1.0
+  source: historical
+- repository: ApplicationEndpointRegistration
+  github_url: https://github.com/camaraproject/ApplicationEndpointRegistration
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: null
+  target_release_type: null
+  apis:
+  - api_name: application-endpoint-registration
+    target_api_version: 0.1.0
+    target_api_status: ''
+  state: historical
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis: []
+    m3:
+      release_tag: r1.1
+      release_date: '2025-07-31T09:55:23Z'
+      apis:
+      - api_name: application-endpoint-registration
+        api_version: 0.1.0-rc.1
+    m4:
+      release_tag: r1.2
+      release_date: '2025-09-17T09:17:03Z'
+      apis:
+      - api_name: application-endpoint-registration
+        api_version: 0.1.0
+  last_published:
+    release_tag: r1.2
+    release_date: '2025-09-17T09:17:03Z'
+    apis:
+    - api_name: application-endpoint-registration
+      api_version: 0.1.0
+  source: historical
+- repository: ApplicationProfiles
+  github_url: https://github.com/camaraproject/ApplicationProfiles
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: null
+  target_release_type: null
+  apis:
+  - api_name: application-profiles
+    target_api_version: 0.5.0
+    target_api_status: ''
+  state: historical
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis: []
+    m3:
+      release_tag: r1.1
+      release_date: '2025-07-29T16:08:11Z'
+      apis:
+      - api_name: application-profiles
+        api_version: 0.5.0-rc.1
+    m4:
+      release_tag: r1.2
+      release_date: '2025-09-17T15:37:44Z'
+      apis:
+      - api_name: application-profiles
+        api_version: 0.5.0
+  last_published:
+    release_tag: r1.2
+    release_date: '2025-09-17T15:37:44Z'
+    apis:
+    - api_name: application-profiles
+      api_version: 0.5.0
+  source: historical
 - repository: BlockchainPublicAddress
   github_url: https://github.com/camaraproject/BlockchainPublicAddress
   release_track: meta-release
@@ -5282,6 +5392,49 @@ progress:
     apis:
     - api_name: one-time-password-sms
       api_version: 1.1.0
+  source: historical
+- repository: OptimalEdgeDiscovery
+  github_url: https://github.com/camaraproject/OptimalEdgeDiscovery
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: null
+  target_release_type: null
+  apis:
+  - api_name: optimal-edge-discovery
+    target_api_version: 0.1.0
+    target_api_status: ''
+  state: historical
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis: []
+    m3:
+      release_tag: r1.1
+      release_date: '2025-07-30T16:41:18Z'
+      apis:
+      - api_name: optimal-edge-discovery
+        api_version: 0.1.0-rc.1
+    m4:
+      release_tag: r1.2
+      release_date: '2025-09-17T15:32:16Z'
+      apis:
+      - api_name: optimal-edge-discovery
+        api_version: 0.1.0
+  last_published:
+    release_tag: r1.2
+    release_date: '2025-09-17T15:32:16Z'
+    apis:
+    - api_name: optimal-edge-discovery
+      api_version: 0.1.0
   source: historical
 - repository: PopulationDensityData
   github_url: https://github.com/camaraproject/PopulationDensityData
