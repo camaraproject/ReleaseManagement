@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-07-07T06:59:32Z'
-  last_checked: '2026-07-07T06:59:32Z'
+  last_updated: '2026-07-07T15:47:28Z'
+  last_checked: '2026-07-07T15:47:28Z'
   releases_master_updated: '2026-07-01T06:54:32.288Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
@@ -445,10 +445,13 @@ progress:
     - bigludo7
     - sachinvodafone
     - akoshunyadi
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.1-fc52763
+    release_pr:
+      number: 67
+      state: open
+      url: https://github.com/camaraproject/ConnectedNetworkType/pull/67
     draft_release: null
     release_issue:
       number: 57
@@ -469,6 +472,9 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    connected-network-type-subscriptions: 0.3.0-rc.1
+    connected-network-type: 0.3.0-rc.1
 - repository: ConnectivityInsights
   github_url: https://github.com/camaraproject/ConnectivityInsights
   release_track: meta-release
@@ -708,10 +714,13 @@ progress:
     - PeterKovacs2
     - carlosromerog
     - eric-murray
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.2-2107c77
+    release_pr:
+      number: 128
+      state: open
+      url: https://github.com/camaraproject/DedicatedNetworks/pull/128
     draft_release: null
     release_issue:
       number: 116
@@ -752,6 +761,11 @@ progress:
       api_version: 0.2.0-alpha.1
     - api_name: dedicated-network-areas
       api_version: 0.1.0-alpha.1
+  snapshot_api_versions:
+    dedicated-network-accesses: 0.2.0-rc.1
+    dedicated-network-profiles: 0.2.0-rc.1
+    dedicated-network: 0.2.0-rc.1
+    dedicated-network-areas: 0.1.0-rc.1
 - repository: DeviceAuthenticity
   github_url: https://github.com/camaraproject/DeviceAuthenticity
   release_track: independent
