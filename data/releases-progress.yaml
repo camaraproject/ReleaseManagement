@@ -1,14 +1,14 @@
 metadata:
-  last_updated: '2026-07-07T15:47:28Z'
-  last_checked: '2026-07-07T15:47:28Z'
+  last_updated: '2026-07-09T07:03:56Z'
+  last_checked: '2026-07-09T07:03:56Z'
   releases_master_updated: '2026-07-01T06:54:32.288Z'
   schema_version: 1.5.0
   collector_version: 1.5.0
   repos_scanned: 61
   repos_new: 0
   repos_with_plan: 61
-  repos_fully_onboarded: 43
-  repos_with_release_issue: 40
+  repos_fully_onboarded: 44
+  repos_with_release_issue: 41
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -31,7 +31,7 @@ meta_releases:
   m3_achieved: 3
   m4_achieved: 3
 - name: Sync26
-  total_apis: 58
+  total_apis: 59
   m1_achieved: 8
   m3_achieved: 0
   m4_achieved: 0
@@ -1029,10 +1029,13 @@ progress:
     - bigludo7
     - sachinvodafone
     - akoshunyadi
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.1-0941f99
+    release_pr:
+      number: 76
+      state: open
+      url: https://github.com/camaraproject/DeviceReachabilityStatus/pull/76
     draft_release: null
     release_issue:
       number: 62
@@ -1053,6 +1056,9 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    device-reachability-status-subscriptions: 0.9.0-rc.1
+    device-reachability-status: 1.2.0-rc.3
 - repository: DeviceRoamingStatus
   github_url: https://github.com/camaraproject/DeviceRoamingStatus
   release_track: meta-release
@@ -1079,10 +1085,13 @@ progress:
     - bigludo7
     - sachinvodafone
     - akoshunyadi
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.1-9be6fb2
+    release_pr:
+      number: 88
+      state: open
+      url: https://github.com/camaraproject/DeviceRoamingStatus/pull/88
     draft_release: null
     release_issue:
       number: 76
@@ -1103,29 +1112,34 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    device-roaming-status-subscriptions: 0.9.0-rc.1
+    device-roaming-status: 1.2.0-rc.3
 - repository: DeviceSwap
   github_url: https://github.com/camaraproject/DeviceSwap
   release_track: meta-release
-  meta_release: Fall25
-  target_release_tag: r3.2
-  target_release_type: none
+  meta_release: Sync26
+  target_release_tag: r4.1
+  target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r3.4
-    identity_consent_management_release: r3.3
+    commonalities_release: r4.3
+    identity_consent_management_release: r4.2
   apis:
   - api_name: device-swap
-    target_api_version: 1.0.0
-    target_api_status: public
+    target_api_version: 1.1.0
+    target_api_status: rc
     main_contacts:
     - bigludo7
     - krishvenkatachalam
     - jgarciahospital
-  state: not_planned
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 94
+      url: https://github.com/camaraproject/DeviceSwap/issues/94
   published_context:
     latest_public_release: r3.2
     newest_pre_release: null
@@ -1135,23 +1149,13 @@ progress:
       release_date: null
       apis: []
     m3:
-      release_tag: r3.1
-      release_date: '2025-07-23T09:43:47Z'
-      apis:
-      - api_name: device-swap
-        api_version: 1.0.0-rc.1
+      release_tag: null
+      release_date: null
+      apis: []
     m4:
-      release_tag: r3.2
-      release_date: '2025-09-18T11:54:24Z'
-      apis:
-      - api_name: device-swap
-        api_version: 1.0.0
-  last_published:
-    release_tag: r3.2
-    release_date: '2025-09-18T11:54:24Z'
-    apis:
-    - api_name: device-swap
-      api_version: 1.0.0
+      release_tag: null
+      release_date: null
+      apis: []
 - repository: DeviceVisitLocation
   github_url: https://github.com/camaraproject/DeviceVisitLocation
   release_track: independent
@@ -2003,11 +2007,11 @@ progress:
     - grgpapadopoulos
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r3.1-410f552
+    snapshot_branch: release-snapshot/r3.1-e8e9094
     release_pr:
-      number: 104
+      number: 111
       state: open
-      url: https://github.com/camaraproject/NumberRecycling/pull/104
+      url: https://github.com/camaraproject/NumberRecycling/pull/111
     draft_release: null
     release_issue:
       number: 103
@@ -4399,6 +4403,49 @@ progress:
     - api_name: device-roaming-status-subscriptions
       api_version: 0.7.0
     - api_name: device-roaming-status
+      api_version: 1.0.0
+  source: historical
+- repository: DeviceSwap
+  github_url: https://github.com/camaraproject/DeviceSwap
+  release_track: meta-release
+  meta_release: Fall25
+  target_release_tag: null
+  target_release_type: null
+  apis:
+  - api_name: device-swap
+    target_api_version: 1.0.0
+    target_api_status: ''
+  state: historical
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis: []
+    m3:
+      release_tag: r3.1
+      release_date: '2025-07-23T09:43:47Z'
+      apis:
+      - api_name: device-swap
+        api_version: 1.0.0-rc.1
+    m4:
+      release_tag: r3.2
+      release_date: '2025-09-18T11:54:24Z'
+      apis:
+      - api_name: device-swap
+        api_version: 1.0.0
+  last_published:
+    release_tag: r3.2
+    release_date: '2025-09-18T11:54:24Z'
+    apis:
+    - api_name: device-swap
       api_version: 1.0.0
   source: historical
 - repository: DeviceSwap
