@@ -287,9 +287,9 @@ ICM releases are done at Signal meta-release (first half of each year); API rele
 
 ### 8.2 Out-of-cycle ICM releases
 
-ICM releases outside of the Signal meta-release are allowed and sometimes required, e.g., for security patches, defect corrections, or urgent regulatory changes. These changes impact the ICM version as per SemVer guidelines. 
+ICM releases outside of the Signal meta-release are allowed and sometimes required, e.g., for security vulnerabilities patches, defect corrections, or urgent regulatory changes. These changes impact the ICM version as per SemVer guidelines. 
 
-ICM version lifecycle state transitions may occur off-cycle in security-driven cases, or on explicit governance decision.
+ICM version lifecycle state transitions may occur off-cycle in security-driven cases, or on explicit governance decision or high-priority TSC-driven updates. 
 
 ### 8.3 Example of ICM lifecycle state evolution and API deployment across meta-releases
 
