@@ -1,9 +1,9 @@
 metadata:
-  last_updated: '2026-07-09T07:03:56Z'
-  last_checked: '2026-07-09T07:03:56Z'
+  last_updated: '2026-07-12T06:20:07Z'
+  last_checked: '2026-07-12T06:20:07Z'
   releases_master_updated: '2026-07-01T06:54:32.288Z'
-  schema_version: 1.5.0
-  collector_version: 1.5.0
+  schema_version: 1.6.0
+  collector_version: 1.6.0
   repos_scanned: 61
   repos_new: 0
   repos_with_plan: 61
@@ -66,6 +66,8 @@ progress:
     release_issue:
       number: 39
       url: https://github.com/camaraproject/ApplicationEndpointDiscovery/issues/39
+      created_at: '2026-07-06T22:11:23Z'
+    review_history: null
   published_context:
     latest_public_release: r1.2
     newest_pre_release: null
@@ -112,6 +114,8 @@ progress:
     release_issue:
       number: 37
       url: https://github.com/camaraproject/ApplicationEndpointRegistration/issues/37
+      created_at: '2026-07-06T22:14:40Z'
+    review_history: null
   published_context:
     latest_public_release: r1.2
     newest_pre_release: null
@@ -153,6 +157,8 @@ progress:
     release_issue:
       number: 31
       url: https://github.com/camaraproject/ApplicationProfiles/issues/31
+      created_at: '2026-07-06T22:20:46Z'
+    review_history: null
   published_context:
     latest_public_release: r1.2
     newest_pre_release: null
@@ -201,6 +207,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: r2.2
     newest_pre_release: null
@@ -258,6 +265,8 @@ progress:
     release_issue:
       number: 227
       url: https://github.com/camaraproject/CallForwardingSignal/issues/227
+      created_at: '2026-06-29T07:12:44Z'
+    review_history: null
   published_context:
     latest_public_release: r3.3
     newest_pre_release: null
@@ -295,6 +304,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -341,6 +351,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: r3.2
     newest_pre_release: null
@@ -397,10 +408,21 @@ progress:
       number: 112
       state: open
       url: https://github.com/camaraproject/ClickToDial/pull/112
+      created_at: '2026-06-24T04:29:38Z'
+      assignees:
+      - hdamker
+      review_decision: null
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 4
+      rm_total: 4
     draft_release: null
     release_issue:
       number: 109
       url: https://github.com/camaraproject/ClickToDial/issues/109
+      created_at: '2026-06-17T09:20:43Z'
+    review_history: null
   published_context:
     latest_public_release: r1.4
     newest_pre_release: null
@@ -452,10 +474,24 @@ progress:
       number: 67
       state: open
       url: https://github.com/camaraproject/ConnectedNetworkType/pull/67
+      created_at: '2026-07-07T11:23:04Z'
+      assignees: []
+      review_decision: null
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 4
     draft_release: null
     release_issue:
       number: 57
       url: https://github.com/camaraproject/ConnectedNetworkType/issues/57
+      created_at: '2026-06-05T09:00:12Z'
+    review_history:
+      discarded_count: 1
+      last_reviewers: []
+      last_pr_url: https://github.com/camaraproject/ConnectedNetworkType/pull/64
+      last_closed_at: '2026-07-07T08:52:28Z'
   published_context:
     latest_public_release: r1.2
     newest_pre_release: null
@@ -507,6 +543,8 @@ progress:
     release_issue:
       number: 191
       url: https://github.com/camaraproject/ConnectivityInsights/issues/191
+      created_at: '2026-05-30T22:02:21Z'
+    review_history: null
   published_context:
     latest_public_release: r3.2
     newest_pre_release: null
@@ -545,6 +583,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: r2.3
     newest_pre_release: null
@@ -596,10 +635,20 @@ progress:
       number: 35
       state: open
       url: https://github.com/camaraproject/ConsentManagement/pull/35
+      created_at: '2026-06-30T09:21:19Z'
+      assignees: []
+      review_decision: null
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 4
     draft_release: null
     release_issue:
       number: 34
       url: https://github.com/camaraproject/ConsentManagement/issues/34
+      created_at: '2026-06-19T07:32:18Z'
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: r1.1
@@ -650,10 +699,20 @@ progress:
       number: 84
       state: open
       url: https://github.com/camaraproject/CustomerInsights/pull/84
+      created_at: '2026-06-29T09:31:16Z'
+      assignees: []
+      review_decision: null
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 4
     draft_release: null
     release_issue:
       number: 73
       url: https://github.com/camaraproject/CustomerInsights/issues/73
+      created_at: '2026-04-30T14:11:13Z'
+    review_history: null
   published_context:
     latest_public_release: r2.2
     newest_pre_release: null
@@ -721,10 +780,21 @@ progress:
       number: 128
       state: open
       url: https://github.com/camaraproject/DedicatedNetworks/pull/128
+      created_at: '2026-07-07T08:19:03Z'
+      assignees:
+      - hdamker
+      review_decision: CHANGES_REQUESTED
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 4
     draft_release: null
     release_issue:
       number: 116
       url: https://github.com/camaraproject/DedicatedNetworks/issues/116
+      created_at: '2026-06-01T08:20:01Z'
+    review_history: null
   published_context:
     latest_public_release: r1.2
     newest_pre_release: r2.1
@@ -787,6 +857,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -832,10 +903,21 @@ progress:
       number: 86
       state: open
       url: https://github.com/camaraproject/DeviceDataVolume/pull/86
+      created_at: '2026-06-12T13:34:01Z'
+      assignees:
+      - tanjadegroot
+      review_decision: null
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 3
+      rm_total: 4
     draft_release: null
     release_issue:
       number: 80
       url: https://github.com/camaraproject/DeviceDataVolume/issues/80
+      created_at: '2026-06-08T08:54:04Z'
+    review_history: null
   published_context:
     latest_public_release: r1.3
     newest_pre_release: null
@@ -879,6 +961,8 @@ progress:
     release_issue:
       number: 176
       url: https://github.com/camaraproject/DeviceIdentifier/issues/176
+      created_at: '2026-06-11T14:41:32Z'
+    review_history: null
   published_context:
     latest_public_release: r2.2
     newest_pre_release: r3.1
@@ -942,6 +1026,8 @@ progress:
     release_issue:
       number: 404
       url: https://github.com/camaraproject/DeviceLocation/issues/404
+      created_at: '2026-06-01T10:33:07Z'
+    review_history: null
   published_context:
     latest_public_release: r3.2
     newest_pre_release: null
@@ -981,10 +1067,21 @@ progress:
       number: 28
       state: open
       url: https://github.com/camaraproject/DeviceMediaStreamingRate/pull/28
+      created_at: '2026-05-30T22:51:10Z'
+      assignees:
+      - tanjadegroot
+      review_decision: CHANGES_REQUESTED
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 1
+      rm_total: 3
     draft_release: null
     release_issue:
       number: 26
       url: https://github.com/camaraproject/DeviceMediaStreamingRate/issues/26
+      created_at: '2026-05-21T20:37:15Z'
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -1036,10 +1133,24 @@ progress:
       number: 76
       state: open
       url: https://github.com/camaraproject/DeviceReachabilityStatus/pull/76
+      created_at: '2026-07-08T14:02:41Z'
+      assignees: []
+      review_decision: null
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 4
     draft_release: null
     release_issue:
       number: 62
       url: https://github.com/camaraproject/DeviceReachabilityStatus/issues/62
+      created_at: '2026-06-04T15:59:29Z'
+    review_history:
+      discarded_count: 1
+      last_reviewers: []
+      last_pr_url: https://github.com/camaraproject/DeviceReachabilityStatus/pull/73
+      last_closed_at: '2026-07-07T15:45:09Z'
   published_context:
     latest_public_release: r1.2
     newest_pre_release: null
@@ -1092,10 +1203,20 @@ progress:
       number: 88
       state: open
       url: https://github.com/camaraproject/DeviceRoamingStatus/pull/88
+      created_at: '2026-07-08T07:52:21Z'
+      assignees: []
+      review_decision: null
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 4
     draft_release: null
     release_issue:
       number: 76
       url: https://github.com/camaraproject/DeviceRoamingStatus/issues/76
+      created_at: '2026-06-01T15:20:31Z'
+    review_history: null
   published_context:
     latest_public_release: r1.2
     newest_pre_release: null
@@ -1140,6 +1261,8 @@ progress:
     release_issue:
       number: 94
       url: https://github.com/camaraproject/DeviceSwap/issues/94
+      created_at: '2026-07-08T08:57:56Z'
+    review_history: null
   published_context:
     latest_public_release: r3.2
     newest_pre_release: null
@@ -1178,6 +1301,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -1217,10 +1341,24 @@ progress:
       number: 45
       state: open
       url: https://github.com/camaraproject/EdgeApplicationManagement/pull/45
+      created_at: '2026-06-30T15:25:19Z'
+      assignees: []
+      review_decision: null
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 4
     draft_release: null
     release_issue:
       number: 39
       url: https://github.com/camaraproject/EdgeApplicationManagement/issues/39
+      created_at: '2026-06-05T12:05:06Z'
+    review_history:
+      discarded_count: 2
+      last_reviewers: []
+      last_pr_url: https://github.com/camaraproject/EdgeApplicationManagement/pull/42
+      last_closed_at: '2026-06-29T07:25:58Z'
   published_context:
     latest_public_release: null
     newest_pre_release: r1.1
@@ -1268,6 +1406,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: r1.3
     newest_pre_release: null
@@ -1317,6 +1456,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -1353,6 +1493,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -1389,6 +1530,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -1428,6 +1570,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: r1.1
@@ -1476,6 +1619,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: r1.1
@@ -1530,6 +1674,8 @@ progress:
     release_issue:
       number: 57
       url: https://github.com/camaraproject/IoTSIMFraudPrevention/issues/57
+      created_at: '2026-06-16T09:34:10Z'
+    review_history: null
   published_context:
     latest_public_release: r1.2
     newest_pre_release: null
@@ -1571,6 +1717,8 @@ progress:
     release_issue:
       number: 45
       url: https://github.com/camaraproject/KnowYourCustomerAgeVerification/issues/45
+      created_at: '2026-06-16T11:49:05Z'
+    review_history: null
   published_context:
     latest_public_release: r1.3
     newest_pre_release: null
@@ -1611,6 +1759,8 @@ progress:
     release_issue:
       number: 54
       url: https://github.com/camaraproject/KnowYourCustomerFill-in/issues/54
+      created_at: '2026-06-18T07:04:57Z'
+    review_history: null
   published_context:
     latest_public_release: r1.3
     newest_pre_release: null
@@ -1652,6 +1802,8 @@ progress:
     release_issue:
       number: 79
       url: https://github.com/camaraproject/KnowYourCustomerMatch/issues/79
+      created_at: '2026-06-16T10:53:09Z'
+    review_history: null
   published_context:
     latest_public_release: r1.2
     newest_pre_release: null
@@ -1700,10 +1852,21 @@ progress:
       number: 35
       state: open
       url: https://github.com/camaraproject/ModelAsAService/pull/35
+      created_at: '2026-06-29T05:14:02Z'
+      assignees:
+      - tanjadegroot
+      review_decision: null
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 4
     draft_release: null
     release_issue:
       number: 32
       url: https://github.com/camaraproject/ModelAsAService/issues/32
+      created_at: '2026-06-04T07:41:29Z'
+    review_history: null
   published_context:
     latest_public_release: r1.2
     newest_pre_release: null
@@ -1747,6 +1910,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: r2.2
     newest_pre_release: null
@@ -1795,10 +1959,25 @@ progress:
       number: 41
       state: open
       url: https://github.com/camaraproject/MultiPointVPN/pull/41
+      created_at: '2026-06-17T09:38:37Z'
+      assignees:
+      - tanjadegroot
+      review_decision: null
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 2
+      rm_total: 4
     draft_release: null
     release_issue:
       number: 22
       url: https://github.com/camaraproject/MultiPointVPN/issues/22
+      created_at: '2026-03-27T12:53:06Z'
+    review_history:
+      discarded_count: 2
+      last_reviewers: []
+      last_pr_url: https://github.com/camaraproject/MultiPointVPN/pull/30
+      last_closed_at: '2026-06-15T13:30:32Z'
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -1850,10 +2029,24 @@ progress:
       number: 164
       state: open
       url: https://github.com/camaraproject/NetworkAccessManagement/pull/164
+      created_at: '2026-06-29T21:23:20Z'
+      assignees: []
+      review_decision: null
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 4
     draft_release: null
     release_issue:
       number: 146
       url: https://github.com/camaraproject/NetworkAccessManagement/issues/146
+      created_at: '2026-05-29T14:23:34Z'
+    review_history:
+      discarded_count: 2
+      last_reviewers: []
+      last_pr_url: https://github.com/camaraproject/NetworkAccessManagement/pull/161
+      last_closed_at: '2026-06-29T20:42:14Z'
   published_context:
     latest_public_release: null
     newest_pre_release: r2.1
@@ -1900,10 +2093,20 @@ progress:
       number: 89
       state: open
       url: https://github.com/camaraproject/NetworkInsights/pull/89
+      created_at: '2026-06-29T03:43:41Z'
+      assignees: []
+      review_decision: null
+      codeowner_checked: 0
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 4
     draft_release: null
     release_issue:
       number: 88
       url: https://github.com/camaraproject/NetworkInsights/issues/88
+      created_at: '2026-06-29T03:00:30Z'
+    review_history: null
   published_context:
     latest_public_release: r1.3
     newest_pre_release: null
@@ -1953,6 +2156,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: r2.3
     newest_pre_release: null
@@ -2012,10 +2216,24 @@ progress:
       number: 111
       state: open
       url: https://github.com/camaraproject/NumberRecycling/pull/111
+      created_at: '2026-07-08T12:56:11Z'
+      assignees: []
+      review_decision: null
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 4
     draft_release: null
     release_issue:
       number: 103
       url: https://github.com/camaraproject/NumberRecycling/issues/103
+      created_at: '2026-06-17T11:25:20Z'
+    review_history:
+      discarded_count: 1
+      last_reviewers: []
+      last_pr_url: https://github.com/camaraproject/NumberRecycling/pull/104
+      last_closed_at: '2026-07-08T12:52:11Z'
   published_context:
     latest_public_release: r2.2
     newest_pre_release: null
@@ -2059,6 +2277,8 @@ progress:
     release_issue:
       number: 236
       url: https://github.com/camaraproject/NumberVerification/issues/236
+      created_at: '2026-06-16T14:25:50Z'
+    review_history: null
   published_context:
     latest_public_release: r3.2
     newest_pre_release: null
@@ -2105,6 +2325,8 @@ progress:
     release_issue:
       number: 44
       url: https://github.com/camaraproject/OptimalEdgeDiscovery/issues/44
+      created_at: '2026-07-06T22:14:20Z'
+    review_history: null
   published_context:
     latest_public_release: r1.2
     newest_pre_release: null
@@ -2145,6 +2367,8 @@ progress:
     release_issue:
       number: 138
       url: https://github.com/camaraproject/OTPValidation/issues/138
+      created_at: '2026-06-03T07:09:31Z'
+    review_history: null
   published_context:
     latest_public_release: r3.2
     newest_pre_release: null
@@ -2186,6 +2410,8 @@ progress:
     release_issue:
       number: 125
       url: https://github.com/camaraproject/PopulationDensityData/issues/125
+      created_at: '2026-06-10T11:05:52Z'
+    review_history: null
   published_context:
     latest_public_release: r3.2
     newest_pre_release: null
@@ -2226,6 +2452,8 @@ progress:
     release_issue:
       number: 56
       url: https://github.com/camaraproject/PredictiveConnectivityData/issues/56
+      created_at: '2026-06-09T10:06:50Z'
+    review_history: null
   published_context:
     latest_public_release: r1.2
     newest_pre_release: null
@@ -2271,10 +2499,20 @@ progress:
       number: 109
       state: open
       url: https://github.com/camaraproject/QoSBooking/pull/109
+      created_at: '2026-07-03T09:54:07Z'
+      assignees: []
+      review_decision: null
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 4
     draft_release: null
     release_issue:
       number: 108
       url: https://github.com/camaraproject/QoSBooking/issues/108
+      created_at: '2026-07-03T08:59:35Z'
+    review_history: null
   published_context:
     latest_public_release: r1.2
     newest_pre_release: null
@@ -2336,6 +2574,8 @@ progress:
     release_issue:
       number: 583
       url: https://github.com/camaraproject/QualityOnDemand/issues/583
+      created_at: '2026-07-04T08:18:55Z'
+    review_history: null
   published_context:
     latest_public_release: r3.2
     newest_pre_release: null
@@ -2372,6 +2612,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -2411,6 +2652,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: r2.2
     newest_pre_release: null
@@ -2461,10 +2703,21 @@ progress:
       number: 102
       state: open
       url: https://github.com/camaraproject/SessionInsights/pull/102
+      created_at: '2026-06-25T17:26:30Z'
+      assignees:
+      - tanjadegroot
+      review_decision: CHANGES_REQUESTED
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 2
+      rm_total: 4
     draft_release: null
     release_issue:
       number: 100
       url: https://github.com/camaraproject/SessionInsights/issues/100
+      created_at: '2026-05-30T22:04:36Z'
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: r1.1
@@ -2507,10 +2760,24 @@ progress:
       number: 186
       state: open
       url: https://github.com/camaraproject/SimpleEdgeDiscovery/pull/186
+      created_at: '2026-07-06T13:32:03Z'
+      assignees: []
+      review_decision: null
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 4
     draft_release: null
     release_issue:
       number: 169
       url: https://github.com/camaraproject/SimpleEdgeDiscovery/issues/169
+      created_at: '2026-06-08T15:03:08Z'
+    review_history:
+      discarded_count: 1
+      last_reviewers: []
+      last_pr_url: https://github.com/camaraproject/SimpleEdgeDiscovery/pull/182
+      last_closed_at: '2026-07-03T15:19:46Z'
   published_context:
     latest_public_release: r2.3
     newest_pre_release: null
@@ -2561,6 +2828,8 @@ progress:
     release_issue:
       number: 270
       url: https://github.com/camaraproject/SimSwap/issues/270
+      created_at: '2026-06-09T15:40:50Z'
+    review_history: null
   published_context:
     latest_public_release: r3.3
     newest_pre_release: null
@@ -2597,6 +2866,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -2639,6 +2909,8 @@ progress:
     release_issue:
       number: 34
       url: https://github.com/camaraproject/SubscriptionStatus/issues/34
+      created_at: '2026-06-18T01:35:06Z'
+    review_history: null
   published_context:
     latest_public_release: r1.2
     newest_pre_release: null
@@ -2681,6 +2953,8 @@ progress:
     release_issue:
       number: 84
       url: https://github.com/camaraproject/Tenure/issues/84
+      created_at: '2026-06-23T13:13:20Z'
+    review_history: null
   published_context:
     latest_public_release: r2.2
     newest_pre_release: r3.1
@@ -2728,6 +3002,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: r1.3
     newest_pre_release: null
@@ -2790,6 +3065,8 @@ progress:
     release_issue:
       number: 128
       url: https://github.com/camaraproject/VerifiedCaller/issues/128
+      created_at: '2026-06-30T11:16:11Z'
+    review_history: null
   published_context:
     latest_public_release: r1.3
     newest_pre_release: r2.1
@@ -2838,6 +3115,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -2874,6 +3152,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -2932,6 +3211,13 @@ progress:
     release_issue:
       number: 155
       url: https://github.com/camaraproject/WebRTC/issues/155
+      created_at: '2026-04-13T20:21:19Z'
+    review_history:
+      discarded_count: 1
+      last_reviewers:
+      - stroncoso
+      last_pr_url: https://github.com/camaraproject/WebRTC/pull/176
+      last_closed_at: '2026-06-30T15:24:46Z'
   published_context:
     latest_public_release: r2.2
     newest_pre_release: null
@@ -2964,6 +3250,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -3007,6 +3294,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -3050,6 +3338,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -3093,6 +3382,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -3136,6 +3426,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -3179,6 +3470,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -3224,6 +3516,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -3270,6 +3563,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -3322,6 +3616,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -3371,6 +3666,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -3419,6 +3715,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -3474,6 +3771,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -3532,6 +3830,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -3587,6 +3886,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -3642,6 +3942,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -3685,6 +3986,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -3728,6 +4030,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -3777,6 +4080,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -3835,6 +4139,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -3888,6 +4193,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -3931,6 +4237,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -3982,6 +4289,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -4043,6 +4351,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -4104,6 +4413,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -4162,6 +4472,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -4214,6 +4525,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -4272,6 +4584,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -4348,6 +4661,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -4421,6 +4735,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -4463,6 +4778,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -4506,6 +4822,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -4549,6 +4866,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -4594,6 +4912,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -4646,6 +4965,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -4701,6 +5021,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -4756,6 +5077,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -4799,6 +5121,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -4842,6 +5165,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -4891,6 +5215,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -4945,6 +5270,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -4987,6 +5313,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -5030,6 +5357,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -5083,6 +5411,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -5126,6 +5455,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -5169,6 +5499,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -5212,6 +5543,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -5255,6 +5587,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -5298,6 +5631,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -5341,6 +5675,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -5384,6 +5719,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -5427,6 +5763,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -5470,6 +5807,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -5513,6 +5851,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -5556,6 +5895,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -5599,6 +5939,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -5642,6 +5983,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -5688,6 +6030,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -5743,6 +6086,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -5804,6 +6148,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -5865,6 +6210,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -5920,6 +6266,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -5958,6 +6305,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -6002,6 +6350,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -6054,6 +6403,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -6106,6 +6456,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -6155,6 +6506,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -6198,6 +6550,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -6241,6 +6594,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -6284,6 +6638,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -6327,6 +6682,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -6373,6 +6729,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -6428,6 +6785,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -6489,6 +6847,7 @@ progress:
     release_pr: null
     draft_release: null
     release_issue: null
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: null
