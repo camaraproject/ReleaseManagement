@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-07-13T06:37:56Z'
-  last_checked: '2026-07-13T06:37:56Z'
+  last_updated: '2026-07-13T18:24:25Z'
+  last_checked: '2026-07-13T18:24:25Z'
   releases_master_updated: '2026-07-01T06:54:32.288Z'
   schema_version: 1.6.0
   collector_version: 1.6.0
@@ -401,10 +401,22 @@ progress:
     - YadingFang
     - Wojiaozhenghao
     - XunliYang
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.1-f5029cd
+    release_pr:
+      number: 116
+      state: open
+      url: https://github.com/camaraproject/ClickToDial/pull/116
+      created_at: '2026-07-13T12:58:52Z'
+      assignees:
+      - hdamker
+      review_decision: null
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 5
+      rm_total: 5
     draft_release: null
     release_issue:
       number: 109
@@ -432,6 +444,8 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    click-to-dial: 0.2.0-rc.1
 - repository: ConnectedNetworkType
   github_url: https://github.com/camaraproject/ConnectedNetworkType
   release_track: meta-release
@@ -766,26 +780,30 @@ progress:
     - eric-murray
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r2.2-2107c77
+    snapshot_branch: release-snapshot/r2.2-0ea77e5
     release_pr:
-      number: 128
+      number: 137
       state: open
-      url: https://github.com/camaraproject/DedicatedNetworks/pull/128
-      created_at: '2026-07-07T08:19:03Z'
-      assignees:
-      - hdamker
-      review_decision: CHANGES_REQUESTED
+      url: https://github.com/camaraproject/DedicatedNetworks/pull/137
+      created_at: '2026-07-13T10:53:09Z'
+      assignees: []
+      review_decision: null
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
       rm_checked: 0
-      rm_total: 4
+      rm_total: 5
     draft_release: null
     release_issue:
       number: 116
       url: https://github.com/camaraproject/DedicatedNetworks/issues/116
       created_at: '2026-06-01T08:20:01Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers:
+      - hdamker
+      last_pr_url: https://github.com/camaraproject/DedicatedNetworks/pull/128
+      last_closed_at: '2026-07-13T10:49:33Z'
   published_context:
     latest_public_release: r1.2
     newest_pre_release: r2.1
@@ -3204,7 +3222,7 @@ progress:
       created_at: '2026-07-13T06:24:20Z'
       assignees: []
       review_decision: null
-      codeowner_checked: 0
+      codeowner_checked: 1
       codeowner_total: 3
       ready_for_review: false
       rm_checked: 0
