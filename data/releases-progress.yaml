@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-07-13T18:24:25Z'
-  last_checked: '2026-07-13T18:24:25Z'
+  last_updated: '2026-07-14T05:44:11Z'
+  last_checked: '2026-07-14T05:44:11Z'
   releases_master_updated: '2026-07-01T06:54:32.288Z'
   schema_version: 1.6.0
   collector_version: 1.6.0
@@ -8,7 +8,7 @@ metadata:
   repos_new: 0
   repos_with_plan: 61
   repos_fully_onboarded: 44
-  repos_with_release_issue: 41
+  repos_with_release_issue: 42
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -705,7 +705,8 @@ progress:
       state: open
       url: https://github.com/camaraproject/CustomerInsights/pull/84
       created_at: '2026-06-29T09:31:16Z'
-      assignees: []
+      assignees:
+      - hdamker
       review_decision: null
       codeowner_checked: 3
       codeowner_total: 3
@@ -1559,26 +1560,29 @@ progress:
 - repository: IoTDeviceManagement
   github_url: https://github.com/camaraproject/IoTDeviceManagement
   release_track: independent
-  target_release_tag: r1.1
-  target_release_type: pre-release-alpha
+  target_release_tag: r1.2
+  target_release_type: pre-release-rc
   dependencies:
     commonalities_release: r4.3
     identity_consent_management_release: r4.2
   apis:
   - api_name: esim-profile-management
     target_api_version: 0.1.0
-    target_api_status: alpha
+    target_api_status: rc
     main_contacts:
     - maheshc01
     - chenfr2-ChinaTelecom
     - XunliYang
     - rkandoi
-  state: published
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 49
+      url: https://github.com/camaraproject/IoTDeviceManagement/issues/49
+      created_at: '2026-07-13T19:12:53Z'
     review_history: null
   published_context:
     latest_public_release: null
@@ -1604,8 +1608,6 @@ progress:
     apis:
     - api_name: esim-profile-management
       api_version: 0.1.0-alpha.1
-  snapshot_api_versions:
-    esim-profile-management: 0.1.0-alpha.1
 - repository: IoTNetworkOptimization
   github_url: https://github.com/camaraproject/IoTNetworkOptimization
   release_track: independent
@@ -1684,7 +1686,11 @@ progress:
       number: 57
       url: https://github.com/camaraproject/IoTSIMFraudPrevention/issues/57
       created_at: '2026-06-16T09:34:10Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers: []
+      last_pr_url: https://github.com/camaraproject/IoTSIMFraudPrevention/pull/58
+      last_closed_at: '2026-07-14T02:11:47Z'
   published_context:
     latest_public_release: r1.2
     newest_pre_release: null
