@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-07-14T05:44:11Z'
-  last_checked: '2026-07-14T05:44:11Z'
+  last_updated: '2026-07-14T14:58:57Z'
+  last_checked: '2026-07-14T14:58:57Z'
   releases_master_updated: '2026-07-01T06:54:32.288Z'
   schema_version: 1.6.0
   collector_version: 1.6.0
@@ -641,12 +641,13 @@ progress:
       state: open
       url: https://github.com/camaraproject/ConsentManagement/pull/35
       created_at: '2026-06-30T09:21:19Z'
-      assignees: []
+      assignees:
+      - hdamker
       review_decision: null
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 4
       rm_total: 4
     draft_release: null
     release_issue:
@@ -707,11 +708,11 @@ progress:
       created_at: '2026-06-29T09:31:16Z'
       assignees:
       - hdamker
-      review_decision: null
+      review_decision: APPROVED
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 4
       rm_total: 4
     draft_release: null
     release_issue:
@@ -1352,12 +1353,13 @@ progress:
       state: open
       url: https://github.com/camaraproject/EdgeApplicationManagement/pull/45
       created_at: '2026-06-30T15:25:19Z'
-      assignees: []
-      review_decision: null
+      assignees:
+      - hdamker
+      review_decision: CHANGES_REQUESTED
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 2
       rm_total: 4
     draft_release: null
     release_issue:
@@ -1574,10 +1576,21 @@ progress:
     - chenfr2-ChinaTelecom
     - XunliYang
     - rkandoi
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r1.2-d11fbf2
+    release_pr:
+      number: 50
+      state: open
+      url: https://github.com/camaraproject/IoTDeviceManagement/pull/50
+      created_at: '2026-07-14T07:18:23Z'
+      assignees: []
+      review_decision: null
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 5
     draft_release: null
     release_issue:
       number: 49
@@ -1608,6 +1621,8 @@ progress:
     apis:
     - api_name: esim-profile-management
       api_version: 0.1.0-alpha.1
+  snapshot_api_versions:
+    esim-profile-management: 0.1.0-rc.1
 - repository: IoTNetworkOptimization
   github_url: https://github.com/camaraproject/IoTNetworkOptimization
   release_track: independent
@@ -3218,32 +3233,20 @@ progress:
     - pradeepachar-mavenir
     - deepakjaiswal1
     - teikuran
-  state: snapshot_active
+  state: planned
   artifacts:
-    snapshot_branch: release-snapshot/r3.1-1ec6aa8
-    release_pr:
-      number: 195
-      state: open
-      url: https://github.com/camaraproject/WebRTC/pull/195
-      created_at: '2026-07-13T06:24:20Z'
-      assignees: []
-      review_decision: null
-      codeowner_checked: 1
-      codeowner_total: 3
-      ready_for_review: false
-      rm_checked: 0
-      rm_total: 4
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
     release_issue:
       number: 155
       url: https://github.com/camaraproject/WebRTC/issues/155
       created_at: '2026-04-13T20:21:19Z'
     review_history:
-      discarded_count: 1
-      last_reviewers:
-      - stroncoso
-      last_pr_url: https://github.com/camaraproject/WebRTC/pull/176
-      last_closed_at: '2026-06-30T15:24:46Z'
+      discarded_count: 2
+      last_reviewers: []
+      last_pr_url: https://github.com/camaraproject/WebRTC/pull/195
+      last_closed_at: '2026-07-14T07:59:17Z'
   published_context:
     latest_public_release: r2.2
     newest_pre_release: null
@@ -3260,10 +3263,6 @@ progress:
       release_tag: null
       release_date: null
       apis: []
-  snapshot_api_versions:
-    webrtc-call-handling: 0.4.0-rc.1
-    webrtc-events-subscriptions: 0.3.0-rc.1
-    webrtc-registration: 0.4.0-rc.1
 - repository: ApplicationEndpointDiscovery
   github_url: https://github.com/camaraproject/ApplicationEndpointDiscovery
   release_track: meta-release
