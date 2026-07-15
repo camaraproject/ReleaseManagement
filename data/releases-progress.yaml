@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-07-14T14:58:57Z'
-  last_checked: '2026-07-14T14:58:57Z'
+  last_updated: '2026-07-15T05:45:01Z'
+  last_checked: '2026-07-15T05:45:01Z'
   releases_master_updated: '2026-07-01T06:54:32.288Z'
   schema_version: 1.6.0
   collector_version: 1.6.0
@@ -8,7 +8,7 @@ metadata:
   repos_new: 0
   repos_with_plan: 61
   repos_fully_onboarded: 44
-  repos_with_release_issue: 42
+  repos_with_release_issue: 41
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -401,27 +401,12 @@ progress:
     - YadingFang
     - Wojiaozhenghao
     - XunliYang
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r2.1-f5029cd
-    release_pr:
-      number: 116
-      state: open
-      url: https://github.com/camaraproject/ClickToDial/pull/116
-      created_at: '2026-07-13T12:58:52Z'
-      assignees:
-      - hdamker
-      review_decision: null
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 5
-      rm_total: 5
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 109
-      url: https://github.com/camaraproject/ClickToDial/issues/109
-      created_at: '2026-06-17T09:20:43Z'
+    release_issue: null
     review_history:
       discarded_count: 1
       last_reviewers:
@@ -446,6 +431,11 @@ progress:
       apis: []
   snapshot_api_versions:
     click-to-dial: 0.2.0-rc.1
+  warnings:
+  - code: W003
+    message: Release r2.1 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: ConnectedNetworkType
   github_url: https://github.com/camaraproject/ConnectedNetworkType
   release_track: meta-release
