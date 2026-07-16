@@ -1,9 +1,9 @@
 metadata:
-  last_updated: '2026-07-16T05:58:14Z'
-  last_checked: '2026-07-16T05:58:14Z'
+  last_updated: '2026-07-16T13:36:12Z'
+  last_checked: '2026-07-16T13:36:12Z'
   releases_master_updated: '2026-07-15T05:17:15.285Z'
-  schema_version: 1.6.0
-  collector_version: 1.6.0
+  schema_version: 1.7.0
+  collector_version: 1.7.0
   repos_scanned: 61
   repos_new: 0
   repos_with_plan: 61
@@ -475,6 +475,7 @@ progress:
       created_at: '2026-07-07T11:23:04Z'
       assignees: []
       review_decision: null
+      codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
@@ -637,6 +638,7 @@ progress:
       assignees:
       - hdamker
       review_decision: null
+      codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
@@ -701,7 +703,9 @@ progress:
       created_at: '2026-06-29T09:31:16Z'
       assignees:
       - hdamker
+      - tanjadegroot
       review_decision: APPROVED
+      codeowner_approved: true
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
@@ -783,6 +787,7 @@ progress:
       created_at: '2026-07-13T10:53:09Z'
       assignees: []
       review_decision: null
+      codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
@@ -911,6 +916,7 @@ progress:
       assignees:
       - tanjadegroot
       review_decision: null
+      codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
@@ -1075,6 +1081,7 @@ progress:
       assignees:
       - tanjadegroot
       review_decision: CHANGES_REQUESTED
+      codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: false
@@ -1140,6 +1147,7 @@ progress:
       created_at: '2026-07-08T14:02:41Z'
       assignees: []
       review_decision: null
+      codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
@@ -1210,6 +1218,7 @@ progress:
       created_at: '2026-07-08T07:52:21Z'
       assignees: []
       review_decision: null
+      codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
@@ -1349,6 +1358,7 @@ progress:
       assignees:
       - hdamker
       review_decision: CHANGES_REQUESTED
+      codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
@@ -1579,6 +1589,7 @@ progress:
       created_at: '2026-07-14T07:18:23Z'
       assignees: []
       review_decision: null
+      codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
@@ -1879,6 +1890,7 @@ progress:
       assignees:
       - tanjadegroot
       review_decision: null
+      codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
@@ -1985,7 +1997,8 @@ progress:
       created_at: '2026-06-17T09:38:37Z'
       assignees:
       - tanjadegroot
-      review_decision: null
+      review_decision: COMMENTED
+      codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
@@ -2055,6 +2068,7 @@ progress:
       created_at: '2026-06-29T21:23:20Z'
       assignees: []
       review_decision: null
+      codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
@@ -2119,6 +2133,7 @@ progress:
       created_at: '2026-06-29T03:43:41Z'
       assignees: []
       review_decision: null
+      codeowner_approved: false
       codeowner_checked: 0
       codeowner_total: 3
       ready_for_review: false
@@ -2242,6 +2257,7 @@ progress:
       created_at: '2026-07-08T12:56:11Z'
       assignees: []
       review_decision: null
+      codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
@@ -2525,6 +2541,7 @@ progress:
       created_at: '2026-07-03T09:54:07Z'
       assignees: []
       review_decision: null
+      codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
@@ -2730,6 +2747,7 @@ progress:
       assignees:
       - tanjadegroot
       review_decision: CHANGES_REQUESTED
+      codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
@@ -2786,6 +2804,7 @@ progress:
       created_at: '2026-07-06T13:32:03Z'
       assignees: []
       review_decision: null
+      codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
