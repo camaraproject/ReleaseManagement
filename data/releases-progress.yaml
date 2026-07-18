@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-07-16T13:36:12Z'
-  last_checked: '2026-07-16T13:36:12Z'
+  last_updated: '2026-07-18T05:40:01Z'
+  last_checked: '2026-07-18T05:40:01Z'
   releases_master_updated: '2026-07-15T05:17:15.285Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -1060,7 +1060,7 @@ progress:
   target_release_tag: r1.1
   target_release_type: pre-release-alpha
   dependencies:
-    commonalities_release: r4.2
+    commonalities_release: r4.3
     identity_consent_management_release: r4.2
   apis:
   - api_name: media-streaming-rate
@@ -1072,27 +1072,31 @@ progress:
     - maheshc01
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r1.1-b4cc622
+    snapshot_branch: release-snapshot/r1.1-235132f
     release_pr:
-      number: 28
+      number: 35
       state: open
-      url: https://github.com/camaraproject/DeviceMediaStreamingRate/pull/28
-      created_at: '2026-05-30T22:51:10Z'
-      assignees:
-      - tanjadegroot
-      review_decision: CHANGES_REQUESTED
+      url: https://github.com/camaraproject/DeviceMediaStreamingRate/pull/35
+      created_at: '2026-07-17T14:31:09Z'
+      assignees: []
+      review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
-      ready_for_review: false
-      rm_checked: 1
-      rm_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 5
     draft_release: null
     release_issue:
       number: 26
       url: https://github.com/camaraproject/DeviceMediaStreamingRate/issues/26
       created_at: '2026-05-21T20:37:15Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers:
+      - tanjadegroot
+      last_pr_url: https://github.com/camaraproject/DeviceMediaStreamingRate/pull/28
+      last_closed_at: '2026-07-17T14:00:21Z'
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -1888,13 +1892,14 @@ progress:
       url: https://github.com/camaraproject/ModelAsAService/pull/35
       created_at: '2026-06-29T05:14:02Z'
       assignees:
+      - hdamker
       - tanjadegroot
-      review_decision: null
+      review_decision: CHANGES_REQUESTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 4
     draft_release: null
     release_issue:
@@ -2308,10 +2313,22 @@ progress:
     - bigludo7
     - fernandopradocabrillo
     - AxelNennker
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r4.1-ff45430
+    release_pr:
+      number: 239
+      state: open
+      url: https://github.com/camaraproject/NumberVerification/pull/239
+      created_at: '2026-07-17T14:50:47Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 0
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 5
     draft_release: null
     release_issue:
       number: 236
@@ -2334,6 +2351,8 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    number-verification: 2.1.1-alpha.1
 - repository: OptimalEdgeDiscovery
   github_url: https://github.com/camaraproject/OptimalEdgeDiscovery
   release_track: meta-release
