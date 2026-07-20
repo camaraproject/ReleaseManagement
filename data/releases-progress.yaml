@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-07-18T05:40:01Z'
-  last_checked: '2026-07-18T05:40:01Z'
+  last_updated: '2026-07-20T06:30:03Z'
+  last_checked: '2026-07-20T06:30:03Z'
   releases_master_updated: '2026-07-15T05:17:15.285Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -3264,10 +3264,22 @@ progress:
     - pradeepachar-mavenir
     - deepakjaiswal1
     - teikuran
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r3.1-debdf4e
+    release_pr:
+      number: 206
+      state: open
+      url: https://github.com/camaraproject/WebRTC/pull/206
+      created_at: '2026-07-19T09:31:05Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 5
     draft_release: null
     release_issue:
       number: 155
@@ -3294,6 +3306,10 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    webrtc-call-handling: 0.4.0-rc.1
+    webrtc-events-subscriptions: 0.3.0-rc.1
+    webrtc-registration: 0.4.0-rc.1
 - repository: ApplicationEndpointDiscovery
   github_url: https://github.com/camaraproject/ApplicationEndpointDiscovery
   release_track: meta-release
