@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-07-20T06:30:03Z'
-  last_checked: '2026-07-20T06:30:03Z'
+  last_updated: '2026-07-21T06:09:50Z'
+  last_checked: '2026-07-21T06:09:50Z'
   releases_master_updated: '2026-07-15T05:17:15.285Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -2071,13 +2071,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/NetworkAccessManagement/pull/164
       created_at: '2026-06-29T21:23:20Z'
-      assignees: []
-      review_decision: null
+      assignees:
+      - tanjadegroot
+      review_decision: CHANGES_REQUESTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 3
       rm_total: 4
     draft_release: null
     release_issue:
