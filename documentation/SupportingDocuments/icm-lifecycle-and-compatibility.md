@@ -8,6 +8,62 @@
 
 ---
 
+# Table of Contents
+
+1. [Scope and Purpose](#1-scope-and-purpose)
+2. [Glossary](#2-glossary)
+
+3. [ICM-compatibility](#3-icm-compatibility)
+   
+   3.1 [API version ICM-compatibility](#31-api-version-icm-compatibility)  
+   3.2 [API deployment ICM-compatibility](#32-api-deployment-icm-compatibility)  
+   3.3 [Maintaining ICM-compatibility](#33-maintaining-icm-compatibility)  
+   3.4 [Path from ICM through Commonalities into API definitions](#34-path-from-icm-through-commonalities-into-api-definitions)
+
+4. [ICM versioning](#4-icm-versioning)
+
+5. [ICM version lifecycle states and governance](#5-icm-version-lifecycle-states-and-governance)
+   
+   5.1 [ICM version lifecycle states – definitions](#51-icm-version-lifecycle-states---definitions)  
+   5.2 [ICM version lifecycle states – transitions](#52-icm-version-lifecycle-states---transitions)  
+   5.3 [Duration of ICM lifecycle states](#53-duration-of-icm-lifecycle-states)  
+   5.4 [ICM version – Release notes](#54-icm-version---release-notes)
+    
+      5.4.1 [Publication of lifecycle state](#541-publication-of-lifecycle-state)  
+      5.4.2 [ICM version change tables](#542-icm-version-change-tables)
+
+6. [API version ICM-compatibility – details](#6-api-version-icm-compatibility---details)
+   
+   6.1 [Minimum ICM version](#61-minimum-icm-version)  
+   6.2 [ICM governance responsibilities](#62-icm-governance-responsibilities)  
+   6.3 [API designer responsibilities](#63-api-designer-responsibilities)  
+   6.4 [Determining the x-camara-min-icm value](#64-determining-the-x-camara-min-icm-value)  
+   6.5 [CAMARA validation support](#65-camara-validation-support)
+
+7. [API deployment ICM-compatibility – details](#7-api-deployment-icm-compatibility---details)
+    
+   7.1 [API Provider responsibilities](#71-api-provider-responsibilities)  
+   7.2 [API Consumer responsibilities](#72-api-consumer-responsibilities)
+
+8. [ICM version release cadence](#8-icm-version-release-cadence)
+    
+   8.1 [Signal/Sync meta-release alignment](#81-signalsync-meta-release-alignment)  
+   8.2 [Out-of-cycle ICM releases](#82-out-of-cycle-icm-releases)
+
+9. [ICM-compatibility matrix](#9-icm-compatibility-matrix)
+   
+   9.1 [ICM-compatibility matrix derivation](#91-icm-compatibility-matrix-derivation)  
+   9.2 [ICM-compatibility matrix – updates](#92-icm-compatibility-matrix---updates)  
+   9.3 [ICM-compatibility matrix – ownership](#93-icm-compatibility-matrix---ownership)
+
+10. [Exception mechanism](#10-exception-mechanism)
+
+11. [ICM 0.x handling](#11-icm-0x-handling)
+
+12. [Open governance points for discussion/decision](#12-open-governance-points-for-discussiondecision)
+
+13. [Appendix A - Key positions](#13-appendix-a---key-positions)    
+
 ## 1. Scope and Purpose
 
 This guideline defines lifecycle management of Identity and Consent Management (ICM) versions and how CAMARA APIs declare and maintain compatibility with them. It defines under what rules API versions and ICM versions can co-evolve while still providing clear compatibility guarantees.
@@ -144,6 +200,8 @@ Note: Deprecation or Retirement of an ICM version does not by itself Deprecate o
 These durations are starting points for WG discussion. <!-- to be removed when WG agrees -->
 
 ### 5.4 ICM version - Release notes
+
+The following sections address the content of the ICM version release notes.
 
 #### 5.4.1 Publication of lifecycle state
 
@@ -296,7 +354,7 @@ The API Consumer is responsible for ensuring that its own implementation matches
 
 ## 8. ICM version release cadence
 
-### 8.1 Signal / Sync meta-release alignment
+### 8.1 Signal/Sync meta-release alignment
 
 The Signal meta-release is used to 
 - plan and release a new ICM version per evolving requirements
@@ -424,7 +482,7 @@ The following require WG agreement before this guideline is adopted:
 
 ---
 
-## Appendix A: Key positions
+## 13. Appendix A - Key positions
 
 - **ICM-compatibility has two distinct aspects** — design-time (API version, governed by CAMARA via Commonalities) and runtime (deployment, governed by API Provider). See §3.
 - **A meta-release is not the unit of ICM-compatibility.** ICM-compatibility of individual (API version, ICM version) pairs are constrained by lifecycle states and by governance decisions / exceptions.
