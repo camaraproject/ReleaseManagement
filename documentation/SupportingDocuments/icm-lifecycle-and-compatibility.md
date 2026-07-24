@@ -79,18 +79,25 @@ This means an ICM design info change typically also triggers a Commonalities upd
 
 This guideline assumes ICM adopts strict SemVer versioning starting with its 1.0.0 release. 
 
-ICM versioning relates to the types of changes made to the two classes of ICM information that impact ICM-compatibility: ICM design info and ICM deployment info (§3):
+An change in ICM version reflects all changes made for that version. These changes may concern either or both classes of ICM information that impact ICM-compatibility: ICM design info and ICM deployment info (§3):
 
 - changes that break **API version ICM-compatibility** — affecting ICM design info (scope format, `securitySchemes` syntax, schemas, operations), requiring API versions to be updated;
 - changes that break **API deployment ICM-compatibility** — affecting ICM deployment info (auth flows, grant types, assertion format and lifetime, token processing), requiring API Provider and Consumer implementations to be updated, independently of the API version.
 
-Both types of changes are captured in the ICM version according to standard SemVer rules:
+The two classes of changes are not necessarily related. For example, a change in ICM deployment info MAY (1) or MAY NOT (2) lead to a change of API design info, e.g.
+
+1. a new auth flow impacts the API design info as a new type of credential/token needs to be introduced in the API definition (change of ICM deployment info leads to change of ICM design info)
+2. the introduction of a 300s client-assertion lifetime cap has no impact on the API definition (change of ICM deployment info does not change the ICM design info).
+
+The complete set of ICM design and deployment info together will determine the new ICM version.
+
+Changes are captured in the ICM version according to standard SemVer rules:
 
 - **Major version (1.x.y → 2.0.0)**: reserved for breaking changes that cannot be expressed additively. These may be due to ICM design info changes (for example, replacement of a mandatory security schema, an incompatible scope format, removal of a required claim), to ICM deployment info changes (for example, mandatory new authentication rules, an assertion lifetime cap that rejects existing Consumers), or both. Major ICM versions should be deliberately rare and driven by security or regulatory necessity.
 - **Minor version change (1.x.y → 1.x+1.0)**: additive only. No breaking change, but minor change to ICM design info (preserves API version ICM-compatibility), or no breaking change, but minor change to ICM deployment info (preserves API deployment ICM-compatibility). For example, new optional flows, new optional claims, new recommendations permitted. Minor changes must not reject previously ICM-compatible API deployment behavior, as these may only apply in a major ICM version change.
 - **Patch version (1.2.3 → 1.2.4)**: documentation or defect corrections that may require patch API versions to incorporate (e.g., update of the ICM mandatory text in the API version's `info.description` field), and with no impact on API deployment ICM-compatibility.
 
-A change to ICM deployment info that invalidates existing API deployments requires a major ICM version release, even if no new API versions are required. ICM versioning is not focused only on preserving API version ICM-compatibility.
+A change to ICM deployment info that invalidates existing API deployments requires a major ICM version change, even if no new API versions are required. ICM versioning is not focused only on preserving API version ICM-compatibility.
 
 ## 5. ICM version lifecycle states and governance
 
