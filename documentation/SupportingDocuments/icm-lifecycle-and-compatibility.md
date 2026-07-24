@@ -438,9 +438,11 @@ The ICM-compatibility matrix is published by Release Management. It is computed,
 
 ## 10. Exception mechanism
 
-Exceptions are time-bound ICM-compatibility authorizations granted by governance. 
+There are 2 types of exceptions:
 
-Exceptions shall be documented by Release Management using exception decision records with the following information:
+**ICM-compatibility exceptions** are time-bound ICM-compatibility authorizations granted by governance (TSC). 
+
+They concern the **ICM version lifetime duration extension (Supported or Deprecated state)**. Such exceptions can be requested to the TSC. They shall be documented in TSC minutes and by Release Management using exception decision records with the following information:
 
 - **Scope**: specific (API version, ICM version) pair, or a range.
 - **Justification**: required — operational necessity, regulatory requirement, or security consideration.
@@ -448,7 +450,16 @@ Exceptions shall be documented by Release Management using exception decision re
 - **Owner**: named API Sub Project or provider responsible for remediation by expiry.
 - **Expiry**: automatic. No "ongoing exception" mechanism.
 
-Exceptions are the only mechanism by which an (API version, ICM version) pair can be considered ICM-compatible despite violating the ICM-compatibility rules. Exceptions will appear in the ICM-compatibility matrix with an explicit annotation.
+These exceptions are the only mechanisms by which an (API version, ICM version) pair can be considered ICM-compatible despite violating the ICM-compatibility rules. Exceptions will appear in the ICM-compatibility matrix with an explicit annotation.
+
+**ICM lifecycle state exceptions** are governance-driven lifecycle state change towards the **Revoked** state.
+
+These exceptions shall be proposed and decided by the ICM team, and possibly by the TSC team, documented in the ICM release notes in the ICM lifecycle state table, and include an exception decision record underneath the table as follows:
+
+- **Date**: the date of transition to Revoked state.
+- **Scope**: impacted ICM version number and lifecycle state before transition to Revoked
+- **Justification**: required — operational necessity, regulatory requirement, or security consideration.
+- **Owner**: ICM team
 
 ## 11. ICM 0.x handling
 
