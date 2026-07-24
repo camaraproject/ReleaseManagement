@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-07-22T06:08:33Z'
-  last_checked: '2026-07-22T06:08:33Z'
+  last_updated: '2026-07-24T06:08:17Z'
+  last_checked: '2026-07-24T06:08:17Z'
   releases_master_updated: '2026-07-15T05:17:15.285Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -8,7 +8,7 @@ metadata:
   repos_new: 0
   repos_with_plan: 61
   repos_fully_onboarded: 44
-  repos_with_release_issue: 41
+  repos_with_release_issue: 40
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -643,27 +643,31 @@ progress:
     - sebdewet
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r1.2-c50a0d5
+    snapshot_branch: release-snapshot/r1.2-63e05e0
     release_pr:
-      number: 35
+      number: 38
       state: open
-      url: https://github.com/camaraproject/ConsentManagement/pull/35
-      created_at: '2026-06-30T09:21:19Z'
-      assignees:
-      - hdamker
+      url: https://github.com/camaraproject/ConsentManagement/pull/38
+      created_at: '2026-07-23T12:50:44Z'
+      assignees: []
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 4
-      rm_total: 4
+      rm_checked: 0
+      rm_total: 5
     draft_release: null
     release_issue:
       number: 34
       url: https://github.com/camaraproject/ConsentManagement/issues/34
       created_at: '2026-06-19T07:32:18Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers:
+      - hdamker
+      last_pr_url: https://github.com/camaraproject/ConsentManagement/pull/35
+      last_closed_at: '2026-07-22T10:29:13Z'
   published_context:
     latest_public_release: null
     newest_pre_release: r1.1
@@ -707,29 +711,12 @@ progress:
     - PedroDiez
     - KevScarr
     - rartych
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r3.1-44c1fae
-    release_pr:
-      number: 84
-      state: open
-      url: https://github.com/camaraproject/CustomerInsights/pull/84
-      created_at: '2026-06-29T09:31:16Z'
-      assignees:
-      - hdamker
-      - tanjadegroot
-      review_decision: APPROVED
-      codeowner_approved: true
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 4
-      rm_total: 4
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 73
-      url: https://github.com/camaraproject/CustomerInsights/issues/73
-      created_at: '2026-04-30T14:11:13Z'
+    release_issue: null
     review_history: null
   published_context:
     latest_public_release: r2.2
@@ -749,6 +736,11 @@ progress:
       apis: []
   snapshot_api_versions:
     customer-insights: 0.3.0-rc.1
+  warnings:
+  - code: W003
+    message: Release r3.1 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: DedicatedNetworks
   github_url: https://github.com/camaraproject/DedicatedNetworks
   release_track: meta-release
@@ -1761,10 +1753,22 @@ progress:
     - ToshiWakayama-KDDI
     - fernandopradocabrillo
     - GillesInnov35
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.1-f1d12f3
+    release_pr:
+      number: 52
+      state: open
+      url: https://github.com/camaraproject/KnowYourCustomerAgeVerification/pull/52
+      created_at: '2026-07-23T06:04:21Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 0
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 5
     draft_release: null
     release_issue:
       number: 45
@@ -1787,6 +1791,8 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    kyc-age-verification: 0.3.0-rc.1
 - repository: KnowYourCustomerFill-in
   github_url: https://github.com/camaraproject/KnowYourCustomerFill-in
   release_track: meta-release
@@ -1803,10 +1809,22 @@ progress:
     main_contacts:
     - ToshiWakayama-KDDI
     - GillesInnov35
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.1-37d6b61
+    release_pr:
+      number: 58
+      state: open
+      url: https://github.com/camaraproject/KnowYourCustomerFill-in/pull/58
+      created_at: '2026-07-23T07:16:52Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 0
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 5
     draft_release: null
     release_issue:
       number: 54
@@ -1829,6 +1847,8 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    kyc-fill-in: 0.5.0-rc.1
 - repository: KnowYourCustomerMatch
   github_url: https://github.com/camaraproject/KnowYourCustomerMatch
   release_track: meta-release
@@ -1846,10 +1866,22 @@ progress:
     - ToshiWakayama-KDDI
     - fernandopradocabrillo
     - GillesInnov35
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.1-7a5a9d4
+    release_pr:
+      number: 82
+      state: open
+      url: https://github.com/camaraproject/KnowYourCustomerMatch/pull/82
+      created_at: '2026-07-23T07:48:26Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 0
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 5
     draft_release: null
     release_issue:
       number: 79
@@ -1872,6 +1904,8 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    kyc-match: 0.5.0-rc.1
 - repository: ModelAsAService
   github_url: https://github.com/camaraproject/ModelAsAService
   release_track: meta-release
@@ -2587,13 +2621,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/QoSBooking/pull/109
       created_at: '2026-07-03T09:54:07Z'
-      assignees: []
-      review_decision: null
+      assignees:
+      - tanjadegroot
+      review_decision: CHANGES_REQUESTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 4
     draft_release: null
     release_issue:
@@ -2850,13 +2885,15 @@ progress:
       state: open
       url: https://github.com/camaraproject/SimpleEdgeDiscovery/pull/186
       created_at: '2026-07-06T13:32:03Z'
-      assignees: []
-      review_decision: null
+      assignees:
+      - hdamker
+      - tanjadegroot
+      review_decision: COMMENTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 3
       rm_total: 4
     draft_release: null
     release_issue:
@@ -3147,10 +3184,22 @@ progress:
     - olsi-korkuti
     - stroncoso-quobis
     - GillesInnov35
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.2-a6ae039
+    release_pr:
+      number: 131
+      state: open
+      url: https://github.com/camaraproject/VerifiedCaller/pull/131
+      created_at: '2026-07-23T08:18:34Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 5
     draft_release: null
     release_issue:
       number: 128
@@ -3185,6 +3234,9 @@ progress:
       api_version: 0.2.0-alpha.1
     - api_name: verified-caller
       api_version: 0.2.0-alpha.1
+  snapshot_api_versions:
+    brand-registration: 0.2.0-rc.1
+    verified-caller: 0.2.0-rc.1
 - repository: VoiceNotification
   github_url: https://github.com/camaraproject/VoiceNotification
   release_track: independent
