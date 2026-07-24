@@ -151,6 +151,22 @@ The lifecycle state is published in each ICM version's release notes, as a table
 
 The published lifecycle state must be available in machine-readable form for the CAMARA validation support to consume (§6.5). Until a schema is defined, the ICM version release notes are the single authoritative source — readable by humans but not by tooling.
 
+**ICM release notes - lifecycle state table**
+
+The following table tracks the lifecycle state of ICM versions. This table is part of the ICM release notes.
+
+Note: the entries in _italics_ are examples that should not be present in the release notes.
+
+| ICM version | Lifecycle State | Supported | Deprecated | Retired | Revoked | Extension | Comment |
+|---|---|---|---|---|---|---|---|
+| _2.1.0_ | _Supported_ | _2028-08_ | _2030-08_ | _2031-04_ |  |  | _replacement of 2.0.0 due to security issue_ |
+| _2.0.0_ | _Revoked_ | _2028-04_ | _2030-04_ | _2031-04_ | _2028-08_ |  | _override example_ |
+| _1.0.0_ | _Supported_ | _2027-04_ | _2029-04_ | _2030-04_ |  |  | _future release example_ |
+| **0.5.0** | **Supported** | 2026-05 | 2028-04 | 2029-04 |  |  | new durations: 24 + 12 months |
+| **0.4.0** | **Supported** | 2025-09 | 2027-10 | 2028-04 |  |  | intermediate durations: 24 + 6 months |
+| 0.3.0 | Deprecated | 2025-03 | 2026-03 | 2026-10 |   |  | old durations: 12 + 6 months |
+| 0.2.1 | Revoked | 2024-09 | 2025-09 | 2026-03 | 2026-07  |  | example ICM decision (link to minutes) |
+
 #### 5.4.2 ICM version change tables
 
 In addition to the lifecycle state table, each ICM release MUST document **breaking changes** introduced in that ICM version, split by ICM design info changes (Table A) and ICM deployment info changes (Table B), covering the two aspects of ICM-compatibility (§3). Non-breaking changes (additive features, clarifications) are documented in the regular CHANGELOG and do not require entries in the tables below.
