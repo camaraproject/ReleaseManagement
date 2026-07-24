@@ -1,7 +1,9 @@
 # ICM Lifecycle and API Compatibility Governance
 
 **Version:** Draft 2 (2026-05-13)
+
 **Status:** Draft for Release Management WG discussion; incorporates V2 working merge and review feedback.
+
 **Scope:** Response to the ICM WG request to Release Management (per [ICM#324](https://github.com/camaraproject/IdentityAndConsentManagement/issues/324), [ICM#340](https://github.com/camaraproject/IdentityAndConsentManagement/issues/340), [ReleaseManagement#351](https://github.com/camaraproject/ReleaseManagement/issues/351)) to define governance for ICM version evolution and its dependencies with CAMARA API versions.
 
 ---
@@ -144,21 +146,21 @@ The published lifecycle state must be available in machine-readable form for the
 
 #### 5.4.2 ICM version change tables
 
-In addition to the lifecycle state table, each ICM release MUST document **breaking changes** introduced in that ICM version, split by ICM design info changes and ICM deployment info changes, covering the two aspects of ICM-compatibility (§3). Non-breaking changes (additive features, clarifications) are documented in the regular CHANGELOG and do not require entries in the tables below.
+In addition to the lifecycle state table, each ICM release MUST document **breaking changes** introduced in that ICM version, split by ICM design info changes (Table A) and ICM deployment info changes (Table B), covering the two aspects of ICM-compatibility (§3). Non-breaking changes (additive features, clarifications) are documented in the regular CHANGELOG and do not require entries in the tables below.
 
-**Table A — Breaking ICM design info changes** (impacting API versions; see §3.1). Used by API Sub Projects to assess whether their API versions need a new release.
+**Table A — ICM design info - breaking changes** (impacting API version ICM-compatibility; see §3.1). Used by API Sub Projects to assess whether their API versions need a new release.
 
-| ICM version | Breaking design info change | Affected construct | Impact on API definition |
-|---|---|---|---|
-| _2.0.0_ | _introduces new scope format X_ | _where it appears in an API definition_ | _what API teams need to do_ |
+| ICM version (tag) | OAS element / path | Design info breaking change | Impact on API definition | Linter Rule ID |
+|---|---|---|---|---|
+| _Semantic version and associated release tag (e.g., 0.4.0 (r3.3))_ | _The exact component of the OpenAPI file affected (e.g., components.securitySchemes, info.description, paths.*.security)_ | _A concise technical explanation of the mandatory syntactic or structural change_ | _The literal code snippet or exact action the API editor must apply_ | _The associated Spectral rule ID so that the CI/CD pipeline can automate verification_ |
+| 0.4.0 (r3.3) | info.description | Modification of the mandatory privacy legal text block and onboarding instructions. | Replace the current description block with the new official ICM v0.4.0 template. | `camara-icm-mandatory-text` |
 
-**Table B — Breaking ICM deployment info changes** (impacting API deployments; see §3.2). Used by API Providers and API Consumers to plan deployment updates.
+**Table B — ICM deployment info - breaking changes** (impacting API deployment ICM-compatibility; see §3.2). Used by API Providers and API Consumers to plan deployment updates.
 
-| ICM version | Breaking deployment info change | Affected runtime behavior | Impact on API deployment |
-|---|---|---|---|
-| _0.3.0_ | _introduces 300s client-assertion lifetime cap_ | _which deployment behavior_ | _what Provider and Consumer need to do_ |
-
-The exact column layout is subject to refinement once concrete examples are filled in (see §12).
+| ICM version (tag) | Protocol Layer / Component | Affected runtime behavior | Action for API Providers | Action for API Consumers |
+|---|---|---|---|---|
+| _Semantic version and associated release tag (e.g., 0.3.0 (r2.3))_ | _The affected flow or endpoint (e.g., OIDC Discovery, Token Endpoint, CIBA Backchannel)_ | _The new strict validation or behavioral rule being introduced_ | _What the providers must configure in their Auth Server/infrastructure_ | _What the application developer must update in their token-request logic_ |
+| 0.3.0 (r2.3) | All Auth flows | Strict capping of the `private_key_jwt assertion` lifetime to a maximum of 300 seconds | The request SHALL be rejected by the authorisation server if the exp claim is more than 300 seconds later than the time of receipt. Additionally, if the iat claim is present, the request SHALL be rejected if the difference between the exp claim and iat claim is more than 300 seconds | The API Consumer MUST NOT create client assertions with a lifetime of more than 300 seconds, calculated as the difference between the exp (expires at) claim and the token creation time (which SHALL also be the value of the iat claim if present) |
 
 ## 6. API version ICM-compatibility - details
 
