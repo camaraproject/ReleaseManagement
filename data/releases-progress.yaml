@@ -1,14 +1,14 @@
 metadata:
-  last_updated: '2026-07-24T06:08:17Z'
-  last_checked: '2026-07-24T06:08:17Z'
-  releases_master_updated: '2026-07-15T05:17:15.285Z'
+  last_updated: '2026-07-25T05:59:40Z'
+  last_checked: '2026-07-25T05:59:40Z'
+  releases_master_updated: '2026-07-24T05:36:51.983Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
   repos_scanned: 61
   repos_new: 0
   repos_with_plan: 61
   repos_fully_onboarded: 44
-  repos_with_release_issue: 40
+  repos_with_release_issue: 39
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -33,7 +33,7 @@ meta_releases:
 - name: Sync26
   total_apis: 59
   m1_achieved: 8
-  m3_achieved: 1
+  m3_achieved: 2
   m4_achieved: 0
 progress:
 - repository: ApplicationEndpointDiscovery
@@ -720,27 +720,30 @@ progress:
     review_history: null
   published_context:
     latest_public_release: r2.2
-    newest_pre_release: null
+    newest_pre_release: r3.1
   cycle_releases:
     m1:
       release_tag: null
       release_date: null
       apis: []
     m3:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r3.1
+      release_date: '2026-07-23T16:06:40Z'
+      apis:
+      - api_name: customer-insights
+        api_version: 0.3.0-rc.1
     m4:
       release_tag: null
       release_date: null
       apis: []
+  last_published:
+    release_tag: r3.1
+    release_date: '2026-07-23T16:06:40Z'
+    apis:
+    - api_name: customer-insights
+      api_version: 0.3.0-rc.1
   snapshot_api_versions:
     customer-insights: 0.3.0-rc.1
-  warnings:
-  - code: W003
-    message: Release r3.1 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: DedicatedNetworks
   github_url: https://github.com/camaraproject/DedicatedNetworks
   release_track: meta-release
@@ -791,13 +794,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/DedicatedNetworks/pull/137
       created_at: '2026-07-13T10:53:09Z'
-      assignees: []
-      review_decision: null
+      assignees:
+      - hdamker
+      review_decision: COMMENTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 5
       rm_total: 5
     draft_release: null
     release_issue:
@@ -1931,30 +1935,22 @@ progress:
     target_api_status: rc
     main_contacts:
     - lihaojie-CMCC
-  state: snapshot_active
+  state: planned
   artifacts:
-    snapshot_branch: release-snapshot/r2.1-e8fdc70
-    release_pr:
-      number: 35
-      state: open
-      url: https://github.com/camaraproject/ModelAsAService/pull/35
-      created_at: '2026-06-29T05:14:02Z'
-      assignees:
-      - hdamker
-      - tanjadegroot
-      review_decision: CHANGES_REQUESTED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 1
-      rm_total: 4
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
     release_issue:
       number: 32
       url: https://github.com/camaraproject/ModelAsAService/issues/32
       created_at: '2026-06-04T07:41:29Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers:
+      - hdamker
+      - tanjadegroot
+      last_pr_url: https://github.com/camaraproject/ModelAsAService/pull/35
+      last_closed_at: '2026-07-24T06:20:49Z'
   published_context:
     latest_public_release: r1.2
     newest_pre_release: null
@@ -1971,10 +1967,6 @@ progress:
       release_tag: null
       release_date: null
       apis: []
-  snapshot_api_versions:
-    knowledge-base: 0.2.0-rc.1
-    qa-assistant-manage: 0.2.0-rc.1
-    qa-assistant-service: 0.2.0-rc.1
 - repository: MostFrequentLocation
   github_url: https://github.com/camaraproject/MostFrequentLocation
   release_track: meta-release
@@ -2111,33 +2103,18 @@ progress:
     - mayur007
     - clundie-CL
     - benhepworth
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r3.1-99c6b06
-    release_pr:
-      number: 164
-      state: open
-      url: https://github.com/camaraproject/NetworkAccessManagement/pull/164
-      created_at: '2026-06-29T21:23:20Z'
-      assignees:
-      - tanjadegroot
-      review_decision: CHANGES_REQUESTED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 3
-      rm_total: 4
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 146
-      url: https://github.com/camaraproject/NetworkAccessManagement/issues/146
-      created_at: '2026-05-29T14:23:34Z'
+    release_issue: null
     review_history:
-      discarded_count: 2
-      last_reviewers: []
-      last_pr_url: https://github.com/camaraproject/NetworkAccessManagement/pull/161
-      last_closed_at: '2026-06-29T20:42:14Z'
+      discarded_count: 3
+      last_reviewers:
+      - tanjadegroot
+      last_pr_url: https://github.com/camaraproject/NetworkAccessManagement/pull/164
+      last_closed_at: '2026-07-24T11:06:28Z'
   published_context:
     latest_public_release: null
     newest_pre_release: r2.1
@@ -2157,6 +2134,11 @@ progress:
   snapshot_api_versions:
     network-access-devices: 0.3.0-rc.1
     network-access-domains: 0.3.0-rc.1
+  warnings:
+  - code: W003
+    message: Release r3.1 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: NetworkInsights
   github_url: https://github.com/camaraproject/NetworkInsights
   release_track: meta-release
