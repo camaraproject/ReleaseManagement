@@ -1,8 +1,8 @@
 # ICM Lifecycle and API Compatibility Governance
 
-**Version:** Draft 2 (2026-05-13)
+**Version:** Draft 3 (2026-07-29)
 
-**Status:** Draft for Release Management WG discussion; incorporates V2 working merge and review feedback.
+**Status:** Draft for ICM WG discussion / approval; incorporates V2 working merge and ICM team review feedback.
 
 **Scope:** Response to the ICM WG request to Release Management (per [ICM#324](https://github.com/camaraproject/IdentityAndConsentManagement/issues/324), [ICM#340](https://github.com/camaraproject/IdentityAndConsentManagement/issues/340), [ReleaseManagement#351](https://github.com/camaraproject/ReleaseManagement/issues/351)) to define governance for ICM version evolution and its dependencies with CAMARA API versions.
 
