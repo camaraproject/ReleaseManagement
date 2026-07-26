@@ -1,7 +1,7 @@
 metadata:
-  last_updated: '2026-07-25T05:59:40Z'
-  last_checked: '2026-07-25T05:59:40Z'
-  releases_master_updated: '2026-07-24T05:36:51.983Z'
+  last_updated: '2026-07-26T06:19:01Z'
+  last_checked: '2026-07-26T06:19:01Z'
+  releases_master_updated: '2026-07-25T05:32:13.551Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
   repos_scanned: 61
@@ -33,7 +33,7 @@ meta_releases:
 - name: Sync26
   total_apis: 59
   m1_achieved: 8
-  m3_achieved: 2
+  m3_achieved: 4
   m4_achieved: 0
 progress:
 - repository: ApplicationEndpointDiscovery
@@ -2117,28 +2117,35 @@ progress:
       last_closed_at: '2026-07-24T11:06:28Z'
   published_context:
     latest_public_release: null
-    newest_pre_release: r2.1
+    newest_pre_release: r3.1
   cycle_releases:
     m1:
       release_tag: null
       release_date: null
       apis: []
     m3:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r3.1
+      release_date: '2026-07-24T17:11:46Z'
+      apis:
+      - api_name: network-access-devices
+        api_version: 0.3.0-rc.1
+      - api_name: network-access-domains
+        api_version: 0.3.0-rc.1
     m4:
       release_tag: null
       release_date: null
       apis: []
+  last_published:
+    release_tag: r3.1
+    release_date: '2026-07-24T17:11:46Z'
+    apis:
+    - api_name: network-access-devices
+      api_version: 0.3.0-rc.1
+    - api_name: network-access-domains
+      api_version: 0.3.0-rc.1
   snapshot_api_versions:
     network-access-devices: 0.3.0-rc.1
     network-access-domains: 0.3.0-rc.1
-  warnings:
-  - code: W003
-    message: Release r3.1 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: NetworkInsights
   github_url: https://github.com/camaraproject/NetworkInsights
   release_track: meta-release
@@ -5436,47 +5443,6 @@ progress:
     apis:
     - api_name: most-frequent-location
       api_version: 0.1.0
-  source: historical
-- repository: NetworkAccessManagement
-  github_url: https://github.com/camaraproject/NetworkAccessManagement
-  release_track: independent
-  target_release_tag: null
-  target_release_type: null
-  apis:
-  - api_name: network-access-management
-    target_api_version: 0.2.0-alpha.1
-    target_api_status: ''
-  state: historical
-  artifacts:
-    snapshot_branch: null
-    release_pr: null
-    draft_release: null
-    release_issue: null
-    review_history: null
-  published_context:
-    latest_public_release: null
-    newest_pre_release: null
-  cycle_releases:
-    m1:
-      release_tag: r2.1
-      release_date: '2026-05-28T15:15:46Z'
-      apis:
-      - api_name: network-access-management
-        api_version: 0.2.0-alpha.1
-    m3:
-      release_tag: null
-      release_date: null
-      apis: []
-    m4:
-      release_tag: null
-      release_date: null
-      apis: []
-  last_published:
-    release_tag: r2.1
-    release_date: '2026-05-28T15:15:46Z'
-    apis:
-    - api_name: network-access-management
-      api_version: 0.2.0-alpha.1
   source: historical
 - repository: NetworkInsights
   github_url: https://github.com/camaraproject/NetworkInsights
