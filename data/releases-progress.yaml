@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-07-28T15:52:24Z'
-  last_checked: '2026-07-28T15:52:24Z'
+  last_updated: '2026-07-28T16:30:12Z'
+  last_checked: '2026-07-28T16:30:12Z'
   releases_master_updated: '2026-07-28T05:33:53.650Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -2324,7 +2324,8 @@ progress:
       state: open
       url: https://github.com/camaraproject/NumberRecycling/pull/111
       created_at: '2026-07-08T12:56:11Z'
-      assignees: []
+      assignees:
+      - tanjadegroot
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
