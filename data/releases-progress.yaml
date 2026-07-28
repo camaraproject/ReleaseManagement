@@ -1,7 +1,7 @@
 metadata:
-  last_updated: '2026-07-28T06:06:55Z'
-  last_checked: '2026-07-28T06:06:55Z'
-  releases_master_updated: '2026-07-25T05:32:13.551Z'
+  last_updated: '2026-07-28T15:52:24Z'
+  last_checked: '2026-07-28T15:52:24Z'
+  releases_master_updated: '2026-07-28T05:33:53.650Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
   repos_scanned: 61
@@ -33,7 +33,7 @@ meta_releases:
 - name: Sync26
   total_apis: 59
   m1_achieved: 8
-  m3_achieved: 4
+  m3_achieved: 7
   m4_achieved: 0
 progress:
 - repository: ApplicationEndpointDiscovery
@@ -66,7 +66,8 @@ progress:
       state: open
       url: https://github.com/camaraproject/ApplicationEndpointDiscovery/pull/43
       created_at: '2026-07-21T17:22:05Z'
-      assignees: []
+      assignees:
+      - eric-murray
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
@@ -487,13 +488,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/ConnectedNetworkType/pull/67
       created_at: '2026-07-07T11:23:04Z'
-      assignees: []
+      assignees:
+      - tanjadegroot
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 3
       rm_total: 4
     draft_release: null
     release_issue:
@@ -649,7 +651,8 @@ progress:
       state: open
       url: https://github.com/camaraproject/ConsentManagement/pull/38
       created_at: '2026-07-23T12:50:44Z'
-      assignees: []
+      assignees:
+      - hdamker
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
@@ -1175,7 +1178,8 @@ progress:
       state: open
       url: https://github.com/camaraproject/DeviceReachabilityStatus/pull/76
       created_at: '2026-07-08T14:02:41Z'
-      assignees: []
+      assignees:
+      - hdamker
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
@@ -1246,7 +1250,8 @@ progress:
       state: open
       url: https://github.com/camaraproject/DeviceRoamingStatus/pull/88
       created_at: '2026-07-08T07:52:21Z'
-      assignees: []
+      assignees:
+      - hdamker
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
@@ -1603,7 +1608,8 @@ progress:
       state: open
       url: https://github.com/camaraproject/IoTDeviceManagement/pull/50
       created_at: '2026-07-14T07:18:23Z'
-      assignees: []
+      assignees:
+      - eric-murray
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
@@ -1952,29 +1958,40 @@ progress:
       last_closed_at: '2026-07-24T06:20:49Z'
   published_context:
     latest_public_release: r1.2
-    newest_pre_release: null
+    newest_pre_release: r2.1
   cycle_releases:
     m1:
       release_tag: null
       release_date: null
       apis: []
     m3:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r2.1
+      release_date: '2026-07-28T01:55:13Z'
+      apis:
+      - api_name: knowledge-base
+        api_version: 0.2.0-rc.1
+      - api_name: qa-assistant-manage
+        api_version: 0.2.0-rc.1
+      - api_name: qa-assistant-service
+        api_version: 0.2.0-rc.1
     m4:
       release_tag: null
       release_date: null
       apis: []
+  last_published:
+    release_tag: r2.1
+    release_date: '2026-07-28T01:55:13Z'
+    apis:
+    - api_name: knowledge-base
+      api_version: 0.2.0-rc.1
+    - api_name: qa-assistant-manage
+      api_version: 0.2.0-rc.1
+    - api_name: qa-assistant-service
+      api_version: 0.2.0-rc.1
   snapshot_api_versions:
     knowledge-base: 0.2.0-rc.1
     qa-assistant-manage: 0.2.0-rc.1
     qa-assistant-service: 0.2.0-rc.1
-  warnings:
-  - code: W003
-    message: Release r2.1 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: MostFrequentLocation
   github_url: https://github.com/camaraproject/MostFrequentLocation
   release_track: meta-release
@@ -2430,7 +2447,8 @@ progress:
       state: open
       url: https://github.com/camaraproject/OptimalEdgeDiscovery/pull/47
       created_at: '2026-07-21T16:57:28Z'
-      assignees: []
+      assignees:
+      - eric-murray
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
@@ -2574,7 +2592,7 @@ progress:
       assignees: []
       review_decision: null
       codeowner_approved: false
-      codeowner_checked: 0
+      codeowner_checked: 2
       codeowner_total: 3
       ready_for_review: false
       rm_checked: 0
@@ -3204,7 +3222,8 @@ progress:
       state: open
       url: https://github.com/camaraproject/VerifiedCaller/pull/131
       created_at: '2026-07-23T08:18:34Z'
-      assignees: []
+      assignees:
+      - tanjadegroot
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
@@ -3365,7 +3384,8 @@ progress:
       state: open
       url: https://github.com/camaraproject/WebRTC/pull/206
       created_at: '2026-07-19T09:31:05Z'
-      assignees: []
+      assignees:
+      - rartych
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
