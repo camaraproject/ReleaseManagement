@@ -126,24 +126,24 @@ A new ICM version may result from a change to either or both classes of ICM info
 
 **Actions to maintain ICM-compatibility**
 
-| meta-release | ICM version | ICM lifecycle state | API designer | API Provider | API Consumer |
-|---|---|---|---|---|---|
-| Signal N | vX.0.0 | Supported (24 months) |   | Deploy ICM vX.0.0 |   |
-|   | Older ICM version | Deprecated (12 months |   | Plan upgrade of APIs dependent on ICM versions in Deprecated state | Plan upgrade of API clients dependent on ICM versions in Deprecated state |
-|   | Older ICM version | Retired |   | Retire APIs dependent on ICM versions in Retired state | Retire API clients dependent on ICM versions in Retired state |
-| Sync N |   |   | **New, initial and new stable APIs**: MUST release against Signal N. **Stable APIs**: If 2 previous Signal releases were skipped, API MUST release against Signal N. **Major update** →  MUST release against Signal N. **Minor or patch update** →  MAY skip Signal N, but maximally 2 subsequent Signal releases can be skipped (independent or Sync track) | Deploy Sync N APIs based on ICM vX.0.0 | Deploy Sync N API clients based on ICM vX.0.0 |
-| Signal N+1 | vX+1.0.0 | Supported (24 months) |   | Deploy ICM vX+1.0.0 |   |
-|   | Older ICM version | Deprecated (12 months |   | Plan upgrade of APIs dependent on ICM versions in Deprecated state | Plan upgrade of API clients dependent on ICM versions in Deprecated state |
-|   | Older ICM version | Retired |   | Retire APIs dependent on ICM versions in Retired state | Retire API clients dependent on ICM versions in Retired state |
-| Sync N+1 |   |   | **New, initial and new stable APIs**: MUST release against Signal N+1. **Stable APIs**: If 2 previous Signal releases were skipped, API MUST release against Signal N+1. **Major update** →  MUST release against Signal N+1. **Minor or patch update** →  MAY skip Signal N+1, but maximally 2 subsequent Signal releases can be skipped (independent or Sync track) | Deploy Sync N+1 APIs based on ICM vX+1.0.0 | Deploy Sync N+1 API clients based on ICM vX+1.0.0 |
-| Signal N+2 | vX+2.0.0 | Supported (24 months) |   | Deploy ICM vX+2.0.0 |   |
-|   | vX.0.0 | Deprecated (12 months) |   | Plan upgrade of APIs dependent on ICM vX.0.0 | Plan upgrade of API clients dependent on ICM vX.0.0 |
-| Sync N+2 |   |   | **New, initial and new stable APIs**: MUST release against Signal N+2. **Stable APIs**: If 2 previous Signal releases were skipped, API MUST release against Signal N+2. **Major update** →  MUST release against Signal N+2. **Minor or patch update** →  MAY skip Signal N+2, but maximally 2 subsequent Signal releases can be skipped (independent or Sync track)  | Deploy Sync N+2 APIs based on ICM vX+2.0.0 | Deploy Sync N+2 API clients based on ICM vX+2.0.0 |
-| Signal N+3 | vX+3.0.0 | Supported (24 months) |   | Deploy ICM vX+3.0.0 |   |
-|   | vX+1.0.0 | Deprecated (12 months) | Plan upgrade of APIs dependent on ICM vX+1.0.0 | Plan upgrade of API clients dependent on ICM vX+1.0.0 |   |
-|   | vX.0.0 | Retired |   | Retire APIs dependent on ICM vX.0.0; Retire ICM vX.0.0 | Retire API clients dependent on ICM vX.0.0 |
-| Sync N+3 |   |   | **New, initial and new stable APIs**: MUST release against Signal N+3. **Stable APIs**: If 2 previous Signal releases were skipped, API MUST release against Signal N+3. **Major update** →  MUST release against Signal N+3. **Minor or patch update** →  MAY skip Signal N+3, but maximally 2 subsequent Signal releases can be skipped (independent or Sync track)  | Deploy Sync N+3 APIs based on ICM vX+3.0.0 | Deploy Sync N+3 API clients based on ICM vX+3.0.0 |
+The table below defines the single repeating pattern of actions that applies at **every** Signal/Sync pair. For any actual meta-release the same obligations apply each time a new major ICM version is released. 
 
+A worked multi-year example is given in [section 8.3](#83-example-of-icm-lifecycle-state-evolution-and-api-deployment-across-meta-releases).
+ 
+| Meta-release | Event | API designer | API Provider | API Consumer |
+|---|---|---|---|---|
+| **Signal N** | New major ICM version `vX.0.0` enters **Supported** state | — | Deploy ICM `vX.0.0` | — |
+| | Older ICM version enters **Deprecated** state (12-month migration window) | — | Plan upgrade of APIs that depend on the Deprecated ICM version | Plan upgrade of API clients that depend on the Deprecated ICM version |
+| | Older ICM version enters **Retired** state | — | Retire APIs that depend on the Retired ICM version | Retire API clients that depend on the Retired ICM version |
+| **Sync N** | New API version release | Release against Signal N per the rules below\* | Deploy Sync N APIs based on ICM `vX.0.0` | Deploy Sync N API clients based on ICM `vX.0.0` |
+ 
+**API release rules at Sync N:**
+- New, initial, and new stable APIs **MUST** release against Signal N.
+- A stable API **MUST** release against Signal N if it has already skipped the two previous Signal releases.
+- A **major** update of a stable API **MUST** release against Signal N.
+- A **minor or patch** update of a stable API **MAY** skip Signal N, but no more than two consecutive Signal releases may be skipped (whether on the independent or Sync track).
+ 
+At any given time, at most two major ICM versions are relevant to a Provider's planning: the newly Supported one, and the one entering Deprecated (with a third, entering Retired, dropping out of scope). The table's four rows are the complete set of obligations that recur every cycle.
 
 ### 3.4 Path from ICM through Commonalities into API definitions
 
