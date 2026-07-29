@@ -120,8 +120,8 @@ A new ICM version may result from a change to either or both classes of ICM info
  
 | Type of change | Consequence for the API definition | Who must act |
 |---|---|---|
-| Change to **ICM design info** (e.g. a new scope format) | Triggers a new API version for impacted APIs (see [Minimum ICM version](#61-minimum-icm-version)) | API designers release the new version; Providers and Consumers adapt deployments to the new API version |
-| Change to **ICM deployment info** (e.g. tightening assertion lifetime) | No new API version required — the API definition is unchanged; only runtime behavior changes | Providers and Consumers update their implementations |
+| Change to **ICM design info** (e.g. a new scope format) | Triggers a new API version for impacted APIs (see [Minimum ICM version](#61-minimum-icm-version)) | API designers release the new version |
+| Change to **ICM deployment info** (e.g. tightening assertion lifetime) | No new API version required — the API definition is unchanged; only runtime behavior changes | API Providers and Consumers update their deployments |
 | Change to **both** | Both consequences apply | All three roles act |
 
 **Actions to maintain ICM-compatibility**
@@ -134,10 +134,10 @@ A worked multi-year example is given in [section 8.3](#83-example-of-icm-lifecyc
 |---|---|---|---|---|
 | **Signal N** | New major ICM version `vX.0.0` enters **Supported** state | — | Deploy ICM `vX.0.0` | — |
 | | Older ICM version enters **Deprecated** state (12-month migration window) | — | Plan upgrade of APIs that depend on the Deprecated ICM version | Plan upgrade of API clients that depend on the Deprecated ICM version |
-| | Older ICM version enters **Retired** state | — | Retire APIs that depend on the Retired ICM version | Retire API clients that depend on the Retired ICM version |
-| **Sync N** | New API version release | Release against Signal N per the rules below\* | Deploy Sync N APIs based on ICM `vX.0.0` | Deploy Sync N API clients based on ICM `vX.0.0` |
+| | Older ICM version enters **Retired** state | — | Retire APIs that depend on the Retired ICM version or update to Supported ICM version | Retire API clients that depend on the Retired ICM version or update to API Provider indicated Supported ICM version|
+| **Sync N** | New API version release | Release against Signal N per the API release rules below\* | Deploy Sync N APIs based on ICM `vX.0.0` | Deploy Sync N API clients based on ICM `vX.0.0` |
  
-**API release rules at Sync N:**
+\***API release rules at Sync N:**
 - New, initial, and new stable APIs **MUST** release against Signal N.
 - A stable API **MUST** release against Signal N if it has already skipped the two previous Signal releases.
 - A **major** update of a stable API **MUST** release against Signal N.
@@ -159,14 +159,14 @@ This means an ICM design info change typically also triggers a Commonalities upd
 
 This guideline assumes ICM adopts strict SemVer versioning starting with its 1.0.0 release. 
 
-An change in ICM version reflects all changes made for that version. These changes may concern either or both classes of ICM information that impact ICM-compatibility: ICM design info and ICM deployment info ([ICM-compatibility](#3-icm-compatibility)):
+A change in ICM version reflects all changes made for that version. These changes may concern either or both classes of ICM information that impact ICM-compatibility: ICM design info and ICM deployment info ([ICM-compatibility](#3-icm-compatibility)):
 
 - changes that break **API version ICM-compatibility** — affecting ICM design info (scope format, `securitySchemes` syntax, schemas, operations), requiring API versions to be updated;
 - changes that break **API deployment ICM-compatibility** — affecting ICM deployment info (auth flows, grant types, assertion format and lifetime, token processing), requiring API Provider and Consumer implementations to be updated, independently of the API version.
 
 The two classes of changes are not necessarily related. For example, a change in ICM deployment info MAY (1) or MAY NOT (2) lead to a change of API design info, e.g.
 
-1. a new auth flow impacts the API design info as a new type of credential/token needs to be introduced in the API definition (change of ICM deployment info leads to change of ICM design info)
+1. a new security scheme impacts the API design info as a new type of `securitySchemes` item needs to be introduced in the API definition (change of ICM deployment info and change of API design info)
 2. the introduction of a 300s client-assertion lifetime cap has no impact on the API definition (change of ICM deployment info does not change the ICM design info).
 
 The complete set of ICM design and deployment info together will determine the new ICM version.
@@ -265,7 +265,7 @@ In addition to the lifecycle state table, each ICM release MUST document **break
 | ICM version (tag) | Protocol Layer / Component | Affected runtime behavior | Action for API Providers | Action for API Consumers |
 |---|---|---|---|---|
 | _Semantic version and associated release tag (e.g., 0.3.0 (r2.3))_ | _The affected flow or endpoint (e.g., OIDC Discovery, Token Endpoint, CIBA Backchannel)_ | _The new strict validation or behavioral rule being introduced_ | _What the providers must configure in their Auth Server/infrastructure_ | _What the application developer must update in their token-request logic_ |
-| 0.3.0 (r2.3) | All Auth flows | Strict capping of the `private_key_jwt assertion` lifetime to a maximum of 300 seconds | The request SHALL be rejected by the authorisation server if the exp claim is more than 300 seconds later than the time of receipt. Additionally, if the iat claim is present, the request SHALL be rejected if the difference between the exp claim and iat claim is more than 300 seconds | The API Consumer MUST NOT create client assertions with a lifetime of more than 300 seconds, calculated as the difference between the exp (expires at) claim and the token creation time (which SHALL also be the value of the iat claim if present) |
+| 0.3.0 (r2.3) | All Auth flows | Strict capping of the `private_key_jwt` assertion lifetime to a maximum of 300 seconds | The request SHALL be rejected by the authorisation server if the exp claim is more than 300 seconds later than the time of receipt. Additionally, if the iat claim is present, the request SHALL be rejected if the difference between the exp claim and iat claim is more than 300 seconds | The API Consumer MUST NOT create client assertions with a lifetime of more than 300 seconds, calculated as the difference between the exp (expires at) claim and the token creation time (which SHALL also be the value of the iat claim if present) |
 
 ## 6. API version ICM-compatibility - details
 
@@ -325,7 +325,7 @@ Example:
 -> **x-camara-min-icm: v2.1.0**  (== max (v1.0.0, v2.1.0, v2.0.0))
 
 
-For APIs with no ICM-version-specific feature dependencies beyond what Commonalities mandates, the second element is not applicable. This reduces the formula to `max (lowest Supported ICM version at API version public release, lowest ICM version required by the Commonalities version declared in `x-camara-commonalities`). 
+For APIs with no ICM-version-specific feature dependencies beyond what Commonalities mandates, the second element is not applicable. This reduces the formula to `max (lowest Supported ICM version at API version public release, lowest ICM version required by the Commonalities version declared in `x-camara-commonalities)`. 
 Therefore, this formula ensures that releasing a new version of such an API always raises its `x-camara-min-icm` to a Supported ICM version.
 
 Example:
@@ -402,22 +402,19 @@ ICM version lifecycle state transitions may occur off-cycle in security-driven c
 
 This section illustrates a typical scenario starting from Signal27, based on the ICM lifecycle state durations of 24 months (2 years) Supported + 12 months (1 year) Deprecated = 36 months (3 years) total.
 
-- [**ICM Release in 2027**] Q2 2027: Signal27 released -> Q4 2027: Sync27 APIs released.
+- [**ICM Release**] Q2 2027: Signal27 released -> Q4 2027: Sync27 APIs released.
 - [**API Deployment**] Q2 2028: An operator launches Sync27 APIs in production (utilizing their 2028 budget).
-- [**ICM Release in 2028**] Q2 2028: Signal28 released -> Q4 2028: Sync28 APIs released.
-- [**ICM Release in 2029**] Q2 2029: Signal29 released -> Q4 2029: Sync29 APIs released.
-- [**ICM Deprecation**] Q2 2040: Signal27 becomes Deprecated (24 months after Signal28 was released in Q2 2028).
-- [**ICM Release in 2030**] Q2 2030: Signal30 released -> Q4 2030: Sync30 APIs released.
-- [**ICM Retirement**] Q2 2031: Signal27 becomes Retired (36 onths after Signal28 was released).
-- [**API Deployment**] Q2 2031: An operator launches Sync30 APIs in production (utilizing their 2031 budget).
+- [**ICM Deprecation**] Q2 2029: Signal27 becomes Deprecated (24 months after Signal27 was released in Q2 2027).
+- [**ICM Retirement**] Q2 2030: Signal27 becomes Retired (36 months after Signal27 was released in Q2 2027).
+- [**API Replacement**] Q2 2030: Sync27 APIs loose ICM-compatibility and must be Retired or replaced with Sync29 (preferred) or Sync28 APIs.
 
-In this scenario, the Sync27 APIs launched in Q2 2028 become ICM-incompatible by Q2 2031. This means the APIs' actual deployment lifespan is 3 years, which seems OK for operators.
+In this scenario, the Sync27 APIs launched in Q2 2028 are no longer ICM-compatible starting Q2 2030. This means the APIs' actual deployment lifespan is 2 years (with ICM version Supported (1 year) + Deprecated (1 year)).
 
-At the ICM retirement date (Q2 2031), the operator must have replaced Sync27 APIs. By Q2 2031, Sync30 APIs will have been out for about 6-8 months, meaning the risk of early patch releases is significantly reduced. They become viable candidates for the migration.
+At the ICM Sync27 retirement date (Q2 2030), the operator must have replaced Sync27 APIs. By Q2 2030, Sync29 APIs will have been out for about 6-8 months, meaning the risk of early patch releases is significantly reduced. They become viable candidates for the migration (utilizing the 2030 budget).
 
-Note: The previous alternative with an ICM Supported duration of 18 month was rejected as too short, as, in that case (ICM retirement in Q4 2030), Sync30 APIs cannot realistically be the candidate for this replacement because they have just been released, and operators typically want to avoid the potential risks of initial patch releases. They would be forced to migrate to older Sync28 or Sync29 APIs instead.
+Note: The previous alternative with an ICM Supported duration of 18 months was rejected as too short, as, in that case ICM Sync27 retirement would be in Q4 2029, and Sync29 APIs cannot realistically be the candidate for Sync27 API replacement because they have just been released, and operators typically want to avoid the potential risks of initial patch releases. They would be forced to migrate to older Sync28 APIs instead and APIs would be actually deployed for only 18 months (1.5 years).
 
-With the scenario above, the mandatory replacement of Sync27 APIs would happen in Q2 2031 based on ICM Signal30 (Q2 2030). This ensures the Sync27 APIs can be live in production for a full 3 years.
+With the latest scenario above, the mandatory replacement of Sync27 APIs would happen in Q2 2030 with Sync29 APIs based on ICM Signal29. This ensures the Sync27 APIs (Q4 2027) can be live in production from Q2 2028 upto Q2 2030 for a full 2 years.
 
 ## 9. ICM-compatibility matrix
 
