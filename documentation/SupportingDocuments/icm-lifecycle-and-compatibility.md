@@ -11,7 +11,7 @@
 # Table of Contents
 
 1. [Scope and Purpose](#1-scope-and-purpose)
-2. [Glossary](#2-glossary)
+2. [Glossary and References](#2-glossary-and-references)
 
 3. [ICM-compatibility](#3-icm-compatibility)
    
@@ -71,7 +71,7 @@ This guideline defines lifecycle management of [Identity and Consent Management 
 
 The guideline recognizes operational reality: API Providers offer the same API version against multiple ICM versions, and API Consumers require an API version and an ICM version as part of a single usage contract — if either aspect changes in a way that affects them, their implementation must adapt.
 
-## 2. Glossary
+## 2. Glossary and References
 
 Terms defined in the CAMARA [Commonalities](https://github.com/camaraproject/Commonalities/tree/main/documentation) or [Release Management](https://github.com/camaraproject/ReleaseManagement/tree/main/documentation) documentation (API, API Consumer, API Provider, semantic versioning, scope, meta-release, etc.) are not repeated here. This section defines terms specific to this guideline.
 
@@ -80,11 +80,22 @@ Terms defined in the CAMARA [Commonalities](https://github.com/camaraproject/Com
 - **API version ICM-compatibility**: the guarantee that an API version's definition respects the ICM design info of a given ICM version. A property of the API definition relative to an ICM version declared in its `x-camara-min-icm` field.
 - **API deployment ICM-compatibility**: the guarantee that an API Provider's or API Consumer's deployment (a) deploys ICM-compatible API versions and (b) implements the ICM deployment info of the ICM version it claims to operate under.
 - **ICM-compatibility** (umbrella): both API version and API deployment ICM-compatibility together. Successful integration of an API Consumer with an API Provider requires both to hold.
-- **ICM version**: a Semantic Versioning (SemVer 2.0) compliant version number with major, minor, and patch components, identifying a specific set of ICM artefacts. Starting with ICM 1.0.0, major-version increments indicate breaking changes for API definitions, API deployments, or both — changes that cannot be expressed additively.
+- **ICM version**: a Semantic Versioning ([SemVer 2.0](https://semver.org/spec/v2.0.0.html)) compliant version number with major, minor, and patch components, identifying a specific set of ICM artefacts. Starting with ICM 1.0.0, major-version increments indicate breaking changes for API definitions, API deployments, or both — changes that cannot be expressed additively.
 - **ICM lifecycle states**: Supported / Deprecated / Retired / Revoked are the four possible lifecycle states of an ICM version (see [ICM version lifecycle states and governance](#5-icm-version-lifecycle-states-and-governance)). Lifecycle states apply per ICM version.
 - **ICM governance**: the decision process to transition an ICM version to a different lifecycle state (see [ICM version lifecycle states and governance](#5-icm-version-lifecycle-states-and-governance)).
 - **Compatibility matrix**: the derived artifact listing which (API version, ICM version) pairs are ICM-compatible at a given point in time (see [ICM-compatibility matrix](#9-icm-compatibility-matrix)).
 - **Exception**: a governance-approved authorization that permits a specific (API version, ICM version) pair outside the normal ICM-compatibility guarantee, or a governance-approved decision to transition an ICM version to the "Revoked" life cycle state.
+
+**References**
+
+THe following references apply to this document:
+
+-  [Identity and Consent Management (ICM)](https://github.com/camaraproject/IdentityAndConsentManagement)
+-  [Commonalities](https://github.com/camaraproject/Commonalities)
+-  [Release Management](https://github.com/camaraproject/ReleaseManagement)
+-  [OpenAPI Specification (OAS) v3.0.3](https://spec.openapis.org/oas/v3.0.3.html)
+-  [Semantic Versioning 2.0](https://semver.org/spec/v2.0.0.html)
+-  [Technical Steering Committee (TSC) Home Page](https://lf-camaraproject.atlassian.net/wiki/x/0RDe)
 
 ## 3. ICM-compatibility
 
@@ -459,7 +470,7 @@ The ICM-compatibility matrix is published by Release Management. It is computed,
 
 ## 10. Exception mechanism
 
-There are 2 types of exceptions granted by or driven under governance of the Technical Steering Committee (TSC).
+There are 2 types of exceptions granted by or driven under governance of the [Technical Steering Committee (TSC)](https://lf-camaraproject.atlassian.net/wiki/x/0RDe).
 
 **ICM-compatibility exceptions** are time-bound ICM-compatibility change authorizations. 
 
