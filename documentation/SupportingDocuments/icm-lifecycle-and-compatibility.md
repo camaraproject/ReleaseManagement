@@ -244,7 +244,7 @@ Note: the entries in _italics_ are examples that should not be present in the re
 | _2.1.0_ | _Supported_ | _2028-08_ | _2030-08_ | _2031-04_ |  |  | _replacement of 2.0.0 due to security issue_ |
 | _2.0.0_ | _Revoked_ | _2028-04_ | _2030-04_ | _2031-04_ | _2028-08_ |  | _override example_ |
 | _1.0.0_ | _Supported_ | _2027-04_ | _2029-04_ | _2030-04_ |  |  | _future release example_ |
-| **0.5.0** | **Supported** | 2026-05 | 2028-04 | 2029-04 |  | _2027-12_ | new durations: 24 + 12 months; _Dextension eprecated + 6 months_ |
+| **0.5.0** | **Supported** | 2026-05 | 2028-04 | 2029-04 |  | _2027-12_ | new durations: 24 + 12 months; _Deprecated extension + 6 months_ |
 | **0.4.0** | **Supported** | 2025-09 | 2027-10 | 2028-04 |  |  | intermediate durations: 24 + 6 months |
 | 0.3.0 | Deprecated | 2025-03 | 2026-03 | 2026-10 |   |  | old durations: 12 + 6 months |
 | 0.2.1 | Revoked | 2024-09 | 2025-09 | 2026-03 | 2026-07  |  | example ICM decision (link to minutes) |
