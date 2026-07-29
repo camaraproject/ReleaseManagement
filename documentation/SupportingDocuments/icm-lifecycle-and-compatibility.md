@@ -48,21 +48,22 @@
 8. [ICM version release cadence](#8-icm-version-release-cadence)
     
    8.1 [Signal/Sync meta-release alignment](#81-signalsync-meta-release-alignment)  
-   8.2 [Out-of-cycle ICM releases](#82-out-of-cycle-icm-releases)
+   8.2 [Out-of-cycle ICM releases](#82-out-of-cycle-icm-releases)  
+   8.3 [Example of ICM lifecycle state evolution and API deployment across meta-releases](#83-example-of-icm-lifecycle-state-evolution-and-api-deployment-across-meta-releases)
 
-9. [ICM-compatibility matrix](#9-icm-compatibility-matrix)
+10. [ICM-compatibility matrix](#9-icm-compatibility-matrix)
    
    9.1 [ICM-compatibility matrix derivation](#91-icm-compatibility-matrix-derivation)  
    9.2 [ICM-compatibility matrix – updates](#92-icm-compatibility-matrix---updates)  
    9.3 [ICM-compatibility matrix – ownership](#93-icm-compatibility-matrix---ownership)
 
-10. [Exception mechanism](#10-exception-mechanism)
+11. [Exception mechanism](#10-exception-mechanism)
 
-11. [ICM 0.x handling](#11-icm-0x-handling)
+12. [ICM 0.x handling](#11-icm-0x-handling)
 
-12. [Open governance points for discussion/decision](#12-open-governance-points-for-discussiondecision)
+13. [Open governance points for discussion/decision](#12-open-governance-points-for-discussiondecision)
 
-13. [Appendix A - Key positions](#13-appendix-a---key-positions)    
+14. [Appendix A - Key positions](#13-appendix-a---key-positions)    
 
 ## 1. Scope and Purpose
 
