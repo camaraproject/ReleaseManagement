@@ -116,11 +116,13 @@ Maintaining ICM-compatibility as API versions and ICM versions evolve is a joint
   - the API Provider must implement an ICM version that allows ICM-compatibility of all deployed API versions (runtime).
 - The API Consumer is responsible for ensuring that its own implementation matches the ICM version deployed by the API Provider, as well as the deployed API version.
 
-A new ICM version may be due to changes in either or both classes of ICM information:
-
-- **A change to ICM design info** (for example, a new scope format) → the API definition may need updating → triggers a new API version for impacted APIs (see [Minimum ICM version](#61-minimum-icm-version)). API Consumers consuming the new API version must adapt their requests to the new format.
-- **A change to ICM deployment info** (for example, tightening assertion lifetime) → API Provider deployments and API Consumer implementations must update → does NOT by itself imply a new API version. The API definition is unchanged; only the runtime behavior changes.
-- **An ICM change to both** → both consequences apply.
+A new ICM version may result from a change to either or both classes of ICM information:
+ 
+| Type of change | Consequence for the API definition | Who must act |
+|---|---|---|
+| Change to **ICM design info** (e.g. a new scope format) | Triggers a new API version for impacted APIs (see [Minimum ICM version](#61-minimum-icm-version)) | API designers release the new version; Consumers adapt requests to the new format |
+| Change to **ICM deployment info** (e.g. tightening assertion lifetime) | No new API version required — the API definition is unchanged; only runtime behavior changes | Providers and Consumers update their implementations |
+| Change to **both** | Both consequences apply | All three roles act |
 
 **Actions to maintain ICM-compatibility**
 
