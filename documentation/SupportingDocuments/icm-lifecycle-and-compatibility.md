@@ -66,15 +66,15 @@
 
 ## 1. Scope and Purpose
 
-This guideline defines lifecycle management of Identity and Consent Management (ICM) versions and how CAMARA APIs declare and maintain compatibility with them. It defines under what rules API versions and ICM versions can co-evolve while still providing clear compatibility guarantees.
+This guideline defines lifecycle management of [Identity and Consent Management (ICM)](https://github.com/camaraproject/IdentityAndConsentManagement) versions and how CAMARA APIs declare and maintain compatibility with them. It defines under what rules API versions and ICM versions can co-evolve while still providing clear compatibility guarantees.
 
 The guideline recognizes operational reality: API Providers offer the same API version against multiple ICM versions, and API Consumers require an API version and an ICM version as part of a single usage contract — if either aspect changes in a way that affects them, their implementation must adapt.
 
 ## 2. Glossary
 
-Terms defined in the CAMARA Commonalities glossary (API, API Consumer, API Provider, meta-release, semantic versioning, scope, etc.) are not repeated here. This section defines terms specific to this guideline.
+Terms defined in the CAMARA [Commonalities](https://github.com/camaraproject/Commonalities/tree/main/documentation) or [Release Management](https://github.com/camaraproject/ReleaseManagement/tree/main/documentation) documentation (API, API Consumer, API Provider, semantic versioning, scope, meta-release, etc.) are not repeated here. This section defines terms specific to this guideline.
 
-- **ICM design info**: information defined by an ICM version that applies to API definitions at API design time — e.g. scope format, `securitySchemes` syntax, mandatory `info.description` text, schemas, operations, and similar OAS-level constructs. Supported by guidelines from CAMARA Commonalities (the API Design Guide and related artifacts) for use by API Sub Projects. CAMARA-governed.
+- **ICM design info**: information defined by an ICM version that applies to API definitions at API design time — e.g. scope format, `securitySchemes` syntax, mandatory `info.description` text, schemas, operations, and similar [OpenAPI Specification (OAS)](https://spec.openapis.org/oas/v3.0.3.html)-level constructs. Supported by guidelines from CAMARA Commonalities (the API Design Guide and related artifacts) for use by API Sub Projects. CAMARA-governed.
 - **ICM deployment info**: information defined by an ICM version that applies to API deployments (including at API Provider/Consumer design time and at runtime) — auth flows, grant types, assertion format and lifetime, token processing, claim handling, and similar behaviors agreed between an API Provider and API Consumer. API-Provider-governed in their contractual relationship with API Consumers.
 - **API version ICM-compatibility**: the guarantee that an API version's definition respects the ICM design info of a given ICM version. A property of the API definition relative to an ICM version declared in its `x-camara-min-icm` field.
 - **API deployment ICM-compatibility**: the guarantee that an API Provider's or API Consumer's deployment (a) deploys ICM-compatible API versions and (b) implements the ICM deployment info of the ICM version it claims to operate under.
@@ -82,8 +82,8 @@ Terms defined in the CAMARA Commonalities glossary (API, API Consumer, API Provi
 - **ICM version**: a Semantic Versioning (SemVer 2.0) compliant version number with major, minor, and patch components, identifying a specific set of ICM artefacts. Starting with ICM 1.0.0, major-version increments indicate breaking changes for API definitions, API deployments, or both — changes that cannot be expressed additively.
 - **ICM lifecycle states**: Supported / Deprecated / Retired / Revoked are the four possible lifecycle states of an ICM version (see [ICM version lifecycle states and governance](#5-icm-version-lifecycle-states-and-governance)). Lifecycle states apply per ICM version.
 - **ICM governance**: the decision process to transition an ICM version to a different lifecycle state (see [ICM version lifecycle states and governance](#5-icm-version-lifecycle-states-and-governance)).
-- **Exception**: a time-bound, governance-approved authorization that permits a specific (API version, ICM version) pair outside the normal ICM-compatibility guarantee.
 - **Compatibility matrix**: the derived artifact listing which (API version, ICM version) pairs are ICM-compatible at a given point in time (see [ICM-compatibility matrix](#9-icm-compatibility-matrix)).
+- **Exception**: a governance-approved authorization that permits a specific (API version, ICM version) pair outside the normal ICM-compatibility guarantee, or a governance-approved decision to transition an ICM version to the "Revoked" life cycle state.
 
 ## 3. ICM-compatibility
 
@@ -393,7 +393,7 @@ ICM releases are done at Signal meta-release (first half of each year); API rele
 
 ICM releases outside of the Signal meta-release are allowed and sometimes required, e.g., for security vulnerabilities patches, defect corrections, or urgent regulatory changes. These changes impact the ICM version as per SemVer guidelines. 
 
-ICM version lifecycle state transitions may occur off-cycle in security-driven cases, or on explicit governance decision or high-priority TSC-driven updates. 
+ICM version lifecycle state transitions may occur off-cycle in security-driven cases, or on explicit governance decision. 
 
 ### 8.3 Example of ICM lifecycle state evolution and API deployment across meta-releases
 
@@ -459,9 +459,9 @@ The ICM-compatibility matrix is published by Release Management. It is computed,
 
 ## 10. Exception mechanism
 
-There are 2 types of exceptions:
+There are 2 types of exceptions granted by or driven under governance of the Technical Steering Committee (TSC).
 
-**ICM-compatibility exceptions** are time-bound ICM-compatibility authorizations granted by governance (TSC). 
+**ICM-compatibility exceptions** are time-bound ICM-compatibility change authorizations. 
 
 They concern the **ICM version lifetime duration extension (Supported or Deprecated state)**. Such exceptions can be requested to the TSC. They shall be documented in TSC minutes and by Release Management using exception decision records with the following information:
 
@@ -473,9 +473,9 @@ They concern the **ICM version lifetime duration extension (Supported or Depreca
 
 These exceptions are the only mechanisms by which an (API version, ICM version) pair can be considered ICM-compatible despite violating the ICM-compatibility rules. Exceptions will appear in the ICM-compatibility matrix with an explicit annotation.
 
-**ICM lifecycle state exceptions** are governance-driven lifecycle state change towards the **Revoked** state.
+**ICM lifecycle state exceptions** are ICM lifecycle state changes towards the **Revoked** state.
 
-These exceptions shall be proposed and decided by the ICM team, and possibly by the TSC team, documented in the ICM release notes in the ICM lifecycle state table, and include an exception decision record underneath the table as follows:
+These exceptions shall be proposed and decided by the ICM team, and endorsed by the TSC, documented in the ICM release notes in the ICM lifecycle state table, and include an exception decision record underneath the table as follows:
 
 - **Date**: the date of transition to Revoked state.
 - **Scope**: impacted ICM version number and lifecycle state before transition to Revoked
