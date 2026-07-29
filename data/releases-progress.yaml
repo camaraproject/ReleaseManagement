@@ -1,14 +1,14 @@
 metadata:
-  last_updated: '2026-07-28T16:30:12Z'
-  last_checked: '2026-07-28T16:30:12Z'
+  last_updated: '2026-07-29T06:11:17Z'
+  last_checked: '2026-07-29T06:11:17Z'
   releases_master_updated: '2026-07-28T05:33:53.650Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
   repos_scanned: 61
   repos_new: 0
   repos_with_plan: 61
-  repos_fully_onboarded: 44
-  repos_with_release_issue: 38
+  repos_fully_onboarded: 45
+  repos_with_release_issue: 39
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -1475,23 +1475,38 @@ progress:
   github_url: https://github.com/camaraproject/eSimRemoteManagement
   release_track: independent
   target_release_tag: r1.1
-  target_release_type: none
+  target_release_type: pre-release-alpha
   dependencies:
-    commonalities_release: r3.4
-    identity_consent_management_release: r3.3
+    commonalities_release: r4.3
+    identity_consent_management_release: r4.2
   apis:
   - api_name: esim-remote-management
     target_api_version: 0.1.0
-    target_api_status: draft
+    target_api_status: alpha
     main_contacts:
     - SentianSun
     - ChinaUnicomXiaoDongrui
-  state: not_planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r1.1-28c3218
+    release_pr:
+      number: 21
+      state: open
+      url: https://github.com/camaraproject/eSimRemoteManagement/pull/21
+      created_at: '2026-07-29T01:51:05Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 0
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 5
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 20
+      url: https://github.com/camaraproject/eSimRemoteManagement/issues/20
+      created_at: '2026-07-29T01:08:25Z'
     review_history: null
   published_context:
     latest_public_release: null
@@ -1509,6 +1524,8 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    esim-remote-management: 0.1.0-alpha.1
 - repository: HighThroughputElasticNetworks
   github_url: https://github.com/camaraproject/HighThroughputElasticNetworks
   release_track: independent
@@ -2850,29 +2867,21 @@ progress:
     - benhepworth
     - maheshc01
     - kevsy
-  state: snapshot_active
+  state: planned
   artifacts:
-    snapshot_branch: release-snapshot/r2.1-fb4a91c
-    release_pr:
-      number: 102
-      state: open
-      url: https://github.com/camaraproject/SessionInsights/pull/102
-      created_at: '2026-06-25T17:26:30Z'
-      assignees:
-      - tanjadegroot
-      review_decision: CHANGES_REQUESTED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 2
-      rm_total: 4
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
     release_issue:
       number: 100
       url: https://github.com/camaraproject/SessionInsights/issues/100
       created_at: '2026-05-30T22:04:36Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers:
+      - tanjadegroot
+      last_pr_url: https://github.com/camaraproject/SessionInsights/pull/102
+      last_closed_at: '2026-07-29T01:42:32Z'
   published_context:
     latest_public_release: null
     newest_pre_release: r1.1
@@ -2889,8 +2898,6 @@ progress:
       release_tag: null
       release_date: null
       apis: []
-  snapshot_api_versions:
-    session-insights: 0.2.0-rc.1
 - repository: SimpleEdgeDiscovery
   github_url: https://github.com/camaraproject/SimpleEdgeDiscovery
   release_track: meta-release
