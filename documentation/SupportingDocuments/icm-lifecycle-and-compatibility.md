@@ -88,7 +88,7 @@ Terms defined in the CAMARA [Commonalities](https://github.com/camaraproject/Com
 
 **References**
 
-THe following references apply to this document:
+The following references apply to this document:
 
 -  [Identity and Consent Management (ICM)](https://github.com/camaraproject/IdentityAndConsentManagement)
 -  [Commonalities](https://github.com/camaraproject/Commonalities)
