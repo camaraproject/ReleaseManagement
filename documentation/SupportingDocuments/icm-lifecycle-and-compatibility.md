@@ -120,7 +120,7 @@ A new ICM version may result from a change to either or both classes of ICM info
  
 | Type of change | Consequence for the API definition | Who must act |
 |---|---|---|
-| Change to **ICM design info** (e.g. a new scope format) | Triggers a new API version for impacted APIs (see [Minimum ICM version](#61-minimum-icm-version)) | API designers release the new version; Consumers adapt requests to the new format |
+| Change to **ICM design info** (e.g. a new scope format) | Triggers a new API version for impacted APIs (see [Minimum ICM version](#61-minimum-icm-version)) | API designers release the new version; Providers and Consumers adapt deployments to the new API version |
 | Change to **ICM deployment info** (e.g. tightening assertion lifetime) | No new API version required — the API definition is unchanged; only runtime behavior changes | Providers and Consumers update their implementations |
 | Change to **both** | Both consequences apply | All three roles act |
 
