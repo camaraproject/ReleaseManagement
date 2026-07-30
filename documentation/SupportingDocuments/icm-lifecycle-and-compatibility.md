@@ -513,21 +513,22 @@ The lifecycle state for pre-1.0.0 ICM versions is assigned by governance also as
 
 ## 12. Open governance points for discussion/decision
 
-The following require WG agreement before this guideline is adopted:
+The following require WG agreement before this guideline is adopted. For the agreed status updates please see the ICM team meeting minutes of July 29 [here](https://lf-camaraproject.atlassian.net/wiki/x/AwAIOw).
 
-1. **Exact durations** for the Supported and Deprecated state durations ([Duration of ICM lifecycle states](#53-duration-of-icm-lifecycle-states)).
-2. **Transition to ICM 1.0.0** — what constitutes the scope baseline (declaring the then-current definitions of the ICM documents as the stable starting point); when it is declared; who signs off. Pre-1.0.0 versions are handled by the previous section ([ICM 0.x handling](#11-icm-0x-handling)).
-3. **Signal vs. out-of-cycle policy** — which ICM changes can be out-of-cycle vs. must align with Signal.
-4. **Exception grant process** — who requests, who approves, how documented.
+1. **Exact durations - reopened** for the Supported and Deprecated state durations ([Duration of ICM lifecycle states](#53-duration-of-icm-lifecycle-states)). This point was marked as resolved in the meeting, but is reopened per Tanja's comment on section 3.8 (https://github.com/camaraproject/ReleaseManagement/pull/545#issuecomment-5121779848): the  adopted ICM deployment lifespan (24 Supported + 12 Deprecated = 36 months (instead of previous 30 months)) provides an API deployment lifespand of 2 years (not 3). This needs to be reconfirmed with operators as I believe 3 year API deployment lifespan was expected.
+2. Transition to ICM 1.0.0 - covered — what constitutes the scope baseline (declaring the then-current definitions of the ICM documents as the stable starting point); when it is declared; who signs off. Pre-1.0.0 versions are handled by the previous section ([ICM 0.x handling](#11-icm-0x-handling)).
+3. Signal vs. out-of-cycle policy - covered — which ICM changes can be out-of-cycle vs. must align with Signal.
+4. **Exception grant process** — **who requests**, who approves, how documented.
 5. **ICM-compatibility statement**; define templates for API version ICM-compatibility and API implementation ICM-compatibility statements; audit process.
 6. **Interaction with GSMA certification** — does this decomposition map onto GSMA's processes; alignment discussion required.
-7. **Handling of the ICM 0.x transition** — state assignments for existing 0.x versions; end date for 0.x support.
+7. Handling of the ICM 0.x transition - covered — state assignments for existing 0.x versions; end date for 0.x support.
 8. **Maximum number of concurrent non-Retired major ICM versions** — whether to cap this to bound API Provider operational complexity when major ICM versions arrive in quick succession (for example, in a security-driven scenario), and how Retirement acceleration would be triggered if the cap is exceeded.
-9. **ICM ↔ Commonalities coupling** — ICM design info reaches API definitions through the CAMARA Commonalities API Design Guide ([Path from ICM through Commonalities into API definitions](#34-path-from-icm-through-commonalities-into-api-definitions)). Open question: how tightly must the Commonalities and ICM lifecycles couple? Options include mandating a new Commonalities release for each ICM design info change, moving ICM design artifacts into the ICM repository to decouple, or letting Commonalities itself declare a `x-camara-min-icm`. This is a coordination question between the ICM and Commonalities Working Groups.
-10. **Example content for the release-note tables** — Tables A and B in [ICM version change tables](#542-icm-version-change-tables) are stubs awaiting concrete examples from ICM governance. The exact column layout will be refined once examples are filled in.
+9. ICM ↔ Commonalities coupling - covered — ICM design info reaches API definitions through the CAMARA Commonalities API Design Guide ([Path from ICM through Commonalities into API definitions](#34-path-from-icm-through-commonalities-into-api-definitions)). Open question: how tightly must the Commonalities and ICM lifecycles couple? Options include mandating a new Commonalities release for each ICM design info change, moving ICM design artifacts into the ICM repository to decouple, or letting Commonalities itself declare a `x-camara-min-icm`. This is a coordination question between the ICM and Commonalities Working Groups.
+10. Example content for the release-note tables - covered — Tables A and B in [ICM version change tables](#542-icm-version-change-tables) are stubs awaiting concrete examples from ICM governance. The exact column layout will be refined once examples are filled in.
 11. **Cross-major ICM-compatibility assessment — process and timing** — when in the meta-release cycle is the cross-major-ICM versions assessment performed for existing API versions (Signal? Sync? at the moment the new major ICM version is announced/released?), who is responsible for the technical evaluation (API Sub Project? Release Management? ICM WG?), and how is the resulting decision recorded in the ICM-compatibility matrix.
 12. **ICM release notes template** request to Release Management to define a machine-readable template with formatting for required sections with e.g. lifecycle state table, breaking changes table A and B, standard CHANGELOG section (Add, Changed, Removed), etc.
 13. **ICM info descriptions**: Add detailed list of ICM design and deployment info.
+14. **Ownership / location of this document**: ICM, Release Management, other, ... ?
 
 ---
 
