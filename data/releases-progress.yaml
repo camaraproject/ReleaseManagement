@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-07-30T06:03:46Z'
-  last_checked: '2026-07-30T06:03:46Z'
+  last_updated: '2026-07-31T06:28:16Z'
+  last_checked: '2026-07-31T06:28:16Z'
   releases_master_updated: '2026-07-28T05:33:53.650Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -272,10 +272,22 @@ progress:
     - FabrizioMoggio
     - bigludo7
     - chinaunicomyangfan
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r4.1-a0dd21d
+    release_pr:
+      number: 231
+      state: open
+      url: https://github.com/camaraproject/CallForwardingSignal/pull/231
+      created_at: '2026-07-30T11:26:13Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 5
     draft_release: null
     release_issue:
       number: 227
@@ -298,6 +310,8 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    call-forwarding-signal: 0.5.0-rc.1
 - repository: CapabilitiesAndRuntimeRestrictions
   github_url: https://github.com/camaraproject/CapabilitiesAndRuntimeRestrictions
   release_track: independent
@@ -653,12 +667,12 @@ progress:
       created_at: '2026-07-23T12:50:44Z'
       assignees:
       - hdamker
-      review_decision: null
-      codeowner_approved: false
+      review_decision: APPROVED
+      codeowner_approved: true
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 5
       rm_total: 5
     draft_release: null
     release_issue:
@@ -797,7 +811,8 @@ progress:
       state: open
       url: https://github.com/camaraproject/DedicatedNetworks/pull/142
       created_at: '2026-07-29T09:21:19Z'
-      assignees: []
+      assignees:
+      - hdamker
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
@@ -1042,18 +1057,18 @@ progress:
     - maxl2287
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r4.1-37572ed
+    snapshot_branch: release-snapshot/r4.1-5b06cf8
     release_pr:
-      number: 418
+      number: 421
       state: open
-      url: https://github.com/camaraproject/DeviceLocation/pull/418
-      created_at: '2026-07-29T11:13:21Z'
+      url: https://github.com/camaraproject/DeviceLocation/pull/421
+      created_at: '2026-07-30T10:40:56Z'
       assignees: []
       review_decision: null
       codeowner_approved: false
-      codeowner_checked: 0
+      codeowner_checked: 3
       codeowner_total: 3
-      ready_for_review: false
+      ready_for_review: true
       rm_checked: 0
       rm_total: 5
     draft_release: null
@@ -1062,10 +1077,10 @@ progress:
       url: https://github.com/camaraproject/DeviceLocation/issues/404
       created_at: '2026-06-01T10:33:07Z'
     review_history:
-      discarded_count: 1
+      discarded_count: 2
       last_reviewers: []
-      last_pr_url: https://github.com/camaraproject/DeviceLocation/pull/415
-      last_closed_at: '2026-07-29T11:00:36Z'
+      last_pr_url: https://github.com/camaraproject/DeviceLocation/pull/418
+      last_closed_at: '2026-07-30T08:39:14Z'
   published_context:
     latest_public_release: r3.2
     newest_pre_release: null
@@ -3117,10 +3132,22 @@ progress:
     - GillesInnov35
     - grgpapadopoulos
     - fernandopradocabrillo
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r3.2-91eea01
+    release_pr:
+      number: 88
+      state: open
+      url: https://github.com/camaraproject/Tenure/pull/88
+      created_at: '2026-07-30T07:06:19Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 0
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 5
     draft_release: null
     release_issue:
       number: 84
@@ -3151,6 +3178,8 @@ progress:
     apis:
     - api_name: kyc-tenure
       api_version: 0.3.0-alpha.1
+  snapshot_api_versions:
+    kyc-tenure: 0.3.0-rc.1
 - repository: TrafficInfluence
   github_url: https://github.com/camaraproject/TrafficInfluence
   release_track: meta-release
