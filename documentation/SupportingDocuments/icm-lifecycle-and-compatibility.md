@@ -101,17 +101,43 @@ The following references apply to this document:
 
 ## 3. ICM-compatibility
 
-ICM-compatibility concerns two distinct classes of information defined by an ICM version, referred to as ICM design info and ICM deployment info. Each class has its own scope, governance, and announcement mechanism, and either or both can be changed in a given ICM version independently of the other.
+ICM-compatibility concerns both API versions (definitions) and API deployments.  
 
-### 3.1 API version ICM-compatibility
+It is based on two distinct classes of information defined by an ICM version, referred to as **ICM design info** and **ICM deployment info**. Each class has its own scope, governance, and announcement mechanism.
 
-**An API version is ICM-compatible with an ICM version when its definition respects the ICM design info of that ICM version** — its scope format, `securitySchemes` shape, schemas, operations, and `info.description` text use constructs and conventions, as defined by the ICM version.
+Either or both classes of information can be changed in a given ICM version independently of the other. Both types of changes contribute according to SemVer guidelines to establish the version number of the resulting new ICM version.
+
+**ICM design info**
+
+This is the information defined by an ICM version that applies to API definitions at API design time — e.g. scope format, `securitySchemes` syntax, mandatory `info.description` text, schemas, operations, and similar [OpenAPI Specification (OAS)](https://spec.openapis.org/oas/v3.0.3.html)-level constructs. 
+
+This information is supported by guidelines from CAMARA Commonalities (the API Design Guide and related artifacts) for use by API Sub Projects. It is governed by CAMARA.
+
+Each new ICM version that brings changes in ICM design info requires a new release of Commonalities in accordance with these changes in the same Signal meta-release. 
+
+The following lists the ICM design info of an API definition, e.g. the OAS elements as defined by ICM:
+
+- `info.description` templates which are found [here](https://github.com/camaraproject/Commonalities/blob/r4.3/artifacts/common/info-description-templates.yaml).
+  - `CAMARA:MANDATORY:authorization-and-authentication`
+  - `CAMARA:MANDATORY:identifying-device-from-access-token`
+  - `CAMARA:MANDATORY:identifying-phone-number-from-access-token`
+- Security Requirement Object - `security` field [(ref)](https://github.com/camaraproject/IdentityAndConsentManagement/blob/r3.3/documentation/CAMARA-API-access-and-user-consent.md#use-of-security-property), and related schemas
+- Security Scheme Object - `securitySchemes` field [(ref)](https://github.com/camaraproject/IdentityAndConsentManagement/blob/r3.3/documentation/CAMARA-API-access-and-user-consent.md#use-of-openidconnect-for-securityschemes), and related schemas
+- Scope format - `scopes` field [(ref)](https://github.com/camaraproject/Commonalities/blob/main/documentation/CAMARA-API-Design-Guide.md#66-scope-naming), and related schemas. Please note that ICM also defines how to declare the [purpose as a scope](https://github.com/camaraproject/IdentityAndConsentManagement/blob/r3.3/documentation/CAMARA-Security-Interoperability.md#purpose-as-a-scope), but this does not affect the API definitions. This only applies to authentication requests.
+
+**ICM deployment info**
+
+This is the information defined by an ICM version that applies to API deployments (including at API Provider/Consumer design time and at runtime) — authentication flows, grant types, assertion format and lifetime, token processing, claim handling, and similar behaviors between API Provider and Consumer. 
+
+### 3.2 API version ICM-compatibility
+
+**An API version is ICM-compatible with an ICM version when its definition respects the ICM design info of that ICM version** — its scope format, `securitySchemes`, schemas, operations, and `info.description` text use constructs and conventions, as defined by the ICM version.
 
 - **Owned and governed by CAMARA.** ICM design info is codified by the CAMARA Commonalities API Design Guide, which mandates how an API definition must align with ICM. API Sub Projects produce API versions that conform to the ICM version by following these guidelines.
 - **Declared via `x-camara-min-icm`** ([API version ICM-compatibility – details](#6-api-version-icm-compatibility---details)) in the API version's definition file at API public release time.
 - **Maintained in the compatibility matrix** ([ICM-compatibility matrix](#9-icm-compatibility-matrix)); the matrix governs API version ICM-compatibility (design-time) — published, governed at CAMARA level, and authoritative for which (API version, ICM version) pairs are ICM-compatible from the API design perspective.
 
-### 3.2 API deployment ICM-compatibility
+### 3.3 API deployment ICM-compatibility
 
 **An API Provider's or API Consumer's deployment is ICM-compatible with an ICM version when (a) it deploys ICM-compatible API versions, and (b) the interactions between API Consumer and API Provider implement the ICM deployment info of that ICM version** — auth flows, grant types, assertion format and lifetime, token processing, and claim handling.
 
@@ -119,7 +145,7 @@ ICM-compatibility concerns two distinct classes of information defined by an ICM
 - **Identified at deployment time.** An API Consumer determines the applicable ICM version's deployment info by from their API Provider onboarding contract or other artifacts; the API version alone does not pin a specific ICM version on the deployment side.
 - **Not recorded in the CAMARA compatibility matrix.** The matrix governs API version ICM-compatibility (at design-time only). API deployment ICM-compatibility is the API Provider's responsibility.
 
-### 3.3 Maintaining ICM-compatibility
+### 3.4 Maintaining ICM-compatibility
 
 Maintaining ICM-compatibility as API versions and ICM versions evolve is a joint responsibility of API designers, API Providers, and API Consumers:
 
@@ -158,7 +184,7 @@ A worked multi-year example is given in [section 8.3](#83-example-of-icm-lifecyc
  
 At any given time, at most two major ICM versions are relevant to a Provider's planning: the newly Supported one, and the one entering Deprecated (with a third, entering Retired, dropping out of scope). The table's four rows are the complete set of obligations that recur every cycle.
 
-### 3.4 Path from ICM through Commonalities into API definitions
+### 3.5 Path from ICM through Commonalities into API definitions
 
 ICM design info changes do not reach API definitions directly. The path is:
 
