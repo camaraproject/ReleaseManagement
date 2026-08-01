@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-07-31T06:28:16Z'
-  last_checked: '2026-07-31T06:28:16Z'
+  last_updated: '2026-08-01T06:13:19Z'
+  last_checked: '2026-08-01T06:13:19Z'
   releases_master_updated: '2026-07-28T05:33:53.650Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -8,7 +8,7 @@ metadata:
   repos_new: 0
   repos_with_plan: 61
   repos_fully_onboarded: 45
-  repos_with_release_issue: 39
+  repos_with_release_issue: 38
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -73,7 +73,7 @@ progress:
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 2
       rm_total: 5
     draft_release: null
     release_issue:
@@ -121,10 +121,22 @@ progress:
     - gainsley
     - JoseMConde
     - maheshc01
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.1-cb2c839
+    release_pr:
+      number: 44
+      state: open
+      url: https://github.com/camaraproject/ApplicationEndpointRegistration/pull/44
+      created_at: '2026-07-31T19:06:53Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 0
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 5
     draft_release: null
     release_issue:
       number: 37
@@ -147,6 +159,8 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    application-endpoint-registration: 0.2.0-rc.1
 - repository: ApplicationProfiles
   github_url: https://github.com/camaraproject/ApplicationProfiles
   release_track: meta-release
@@ -504,7 +518,7 @@ progress:
       created_at: '2026-07-07T11:23:04Z'
       assignees:
       - tanjadegroot
-      review_decision: null
+      review_decision: COMMENTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
@@ -564,10 +578,22 @@ progress:
     - maheshc01
     - kevsy
     - urvika-v
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r4.1-f2a8013
+    release_pr:
+      number: 200
+      state: open
+      url: https://github.com/camaraproject/ConnectivityInsights/pull/200
+      created_at: '2026-07-31T18:49:23Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 0
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 5
     draft_release: null
     release_issue:
       number: 191
@@ -590,6 +616,9 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    connectivity-insights-subscriptions: 0.7.0-rc.1
+    connectivity-insights: 0.7.0-rc.1
 - repository: ConsentInfo
   github_url: https://github.com/camaraproject/ConsentInfo
   release_track: independent
@@ -657,28 +686,12 @@ progress:
     - jpengar
     - AxelNennker
     - sebdewet
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r1.2-63e05e0
-    release_pr:
-      number: 38
-      state: open
-      url: https://github.com/camaraproject/ConsentManagement/pull/38
-      created_at: '2026-07-23T12:50:44Z'
-      assignees:
-      - hdamker
-      review_decision: APPROVED
-      codeowner_approved: true
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 5
-      rm_total: 5
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 34
-      url: https://github.com/camaraproject/ConsentManagement/issues/34
-      created_at: '2026-06-19T07:32:18Z'
+    release_issue: null
     review_history:
       discarded_count: 1
       last_reviewers:
@@ -711,6 +724,11 @@ progress:
       api_version: 0.1.0-rc.1
   snapshot_api_versions:
     consent-management: 0.1.0
+  warnings:
+  - code: W003
+    message: Release r1.2 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: CustomerInsights
   github_url: https://github.com/camaraproject/CustomerInsights
   release_track: meta-release
@@ -990,10 +1008,22 @@ progress:
     main_contacts:
     - eric-murray
     - Kevsy
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r3.2-725faaf
+    release_pr:
+      number: 190
+      state: open
+      url: https://github.com/camaraproject/DeviceIdentifier/pull/190
+      created_at: '2026-07-31T09:37:17Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 5
     draft_release: null
     release_issue:
       number: 176
@@ -1024,6 +1054,8 @@ progress:
     apis:
     - api_name: device-identifier
       api_version: 0.4.0-alpha.1
+  snapshot_api_versions:
+    device-identifier: 0.4.0-rc.1
 - repository: DeviceLocation
   github_url: https://github.com/camaraproject/DeviceLocation
   release_track: meta-release
@@ -1400,21 +1432,32 @@ progress:
     - JoseMConde
     - Seralogar
     - Kevsy
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r1.2-eba92a2
+    release_pr:
+      number: 68
+      state: open
+      url: https://github.com/camaraproject/EdgeApplicationManagement/pull/68
+      created_at: '2026-07-31T15:37:11Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 5
     draft_release: null
     release_issue:
       number: 39
       url: https://github.com/camaraproject/EdgeApplicationManagement/issues/39
       created_at: '2026-06-05T12:05:06Z'
     review_history:
-      discarded_count: 3
-      last_reviewers:
-      - hdamker
-      last_pr_url: https://github.com/camaraproject/EdgeApplicationManagement/pull/45
-      last_closed_at: '2026-07-27T07:55:31Z'
+      discarded_count: 5
+      last_reviewers: []
+      last_pr_url: https://github.com/camaraproject/EdgeApplicationManagement/pull/67
+      last_closed_at: '2026-07-31T15:17:04Z'
   published_context:
     latest_public_release: null
     newest_pre_release: r1.1
@@ -1439,6 +1482,8 @@ progress:
     apis:
     - api_name: edge-application-management
       api_version: 0.1.0-alpha.1
+  snapshot_api_versions:
+    edge-application-management: 0.1.0-rc.1
 - repository: EnergyFootprintNotification
   github_url: https://github.com/camaraproject/EnergyFootprintNotification
   release_track: meta-release
@@ -1649,12 +1694,12 @@ progress:
       created_at: '2026-07-14T07:18:23Z'
       assignees:
       - eric-murray
-      review_decision: null
+      review_decision: CHANGES_REQUESTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 4
       rm_total: 5
     draft_release: null
     release_issue:
@@ -1862,12 +1907,12 @@ progress:
     - GillesInnov35
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r2.1-37d6b61
+    snapshot_branch: release-snapshot/r2.1-9579a5e
     release_pr:
-      number: 58
+      number: 62
       state: open
-      url: https://github.com/camaraproject/KnowYourCustomerFill-in/pull/58
-      created_at: '2026-07-23T07:16:52Z'
+      url: https://github.com/camaraproject/KnowYourCustomerFill-in/pull/62
+      created_at: '2026-07-31T14:25:04Z'
       assignees: []
       review_decision: null
       codeowner_approved: false
@@ -1881,7 +1926,11 @@ progress:
       number: 54
       url: https://github.com/camaraproject/KnowYourCustomerFill-in/issues/54
       created_at: '2026-06-18T07:04:57Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers: []
+      last_pr_url: https://github.com/camaraproject/KnowYourCustomerFill-in/pull/58
+      last_closed_at: '2026-07-31T14:21:15Z'
   published_context:
     latest_public_release: r1.3
     newest_pre_release: null
@@ -1919,12 +1968,12 @@ progress:
     - GillesInnov35
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r2.1-7a5a9d4
+    snapshot_branch: release-snapshot/r2.1-6e7c241
     release_pr:
-      number: 82
+      number: 85
       state: open
-      url: https://github.com/camaraproject/KnowYourCustomerMatch/pull/82
-      created_at: '2026-07-23T07:48:26Z'
+      url: https://github.com/camaraproject/KnowYourCustomerMatch/pull/85
+      created_at: '2026-07-31T10:08:56Z'
       assignees: []
       review_decision: null
       codeowner_approved: false
@@ -1938,7 +1987,11 @@ progress:
       number: 79
       url: https://github.com/camaraproject/KnowYourCustomerMatch/issues/79
       created_at: '2026-06-16T10:53:09Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers: []
+      last_pr_url: https://github.com/camaraproject/KnowYourCustomerMatch/pull/82
+      last_closed_at: '2026-07-31T10:00:50Z'
   published_context:
     latest_public_release: r1.2
     newest_pre_release: null
@@ -2494,7 +2547,7 @@ progress:
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 2
       rm_total: 5
     draft_release: null
     release_issue:
@@ -2773,10 +2826,22 @@ progress:
     - eric-murray
     - RandyLevensalor
     - jlurien
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r4.1-ac8a5ae
+    release_pr:
+      number: 588
+      state: open
+      url: https://github.com/camaraproject/QualityOnDemand/pull/588
+      created_at: '2026-07-31T15:38:27Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 2
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 5
     draft_release: null
     release_issue:
       number: 583
@@ -2799,6 +2864,10 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    qos-profiles: 1.2.0-rc.3
+    qos-provisioning: 0.4.0-rc.1
+    quality-on-demand: 1.2.0-rc.3
 - repository: RainfallIntensity
   github_url: https://github.com/camaraproject/RainfallIntensity
   release_track: independent
@@ -2951,22 +3020,32 @@ progress:
     - Kevsy
     - JoseMConde
     - maheshc01
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r3.1-bc38e3d
+    release_pr:
+      number: 196
+      state: open
+      url: https://github.com/camaraproject/SimpleEdgeDiscovery/pull/196
+      created_at: '2026-07-31T09:37:19Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 5
     draft_release: null
     release_issue:
       number: 169
       url: https://github.com/camaraproject/SimpleEdgeDiscovery/issues/169
       created_at: '2026-06-08T15:03:08Z'
     review_history:
-      discarded_count: 2
-      last_reviewers:
-      - hdamker
-      - tanjadegroot
-      last_pr_url: https://github.com/camaraproject/SimpleEdgeDiscovery/pull/186
-      last_closed_at: '2026-07-29T14:05:36Z'
+      discarded_count: 3
+      last_reviewers: []
+      last_pr_url: https://github.com/camaraproject/SimpleEdgeDiscovery/pull/194
+      last_closed_at: '2026-07-31T08:51:24Z'
   published_context:
     latest_public_release: r2.3
     newest_pre_release: null
@@ -2983,6 +3062,8 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    simple-edge-discovery: 2.1.0-rc.2
 - repository: SimSwap
   github_url: https://github.com/camaraproject/SimSwap
   release_track: meta-release
@@ -3143,7 +3224,7 @@ progress:
       assignees: []
       review_decision: null
       codeowner_approved: false
-      codeowner_checked: 0
+      codeowner_checked: 2
       codeowner_total: 3
       ready_for_review: false
       rm_checked: 0
