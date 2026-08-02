@@ -1,7 +1,7 @@
 metadata:
-  last_updated: '2026-08-01T06:13:19Z'
-  last_checked: '2026-08-01T06:13:19Z'
-  releases_master_updated: '2026-07-28T05:33:53.650Z'
+  last_updated: '2026-08-02T06:16:07Z'
+  last_checked: '2026-08-02T06:16:07Z'
+  releases_master_updated: '2026-08-01T05:42:38.120Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
   repos_scanned: 61
@@ -699,8 +699,8 @@ progress:
       last_pr_url: https://github.com/camaraproject/ConsentManagement/pull/35
       last_closed_at: '2026-07-22T10:29:13Z'
   published_context:
-    latest_public_release: null
-    newest_pre_release: r1.1
+    latest_public_release: r1.2
+    newest_pre_release: null
   cycle_releases:
     m1:
       release_tag: null
@@ -713,22 +713,19 @@ progress:
       - api_name: consent-management
         api_version: 0.1.0-rc.1
     m4:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r1.2
+      release_date: '2026-07-31T07:19:13Z'
+      apis:
+      - api_name: consent-management
+        api_version: 0.1.0
   last_published:
-    release_tag: r1.1
-    release_date: '2026-06-03T07:09:49Z'
+    release_tag: r1.2
+    release_date: '2026-07-31T07:19:13Z'
     apis:
     - api_name: consent-management
-      api_version: 0.1.0-rc.1
+      api_version: 0.1.0
   snapshot_api_versions:
     consent-management: 0.1.0
-  warnings:
-  - code: W003
-    message: Release r1.2 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: CustomerInsights
   github_url: https://github.com/camaraproject/CustomerInsights
   release_track: meta-release
@@ -1440,13 +1437,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/EdgeApplicationManagement/pull/68
       created_at: '2026-07-31T15:37:11Z'
-      assignees: []
+      assignees:
+      - eric-murray
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 5
     draft_release: null
     release_issue:
