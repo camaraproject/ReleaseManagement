@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-08-03T06:42:07Z'
-  last_checked: '2026-08-03T06:42:07Z'
+  last_updated: '2026-08-04T06:08:40Z'
+  last_checked: '2026-08-04T06:08:40Z'
   releases_master_updated: '2026-08-01T05:42:38.120Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -132,9 +132,9 @@ progress:
       assignees: []
       review_decision: null
       codeowner_approved: false
-      codeowner_checked: 0
+      codeowner_checked: 3
       codeowner_total: 3
-      ready_for_review: false
+      ready_for_review: true
       rm_checked: 0
       rm_total: 5
     draft_release: null
@@ -589,9 +589,9 @@ progress:
       assignees: []
       review_decision: null
       codeowner_approved: false
-      codeowner_checked: 0
+      codeowner_checked: 3
       codeowner_total: 3
-      ready_for_review: false
+      ready_for_review: true
       rm_checked: 0
       rm_total: 5
     draft_release: null
@@ -1357,7 +1357,11 @@ progress:
       number: 94
       url: https://github.com/camaraproject/DeviceSwap/issues/94
       created_at: '2026-07-08T08:57:56Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers: []
+      last_pr_url: https://github.com/camaraproject/DeviceSwap/pull/97
+      last_closed_at: '2026-08-03T14:07:37Z'
   published_context:
     latest_public_release: r3.2
     newest_pre_release: null
@@ -1547,20 +1551,32 @@ progress:
     main_contacts:
     - SentianSun
     - ChinaUnicomXiaoDongrui
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r1.1-a9cbb8a
+    release_pr:
+      number: 28
+      state: open
+      url: https://github.com/camaraproject/eSimRemoteManagement/pull/28
+      created_at: '2026-08-03T07:48:58Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 5
     draft_release: null
     release_issue:
       number: 20
       url: https://github.com/camaraproject/eSimRemoteManagement/issues/20
       created_at: '2026-07-29T01:08:25Z'
     review_history:
-      discarded_count: 2
+      discarded_count: 3
       last_reviewers: []
-      last_pr_url: https://github.com/camaraproject/eSimRemoteManagement/pull/24
-      last_closed_at: '2026-08-03T06:39:30Z'
+      last_pr_url: https://github.com/camaraproject/eSimRemoteManagement/pull/26
+      last_closed_at: '2026-08-03T07:44:27Z'
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -1577,6 +1593,8 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    esim-remote-management: 0.1.0-alpha.1
 - repository: HighThroughputElasticNetworks
   github_url: https://github.com/camaraproject/HighThroughputElasticNetworks
   release_track: independent
@@ -2627,9 +2645,9 @@ progress:
       assignees: []
       review_decision: null
       codeowner_approved: false
-      codeowner_checked: 0
+      codeowner_checked: 3
       codeowner_total: 3
-      ready_for_review: false
+      ready_for_review: true
       rm_checked: 0
       rm_total: 5
     draft_release: null
@@ -3208,9 +3226,9 @@ progress:
       assignees: []
       review_decision: null
       codeowner_approved: false
-      codeowner_checked: 2
+      codeowner_checked: 3
       codeowner_total: 3
-      ready_for_review: false
+      ready_for_review: true
       rm_checked: 0
       rm_total: 5
     draft_release: null
