@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-08-04T06:08:40Z'
-  last_checked: '2026-08-04T06:08:40Z'
+  last_updated: '2026-08-04T14:57:22Z'
+  last_checked: '2026-08-04T14:57:22Z'
   releases_master_updated: '2026-08-01T05:42:38.120Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -1299,7 +1299,7 @@ progress:
       created_at: '2026-07-08T07:52:21Z'
       assignees:
       - hdamker
-      review_decision: null
+      review_decision: CHANGES_REQUESTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
@@ -1348,10 +1348,22 @@ progress:
     - bigludo7
     - krishvenkatachalam
     - jgarciahospital
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r4.1-2e87bc0
+    release_pr:
+      number: 100
+      state: open
+      url: https://github.com/camaraproject/DeviceSwap/pull/100
+      created_at: '2026-08-04T08:42:26Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 0
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 5
     draft_release: null
     release_issue:
       number: 94
@@ -1378,6 +1390,8 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    device-swap: 1.1.0-rc.2
 - repository: DeviceVisitLocation
   github_url: https://github.com/camaraproject/DeviceVisitLocation
   release_track: independent
@@ -1443,12 +1457,12 @@ progress:
       created_at: '2026-07-31T15:37:11Z'
       assignees:
       - eric-murray
-      review_decision: null
+      review_decision: CHANGES_REQUESTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 4
       rm_total: 5
     draft_release: null
     release_issue:
@@ -2422,9 +2436,9 @@ progress:
       - tanjadegroot
       review_decision: null
       codeowner_approved: false
-      codeowner_checked: 3
+      codeowner_checked: 1
       codeowner_total: 3
-      ready_for_review: true
+      ready_for_review: false
       rm_checked: 0
       rm_total: 4
     draft_release: null
@@ -3171,10 +3185,22 @@ progress:
     - ClownsAlbert
     - ChuanyuChen
     - DanXu-ChinaTelecom
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.1-9adaaa9
+    release_pr:
+      number: 37
+      state: open
+      url: https://github.com/camaraproject/SubscriptionStatus/pull/37
+      created_at: '2026-08-04T10:46:36Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 0
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 5
     draft_release: null
     release_issue:
       number: 34
@@ -3197,6 +3223,8 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    subscription-status: 0.2.0-rc.1
 - repository: Tenure
   github_url: https://github.com/camaraproject/Tenure
   release_track: meta-release
