@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-08-04T14:57:22Z'
-  last_checked: '2026-08-04T14:57:22Z'
+  last_updated: '2026-08-06T06:08:41Z'
+  last_checked: '2026-08-06T06:08:41Z'
   releases_master_updated: '2026-08-01T05:42:38.120Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -8,7 +8,7 @@ metadata:
   repos_new: 0
   repos_with_plan: 61
   repos_fully_onboarded: 45
-  repos_with_release_issue: 38
+  repos_with_release_issue: 37
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -68,12 +68,12 @@ progress:
       created_at: '2026-07-21T17:22:05Z'
       assignees:
       - eric-murray
-      review_decision: null
+      review_decision: CHANGES_REQUESTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 2
+      rm_checked: 5
       rm_total: 5
     draft_release: null
     release_issue:
@@ -129,13 +129,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/ApplicationEndpointRegistration/pull/44
       created_at: '2026-07-31T19:06:53Z'
-      assignees: []
-      review_decision: null
+      assignees:
+      - eric-murray
+      review_decision: CHANGES_REQUESTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 4
       rm_total: 5
     draft_release: null
     release_issue:
@@ -1227,12 +1228,12 @@ progress:
       created_at: '2026-07-08T14:02:41Z'
       assignees:
       - hdamker
-      review_decision: null
+      review_decision: APPROVED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 4
       rm_total: 4
     draft_release: null
     release_issue:
@@ -1299,7 +1300,7 @@ progress:
       created_at: '2026-07-08T07:52:21Z'
       assignees:
       - hdamker
-      review_decision: CHANGES_REQUESTED
+      review_decision: APPROVED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
@@ -1700,29 +1701,21 @@ progress:
     - chenfr2-ChinaTelecom
     - XunliYang
     - rkandoi
-  state: snapshot_active
+  state: planned
   artifacts:
-    snapshot_branch: release-snapshot/r1.2-d11fbf2
-    release_pr:
-      number: 50
-      state: open
-      url: https://github.com/camaraproject/IoTDeviceManagement/pull/50
-      created_at: '2026-07-14T07:18:23Z'
-      assignees:
-      - eric-murray
-      review_decision: CHANGES_REQUESTED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 4
-      rm_total: 5
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
     release_issue:
       number: 49
       url: https://github.com/camaraproject/IoTDeviceManagement/issues/49
       created_at: '2026-07-13T19:12:53Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers:
+      - eric-murray
+      last_pr_url: https://github.com/camaraproject/IoTDeviceManagement/pull/50
+      last_closed_at: '2026-08-06T05:32:32Z'
   published_context:
     latest_public_release: null
     newest_pre_release: r1.1
@@ -1747,8 +1740,6 @@ progress:
     apis:
     - api_name: esim-profile-management
       api_version: 0.1.0-alpha.1
-  snapshot_api_versions:
-    esim-profile-management: 0.1.0-rc.1
 - repository: IoTNetworkOptimization
   github_url: https://github.com/camaraproject/IoTNetworkOptimization
   release_track: independent
@@ -1876,9 +1867,9 @@ progress:
       assignees: []
       review_decision: null
       codeowner_approved: false
-      codeowner_checked: 0
+      codeowner_checked: 3
       codeowner_total: 3
-      ready_for_review: false
+      ready_for_review: true
       rm_checked: 0
       rm_total: 5
     draft_release: null
@@ -1932,9 +1923,9 @@ progress:
       assignees: []
       review_decision: null
       codeowner_approved: false
-      codeowner_checked: 0
+      codeowner_checked: 3
       codeowner_total: 3
-      ready_for_review: false
+      ready_for_review: true
       rm_checked: 0
       rm_total: 5
     draft_release: null
@@ -1993,9 +1984,9 @@ progress:
       assignees: []
       review_decision: null
       codeowner_approved: false
-      codeowner_checked: 0
+      codeowner_checked: 3
       codeowner_total: 3
-      ready_for_review: false
+      ready_for_review: true
       rm_checked: 0
       rm_total: 5
     draft_release: null
@@ -2426,31 +2417,31 @@ progress:
     - grgpapadopoulos
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r3.1-e8e9094
+    snapshot_branch: release-snapshot/r3.1-4d69523
     release_pr:
-      number: 111
+      number: 114
       state: open
-      url: https://github.com/camaraproject/NumberRecycling/pull/111
-      created_at: '2026-07-08T12:56:11Z'
-      assignees:
-      - tanjadegroot
+      url: https://github.com/camaraproject/NumberRecycling/pull/114
+      created_at: '2026-08-04T15:37:35Z'
+      assignees: []
       review_decision: null
       codeowner_approved: false
-      codeowner_checked: 1
+      codeowner_checked: 3
       codeowner_total: 3
-      ready_for_review: false
+      ready_for_review: true
       rm_checked: 0
-      rm_total: 4
+      rm_total: 5
     draft_release: null
     release_issue:
       number: 103
       url: https://github.com/camaraproject/NumberRecycling/issues/103
       created_at: '2026-06-17T11:25:20Z'
     review_history:
-      discarded_count: 1
-      last_reviewers: []
-      last_pr_url: https://github.com/camaraproject/NumberRecycling/pull/104
-      last_closed_at: '2026-07-08T12:52:11Z'
+      discarded_count: 2
+      last_reviewers:
+      - tanjadegroot
+      last_pr_url: https://github.com/camaraproject/NumberRecycling/pull/111
+      last_closed_at: '2026-08-04T15:35:06Z'
   published_context:
     latest_public_release: r2.2
     newest_pre_release: null
@@ -2558,12 +2549,12 @@ progress:
       created_at: '2026-07-21T16:57:28Z'
       assignees:
       - eric-murray
-      review_decision: null
+      review_decision: CHANGES_REQUESTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 2
+      rm_checked: 4
       rm_total: 5
     draft_release: null
     release_issue:
@@ -2988,10 +2979,23 @@ progress:
     - benhepworth
     - maheshc01
     - kevsy
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.1-55f5c9c
+    release_pr:
+      number: 108
+      state: open
+      url: https://github.com/camaraproject/SessionInsights/pull/108
+      created_at: '2026-08-05T10:53:34Z'
+      assignees:
+      - hdamker
+      review_decision: APPROVED
+      codeowner_approved: true
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 5
     draft_release: null
     release_issue:
       number: 100
@@ -3019,6 +3023,8 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    session-insights: 0.2.0-rc.1
 - repository: SimpleEdgeDiscovery
   github_url: https://github.com/camaraproject/SimpleEdgeDiscovery
   release_track: meta-release
@@ -3036,27 +3042,12 @@ progress:
     - Kevsy
     - JoseMConde
     - maheshc01
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r3.1-bc38e3d
-    release_pr:
-      number: 196
-      state: open
-      url: https://github.com/camaraproject/SimpleEdgeDiscovery/pull/196
-      created_at: '2026-07-31T09:37:19Z'
-      assignees: []
-      review_decision: null
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 0
-      rm_total: 5
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 169
-      url: https://github.com/camaraproject/SimpleEdgeDiscovery/issues/169
-      created_at: '2026-06-08T15:03:08Z'
+    release_issue: null
     review_history:
       discarded_count: 3
       last_reviewers: []
@@ -3080,6 +3071,11 @@ progress:
       apis: []
   snapshot_api_versions:
     simple-edge-discovery: 2.1.0-rc.2
+  warnings:
+  - code: W003
+    message: Release r3.1 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: SimSwap
   github_url: https://github.com/camaraproject/SimSwap
   release_track: meta-release
