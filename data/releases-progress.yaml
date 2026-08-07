@@ -1,7 +1,7 @@
 metadata:
-  last_updated: '2026-08-06T06:08:41Z'
-  last_checked: '2026-08-06T06:08:41Z'
-  releases_master_updated: '2026-08-01T05:42:38.120Z'
+  last_updated: '2026-08-07T05:09:17Z'
+  last_checked: '2026-08-07T05:09:17Z'
+  releases_master_updated: '2026-08-06T05:34:55.288Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
   repos_scanned: 61
@@ -33,7 +33,7 @@ meta_releases:
 - name: Sync26
   total_apis: 59
   m1_achieved: 8
-  m3_achieved: 7
+  m3_achieved: 8
   m4_achieved: 0
 progress:
 - repository: ApplicationEndpointDiscovery
@@ -295,13 +295,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/CallForwardingSignal/pull/231
       created_at: '2026-07-30T11:26:13Z'
-      assignees: []
-      review_decision: null
+      assignees:
+      - eric-murray
+      review_decision: CHANGES_REQUESTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 5
       rm_total: 5
     draft_release: null
     release_issue:
@@ -587,13 +588,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/ConnectivityInsights/pull/200
       created_at: '2026-07-31T18:49:23Z'
-      assignees: []
+      assignees:
+      - eric-murray
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 5
     draft_release: null
     release_issue:
@@ -1093,8 +1095,9 @@ progress:
       state: open
       url: https://github.com/camaraproject/DeviceLocation/pull/421
       created_at: '2026-07-30T10:40:56Z'
-      assignees: []
-      review_decision: null
+      assignees:
+      - hdamker
+      review_decision: CHANGES_REQUESTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
@@ -1574,13 +1577,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/eSimRemoteManagement/pull/28
       created_at: '2026-08-03T07:48:58Z'
-      assignees: []
-      review_decision: null
+      assignees:
+      - eric-murray
+      review_decision: CHANGES_REQUESTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 3
       rm_total: 5
     draft_release: null
     release_issue:
@@ -3055,27 +3059,30 @@ progress:
       last_closed_at: '2026-07-31T08:51:24Z'
   published_context:
     latest_public_release: r2.3
-    newest_pre_release: null
+    newest_pre_release: r3.1
   cycle_releases:
     m1:
       release_tag: null
       release_date: null
       apis: []
     m3:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r3.1
+      release_date: '2026-08-05T13:39:06Z'
+      apis:
+      - api_name: simple-edge-discovery
+        api_version: 2.1.0-rc.2
     m4:
       release_tag: null
       release_date: null
       apis: []
+  last_published:
+    release_tag: r3.1
+    release_date: '2026-08-05T13:39:06Z'
+    apis:
+    - api_name: simple-edge-discovery
+      api_version: 2.1.0-rc.2
   snapshot_api_versions:
     simple-edge-discovery: 2.1.0-rc.2
-  warnings:
-  - code: W003
-    message: Release r3.1 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: SimSwap
   github_url: https://github.com/camaraproject/SimSwap
   release_track: meta-release
