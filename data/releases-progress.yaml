@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-08-07T05:09:17Z'
-  last_checked: '2026-08-07T05:09:17Z'
+  last_updated: '2026-08-08T04:33:50Z'
+  last_checked: '2026-08-08T04:33:50Z'
   releases_master_updated: '2026-08-06T05:34:55.288Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -8,7 +8,7 @@ metadata:
   repos_new: 0
   repos_with_plan: 61
   repos_fully_onboarded: 45
-  repos_with_release_issue: 37
+  repos_with_release_issue: 35
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -595,7 +595,7 @@ progress:
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 2
       rm_total: 5
     draft_release: null
     release_issue:
@@ -1221,28 +1221,12 @@ progress:
     - bigludo7
     - sachinvodafone
     - akoshunyadi
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r2.1-0941f99
-    release_pr:
-      number: 76
-      state: open
-      url: https://github.com/camaraproject/DeviceReachabilityStatus/pull/76
-      created_at: '2026-07-08T14:02:41Z'
-      assignees:
-      - hdamker
-      review_decision: APPROVED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 4
-      rm_total: 4
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 62
-      url: https://github.com/camaraproject/DeviceReachabilityStatus/issues/62
-      created_at: '2026-06-04T15:59:29Z'
+    release_issue: null
     review_history:
       discarded_count: 1
       last_reviewers: []
@@ -1267,6 +1251,11 @@ progress:
   snapshot_api_versions:
     device-reachability-status-subscriptions: 0.9.0-rc.1
     device-reachability-status: 1.2.0-rc.3
+  warnings:
+  - code: W003
+    message: Release r2.1 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: DeviceRoamingStatus
   github_url: https://github.com/camaraproject/DeviceRoamingStatus
   release_track: meta-release
@@ -1293,28 +1282,12 @@ progress:
     - bigludo7
     - sachinvodafone
     - akoshunyadi
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r2.1-9be6fb2
-    release_pr:
-      number: 88
-      state: open
-      url: https://github.com/camaraproject/DeviceRoamingStatus/pull/88
-      created_at: '2026-07-08T07:52:21Z'
-      assignees:
-      - hdamker
-      review_decision: APPROVED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 0
-      rm_total: 4
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 76
-      url: https://github.com/camaraproject/DeviceRoamingStatus/issues/76
-      created_at: '2026-06-01T15:20:31Z'
+    release_issue: null
     review_history: null
   published_context:
     latest_public_release: r1.2
@@ -1335,6 +1308,11 @@ progress:
   snapshot_api_versions:
     device-roaming-status-subscriptions: 0.9.0-rc.1
     device-roaming-status: 1.2.0-rc.3
+  warnings:
+  - code: W003
+    message: Release r2.1 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: DeviceSwap
   github_url: https://github.com/camaraproject/DeviceSwap
   release_track: meta-release
@@ -2651,13 +2629,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/PopulationDensityData/pull/129
       created_at: '2026-07-29T11:15:35Z'
-      assignees: []
+      assignees:
+      - Kevsy
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 5
       rm_total: 5
     draft_release: null
     release_issue:
@@ -2707,13 +2686,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/PredictiveConnectivityData/pull/64
       created_at: '2026-07-27T17:15:10Z'
-      assignees: []
+      assignees:
+      - Kevsy
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 5
       rm_total: 5
     draft_release: null
     release_issue:
@@ -3254,13 +3234,15 @@ progress:
       state: open
       url: https://github.com/camaraproject/Tenure/pull/88
       created_at: '2026-07-30T07:06:19Z'
-      assignees: []
+      assignees:
+      - Kevsy
+      - hdamker
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 5
       rm_total: 5
     draft_release: null
     release_issue:
