@@ -1,7 +1,7 @@
 metadata:
-  last_updated: '2026-08-10T05:00:40Z'
-  last_checked: '2026-08-10T05:00:40Z'
-  releases_master_updated: '2026-08-06T05:34:55.288Z'
+  last_updated: '2026-08-11T04:45:48Z'
+  last_checked: '2026-08-11T04:45:48Z'
+  releases_master_updated: '2026-08-10T04:16:35.921Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
   repos_scanned: 61
@@ -33,7 +33,7 @@ meta_releases:
 - name: Sync26
   total_apis: 59
   m1_achieved: 8
-  m3_achieved: 8
+  m3_achieved: 12
   m4_achieved: 0
 progress:
 - repository: ApplicationEndpointDiscovery
@@ -512,31 +512,31 @@ progress:
     - akoshunyadi
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r2.1-fc52763
+    snapshot_branch: release-snapshot/r2.1-8f05564
     release_pr:
-      number: 67
+      number: 74
       state: open
-      url: https://github.com/camaraproject/ConnectedNetworkType/pull/67
-      created_at: '2026-07-07T11:23:04Z'
-      assignees:
-      - tanjadegroot
-      review_decision: COMMENTED
+      url: https://github.com/camaraproject/ConnectedNetworkType/pull/74
+      created_at: '2026-08-10T16:10:03Z'
+      assignees: []
+      review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 3
-      rm_total: 4
+      rm_checked: 0
+      rm_total: 5
     draft_release: null
     release_issue:
       number: 57
       url: https://github.com/camaraproject/ConnectedNetworkType/issues/57
       created_at: '2026-06-05T09:00:12Z'
     review_history:
-      discarded_count: 1
-      last_reviewers: []
-      last_pr_url: https://github.com/camaraproject/ConnectedNetworkType/pull/64
-      last_closed_at: '2026-07-07T08:52:28Z'
+      discarded_count: 2
+      last_reviewers:
+      - tanjadegroot
+      last_pr_url: https://github.com/camaraproject/ConnectedNetworkType/pull/67
+      last_closed_at: '2026-08-10T16:07:55Z'
   published_context:
     latest_public_release: r1.2
     newest_pre_release: null
@@ -1089,20 +1089,20 @@ progress:
     - maxl2287
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r4.1-5b06cf8
+    snapshot_branch: release-snapshot/r4.1-baf86c8
     release_pr:
-      number: 421
+      number: 426
       state: open
-      url: https://github.com/camaraproject/DeviceLocation/pull/421
-      created_at: '2026-07-30T10:40:56Z'
+      url: https://github.com/camaraproject/DeviceLocation/pull/426
+      created_at: '2026-08-10T11:09:17Z'
       assignees:
       - hdamker
-      review_decision: CHANGES_REQUESTED
+      review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 2
       rm_total: 5
     draft_release: null
     release_issue:
@@ -1110,10 +1110,11 @@ progress:
       url: https://github.com/camaraproject/DeviceLocation/issues/404
       created_at: '2026-06-01T10:33:07Z'
     review_history:
-      discarded_count: 2
-      last_reviewers: []
-      last_pr_url: https://github.com/camaraproject/DeviceLocation/pull/418
-      last_closed_at: '2026-07-30T08:39:14Z'
+      discarded_count: 3
+      last_reviewers:
+      - hdamker
+      last_pr_url: https://github.com/camaraproject/DeviceLocation/pull/421
+      last_closed_at: '2026-08-10T11:01:54Z'
   published_context:
     latest_public_release: r3.2
     newest_pre_release: null
@@ -1234,28 +1235,35 @@ progress:
       last_closed_at: '2026-07-07T15:45:09Z'
   published_context:
     latest_public_release: r1.2
-    newest_pre_release: null
+    newest_pre_release: r2.1
   cycle_releases:
     m1:
       release_tag: null
       release_date: null
       apis: []
     m3:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r2.1
+      release_date: '2026-08-07T10:35:15Z'
+      apis:
+      - api_name: device-reachability-status-subscriptions
+        api_version: 0.9.0-rc.1
+      - api_name: device-reachability-status
+        api_version: 1.2.0-rc.3
     m4:
       release_tag: null
       release_date: null
       apis: []
+  last_published:
+    release_tag: r2.1
+    release_date: '2026-08-07T10:35:15Z'
+    apis:
+    - api_name: device-reachability-status-subscriptions
+      api_version: 0.9.0-rc.1
+    - api_name: device-reachability-status
+      api_version: 1.2.0-rc.3
   snapshot_api_versions:
     device-reachability-status-subscriptions: 0.9.0-rc.1
     device-reachability-status: 1.2.0-rc.3
-  warnings:
-  - code: W003
-    message: Release r2.1 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: DeviceRoamingStatus
   github_url: https://github.com/camaraproject/DeviceRoamingStatus
   release_track: meta-release
@@ -1291,28 +1299,35 @@ progress:
     review_history: null
   published_context:
     latest_public_release: r1.2
-    newest_pre_release: null
+    newest_pre_release: r2.1
   cycle_releases:
     m1:
       release_tag: null
       release_date: null
       apis: []
     m3:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r2.1
+      release_date: '2026-08-07T09:58:54Z'
+      apis:
+      - api_name: device-roaming-status-subscriptions
+        api_version: 0.9.0-rc.1
+      - api_name: device-roaming-status
+        api_version: 1.2.0-rc.3
     m4:
       release_tag: null
       release_date: null
       apis: []
+  last_published:
+    release_tag: r2.1
+    release_date: '2026-08-07T09:58:54Z'
+    apis:
+    - api_name: device-roaming-status-subscriptions
+      api_version: 0.9.0-rc.1
+    - api_name: device-roaming-status
+      api_version: 1.2.0-rc.3
   snapshot_api_versions:
     device-roaming-status-subscriptions: 0.9.0-rc.1
     device-roaming-status: 1.2.0-rc.3
-  warnings:
-  - code: W003
-    message: Release r2.1 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: DeviceSwap
   github_url: https://github.com/camaraproject/DeviceSwap
   release_track: meta-release
@@ -1846,13 +1861,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/KnowYourCustomerAgeVerification/pull/52
       created_at: '2026-07-23T06:04:21Z'
-      assignees: []
-      review_decision: null
+      assignees:
+      - eric-murray
+      review_decision: APPROVED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 5
       rm_total: 5
     draft_release: null
     release_issue:
@@ -1902,13 +1918,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/KnowYourCustomerFill-in/pull/62
       created_at: '2026-07-31T14:25:04Z'
-      assignees: []
-      review_decision: null
+      assignees:
+      - eric-murray
+      review_decision: APPROVED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 5
       rm_total: 5
     draft_release: null
     release_issue:
@@ -1963,13 +1980,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/KnowYourCustomerMatch/pull/85
       created_at: '2026-07-31T10:08:56Z'
-      assignees: []
-      review_decision: null
+      assignees:
+      - eric-murray
+      review_decision: CHANGES_REQUESTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 3
       rm_total: 5
     draft_release: null
     release_issue:
@@ -2688,7 +2706,7 @@ progress:
       created_at: '2026-07-27T17:15:10Z'
       assignees:
       - Kevsy
-      review_decision: null
+      review_decision: APPROVED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
@@ -3237,8 +3255,8 @@ progress:
       assignees:
       - Kevsy
       - hdamker
-      review_decision: null
-      codeowner_approved: false
+      review_decision: APPROVED
+      codeowner_approved: true
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
