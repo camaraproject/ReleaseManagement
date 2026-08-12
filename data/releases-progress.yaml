@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-08-11T04:45:48Z'
-  last_checked: '2026-08-11T04:45:48Z'
+  last_updated: '2026-08-12T05:10:45Z'
+  last_checked: '2026-08-12T05:10:45Z'
   releases_master_updated: '2026-08-10T04:16:35.921Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -8,7 +8,7 @@ metadata:
   repos_new: 0
   repos_with_plan: 61
   repos_fully_onboarded: 45
-  repos_with_release_issue: 35
+  repos_with_release_issue: 31
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -123,27 +123,32 @@ progress:
     - maheshc01
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r2.1-cb2c839
+    snapshot_branch: release-snapshot/r2.1-04795c6
     release_pr:
-      number: 44
+      number: 50
       state: open
-      url: https://github.com/camaraproject/ApplicationEndpointRegistration/pull/44
-      created_at: '2026-07-31T19:06:53Z'
+      url: https://github.com/camaraproject/ApplicationEndpointRegistration/pull/50
+      created_at: '2026-08-11T11:14:38Z'
       assignees:
       - eric-murray
-      review_decision: CHANGES_REQUESTED
-      codeowner_approved: false
+      review_decision: APPROVED
+      codeowner_approved: true
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 4
+      rm_checked: 5
       rm_total: 5
     draft_release: null
     release_issue:
       number: 37
       url: https://github.com/camaraproject/ApplicationEndpointRegistration/issues/37
       created_at: '2026-07-06T22:14:40Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers:
+      - eric-murray
+      last_pr_url: https://github.com/camaraproject/ApplicationEndpointRegistration/pull/44
+      last_closed_at: '2026-08-11T11:05:26Z'
   published_context:
     latest_public_release: r1.2
     newest_pre_release: null
@@ -179,10 +184,22 @@ progress:
     - maheshc01
     - Kevsy
     - urvika-v
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.1-7eeacf1
+    release_pr:
+      number: 36
+      state: open
+      url: https://github.com/camaraproject/ApplicationProfiles/pull/36
+      created_at: '2026-08-11T20:42:35Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 0
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 5
     draft_release: null
     release_issue:
       number: 31
@@ -205,6 +222,8 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    application-profiles: 0.6.0-rc.1
 - repository: BlockchainPublicAddress
   github_url: https://github.com/camaraproject/BlockchainPublicAddress
   release_track: meta-release
@@ -510,27 +529,12 @@ progress:
     - bigludo7
     - sachinvodafone
     - akoshunyadi
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r2.1-8f05564
-    release_pr:
-      number: 74
-      state: open
-      url: https://github.com/camaraproject/ConnectedNetworkType/pull/74
-      created_at: '2026-08-10T16:10:03Z'
-      assignees: []
-      review_decision: null
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 0
-      rm_total: 5
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 57
-      url: https://github.com/camaraproject/ConnectedNetworkType/issues/57
-      created_at: '2026-06-05T09:00:12Z'
+    release_issue: null
     review_history:
       discarded_count: 2
       last_reviewers:
@@ -556,6 +560,11 @@ progress:
   snapshot_api_versions:
     connected-network-type-subscriptions: 0.3.0-rc.1
     connected-network-type: 0.3.0-rc.1
+  warnings:
+  - code: W003
+    message: Release r2.1 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: ConnectivityInsights
   github_url: https://github.com/camaraproject/ConnectivityInsights
   release_track: meta-release
@@ -1444,33 +1453,21 @@ progress:
     - JoseMConde
     - Seralogar
     - Kevsy
-  state: snapshot_active
+  state: planned
   artifacts:
-    snapshot_branch: release-snapshot/r1.2-eba92a2
-    release_pr:
-      number: 68
-      state: open
-      url: https://github.com/camaraproject/EdgeApplicationManagement/pull/68
-      created_at: '2026-07-31T15:37:11Z'
-      assignees:
-      - eric-murray
-      review_decision: CHANGES_REQUESTED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 4
-      rm_total: 5
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
     release_issue:
       number: 39
       url: https://github.com/camaraproject/EdgeApplicationManagement/issues/39
       created_at: '2026-06-05T12:05:06Z'
     review_history:
-      discarded_count: 5
-      last_reviewers: []
-      last_pr_url: https://github.com/camaraproject/EdgeApplicationManagement/pull/67
-      last_closed_at: '2026-07-31T15:17:04Z'
+      discarded_count: 6
+      last_reviewers:
+      - eric-murray
+      last_pr_url: https://github.com/camaraproject/EdgeApplicationManagement/pull/68
+      last_closed_at: '2026-08-11T11:20:54Z'
   published_context:
     latest_public_release: null
     newest_pre_release: r1.1
@@ -1495,8 +1492,6 @@ progress:
     apis:
     - api_name: edge-application-management
       api_version: 0.1.0-alpha.1
-  snapshot_api_versions:
-    edge-application-management: 0.1.0-rc.1
 - repository: EnergyFootprintNotification
   github_url: https://github.com/camaraproject/EnergyFootprintNotification
   release_track: meta-release
@@ -2639,28 +2634,12 @@ progress:
     - sachinvodafone
     - jgarciahospital
     - maheshc01
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r4.1-faa2511
-    release_pr:
-      number: 129
-      state: open
-      url: https://github.com/camaraproject/PopulationDensityData/pull/129
-      created_at: '2026-07-29T11:15:35Z'
-      assignees:
-      - Kevsy
-      review_decision: null
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 5
-      rm_total: 5
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 125
-      url: https://github.com/camaraproject/PopulationDensityData/issues/125
-      created_at: '2026-06-10T11:05:52Z'
+    release_issue: null
     review_history: null
   published_context:
     latest_public_release: r3.2
@@ -2680,6 +2659,11 @@ progress:
       apis: []
   snapshot_api_versions:
     population-density-data: 1.0.0-rc.1
+  warnings:
+  - code: W003
+    message: Release r4.1 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: PredictiveConnectivityData
   github_url: https://github.com/camaraproject/PredictiveConnectivityData
   release_track: meta-release
@@ -2696,28 +2680,12 @@ progress:
     main_contacts:
     - eric-murray
     - albertoramosmonagas
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r2.1-ecd8a33
-    release_pr:
-      number: 64
-      state: open
-      url: https://github.com/camaraproject/PredictiveConnectivityData/pull/64
-      created_at: '2026-07-27T17:15:10Z'
-      assignees:
-      - Kevsy
-      review_decision: APPROVED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 5
-      rm_total: 5
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 56
-      url: https://github.com/camaraproject/PredictiveConnectivityData/issues/56
-      created_at: '2026-06-09T10:06:50Z'
+    release_issue: null
     review_history: null
   published_context:
     latest_public_release: r1.2
@@ -2737,6 +2705,11 @@ progress:
       apis: []
   snapshot_api_versions:
     predictive-connectivity-data: 0.2.0-rc.1
+  warnings:
+  - code: W003
+    message: Release r2.1 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: QoSBooking
   github_url: https://github.com/camaraproject/QoSBooking
   release_track: meta-release
@@ -2835,28 +2808,20 @@ progress:
     - eric-murray
     - RandyLevensalor
     - jlurien
-  state: snapshot_active
+  state: planned
   artifacts:
-    snapshot_branch: release-snapshot/r4.1-ac8a5ae
-    release_pr:
-      number: 588
-      state: open
-      url: https://github.com/camaraproject/QualityOnDemand/pull/588
-      created_at: '2026-07-31T15:38:27Z'
-      assignees: []
-      review_decision: null
-      codeowner_approved: false
-      codeowner_checked: 2
-      codeowner_total: 3
-      ready_for_review: false
-      rm_checked: 0
-      rm_total: 5
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
     release_issue:
       number: 583
       url: https://github.com/camaraproject/QualityOnDemand/issues/583
       created_at: '2026-07-04T08:18:55Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers: []
+      last_pr_url: https://github.com/camaraproject/QualityOnDemand/pull/588
+      last_closed_at: '2026-08-11T08:33:46Z'
   published_context:
     latest_public_release: r3.2
     newest_pre_release: null
@@ -2873,10 +2838,6 @@ progress:
       release_tag: null
       release_date: null
       apis: []
-  snapshot_api_versions:
-    qos-profiles: 1.2.0-rc.3
-    qos-provisioning: 0.4.0-rc.1
-    quality-on-demand: 1.2.0-rc.3
 - repository: RainfallIntensity
   github_url: https://github.com/camaraproject/RainfallIntensity
   release_track: independent
@@ -3244,29 +3205,12 @@ progress:
     - GillesInnov35
     - grgpapadopoulos
     - fernandopradocabrillo
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r3.2-91eea01
-    release_pr:
-      number: 88
-      state: open
-      url: https://github.com/camaraproject/Tenure/pull/88
-      created_at: '2026-07-30T07:06:19Z'
-      assignees:
-      - Kevsy
-      - hdamker
-      review_decision: APPROVED
-      codeowner_approved: true
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 5
-      rm_total: 5
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 84
-      url: https://github.com/camaraproject/Tenure/issues/84
-      created_at: '2026-06-23T13:13:20Z'
+    release_issue: null
     review_history: null
   published_context:
     latest_public_release: r2.2
@@ -3294,6 +3238,11 @@ progress:
       api_version: 0.3.0-alpha.1
   snapshot_api_versions:
     kyc-tenure: 0.3.0-rc.1
+  warnings:
+  - code: W003
+    message: Release r3.2 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: TrafficInfluence
   github_url: https://github.com/camaraproject/TrafficInfluence
   release_track: meta-release
