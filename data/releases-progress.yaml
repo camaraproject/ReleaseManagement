@@ -1,7 +1,7 @@
 metadata:
-  last_updated: '2026-08-12T05:10:45Z'
-  last_checked: '2026-08-12T05:10:45Z'
-  releases_master_updated: '2026-08-10T04:16:35.921Z'
+  last_updated: '2026-08-12T10:31:10Z'
+  last_checked: '2026-08-12T10:31:10Z'
+  releases_master_updated: '2026-08-12T04:25:49.744Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
   repos_scanned: 61
@@ -33,7 +33,7 @@ meta_releases:
 - name: Sync26
   total_apis: 59
   m1_achieved: 8
-  m3_achieved: 12
+  m3_achieved: 17
   m4_achieved: 0
 progress:
 - repository: ApplicationEndpointDiscovery
@@ -184,28 +184,20 @@ progress:
     - maheshc01
     - Kevsy
     - urvika-v
-  state: snapshot_active
+  state: planned
   artifacts:
-    snapshot_branch: release-snapshot/r2.1-7eeacf1
-    release_pr:
-      number: 36
-      state: open
-      url: https://github.com/camaraproject/ApplicationProfiles/pull/36
-      created_at: '2026-08-11T20:42:35Z'
-      assignees: []
-      review_decision: null
-      codeowner_approved: false
-      codeowner_checked: 0
-      codeowner_total: 3
-      ready_for_review: false
-      rm_checked: 0
-      rm_total: 5
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
     release_issue:
       number: 31
       url: https://github.com/camaraproject/ApplicationProfiles/issues/31
       created_at: '2026-07-06T22:20:46Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers: []
+      last_pr_url: https://github.com/camaraproject/ApplicationProfiles/pull/36
+      last_closed_at: '2026-08-12T09:59:46Z'
   published_context:
     latest_public_release: r1.2
     newest_pre_release: null
@@ -222,8 +214,6 @@ progress:
       release_tag: null
       release_date: null
       apis: []
-  snapshot_api_versions:
-    application-profiles: 0.6.0-rc.1
 - repository: BlockchainPublicAddress
   github_url: https://github.com/camaraproject/BlockchainPublicAddress
   release_track: meta-release
@@ -543,28 +533,35 @@ progress:
       last_closed_at: '2026-08-10T16:07:55Z'
   published_context:
     latest_public_release: r1.2
-    newest_pre_release: null
+    newest_pre_release: r2.1
   cycle_releases:
     m1:
       release_tag: null
       release_date: null
       apis: []
     m3:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r2.1
+      release_date: '2026-08-11T15:01:59Z'
+      apis:
+      - api_name: connected-network-type-subscriptions
+        api_version: 0.3.0-rc.1
+      - api_name: connected-network-type
+        api_version: 0.3.0-rc.1
     m4:
       release_tag: null
       release_date: null
       apis: []
+  last_published:
+    release_tag: r2.1
+    release_date: '2026-08-11T15:01:59Z'
+    apis:
+    - api_name: connected-network-type-subscriptions
+      api_version: 0.3.0-rc.1
+    - api_name: connected-network-type
+      api_version: 0.3.0-rc.1
   snapshot_api_versions:
     connected-network-type-subscriptions: 0.3.0-rc.1
     connected-network-type: 0.3.0-rc.1
-  warnings:
-  - code: W003
-    message: Release r2.1 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: ConnectivityInsights
   github_url: https://github.com/camaraproject/ConnectivityInsights
   release_track: meta-release
@@ -2643,27 +2640,30 @@ progress:
     review_history: null
   published_context:
     latest_public_release: r3.2
-    newest_pre_release: null
+    newest_pre_release: r4.1
   cycle_releases:
     m1:
       release_tag: null
       release_date: null
       apis: []
     m3:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r4.1
+      release_date: '2026-08-11T10:11:52Z'
+      apis:
+      - api_name: population-density-data
+        api_version: 1.0.0-rc.1
     m4:
       release_tag: null
       release_date: null
       apis: []
+  last_published:
+    release_tag: r4.1
+    release_date: '2026-08-11T10:11:52Z'
+    apis:
+    - api_name: population-density-data
+      api_version: 1.0.0-rc.1
   snapshot_api_versions:
     population-density-data: 1.0.0-rc.1
-  warnings:
-  - code: W003
-    message: Release r4.1 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: PredictiveConnectivityData
   github_url: https://github.com/camaraproject/PredictiveConnectivityData
   release_track: meta-release
@@ -2689,27 +2689,30 @@ progress:
     review_history: null
   published_context:
     latest_public_release: r1.2
-    newest_pre_release: null
+    newest_pre_release: r2.1
   cycle_releases:
     m1:
       release_tag: null
       release_date: null
       apis: []
     m3:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r2.1
+      release_date: '2026-08-11T09:54:02Z'
+      apis:
+      - api_name: predictive-connectivity-data
+        api_version: 0.2.0-rc.1
     m4:
       release_tag: null
       release_date: null
       apis: []
+  last_published:
+    release_tag: r2.1
+    release_date: '2026-08-11T09:54:02Z'
+    apis:
+    - api_name: predictive-connectivity-data
+      api_version: 0.2.0-rc.1
   snapshot_api_versions:
     predictive-connectivity-data: 0.2.0-rc.1
-  warnings:
-  - code: W003
-    message: Release r2.1 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: QoSBooking
   github_url: https://github.com/camaraproject/QoSBooking
   release_track: meta-release
@@ -2734,27 +2737,31 @@ progress:
     - jlurien
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r2.1-8f1611a
+    snapshot_branch: release-snapshot/r2.1-c60335b
     release_pr:
-      number: 109
+      number: 119
       state: open
-      url: https://github.com/camaraproject/QoSBooking/pull/109
-      created_at: '2026-07-03T09:54:07Z'
-      assignees:
-      - tanjadegroot
-      review_decision: CHANGES_REQUESTED
+      url: https://github.com/camaraproject/QoSBooking/pull/119
+      created_at: '2026-08-12T06:19:55Z'
+      assignees: []
+      review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
-      rm_total: 4
+      rm_checked: 0
+      rm_total: 5
     draft_release: null
     release_issue:
       number: 108
       url: https://github.com/camaraproject/QoSBooking/issues/108
       created_at: '2026-07-03T08:59:35Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers:
+      - tanjadegroot
+      last_pr_url: https://github.com/camaraproject/QoSBooking/pull/109
+      last_closed_at: '2026-08-12T06:17:12Z'
   published_context:
     latest_public_release: r1.2
     newest_pre_release: null
@@ -3214,7 +3221,7 @@ progress:
     review_history: null
   published_context:
     latest_public_release: r2.2
-    newest_pre_release: r3.1
+    newest_pre_release: r3.2
   cycle_releases:
     m1:
       release_tag: r3.1
@@ -3223,26 +3230,23 @@ progress:
       - api_name: kyc-tenure
         api_version: 0.3.0-alpha.1
     m3:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r3.2
+      release_date: '2026-08-11T08:25:04Z'
+      apis:
+      - api_name: kyc-tenure
+        api_version: 0.3.0-rc.1
     m4:
       release_tag: null
       release_date: null
       apis: []
   last_published:
-    release_tag: r3.1
-    release_date: '2026-06-23T12:07:05Z'
+    release_tag: r3.2
+    release_date: '2026-08-11T08:25:04Z'
     apis:
     - api_name: kyc-tenure
-      api_version: 0.3.0-alpha.1
+      api_version: 0.3.0-rc.1
   snapshot_api_versions:
     kyc-tenure: 0.3.0-rc.1
-  warnings:
-  - code: W003
-    message: Release r3.2 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: TrafficInfluence
   github_url: https://github.com/camaraproject/TrafficInfluence
   release_track: meta-release
