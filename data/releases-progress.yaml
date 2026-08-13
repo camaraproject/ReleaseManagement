@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-08-12T10:31:10Z'
-  last_checked: '2026-08-12T10:31:10Z'
+  last_updated: '2026-08-13T05:14:47Z'
+  last_checked: '2026-08-13T05:14:47Z'
   releases_master_updated: '2026-08-12T04:25:49.744Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -1103,8 +1103,8 @@ progress:
       created_at: '2026-08-10T11:09:17Z'
       assignees:
       - hdamker
-      review_decision: null
-      codeowner_approved: false
+      review_decision: APPROVED
+      codeowner_approved: true
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
@@ -2797,7 +2797,7 @@ progress:
     main_contacts:
     - hdamker
     - eric-murray
-    - RandyLevensalor
+    - benhepworth
     - jlurien
   - api_name: qos-provisioning
     target_api_version: 0.4.0
@@ -2805,7 +2805,7 @@ progress:
     main_contacts:
     - hdamker
     - eric-murray
-    - RandyLevensalor
+    - benhepworth
     - jlurien
   - api_name: quality-on-demand
     target_api_version: 1.2.0
@@ -2813,7 +2813,7 @@ progress:
     main_contacts:
     - hdamker
     - eric-murray
-    - RandyLevensalor
+    - benhepworth
     - jlurien
   state: planned
   artifacts:
@@ -2949,24 +2949,13 @@ progress:
     - benhepworth
     - maheshc01
     - kevsy
-  state: snapshot_active
+  state: draft_ready
   artifacts:
     snapshot_branch: release-snapshot/r2.1-55f5c9c
-    release_pr:
-      number: 108
-      state: open
-      url: https://github.com/camaraproject/SessionInsights/pull/108
-      created_at: '2026-08-05T10:53:34Z'
-      assignees:
-      - hdamker
-      review_decision: APPROVED
-      codeowner_approved: true
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 0
-      rm_total: 5
-    draft_release: null
+    release_pr: null
+    draft_release:
+      name: r2.1
+      url: https://github.com/camaraproject/SessionInsights/releases/tag/untagged-8f813d45be2ec3a2ab2c
     release_issue:
       number: 100
       url: https://github.com/camaraproject/SessionInsights/issues/100
