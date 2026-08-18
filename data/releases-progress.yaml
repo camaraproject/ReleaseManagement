@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-08-17T04:08:44Z'
-  last_checked: '2026-08-17T04:08:44Z'
+  last_updated: '2026-08-18T04:03:43Z'
+  last_checked: '2026-08-18T04:03:43Z'
   releases_master_updated: '2026-08-12T04:25:49.744Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -1123,7 +1123,7 @@ progress:
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 2
+      rm_checked: 5
       rm_total: 5
     draft_release: null
     release_issue:
