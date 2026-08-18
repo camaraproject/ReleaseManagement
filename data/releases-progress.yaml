@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-08-18T08:58:57Z'
-  last_checked: '2026-08-18T08:58:57Z'
+  last_updated: '2026-08-18T14:39:57Z'
+  last_checked: '2026-08-18T14:39:57Z'
   releases_master_updated: '2026-08-12T04:25:49.744Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -601,29 +601,21 @@ progress:
     - maheshc01
     - kevsy
     - urvika-v
-  state: snapshot_active
+  state: planned
   artifacts:
-    snapshot_branch: release-snapshot/r4.1-f2a8013
-    release_pr:
-      number: 200
-      state: open
-      url: https://github.com/camaraproject/ConnectivityInsights/pull/200
-      created_at: '2026-07-31T18:49:23Z'
-      assignees:
-      - eric-murray
-      review_decision: CHANGES_REQUESTED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 2
-      rm_total: 5
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
     release_issue:
       number: 191
       url: https://github.com/camaraproject/ConnectivityInsights/issues/191
       created_at: '2026-05-30T22:02:21Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers:
+      - eric-murray
+      last_pr_url: https://github.com/camaraproject/ConnectivityInsights/pull/200
+      last_closed_at: '2026-08-18T14:05:13Z'
   published_context:
     latest_public_release: r3.2
     newest_pre_release: null
@@ -640,9 +632,6 @@ progress:
       release_tag: null
       release_date: null
       apis: []
-  snapshot_api_versions:
-    connectivity-insights-subscriptions: 0.7.0-rc.1
-    connectivity-insights: 0.7.0-rc.1
 - repository: ConsentInfo
   github_url: https://github.com/camaraproject/ConsentInfo
   release_track: independent
@@ -2461,30 +2450,30 @@ progress:
   release_track: meta-release
   meta_release: Sync26
   target_release_tag: r4.1
-  target_release_type: pre-release-alpha
+  target_release_type: pre-release-rc
   dependencies:
     commonalities_release: r4.3
     identity_consent_management_release: r4.2
   apis:
   - api_name: number-verification
     target_api_version: 2.1.1
-    target_api_status: alpha
+    target_api_status: rc
     main_contacts:
     - bigludo7
     - fernandopradocabrillo
     - AxelNennker
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r4.1-ff45430
+    snapshot_branch: release-snapshot/r4.1-bb0c748
     release_pr:
-      number: 239
+      number: 244
       state: open
-      url: https://github.com/camaraproject/NumberVerification/pull/239
-      created_at: '2026-07-17T14:50:47Z'
+      url: https://github.com/camaraproject/NumberVerification/pull/244
+      created_at: '2026-08-18T10:06:58Z'
       assignees: []
       review_decision: null
       codeowner_approved: false
-      codeowner_checked: 0
+      codeowner_checked: 1
       codeowner_total: 3
       ready_for_review: false
       rm_checked: 0
@@ -2494,7 +2483,11 @@ progress:
       number: 236
       url: https://github.com/camaraproject/NumberVerification/issues/236
       created_at: '2026-06-16T14:25:50Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers: []
+      last_pr_url: https://github.com/camaraproject/NumberVerification/pull/239
+      last_closed_at: '2026-08-18T09:54:40Z'
   published_context:
     latest_public_release: r3.2
     newest_pre_release: null
@@ -2512,7 +2505,7 @@ progress:
       release_date: null
       apis: []
   snapshot_api_versions:
-    number-verification: 2.1.1-alpha.1
+    number-verification: 2.1.1-rc.2
 - repository: OptimalEdgeDiscovery
   github_url: https://github.com/camaraproject/OptimalEdgeDiscovery
   release_track: meta-release
