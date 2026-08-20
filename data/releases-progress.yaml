@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-08-19T04:04:48Z'
-  last_checked: '2026-08-19T04:04:48Z'
+  last_updated: '2026-08-20T04:04:23Z'
+  last_checked: '2026-08-20T04:04:23Z'
   releases_master_updated: '2026-08-12T04:25:49.744Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -8,7 +8,7 @@ metadata:
   repos_new: 0
   repos_with_plan: 61
   repos_fully_onboarded: 45
-  repos_with_release_issue: 31
+  repos_with_release_issue: 28
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -121,28 +121,12 @@ progress:
     - gainsley
     - JoseMConde
     - maheshc01
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r2.1-04795c6
-    release_pr:
-      number: 50
-      state: open
-      url: https://github.com/camaraproject/ApplicationEndpointRegistration/pull/50
-      created_at: '2026-08-11T11:14:38Z'
-      assignees:
-      - eric-murray
-      review_decision: APPROVED
-      codeowner_approved: true
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 5
-      rm_total: 5
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 37
-      url: https://github.com/camaraproject/ApplicationEndpointRegistration/issues/37
-      created_at: '2026-07-06T22:14:40Z'
+    release_issue: null
     review_history:
       discarded_count: 1
       last_reviewers:
@@ -167,6 +151,11 @@ progress:
       apis: []
   snapshot_api_versions:
     application-endpoint-registration: 0.2.0-rc.1
+  warnings:
+  - code: W003
+    message: Release r2.1 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: ApplicationProfiles
   github_url: https://github.com/camaraproject/ApplicationProfiles
   release_track: meta-release
@@ -184,28 +173,12 @@ progress:
     - maheshc01
     - Kevsy
     - urvika-v
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r2.1-308e84d
-    release_pr:
-      number: 39
-      state: open
-      url: https://github.com/camaraproject/ApplicationProfiles/pull/39
-      created_at: '2026-08-13T11:36:14Z'
-      assignees:
-      - eric-murray
-      review_decision: APPROVED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 5
-      rm_total: 5
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 31
-      url: https://github.com/camaraproject/ApplicationProfiles/issues/31
-      created_at: '2026-07-06T22:20:46Z'
+    release_issue: null
     review_history:
       discarded_count: 1
       last_reviewers: []
@@ -229,6 +202,11 @@ progress:
       apis: []
   snapshot_api_versions:
     application-profiles: 0.6.0-rc.1
+  warnings:
+  - code: W003
+    message: Release r2.1 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: BlockchainPublicAddress
   github_url: https://github.com/camaraproject/BlockchainPublicAddress
   release_track: meta-release
@@ -601,10 +579,22 @@ progress:
     - maheshc01
     - kevsy
     - urvika-v
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r4.1-7cf0e84
+    release_pr:
+      number: 215
+      state: open
+      url: https://github.com/camaraproject/ConnectivityInsights/pull/215
+      created_at: '2026-08-20T02:05:20Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 5
     draft_release: null
     release_issue:
       number: 191
@@ -632,6 +622,9 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    connectivity-insights-subscriptions: 0.7.0-rc.1
+    connectivity-insights: 0.7.0-rc.1
 - repository: ConsentInfo
   github_url: https://github.com/camaraproject/ConsentInfo
   release_track: independent
@@ -2530,29 +2523,21 @@ progress:
     - gainsley
     - JoseMConde
     - maheshc01
-  state: snapshot_active
+  state: planned
   artifacts:
-    snapshot_branch: release-snapshot/r2.1-36530ee
-    release_pr:
-      number: 47
-      state: open
-      url: https://github.com/camaraproject/OptimalEdgeDiscovery/pull/47
-      created_at: '2026-07-21T16:57:28Z'
-      assignees:
-      - eric-murray
-      review_decision: CHANGES_REQUESTED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 4
-      rm_total: 5
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
     release_issue:
       number: 44
       url: https://github.com/camaraproject/OptimalEdgeDiscovery/issues/44
       created_at: '2026-07-06T22:14:20Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers:
+      - eric-murray
+      last_pr_url: https://github.com/camaraproject/OptimalEdgeDiscovery/pull/47
+      last_closed_at: '2026-08-19T21:29:36Z'
   published_context:
     latest_public_release: r1.2
     newest_pre_release: null
@@ -2569,8 +2554,6 @@ progress:
       release_tag: null
       release_date: null
       apis: []
-  snapshot_api_versions:
-    optimal-edge-discovery: 0.2.0-rc.1
 - repository: OTPValidation
   github_url: https://github.com/camaraproject/OTPValidation
   release_track: meta-release
@@ -2966,17 +2949,12 @@ progress:
     - benhepworth
     - maheshc01
     - kevsy
-  state: draft_ready
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r2.1-55f5c9c
+    snapshot_branch: null
     release_pr: null
-    draft_release:
-      name: r2.1
-      url: https://github.com/camaraproject/SessionInsights/releases/tag/untagged-8f813d45be2ec3a2ab2c
-    release_issue:
-      number: 100
-      url: https://github.com/camaraproject/SessionInsights/issues/100
-      created_at: '2026-05-30T22:04:36Z'
+    draft_release: null
+    release_issue: null
     review_history:
       discarded_count: 1
       last_reviewers:
@@ -3001,6 +2979,11 @@ progress:
       apis: []
   snapshot_api_versions:
     session-insights: 0.2.0-rc.1
+  warnings:
+  - code: W003
+    message: Release r2.1 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: SimpleEdgeDiscovery
   github_url: https://github.com/camaraproject/SimpleEdgeDiscovery
   release_track: meta-release
