@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-08-20T14:23:47Z'
-  last_checked: '2026-08-20T14:23:47Z'
+  last_updated: '2026-08-21T04:07:20Z'
+  last_checked: '2026-08-21T04:07:20Z'
   releases_master_updated: '2026-08-20T14:16:20.717Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -8,7 +8,7 @@ metadata:
   repos_new: 0
   repos_with_plan: 61
   repos_fully_onboarded: 45
-  repos_with_release_issue: 27
+  repos_with_release_issue: 26
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -585,28 +585,12 @@ progress:
     - maheshc01
     - kevsy
     - urvika-v
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r4.1-7cf0e84
-    release_pr:
-      number: 215
-      state: open
-      url: https://github.com/camaraproject/ConnectivityInsights/pull/215
-      created_at: '2026-08-20T02:05:20Z'
-      assignees:
-      - eric-murray
-      review_decision: CHANGES_REQUESTED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 3
-      rm_total: 5
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 191
-      url: https://github.com/camaraproject/ConnectivityInsights/issues/191
-      created_at: '2026-05-30T22:02:21Z'
+    release_issue: null
     review_history:
       discarded_count: 1
       last_reviewers:
@@ -632,6 +616,11 @@ progress:
   snapshot_api_versions:
     connectivity-insights-subscriptions: 0.7.0-rc.1
     connectivity-insights: 0.7.0-rc.1
+  warnings:
+  - code: W003
+    message: Release r4.1 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: ConsentInfo
   github_url: https://github.com/camaraproject/ConsentInfo
   release_track: independent
@@ -1159,7 +1148,8 @@ progress:
       state: open
       url: https://github.com/camaraproject/DeviceMediaStreamingRate/pull/35
       created_at: '2026-07-17T14:31:09Z'
-      assignees: []
+      assignees:
+      - Kevsy
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
@@ -2538,7 +2528,8 @@ progress:
       state: open
       url: https://github.com/camaraproject/OptimalEdgeDiscovery/pull/55
       created_at: '2026-08-20T13:25:20Z'
-      assignees: []
+      assignees:
+      - eric-murray
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
