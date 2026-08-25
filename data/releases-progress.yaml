@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-08-22T04:01:11Z'
-  last_checked: '2026-08-22T04:01:11Z'
+  last_updated: '2026-08-25T04:06:00Z'
+  last_checked: '2026-08-25T04:06:00Z'
   releases_master_updated: '2026-08-21T03:32:36.140Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -1146,12 +1146,12 @@ progress:
       created_at: '2026-07-17T14:31:09Z'
       assignees:
       - Kevsy
-      review_decision: null
+      review_decision: CHANGES_REQUESTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 4
       rm_total: 5
     draft_release: null
     release_issue:
@@ -1825,24 +1825,13 @@ progress:
     - ToshiWakayama-KDDI
     - fernandopradocabrillo
     - GillesInnov35
-  state: snapshot_active
+  state: draft_ready
   artifacts:
     snapshot_branch: release-snapshot/r2.1-f1d12f3
-    release_pr:
-      number: 52
-      state: open
-      url: https://github.com/camaraproject/KnowYourCustomerAgeVerification/pull/52
-      created_at: '2026-07-23T06:04:21Z'
-      assignees:
-      - eric-murray
-      review_decision: APPROVED
-      codeowner_approved: true
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 5
-      rm_total: 5
-    draft_release: null
+    release_pr: null
+    draft_release:
+      name: r2.1
+      url: https://github.com/camaraproject/KnowYourCustomerAgeVerification/releases/tag/untagged-41bb3d5783d811380885
     release_issue:
       number: 45
       url: https://github.com/camaraproject/KnowYourCustomerAgeVerification/issues/45
@@ -1882,24 +1871,13 @@ progress:
     main_contacts:
     - ToshiWakayama-KDDI
     - GillesInnov35
-  state: snapshot_active
+  state: draft_ready
   artifacts:
     snapshot_branch: release-snapshot/r2.1-9579a5e
-    release_pr:
-      number: 62
-      state: open
-      url: https://github.com/camaraproject/KnowYourCustomerFill-in/pull/62
-      created_at: '2026-07-31T14:25:04Z'
-      assignees:
-      - eric-murray
-      review_decision: APPROVED
-      codeowner_approved: true
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 5
-      rm_total: 5
-    draft_release: null
+    release_pr: null
+    draft_release:
+      name: r2.1
+      url: https://github.com/camaraproject/KnowYourCustomerFill-in/releases/tag/untagged-75115490b048e8ee201a
     release_issue:
       number: 54
       url: https://github.com/camaraproject/KnowYourCustomerFill-in/issues/54
@@ -1944,24 +1922,13 @@ progress:
     - ToshiWakayama-KDDI
     - fernandopradocabrillo
     - GillesInnov35
-  state: snapshot_active
+  state: draft_ready
   artifacts:
     snapshot_branch: release-snapshot/r2.1-6e7c241
-    release_pr:
-      number: 85
-      state: open
-      url: https://github.com/camaraproject/KnowYourCustomerMatch/pull/85
-      created_at: '2026-07-31T10:08:56Z'
-      assignees:
-      - eric-murray
-      review_decision: APPROVED
-      codeowner_approved: true
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 5
-      rm_total: 5
-    draft_release: null
+    release_pr: null
+    draft_release:
+      name: r2.1
+      url: https://github.com/camaraproject/KnowYourCustomerMatch/releases/tag/untagged-66e96ad79c483a27cd9d
     release_issue:
       number: 79
       url: https://github.com/camaraproject/KnowYourCustomerMatch/issues/79
@@ -2526,12 +2493,12 @@ progress:
       created_at: '2026-08-20T13:25:20Z'
       assignees:
       - eric-murray
-      review_decision: null
-      codeowner_approved: false
+      review_decision: APPROVED
+      codeowner_approved: true
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 5
       rm_total: 5
     draft_release: null
     release_issue:
@@ -2578,10 +2545,22 @@ progress:
     main_contacts:
     - bigludo7
     - fernandopradocabrillo
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r4.1-7891ea1
+    release_pr:
+      number: 143
+      state: open
+      url: https://github.com/camaraproject/OTPValidation/pull/143
+      created_at: '2026-08-24T15:41:57Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 0
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 5
     draft_release: null
     release_issue:
       number: 138
@@ -2604,6 +2583,8 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    one-time-password-sms: 2.0.0-alpha.1
 - repository: PopulationDensityData
   github_url: https://github.com/camaraproject/PopulationDensityData
   release_track: meta-release
