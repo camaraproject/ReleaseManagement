@@ -161,8 +161,8 @@ When snapshot creation is initiated (via `/create-snapshot` command in the Relea
   - Sets exact API versions using `target_api_version` + auto-calculated extension (e.g., `-rc.2` based on consecutive numbering across API lifecycle)
   - Enforces CAMARA versioning rules: info.version follows API SemVer patterns, server URLs follow v0.x or vx patterns
   - Writes `release-metadata.yaml` to the snapshot branch (source of truth for release parameters)
-  - Commits mechanical changes (versions, URLs) to snapshot branch
-  - Commits automated updates as reviewable content (CHANGELOG, README) to release-review branch
+  - Commits mechanical changes (versions, URLs, README Release Information) to snapshot branch
+  - Commits an automated CHANGELOG draft as reviewable content to release-review branch
   - Opens a Release PR from release-review branch to snapshot branch
 
 **Rationale:**
@@ -177,7 +177,7 @@ When snapshot creation is initiated (via `/create-snapshot` command in the Relea
 Manual review and adjustments happen through the Release PR (from release-review branch to snapshot branch).
 
 - Release PRs require approval from at least one codeowner AND at least one Release Management reviewer (enforced via branch protection on snapshot branches).
-- Review covers CHANGELOG and README correctness wrt metadata
+- Review covers CHANGELOG correctness wrt metadata (README Release Information is committed with the snapshot, before the Release PR opens)
 - CHANGELOG.md entries may be refined on the release-review branch (codeowners commit directly; maintainers/contributors via PRs from forks)
 - Mechanical changes on the snapshot branch are protected and cannot be edited
 

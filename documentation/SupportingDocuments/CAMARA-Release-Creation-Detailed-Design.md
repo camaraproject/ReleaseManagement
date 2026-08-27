@@ -207,7 +207,7 @@ These refinements are **compatible extensions** to the concept. A change request
 
 ### 2.4 Separation of Mechanical and Reviewable Content
 
-**Principle:** Mechanical changes (version numbers, URLs) are committed directly to the snapshot branch and cannot be edited via PR. Only documentation (CHANGELOG, README) is reviewable in the Release PR via a separate release-review branch.
+**Principle:** Mechanical changes (version numbers, URLs, README Release Information) are committed directly to the snapshot branch and cannot be edited via PR. Only CHANGELOG is reviewable in the Release PR via a separate release-review branch.
 
 **Addresses:** M5, M6, G3
 
@@ -457,7 +457,7 @@ When a Release Issue is closed or doesn't exist, automation creates a new one un
 | Snapshot branch | `release-snapshot/rX.Y-<shortsha>` | Mechanical changes (automation-owned) | Created → deleted on discard, on draft release deletion or after release tag |
 | `release-metadata.yaml` | On snapshot branch | Authoritative snapshot record | Created (auto-generated) with snapshot; source of truth for this release |
 | Release-review branch | `release-review/rX.Y-<shortsha>` | Reviewable content (human-owned) | Created → kept for reference; deleted manually if no longer needed |
-| Release PR | PR: release-review → snapshot | CHANGELOG/README review | Created → merged or closed |
+| Release PR | PR: release-review → snapshot | CHANGELOG review | Created → merged or closed |
 | Draft release | GitHub Releases | Pre-publication artifact | Created after Release PR merge |
 | Published release | GitHub Releases + tag `rX.Y` | Final artifact | Tag created at publication |
 
@@ -497,10 +497,10 @@ When `/create-snapshot` is run, automation:
 6. **If validation fails:** Posts error report, state remains PLANNED
 7. **If validation passes:**
    - Creates snapshot branch `release-snapshot/rX.Y-<shortsha>`
-   - Commits mechanical changes (version replacements, URL updates) directly to the snapshot branch
+   - Commits mechanical changes (version replacements, URL updates, README Release Information) directly to the snapshot branch
    - Creates `release-metadata.yaml` with source commit (`src_commit_sha`) and release configuration
    - Creates release-review branch `release-review/rX.Y-<shortsha>`
-   - Commits automated updates for the release to CHANGELOG, README to the release-review branch
+   - Commits an automated CHANGELOG draft to the release-review branch
    - Creates the Release PR: release-review → release-snapshot, titled `Release Review: {repo} {tag} ({type}{, meta})` (e.g., "Release Review: QualityOnDemand r4.1 (rc, Sync26)")
    - Updates the Release Issue label to `release-state: snapshot-active`
    - Posts success comment with links and next steps in the Release Issue
@@ -520,7 +520,7 @@ Each snapshot attempt uses two branches:
 **2. Review Branch** (human-owned, editable)
 - Name: `release-review/rX.Y-<shortsha>`
 - Created from snapshot branch
-- Contains reviewable content (CHANGELOG, README)
+- Contains reviewable content (CHANGELOG)
 - Merged INTO snapshot branch via Release PR
 - PR diff shows only reviewable content
 - Editable: codeowners can commit directly; maintainers and contributors submit PRs from forks (merged by codeowners)
@@ -531,10 +531,10 @@ main (at abc1234)
 /create-snapshot (validates, then creates on success)
        ↓
 Create release-snapshot/r4.1-abc1234
-Commit: version replacements, release-metadata.yaml (with base SHA)
+Commit: version replacements, README Release Information, release-metadata.yaml (with base SHA)
        ↓
 Create release-review/r4.1-abc1234 from snapshot
-Commit: CHANGELOG, README
+Commit: CHANGELOG
        ↓
 Release PR: release-review/r4.1-abc1234 → release-snapshot/r4.1-abc1234
        ↓
@@ -593,8 +593,8 @@ Bot messages derive all snapshot information from this file.
 | Feature file versions | Snapshot branch | No |
 | Link replacements | Snapshot branch | No |
 | `release-metadata.yaml` | Snapshot branch | No |
+| README release info | Snapshot branch | No |
 | CHANGELOG section | Release-review branch | Yes |
-| README release info | Release-review branch | Yes |
 
 ### 4.7 Discard and Retry Flow
 
