@@ -1,14 +1,14 @@
 metadata:
-  last_updated: '2026-08-27T14:22:15Z'
-  last_checked: '2026-08-27T14:22:15Z'
-  releases_master_updated: '2026-08-21T03:32:36.140Z'
+  last_updated: '2026-08-29T10:15:31Z'
+  last_checked: '2026-08-29T10:15:31Z'
+  releases_master_updated: '2026-08-28T14:34:51.497Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
-  repos_scanned: 61
+  repos_scanned: 62
   repos_new: 0
-  repos_with_plan: 61
+  repos_with_plan: 62
   repos_fully_onboarded: 45
-  repos_with_release_issue: 26
+  repos_with_release_issue: 24
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -829,20 +829,19 @@ progress:
     - eric-murray
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r2.2-1d16652
+    snapshot_branch: release-snapshot/r2.2-6771f7f
     release_pr:
-      number: 150
+      number: 175
       state: open
-      url: https://github.com/camaraproject/DedicatedNetworks/pull/150
-      created_at: '2026-08-14T10:52:05Z'
-      assignees:
-      - hdamker
-      review_decision: COMMENTED
+      url: https://github.com/camaraproject/DedicatedNetworks/pull/175
+      created_at: '2026-08-28T09:41:21Z'
+      assignees: []
+      review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 0
       rm_total: 5
     draft_release: null
     release_issue:
@@ -850,11 +849,11 @@ progress:
       url: https://github.com/camaraproject/DedicatedNetworks/issues/116
       created_at: '2026-06-01T08:20:01Z'
     review_history:
-      discarded_count: 3
+      discarded_count: 4
       last_reviewers:
       - hdamker
-      last_pr_url: https://github.com/camaraproject/DedicatedNetworks/pull/142
-      last_closed_at: '2026-08-14T10:47:30Z'
+      last_pr_url: https://github.com/camaraproject/DedicatedNetworks/pull/150
+      last_closed_at: '2026-08-28T09:35:01Z'
   published_context:
     latest_public_release: r1.2
     newest_pre_release: r2.1
@@ -1005,20 +1004,20 @@ progress:
     - Kevsy
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r3.2-581e2cc
+    snapshot_branch: release-snapshot/r3.2-5dcccd7
     release_pr:
-      number: 199
+      number: 206
       state: open
-      url: https://github.com/camaraproject/DeviceIdentifier/pull/199
-      created_at: '2026-08-26T11:27:59Z'
+      url: https://github.com/camaraproject/DeviceIdentifier/pull/206
+      created_at: '2026-08-27T15:05:51Z'
       assignees:
       - hdamker
-      review_decision: null
+      review_decision: COMMENTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 4
+      rm_checked: 5
       rm_total: 5
     draft_release: null
     release_issue:
@@ -1026,11 +1025,11 @@ progress:
       url: https://github.com/camaraproject/DeviceIdentifier/issues/176
       created_at: '2026-06-11T14:41:32Z'
     review_history:
-      discarded_count: 1
+      discarded_count: 2
       last_reviewers:
       - hdamker
-      last_pr_url: https://github.com/camaraproject/DeviceIdentifier/pull/190
-      last_closed_at: '2026-08-26T11:08:06Z'
+      last_pr_url: https://github.com/camaraproject/DeviceIdentifier/pull/199
+      last_closed_at: '2026-08-27T15:04:10Z'
   published_context:
     latest_public_release: r2.2
     newest_pre_release: r3.1
@@ -1151,12 +1150,12 @@ progress:
       created_at: '2026-07-17T14:31:09Z'
       assignees:
       - Kevsy
-      review_decision: CHANGES_REQUESTED
+      review_decision: APPROVED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 4
+      rm_checked: 5
       rm_total: 5
     draft_release: null
     release_issue:
@@ -1675,28 +1674,12 @@ progress:
     - chenfr2-ChinaTelecom
     - XunliYang
     - rkandoi
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r1.2-6082d65
-    release_pr:
-      number: 61
-      state: open
-      url: https://github.com/camaraproject/IoTDeviceManagement/pull/61
-      created_at: '2026-08-25T16:48:16Z'
-      assignees:
-      - eric-murray
-      review_decision: null
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 1
-      rm_total: 5
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 49
-      url: https://github.com/camaraproject/IoTDeviceManagement/issues/49
-      created_at: '2026-07-13T19:12:53Z'
+    release_issue: null
     review_history:
       discarded_count: 2
       last_reviewers: []
@@ -1704,7 +1687,7 @@ progress:
       last_closed_at: '2026-08-25T16:46:21Z'
   published_context:
     latest_public_release: null
-    newest_pre_release: r1.1
+    newest_pre_release: r1.2
   cycle_releases:
     m1:
       release_tag: r1.1
@@ -1713,19 +1696,21 @@ progress:
       - api_name: esim-profile-management
         api_version: 0.1.0-alpha.1
     m3:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r1.2
+      release_date: '2026-08-28T05:15:54Z'
+      apis:
+      - api_name: esim-profile-management
+        api_version: 0.1.0-rc.1
     m4:
       release_tag: null
       release_date: null
       apis: []
   last_published:
-    release_tag: r1.1
-    release_date: '2026-06-30T07:59:58Z'
+    release_tag: r1.2
+    release_date: '2026-08-28T05:15:54Z'
     apis:
     - api_name: esim-profile-management
-      api_version: 0.1.0-alpha.1
+      api_version: 0.1.0-rc.1
   snapshot_api_versions:
     esim-profile-management: 0.1.0-rc.1
 - repository: IoTNetworkOptimization
@@ -2705,28 +2690,12 @@ progress:
     main_contacts:
     - Masa8106
     - jlurien
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r2.1-c60335b
-    release_pr:
-      number: 119
-      state: open
-      url: https://github.com/camaraproject/QoSBooking/pull/119
-      created_at: '2026-08-12T06:19:55Z'
-      assignees:
-      - eric-murray
-      review_decision: APPROVED
-      codeowner_approved: true
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 5
-      rm_total: 5
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 108
-      url: https://github.com/camaraproject/QoSBooking/issues/108
-      created_at: '2026-07-03T08:59:35Z'
+    release_issue: null
     review_history:
       discarded_count: 1
       last_reviewers:
@@ -2752,6 +2721,46 @@ progress:
   snapshot_api_versions:
     qos-booking-and-assignment: 0.2.0-rc.1
     qos-booking: 0.2.0-rc.1
+  warnings:
+  - code: W003
+    message: Release r2.1 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
+- repository: QoSProfiles
+  github_url: https://github.com/camaraproject/QoSProfiles
+  release_track: independent
+  target_release_tag: r1.1
+  target_release_type: none
+  dependencies:
+    commonalities_release: r4.1
+    identity_consent_management_release: r4.1
+  apis:
+  - api_name: placeholder-entry
+    target_api_version: 0.1.0
+    target_api_status: draft
+  state: not_planned
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+    review_history: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis: []
+    m3:
+      release_tag: null
+      release_date: null
+      apis: []
+    m4:
+      release_tag: null
+      release_date: null
+      apis: []
 - repository: QualityOnDemand
   github_url: https://github.com/camaraproject/QualityOnDemand
   release_track: meta-release
