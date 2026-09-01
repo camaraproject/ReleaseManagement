@@ -110,6 +110,17 @@ Release management reviewers verify process compliance:
 
 The Release PR contains a status-specific review checklist that reflects the requirements for the repository's release type.
 
+#### Recording review findings
+
+Findings in API definitions, test definitions, or documentation that cannot be fixed on the release-review branch require a PR into `main`. File each as an issue in the API repository and add it as a sub-issue of one collecting issue per release, titled `Release rX.Y review findings`, with a body such as:
+
+> Placeholder for issues arising from the review of release rX.Y snapshot #NNN
+
+- Check for an existing collecting issue before creating one.
+- The collecting issue is meant to survive `/discard-snapshot` and re-snapshot — it is the checklist for the next snapshot of the same release, not tied to one snapshot PR.
+- API teams decide when to close it; if sub-issues remain open after publication, it can serve as the known-issues record for that release.
+- Separate from codeowners' deferred-validation-warning issues (above), which may be added to the same collecting issue.
+
 ## See Also
 
 - [Release Process Lifecycle](../release-process/lifecycle.md) — step-by-step release guide
