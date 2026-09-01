@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-09-01T08:09:24Z'
-  last_checked: '2026-09-01T08:09:24Z'
+  last_updated: '2026-09-01T08:47:46Z'
+  last_checked: '2026-09-01T08:47:46Z'
   releases_master_updated: '2026-09-01T07:59:02.836Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -8,7 +8,7 @@ metadata:
   repos_new: 0
   repos_with_plan: 62
   repos_fully_onboarded: 45
-  repos_with_release_issue: 21
+  repos_with_release_issue: 20
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -1087,17 +1087,12 @@ progress:
     - bigludo7
     - jlurien
     - maxl2287
-  state: draft_ready
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r4.1-baf86c8
+    snapshot_branch: null
     release_pr: null
-    draft_release:
-      name: r4.1
-      url: https://github.com/camaraproject/DeviceLocation/releases/tag/untagged-8c00a306890ca932a2b1
-    release_issue:
-      number: 404
-      url: https://github.com/camaraproject/DeviceLocation/issues/404
-      created_at: '2026-06-01T10:33:07Z'
+    draft_release: null
+    release_issue: null
     review_history:
       discarded_count: 3
       last_reviewers:
@@ -1124,6 +1119,11 @@ progress:
     geofencing-subscriptions: 0.6.0-rc.1
     location-retrieval: 1.0.0-rc.1
     location-verification: 3.1.0-rc.2
+  warnings:
+  - code: W003
+    message: Release r4.1 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: DeviceMediaStreamingRate
   github_url: https://github.com/camaraproject/DeviceMediaStreamingRate
   release_track: independent
