@@ -692,8 +692,8 @@ applicability:
   is_release_review_pr: true
 conditional_level:
   default: error
-description: "Release review PR may only modify CHANGELOG and README files"
-hint: "Only CHANGELOG.md (or CHANGELOG/ directory) and README.md may be modified on the release review branch. API specs and other files are immutable on the snapshot branch."  # additional guidance shown alongside the engine message
+description: "Release review PR may only modify CHANGELOG files"
+hint: "Only CHANGELOG.md (or CHANGELOG/ directory) may be modified on the release review branch. README Release Information is committed with the snapshot; README, API specs and other files are immutable on the snapshot branch."  # additional guidance shown alongside the engine message
 ```
 
 ### 7.4 Pre-Snapshot Invocation Detail

@@ -62,7 +62,7 @@ To mark a release as not planned, a codeowner sets `target_release_type: none` i
 Each release attempt uses two branches:
 
 - **Snapshot branch** (`release-snapshot/rX.Y-*`): Protected, automation-owned
-- **Release-review branch** (`release-review/rX.Y-*`): Editable via Release PR
+- **Release-review branch** (`release-review/rX.Y-*`): CHANGELOG editable via Release PR
 
 You never interact with these directly — the Release PR is your interface.
 

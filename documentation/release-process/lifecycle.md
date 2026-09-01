@@ -91,7 +91,7 @@ This phase is ongoing until you decide to release.
 - After merge: Draft release created, issue shows "DRAFT READY"
 
 **What can block you:**
-- Issue found in API specification (or anything beyond `CHANGELOG-rX.md` and `README.md`):
+- Issue found in API specification, README, or anything beyond `CHANGELOG-rX.md`:
   1. Post `/discard-snapshot <reason>` on the Release Issue
   2. Fix the issue on `main`
   3. Post `/create-snapshot` to start fresh
