@@ -1,14 +1,14 @@
 metadata:
-  last_updated: '2026-08-31T09:56:25Z'
-  last_checked: '2026-08-31T09:56:25Z'
-  releases_master_updated: '2026-08-30T08:31:56.537Z'
+  last_updated: '2026-09-01T08:09:24Z'
+  last_checked: '2026-09-01T08:09:24Z'
+  releases_master_updated: '2026-09-01T07:59:02.836Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
   repos_scanned: 62
   repos_new: 0
   repos_with_plan: 62
   repos_fully_onboarded: 45
-  repos_with_release_issue: 24
+  repos_with_release_issue: 21
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -33,7 +33,7 @@ meta_releases:
 - name: Sync26
   total_apis: 59
   m1_achieved: 8
-  m3_achieved: 27
+  m3_achieved: 30
   m4_achieved: 0
 progress:
 - repository: ApplicationEndpointDiscovery
@@ -1829,34 +1829,37 @@ progress:
     - ToshiWakayama-KDDI
     - fernandopradocabrillo
     - GillesInnov35
-  state: draft_ready
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r2.1-f1d12f3
+    snapshot_branch: null
     release_pr: null
-    draft_release:
-      name: r2.1
-      url: https://github.com/camaraproject/KnowYourCustomerAgeVerification/releases/tag/untagged-41bb3d5783d811380885
-    release_issue:
-      number: 45
-      url: https://github.com/camaraproject/KnowYourCustomerAgeVerification/issues/45
-      created_at: '2026-06-16T11:49:05Z'
+    draft_release: null
+    release_issue: null
     review_history: null
   published_context:
     latest_public_release: r1.3
-    newest_pre_release: null
+    newest_pre_release: r2.1
   cycle_releases:
     m1:
       release_tag: null
       release_date: null
       apis: []
     m3:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r2.1
+      release_date: '2026-09-01T05:15:38Z'
+      apis:
+      - api_name: kyc-age-verification
+        api_version: 0.3.0-rc.1
     m4:
       release_tag: null
       release_date: null
       apis: []
+  last_published:
+    release_tag: r2.1
+    release_date: '2026-09-01T05:15:38Z'
+    apis:
+    - api_name: kyc-age-verification
+      api_version: 0.3.0-rc.1
   snapshot_api_versions:
     kyc-age-verification: 0.3.0-rc.1
 - repository: KnowYourCustomerFill-in
@@ -1875,17 +1878,12 @@ progress:
     main_contacts:
     - ToshiWakayama-KDDI
     - GillesInnov35
-  state: draft_ready
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r2.1-9579a5e
+    snapshot_branch: null
     release_pr: null
-    draft_release:
-      name: r2.1
-      url: https://github.com/camaraproject/KnowYourCustomerFill-in/releases/tag/untagged-75115490b048e8ee201a
-    release_issue:
-      number: 54
-      url: https://github.com/camaraproject/KnowYourCustomerFill-in/issues/54
-      created_at: '2026-06-18T07:04:57Z'
+    draft_release: null
+    release_issue: null
     review_history:
       discarded_count: 1
       last_reviewers: []
@@ -1893,20 +1891,28 @@ progress:
       last_closed_at: '2026-07-31T14:21:15Z'
   published_context:
     latest_public_release: r1.3
-    newest_pre_release: null
+    newest_pre_release: r2.1
   cycle_releases:
     m1:
       release_tag: null
       release_date: null
       apis: []
     m3:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r2.1
+      release_date: '2026-09-01T05:11:26Z'
+      apis:
+      - api_name: kyc-fill-in
+        api_version: 0.5.0-rc.1
     m4:
       release_tag: null
       release_date: null
       apis: []
+  last_published:
+    release_tag: r2.1
+    release_date: '2026-09-01T05:11:26Z'
+    apis:
+    - api_name: kyc-fill-in
+      api_version: 0.5.0-rc.1
   snapshot_api_versions:
     kyc-fill-in: 0.5.0-rc.1
 - repository: KnowYourCustomerMatch
@@ -1926,17 +1932,12 @@ progress:
     - ToshiWakayama-KDDI
     - fernandopradocabrillo
     - GillesInnov35
-  state: draft_ready
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r2.1-6e7c241
+    snapshot_branch: null
     release_pr: null
-    draft_release:
-      name: r2.1
-      url: https://github.com/camaraproject/KnowYourCustomerMatch/releases/tag/untagged-66e96ad79c483a27cd9d
-    release_issue:
-      number: 79
-      url: https://github.com/camaraproject/KnowYourCustomerMatch/issues/79
-      created_at: '2026-06-16T10:53:09Z'
+    draft_release: null
+    release_issue: null
     review_history:
       discarded_count: 1
       last_reviewers: []
@@ -1944,20 +1945,28 @@ progress:
       last_closed_at: '2026-07-31T10:00:50Z'
   published_context:
     latest_public_release: r1.2
-    newest_pre_release: null
+    newest_pre_release: r2.1
   cycle_releases:
     m1:
       release_tag: null
       release_date: null
       apis: []
     m3:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r2.1
+      release_date: '2026-09-01T05:04:32Z'
+      apis:
+      - api_name: kyc-match
+        api_version: 0.5.0-rc.1
     m4:
       release_tag: null
       release_date: null
       apis: []
+  last_published:
+    release_tag: r2.1
+    release_date: '2026-09-01T05:04:32Z'
+    apis:
+    - api_name: kyc-match
+      api_version: 0.5.0-rc.1
   snapshot_api_versions:
     kyc-match: 0.5.0-rc.1
 - repository: ModelAsAService
@@ -2109,7 +2118,7 @@ progress:
       created_at: '2026-06-17T09:38:37Z'
       assignees:
       - tanjadegroot
-      review_decision: COMMENTED
+      review_decision: CHANGES_REQUESTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
@@ -3336,7 +3345,7 @@ progress:
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 4
       rm_total: 5
     draft_release: null
     release_issue:
