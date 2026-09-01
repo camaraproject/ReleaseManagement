@@ -1,7 +1,7 @@
 metadata:
-  last_updated: '2026-08-29T10:15:31Z'
-  last_checked: '2026-08-29T10:15:31Z'
-  releases_master_updated: '2026-08-28T14:34:51.497Z'
+  last_updated: '2026-08-31T09:56:25Z'
+  last_checked: '2026-08-31T09:56:25Z'
+  releases_master_updated: '2026-08-30T08:31:56.537Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
   repos_scanned: 62
@@ -33,7 +33,7 @@ meta_releases:
 - name: Sync26
   total_apis: 59
   m1_achieved: 8
-  m3_achieved: 25
+  m3_achieved: 27
   m4_achieved: 0
 progress:
 - repository: ApplicationEndpointDiscovery
@@ -2704,28 +2704,35 @@ progress:
       last_closed_at: '2026-08-12T06:17:12Z'
   published_context:
     latest_public_release: r1.2
-    newest_pre_release: null
+    newest_pre_release: r2.1
   cycle_releases:
     m1:
       release_tag: null
       release_date: null
       apis: []
     m3:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r2.1
+      release_date: '2026-08-28T16:58:33Z'
+      apis:
+      - api_name: qos-booking-and-assignment
+        api_version: 0.2.0-rc.1
+      - api_name: qos-booking
+        api_version: 0.2.0-rc.1
     m4:
       release_tag: null
       release_date: null
       apis: []
+  last_published:
+    release_tag: r2.1
+    release_date: '2026-08-28T16:58:33Z'
+    apis:
+    - api_name: qos-booking-and-assignment
+      api_version: 0.2.0-rc.1
+    - api_name: qos-booking
+      api_version: 0.2.0-rc.1
   snapshot_api_versions:
     qos-booking-and-assignment: 0.2.0-rc.1
     qos-booking: 0.2.0-rc.1
-  warnings:
-  - code: W003
-    message: Release r2.1 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: QoSProfiles
   github_url: https://github.com/camaraproject/QoSProfiles
   release_track: independent
