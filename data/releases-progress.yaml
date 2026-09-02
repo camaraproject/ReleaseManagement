@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-09-01T08:47:46Z'
-  last_checked: '2026-09-01T08:47:46Z'
+  last_updated: '2026-09-02T08:01:41Z'
+  last_checked: '2026-09-02T08:01:41Z'
   releases_master_updated: '2026-09-01T07:59:02.836Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -8,7 +8,7 @@ metadata:
   repos_new: 0
   repos_with_plan: 62
   repos_fully_onboarded: 45
-  repos_with_release_issue: 20
+  repos_with_release_issue: 19
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -835,13 +835,15 @@ progress:
       state: open
       url: https://github.com/camaraproject/DedicatedNetworks/pull/175
       created_at: '2026-08-28T09:41:21Z'
-      assignees: []
+      assignees:
+      - hdamker
+      - tanjadegroot
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 5
     draft_release: null
     release_issue:
@@ -955,10 +957,23 @@ progress:
     main_contacts:
     - maxl2287
     - sachinvodafone
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.1-71bfba2
+    release_pr:
+      number: 108
+      state: open
+      url: https://github.com/camaraproject/DeviceDataVolume/pull/108
+      created_at: '2026-09-01T08:53:26Z'
+      assignees:
+      - tanjadegroot
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 1
+      rm_total: 5
     draft_release: null
     release_issue:
       number: 80
@@ -986,6 +1001,9 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    device-data-volume-subscriptions: 0.2.0-rc.1
+    device-data-volume: 0.2.0-rc.1
 - repository: DeviceIdentifier
   github_url: https://github.com/camaraproject/DeviceIdentifier
   release_track: meta-release
@@ -1002,28 +1020,12 @@ progress:
     main_contacts:
     - eric-murray
     - Kevsy
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r3.2-5dcccd7
-    release_pr:
-      number: 206
-      state: open
-      url: https://github.com/camaraproject/DeviceIdentifier/pull/206
-      created_at: '2026-08-27T15:05:51Z'
-      assignees:
-      - hdamker
-      review_decision: COMMENTED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 5
-      rm_total: 5
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 176
-      url: https://github.com/camaraproject/DeviceIdentifier/issues/176
-      created_at: '2026-06-11T14:41:32Z'
+    release_issue: null
     review_history:
       discarded_count: 2
       last_reviewers:
@@ -1056,6 +1058,11 @@ progress:
       api_version: 0.4.0-alpha.1
   snapshot_api_versions:
     device-identifier: 0.4.0-rc.1
+  warnings:
+  - code: W003
+    message: Release r3.2 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: DeviceLocation
   github_url: https://github.com/camaraproject/DeviceLocation
   release_track: meta-release
@@ -1140,24 +1147,13 @@ progress:
     - maxl2287
     - sachinvodafone
     - maheshc01
-  state: snapshot_active
+  state: published
   artifacts:
     snapshot_branch: release-snapshot/r1.1-235132f
-    release_pr:
-      number: 35
-      state: open
-      url: https://github.com/camaraproject/DeviceMediaStreamingRate/pull/35
-      created_at: '2026-07-17T14:31:09Z'
-      assignees:
-      - Kevsy
-      review_decision: APPROVED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 5
-      rm_total: 5
-    draft_release: null
+    release_pr: null
+    draft_release:
+      name: r1.1
+      url: https://github.com/camaraproject/DeviceMediaStreamingRate/releases/tag/untagged-891ae2cac2386d0fc43e
     release_issue:
       number: 26
       url: https://github.com/camaraproject/DeviceMediaStreamingRate/issues/26
@@ -1186,6 +1182,11 @@ progress:
       apis: []
   snapshot_api_versions:
     media-streaming-rate: 0.1.0-alpha.1
+  warnings:
+  - code: W003
+    message: Release r1.1 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: DeviceReachabilityStatus
   github_url: https://github.com/camaraproject/DeviceReachabilityStatus
   release_track: meta-release
@@ -1343,13 +1344,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/DeviceSwap/pull/100
       created_at: '2026-08-04T08:42:26Z'
-      assignees: []
+      assignees:
+      - hdamker
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 0
       codeowner_total: 3
       ready_for_review: false
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 5
     draft_release: null
     release_issue:
@@ -1792,10 +1794,10 @@ progress:
       url: https://github.com/camaraproject/IoTSIMFraudPrevention/issues/57
       created_at: '2026-06-16T09:34:10Z'
     review_history:
-      discarded_count: 1
+      discarded_count: 3
       last_reviewers: []
-      last_pr_url: https://github.com/camaraproject/IoTSIMFraudPrevention/pull/58
-      last_closed_at: '2026-07-14T02:11:47Z'
+      last_pr_url: https://github.com/camaraproject/IoTSIMFraudPrevention/pull/62
+      last_closed_at: '2026-09-02T02:25:45Z'
   published_context:
     latest_public_release: r1.2
     newest_pre_release: null
@@ -2366,8 +2368,9 @@ progress:
       url: https://github.com/camaraproject/NumberRecycling/pull/114
       created_at: '2026-08-04T15:37:35Z'
       assignees:
+      - hdamker
       - tanjadegroot
-      review_decision: null
+      review_decision: COMMENTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
@@ -3167,7 +3170,8 @@ progress:
       state: open
       url: https://github.com/camaraproject/SubscriptionStatus/pull/37
       created_at: '2026-08-04T10:46:36Z'
-      assignees: []
+      assignees:
+      - eric-murray
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 0
@@ -3502,7 +3506,7 @@ progress:
       created_at: '2026-07-19T09:31:05Z'
       assignees:
       - rartych
-      review_decision: null
+      review_decision: CHANGES_REQUESTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
