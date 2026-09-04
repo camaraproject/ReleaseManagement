@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-09-03T08:10:59Z'
-  last_checked: '2026-09-03T08:10:59Z'
+  last_updated: '2026-09-04T08:06:25Z'
+  last_checked: '2026-09-04T08:06:25Z'
   releases_master_updated: '2026-09-02T07:18:47.624Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -8,7 +8,7 @@ metadata:
   repos_new: 0
   repos_with_plan: 62
   repos_fully_onboarded: 45
-  repos_with_release_issue: 19
+  repos_with_release_issue: 18
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -838,12 +838,12 @@ progress:
       assignees:
       - hdamker
       - tanjadegroot
-      review_decision: null
+      review_decision: COMMENTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 4
       rm_total: 5
     draft_release: null
     release_issue:
@@ -2370,28 +2370,12 @@ progress:
     - eric-murray
     - Masa8106
     - grgpapadopoulos
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r3.1-4d69523
-    release_pr:
-      number: 114
-      state: open
-      url: https://github.com/camaraproject/NumberRecycling/pull/114
-      created_at: '2026-08-04T15:37:35Z'
-      assignees:
-      - hdamker
-      review_decision: APPROVED
-      codeowner_approved: true
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 5
-      rm_total: 5
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 103
-      url: https://github.com/camaraproject/NumberRecycling/issues/103
-      created_at: '2026-06-17T11:25:20Z'
+    release_issue: null
     review_history:
       discarded_count: 2
       last_reviewers:
@@ -2416,6 +2400,11 @@ progress:
       apis: []
   snapshot_api_versions:
     number-recycling: 0.3.0-rc.1
+  warnings:
+  - code: W003
+    message: Release r3.1 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: NumberVerification
   github_url: https://github.com/camaraproject/NumberVerification
   release_track: meta-release
@@ -3099,13 +3088,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/SimSwap/pull/283
       created_at: '2026-09-03T06:24:24Z'
-      assignees: []
-      review_decision: null
+      assignees:
+      - hdamker
+      review_decision: COMMENTED
       codeowner_approved: false
-      codeowner_checked: 0
+      codeowner_checked: 3
       codeowner_total: 3
-      ready_for_review: false
-      rm_checked: 0
+      ready_for_review: true
+      rm_checked: 1
       rm_total: 5
     draft_release: null
     release_issue:
