@@ -171,3 +171,79 @@ properties:
           minItems: 1
           examples:
             - ["githubUser1", "githubUser2"]
+
+  seeded_from:
+    type: object
+    description: |
+      One-time seed-provenance fact for a repository split: declares that this repository's
+      pre-release version chain for one or more APIs continues from a predecessor repository,
+      rather than starting fresh. A pinned, hand-declared fact — not a live cross-repo lookup.
+      Release Automation reads only the per-API last_*_api_version fields, to seed rc/alpha
+      extension-number calculation for APIs that have no release history of their own yet in
+      this repository.
+    required:
+      - repository
+      - release_tag
+      - apis
+    properties:
+      repository:
+        type: string
+        description: Predecessor repository name this seed was taken from. Provenance only.
+        examples:
+          - "QualityOnDemand"
+
+      release_tag:
+        type: string
+        description: Predecessor repository release_tag the seed was taken from. Provenance only.
+        pattern: "^r[1-9]\\d*\\.[1-9]\\d*$"
+        examples:
+          - "r4.1"
+
+      apis:
+        type: array
+        description: Per-API seed facts, one entry per API moved from the predecessor repository.
+        minItems: 1
+        items:
+          type: object
+          required:
+            - api_name
+            - seeded_api_version
+          properties:
+            api_name:
+              type: string
+              description: API name (kebab-case), matching an entry in the top-level apis list.
+              pattern: "^[a-z][a-z0-9-]*$"
+              examples:
+                - "qos-profiles"
+
+            seeded_api_version:
+              type: string
+              description: |
+                The API's full version string at the seed tag, for documentation/audit only.
+                Not read by Release Automation's version calculation.
+              pattern: "^\\d+\\.\\d+\\.\\d+(-(alpha|rc)\\.\\d+)?$"
+              examples:
+                - "1.2.0-rc.3"
+
+            last_rc_api_version:
+              type: string
+              description: |
+                Last rc pre-release version published for this API in the predecessor
+                repository's URL-version namespace (e.g., v1rc). Release Automation folds this
+                in as one virtual entry alongside this repository's own release history when
+                calculating the next rc extension number. Omit if the API had no prior rc
+                pre-release in this namespace.
+              pattern: "^\\d+\\.\\d+\\.\\d+-rc\\.\\d+$"
+              examples:
+                - "1.2.0-rc.3"
+
+            last_alpha_api_version:
+              type: string
+              description: |
+                Last alpha pre-release version published for this API in the predecessor
+                repository's URL-version namespace, read the same way as last_rc_api_version for
+                the alpha status. Omit if the API had no prior alpha pre-release in this
+                namespace.
+              pattern: "^\\d+\\.\\d+\\.\\d+-alpha\\.\\d+$"
+              examples:
+                - "0.4.0-alpha.2"
