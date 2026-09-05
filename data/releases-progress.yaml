@@ -1,7 +1,7 @@
 metadata:
-  last_updated: '2026-09-04T08:06:25Z'
-  last_checked: '2026-09-04T08:06:25Z'
-  releases_master_updated: '2026-09-02T07:18:47.624Z'
+  last_updated: '2026-09-05T07:46:54Z'
+  last_checked: '2026-09-05T07:46:54Z'
+  releases_master_updated: '2026-09-04T07:24:52.313Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
   repos_scanned: 62
@@ -31,9 +31,9 @@ meta_releases:
   m3_achieved: 3
   m4_achieved: 3
 - name: Sync26
-  total_apis: 59
+  total_apis: 60
   m1_achieved: 8
-  m3_achieved: 34
+  m3_achieved: 35
   m4_achieved: 0
 progress:
 - repository: ApplicationEndpointDiscovery
@@ -967,12 +967,12 @@ progress:
       created_at: '2026-09-01T08:53:26Z'
       assignees:
       - tanjadegroot
-      review_decision: null
+      review_decision: COMMENTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 4
       rm_total: 5
     draft_release: null
     release_issue:
@@ -2384,27 +2384,30 @@ progress:
       last_closed_at: '2026-08-04T15:35:06Z'
   published_context:
     latest_public_release: r2.2
-    newest_pre_release: null
+    newest_pre_release: r3.1
   cycle_releases:
     m1:
       release_tag: null
       release_date: null
       apis: []
     m3:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r3.1
+      release_date: '2026-09-03T19:08:44Z'
+      apis:
+      - api_name: number-recycling
+        api_version: 0.3.0-rc.1
     m4:
       release_tag: null
       release_date: null
       apis: []
+  last_published:
+    release_tag: r3.1
+    release_date: '2026-09-03T19:08:44Z'
+    apis:
+    - api_name: number-recycling
+      api_version: 0.3.0-rc.1
   snapshot_api_versions:
     number-recycling: 0.3.0-rc.1
-  warnings:
-  - code: W003
-    message: Release r3.1 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: NumberVerification
   github_url: https://github.com/camaraproject/NumberVerification
   release_track: meta-release
@@ -2430,13 +2433,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/NumberVerification/pull/244
       created_at: '2026-08-18T10:06:58Z'
-      assignees: []
-      review_decision: null
+      assignees:
+      - hdamker
+      review_decision: CHANGES_REQUESTED
       codeowner_approved: false
       codeowner_checked: 1
       codeowner_total: 3
       ready_for_review: false
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 5
     draft_release: null
     release_issue:
@@ -2746,16 +2750,22 @@ progress:
     qos-booking: 0.2.0-rc.1
 - repository: QoSProfiles
   github_url: https://github.com/camaraproject/QoSProfiles
-  release_track: independent
+  release_track: meta-release
+  meta_release: Sync26
   target_release_tag: r1.1
   target_release_type: none
   dependencies:
-    commonalities_release: r4.1
-    identity_consent_management_release: r4.1
+    commonalities_release: r4.3
+    identity_consent_management_release: r4.2
   apis:
-  - api_name: placeholder-entry
-    target_api_version: 0.1.0
+  - api_name: qos-profiles
+    target_api_version: 1.2.0
     target_api_status: draft
+    main_contacts:
+    - hdamker
+    - eric-murray
+    - benhepworth
+    - jlurien
   state: not_planned
   artifacts:
     snapshot_branch: null
@@ -3090,12 +3100,12 @@ progress:
       created_at: '2026-09-03T06:24:24Z'
       assignees:
       - hdamker
-      review_decision: COMMENTED
+      review_decision: CHANGES_REQUESTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 2
       rm_total: 5
     draft_release: null
     release_issue:
