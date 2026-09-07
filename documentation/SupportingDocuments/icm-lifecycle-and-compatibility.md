@@ -409,6 +409,16 @@ The mechanism by which an API Provider provides multiple major ICM versions conc
 
 An API Provider cannot declare a newly deployed API version as ICM-compatible if their implementation provides only a Deprecated or Retired ICM version, even if the API version would technically work with those older ICM versions.
 
+**ICM-compatibility statements**:
+
+- template 1 to attest API version ICM-compatibility: “API provider XXX declares that the API versions it provides are ICM-compatible according to CAMARA guidelines. The provided API versions are:
+  - <copy the entry from the compatibility matrix here for each API version/ ICM version pair>”.
+
+- template 2 to attest API deployment ICM-compatibility: “API provider XXX declares that the ICM versions it deploys are ICM-compatible according to CAMARA ICM timelines. The supported ICM versions are:
+  - <copy the applicable lines from the ICM lifecycle state table (can be found in the latest ICM release notes)”.
+ 
+An audit process can compare such statements against the information provided by the CAMARA project.
+
 ### 7.2 API Consumer responsibilities
 
 Successful API deployments requires the API Consumer to implement its side of the ICM deployment info — auth flows, grant types, assertion format and lifetime, token processing — consistently with the ICM version implemented by the API Provider it interacts with. 
@@ -547,7 +557,7 @@ The following require WG agreement before this guideline is adopted. For the agr
 2. Transition to ICM 1.0.0 - covered — what constitutes the scope baseline (declaring the then-current definitions of the ICM documents as the stable starting point); when it is declared; who signs off. Pre-1.0.0 versions are handled by the previous section ([ICM 0.x handling](#11-icm-0x-handling)).
 3. Signal vs. out-of-cycle policy - covered — which ICM changes can be out-of-cycle vs. must align with Signal.
 4. **Exception grant process** - covered — **who requests**, who approves, how documented.
-5. **ICM-compatibility statement**; define templates for API version ICM-compatibility and API implementation ICM-compatibility statements; audit process.
+5. **ICM-compatibility statement** - covered — define templates for API version ICM-compatibility and API deployment ICM-compatibility statements; audit process.
 6. **Interaction with GSMA certification** — does this decomposition map onto GSMA's processes; alignment discussion required.
 7. Handling of the ICM 0.x transition - covered — state assignments for existing 0.x versions; end date for 0.x support.
 8. **Maximum number of concurrent non-Retired major ICM versions** — whether to cap this to bound API Provider operational complexity when major ICM versions arrive in quick succession (for example, in a security-driven scenario), and how Retirement acceleration would be triggered if the cap is exceeded.
