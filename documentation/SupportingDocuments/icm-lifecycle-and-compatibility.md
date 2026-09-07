@@ -502,19 +502,21 @@ The ICM-compatibility matrix is published by Release Management. It is computed,
 
 There are 2 types of exceptions granted by or driven under governance of the [Technical Steering Committee (TSC)](https://lf-camaraproject.atlassian.net/wiki/x/0RDe).
 
-**ICM-compatibility exceptions** are time-bound ICM-compatibility change authorizations. 
+1. **ICM-compatibility exceptions** are time-bound ICM-compatibility change authorizations. 
 
 They concern the **ICM version lifetime duration extension (Supported or Deprecated state)**. Such exceptions can be requested to the TSC. They SHALL be documented in TSC minutes and by Release Management using exception decision records with the following information:
 
 - **Scope**: specific (API version, ICM version) pair, or a range.
 - **Justification**: required — operational necessity, regulatory requirement, or security consideration.
 - **Time bound**: explicit expiry date or condition.
-- **Owner**: named API Sub Project or provider responsible for remediation by expiry.
+- **Owner**: named API Sub Project or API provider(s) responsible for resolving the issue by the new expiry date.
 - **Expiry**: automatic. No "ongoing exception" mechanism.
 
 These exceptions are the only mechanisms by which an (API version, ICM version) pair can be considered ICM-compatible despite violating the ICM-compatibility rules. They will appear in the ICM-compatibility matrix with an explicit annotation.
 
-**ICM lifecycle state exceptions** are ICM lifecycle state changes towards the **Revoked** state.
+NOTE: It needs to be further studied  during the CAMARA project evolution if a minimum number of Owners is required to allow for such an exception. For now, the TSC may decide on this number on a case by case basis.
+
+2. **ICM lifecycle state exceptions** are ICM lifecycle state changes towards the **Revoked** state.
 
 These exceptions can be proposed and decided by the ICM team, and endorsed by the TSC, documented in the ICM release notes in the ICM lifecycle state table, and include an exception decision record underneath the table as follows:
 
@@ -544,7 +546,7 @@ The following require WG agreement before this guideline is adopted. For the agr
 1. **Exact durations - reopened** for the Supported and Deprecated state durations ([Duration of ICM lifecycle states](#53-duration-of-icm-lifecycle-states)). This point was marked as resolved in the meeting, but is reopened per Tanja's comment on section 8.3 (https://github.com/camaraproject/ReleaseManagement/pull/545#issuecomment-5121779848): the adopted ICM deployment lifespan (24 Supported + 12 Deprecated = 36 months (instead of previous 30 months)) provides an API deployment lifespan of 2 years (not 3). This needs to be reconfirmed with operators as I believe 3 year API deployment lifespan was expected.
 2. Transition to ICM 1.0.0 - covered — what constitutes the scope baseline (declaring the then-current definitions of the ICM documents as the stable starting point); when it is declared; who signs off. Pre-1.0.0 versions are handled by the previous section ([ICM 0.x handling](#11-icm-0x-handling)).
 3. Signal vs. out-of-cycle policy - covered — which ICM changes can be out-of-cycle vs. must align with Signal.
-4. **Exception grant process** — **who requests**, who approves, how documented.
+4. **Exception grant process** - covered — **who requests**, who approves, how documented.
 5. **ICM-compatibility statement**; define templates for API version ICM-compatibility and API implementation ICM-compatibility statements; audit process.
 6. **Interaction with GSMA certification** — does this decomposition map onto GSMA's processes; alignment discussion required.
 7. Handling of the ICM 0.x transition - covered — state assignments for existing 0.x versions; end date for 0.x support.
