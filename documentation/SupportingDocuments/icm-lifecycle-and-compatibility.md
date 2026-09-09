@@ -411,13 +411,19 @@ An API Provider cannot declare a newly deployed API version as ICM-compatible if
 
 **ICM-compatibility statements**:
 
-- template 1 to attest API version ICM-compatibility: “API provider XXX declares that the API versions it provides are ICM-compatible according to CAMARA guidelines. The provided API versions are:
-  - <copy the entry from the compatibility matrix here for each API version/ ICM version pair>”.
+CAMARA does not provide the actual statements as this is up to the legal context of the API providers. However, CAMARA recommends to use the following provided information to create such ICM-compatibility statements:
 
-- template 2 to attest API deployment ICM-compatibility: “API provider XXX declares that the ICM versions it deploys are ICM-compatible according to CAMARA ICM timelines. The supported ICM versions are:
-  - <copy the applicable lines from the ICM lifecycle state table (can be found in the latest ICM release notes)”.
- 
-An audit process can compare such statements against the information provided by the CAMARA project.
+- for API version ICM-compatibility according to CAMARA guidelines:
+
+  - copy the entry from the ICM-compatibility matrix for each API version / ICM version pair offered by the API provider
+
+- for ICM version ICM-compatibility according to CAMARA ICM timelines: 
+
+  - copy the lines for the supported ICM versions from the ICM lifecycle state table (which can be found in the latest ICM release notes)
+
+An audit process can compare the information froma given statement against the information provided by the CAMARA project at any time.
+
+This information could for example be put by API providers on the GSMA map or on their own website.
 
 ### 7.2 API Consumer responsibilities
 
