@@ -1,14 +1,14 @@
 metadata:
-  last_updated: '2026-09-08T08:13:20Z'
-  last_checked: '2026-09-08T08:13:20Z'
-  releases_master_updated: '2026-09-04T07:24:52.313Z'
+  last_updated: '2026-09-10T08:16:51Z'
+  last_checked: '2026-09-10T08:16:51Z'
+  releases_master_updated: '2026-09-08T07:25:01.889Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
-  repos_scanned: 62
+  repos_scanned: 63
   repos_new: 0
-  repos_with_plan: 62
-  repos_fully_onboarded: 45
-  repos_with_release_issue: 18
+  repos_with_plan: 63
+  repos_fully_onboarded: 46
+  repos_with_release_issue: 22
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -60,27 +60,31 @@ progress:
     - maheshc01
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r2.1-1414b03
+    snapshot_branch: release-snapshot/r2.1-40d4d9e
     release_pr:
-      number: 43
+      number: 50
       state: open
-      url: https://github.com/camaraproject/ApplicationEndpointDiscovery/pull/43
-      created_at: '2026-07-21T17:22:05Z'
-      assignees:
-      - eric-murray
-      review_decision: CHANGES_REQUESTED
+      url: https://github.com/camaraproject/ApplicationEndpointDiscovery/pull/50
+      created_at: '2026-09-09T14:31:40Z'
+      assignees: []
+      review_decision: null
       codeowner_approved: false
-      codeowner_checked: 3
+      codeowner_checked: 2
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 5
-      rm_total: 5
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 39
       url: https://github.com/camaraproject/ApplicationEndpointDiscovery/issues/39
       created_at: '2026-07-06T22:11:23Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers:
+      - eric-murray
+      last_pr_url: https://github.com/camaraproject/ApplicationEndpointDiscovery/pull/43
+      last_closed_at: '2026-09-09T14:29:40Z'
   published_context:
     latest_public_release: r1.2
     newest_pre_release: null
@@ -565,10 +569,10 @@ progress:
   github_url: https://github.com/camaraproject/ConnectivityInsights
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r4.1
+  target_release_tag: r4.2
   target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r4.3
+    commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: connectivity-insights-subscriptions
@@ -585,18 +589,16 @@ progress:
     - maheshc01
     - kevsy
     - urvika-v
-  state: published
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
-    review_history:
-      discarded_count: 1
-      last_reviewers:
-      - eric-murray
-      last_pr_url: https://github.com/camaraproject/ConnectivityInsights/pull/200
-      last_closed_at: '2026-08-18T14:05:13Z'
+    release_issue:
+      number: 222
+      url: https://github.com/camaraproject/ConnectivityInsights/issues/222
+      created_at: '2026-09-10T04:44:08Z'
+    review_history: null
   published_context:
     latest_public_release: r3.2
     newest_pre_release: r4.1
@@ -625,9 +627,6 @@ progress:
       api_version: 0.7.0-rc.1
     - api_name: connectivity-insights
       api_version: 0.7.0-rc.1
-  snapshot_api_versions:
-    connectivity-insights-subscriptions: 0.7.0-rc.1
-    connectivity-insights: 0.7.0-rc.1
 - repository: ConsentInfo
   github_url: https://github.com/camaraproject/ConsentInfo
   release_track: independent
@@ -1447,10 +1446,22 @@ progress:
     - JoseMConde
     - Seralogar
     - Kevsy
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r1.2-a75200d
+    release_pr:
+      number: 84
+      state: open
+      url: https://github.com/camaraproject/EdgeApplicationManagement/pull/84
+      created_at: '2026-09-09T09:31:49Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 39
@@ -1486,6 +1497,8 @@ progress:
     apis:
     - api_name: edge-application-management
       api_version: 0.1.0-alpha.1
+  snapshot_api_versions:
+    edge-application-management: 0.1.0-rc.1
 - repository: EnergyFootprintNotification
   github_url: https://github.com/camaraproject/EnergyFootprintNotification
   release_track: meta-release
@@ -1673,10 +1686,10 @@ progress:
 - repository: IoTDeviceManagement
   github_url: https://github.com/camaraproject/IoTDeviceManagement
   release_track: independent
-  target_release_tag: r1.2
+  target_release_tag: r1.3
   target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r4.3
+    commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: esim-profile-management
@@ -1687,17 +1700,28 @@ progress:
     - chenfr2-ChinaTelecom
     - XunliYang
     - rkandoi
-  state: published
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r1.3-98d2202
+    release_pr:
+      number: 73
+      state: open
+      url: https://github.com/camaraproject/IoTDeviceManagement/pull/73
+      created_at: '2026-09-08T14:24:30Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
-    release_issue: null
-    review_history:
-      discarded_count: 2
-      last_reviewers: []
-      last_pr_url: https://github.com/camaraproject/IoTDeviceManagement/pull/60
-      last_closed_at: '2026-08-25T16:46:21Z'
+    release_issue:
+      number: 71
+      url: https://github.com/camaraproject/IoTDeviceManagement/issues/71
+      created_at: '2026-09-08T08:21:53Z'
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: r1.2
@@ -1725,7 +1749,7 @@ progress:
     - api_name: esim-profile-management
       api_version: 0.1.0-rc.1
   snapshot_api_versions:
-    esim-profile-management: 0.1.0-rc.1
+    esim-profile-management: 0.1.0-rc.2
 - repository: IoTNetworkOptimization
   github_url: https://github.com/camaraproject/IoTNetworkOptimization
   release_track: independent
@@ -2287,6 +2311,41 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+- repository: NetworkServiceAreas
+  github_url: https://github.com/camaraproject/NetworkServiceAreas
+  release_track: independent
+  target_release_tag: r1.1
+  target_release_type: none
+  dependencies:
+    commonalities_release: r4.1
+    identity_consent_management_release: r4.1
+  apis:
+  - api_name: placeholder-entry
+    target_api_version: 0.1.0
+    target_api_status: draft
+  state: not_planned
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+    review_history: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: null
+      release_date: null
+      apis: []
+    m3:
+      release_tag: null
+      release_date: null
+      apis: []
+    m4:
+      release_tag: null
+      release_date: null
+      apis: []
 - repository: NetworkSliceBooking
   github_url: https://github.com/camaraproject/NetworkSliceBooking
   release_track: meta-release
@@ -2415,7 +2474,7 @@ progress:
   target_release_tag: r4.1
   target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r4.3
+    commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: number-verification
@@ -2435,11 +2494,10 @@ progress:
       url: https://github.com/camaraproject/NumberVerification/issues/236
       created_at: '2026-06-16T14:25:50Z'
     review_history:
-      discarded_count: 2
-      last_reviewers:
-      - hdamker
-      last_pr_url: https://github.com/camaraproject/NumberVerification/pull/244
-      last_closed_at: '2026-09-08T06:47:15Z'
+      discarded_count: 3
+      last_reviewers: []
+      last_pr_url: https://github.com/camaraproject/NumberVerification/pull/251
+      last_closed_at: '2026-09-08T10:58:29Z'
   published_context:
     latest_public_release: r3.2
     newest_pre_release: null
@@ -2550,7 +2608,7 @@ progress:
       created_at: '2026-09-08T07:39:15Z'
       assignees:
       - hdamker
-      review_decision: null
+      review_decision: APPROVED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
@@ -2754,25 +2812,28 @@ progress:
   release_track: meta-release
   meta_release: Sync26
   target_release_tag: r1.1
-  target_release_type: none
+  target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r4.3
+    commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: qos-profiles
     target_api_version: 1.2.0
-    target_api_status: draft
+    target_api_status: rc
     main_contacts:
     - hdamker
     - eric-murray
     - benhepworth
     - jlurien
-  state: not_planned
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 13
+      url: https://github.com/camaraproject/QoSProfiles/issues/13
+      created_at: '2026-09-08T18:03:09Z'
     review_history: null
   published_context:
     latest_public_release: null
@@ -3017,10 +3078,10 @@ progress:
   github_url: https://github.com/camaraproject/SimpleEdgeDiscovery
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r3.1
+  target_release_tag: r3.2
   target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r4.3
+    commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: simple-edge-discovery
@@ -3030,17 +3091,28 @@ progress:
     - Kevsy
     - JoseMConde
     - maheshc01
-  state: published
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r3.2-caa7fe9
+    release_pr:
+      number: 210
+      state: open
+      url: https://github.com/camaraproject/SimpleEdgeDiscovery/pull/210
+      created_at: '2026-09-09T10:17:39Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 2
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
-    release_issue: null
-    review_history:
-      discarded_count: 3
-      last_reviewers: []
-      last_pr_url: https://github.com/camaraproject/SimpleEdgeDiscovery/pull/194
-      last_closed_at: '2026-07-31T08:51:24Z'
+    release_issue:
+      number: 208
+      url: https://github.com/camaraproject/SimpleEdgeDiscovery/issues/208
+      created_at: '2026-09-08T16:24:01Z'
+    review_history: null
   published_context:
     latest_public_release: r2.3
     newest_pre_release: r3.1
@@ -3066,7 +3138,7 @@ progress:
     - api_name: simple-edge-discovery
       api_version: 2.1.0-rc.2
   snapshot_api_versions:
-    simple-edge-discovery: 2.1.0-rc.2
+    simple-edge-discovery: 2.1.0-rc.3
 - repository: SimSwap
   github_url: https://github.com/camaraproject/SimSwap
   release_track: meta-release
@@ -3362,27 +3434,32 @@ progress:
     - GillesInnov35
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r2.2-a6ae039
+    snapshot_branch: release-snapshot/r2.2-e81b70f
     release_pr:
-      number: 131
+      number: 144
       state: open
-      url: https://github.com/camaraproject/VerifiedCaller/pull/131
-      created_at: '2026-07-23T08:18:34Z'
+      url: https://github.com/camaraproject/VerifiedCaller/pull/144
+      created_at: '2026-09-10T06:23:55Z'
       assignees:
       - tanjadegroot
-      review_decision: COMMENTED
+      review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 4
-      rm_total: 5
+      rm_checked: 1
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 128
       url: https://github.com/camaraproject/VerifiedCaller/issues/128
       created_at: '2026-06-30T11:16:11Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers:
+      - tanjadegroot
+      last_pr_url: https://github.com/camaraproject/VerifiedCaller/pull/131
+      last_closed_at: '2026-09-10T06:19:01Z'
   published_context:
     latest_public_release: r1.3
     newest_pre_release: r2.1
@@ -3522,33 +3599,21 @@ progress:
     - pradeepachar-mavenir
     - deepakjaiswal1
     - teikuran
-  state: snapshot_active
+  state: planned
   artifacts:
-    snapshot_branch: release-snapshot/r3.1-debdf4e
-    release_pr:
-      number: 206
-      state: open
-      url: https://github.com/camaraproject/WebRTC/pull/206
-      created_at: '2026-07-19T09:31:05Z'
-      assignees:
-      - rartych
-      review_decision: CHANGES_REQUESTED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 1
-      rm_total: 5
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
     release_issue:
       number: 155
       url: https://github.com/camaraproject/WebRTC/issues/155
       created_at: '2026-04-13T20:21:19Z'
     review_history:
-      discarded_count: 2
-      last_reviewers: []
-      last_pr_url: https://github.com/camaraproject/WebRTC/pull/195
-      last_closed_at: '2026-07-14T07:59:17Z'
+      discarded_count: 3
+      last_reviewers:
+      - rartych
+      last_pr_url: https://github.com/camaraproject/WebRTC/pull/206
+      last_closed_at: '2026-09-08T10:43:09Z'
   published_context:
     latest_public_release: r2.2
     newest_pre_release: null
@@ -3565,10 +3630,6 @@ progress:
       release_tag: null
       release_date: null
       apis: []
-  snapshot_api_versions:
-    webrtc-call-handling: 0.4.0-rc.1
-    webrtc-events-subscriptions: 0.3.0-rc.1
-    webrtc-registration: 0.4.0-rc.1
 - repository: ApplicationEndpointDiscovery
   github_url: https://github.com/camaraproject/ApplicationEndpointDiscovery
   release_track: meta-release
