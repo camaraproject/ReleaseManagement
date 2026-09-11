@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-09-10T08:16:51Z'
-  last_checked: '2026-09-10T08:16:51Z'
+  last_updated: '2026-09-11T08:11:25Z'
+  last_checked: '2026-09-11T08:11:25Z'
   releases_master_updated: '2026-09-08T07:25:01.889Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -8,7 +8,7 @@ metadata:
   repos_new: 0
   repos_with_plan: 63
   repos_fully_onboarded: 46
-  repos_with_release_issue: 22
+  repos_with_release_issue: 20
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -69,7 +69,7 @@ progress:
       assignees: []
       review_decision: null
       codeowner_approved: false
-      codeowner_checked: 2
+      codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
       rm_checked: 0
@@ -828,33 +828,32 @@ progress:
     - eric-murray
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r2.2-6771f7f
+    snapshot_branch: release-snapshot/r2.2-b2c4573
     release_pr:
-      number: 175
+      number: 181
       state: open
-      url: https://github.com/camaraproject/DedicatedNetworks/pull/175
-      created_at: '2026-08-28T09:41:21Z'
-      assignees:
-      - hdamker
-      - tanjadegroot
-      review_decision: COMMENTED
+      url: https://github.com/camaraproject/DedicatedNetworks/pull/181
+      created_at: '2026-09-10T09:00:53Z'
+      assignees: []
+      review_decision: null
       codeowner_approved: false
-      codeowner_checked: 3
+      codeowner_checked: 2
       codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 4
-      rm_total: 5
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 116
       url: https://github.com/camaraproject/DedicatedNetworks/issues/116
       created_at: '2026-06-01T08:20:01Z'
     review_history:
-      discarded_count: 4
+      discarded_count: 5
       last_reviewers:
       - hdamker
-      last_pr_url: https://github.com/camaraproject/DedicatedNetworks/pull/150
-      last_closed_at: '2026-08-28T09:35:01Z'
+      - tanjadegroot
+      last_pr_url: https://github.com/camaraproject/DedicatedNetworks/pull/175
+      last_closed_at: '2026-09-10T08:57:50Z'
   published_context:
     latest_public_release: r1.2
     newest_pre_release: r2.1
@@ -1555,7 +1554,7 @@ progress:
   target_release_tag: r1.1
   target_release_type: pre-release-alpha
   dependencies:
-    commonalities_release: r4.3
+    commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: esim-remote-management
@@ -1566,31 +1565,31 @@ progress:
     - ChinaUnicomXiaoDongrui
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r1.1-a9cbb8a
+    snapshot_branch: release-snapshot/r1.1-66a6842
     release_pr:
-      number: 28
+      number: 36
       state: open
-      url: https://github.com/camaraproject/eSimRemoteManagement/pull/28
-      created_at: '2026-08-03T07:48:58Z'
-      assignees:
-      - eric-murray
-      review_decision: CHANGES_REQUESTED
+      url: https://github.com/camaraproject/eSimRemoteManagement/pull/36
+      created_at: '2026-09-10T09:21:50Z'
+      assignees: []
+      review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 3
-      rm_total: 5
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 20
       url: https://github.com/camaraproject/eSimRemoteManagement/issues/20
       created_at: '2026-07-29T01:08:25Z'
     review_history:
-      discarded_count: 3
-      last_reviewers: []
-      last_pr_url: https://github.com/camaraproject/eSimRemoteManagement/pull/26
-      last_closed_at: '2026-08-03T07:44:27Z'
+      discarded_count: 4
+      last_reviewers:
+      - eric-murray
+      last_pr_url: https://github.com/camaraproject/eSimRemoteManagement/pull/28
+      last_closed_at: '2026-09-10T08:51:57Z'
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -2536,28 +2535,12 @@ progress:
     - gainsley
     - JoseMConde
     - maheshc01
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r2.1-df47291
-    release_pr:
-      number: 55
-      state: open
-      url: https://github.com/camaraproject/OptimalEdgeDiscovery/pull/55
-      created_at: '2026-08-20T13:25:20Z'
-      assignees:
-      - eric-murray
-      review_decision: APPROVED
-      codeowner_approved: true
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 5
-      rm_total: 5
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 44
-      url: https://github.com/camaraproject/OptimalEdgeDiscovery/issues/44
-      created_at: '2026-07-06T22:14:20Z'
+    release_issue: null
     review_history:
       discarded_count: 1
       last_reviewers:
@@ -2582,6 +2565,11 @@ progress:
       apis: []
   snapshot_api_versions:
     optimal-edge-discovery: 0.2.0-rc.1
+  warnings:
+  - code: W003
+    message: Release r2.1 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: OTPValidation
   github_url: https://github.com/camaraproject/OTPValidation
   release_track: meta-release
@@ -3432,28 +3420,12 @@ progress:
     - olsi-korkuti
     - stroncoso-quobis
     - GillesInnov35
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r2.2-e81b70f
-    release_pr:
-      number: 144
-      state: open
-      url: https://github.com/camaraproject/VerifiedCaller/pull/144
-      created_at: '2026-09-10T06:23:55Z'
-      assignees:
-      - tanjadegroot
-      review_decision: null
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 1
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 128
-      url: https://github.com/camaraproject/VerifiedCaller/issues/128
-      created_at: '2026-06-30T11:16:11Z'
+    release_issue: null
     review_history:
       discarded_count: 1
       last_reviewers:
@@ -3491,6 +3463,11 @@ progress:
   snapshot_api_versions:
     brand-registration: 0.2.0-rc.1
     verified-caller: 0.2.0-rc.1
+  warnings:
+  - code: W003
+    message: Release r2.2 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: VoiceNotification
   github_url: https://github.com/camaraproject/VoiceNotification
   release_track: independent
