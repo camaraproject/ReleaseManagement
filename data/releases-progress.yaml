@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-09-15T08:49:47Z'
-  last_checked: '2026-09-15T08:49:47Z'
+  last_updated: '2026-09-15T15:40:14Z'
+  last_checked: '2026-09-15T15:40:14Z'
   releases_master_updated: '2026-09-15T08:00:46.694Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -8,7 +8,7 @@ metadata:
   repos_new: 0
   repos_with_plan: 63
   repos_fully_onboarded: 46
-  repos_with_release_issue: 25
+  repos_with_release_issue: 24
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -721,10 +721,10 @@ progress:
   github_url: https://github.com/camaraproject/CustomerInsights
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r3.1
+  target_release_tag: r3.2
   target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r4.3
+    commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: customer-insights
@@ -734,12 +734,15 @@ progress:
     - PedroDiez
     - KevScarr
     - rartych
-  state: published
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 94
+      url: https://github.com/camaraproject/CustomerInsights/issues/94
+      created_at: '2026-09-15T11:07:15Z'
     review_history: null
   published_context:
     latest_public_release: r2.2
@@ -765,8 +768,6 @@ progress:
     apis:
     - api_name: customer-insights
       api_version: 0.3.0-rc.1
-  snapshot_api_versions:
-    customer-insights: 0.3.0-rc.1
 - repository: DedicatedNetworks
   github_url: https://github.com/camaraproject/DedicatedNetworks
   release_track: meta-release
@@ -811,12 +812,12 @@ progress:
     - eric-murray
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r2.2-b2c4573
+    snapshot_branch: release-snapshot/r2.2-28c4b3f
     release_pr:
-      number: 181
+      number: 184
       state: open
-      url: https://github.com/camaraproject/DedicatedNetworks/pull/181
-      created_at: '2026-09-10T09:00:53Z'
+      url: https://github.com/camaraproject/DedicatedNetworks/pull/184
+      created_at: '2026-09-15T09:39:10Z'
       assignees: []
       review_decision: null
       codeowner_approved: false
@@ -831,12 +832,10 @@ progress:
       url: https://github.com/camaraproject/DedicatedNetworks/issues/116
       created_at: '2026-06-01T08:20:01Z'
     review_history:
-      discarded_count: 5
-      last_reviewers:
-      - hdamker
-      - tanjadegroot
-      last_pr_url: https://github.com/camaraproject/DedicatedNetworks/pull/175
-      last_closed_at: '2026-09-10T08:57:50Z'
+      discarded_count: 6
+      last_reviewers: []
+      last_pr_url: https://github.com/camaraproject/DedicatedNetworks/pull/181
+      last_closed_at: '2026-09-15T09:34:52Z'
   published_context:
     latest_public_release: r1.2
     newest_pre_release: r2.1
@@ -938,10 +937,23 @@ progress:
     main_contacts:
     - maxl2287
     - sachinvodafone
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.1-83f20e0
+    release_pr:
+      number: 117
+      state: open
+      url: https://github.com/camaraproject/DeviceDataVolume/pull/117
+      created_at: '2026-09-15T13:10:23Z'
+      assignees:
+      - hdamker
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 80
@@ -969,6 +981,9 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    device-data-volume-subscriptions: 0.2.0-rc.1
+    device-data-volume: 0.2.0-rc.1
 - repository: DeviceIdentifier
   github_url: https://github.com/camaraproject/DeviceIdentifier
   release_track: meta-release
@@ -1659,28 +1674,12 @@ progress:
     - chenfr2-ChinaTelecom
     - XunliYang
     - rkandoi
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r1.3-98d2202
-    release_pr:
-      number: 73
-      state: open
-      url: https://github.com/camaraproject/IoTDeviceManagement/pull/73
-      created_at: '2026-09-08T14:24:30Z'
-      assignees:
-      - eric-murray
-      review_decision: null
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 1
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 71
-      url: https://github.com/camaraproject/IoTDeviceManagement/issues/71
-      created_at: '2026-09-08T08:21:53Z'
+    release_issue: null
     review_history: null
   published_context:
     latest_public_release: null
@@ -1710,6 +1709,11 @@ progress:
       api_version: 0.1.0-rc.1
   snapshot_api_versions:
     esim-profile-management: 0.1.0-rc.2
+  warnings:
+  - code: W003
+    message: Release r1.3 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: IoTNetworkOptimization
   github_url: https://github.com/camaraproject/IoTNetworkOptimization
   release_track: independent
@@ -1787,7 +1791,8 @@ progress:
       state: open
       url: https://github.com/camaraproject/IoTSIMFraudPrevention/pull/69
       created_at: '2026-09-15T06:29:30Z'
-      assignees: []
+      assignees:
+      - eric-murray
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
@@ -2561,17 +2566,12 @@ progress:
     main_contacts:
     - bigludo7
     - fernandopradocabrillo
-  state: draft_ready
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r4.1-e9b6729
+    snapshot_branch: null
     release_pr: null
-    draft_release:
-      name: r4.1
-      url: https://github.com/camaraproject/OTPValidation/releases/tag/untagged-6df213a2f4f23c882a56
-    release_issue:
-      number: 138
-      url: https://github.com/camaraproject/OTPValidation/issues/138
-      created_at: '2026-06-03T07:09:31Z'
+    draft_release: null
+    release_issue: null
     review_history:
       discarded_count: 1
       last_reviewers: []
@@ -2595,6 +2595,11 @@ progress:
       apis: []
   snapshot_api_versions:
     one-time-password-sms: 2.0.0-rc.1
+  warnings:
+  - code: W003
+    message: Release r4.1 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: PopulationDensityData
   github_url: https://github.com/camaraproject/PopulationDensityData
   release_track: meta-release
