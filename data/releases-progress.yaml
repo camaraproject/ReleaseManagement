@@ -1,14 +1,14 @@
 metadata:
-  last_updated: '2026-09-16T08:43:31Z'
-  last_checked: '2026-09-16T08:43:31Z'
-  releases_master_updated: '2026-09-15T08:00:46.694Z'
+  last_updated: '2026-09-16T13:29:42Z'
+  last_checked: '2026-09-16T13:29:42Z'
+  releases_master_updated: '2026-09-16T07:53:32.480Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
   repos_scanned: 63
   repos_new: 0
   repos_with_plan: 63
   repos_fully_onboarded: 46
-  repos_with_release_issue: 24
+  repos_with_release_issue: 22
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -33,7 +33,7 @@ meta_releases:
 - name: Sync26
   total_apis: 59
   m1_achieved: 8
-  m3_achieved: 37
+  m3_achieved: 38
   m4_achieved: 0
 progress:
 - repository: ApplicationEndpointDiscovery
@@ -58,28 +58,12 @@ progress:
     - gainsley
     - JoseMConde
     - maheshc01
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r2.1-23a7d7f
-    release_pr:
-      number: 56
-      state: open
-      url: https://github.com/camaraproject/ApplicationEndpointDiscovery/pull/56
-      created_at: '2026-09-14T16:51:25Z'
-      assignees:
-      - tanjadegroot
-      review_decision: null
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 1
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 39
-      url: https://github.com/camaraproject/ApplicationEndpointDiscovery/issues/39
-      created_at: '2026-07-06T22:11:23Z'
+    release_issue: null
     review_history:
       discarded_count: 2
       last_reviewers:
@@ -104,6 +88,11 @@ progress:
       apis: []
   snapshot_api_versions:
     application-endpoint-discovery: 0.2.0-rc.1
+  warnings:
+  - code: W003
+    message: Release r2.1 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: ApplicationEndpointRegistration
   github_url: https://github.com/camaraproject/ApplicationEndpointRegistration
   release_track: meta-release
@@ -295,27 +284,31 @@ progress:
     - chinaunicomyangfan
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r4.1-a0dd21d
+    snapshot_branch: release-snapshot/r4.1-418bb79
     release_pr:
-      number: 231
+      number: 237
       state: open
-      url: https://github.com/camaraproject/CallForwardingSignal/pull/231
-      created_at: '2026-07-30T11:26:13Z'
-      assignees:
-      - eric-murray
-      review_decision: CHANGES_REQUESTED
+      url: https://github.com/camaraproject/CallForwardingSignal/pull/237
+      created_at: '2026-09-16T10:57:39Z'
+      assignees: []
+      review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 5
-      rm_total: 5
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 227
       url: https://github.com/camaraproject/CallForwardingSignal/issues/227
       created_at: '2026-06-29T07:12:44Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers:
+      - eric-murray
+      last_pr_url: https://github.com/camaraproject/CallForwardingSignal/pull/231
+      last_closed_at: '2026-09-16T10:54:48Z'
   published_context:
     latest_public_release: r3.3
     newest_pre_release: null
@@ -811,24 +804,13 @@ progress:
     - PeterKovacs2
     - carlosromerog
     - eric-murray
-  state: snapshot_active
+  state: draft_ready
   artifacts:
     snapshot_branch: release-snapshot/r2.2-28c4b3f
-    release_pr:
-      number: 184
-      state: open
-      url: https://github.com/camaraproject/DedicatedNetworks/pull/184
-      created_at: '2026-09-15T09:39:10Z'
-      assignees:
-      - tanjadegroot
-      review_decision: null
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 1
-      rm_total: 6
-    draft_release: null
+    release_pr: null
+    draft_release:
+      name: r2.2
+      url: https://github.com/camaraproject/DedicatedNetworks/releases/tag/untagged-0630e5f6183351284b7a
     release_issue:
       number: 116
       url: https://github.com/camaraproject/DedicatedNetworks/issues/116
@@ -939,28 +921,12 @@ progress:
     main_contacts:
     - maxl2287
     - sachinvodafone
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r2.1-83f20e0
-    release_pr:
-      number: 117
-      state: open
-      url: https://github.com/camaraproject/DeviceDataVolume/pull/117
-      created_at: '2026-09-15T13:10:23Z'
-      assignees:
-      - hdamker
-      review_decision: APPROVED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 6
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 80
-      url: https://github.com/camaraproject/DeviceDataVolume/issues/80
-      created_at: '2026-06-08T08:54:04Z'
+    release_issue: null
     review_history:
       discarded_count: 2
       last_reviewers:
@@ -986,6 +952,11 @@ progress:
   snapshot_api_versions:
     device-data-volume-subscriptions: 0.2.0-rc.1
     device-data-volume: 0.2.0-rc.1
+  warnings:
+  - code: W003
+    message: Release r2.1 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: DeviceIdentifier
   github_url: https://github.com/camaraproject/DeviceIdentifier
   release_track: meta-release
@@ -1322,31 +1293,32 @@ progress:
     - jgarciahospital
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r4.1-2e87bc0
+    snapshot_branch: release-snapshot/r4.1-579cee1
     release_pr:
-      number: 100
+      number: 113
       state: open
-      url: https://github.com/camaraproject/DeviceSwap/pull/100
-      created_at: '2026-08-04T08:42:26Z'
+      url: https://github.com/camaraproject/DeviceSwap/pull/113
+      created_at: '2026-09-16T12:36:02Z'
       assignees:
       - hdamker
-      review_decision: CHANGES_REQUESTED
+      review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 5
-      rm_total: 5
+      rm_checked: 1
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 94
       url: https://github.com/camaraproject/DeviceSwap/issues/94
       created_at: '2026-07-08T08:57:56Z'
     review_history:
-      discarded_count: 1
-      last_reviewers: []
-      last_pr_url: https://github.com/camaraproject/DeviceSwap/pull/97
-      last_closed_at: '2026-08-03T14:07:37Z'
+      discarded_count: 2
+      last_reviewers:
+      - hdamker
+      last_pr_url: https://github.com/camaraproject/DeviceSwap/pull/100
+      last_closed_at: '2026-09-16T12:32:18Z'
   published_context:
     latest_public_release: r3.2
     newest_pre_release: null
@@ -1685,7 +1657,7 @@ progress:
     review_history: null
   published_context:
     latest_public_release: null
-    newest_pre_release: r1.2
+    newest_pre_release: r1.3
   cycle_releases:
     m1:
       release_tag: r1.1
@@ -1704,18 +1676,13 @@ progress:
       release_date: null
       apis: []
   last_published:
-    release_tag: r1.2
-    release_date: '2026-08-28T05:15:54Z'
+    release_tag: r1.3
+    release_date: '2026-09-15T11:13:37Z'
     apis:
     - api_name: esim-profile-management
-      api_version: 0.1.0-rc.1
+      api_version: 0.1.0-rc.2
   snapshot_api_versions:
     esim-profile-management: 0.1.0-rc.2
-  warnings:
-  - code: W003
-    message: Release r1.3 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: IoTNetworkOptimization
   github_url: https://github.com/camaraproject/IoTNetworkOptimization
   release_track: independent
@@ -2581,27 +2548,30 @@ progress:
       last_closed_at: '2026-08-26T06:47:36Z'
   published_context:
     latest_public_release: r3.2
-    newest_pre_release: null
+    newest_pre_release: r4.1
   cycle_releases:
     m1:
       release_tag: null
       release_date: null
       apis: []
     m3:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r4.1
+      release_date: '2026-09-15T13:33:35Z'
+      apis:
+      - api_name: one-time-password-sms
+        api_version: 2.0.0-rc.1
     m4:
       release_tag: null
       release_date: null
       apis: []
+  last_published:
+    release_tag: r4.1
+    release_date: '2026-09-15T13:33:35Z'
+    apis:
+    - api_name: one-time-password-sms
+      api_version: 2.0.0-rc.1
   snapshot_api_versions:
     one-time-password-sms: 2.0.0-rc.1
-  warnings:
-  - code: W003
-    message: Release r4.1 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: PopulationDensityData
   github_url: https://github.com/camaraproject/PopulationDensityData
   release_track: meta-release
