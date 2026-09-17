@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-09-16T13:29:42Z'
-  last_checked: '2026-09-16T13:29:42Z'
+  last_updated: '2026-09-17T08:46:58Z'
+  last_checked: '2026-09-17T08:46:58Z'
   releases_master_updated: '2026-09-16T07:53:32.480Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -8,7 +8,7 @@ metadata:
   repos_new: 0
   repos_with_plan: 63
   repos_fully_onboarded: 46
-  repos_with_release_issue: 22
+  repos_with_release_issue: 21
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -290,13 +290,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/CallForwardingSignal/pull/237
       created_at: '2026-09-16T10:57:39Z'
-      assignees: []
+      assignees:
+      - eric-murray
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 5
       rm_total: 6
     draft_release: null
     release_issue:
@@ -804,17 +805,12 @@ progress:
     - PeterKovacs2
     - carlosromerog
     - eric-murray
-  state: draft_ready
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r2.2-28c4b3f
+    snapshot_branch: null
     release_pr: null
-    draft_release:
-      name: r2.2
-      url: https://github.com/camaraproject/DedicatedNetworks/releases/tag/untagged-0630e5f6183351284b7a
-    release_issue:
-      number: 116
-      url: https://github.com/camaraproject/DedicatedNetworks/issues/116
-      created_at: '2026-06-01T08:20:01Z'
+    draft_release: null
+    release_issue: null
     review_history:
       discarded_count: 6
       last_reviewers: []
@@ -861,6 +857,11 @@ progress:
     dedicated-network-profiles: 0.2.0-rc.1
     dedicated-network: 0.2.0-rc.1
     dedicated-network-areas: 0.1.0-rc.1
+  warnings:
+  - code: W003
+    message: Release r2.2 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: DeviceAuthenticity
   github_url: https://github.com/camaraproject/DeviceAuthenticity
   release_track: independent
@@ -1291,28 +1292,12 @@ progress:
     - bigludo7
     - krishvenkatachalam
     - jgarciahospital
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r4.1-579cee1
-    release_pr:
-      number: 113
-      state: open
-      url: https://github.com/camaraproject/DeviceSwap/pull/113
-      created_at: '2026-09-16T12:36:02Z'
-      assignees:
-      - hdamker
-      review_decision: null
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 1
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 94
-      url: https://github.com/camaraproject/DeviceSwap/issues/94
-      created_at: '2026-07-08T08:57:56Z'
+    release_issue: null
     review_history:
       discarded_count: 2
       last_reviewers:
@@ -1337,6 +1322,11 @@ progress:
       apis: []
   snapshot_api_versions:
     device-swap: 1.1.0-rc.2
+  warnings:
+  - code: W003
+    message: Release r4.1 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: DeviceVisitLocation
   github_url: https://github.com/camaraproject/DeviceVisitLocation
   release_track: independent
@@ -2433,10 +2423,22 @@ progress:
     - bigludo7
     - fernandopradocabrillo
     - AxelNennker
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r4.1-8932872
+    release_pr:
+      number: 258
+      state: open
+      url: https://github.com/camaraproject/NumberVerification/pull/258
+      created_at: '2026-09-16T13:44:59Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 236
@@ -2463,6 +2465,8 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    number-verification: 2.1.1-rc.2
 - repository: OptimalEdgeDiscovery
   github_url: https://github.com/camaraproject/OptimalEdgeDiscovery
   release_track: meta-release
@@ -3206,10 +3210,10 @@ progress:
   github_url: https://github.com/camaraproject/Tenure
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r3.2
+  target_release_tag: r3.3
   target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r4.3
+    commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: kyc-tenure
@@ -3220,12 +3224,15 @@ progress:
     - GillesInnov35
     - grgpapadopoulos
     - fernandopradocabrillo
-  state: published
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 102
+      url: https://github.com/camaraproject/Tenure/issues/102
+      created_at: '2026-09-17T08:04:53Z'
     review_history: null
   published_context:
     latest_public_release: r2.2
@@ -3253,8 +3260,6 @@ progress:
     apis:
     - api_name: kyc-tenure
       api_version: 0.3.0-rc.1
-  snapshot_api_versions:
-    kyc-tenure: 0.3.0-rc.1
 - repository: TrafficInfluence
   github_url: https://github.com/camaraproject/TrafficInfluence
   release_track: meta-release
