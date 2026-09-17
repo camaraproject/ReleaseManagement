@@ -467,17 +467,16 @@ This section illustrates a typical scenario starting from Signal27, based on the
 
 - [**ICM Release**] Q2 2027: Signal27 released -> Q4 2027: Sync27 APIs released.
 - [**API Deployment**] Q2 2028: An operator launches Sync27 APIs in production (utilizing their 2028 budget).
-- [**ICM Deprecation**] Q2 2029: Signal27 becomes Deprecated (24 months after Signal27 was released in Q2 2027).
-- [**ICM Retirement**] Q2 2030: Signal27 becomes Retired (36 months after Signal27 was released in Q2 2027).
-- [**API Replacement**] Q2 2030: Sync27 APIs lose ICM-compatibility and MUST be Retired or replaced with Sync29 (preferred) or Sync28 APIs.
+- [**ICM Release**] Q2 2028: Signal28 releases a new major ICM version -> start of Signal27 ICM 24 months period.
+- [**ICM Deprecation**] Q2 2030: Signal27 ICM becomes Deprecated (24 months after Signal28 new major ICM version release in Q2 2028).
+- [**ICM Retirement**] Q2 2031: Signal27 becomes Retired (36 months after Signal27 was started 24 months period in Q2 2028).
+- [**API Replacement**] Q2 2031: Sync27 APIs lose ICM-compatibility and MUST be Retired or replaced with Sync30 (preferred) or Sync29 APIs.
 
-In this scenario, the Sync27 APIs launched in Q2 2028 are no longer ICM-compatible starting Q2 2030. This means the APIs' actual deployment lifespan is 2 years (with ICM version Supported (1 year) + Deprecated (1 year)).
+In this scenario, the Sync27 APIs launched in Q2 2028 are no longer ICM-compatible starting Q2 2031. This means the APIs' actual deployment lifespan is 3 years (with Signal27 ICM version Supported (2 years) + Deprecated (1 year)).
 
-At the ICM Sync27 retirement date (Q2 2030), the operator MUST have replaced Sync27 APIs. By Q2 2030, Sync29 APIs will have been out for about 6-8 months, meaning the risk of early patch releases is significantly reduced. They become viable candidates for the migration (utilizing the 2030 budget).
+At the ICM Sync27 retirement date (Q2 2031), the operator MUST have replaced Sync27 APIs. By Q2 2031, Sync30 APIs will have been out for about 6-8 months, meaning the risk of early patch releases is significantly reduced. They become viable candidates for the migration (utilizing the 2031 budget).
 
-Note: The previous alternative with an ICM Supported duration of 18 months was rejected as too short, as, in that case ICM Sync27 retirement would be in Q4 2029, and Sync29 APIs cannot realistically be the candidate for Sync27 API replacement because they have just been released, and operators typically want to avoid the potential risks of initial patch releases. They would be forced to migrate to older Sync28 APIs instead and APIs would be actually deployed for only 18 months (1.5 years).
-
-With the latest scenario above, the mandatory replacement of Sync27 APIs would happen in Q2 2030 with Sync29 APIs based on ICM Signal29. This ensures the Sync27 APIs (Q4 2027) can be live in production from Q2 2028 up to Q2 2030 for a full 2 years.
+Note: The previous alternative with an ICM Supported duration of 18 months was rejected as too short, as, in that case ICM Sync27 retirement would be in Q4 2029, and Sync29 APIs cannot realistically be the candidate for Sync27 API replacement because they have just been released, and operators typically want to avoid the potential risks of initial patch releases. They would be forced to migrate to older Sync28 APIs instead and APIs would be actually deployed for only 30 months (2.5 years).
 
 ## 9. ICM-compatibility matrix
 
