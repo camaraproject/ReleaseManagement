@@ -1,14 +1,14 @@
 metadata:
-  last_updated: '2026-09-17T08:46:58Z'
-  last_checked: '2026-09-17T08:46:58Z'
-  releases_master_updated: '2026-09-16T07:53:32.480Z'
+  last_updated: '2026-09-18T08:22:49Z'
+  last_checked: '2026-09-18T08:22:49Z'
+  releases_master_updated: '2026-09-17T07:58:18.749Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
   repos_scanned: 63
   repos_new: 0
   repos_with_plan: 63
   repos_fully_onboarded: 46
-  repos_with_release_issue: 21
+  repos_with_release_issue: 23
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -33,7 +33,7 @@ meta_releases:
 - name: Sync26
   total_apis: 59
   m1_achieved: 8
-  m3_achieved: 38
+  m3_achieved: 45
   m4_achieved: 0
 progress:
 - repository: ApplicationEndpointDiscovery
@@ -72,27 +72,30 @@ progress:
       last_closed_at: '2026-09-11T17:48:37Z'
   published_context:
     latest_public_release: r1.2
-    newest_pre_release: null
+    newest_pre_release: r2.1
   cycle_releases:
     m1:
       release_tag: null
       release_date: null
       apis: []
     m3:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r2.1
+      release_date: '2026-09-16T13:16:44Z'
+      apis:
+      - api_name: application-endpoint-discovery
+        api_version: 0.2.0-rc.1
     m4:
       release_tag: null
       release_date: null
       apis: []
+  last_published:
+    release_tag: r2.1
+    release_date: '2026-09-16T13:16:44Z'
+    apis:
+    - api_name: application-endpoint-discovery
+      api_version: 0.2.0-rc.1
   snapshot_api_versions:
     application-endpoint-discovery: 0.2.0-rc.1
-  warnings:
-  - code: W003
-    message: Release r2.1 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: ApplicationEndpointRegistration
   github_url: https://github.com/camaraproject/ApplicationEndpointRegistration
   release_track: meta-release
@@ -282,28 +285,12 @@ progress:
     - FabrizioMoggio
     - bigludo7
     - chinaunicomyangfan
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r4.1-418bb79
-    release_pr:
-      number: 237
-      state: open
-      url: https://github.com/camaraproject/CallForwardingSignal/pull/237
-      created_at: '2026-09-16T10:57:39Z'
-      assignees:
-      - eric-murray
-      review_decision: null
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 5
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 227
-      url: https://github.com/camaraproject/CallForwardingSignal/issues/227
-      created_at: '2026-06-29T07:12:44Z'
+    release_issue: null
     review_history:
       discarded_count: 1
       last_reviewers:
@@ -328,6 +315,11 @@ progress:
       apis: []
   snapshot_api_versions:
     call-forwarding-signal: 0.5.0-rc.1
+  warnings:
+  - code: W003
+    message: Release r4.1 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: CapabilitiesAndRuntimeRestrictions
   github_url: https://github.com/camaraproject/CapabilitiesAndRuntimeRestrictions
   release_track: independent
@@ -818,7 +810,7 @@ progress:
       last_closed_at: '2026-09-15T09:34:52Z'
   published_context:
     latest_public_release: r1.2
-    newest_pre_release: r2.1
+    newest_pre_release: r2.2
   cycle_releases:
     m1:
       release_tag: r2.1
@@ -833,35 +825,38 @@ progress:
       - api_name: dedicated-network-areas
         api_version: 0.1.0-alpha.1
     m3:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r2.2
+      release_date: '2026-09-16T19:09:08Z'
+      apis:
+      - api_name: dedicated-network-accesses
+        api_version: 0.2.0-rc.1
+      - api_name: dedicated-network-profiles
+        api_version: 0.2.0-rc.1
+      - api_name: dedicated-network
+        api_version: 0.2.0-rc.1
+      - api_name: dedicated-network-areas
+        api_version: 0.1.0-rc.1
     m4:
       release_tag: null
       release_date: null
       apis: []
   last_published:
-    release_tag: r2.1
-    release_date: '2026-05-26T09:40:59Z'
+    release_tag: r2.2
+    release_date: '2026-09-16T19:09:08Z'
     apis:
     - api_name: dedicated-network-accesses
-      api_version: 0.2.0-alpha.1
+      api_version: 0.2.0-rc.1
     - api_name: dedicated-network-profiles
-      api_version: 0.2.0-alpha.1
+      api_version: 0.2.0-rc.1
     - api_name: dedicated-network
-      api_version: 0.2.0-alpha.1
+      api_version: 0.2.0-rc.1
     - api_name: dedicated-network-areas
-      api_version: 0.1.0-alpha.1
+      api_version: 0.1.0-rc.1
   snapshot_api_versions:
     dedicated-network-accesses: 0.2.0-rc.1
     dedicated-network-profiles: 0.2.0-rc.1
     dedicated-network: 0.2.0-rc.1
     dedicated-network-areas: 0.1.0-rc.1
-  warnings:
-  - code: W003
-    message: Release r2.2 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: DeviceAuthenticity
   github_url: https://github.com/camaraproject/DeviceAuthenticity
   release_track: independent
@@ -936,28 +931,35 @@ progress:
       last_closed_at: '2026-09-14T12:09:53Z'
   published_context:
     latest_public_release: r1.3
-    newest_pre_release: null
+    newest_pre_release: r2.1
   cycle_releases:
     m1:
       release_tag: null
       release_date: null
       apis: []
     m3:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r2.1
+      release_date: '2026-09-16T12:46:52Z'
+      apis:
+      - api_name: device-data-volume-subscriptions
+        api_version: 0.2.0-rc.1
+      - api_name: device-data-volume
+        api_version: 0.2.0-rc.1
     m4:
       release_tag: null
       release_date: null
       apis: []
+  last_published:
+    release_tag: r2.1
+    release_date: '2026-09-16T12:46:52Z'
+    apis:
+    - api_name: device-data-volume-subscriptions
+      api_version: 0.2.0-rc.1
+    - api_name: device-data-volume
+      api_version: 0.2.0-rc.1
   snapshot_api_versions:
     device-data-volume-subscriptions: 0.2.0-rc.1
     device-data-volume: 0.2.0-rc.1
-  warnings:
-  - code: W003
-    message: Release r2.1 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: DeviceIdentifier
   github_url: https://github.com/camaraproject/DeviceIdentifier
   release_track: meta-release
@@ -1279,10 +1281,10 @@ progress:
   github_url: https://github.com/camaraproject/DeviceSwap
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r4.1
+  target_release_tag: r4.2
   target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r4.3
+    commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: device-swap
@@ -1292,18 +1294,16 @@ progress:
     - bigludo7
     - krishvenkatachalam
     - jgarciahospital
-  state: published
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
-    review_history:
-      discarded_count: 2
-      last_reviewers:
-      - hdamker
-      last_pr_url: https://github.com/camaraproject/DeviceSwap/pull/100
-      last_closed_at: '2026-09-16T12:32:18Z'
+    release_issue:
+      number: 118
+      url: https://github.com/camaraproject/DeviceSwap/issues/118
+      created_at: '2026-09-17T08:51:41Z'
+    review_history: null
   published_context:
     latest_public_release: r3.2
     newest_pre_release: null
@@ -1320,13 +1320,6 @@ progress:
       release_tag: null
       release_date: null
       apis: []
-  snapshot_api_versions:
-    device-swap: 1.1.0-rc.2
-  warnings:
-  - code: W003
-    message: Release r4.1 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: DeviceVisitLocation
   github_url: https://github.com/camaraproject/DeviceVisitLocation
   release_track: independent
@@ -1752,12 +1745,12 @@ progress:
       created_at: '2026-09-15T06:29:30Z'
       assignees:
       - eric-murray
-      review_decision: null
+      review_decision: CHANGES_REQUESTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 4
       rm_total: 6
     draft_release: null
     release_issue:
@@ -2205,7 +2198,7 @@ progress:
   target_release_tag: r2.1
   target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r4.3
+    commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: network-health-assessment
@@ -2527,10 +2520,10 @@ progress:
   github_url: https://github.com/camaraproject/OTPValidation
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r4.1
+  target_release_tag: r4.2
   target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r4.3
+    commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: one-time-password-sms
@@ -2539,17 +2532,28 @@ progress:
     main_contacts:
     - bigludo7
     - fernandopradocabrillo
-  state: published
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r4.2-e0db288
+    release_pr:
+      number: 160
+      state: open
+      url: https://github.com/camaraproject/OTPValidation/pull/160
+      created_at: '2026-09-17T15:32:30Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 0
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
-    release_issue: null
-    review_history:
-      discarded_count: 1
-      last_reviewers: []
-      last_pr_url: https://github.com/camaraproject/OTPValidation/pull/143
-      last_closed_at: '2026-08-26T06:47:36Z'
+    release_issue:
+      number: 156
+      url: https://github.com/camaraproject/OTPValidation/issues/156
+      created_at: '2026-09-17T10:06:21Z'
+    review_history: null
   published_context:
     latest_public_release: r3.2
     newest_pre_release: r4.1
@@ -2575,7 +2579,7 @@ progress:
     - api_name: one-time-password-sms
       api_version: 2.0.0-rc.1
   snapshot_api_versions:
-    one-time-password-sms: 2.0.0-rc.1
+    one-time-password-sms: 2.0.0-rc.2
 - repository: PopulationDensityData
   github_url: https://github.com/camaraproject/PopulationDensityData
   release_track: meta-release
@@ -2943,10 +2947,10 @@ progress:
   github_url: https://github.com/camaraproject/SessionInsights
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r2.1
+  target_release_tag: r2.2
   target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r4.3
+    commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: session-insights
@@ -2956,18 +2960,16 @@ progress:
     - benhepworth
     - maheshc01
     - kevsy
-  state: published
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
-    review_history:
-      discarded_count: 1
-      last_reviewers:
-      - tanjadegroot
-      last_pr_url: https://github.com/camaraproject/SessionInsights/pull/102
-      last_closed_at: '2026-07-29T01:42:32Z'
+    release_issue:
+      number: 116
+      url: https://github.com/camaraproject/SessionInsights/issues/116
+      created_at: '2026-09-18T00:33:52Z'
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: r2.1
@@ -2992,8 +2994,6 @@ progress:
     apis:
     - api_name: session-insights
       api_version: 0.2.0-rc.1
-  snapshot_api_versions:
-    session-insights: 0.2.0-rc.1
 - repository: SimpleEdgeDiscovery
   github_url: https://github.com/camaraproject/SimpleEdgeDiscovery
   release_track: meta-release
