@@ -261,12 +261,23 @@ Note: Deprecation or Retirement of an ICM version does not by itself Deprecate o
 
 ### 5.3 Duration of ICM lifecycle states
 
+The Supported lifecycle state is the defaukt state applicable to any new ICM version, whether major, minor or patch. As long as only minor or patch ICM versions are released, all these ICM versions stay in the Supported lifecycle state.
+
+Only when a new major ICM version is introduced, all ICM versions with the previous major ICM version number are moved into the maintenance phase. This maintenance phase has 2 windows: first a 24 months window where the ICM version stays in Supported state, followed by a 12 months window in Deprecated state. At the end of the maintenance phase (after 36 months) the ICM version transitions to Retired state.
+
 | ICM lifecycle state | Duration | Notes |
 |---|---|---|
-| Supported state (for ICM versions with previous ICM major version number, starting when a new major ICM version is released) | 24 months | Once a newer major ICM version is published, ICM versions with the previous major version number remain Supported for this period before governance transitions them to Deprecated. During this period, API Providers are expected to plan migration to the newer major ICM version. |
-| Deprecated state (entered after the 24 months Supported state) | 12 months | Active migration period for API deployments before a Deprecated ICM version is Retired; impacts API version ICM-compatibility |
-| Concurrent support requirement by API deployments | API Providers SHALL continue to deploy the previous Supported major ICM version next to the newly published Supported major ICM version (see period defined above) | Applies to ICM-compatible API deployments during this period. |
-| Exceptions | Governance determined extension of a given ICM version's lifecycle state | Explicit and recorded governance action per exception; see [Exception mechanism](#10-exception-mechanism). |
+| Supported state (for any new ICM version released with the same ICM major version number) | Until a new major ICM version is released | Applicable while outside the maintenance phase |
+| Supported state (maintenance window 1), starting when a new major ICM version is released) | 24 months | all ICM versions with the previous major version number remain Supported for this period before governance transitions them to Deprecated. During this period, API Providers are expected to plan migration to the newer major ICM version. |
+| Deprecated state (maintenance window 2), entered when maintenance window 1 expires) | 12 months | all ICM versions with the previous major version number are Deprecated for this period before governance transitions them to Retired. Active migration period for API deployments to next major ICM version. |
+| Concurrent support requirement by API deployments | API Providers SHALL continue to deploy a Supported ICM version with the previous major ICM version number next to introducing the next major ICM version | Applies to ICM-compatible API deployments |
+| Exceptions | Governance decision may shorten (transition to Revoked state) or extend the duration of a a given ICM version's lifecycle state | Explicit and recorded governance action per exception; see [Exception mechanism](#10-exception-mechanism). |
+
+During the full maintenance phase, new minor or patch ICM versions may be released on a maintenance branch, but the released version remains in the same lifecycle state and this does not impact the duration of the ongoing maintenance window. This is required due to the fact that production deployment is allowed during the full maintenance phase.
+
+Examples: 
+- ICM vX.Y.Z (Supported (maintenance window 1))  -- minor update --> ICM vX.Y+1.0 (Supported ((maintenance window 1))
+- ICM vX.Y.Z (Deprecated (maintenance window 2)) -- patch update --> ICM vX.Y.Z+1 (Deprecated (maintenance window 2))
 
 ### 5.4 ICM version - Release notes
 
