@@ -1,14 +1,14 @@
 metadata:
-  last_updated: '2026-09-18T08:22:49Z'
-  last_checked: '2026-09-18T08:22:49Z'
-  releases_master_updated: '2026-09-17T07:58:18.749Z'
+  last_updated: '2026-09-19T08:11:16Z'
+  last_checked: '2026-09-19T08:11:16Z'
+  releases_master_updated: '2026-09-18T07:36:17.416Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
   repos_scanned: 63
   repos_new: 0
   repos_with_plan: 63
   repos_fully_onboarded: 46
-  repos_with_release_issue: 23
+  repos_with_release_issue: 25
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -33,7 +33,7 @@ meta_releases:
 - name: Sync26
   total_apis: 59
   m1_achieved: 8
-  m3_achieved: 45
+  m3_achieved: 47
   m4_achieved: 0
 progress:
 - repository: ApplicationEndpointDiscovery
@@ -299,27 +299,30 @@ progress:
       last_closed_at: '2026-09-16T10:54:48Z'
   published_context:
     latest_public_release: r3.3
-    newest_pre_release: null
+    newest_pre_release: r4.1
   cycle_releases:
     m1:
       release_tag: null
       release_date: null
       apis: []
     m3:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r4.1
+      release_date: '2026-09-17T16:03:57Z'
+      apis:
+      - api_name: call-forwarding-signal
+        api_version: 0.5.0-rc.1
     m4:
       release_tag: null
       release_date: null
       apis: []
+  last_published:
+    release_tag: r4.1
+    release_date: '2026-09-17T16:03:57Z'
+    apis:
+    - api_name: call-forwarding-signal
+      api_version: 0.5.0-rc.1
   snapshot_api_versions:
     call-forwarding-signal: 0.5.0-rc.1
-  warnings:
-  - code: W003
-    message: Release r4.1 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: CapabilitiesAndRuntimeRestrictions
   github_url: https://github.com/camaraproject/CapabilitiesAndRuntimeRestrictions
   release_track: independent
@@ -1020,10 +1023,10 @@ progress:
   github_url: https://github.com/camaraproject/DeviceLocation
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r4.1
+  target_release_tag: r4.2
   target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r4.3
+    commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: geofencing-subscriptions
@@ -1047,18 +1050,16 @@ progress:
     - bigludo7
     - jlurien
     - maxl2287
-  state: published
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
-    review_history:
-      discarded_count: 3
-      last_reviewers:
-      - hdamker
-      last_pr_url: https://github.com/camaraproject/DeviceLocation/pull/421
-      last_closed_at: '2026-08-10T11:01:54Z'
+    release_issue:
+      number: 432
+      url: https://github.com/camaraproject/DeviceLocation/issues/432
+      created_at: '2026-09-18T15:35:37Z'
+    review_history: null
   published_context:
     latest_public_release: r3.2
     newest_pre_release: r4.1
@@ -1091,10 +1092,6 @@ progress:
       api_version: 1.0.0-rc.1
     - api_name: location-verification
       api_version: 3.1.0-rc.2
-  snapshot_api_versions:
-    geofencing-subscriptions: 0.6.0-rc.1
-    location-retrieval: 1.0.0-rc.1
-    location-verification: 3.1.0-rc.2
 - repository: DeviceMediaStreamingRate
   github_url: https://github.com/camaraproject/DeviceMediaStreamingRate
   release_track: independent
@@ -1303,23 +1300,35 @@ progress:
       number: 118
       url: https://github.com/camaraproject/DeviceSwap/issues/118
       created_at: '2026-09-17T08:51:41Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers: []
+      last_pr_url: https://github.com/camaraproject/DeviceSwap/pull/120
+      last_closed_at: '2026-09-18T11:59:26Z'
   published_context:
     latest_public_release: r3.2
-    newest_pre_release: null
+    newest_pre_release: r4.1
   cycle_releases:
     m1:
       release_tag: null
       release_date: null
       apis: []
     m3:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r4.1
+      release_date: '2026-09-17T08:26:11Z'
+      apis:
+      - api_name: device-swap
+        api_version: 1.1.0-rc.2
     m4:
       release_tag: null
       release_date: null
       apis: []
+  last_published:
+    release_tag: r4.1
+    release_date: '2026-09-17T08:26:11Z'
+    apis:
+    - api_name: device-swap
+      api_version: 1.1.0-rc.2
 - repository: DeviceVisitLocation
   github_url: https://github.com/camaraproject/DeviceVisitLocation
   release_track: independent
@@ -2424,13 +2433,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/NumberVerification/pull/258
       created_at: '2026-09-16T13:44:59Z'
-      assignees: []
+      assignees:
+      - hdamker
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 6
     draft_release: null
     release_issue:
@@ -2543,9 +2553,9 @@ progress:
       assignees: []
       review_decision: null
       codeowner_approved: false
-      codeowner_checked: 0
+      codeowner_checked: 3
       codeowner_total: 3
-      ready_for_review: false
+      ready_for_review: true
       rm_checked: 0
       rm_total: 6
     draft_release: null
@@ -2584,10 +2594,10 @@ progress:
   github_url: https://github.com/camaraproject/PopulationDensityData
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r4.1
+  target_release_tag: r4.2
   target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r4.3
+    commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: population-density-data
@@ -2597,12 +2607,15 @@ progress:
     - sachinvodafone
     - jgarciahospital
     - maheshc01
-  state: published
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 147
+      url: https://github.com/camaraproject/PopulationDensityData/issues/147
+      created_at: '2026-09-18T10:55:14Z'
     review_history: null
   published_context:
     latest_public_release: r3.2
@@ -2628,8 +2641,6 @@ progress:
     apis:
     - api_name: population-density-data
       api_version: 1.0.0-rc.1
-  snapshot_api_versions:
-    population-density-data: 1.0.0-rc.1
 - repository: PredictiveConnectivityData
   github_url: https://github.com/camaraproject/PredictiveConnectivityData
   release_track: meta-release
