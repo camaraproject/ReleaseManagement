@@ -165,32 +165,29 @@ A new ICM version may result from a change to either or both classes of ICM info
 
 **Actions to maintain ICM-compatibility**
 
-The table below defines the single repeating pattern of actions that applies at **every** Signal/Sync pair. For any actual meta-release the same obligations apply each time a new major ICM version is released. 
+The table below defines the repeating pattern of actions that applies at **every** Signal/Sync pair. 
 
-A worked multi-year example is given in [section 8.3](#83-example-of-icm-lifecycle-state-evolution-and-api-deployment-across-meta-releases).
- 
+At any Signal meta-release, either a new **major** ICM version, or an (additive) **minor** ICM version is released, impacting the actions of the various stakeholders to maintain ICM-compatibility as described in the below table. NOTE: a **patch** ICM version release can happen at any time and replaces the ICM version that the patch is applied to.
+
 | Meta-release | Event | API designer | API Provider | API Consumer |
 |---|---|---|---|---|
-| **Signal N** | A new **major** ICM version `vX+1.0.0` is released (in **Supported** state) | Assess ICM-compatibility of APIs with this new ICM version: record cross-major ICM compatibility or plan new API version with vX+1.0.0 if not ICM-compatible | Assess / plan deployment of ICM `vX+1.0.0` | — |
-| | Any **Supported** ICM version with lower major ICM version number (<= X) starts its 24 month Supported window | Develop upgrade of APIs that are assessed not cross-major ICM-compatible | — | — |
-| | ICM version enters **Deprecated** state when its 24 month Supported window has expired | — | Plan upgrade of APIs that depend on this Deprecated ICM version to an API version that depends on a Supported ICM version or plan to retire the API | Plan upgrade of API clients that depend on this Deprecated ICM version to an API client version that depends on a Supported ICM version or plan to retire the API client  |
-| | ICM version enters **Retired** state when its 12 month Deprecated window has expired | — | Retire all non-upgraded APIs that depend on this Retired ICM version | Retire all non-upgraded API clients that depend on this Retired ICM version |
-| | A new **minor** or **patch** ICM version `vX.Y.Z` is released (in **Supported** state) | Use this ICM version in any new APIs, keep x-camara-min-icm as is in already released APIs | — | — |
-| **Sync N** | New API version release | Release against Signal N per the API release rules below\* | Plan deployment of Sync N APIs based on ICM `vX+1.0.0` | Plan deployment of Sync N API clients based on ICM `vX+1.0.0` |
+| **Signal N** (major ICM version case) | A new **major** ICM version `vX+1.0.0` is released in **Supported** state | Assess ICM-compatibility of APIs with this new ICM version: record cross-major ICM compatibility or plan new API version with vX+1.0.0 if the API is not ICM-compatible | Assess, plan, and announce deployment of ICM `vX+1.0.0` | — |
+| | Any previous **Supported** ICM version with lower major ICM version number (<= X) enters its maintenance phase, while remaining in Supported state | Develop upgrade of APIs that were assessed to be not cross-major ICM-compatible | Deploy the new ICM version latest by the end of the current running ICM version's Supported maintenance window, and announce migration or retirement of impacted APIs to API Consumers | — |
+| | Any previous ICM version enters **Deprecated** state if its Supported maintenance window has expired | — | After ensuring the new Supported ICM version is available, migrate APIs dependent on the Deprecated ICM version to a new API version depending on the new Supported ICM version and plan to retire non-migrated APIs | Migrate API clients that depend on this Deprecated ICM version to an API client version that depends on the new Supported ICM version or plan to retire the API client |
+| | any previous ICM version enters **Retired** state if its Deprecated maintenance window has expired | — | Retire all non-migrated APIs that depend on this Retired ICM version | Retire all non-migrated API clients that depend on this Retired ICM version |
+| (minor ICM version case) | A new **minor** ICM version `vX.Y.0` is released in **Supported** state | Use this ICM version in any new API requiring the additive ICM functionality; keep x-camara-min-icm as is in already released API versions | — | — |
+| (patch ICM version case) | A new **patch** ICM version `vX.Y.Z+1` is released in **Supported** state | Use this ICM version in any new API version; keep x-camara-min-icm as is in already released API versions | — | — |
+| **Sync N** | New API version release | Release against Signal N per the API release rules below\* | Plan deployment of Sync N APIs based on the Signal N released ICM version | Plan deployment of Sync N API clients based on the Signal N released ICM version |
  
 \***API release rules at Sync N:**
 - New, initial, and new stable APIs **MUST** release against Signal N.
 - An already published stable API **MUST** release against Signal N if it has already skipped the two previous Signal releases.
 - A **major** update of a stable API **MUST** release against Signal N.
 - A **minor or patch** update of a stable API **MAY** skip Signal N, but no more than two consecutive Signal releases may be skipped (whether on the independent or Sync track).
- 
-At any given time, the following ICM versions are relevant to an API Provider's planning: 
 
-- a newly released Supported ICM version if planned to be deployed
-- any deployed Supported ICM version entering Deprecated state
-- any deployed Deprecated ICM version entering Retired state.
+The ICM version lifecycle transitions are relevant to API designers, API Providers and API Consumers to organize their planning. The above table provides the complete set of actions that occur in every meta-release cycle.
 
-The above table provides the complete set of actions that recur every cycle.
+A multi-year ICM version evolution example is given in [section 8.3](#83-example-of-icm-lifecycle-state-evolution-and-api-deployment-across-meta-releases).
 
 ### 3.4 Path from ICM through Commonalities into API definitions
 
@@ -236,10 +233,11 @@ The table below summarizes the meaning of each state for the ICM version itself,
 
 | State | ICM version | API version | API deployment |
 |---|---|---|---|
-| **Supported** | OK to use | MAY use this ICM version as `x-camara-min-icm` | MAY operate against this ICM version |
-| **Deprecated** | Sunset announced (planned end of life); migration window active | SHOULD NOT use this ICM version as `x-camara-min-icm` | MAY continue to operate against this ICM version |
-| **Retired** | Terminal (end of life) | is no longer ICM-compatible; MUST evolve to a Supported ICM version or be Retired at the API level | is no longer ICM-compatible; MUST migrate to an ICM-compatible deployment with a Supported ICM version |
-| **Revoked** | Terminal (exceptional end-of-life); explicitly replaced by an earlier or later ICM version due to defects or security issues and MUST NOT be used; governance names the replacement version | MUST re-establish ICM-compatibility with a Supported ICM version | MUST migrate to a Supported ICM version and ICM-compatible deployment |
+| **Supported** | Not in maintenance | New API versions MUST use this ICM version as `x-camara-min-icm` | MAY operate against this ICM version once available |
+|               | In maintenance; MUST deploy the new Supported ICM version | New API versions MUST NOT use this ICM version as `x-camara-min-icm` | MAY continue to operate against this ICM version |
+| **Deprecated** | Sunset announced (planned end of life) | New API versions MUST NOT use this ICM version as `x-camara-min-icm` | API deployments MUST migrate to a Supported ICM version |
+| **Retired** | Terminal (end of life) | is no longer ICM-compatible; MUST upgrade to a Supported ICM version or be Retired at the API level | is no longer ICM-compatible; MUST migrate to an ICM-compatible deployment with a Supported ICM version |
+| **Revoked** | Terminal (exceptional end-of-life); explicitly replaced by an earlier or later ICM version due to defects or security issues and MUST NOT be used; governance names the replacement version | MUST re-establish ICM-compatibility with a Supported ICM version | MUST migrate to a Supported ICM version and ICM-compatible API deployment |
 
 Note: the "API version" and "API deployment" columns describe impacts (in CAMARA governance scope) on ICM-compatibility of API versions as declared in the ICM-compatibility matrix and on ICM-compatibility of API deployments. Use outside that scope is not governed by this guideline.
 
@@ -261,23 +259,30 @@ Note: Deprecation or Retirement of an ICM version does not by itself Deprecate o
 
 ### 5.3 Duration of ICM lifecycle states
 
-The Supported lifecycle state is the defaukt state applicable to any new ICM version, whether major, minor or patch. As long as only minor or patch ICM versions are released, all these ICM versions stay in the Supported lifecycle state.
+The Supported lifecycle state is the default state applicable to any new ICM version, whether major, minor or patch. As long as only minor ICM versions are released, all ICM versions with the same major version number stay in the Supported lifecycle state.
 
-Only when a new major ICM version is introduced, all ICM versions with the previous major ICM version number are moved into the maintenance phase. This maintenance phase has 2 windows: first a 24 months window where the ICM version stays in Supported state, followed by a 12 months window in Deprecated state. At the end of the maintenance phase (after 36 months) the ICM version transitions to Retired state.
+When a new major ICM version is introduced, all Supported ICM versions with the previous major ICM version number are moved into the maintenance phase. This maintenance phase has 2 windows: 
+
+- a **Supported** maintenance window where the ICM version stays in Supported state,
+- followed by a **Deprecated** maintenance window at the start of which the ICM version transitions to Deprecated state.
+
+At the end of the maintenance phase (i.e. after the 2 subsequent maintenance windows) the ICM version transitions to Retired state and the maintenance of the ICM version is terminated.
 
 | ICM lifecycle state | Duration | Notes |
 |---|---|---|
-| Supported state (for any new ICM version released with the same ICM major version number) | Until a new major ICM version is released | Applicable while outside the maintenance phase |
-| Supported state (maintenance window 1), starting when a new major ICM version is released) | 24 months | all ICM versions with the previous major version number remain Supported for this period before governance transitions them to Deprecated. During this period, API Providers are expected to plan migration to the newer major ICM version. |
-| Deprecated state (maintenance window 2), entered when maintenance window 1 expires) | 12 months | all ICM versions with the previous major version number are Deprecated for this period before governance transitions them to Retired. Active migration period for API deployments to next major ICM version. |
-| Concurrent support requirement by API deployments | API Providers SHALL continue to deploy a Supported ICM version with the previous major ICM version number next to introducing the next major ICM version | Applies to ICM-compatible API deployments |
+| Supported state (for any new ICM version released with the same ICM major version number) | Until a new major ICM version is released | The ICM version is outside the maintenance phase |
+| Supported state (maintenance window 1), starting when a new major ICM version is released) | 24 months | all ICM versions with the previous major version number remain Supported for this duration before governance transitions them to Deprecated. During this window, API Providers are expected to upgrade their deployment to the newer major ICM version. |
+| Deprecated state (maintenance window 2), entered when maintenance window 1 expires) | 12 months | all ICM versions with the previous major version number are Deprecated for this duration before governance transitions them to Retired. This is the migration window for API deployments to API versions that are ICM-compatibme with the new major ICM version. |
+| Concurrent support requirement by API deployments | API Providers SHALL continue to deploy a Supported ICM version with the previous major ICM version number next to the newer major ICM version (until the end of the maintenance phase) | Applies to ICM-compatible API deployments |
 | Exceptions | Governance decision may shorten (transition to Revoked state) or extend the duration of a a given ICM version's lifecycle state | Explicit and recorded governance action per exception; see [Exception mechanism](#10-exception-mechanism). |
 
-During the full maintenance phase, new minor or patch ICM versions may be released on a maintenance branch, but the released version remains in the same lifecycle state and this does not impact the duration of the ongoing maintenance window. This is required due to the fact that production deployment is allowed during the full maintenance phase.
+A patch ICM version of a Supported ICM version may be released during its maintenance phase. This shall use a maintenance branch for the release of thr patch ICM version. The patch ICM version replaces the ICM version that it is a patch for. This does not impact the duration of the ongoing maintenance window. This is required due to the fact that production deployment is allowed during the maintenance phase.
 
 Examples: 
-- ICM vX.Y.Z (Supported (maintenance window 1))  -- minor update --> ICM vX.Y+1.0 (Supported ((maintenance window 1))
+- ICM vX.Y.Z (Supported (maintenance window 1))  -- patch update --> ICM vX.Y.Z+1 (Supported ((maintenance window 1))
 - ICM vX.Y.Z (Deprecated (maintenance window 2)) -- patch update --> ICM vX.Y.Z+1 (Deprecated (maintenance window 2))
+
+NOTE: a patch of a Deprecated ICM version SHALL be limited as much as possible, but would follow the same approach, with the resulting patch ICM version remaining in Deprecated state (with no impart on the dureation).
 
 ### 5.4 ICM version - Release notes
 
@@ -476,7 +481,7 @@ ICM version lifecycle state transitions may occur off-cycle in security-driven c
 
 ### 8.3 Example of ICM lifecycle state evolution and API deployment across meta-releases
 
-This section illustrates a typical scenario starting from Signal27, based on the ICM lifecycle state durations of 24 months (2 years) Supported + 12 months (1 year) Deprecated = 36 months (3 years) total.
+This section illustrates a typical scenario starting from Signal27, based on the ICM lifecycle state durations of the Supported maintenance window (24 months / 2 years) + the Deprecated maintenance window (12 months / 1 year) = total maintenance phase (36 months / 3 years).
 
 - [**ICM Release**] Q2 2027: Signal27 released -> Q4 2027: Sync27 APIs released.
 - [**API Deployment**] Q2 2028: An operator launches Sync27 APIs in production (utilizing their 2028 budget).
@@ -485,11 +490,24 @@ This section illustrates a typical scenario starting from Signal27, based on the
 - [**ICM Retirement**] Q2 2031: Signal27 becomes Retired (36 months after Signal27 was started 24 months period in Q2 2028).
 - [**API Replacement**] Q2 2031: Sync27 APIs lose ICM-compatibility and MUST be Retired or replaced with Sync30 (preferred) or Sync29 APIs.
 
+Updated scenario (not fully done yet - needs cross-check):
+
+- [**Signal27 ICM v1.0.0 Release**] Q2 2027: Signal27 released; ICM version in Supported state
+- [**Sync27 API Release**] Q4 2027: Sync27 APIs released with Signal27 ICM version
+- [**Signal27 ICM v1.0.0 Deployment**] Q4 2027-Q2 2029: earliest 6 months after ICM release and latest before Spring26 is Deprecated
+- [**Sync27 API Deployment**] Q2 2028-Q2 2030: Earliest possible launch in production of Sync27 APIs with latest possible migration to Sync29 or Sync30 APIs by Retirement of Spring26 ICM version.
+- [**Signal28 ICM v2.0.0 Release**] Q2 2028: Signal28 releases a new major ICM version
+- [**Signal27 ICM v1.0.0 Supported (maintenance)**] Q2 2028: start of Signal27 ICM Supported maintenance window.
+- [**Sync28 API Release**] Q4 2028: Sync28 APIs released with Signal28 ICM version
+- [**Signal27 ICM v1.0.0 Deprecated**] Q2 2030: Signal27 ICM becomes Deprecated (2 years after start of maintenance in Q2 2028).
+- [**Sync27 to Sync29/30 API Migration**] Q2 2030-Q2 2031: Sync27 APIs lose ICM-compatibility and MUST be retired or migrated. Migration can start earliest in Q2 2029 with Sync28 APIs, later in Q2 2030 with Sync29 APIs, or latest in Q2 2030 with Synch29 APIs. Recommended would be to migrate to Sync29 APIs. This will also depend on the choice of the supported ICM version (Signal28/29/30).
+- [**Signal27 ICM v1.0.0 Retired**] Q2 2031: Signal27 ICM becomes Retired (3 years after start of maintenance in Q2 2028 period).
+
 In this scenario, the Sync27 APIs launched in Q2 2028 are no longer ICM-compatible starting Q2 2031. This means the APIs' actual deployment lifespan is 3 years (with Signal27 ICM version Supported (2 years) + Deprecated (1 year)).
 
 At the ICM Sync27 retirement date (Q2 2031), the operator MUST have replaced Sync27 APIs. By Q2 2031, Sync30 APIs will have been out for about 6-8 months, meaning the risk of early patch releases is significantly reduced. They become viable candidates for the migration (utilizing the 2031 budget).
 
-Note: The previous alternative with an ICM Supported duration of 18 months was rejected as too short, as, in that case ICM Sync27 retirement would be in Q4 2029, and Sync29 APIs cannot realistically be the candidate for Sync27 API replacement because they have just been released, and operators typically want to avoid the potential risks of initial patch releases. They would be forced to migrate to older Sync28 APIs instead and APIs would be actually deployed for only 30 months (2.5 years).
+Note: The previous alternative with an ICM Supported duration of 18 months was rejected as too short, as, in that case ICM Sync27 maintenance would run Q2 2028 through Q4 2030 (retirement), and Sync30 APIs cannot realistically be the candidate for Sync27 API replacement because they have just been released, and operators typically want to avoid the potential risks of initial patch releases. They would be forced to migrate to Sync29 APIs instead and APIs would be actually deployed for maximally 30 months (2.5 years).
 
 ## 9. ICM-compatibility matrix
 
