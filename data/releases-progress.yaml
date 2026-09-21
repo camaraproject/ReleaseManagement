@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-09-19T08:11:16Z'
-  last_checked: '2026-09-19T08:11:16Z'
+  last_updated: '2026-09-21T09:08:34Z'
+  last_checked: '2026-09-21T09:08:34Z'
   releases_master_updated: '2026-09-18T07:36:17.416Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -8,7 +8,7 @@ metadata:
   repos_new: 0
   repos_with_plan: 63
   repos_fully_onboarded: 46
-  repos_with_release_issue: 25
+  repos_with_release_issue: 26
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -967,10 +967,10 @@ progress:
   github_url: https://github.com/camaraproject/DeviceIdentifier
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r3.2
+  target_release_tag: r3.3
   target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r4.3
+    commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: device-identifier
@@ -979,18 +979,16 @@ progress:
     main_contacts:
     - eric-murray
     - Kevsy
-  state: published
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
-    review_history:
-      discarded_count: 2
-      last_reviewers:
-      - hdamker
-      last_pr_url: https://github.com/camaraproject/DeviceIdentifier/pull/199
-      last_closed_at: '2026-08-27T15:04:10Z'
+    release_issue:
+      number: 212
+      url: https://github.com/camaraproject/DeviceIdentifier/issues/212
+      created_at: '2026-09-21T08:48:43Z'
+    review_history: null
   published_context:
     latest_public_release: r2.2
     newest_pre_release: r3.2
@@ -1017,8 +1015,6 @@ progress:
     apis:
     - api_name: device-identifier
       api_version: 0.4.0-rc.1
-  snapshot_api_versions:
-    device-identifier: 0.4.0-rc.1
 - repository: DeviceLocation
   github_url: https://github.com/camaraproject/DeviceLocation
   release_track: meta-release
@@ -1505,20 +1501,19 @@ progress:
     - ChinaUnicomXiaoDongrui
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r1.1-66a6842
+    snapshot_branch: release-snapshot/r1.1-5bf10e2
     release_pr:
-      number: 36
+      number: 39
       state: open
-      url: https://github.com/camaraproject/eSimRemoteManagement/pull/36
-      created_at: '2026-09-10T09:21:50Z'
-      assignees:
-      - eric-murray
+      url: https://github.com/camaraproject/eSimRemoteManagement/pull/39
+      created_at: '2026-09-21T03:12:56Z'
+      assignees: []
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 0
       rm_total: 6
     draft_release: null
     release_issue:
@@ -1526,11 +1521,11 @@ progress:
       url: https://github.com/camaraproject/eSimRemoteManagement/issues/20
       created_at: '2026-07-29T01:08:25Z'
     review_history:
-      discarded_count: 4
+      discarded_count: 5
       last_reviewers:
       - eric-murray
-      last_pr_url: https://github.com/camaraproject/eSimRemoteManagement/pull/28
-      last_closed_at: '2026-09-10T08:51:57Z'
+      last_pr_url: https://github.com/camaraproject/eSimRemoteManagement/pull/36
+      last_closed_at: '2026-09-21T02:09:22Z'
   published_context:
     latest_public_release: null
     newest_pre_release: null
