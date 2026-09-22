@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-09-21T09:08:34Z'
-  last_checked: '2026-09-21T09:08:34Z'
+  last_updated: '2026-09-22T08:41:00Z'
+  last_checked: '2026-09-22T08:41:00Z'
   releases_master_updated: '2026-09-18T07:36:17.416Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -8,7 +8,7 @@ metadata:
   repos_new: 0
   repos_with_plan: 63
   repos_fully_onboarded: 46
-  repos_with_release_issue: 26
+  repos_with_release_issue: 29
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -762,10 +762,10 @@ progress:
   github_url: https://github.com/camaraproject/DedicatedNetworks
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r2.2
+  target_release_tag: r2.3
   target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r4.3
+    commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: dedicated-network-accesses
@@ -800,17 +800,16 @@ progress:
     - PeterKovacs2
     - carlosromerog
     - eric-murray
-  state: published
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
-    review_history:
-      discarded_count: 6
-      last_reviewers: []
-      last_pr_url: https://github.com/camaraproject/DedicatedNetworks/pull/181
-      last_closed_at: '2026-09-15T09:34:52Z'
+    release_issue:
+      number: 192
+      url: https://github.com/camaraproject/DedicatedNetworks/issues/192
+      created_at: '2026-09-21T14:17:54Z'
+    review_history: null
   published_context:
     latest_public_release: r1.2
     newest_pre_release: r2.2
@@ -855,11 +854,6 @@ progress:
       api_version: 0.2.0-rc.1
     - api_name: dedicated-network-areas
       api_version: 0.1.0-rc.1
-  snapshot_api_versions:
-    dedicated-network-accesses: 0.2.0-rc.1
-    dedicated-network-profiles: 0.2.0-rc.1
-    dedicated-network: 0.2.0-rc.1
-    dedicated-network-areas: 0.1.0-rc.1
 - repository: DeviceAuthenticity
   github_url: https://github.com/camaraproject/DeviceAuthenticity
   release_track: independent
@@ -1499,33 +1493,20 @@ progress:
     main_contacts:
     - SentianSun
     - ChinaUnicomXiaoDongrui
-  state: snapshot_active
+  state: planned
   artifacts:
-    snapshot_branch: release-snapshot/r1.1-5bf10e2
-    release_pr:
-      number: 39
-      state: open
-      url: https://github.com/camaraproject/eSimRemoteManagement/pull/39
-      created_at: '2026-09-21T03:12:56Z'
-      assignees: []
-      review_decision: null
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 0
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
     release_issue:
       number: 20
       url: https://github.com/camaraproject/eSimRemoteManagement/issues/20
       created_at: '2026-07-29T01:08:25Z'
     review_history:
-      discarded_count: 5
-      last_reviewers:
-      - eric-murray
-      last_pr_url: https://github.com/camaraproject/eSimRemoteManagement/pull/36
-      last_closed_at: '2026-09-21T02:09:22Z'
+      discarded_count: 6
+      last_reviewers: []
+      last_pr_url: https://github.com/camaraproject/eSimRemoteManagement/pull/39
+      last_closed_at: '2026-09-22T02:55:26Z'
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -1542,8 +1523,6 @@ progress:
       release_tag: null
       release_date: null
       apis: []
-  snapshot_api_versions:
-    esim-remote-management: 0.1.0-alpha.1
 - repository: HighThroughputElasticNetworks
   github_url: https://github.com/camaraproject/HighThroughputElasticNetworks
   release_track: independent
@@ -1739,33 +1718,21 @@ progress:
     main_contacts:
     - chenfr2-ChinaTelecom
     - XunliYang
-  state: snapshot_active
+  state: planned
   artifacts:
-    snapshot_branch: release-snapshot/r2.1-a4a6953
-    release_pr:
-      number: 69
-      state: open
-      url: https://github.com/camaraproject/IoTSIMFraudPrevention/pull/69
-      created_at: '2026-09-15T06:29:30Z'
-      assignees:
-      - eric-murray
-      review_decision: CHANGES_REQUESTED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 4
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
     release_issue:
       number: 57
       url: https://github.com/camaraproject/IoTSIMFraudPrevention/issues/57
       created_at: '2026-06-16T09:34:10Z'
     review_history:
-      discarded_count: 4
-      last_reviewers: []
-      last_pr_url: https://github.com/camaraproject/IoTSIMFraudPrevention/pull/64
-      last_closed_at: '2026-09-15T02:38:53Z'
+      discarded_count: 5
+      last_reviewers:
+      - eric-murray
+      last_pr_url: https://github.com/camaraproject/IoTSIMFraudPrevention/pull/69
+      last_closed_at: '2026-09-22T08:18:12Z'
   published_context:
     latest_public_release: r1.2
     newest_pre_release: null
@@ -1782,9 +1749,6 @@ progress:
       release_tag: null
       release_date: null
       apis: []
-  snapshot_api_versions:
-    iot-sim-fraud-prevention: 0.2.0-rc.1
-    iot-sim-fraud-prevention-subscriptions: 0.2.0-rc.1
 - repository: KnowYourCustomerAgeVerification
   github_url: https://github.com/camaraproject/KnowYourCustomerAgeVerification
   release_track: meta-release
@@ -2352,10 +2316,10 @@ progress:
   github_url: https://github.com/camaraproject/NumberRecycling
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r3.1
+  target_release_tag: r3.2
   target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r4.3
+    commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: number-recycling
@@ -2365,18 +2329,16 @@ progress:
     - eric-murray
     - Masa8106
     - grgpapadopoulos
-  state: published
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
-    review_history:
-      discarded_count: 2
-      last_reviewers:
-      - tanjadegroot
-      last_pr_url: https://github.com/camaraproject/NumberRecycling/pull/111
-      last_closed_at: '2026-08-04T15:35:06Z'
+    release_issue:
+      number: 125
+      url: https://github.com/camaraproject/NumberRecycling/issues/125
+      created_at: '2026-09-21T09:12:27Z'
+    review_history: null
   published_context:
     latest_public_release: r2.2
     newest_pre_release: r3.1
@@ -2401,8 +2363,6 @@ progress:
     apis:
     - api_name: number-recycling
       api_version: 0.3.0-rc.1
-  snapshot_api_versions:
-    number-recycling: 0.3.0-rc.1
 - repository: NumberVerification
   github_url: https://github.com/camaraproject/NumberVerification
   release_track: meta-release
@@ -2422,20 +2382,19 @@ progress:
     - AxelNennker
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r4.1-8932872
+    snapshot_branch: release-snapshot/r4.1-baeb5e4
     release_pr:
-      number: 258
+      number: 262
       state: open
-      url: https://github.com/camaraproject/NumberVerification/pull/258
-      created_at: '2026-09-16T13:44:59Z'
-      assignees:
-      - hdamker
+      url: https://github.com/camaraproject/NumberVerification/pull/262
+      created_at: '2026-09-21T15:46:08Z'
+      assignees: []
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 0
       rm_total: 6
     draft_release: null
     release_issue:
@@ -2443,10 +2402,11 @@ progress:
       url: https://github.com/camaraproject/NumberVerification/issues/236
       created_at: '2026-06-16T14:25:50Z'
     review_history:
-      discarded_count: 3
-      last_reviewers: []
-      last_pr_url: https://github.com/camaraproject/NumberVerification/pull/251
-      last_closed_at: '2026-09-08T10:58:29Z'
+      discarded_count: 4
+      last_reviewers:
+      - hdamker
+      last_pr_url: https://github.com/camaraproject/NumberVerification/pull/258
+      last_closed_at: '2026-09-21T15:43:29Z'
   published_context:
     latest_public_release: r3.2
     newest_pre_release: null
@@ -2539,26 +2499,32 @@ progress:
     - fernandopradocabrillo
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r4.2-e0db288
+    snapshot_branch: release-snapshot/r4.2-f9dd76c
     release_pr:
-      number: 160
+      number: 164
       state: open
-      url: https://github.com/camaraproject/OTPValidation/pull/160
-      created_at: '2026-09-17T15:32:30Z'
-      assignees: []
+      url: https://github.com/camaraproject/OTPValidation/pull/164
+      created_at: '2026-09-21T15:02:50Z'
+      assignees:
+      - hdamker
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 6
     draft_release: null
     release_issue:
       number: 156
       url: https://github.com/camaraproject/OTPValidation/issues/156
       created_at: '2026-09-17T10:06:21Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers:
+      - hdamker
+      last_pr_url: https://github.com/camaraproject/OTPValidation/pull/160
+      last_closed_at: '2026-09-21T14:57:35Z'
   published_context:
     latest_public_release: r3.2
     newest_pre_release: r4.1
@@ -3322,10 +3288,10 @@ progress:
   github_url: https://github.com/camaraproject/VerifiedCaller
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r2.2
+  target_release_tag: r2.3
   target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r4.3
+    commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: brand-registration
@@ -3334,7 +3300,6 @@ progress:
     main_contacts:
     - alpaycetin74
     - olsi-korkuti
-    - stroncoso-quobis
     - GillesInnov35
   - api_name: verified-caller
     target_api_version: 0.2.0
@@ -3342,20 +3307,17 @@ progress:
     main_contacts:
     - alpaycetin74
     - olsi-korkuti
-    - stroncoso-quobis
     - GillesInnov35
-  state: published
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
-    review_history:
-      discarded_count: 1
-      last_reviewers:
-      - tanjadegroot
-      last_pr_url: https://github.com/camaraproject/VerifiedCaller/pull/131
-      last_closed_at: '2026-09-10T06:19:01Z'
+    release_issue:
+      number: 150
+      url: https://github.com/camaraproject/VerifiedCaller/issues/150
+      created_at: '2026-09-21T10:33:56Z'
+    review_history: null
   published_context:
     latest_public_release: r1.3
     newest_pre_release: r2.2
@@ -3388,9 +3350,6 @@ progress:
       api_version: 0.2.0-rc.1
     - api_name: verified-caller
       api_version: 0.2.0-rc.1
-  snapshot_api_versions:
-    brand-registration: 0.2.0-rc.1
-    verified-caller: 0.2.0-rc.1
 - repository: VoiceNotification
   github_url: https://github.com/camaraproject/VoiceNotification
   release_track: independent
