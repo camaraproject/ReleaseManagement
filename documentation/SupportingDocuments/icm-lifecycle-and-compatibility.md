@@ -233,11 +233,11 @@ The table below summarizes the meaning of each state for the ICM version itself,
 
 | State | ICM version | API version | API deployment |
 |---|---|---|---|
-| **Supported** | Not in maintenance | New API versions MUST use this ICM version as `x-camara-min-icm` | MAY operate against this ICM version once available |
-|               | In maintenance; MUST deploy the new Supported ICM version | New API versions MUST NOT use this ICM version as `x-camara-min-icm` | MAY continue to operate against this ICM version |
-| **Deprecated** | Sunset announced (planned end of life) | New API versions MUST NOT use this ICM version as `x-camara-min-icm` | API deployments MUST migrate to a Supported ICM version |
-| **Retired** | Terminal (end of life) | is no longer ICM-compatible; MUST upgrade to a Supported ICM version or be Retired at the API level | is no longer ICM-compatible; MUST migrate to an ICM-compatible deployment with a Supported ICM version |
-| **Revoked** | Terminal (exceptional end-of-life); explicitly replaced by an earlier or later ICM version due to defects or security issues and MUST NOT be used; governance names the replacement version | MUST re-establish ICM-compatibility with a Supported ICM version | MUST migrate to a Supported ICM version and ICM-compatible API deployment |
+| **Supported** | Not in maintenance | New API versions MUST use a Supported ICM version (not in mintenance) | MAY operate against this ICM version (maintenance or not) |
+|               | In maintenance | New API versions MUST NOT use this ICM version | MAY continue to operate against the ICM version (as long as Supported); Must deploy a Supported ICM version that not in maintenance |
+| **Deprecated** | Sunset announced (planned end of life) | New API versions MUST NOT use this ICM version | Deployed APIs MUST migrate to a Supported ICM version |
+| **Retired** | Terminal (end of life) | is no longer ICM-compatible; MUST upgrade to a Supported ICM version or be Retired at the API level | APIs are no longer ICM-compatible; APIs MUST have migrated to an ICM-compatible deployment with a Supported ICM version or SHALL be retired |
+| **Revoked** | Terminal (exceptional end-of-life); explicitly replaced by an earlier or later ICM version due to defects or security issues and MUST NOT be used; governance names the replacement version | MUST re-establish ICM-compatibility with a Supported ICM version | MUST migrate to a Supported ICM version (not in maintenance) and to ICM-compatible API versions |
 
 Note: the "API version" and "API deployment" columns describe impacts (in CAMARA governance scope) on ICM-compatibility of API versions as declared in the ICM-compatibility matrix and on ICM-compatibility of API deployments. Use outside that scope is not governed by this guideline.
 
