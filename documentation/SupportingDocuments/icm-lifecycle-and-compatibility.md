@@ -265,7 +265,7 @@ The **Revoked** state is entered through an exceptional transition decided by go
 
 Governance MAY transition specific Supported ICM versions to Deprecated, Retired, or Revoked state when they should no longer be used. 
 - For example, when known ambiguities or defects are resolved in a later minor ICM version, or when a critical defect requires replacing a specific ICM version. Such per-version transitions do not impact ICM-compatibility of API versions or API deployments.
-- Later minor ICM versions remain compatible with earlier ones by SemVer, but they influence the "lowest" Supported ICM version used in [Determining the x-camara-min-icm value](#64-determining-the-x-camara-min-icm-value) and are relevant for API deployments.
+- Later minor ICM versions remain compatible with earlier ones by SemVer, but they influence the Supported ICM version used in [Determining the x-camara-min-icm value](#64-determining-the-x-camara-min-icm-value) and are relevant for API deployments.
 
 Note: the term "Retired" aligns with the API lifecycle terminology, so that ICM and API lifecycles use the same vocabulary for the terminal state.
 
@@ -307,18 +307,18 @@ The published lifecycle state must be available in machine-readable form for the
 The following table tracks the lifecycle state of ICM versions. This table is part of the ICM release notes.
 
 Note: the entries in _italics_ are examples that should not be present in the release notes.
-MW1 and MW2 stand for Maitenance Window 1 and 2 respectively.
+MW1 and MW2 stand for Maitenance Window 1 (Supported) and 2 (Deprecated) respectively.
 
 | ICM version (Release Date) | Lifecycle State | Supported (start MW1) | Deprecated (start MW2) | Retired   | Revoked   | Extension | Comment |
 |---|---|---|---|---|---|---|---|
-| _3.1.0 (2029-08)_   | _Supported_       |                 |                  |           |           |         |_replacement of 3.0.0 due to security issue_ |
+| _3.1.0 (2029-08)_   | _Supported_       |                 |                  |           |           |         | _replacement of 3.0.0 due to security issue_ |
 | _3.0.0 (2029-04)_   | _Revoked_         |                 |                  |           | _2029-08_ |         | _2029-08 ICM decision override by ICM v3.1.0_ |
-| _2.0.0 (2028-04)_   | _Supported_       | _2029-04_       | _2031-04_        | _2032-04_ |           |         | _future release example_ |
-| _1.0.0 (2027-04)_   | _Supported_       | _2028-04_       | _2030-04_        | _2031-04_ |           |         | _future release example_ |
-| **0.5.0** (2026-05) | **Supported**     | _2027-04_       | _2029-04_        | _2030-04_ |           |         | not in maintenance phase today |
+| _2.0.0 (2028-04)_   | _Supported_       | _2029-04_       | _2031-04_        | _2032-04_ |           |         | _future major ICM release example_ |
+| _1.0.0 (2027-04)_   | _Supported_       | _2028-04_       | _2030-04_        | _2031-04_ |           |         | _future major ICM release example_ |
+| **0.5.0** (2026-05) | **Supported**     | _2027-04_       | _2029-04_        | _2030-04_ |           | _2031-04 (12 months)_ | not in maintenance phase today; _2030-04 ICM decision to extend MW2_ |
 | **0.4.0** (2025-09) | **Supported**     | _2027-04_       | _2029-04_        | _2030-04_ |           |         | not in maintenance phase today |
-| 0.3.0  (2025-03)    | **Deprecated**    |                 | _2027-04_        | _2028-04_ |           | _2028-04_ (6 months) | _in MW2 (2028-01-31 ICM decision to extend 6 months)_ |
-| 0.2.1 (2024-09 )    | Revoked           |                 | _2027-04_        |             |         |            | _2027-04 ICM decision (link to minutes)_ |
+| 0.3.0  (2025-03)    | **Deprecated**    |                 | _2027-04_        | _2028-04_ |           |         | _2027-04 Deprecated (future ICM decision)_ 
+| 0.2.1 (2024-09 )    | **Revoked**       |                 |                  |           | _2027-04_ |         | _2027-04 Revoked (future ICM decision)_ |
 
 #### 5.4.2 ICM version change tables
 
