@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-09-23T08:43:32Z'
-  last_checked: '2026-09-23T08:43:32Z'
+  last_updated: '2026-09-24T08:36:20Z'
+  last_checked: '2026-09-24T08:36:20Z'
   releases_master_updated: '2026-09-18T07:36:17.416Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -1295,10 +1295,22 @@ progress:
     - bigludo7
     - krishvenkatachalam
     - jgarciahospital
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r4.2-836543d
+    release_pr:
+      number: 123
+      state: open
+      url: https://github.com/camaraproject/DeviceSwap/pull/123
+      created_at: '2026-09-23T13:30:36Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 118
@@ -1333,6 +1345,8 @@ progress:
     apis:
     - api_name: device-swap
       api_version: 1.1.0-rc.2
+  snapshot_api_versions:
+    device-swap: 1.1.0-rc.3
 - repository: DeviceVisitLocation
   github_url: https://github.com/camaraproject/DeviceVisitLocation
   release_track: independent
@@ -1743,9 +1757,9 @@ progress:
       assignees: []
       review_decision: null
       codeowner_approved: false
-      codeowner_checked: 0
+      codeowner_checked: 3
       codeowner_total: 3
-      ready_for_review: false
+      ready_for_review: true
       rm_checked: 0
       rm_total: 6
     draft_release: null
@@ -2600,27 +2614,31 @@ progress:
     - maheshc01
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r4.2-3171af9
+    snapshot_branch: release-snapshot/r4.2-4c74bc6
     release_pr:
-      number: 148
+      number: 150
       state: open
-      url: https://github.com/camaraproject/PopulationDensityData/pull/148
-      created_at: '2026-09-22T11:02:41Z'
-      assignees:
-      - tanjadegroot
+      url: https://github.com/camaraproject/PopulationDensityData/pull/150
+      created_at: '2026-09-23T11:11:45Z'
+      assignees: []
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 0
       rm_total: 6
     draft_release: null
     release_issue:
       number: 147
       url: https://github.com/camaraproject/PopulationDensityData/issues/147
       created_at: '2026-09-18T10:55:14Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers:
+      - tanjadegroot
+      last_pr_url: https://github.com/camaraproject/PopulationDensityData/pull/148
+      last_closed_at: '2026-09-23T09:26:01Z'
   published_context:
     latest_public_release: r3.2
     newest_pre_release: r4.1
@@ -3514,9 +3532,9 @@ progress:
       assignees: []
       review_decision: null
       codeowner_approved: false
-      codeowner_checked: 0
+      codeowner_checked: 3
       codeowner_total: 3
-      ready_for_review: false
+      ready_for_review: true
       rm_checked: 0
       rm_total: 6
     draft_release: null
