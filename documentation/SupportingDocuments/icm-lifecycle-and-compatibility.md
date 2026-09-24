@@ -1,8 +1,8 @@
 # ICM Lifecycle and API Compatibility Governance
 
-**Version:** Draft 3 (2026-07-29)
+**Version:** Draft 4 (2026-09-24)
 
-**Status:** Draft for ICM WG discussion / approval; incorporates V2 working merge and ICM team review feedback.
+**Status:** Draft for Release Management final review and then for publication for external review; incorporates V3 feedback from ICM team and from Herbert. This document will be kept as a SupportingDocument. A shorter ICM lifecycle guideline document will be produced for inclusion in the Release Management day-to-day documentation.
 
 **Scope:** Response to the ICM WG request to Release Management (per [ICM#324](https://github.com/camaraproject/IdentityAndConsentManagement/issues/324), [ICM#340](https://github.com/camaraproject/IdentityAndConsentManagement/issues/340), [ReleaseManagement#351](https://github.com/camaraproject/ReleaseManagement/issues/351)) to define governance for ICM version evolution and its dependencies with CAMARA API versions.
 
@@ -67,15 +67,15 @@
 
 ## 1. Scope and Purpose
 
-This guideline defines lifecycle management of [Identity and Consent Management (ICM)](https://github.com/camaraproject/IdentityAndConsentManagement) versions and how CAMARA APIs declare and maintain compatibility with them. It defines under what rules API versions and ICM versions can co-evolve while still providing clear compatibility guarantees.
+This document defines lifecycle management of [Identity and Consent Management (ICM)](https://github.com/camaraproject/IdentityAndConsentManagement) versions and how CAMARA APIs declare and maintain compatibility with them. It defines under what rules API versions and ICM versions can co-evolve while still providing clear compatibility guarantees.
 
-The guideline recognizes operational reality: API Providers offer the same API version against multiple ICM versions, and API Consumers require an API version and an ICM version as part of a single usage contract — if either aspect changes in a way that affects them, their implementation must adapt.
+The document recognizes operational reality: API Providers offer the same API version against multiple ICM versions, and API Consumers require an API version and an ICM version as part of a single usage contract — if either aspect changes in a way that affects them, their implementation must adapt.
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](https://www.rfc-editor.org/rfc/rfc2119).
 
 ## 2. Glossary and References
 
-Terms defined in the CAMARA [Commonalities](https://github.com/camaraproject/Commonalities/tree/main/documentation) or [Release Management](https://github.com/camaraproject/ReleaseManagement/tree/main/documentation) documentation (API, API Consumer, API Provider, semantic versioning, scope, meta-release, etc.) are not repeated here. This section defines terms specific to this guideline.
+Terms defined in the CAMARA [Commonalities](https://github.com/camaraproject/Commonalities/tree/main/documentation) or [Release Management](https://github.com/camaraproject/ReleaseManagement/tree/main/documentation) documentation (API, API Consumer, API Provider, semantic versioning, scope, meta-release, etc.) are not repeated here. This section defines terms specific to this document.
 
 - **ICM design info**: information defined by an ICM version that applies to API definitions at API design time — e.g. scope format, `securitySchemes` syntax, mandatory `info.description` text, schemas, operations, and similar [OpenAPI Specification (OAS)](https://spec.openapis.org/oas/v3.0.3.html)-level constructs. Supported by guidelines from CAMARA Commonalities (the API Design Guide and related artifacts) for use by API Sub Projects. CAMARA-governed.
 - **ICM deployment info**: information defined by an ICM version that applies to API deployments (including at API Provider/Consumer design time and at runtime) — auth flows, grant types, assertion format and lifetime, token processing, claim handling, and similar behaviors agreed between an API Provider and API Consumer. API-Provider-governed in their contractual relationship with API Consumers.
@@ -201,7 +201,7 @@ This means an ICM design info change typically also triggers a Commonalities upd
 
 ## 4. ICM versioning
 
-This guideline assumes ICM adopts strict SemVer versioning starting with its 1.0.0 release. 
+This document assumes that ICM adopts strict SemVer versioning starting with its 1.0.0 release. 
 
 A change in ICM version reflects all changes made for that version. These changes may concern either or both classes of ICM information that impact ICM-compatibility: ICM design info and ICM deployment info ([ICM-compatibility](#3-icm-compatibility)):
 
@@ -239,7 +239,7 @@ The table below summarizes the meaning of each state for the ICM version itself,
 | **Retired** | Terminal (end of life) | is no longer ICM-compatible; MUST upgrade to a Supported ICM version or be Retired at the API level | APIs are no longer ICM-compatible; APIs MUST have migrated to an ICM-compatible deployment with a Supported ICM version or MUST be retired |
 | **Revoked** | Terminal (exceptional end-of-life); explicitly replaced by an earlier or later ICM version due to defects or security issues and MUST NOT be used; governance names the replacement version | MUST re-establish ICM-compatibility with a Supported ICM version | MUST migrate to a Supported ICM version (not in maintenance) and to ICM-compatible API versions |
 
-Note: the "API version" and "API deployment" columns describe impacts (in CAMARA governance scope) on ICM-compatibility of API versions as declared in the ICM-compatibility matrix and on ICM-compatibility of API deployments. Use outside that scope is not governed by this guideline.
+Note: the "API version" and "API deployment" columns describe impacts (in CAMARA governance scope) on ICM-compatibility of API versions as declared in the ICM-compatibility matrix and on ICM-compatibility of API deployments. Use outside that scope is not governed by CAMARA.
 
 ### 5.2 ICM version lifecycle states - transitions
 
@@ -438,7 +438,7 @@ To achieve ICM-compatibility of their API deployment, API Providers MUST:
 
 This statement declares the API Provider's ICM-compatibility baseline.
 
-The mechanism by which an API Provider provides multiple major ICM versions concurrently is an implementation choice and is not prescribed by this guideline; what matters is that each implemented ICM version is clearly announced by the API Provider for use by API Consumers during the relevant migration period. However, it is expected that an API Provider will run minimally a previous and a later major ICM version in parallel to allow for timely API migration. If required, the TSC can decide to put a cap on the number of ICM versions active in parallel lateron.
+The mechanism by which an API Provider provides multiple major ICM versions concurrently is an implementation choice and is not prescribed by this document; what matters is that each implemented ICM version is clearly announced by the API Provider for use by API Consumers during the relevant migration period. However, it is expected that an API Provider will run minimally a previous and a later major ICM version in parallel to allow for timely API migration. If required, the TSC can decide to put a cap on the number of ICM versions active in parallel lateron.
 
 An API Provider cannot declare a newly deployed API version as ICM-compatible if their implementation provides only a Deprecated or Retired ICM version, even if the API version would technically work with the older ICM version.
 
@@ -462,7 +462,7 @@ This information could, for example, be put by API providers on their website or
 
 Successful API deployments requires the API Consumer to implement its side of the ICM deployment info — auth flows, grant types, assertion format and lifetime, token processing — consistently with the ICM version implemented by the API Provider it interacts with. 
 
-The API Consumer determines the applicable ICM version through Provider metadata or onboarding artifacts, not through the API version alone. API Consumers are not bound by this guideline directly.
+The API Consumer determines the applicable ICM version through Provider metadata or onboarding artifacts, not through the API version alone. API Consumers are not bound by this CAMARA guideline document directly.
 
 The API Consumer is responsible for ensuring that its own implementation matches both the announced ICM version and the API version.
 
@@ -581,7 +581,7 @@ an explicit annotation.
 
 ## 11. ICM 0.x handling
 
-This guideline's SemVer-based rules take effect starting with ICM version 1.0.0. For the pre-1.0.0 ICM versions, the one-time historical table below documents which ICM version 0.x.y introduced client-facing breaking changes:
+This document's SemVer-based rules take effect starting with ICM version 1.0.0. For the pre-1.0.0 ICM versions, the one-time historical table below documents which ICM version 0.x.y introduced client-facing breaking changes:
 
 | ICM transition | Client-facing forward break? | Source PRs |
 |---|---|---|
@@ -593,7 +593,7 @@ The lifecycle state for pre-1.0.0 ICM versions is assigned by governance also as
 
 ## 12. Open governance points for discussion/decision
 
-The below issues have been discussed with the TCM team for WG agreement before this guideline is adopted. For the agreed status updates please see the ICM team meeting minutes of July 29 [here](https://lf-camaraproject.atlassian.net/wiki/x/AwAIOw) and August 26 [here](https://lf-camaraproject.atlassian.net/wiki/x/CwCYPw).
+The below issues have been discussed with the TCM team for WG agreement. For the agreed outcomes please see the ICM team meeting minutes of July 29 [here](https://lf-camaraproject.atlassian.net/wiki/x/AwAIOw) and August 26 [here](https://lf-camaraproject.atlassian.net/wiki/x/CwCYPw).
 
 Since the ICM meeting of 2026-09-09, all issues have been covered as follows:
 
