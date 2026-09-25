@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-09-24T08:36:20Z'
-  last_checked: '2026-09-24T08:36:20Z'
+  last_updated: '2026-09-25T08:57:53Z'
+  last_checked: '2026-09-25T08:57:53Z'
   releases_master_updated: '2026-09-18T07:36:17.416Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -8,7 +8,7 @@ metadata:
   repos_new: 0
   repos_with_plan: 63
   repos_fully_onboarded: 46
-  repos_with_release_issue: 29
+  repos_with_release_issue: 32
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -981,13 +981,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/DeviceIdentifier/pull/216
       created_at: '2026-09-22T14:38:00Z'
-      assignees: []
-      review_decision: null
+      assignees:
+      - tanjadegroot
+      review_decision: APPROVED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 6
       rm_total: 6
     draft_release: null
     release_issue:
@@ -1392,7 +1393,7 @@ progress:
   target_release_tag: r1.2
   target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r4.3
+    commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: edge-application-management
@@ -1402,34 +1403,21 @@ progress:
     - JoseMConde
     - Seralogar
     - Kevsy
-  state: snapshot_active
+  state: planned
   artifacts:
-    snapshot_branch: release-snapshot/r1.2-a75200d
-    release_pr:
-      number: 84
-      state: open
-      url: https://github.com/camaraproject/EdgeApplicationManagement/pull/84
-      created_at: '2026-09-09T09:31:49Z'
-      assignees:
-      - eric-murray
-      review_decision: null
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 1
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
     release_issue:
       number: 39
       url: https://github.com/camaraproject/EdgeApplicationManagement/issues/39
       created_at: '2026-06-05T12:05:06Z'
     review_history:
-      discarded_count: 6
+      discarded_count: 7
       last_reviewers:
       - eric-murray
-      last_pr_url: https://github.com/camaraproject/EdgeApplicationManagement/pull/68
-      last_closed_at: '2026-08-11T11:20:54Z'
+      last_pr_url: https://github.com/camaraproject/EdgeApplicationManagement/pull/84
+      last_closed_at: '2026-09-24T10:24:28Z'
   published_context:
     latest_public_release: null
     newest_pre_release: r1.1
@@ -1454,8 +1442,6 @@ progress:
     apis:
     - api_name: edge-application-management
       api_version: 0.1.0-alpha.1
-  snapshot_api_versions:
-    edge-application-management: 0.1.0-rc.1
 - repository: EnergyFootprintNotification
   github_url: https://github.com/camaraproject/EnergyFootprintNotification
   release_track: meta-release
@@ -1796,25 +1782,28 @@ progress:
   github_url: https://github.com/camaraproject/KnowYourCustomerAgeVerification
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r2.1
+  target_release_tag: r2.2
   target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r4.3
+    commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: kyc-age-verification
-    target_api_version: 0.3.0
+    target_api_version: 1.0.0
     target_api_status: rc
     main_contacts:
     - ToshiWakayama-KDDI
     - fernandopradocabrillo
     - GillesInnov35
-  state: published
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 65
+      url: https://github.com/camaraproject/KnowYourCustomerAgeVerification/issues/65
+      created_at: '2026-09-24T11:39:06Z'
     review_history: null
   published_context:
     latest_public_release: r1.3
@@ -1840,8 +1829,6 @@ progress:
     apis:
     - api_name: kyc-age-verification
       api_version: 0.3.0-rc.1
-  snapshot_api_versions:
-    kyc-age-verification: 0.3.0-rc.1
 - repository: KnowYourCustomerFill-in
   github_url: https://github.com/camaraproject/KnowYourCustomerFill-in
   release_track: meta-release
@@ -1899,30 +1886,29 @@ progress:
   github_url: https://github.com/camaraproject/KnowYourCustomerMatch
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r2.1
+  target_release_tag: r2.2
   target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r4.3
+    commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: kyc-match
-    target_api_version: 0.5.0
+    target_api_version: 1.0.0
     target_api_status: rc
     main_contacts:
     - ToshiWakayama-KDDI
     - fernandopradocabrillo
     - GillesInnov35
-  state: published
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
-    review_history:
-      discarded_count: 1
-      last_reviewers: []
-      last_pr_url: https://github.com/camaraproject/KnowYourCustomerMatch/pull/82
-      last_closed_at: '2026-07-31T10:00:50Z'
+    release_issue:
+      number: 94
+      url: https://github.com/camaraproject/KnowYourCustomerMatch/issues/94
+      created_at: '2026-09-24T11:39:03Z'
+    review_history: null
   published_context:
     latest_public_release: r1.2
     newest_pre_release: r2.1
@@ -1947,8 +1933,6 @@ progress:
     apis:
     - api_name: kyc-match
       api_version: 0.5.0-rc.1
-  snapshot_api_versions:
-    kyc-match: 0.5.0-rc.1
 - repository: ModelAsAService
   github_url: https://github.com/camaraproject/ModelAsAService
   release_track: meta-release
@@ -2669,10 +2653,10 @@ progress:
   github_url: https://github.com/camaraproject/PredictiveConnectivityData
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r2.1
+  target_release_tag: r2.2
   target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r4.3
+    commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: predictive-connectivity-data
@@ -2681,12 +2665,15 @@ progress:
     main_contacts:
     - eric-murray
     - albertoramosmonagas
-  state: published
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 81
+      url: https://github.com/camaraproject/PredictiveConnectivityData/issues/81
+      created_at: '2026-09-24T09:45:27Z'
     review_history: null
   published_context:
     latest_public_release: r1.2
@@ -2712,8 +2699,6 @@ progress:
     apis:
     - api_name: predictive-connectivity-data
       api_version: 0.2.0-rc.1
-  snapshot_api_versions:
-    predictive-connectivity-data: 0.2.0-rc.1
 - repository: QoSBooking
   github_url: https://github.com/camaraproject/QoSBooking
   release_track: meta-release
@@ -3210,12 +3195,12 @@ progress:
       created_at: '2026-08-04T10:46:36Z'
       assignees:
       - eric-murray
-      review_decision: CHANGES_REQUESTED
-      codeowner_approved: false
+      review_decision: APPROVED
+      codeowner_approved: true
       codeowner_checked: 0
       codeowner_total: 3
       ready_for_review: false
-      rm_checked: 4
+      rm_checked: 5
       rm_total: 5
     draft_release: null
     release_issue:
@@ -3529,13 +3514,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/WebRTC/pull/228
       created_at: '2026-09-22T10:09:23Z'
-      assignees: []
+      assignees:
+      - tanjadegroot
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 3
       rm_total: 6
     draft_release: null
     release_issue:
