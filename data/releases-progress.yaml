@@ -1,14 +1,14 @@
 metadata:
-  last_updated: '2026-09-26T08:44:04Z'
-  last_checked: '2026-09-26T08:44:04Z'
-  releases_master_updated: '2026-09-18T07:36:17.416Z'
+  last_updated: '2026-09-27T09:24:33Z'
+  last_checked: '2026-09-27T09:24:33Z'
+  releases_master_updated: '2026-09-26T07:59:21.853Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
   repos_scanned: 63
   repos_new: 0
   repos_with_plan: 63
   repos_fully_onboarded: 46
-  repos_with_release_issue: 30
+  repos_with_release_issue: 29
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -33,7 +33,7 @@ meta_releases:
 - name: Sync26
   total_apis: 59
   m1_achieved: 8
-  m3_achieved: 47
+  m3_achieved: 50
   m4_achieved: 0
 progress:
 - repository: ApplicationEndpointDiscovery
@@ -982,7 +982,7 @@ progress:
     review_history: null
   published_context:
     latest_public_release: r2.2
-    newest_pre_release: r3.2
+    newest_pre_release: r3.3
   cycle_releases:
     m1:
       release_tag: r3.1
@@ -1001,18 +1001,13 @@ progress:
       release_date: null
       apis: []
   last_published:
-    release_tag: r3.2
-    release_date: '2026-09-01T16:11:38Z'
+    release_tag: r3.3
+    release_date: '2026-09-25T13:20:11Z'
     apis:
     - api_name: device-identifier
-      api_version: 0.4.0-rc.1
+      api_version: 0.4.0-rc.2
   snapshot_api_versions:
     device-identifier: 0.4.0-rc.2
-  warnings:
-  - code: W003
-    message: Release r3.3 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: DeviceLocation
   github_url: https://github.com/camaraproject/DeviceLocation
   release_track: meta-release
@@ -1293,13 +1288,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/DeviceSwap/pull/123
       created_at: '2026-09-23T13:30:36Z'
-      assignees: []
-      review_decision: null
+      assignees:
+      - hdamker
+      review_decision: COMMENTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 5
       rm_total: 6
     draft_release: null
     release_issue:
@@ -1308,7 +1304,8 @@ progress:
       created_at: '2026-09-17T08:51:41Z'
     review_history:
       discarded_count: 1
-      last_reviewers: []
+      last_reviewers:
+      - hdamker
       last_pr_url: https://github.com/camaraproject/DeviceSwap/pull/120
       last_closed_at: '2026-09-18T11:59:26Z'
   published_context:
@@ -2396,28 +2393,12 @@ progress:
     - bigludo7
     - fernandopradocabrillo
     - AxelNennker
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r4.1-baeb5e4
-    release_pr:
-      number: 262
-      state: open
-      url: https://github.com/camaraproject/NumberVerification/pull/262
-      created_at: '2026-09-21T15:46:08Z'
-      assignees:
-      - tanjadegroot
-      review_decision: APPROVED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 6
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 236
-      url: https://github.com/camaraproject/NumberVerification/issues/236
-      created_at: '2026-06-16T14:25:50Z'
+    release_issue: null
     review_history:
       discarded_count: 4
       last_reviewers:
@@ -2442,6 +2423,11 @@ progress:
       apis: []
   snapshot_api_versions:
     number-verification: 2.1.1-rc.2
+  warnings:
+  - code: W003
+    message: Release r4.1 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: OptimalEdgeDiscovery
   github_url: https://github.com/camaraproject/OptimalEdgeDiscovery
   release_track: meta-release
@@ -2514,34 +2500,21 @@ progress:
     main_contacts:
     - bigludo7
     - fernandopradocabrillo
-  state: snapshot_active
+  state: planned
   artifacts:
-    snapshot_branch: release-snapshot/r4.2-f9dd76c
-    release_pr:
-      number: 164
-      state: open
-      url: https://github.com/camaraproject/OTPValidation/pull/164
-      created_at: '2026-09-21T15:02:50Z'
-      assignees:
-      - hdamker
-      review_decision: CHANGES_REQUESTED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 5
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
     release_issue:
       number: 156
       url: https://github.com/camaraproject/OTPValidation/issues/156
       created_at: '2026-09-17T10:06:21Z'
     review_history:
-      discarded_count: 1
+      discarded_count: 2
       last_reviewers:
       - hdamker
-      last_pr_url: https://github.com/camaraproject/OTPValidation/pull/160
-      last_closed_at: '2026-09-21T14:57:35Z'
+      last_pr_url: https://github.com/camaraproject/OTPValidation/pull/164
+      last_closed_at: '2026-09-26T15:49:08Z'
   published_context:
     latest_public_release: r3.2
     newest_pre_release: r4.1
@@ -2566,8 +2539,6 @@ progress:
     apis:
     - api_name: one-time-password-sms
       api_version: 2.0.0-rc.1
-  snapshot_api_versions:
-    one-time-password-sms: 2.0.0-rc.2
 - repository: PopulationDensityData
   github_url: https://github.com/camaraproject/PopulationDensityData
   release_track: meta-release
@@ -2977,13 +2948,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/SessionInsights/pull/122
       created_at: '2026-09-25T16:26:55Z'
-      assignees: []
-      review_decision: null
-      codeowner_approved: false
+      assignees:
+      - hdamker
+      review_decision: APPROVED
+      codeowner_approved: true
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 6
       rm_total: 6
     draft_release: null
     release_issue:
@@ -3523,29 +3495,40 @@ progress:
       last_closed_at: '2026-09-08T10:43:09Z'
   published_context:
     latest_public_release: r2.2
-    newest_pre_release: null
+    newest_pre_release: r3.1
   cycle_releases:
     m1:
       release_tag: null
       release_date: null
       apis: []
     m3:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r3.1
+      release_date: '2026-09-25T10:57:02Z'
+      apis:
+      - api_name: webrtc-call-handling
+        api_version: 0.4.0-rc.1
+      - api_name: webrtc-events-subscriptions
+        api_version: 0.3.0-rc.1
+      - api_name: webrtc-registration
+        api_version: 0.4.0-rc.1
     m4:
       release_tag: null
       release_date: null
       apis: []
+  last_published:
+    release_tag: r3.1
+    release_date: '2026-09-25T10:57:02Z'
+    apis:
+    - api_name: webrtc-call-handling
+      api_version: 0.4.0-rc.1
+    - api_name: webrtc-events-subscriptions
+      api_version: 0.3.0-rc.1
+    - api_name: webrtc-registration
+      api_version: 0.4.0-rc.1
   snapshot_api_versions:
     webrtc-call-handling: 0.4.0-rc.1
     webrtc-events-subscriptions: 0.3.0-rc.1
     webrtc-registration: 0.4.0-rc.1
-  warnings:
-  - code: W003
-    message: Release r3.1 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: ApplicationEndpointDiscovery
   github_url: https://github.com/camaraproject/ApplicationEndpointDiscovery
   release_track: meta-release
