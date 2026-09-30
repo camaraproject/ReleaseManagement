@@ -1,14 +1,14 @@
 metadata:
-  last_updated: '2026-09-28T09:59:51Z'
-  last_checked: '2026-09-28T09:59:51Z'
-  releases_master_updated: '2026-09-27T08:32:11.865Z'
+  last_updated: '2026-09-30T09:51:37Z'
+  last_checked: '2026-09-30T09:51:37Z'
+  releases_master_updated: '2026-09-28T08:56:26.515Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
   repos_scanned: 63
   repos_new: 0
   repos_with_plan: 63
   repos_fully_onboarded: 46
-  repos_with_release_issue: 28
+  repos_with_release_issue: 31
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -33,7 +33,7 @@ meta_releases:
 - name: Sync26
   total_apis: 59
   m1_achieved: 8
-  m3_achieved: 51
+  m3_achieved: 52
   m4_achieved: 0
 progress:
 - repository: ApplicationEndpointDiscovery
@@ -272,10 +272,10 @@ progress:
   github_url: https://github.com/camaraproject/CallForwardingSignal
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r4.1
+  target_release_tag: r4.2
   target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r4.3
+    commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: call-forwarding-signal
@@ -285,18 +285,16 @@ progress:
     - FabrizioMoggio
     - bigludo7
     - chinaunicomyangfan
-  state: published
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
-    review_history:
-      discarded_count: 1
-      last_reviewers:
-      - eric-murray
-      last_pr_url: https://github.com/camaraproject/CallForwardingSignal/pull/231
-      last_closed_at: '2026-09-16T10:54:48Z'
+    release_issue:
+      number: 241
+      url: https://github.com/camaraproject/CallForwardingSignal/issues/241
+      created_at: '2026-09-29T10:07:39Z'
+    review_history: null
   published_context:
     latest_public_release: r3.3
     newest_pre_release: r4.1
@@ -321,8 +319,6 @@ progress:
     apis:
     - api_name: call-forwarding-signal
       api_version: 0.5.0-rc.1
-  snapshot_api_versions:
-    call-forwarding-signal: 0.5.0-rc.1
 - repository: CapabilitiesAndRuntimeRestrictions
   github_url: https://github.com/camaraproject/CapabilitiesAndRuntimeRestrictions
   release_track: independent
@@ -1295,7 +1291,7 @@ progress:
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 5
+      rm_checked: 6
       rm_total: 6
     draft_release: null
     release_issue:
@@ -1507,10 +1503,22 @@ progress:
     main_contacts:
     - SentianSun
     - ChinaUnicomXiaoDongrui
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r1.1-d0ed2c0
+    release_pr:
+      number: 41
+      state: open
+      url: https://github.com/camaraproject/eSimRemoteManagement/pull/41
+      created_at: '2026-09-30T03:50:35Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 20
@@ -1537,6 +1545,8 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    esim-remote-management: 0.1.0-alpha.1
 - repository: HighThroughputElasticNetworks
   github_url: https://github.com/camaraproject/HighThroughputElasticNetworks
   release_track: independent
@@ -1740,13 +1750,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/IoTSIMFraudPrevention/pull/78
       created_at: '2026-09-23T06:21:51Z'
-      assignees: []
+      assignees:
+      - eric-murray
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 6
     draft_release: null
     release_issue:
@@ -1833,10 +1844,10 @@ progress:
   github_url: https://github.com/camaraproject/KnowYourCustomerFill-in
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r2.1
+  target_release_tag: r2.2
   target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r4.3
+    commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: kyc-fill-in
@@ -1845,17 +1856,16 @@ progress:
     main_contacts:
     - ToshiWakayama-KDDI
     - GillesInnov35
-  state: published
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
-    review_history:
-      discarded_count: 1
-      last_reviewers: []
-      last_pr_url: https://github.com/camaraproject/KnowYourCustomerFill-in/pull/58
-      last_closed_at: '2026-07-31T14:21:15Z'
+    release_issue:
+      number: 68
+      url: https://github.com/camaraproject/KnowYourCustomerFill-in/issues/68
+      created_at: '2026-09-28T12:36:28Z'
+    review_history: null
   published_context:
     latest_public_release: r1.3
     newest_pre_release: r2.1
@@ -1880,8 +1890,6 @@ progress:
     apis:
     - api_name: kyc-fill-in
       api_version: 0.5.0-rc.1
-  snapshot_api_versions:
-    kyc-fill-in: 0.5.0-rc.1
 - repository: KnowYourCustomerMatch
   github_url: https://github.com/camaraproject/KnowYourCustomerMatch
   release_track: meta-release
@@ -2581,13 +2589,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/PopulationDensityData/pull/150
       created_at: '2026-09-23T11:11:45Z'
-      assignees: []
+      assignees:
+      - tanjadegroot
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 4
       rm_total: 6
     draft_release: null
     release_issue:
@@ -2694,10 +2703,10 @@ progress:
   github_url: https://github.com/camaraproject/QoSBooking
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r2.1
+  target_release_tag: r2.2
   target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r4.3
+    commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: qos-booking-and-assignment
@@ -2712,18 +2721,16 @@ progress:
     main_contacts:
     - Masa8106
     - jlurien
-  state: published
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
-    review_history:
-      discarded_count: 1
-      last_reviewers:
-      - tanjadegroot
-      last_pr_url: https://github.com/camaraproject/QoSBooking/pull/109
-      last_closed_at: '2026-08-12T06:17:12Z'
+    release_issue:
+      number: 150
+      url: https://github.com/camaraproject/QoSBooking/issues/150
+      created_at: '2026-09-29T10:36:43Z'
+    review_history: null
   published_context:
     latest_public_release: r1.2
     newest_pre_release: r2.1
@@ -2752,9 +2759,6 @@ progress:
       api_version: 0.2.0-rc.1
     - api_name: qos-booking
       api_version: 0.2.0-rc.1
-  snapshot_api_versions:
-    qos-booking-and-assignment: 0.2.0-rc.1
-    qos-booking: 0.2.0-rc.1
 - repository: QoSProfiles
   github_url: https://github.com/camaraproject/QoSProfiles
   release_track: meta-release
@@ -3105,9 +3109,9 @@ progress:
       assignees: []
       review_decision: null
       codeowner_approved: false
-      codeowner_checked: 0
+      codeowner_checked: 3
       codeowner_total: 3
-      ready_for_review: false
+      ready_for_review: true
       rm_checked: 0
       rm_total: 6
     draft_release: null
@@ -3204,27 +3208,30 @@ progress:
     review_history: null
   published_context:
     latest_public_release: r1.2
-    newest_pre_release: null
+    newest_pre_release: r2.1
   cycle_releases:
     m1:
       release_tag: null
       release_date: null
       apis: []
     m3:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r2.1
+      release_date: '2026-09-28T08:08:39Z'
+      apis:
+      - api_name: subscription-status
+        api_version: 0.2.0-rc.1
     m4:
       release_tag: null
       release_date: null
       apis: []
+  last_published:
+    release_tag: r2.1
+    release_date: '2026-09-28T08:08:39Z'
+    apis:
+    - api_name: subscription-status
+      api_version: 0.2.0-rc.1
   snapshot_api_versions:
     subscription-status: 0.2.0-rc.1
-  warnings:
-  - code: W003
-    message: Release r2.1 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: Tenure
   github_url: https://github.com/camaraproject/Tenure
   release_track: meta-release
