@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-09-30T09:51:37Z'
-  last_checked: '2026-09-30T09:51:37Z'
+  last_updated: '2026-10-01T10:19:19Z'
+  last_checked: '2026-10-01T10:19:19Z'
   releases_master_updated: '2026-09-28T08:56:26.515Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -1286,8 +1286,8 @@ progress:
       created_at: '2026-09-23T13:30:36Z'
       assignees:
       - hdamker
-      review_decision: COMMENTED
-      codeowner_approved: false
+      review_decision: APPROVED
+      codeowner_approved: true
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
@@ -1752,12 +1752,12 @@ progress:
       created_at: '2026-09-23T06:21:51Z'
       assignees:
       - eric-murray
-      review_decision: null
+      review_decision: CHANGES_REQUESTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 4
       rm_total: 6
     draft_release: null
     release_issue:
@@ -2596,7 +2596,7 @@ progress:
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 4
+      rm_checked: 5
       rm_total: 6
     draft_release: null
     release_issue:
