@@ -479,8 +479,8 @@ New ICM versions may be introduced outside Signal meta-releases (out-of-cycle) i
 ICM releases are done at Signal meta-release (first half of each year); API releases primarily at Sync meta-release (second half of each year). This cadence provides lead time as follows:
 
 1. **Signal Year N**: ICM version published with updated ICM version lifecycle state table. API Sub Projects plan a new API version as needed for Sync Year N. API Providers plan to move their ICM implementation to the newer ICM version.
-2. **Signal → Sync (~6 months)**: API Providers move their ICM implementation forward; API Sub Projects produce new API versions.
-3. **Sync Year N**: new API versions are released, declaring in their `x-camara-min-icm` the newly Supported ICM version if the API version uses new features that the ICM version introduces.
+2. **Signal → Sync (~6 months)**: API Sub Projects MAY develop new API versions based on Signal Year N as needed.
+3. **Sync Year N**: new API versions are released, declaring in their `x-camara-min-icm` the newly Supported ICM version if the API version uses the updates that the new ICM version introduces.
 
 ### 8.2 Out-of-cycle ICM releases
 
