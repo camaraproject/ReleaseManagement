@@ -171,12 +171,12 @@ At any Signal meta-release, either a new **major** ICM version, or an (additive)
 
 | Meta-release | Event | API designer | API Provider | API Consumer |
 |---|---|---|---|---|
-| **Signal N** (major ICM version case) | A new **major** ICM version `vX+1.0.0` is released in **Supported** state | Assess ICM-compatibility of APIs with this new ICM version: record cross-major ICM compatibility or plan new API version with ICM vX+1.0.0 if the API is not ICM-compatible | Assess, plan, and announce deployment of ICM `vX+1.0.0` | — |
-| | Any previous **Supported** ICM version with lower major ICM version number (<= X) enters its maintenance phase, while remaining in Supported state | Develop upgrade of APIs that were assessed to be not cross-major ICM-compatible | Deploy the new ICM version latest by the end of the current running ICM version's Supported maintenance window, and announce migration or retirement of impacted APIs to API Consumers | — |
+| **Signal N** (major ICM version case) | A new **major** ICM version `vX+1.0.0` is released in **Supported** state | Assess ICM-compatibility of APIs with this new ICM version: record cross-major ICM compatibility or plan new API version with ICM vX+1.0.0 if the API is not ICM-compatible | Assess, plan, and announce deployment of ICM `vX+1.0.0` | Plan usage of ICM vX+1.0.0 if announced by API Provider |
+| | Any previous **Supported** ICM version with lower major ICM version number (<= X) enters its maintenance phase, while remaining in Supported state | Develop upgrade of APIs that were assessed to be not cross-major ICM-compatible | Deploy the new ICM version latest by the end of the current running ICM version's Supported maintenance window, and announce migration or retirement of impacted APIs | Plan migration or retirement of impacted APIs as announced by API Provider |
 | | Any previous ICM version enters **Deprecated** state if its Supported maintenance window has expired | — | After ensuring the new Supported ICM version is available, migrate APIs dependent on the Deprecated ICM version to a new API version depending on the new Supported ICM version and plan to retire non-migrated APIs | Migrate API clients that depend on this Deprecated ICM version to an API client version that depends on the new Supported ICM version or plan to retire the API client |
 | | Any previous ICM version enters **Retired** state if its Deprecated maintenance window has expired | — | Retire all non-migrated APIs that depend on this Retired ICM version | Retire all non-migrated API clients that depend on this Retired ICM version |
-| (minor ICM version case) | A new **minor** ICM version `vX.Y.0` is released in **Supported** state | Use this ICM version in any new API requiring the additive ICM functionality; keep x-camara-min-icm as is in already released API versions | — | — |
-| (patch ICM version case) | A new **patch** ICM version `vX.Y.Z+1` is released in **Supported** state | Use this ICM version in any new API version; keep x-camara-min-icm as is in already released API versions | — | — |
+| (minor ICM version case) | A new **minor** ICM version `vX.Y.0` is released in **Supported** state | Use this ICM version in any new API requiring the additive ICM functionality; keep x-camara-min-icm as is in already released API versions | If new features will be used, assess, plan, and announce deployment of ICM `vX.Y.0` | Plan usage of ICM `vX.Y.0` if announced by API Provider |
+| (patch ICM version case) | A new **patch** ICM version `vX.Y.Z+1` is released in **Supported** state | Use this ICM version in any new API version; keep x-camara-min-icm as is in already released API versions | If patch will be used, assess, plan, and announce deployment of ICM `vX.Y.Z+1` | Plan usage of ICM `vX.Y.Z+1` if announced by API Provider |
 | **Sync N** | New API version release | Release against Signal N per the API release rules below\* | Plan deployment of Sync N APIs based on the Signal N released ICM version | Plan deployment of Sync N API clients based on the Signal N released ICM version |
  
 \***API release rules at Sync N:**
@@ -185,7 +185,7 @@ At any Signal meta-release, either a new **major** ICM version, or an (additive)
 - A **major** update of a stable API **MUST** release against Signal N.
 - A **minor or patch** update of a stable API **MAY** skip Signal N, but no more than two consecutive Signal releases may be skipped (whether on the independent or Sync track).
 
-The ICM version lifecycle transitions are relevant to API designers, API Providers and API Consumers to organize their planning. The above table provides the complete set of actions that occur in every Signal/Sync meta-release cycle.
+The ICM version lifecycle transitions are relevant to API designers, API Providers and API Consumers to organize their deployment evolution to remain ICM-compatible. The above table provides the complete set of actions that occur in every Signal/Sync meta-release cycle.
 
 A multi-year ICM version evolution example is given in [section 8.3](#83-example-of-icm-lifecycle-state-evolution-and-api-deployment-across-meta-releases).
 
