@@ -500,7 +500,7 @@ This section illustrates a typical scenario starting from Signal27, based on the
 | Q2 2030 | **Signal30 ICM v3.1.0 Release** | start of Deprecated maintenance window; end of upgrade window | Start of migration |
 | Q2 2031 | **Signal31 ICM v3.2.0 Release** | Retirement | End of migration / retirement |
 
-In this scenario, the Sync27 APIs launched in production in Q2 2028 are no longer ICM-compatible starting Q2 2031. This means the APIs' actual deployment lifespan is minimally 3 years. It can be longer if no majot ICM version is released at every Signal meta-release cycle.
+In this scenario the next major ICM version follows at the very next Signal, the earliest the regular cadence allows. Sync27 APIs deployed in Q2 2028 stay ICM-compatible until Q2 2031: two years of normal operation, then the Deprecated window, by whose start the replacement needs to be deployed so that API Consumers can migrate. Every Signal release without a new major ICM version pushes these dates out.
 
 At the Sync27 ICM retirement date (Q2 2031), the API Provider MUST have replaced Sync27 APIs. Possible replacements for Sync27 APIs are:
 - Sync28 APIs, but Sync29 and Sync30 APIs are already released, so Sync28 is already "old" and not recommended.
