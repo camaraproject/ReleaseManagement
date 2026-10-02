@@ -497,7 +497,6 @@ This section illustrates a typical scenario starting from Signal27, based on the
 | Q2 2027 | **Signal27 ICM v1.0.0 Release** | Supported; Start of implementation |---|
 | Q4 2027 | **Sync27 API Release** | Supported ; (earliest) deployment | Start of implementation |
 | Q2 2028 | **Signal28 ICM v2.0.0 Release** | Start of Supported maintenance window | Start of deployment |
-| Q2 2029 | **Signal29 ICM v3.0.0 Release** | Supported maintenance window | Deployment |
 | Q2 2030 | **Signal30 ICM v3.1.0 Release** | start of Deprecated maintenance window; end of upgrade window | Start of migration |
 | Q2 2031 | **Signal31 ICM v3.2.0 Release** | Retirement | End of migration / retirement |
 
