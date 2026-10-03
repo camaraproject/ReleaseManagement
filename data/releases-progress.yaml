@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-10-02T09:56:14Z'
-  last_checked: '2026-10-02T09:56:14Z'
+  last_updated: '2026-10-03T09:18:12Z'
+  last_checked: '2026-10-03T09:18:12Z'
   releases_master_updated: '2026-09-28T08:56:26.515Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -8,7 +8,7 @@ metadata:
   repos_new: 0
   repos_with_plan: 63
   repos_fully_onboarded: 46
-  repos_with_release_issue: 31
+  repos_with_release_issue: 32
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -957,24 +957,27 @@ progress:
   github_url: https://github.com/camaraproject/DeviceIdentifier
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r3.3
-  target_release_type: pre-release-rc
+  target_release_tag: r3.4
+  target_release_type: public-release
   dependencies:
     commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: device-identifier
     target_api_version: 0.4.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - eric-murray
     - Kevsy
-  state: published
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 224
+      url: https://github.com/camaraproject/DeviceIdentifier/issues/224
+      created_at: '2026-10-02T15:14:22Z'
     review_history: null
   published_context:
     latest_public_release: r2.2
@@ -1002,8 +1005,6 @@ progress:
     apis:
     - api_name: device-identifier
       api_version: 0.4.0-rc.2
-  snapshot_api_versions:
-    device-identifier: 0.4.0-rc.2
 - repository: DeviceLocation
   github_url: https://github.com/camaraproject/DeviceLocation
   release_track: meta-release
@@ -2524,12 +2525,12 @@ progress:
       created_at: '2026-10-01T16:50:26Z'
       assignees:
       - hdamker
-      review_decision: null
+      review_decision: COMMENTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 6
       rm_total: 6
     draft_release: null
     release_issue:
@@ -2663,13 +2664,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/PredictiveConnectivityData/pull/82
       created_at: '2026-09-28T07:45:37Z'
-      assignees: []
+      assignees:
+      - tanjadegroot
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 6
       rm_total: 6
     draft_release: null
     release_issue:
