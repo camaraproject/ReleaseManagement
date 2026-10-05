@@ -233,8 +233,8 @@ The table below summarizes the meaning of each state for the ICM version itself,
 
 | State | ICM version | API version | API deployment |
 |---|---|---|---|
-| **Supported** | Not in maintenance | New API versions MUST use a Supported ICM version that is not in maintenance | Deployed API versions MAY operate against this ICM version |
-|               | In maintenance | New API versions MUST NOT use this ICM version | MAY continue to operate against the ICM version (as long as Supported); MUST deploy a Supported ICM version that is not in maintenance |
+| **Supported** | Not in maintenance | New API versions MUST use a Supported ICM version (MAY be in maintenance or not) | Deployed API versions MAY operate against this ICM version |
+|               | In maintenance | New API versions MUST use a Supported ICM version (MAY be in maintenance or not) | MAY continue to operate against the ICM version (as long as Supported); MUST deploy a Supported ICM version that is not in maintenance |
 | **Deprecated** | Sunset announced (planned end of life) | New API versions MUST NOT use this ICM version | Deployed APIs MUST migrate to a Supported ICM version |
 | **Retired** | Terminal (end of life) | API version is no longer ICM-compatible; MUST upgrade to a Supported ICM version or be Retired at the API level | APIs are no longer ICM-compatible; APIs MUST have migrated to an ICM-compatible deployment with a Supported ICM version or MUST be retired |
 | **Revoked** | Terminal (exceptional end-of-life); explicitly replaced by an earlier or later ICM version due to defects or security issues and MUST NOT be used; governance names the replacement version | MUST re-establish ICM-compatibility with a Supported ICM version | MUST migrate to a Supported ICM version (not in maintenance) and to ICM-compatible API versions |
@@ -265,7 +265,7 @@ At the end of the maintenance phase (i.e. after the 2 subsequent maintenance win
 The **Revoked** state is entered through an exceptional transition decided by governance outside the planned sequence and requires an explicit replacement version to be identified.
 
 Governance MAY transition specific Supported ICM versions to Deprecated, Retired, or Revoked state when they should no longer be used. 
-- For example, when known ambiguities or defects are resolved in a later minor ICM version, or when a critical defect requires replacing a specific ICM version. Such per-version transitions do not impact ICM-compatibility of API versions or API deployments.
+- For example, when known ambiguities or defects are resolved in a later minor ICM version, or when a critical defect requires replacing a specific ICM version. Such per-version transitions impact ICM-compatibility of API versions or API deployments according to the target lifecycle state.
 
 Note: the term "Retired" aligns with the API lifecycle terminology, so that ICM and API lifecycles use the same vocabulary for the terminal state.
 
@@ -502,7 +502,7 @@ In this scenario the next major ICM version follows at the very next Signal, the
 At the retirement date of the Signal27 ICM version (Q2 2031), the API Provider MUST have replaced Sync27 APIs. Possible replacements for Sync27 APIs are:
 - Sync28 APIs, but Sync29 and Sync30 APIs are already released, so Sync28 is already "old" and not recommended.
 - Sync29 APIs are the recommended target for the Sync27 API migration, as ample time to deploy Signal29 ICM and Sync29 APIs is available before Signal27 Retirement (Q2 2031), and early implementers will have tested (and possibly patched) them.
-- Sync30 APIs will have been out for about 6 months and could be introduced by early adopters (e.g. to playgrounds) with some risk of patch releases. They may be viable candidates for the migration only if the Signal30 ICM version was previously deployed as well (before Signal27 Deprecation by Q2 2030). However, in general, skipping 2 ICM and API releases is not recommended.
+- Sync30 APIs will have been out for about 6 months and could be introduced by early adopters (e.g. to playgrounds) with some risk of patch releases. They may be viable candidates for the migration only if the Signal30 ICM version was deployed beforehand. However, in general, skipping 2 ICM and API releases is not recommended.
 
 ## 9. ICM-compatibility matrix
 
