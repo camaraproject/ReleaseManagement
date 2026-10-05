@@ -197,7 +197,7 @@ ICM design info changes do not reach API definitions directly. The path is:
 2. Commonalities updates the API Design Guide (and other relevant artifacts) to mandate the new design info for API definitions.
 3. API Sub Projects update their API versions to align with the new Commonalities API Design Guide.
 
-This means an ICM design info change typically also triggers a Commonalities update. How tightly ICM and Commonalities lifecycles must be coupled is an open item (see [Open governance points for discussion/decision](#12-open-governance-points-for-discussiondecision)).
+This means an ICM design info change typically also triggers a Commonalities update.
 
 ## 4. ICM versioning
 
