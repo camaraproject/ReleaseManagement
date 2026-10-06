@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-10-05T10:40:44Z'
-  last_checked: '2026-10-05T10:40:44Z'
+  last_updated: '2026-10-06T10:24:51Z'
+  last_checked: '2026-10-06T10:24:51Z'
   releases_master_updated: '2026-09-28T08:56:26.515Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -8,7 +8,7 @@ metadata:
   repos_new: 0
   repos_with_plan: 63
   repos_fully_onboarded: 46
-  repos_with_release_issue: 34
+  repos_with_release_issue: 33
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -1260,36 +1260,33 @@ progress:
   github_url: https://github.com/camaraproject/DeviceSwap
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r4.2
-  target_release_type: pre-release-rc
+  target_release_tag: r4.3
+  target_release_type: public-release
   dependencies:
     commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: device-swap
     target_api_version: 1.1.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - bigludo7
     - krishvenkatachalam
     - jgarciahospital
-  state: draft_ready
+  state: planned
   artifacts:
-    snapshot_branch: release-snapshot/r4.2-836543d
+    snapshot_branch: null
     release_pr: null
-    draft_release:
-      name: r4.2
-      url: https://github.com/camaraproject/DeviceSwap/releases/tag/untagged-d6274258b06a5cf7e5c7
+    draft_release: null
     release_issue:
-      number: 118
-      url: https://github.com/camaraproject/DeviceSwap/issues/118
-      created_at: '2026-09-17T08:51:41Z'
+      number: 127
+      url: https://github.com/camaraproject/DeviceSwap/issues/127
+      created_at: '2026-10-06T08:10:14Z'
     review_history:
       discarded_count: 1
-      last_reviewers:
-      - hdamker
-      last_pr_url: https://github.com/camaraproject/DeviceSwap/pull/120
-      last_closed_at: '2026-09-18T11:59:26Z'
+      last_reviewers: []
+      last_pr_url: https://github.com/camaraproject/DeviceSwap/pull/128
+      last_closed_at: '2026-10-06T10:16:26Z'
   published_context:
     latest_public_release: r3.2
     newest_pre_release: r4.1
@@ -1314,8 +1311,6 @@ progress:
     apis:
     - api_name: device-swap
       api_version: 1.1.0-rc.2
-  snapshot_api_versions:
-    device-swap: 1.1.0-rc.3
 - repository: DeviceVisitLocation
   github_url: https://github.com/camaraproject/DeviceVisitLocation
   release_track: independent
@@ -2511,28 +2506,12 @@ progress:
     main_contacts:
     - bigludo7
     - fernandopradocabrillo
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r4.2-da68f85
-    release_pr:
-      number: 167
-      state: open
-      url: https://github.com/camaraproject/OTPValidation/pull/167
-      created_at: '2026-10-01T16:50:26Z'
-      assignees:
-      - hdamker
-      review_decision: APPROVED
-      codeowner_approved: true
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 6
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 156
-      url: https://github.com/camaraproject/OTPValidation/issues/156
-      created_at: '2026-09-17T10:06:21Z'
+    release_issue: null
     review_history:
       discarded_count: 2
       last_reviewers:
@@ -2565,6 +2544,11 @@ progress:
       api_version: 2.0.0-rc.1
   snapshot_api_versions:
     one-time-password-sms: 2.0.0-rc.2
+  warnings:
+  - code: W003
+    message: Release r4.2 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: PopulationDensityData
   github_url: https://github.com/camaraproject/PopulationDensityData
   release_track: meta-release
@@ -3081,10 +3065,10 @@ progress:
   github_url: https://github.com/camaraproject/SimSwap
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r4.1
+  target_release_tag: r4.2
   target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r4.3
+    commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: sim-swap-subscriptions
@@ -3101,34 +3085,20 @@ progress:
     - bigludo7
     - fernandopradocabrillo
     - maxl2287
-  state: snapshot_active
+  state: planned
   artifacts:
-    snapshot_branch: release-snapshot/r4.1-7b7e46e
-    release_pr:
-      number: 293
-      state: open
-      url: https://github.com/camaraproject/SimSwap/pull/293
-      created_at: '2026-09-28T09:01:11Z'
-      assignees:
-      - hdamker
-      review_decision: COMMENTED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 3
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
     release_issue:
-      number: 270
-      url: https://github.com/camaraproject/SimSwap/issues/270
-      created_at: '2026-06-09T15:40:50Z'
+      number: 302
+      url: https://github.com/camaraproject/SimSwap/issues/302
+      created_at: '2026-10-06T08:17:13Z'
     review_history:
       discarded_count: 1
-      last_reviewers:
-      - hdamker
-      last_pr_url: https://github.com/camaraproject/SimSwap/pull/283
-      last_closed_at: '2026-09-28T08:56:36Z'
+      last_reviewers: []
+      last_pr_url: https://github.com/camaraproject/SimSwap/pull/304
+      last_closed_at: '2026-10-06T09:14:01Z'
   published_context:
     latest_public_release: r3.3
     newest_pre_release: null
@@ -3145,9 +3115,6 @@ progress:
       release_tag: null
       release_date: null
       apis: []
-  snapshot_api_versions:
-    sim-swap-subscriptions: 0.4.0-rc.1
-    sim-swap: 2.2.0-rc.3
 - repository: SponsoredData
   github_url: https://github.com/camaraproject/SponsoredData
   release_track: independent
