@@ -1,7 +1,7 @@
 metadata:
-  last_updated: '2026-10-06T10:24:51Z'
-  last_checked: '2026-10-06T10:24:51Z'
-  releases_master_updated: '2026-09-28T08:56:26.515Z'
+  last_updated: '2026-10-07T10:26:15Z'
+  last_checked: '2026-10-07T10:26:15Z'
+  releases_master_updated: '2026-10-06T09:22:38.617Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
   repos_scanned: 63
@@ -33,7 +33,7 @@ meta_releases:
 - name: Sync26
   total_apis: 59
   m1_achieved: 8
-  m3_achieved: 52
+  m3_achieved: 54
   m4_achieved: 0
 progress:
 - repository: ApplicationEndpointDiscovery
@@ -1273,10 +1273,22 @@ progress:
     - bigludo7
     - krishvenkatachalam
     - jgarciahospital
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r4.3-154ead5
+    release_pr:
+      number: 131
+      state: open
+      url: https://github.com/camaraproject/DeviceSwap/pull/131
+      created_at: '2026-10-06T11:34:15Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 0
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 127
@@ -1289,7 +1301,7 @@ progress:
       last_closed_at: '2026-10-06T10:16:26Z'
   published_context:
     latest_public_release: r3.2
-    newest_pre_release: r4.1
+    newest_pre_release: r4.2
   cycle_releases:
     m1:
       release_tag: null
@@ -1306,11 +1318,13 @@ progress:
       release_date: null
       apis: []
   last_published:
-    release_tag: r4.1
-    release_date: '2026-09-17T08:26:11Z'
+    release_tag: r4.2
+    release_date: '2026-10-05T12:04:57Z'
     apis:
     - api_name: device-swap
-      api_version: 1.1.0-rc.2
+      api_version: 1.1.0-rc.3
+  snapshot_api_versions:
+    device-swap: 1.1.0
 - repository: DeviceVisitLocation
   github_url: https://github.com/camaraproject/DeviceVisitLocation
   release_track: independent
@@ -2520,7 +2534,7 @@ progress:
       last_closed_at: '2026-09-26T15:49:08Z'
   published_context:
     latest_public_release: r3.2
-    newest_pre_release: r4.1
+    newest_pre_release: r4.2
   cycle_releases:
     m1:
       release_tag: null
@@ -2537,18 +2551,13 @@ progress:
       release_date: null
       apis: []
   last_published:
-    release_tag: r4.1
-    release_date: '2026-09-15T13:33:35Z'
+    release_tag: r4.2
+    release_date: '2026-10-05T12:07:17Z'
     apis:
     - api_name: one-time-password-sms
-      api_version: 2.0.0-rc.1
+      api_version: 2.0.0-rc.2
   snapshot_api_versions:
     one-time-password-sms: 2.0.0-rc.2
-  warnings:
-  - code: W003
-    message: Release r4.2 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: PopulationDensityData
   github_url: https://github.com/camaraproject/PopulationDensityData
   release_track: meta-release
@@ -3101,20 +3110,32 @@ progress:
       last_closed_at: '2026-10-06T09:14:01Z'
   published_context:
     latest_public_release: r3.3
-    newest_pre_release: null
+    newest_pre_release: r4.1
   cycle_releases:
     m1:
       release_tag: null
       release_date: null
       apis: []
     m3:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r4.1
+      release_date: '2026-10-06T07:35:46Z'
+      apis:
+      - api_name: sim-swap-subscriptions
+        api_version: 0.4.0-rc.1
+      - api_name: sim-swap
+        api_version: 2.2.0-rc.3
     m4:
       release_tag: null
       release_date: null
       apis: []
+  last_published:
+    release_tag: r4.1
+    release_date: '2026-10-06T07:35:46Z'
+    apis:
+    - api_name: sim-swap-subscriptions
+      api_version: 0.4.0-rc.1
+    - api_name: sim-swap
+      api_version: 2.2.0-rc.3
 - repository: SponsoredData
   github_url: https://github.com/camaraproject/SponsoredData
   release_track: independent
