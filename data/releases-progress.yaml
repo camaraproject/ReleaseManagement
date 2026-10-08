@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-10-07T10:26:15Z'
-  last_checked: '2026-10-07T10:26:15Z'
+  last_updated: '2026-10-08T10:46:27Z'
+  last_checked: '2026-10-08T10:46:27Z'
   releases_master_updated: '2026-10-06T09:22:38.617Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -1281,13 +1281,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/DeviceSwap/pull/131
       created_at: '2026-10-06T11:34:15Z'
-      assignees: []
+      assignees:
+      - hdamker
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 0
       codeowner_total: 3
       ready_for_review: false
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 6
     draft_release: null
     release_issue:
@@ -2577,20 +2578,19 @@ progress:
     - maheshc01
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r4.2-4c74bc6
+    snapshot_branch: release-snapshot/r4.2-cfd33fd
     release_pr:
-      number: 150
+      number: 155
       state: open
-      url: https://github.com/camaraproject/PopulationDensityData/pull/150
-      created_at: '2026-09-23T11:11:45Z'
-      assignees:
-      - tanjadegroot
+      url: https://github.com/camaraproject/PopulationDensityData/pull/155
+      created_at: '2026-10-07T15:06:22Z'
+      assignees: []
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 5
+      rm_checked: 0
       rm_total: 6
     draft_release: null
     release_issue:
@@ -2598,11 +2598,11 @@ progress:
       url: https://github.com/camaraproject/PopulationDensityData/issues/147
       created_at: '2026-09-18T10:55:14Z'
     review_history:
-      discarded_count: 1
+      discarded_count: 2
       last_reviewers:
       - tanjadegroot
-      last_pr_url: https://github.com/camaraproject/PopulationDensityData/pull/148
-      last_closed_at: '2026-09-23T09:26:01Z'
+      last_pr_url: https://github.com/camaraproject/PopulationDensityData/pull/150
+      last_closed_at: '2026-10-07T15:01:46Z'
   published_context:
     latest_public_release: r3.2
     newest_pre_release: r4.1
