@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-10-08T10:46:27Z'
-  last_checked: '2026-10-08T10:46:27Z'
+  last_updated: '2026-10-09T10:45:24Z'
+  last_checked: '2026-10-09T10:45:24Z'
   releases_master_updated: '2026-10-06T09:22:38.617Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -888,7 +888,7 @@ progress:
   github_url: https://github.com/camaraproject/DeviceDataVolume
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r2.1
+  target_release_tag: r2.2
   target_release_type: pre-release-rc
   dependencies:
     commonalities_release: r4.4
@@ -906,18 +906,29 @@ progress:
     main_contacts:
     - maxl2287
     - sachinvodafone
-  state: published
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.2-72212ed
+    release_pr:
+      number: 133
+      state: open
+      url: https://github.com/camaraproject/DeviceDataVolume/pull/133
+      created_at: '2026-10-08T16:55:36Z'
+      assignees:
+      - hdamker
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 4
+      rm_total: 6
     draft_release: null
-    release_issue: null
-    review_history:
-      discarded_count: 2
-      last_reviewers:
-      - tanjadegroot
-      last_pr_url: https://github.com/camaraproject/DeviceDataVolume/pull/108
-      last_closed_at: '2026-09-14T12:09:53Z'
+    release_issue:
+      number: 132
+      url: https://github.com/camaraproject/DeviceDataVolume/issues/132
+      created_at: '2026-10-08T16:52:10Z'
+    review_history: null
   published_context:
     latest_public_release: r1.3
     newest_pre_release: r2.1
@@ -947,8 +958,8 @@ progress:
     - api_name: device-data-volume
       api_version: 0.2.0-rc.1
   snapshot_api_versions:
-    device-data-volume-subscriptions: 0.2.0-rc.1
-    device-data-volume: 0.2.0-rc.1
+    device-data-volume-subscriptions: 0.2.0-rc.2
+    device-data-volume: 0.2.0-rc.2
 - repository: DeviceIdentifier
   github_url: https://github.com/camaraproject/DeviceIdentifier
   release_track: meta-release
@@ -2576,27 +2587,12 @@ progress:
     - sachinvodafone
     - jgarciahospital
     - maheshc01
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r4.2-cfd33fd
-    release_pr:
-      number: 155
-      state: open
-      url: https://github.com/camaraproject/PopulationDensityData/pull/155
-      created_at: '2026-10-07T15:06:22Z'
-      assignees: []
-      review_decision: null
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 0
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 147
-      url: https://github.com/camaraproject/PopulationDensityData/issues/147
-      created_at: '2026-09-18T10:55:14Z'
+    release_issue: null
     review_history:
       discarded_count: 2
       last_reviewers:
@@ -2629,6 +2625,11 @@ progress:
       api_version: 1.0.0-rc.1
   snapshot_api_versions:
     population-density-data: 1.0.0-rc.2
+  warnings:
+  - code: W003
+    message: Release r4.2 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: PredictiveConnectivityData
   github_url: https://github.com/camaraproject/PredictiveConnectivityData
   release_track: meta-release
@@ -3036,10 +3037,22 @@ progress:
     - Kevsy
     - JoseMConde
     - maheshc01
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r3.3-599f30b
+    release_pr:
+      number: 215
+      state: open
+      url: https://github.com/camaraproject/SimpleEdgeDiscovery/pull/215
+      created_at: '2026-10-08T13:57:24Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 214
@@ -3070,6 +3083,8 @@ progress:
     apis:
     - api_name: simple-edge-discovery
       api_version: 2.1.0-rc.3
+  snapshot_api_versions:
+    simple-edge-discovery: 2.1.0
 - repository: SimSwap
   github_url: https://github.com/camaraproject/SimSwap
   release_track: meta-release
