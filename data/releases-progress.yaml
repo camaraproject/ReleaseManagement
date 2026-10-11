@@ -1,14 +1,14 @@
 metadata:
-  last_updated: '2026-10-10T10:00:42Z'
-  last_checked: '2026-10-10T10:00:42Z'
-  releases_master_updated: '2026-10-09T09:35:27.671Z'
+  last_updated: '2026-10-11T10:10:36Z'
+  last_checked: '2026-10-11T10:10:36Z'
+  releases_master_updated: '2026-10-10T14:38:01.161Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
   repos_scanned: 64
   repos_new: 0
   repos_with_plan: 64
   repos_fully_onboarded: 46
-  repos_with_release_issue: 36
+  repos_with_release_issue: 37
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -1108,7 +1108,7 @@ progress:
   cycle_releases:
     m1:
       release_tag: r1.1
-      release_date: '2026-09-01T10:22:49Z'
+      release_date: '2026-09-14T16:17:02Z'
       apis:
       - api_name: media-streaming-rate
         api_version: 0.1.0-alpha.1
@@ -1122,7 +1122,7 @@ progress:
       apis: []
   last_published:
     release_tag: r1.1
-    release_date: '2026-09-01T10:22:49Z'
+    release_date: '2026-09-14T16:17:02Z'
     apis:
     - api_name: media-streaming-rate
       api_version: 0.1.0-alpha.1
@@ -3493,10 +3493,10 @@ progress:
   github_url: https://github.com/camaraproject/WebRTC
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r3.1
+  target_release_tag: r3.2
   target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r4.3
+    commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: webrtc-call-handling
@@ -3523,18 +3523,16 @@ progress:
     - pradeepachar-mavenir
     - deepakjaiswal1
     - teikuran
-  state: published
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
-    review_history:
-      discarded_count: 3
-      last_reviewers:
-      - rartych
-      last_pr_url: https://github.com/camaraproject/WebRTC/pull/206
-      last_closed_at: '2026-09-08T10:43:09Z'
+    release_issue:
+      number: 240
+      url: https://github.com/camaraproject/WebRTC/issues/240
+      created_at: '2026-10-11T00:47:41Z'
+    review_history: null
   published_context:
     latest_public_release: r2.2
     newest_pre_release: r3.1
@@ -3567,10 +3565,6 @@ progress:
       api_version: 0.3.0-rc.1
     - api_name: webrtc-registration
       api_version: 0.4.0-rc.1
-  snapshot_api_versions:
-    webrtc-call-handling: 0.4.0-rc.1
-    webrtc-events-subscriptions: 0.3.0-rc.1
-    webrtc-registration: 0.4.0-rc.1
 - repository: ApplicationEndpointDiscovery
   github_url: https://github.com/camaraproject/ApplicationEndpointDiscovery
   release_track: meta-release
