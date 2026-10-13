@@ -1,14 +1,14 @@
 metadata:
-  last_updated: '2026-10-12T11:06:55Z'
-  last_checked: '2026-10-12T11:06:55Z'
+  last_updated: '2026-10-13T10:49:48Z'
+  last_checked: '2026-10-13T10:49:48Z'
   releases_master_updated: '2026-10-10T14:38:01.161Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
   repos_scanned: 64
   repos_new: 0
   repos_with_plan: 64
-  repos_fully_onboarded: 46
-  repos_with_release_issue: 37
+  repos_fully_onboarded: 47
+  repos_with_release_issue: 39
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -66,13 +66,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/ApplicationEndpointDiscovery/pull/62
       created_at: '2026-10-12T05:52:38Z'
-      assignees: []
-      review_decision: null
+      assignees:
+      - tanjadegroot
+      review_decision: COMMENTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 5
       rm_total: 6
     draft_release: null
     release_issue:
@@ -907,23 +908,26 @@ progress:
   github_url: https://github.com/camaraproject/DeviceAuthenticity
   release_track: independent
   target_release_tag: r1.1
-  target_release_type: none
+  target_release_type: pre-release-alpha
   dependencies:
     commonalities_release: r3.4
     identity_consent_management_release: r3.3
   apis:
-  - api_name: placeholder-entry
-    target_api_version: 0.1.0
-    target_api_status: draft
+  - api_name: device-authenticity
+    target_api_version: 0.1.0-alpha.1
+    target_api_status: alpha
     main_contacts:
     - ALIIQBAL786
     - usmanTheCoder
-  state: not_planned
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 21
+      url: https://github.com/camaraproject/DeviceAuthenticity/issues/21
+      created_at: '2026-10-13T09:54:30Z'
     review_history: null
   published_context:
     latest_public_release: null
@@ -971,7 +975,8 @@ progress:
       state: open
       url: https://github.com/camaraproject/DeviceDataVolume/pull/142
       created_at: '2026-10-12T10:18:02Z'
-      assignees: []
+      assignees:
+      - hdamker
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
@@ -1104,10 +1109,22 @@ progress:
     - bigludo7
     - jlurien
     - maxl2287
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r4.2-0b155f3
+    release_pr:
+      number: 440
+      state: open
+      url: https://github.com/camaraproject/DeviceLocation/pull/440
+      created_at: '2026-10-13T09:43:21Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 0
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 432
@@ -1146,6 +1163,10 @@ progress:
       api_version: 1.0.0-rc.1
     - api_name: location-verification
       api_version: 3.1.0-rc.2
+  snapshot_api_versions:
+    geofencing-subscriptions: 0.6.0-rc.2
+    location-retrieval: 1.0.0-rc.2
+    location-verification: 3.1.0-rc.3
 - repository: DeviceMediaStreamingRate
   github_url: https://github.com/camaraproject/DeviceMediaStreamingRate
   release_track: independent
@@ -1356,9 +1377,9 @@ progress:
       assignees: []
       review_decision: null
       codeowner_approved: false
-      codeowner_checked: 0
+      codeowner_checked: 3
       codeowner_total: 3
-      ready_for_review: false
+      ready_for_review: true
       rm_checked: 0
       rm_total: 6
     draft_release: null
@@ -1811,20 +1832,19 @@ progress:
     - XunliYang
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r2.1-2c390f7
+    snapshot_branch: release-snapshot/r2.1-6c713c5
     release_pr:
-      number: 78
+      number: 89
       state: open
-      url: https://github.com/camaraproject/IoTSIMFraudPrevention/pull/78
-      created_at: '2026-09-23T06:21:51Z'
-      assignees:
-      - eric-murray
-      review_decision: CHANGES_REQUESTED
+      url: https://github.com/camaraproject/IoTSIMFraudPrevention/pull/89
+      created_at: '2026-10-13T06:19:38Z'
+      assignees: []
+      review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 4
+      rm_checked: 0
       rm_total: 6
     draft_release: null
     release_issue:
@@ -1832,11 +1852,10 @@ progress:
       url: https://github.com/camaraproject/IoTSIMFraudPrevention/issues/57
       created_at: '2026-06-16T09:34:10Z'
     review_history:
-      discarded_count: 5
-      last_reviewers:
-      - eric-murray
-      last_pr_url: https://github.com/camaraproject/IoTSIMFraudPrevention/pull/69
-      last_closed_at: '2026-09-22T08:18:12Z'
+      discarded_count: 7
+      last_reviewers: []
+      last_pr_url: https://github.com/camaraproject/IoTSIMFraudPrevention/pull/85
+      last_closed_at: '2026-10-13T06:14:12Z'
   published_context:
     latest_public_release: r1.2
     newest_pre_release: null
@@ -2619,31 +2638,41 @@ progress:
   github_url: https://github.com/camaraproject/PopulationDensityData
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r4.2
-  target_release_type: pre-release-rc
+  target_release_tag: r4.3
+  target_release_type: public-release
   dependencies:
     commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: population-density-data
     target_api_version: 1.0.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - sachinvodafone
     - jgarciahospital
     - maheshc01
-  state: published
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r4.3-ec1bdbe
+    release_pr:
+      number: 160
+      state: open
+      url: https://github.com/camaraproject/PopulationDensityData/pull/160
+      created_at: '2026-10-13T09:52:12Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
-    release_issue: null
-    review_history:
-      discarded_count: 2
-      last_reviewers:
-      - tanjadegroot
-      last_pr_url: https://github.com/camaraproject/PopulationDensityData/pull/150
-      last_closed_at: '2026-10-07T15:01:46Z'
+    release_issue:
+      number: 159
+      url: https://github.com/camaraproject/PopulationDensityData/issues/159
+      created_at: '2026-10-13T09:49:12Z'
+    review_history: null
   published_context:
     latest_public_release: r3.2
     newest_pre_release: r4.2
@@ -2669,7 +2698,7 @@ progress:
     - api_name: population-density-data
       api_version: 1.0.0-rc.2
   snapshot_api_versions:
-    population-density-data: 1.0.0-rc.2
+    population-density-data: 1.0.0
 - repository: PredictiveConnectivityData
   github_url: https://github.com/camaraproject/PredictiveConnectivityData
   release_track: meta-release
@@ -2686,29 +2715,21 @@ progress:
     main_contacts:
     - eric-murray
     - albertoramosmonagas
-  state: snapshot_active
+  state: planned
   artifacts:
-    snapshot_branch: release-snapshot/r2.2-604a5d6
-    release_pr:
-      number: 82
-      state: open
-      url: https://github.com/camaraproject/PredictiveConnectivityData/pull/82
-      created_at: '2026-09-28T07:45:37Z'
-      assignees:
-      - tanjadegroot
-      review_decision: null
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 6
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
     release_issue:
       number: 81
       url: https://github.com/camaraproject/PredictiveConnectivityData/issues/81
       created_at: '2026-09-24T09:45:27Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers:
+      - tanjadegroot
+      last_pr_url: https://github.com/camaraproject/PredictiveConnectivityData/pull/82
+      last_closed_at: '2026-10-13T10:09:32Z'
   published_context:
     latest_public_release: r1.2
     newest_pre_release: r2.1
@@ -2733,8 +2754,6 @@ progress:
     apis:
     - api_name: predictive-connectivity-data
       api_version: 0.2.0-rc.1
-  snapshot_api_versions:
-    predictive-connectivity-data: 0.2.0-rc.2
 - repository: QoSBooking
   github_url: https://github.com/camaraproject/QoSBooking
   release_track: meta-release
@@ -3077,29 +3096,21 @@ progress:
     - Kevsy
     - JoseMConde
     - maheshc01
-  state: snapshot_active
+  state: planned
   artifacts:
-    snapshot_branch: release-snapshot/r3.3-599f30b
-    release_pr:
-      number: 215
-      state: open
-      url: https://github.com/camaraproject/SimpleEdgeDiscovery/pull/215
-      created_at: '2026-10-08T13:57:24Z'
-      assignees:
-      - tanjadegroot
-      review_decision: COMMENTED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 5
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
     release_issue:
       number: 214
       url: https://github.com/camaraproject/SimpleEdgeDiscovery/issues/214
       created_at: '2026-10-05T08:57:36Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers:
+      - tanjadegroot
+      last_pr_url: https://github.com/camaraproject/SimpleEdgeDiscovery/pull/215
+      last_closed_at: '2026-10-13T09:41:34Z'
   published_context:
     latest_public_release: r2.3
     newest_pre_release: r3.2
@@ -3124,8 +3135,6 @@ progress:
     apis:
     - api_name: simple-edge-discovery
       api_version: 2.1.0-rc.3
-  snapshot_api_versions:
-    simple-edge-discovery: 2.1.0
 - repository: SimSwap
   github_url: https://github.com/camaraproject/SimSwap
   release_track: meta-release
