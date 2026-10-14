@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-10-13T10:49:48Z'
-  last_checked: '2026-10-13T10:49:48Z'
+  last_updated: '2026-10-14T08:53:18Z'
+  last_checked: '2026-10-14T08:53:18Z'
   releases_master_updated: '2026-10-10T14:38:01.161Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -137,13 +137,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/ApplicationEndpointRegistration/pull/56
       created_at: '2026-10-12T06:01:34Z'
-      assignees: []
+      assignees:
+      - eric-murray
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 6
     draft_release: null
     release_issue:
@@ -202,13 +203,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/ApplicationProfiles/pull/51
       created_at: '2026-10-12T06:10:45Z'
-      assignees: []
+      assignees:
+      - eric-murray
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 6
     draft_release: null
     release_issue:
@@ -324,10 +326,22 @@ progress:
     - FabrizioMoggio
     - bigludo7
     - chinaunicomyangfan
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r4.2-d268e8c
+    release_pr:
+      number: 243
+      state: open
+      url: https://github.com/camaraproject/CallForwardingSignal/pull/243
+      created_at: '2026-10-13T12:05:45Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 0
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 241
@@ -358,6 +372,8 @@ progress:
     apis:
     - api_name: call-forwarding-signal
       api_version: 0.5.0-rc.1
+  snapshot_api_versions:
+    call-forwarding-signal: 0.5.0-rc.2
 - repository: CapabilitiesAndRuntimeRestrictions
   github_url: https://github.com/camaraproject/CapabilitiesAndRuntimeRestrictions
   release_track: independent
@@ -605,13 +621,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/ConnectivityInsights/pull/225
       created_at: '2026-10-12T06:48:19Z'
-      assignees: []
+      assignees:
+      - eric-murray
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 6
     draft_release: null
     release_issue:
@@ -774,10 +791,22 @@ progress:
     - PedroDiez
     - KevScarr
     - rartych
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r3.2-1bc625a
+    release_pr:
+      number: 97
+      state: open
+      url: https://github.com/camaraproject/CustomerInsights/pull/97
+      created_at: '2026-10-14T07:31:39Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 2
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 94
@@ -808,6 +837,8 @@ progress:
     apis:
     - api_name: customer-insights
       api_version: 0.3.0-rc.1
+  snapshot_api_versions:
+    customer-insights: 0.3.0-rc.2
 - repository: DedicatedNetworks
   github_url: https://github.com/camaraproject/DedicatedNetworks
   release_track: meta-release
@@ -1120,9 +1151,9 @@ progress:
       assignees: []
       review_decision: null
       codeowner_approved: false
-      codeowner_checked: 0
+      codeowner_checked: 3
       codeowner_total: 3
-      ready_for_review: false
+      ready_for_review: true
       rm_checked: 0
       rm_total: 6
     draft_release: null
@@ -1374,13 +1405,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/DeviceSwap/pull/131
       created_at: '2026-10-06T11:34:15Z'
-      assignees: []
-      review_decision: null
+      assignees:
+      - hdamker
+      review_decision: COMMENTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 6
     draft_release: null
     release_issue:
@@ -1838,13 +1870,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/IoTSIMFraudPrevention/pull/89
       created_at: '2026-10-13T06:19:38Z'
-      assignees: []
-      review_decision: null
+      assignees:
+      - tanjadegroot
+      review_decision: COMMENTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 4
       rm_total: 6
     draft_release: null
     release_issue:
@@ -2494,10 +2527,22 @@ progress:
     - bigludo7
     - fernandopradocabrillo
     - AxelNennker
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r4.2-f7ae538
+    release_pr:
+      number: 267
+      state: open
+      url: https://github.com/camaraproject/NumberVerification/pull/267
+      created_at: '2026-10-13T11:37:07Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 266
@@ -2528,6 +2573,8 @@ progress:
     apis:
     - api_name: number-verification
       api_version: 2.1.1-rc.2
+  snapshot_api_versions:
+    number-verification: 2.1.1
 - repository: OptimalEdgeDiscovery
   github_url: https://github.com/camaraproject/OptimalEdgeDiscovery
   release_track: meta-release
@@ -2600,10 +2647,22 @@ progress:
     main_contacts:
     - bigludo7
     - fernandopradocabrillo
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r4.3-86df7d0
+    release_pr:
+      number: 172
+      state: open
+      url: https://github.com/camaraproject/OTPValidation/pull/172
+      created_at: '2026-10-13T11:51:14Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 170
@@ -2634,6 +2693,8 @@ progress:
     apis:
     - api_name: one-time-password-sms
       api_version: 2.0.0-rc.2
+  snapshot_api_versions:
+    one-time-password-sms: 2.0.0
 - repository: PopulationDensityData
   github_url: https://github.com/camaraproject/PopulationDensityData
   release_track: meta-release
@@ -2659,13 +2720,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/PopulationDensityData/pull/160
       created_at: '2026-10-13T09:52:12Z'
-      assignees: []
+      assignees:
+      - tanjadegroot
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 6
     draft_release: null
     release_issue:
@@ -2715,10 +2777,22 @@ progress:
     main_contacts:
     - eric-murray
     - albertoramosmonagas
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.2-717cd6c
+    release_pr:
+      number: 88
+      state: open
+      url: https://github.com/camaraproject/PredictiveConnectivityData/pull/88
+      created_at: '2026-10-13T13:03:16Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 1
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 81
@@ -2754,6 +2828,8 @@ progress:
     apis:
     - api_name: predictive-connectivity-data
       api_version: 0.2.0-rc.1
+  snapshot_api_versions:
+    predictive-connectivity-data: 0.2.0-rc.2
 - repository: QoSBooking
   github_url: https://github.com/camaraproject/QoSBooking
   release_track: meta-release
