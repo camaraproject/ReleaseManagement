@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-10-14T08:53:18Z'
-  last_checked: '2026-10-14T08:53:18Z'
+  last_updated: '2026-10-14T16:25:58Z'
+  last_checked: '2026-10-14T16:25:58Z'
   releases_master_updated: '2026-10-10T14:38:01.161Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -8,7 +8,7 @@ metadata:
   repos_new: 0
   repos_with_plan: 64
   repos_fully_onboarded: 47
-  repos_with_release_issue: 39
+  repos_with_release_issue: 38
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -802,9 +802,9 @@ progress:
       assignees: []
       review_decision: null
       codeowner_approved: false
-      codeowner_checked: 2
+      codeowner_checked: 3
       codeowner_total: 3
-      ready_for_review: false
+      ready_for_review: true
       rm_checked: 0
       rm_total: 6
     draft_release: null
@@ -959,7 +959,11 @@ progress:
       number: 21
       url: https://github.com/camaraproject/DeviceAuthenticity/issues/21
       created_at: '2026-10-13T09:54:30Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers: []
+      last_pr_url: https://github.com/camaraproject/DeviceAuthenticity/pull/22
+      last_closed_at: '2026-10-14T09:13:22Z'
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -998,28 +1002,12 @@ progress:
     main_contacts:
     - maxl2287
     - sachinvodafone
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r2.2-bae20e6
-    release_pr:
-      number: 142
-      state: open
-      url: https://github.com/camaraproject/DeviceDataVolume/pull/142
-      created_at: '2026-10-12T10:18:02Z'
-      assignees:
-      - hdamker
-      review_decision: null
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 0
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 132
-      url: https://github.com/camaraproject/DeviceDataVolume/issues/132
-      created_at: '2026-10-08T16:52:10Z'
+    release_issue: null
     review_history:
       discarded_count: 1
       last_reviewers:
@@ -1057,6 +1045,11 @@ progress:
   snapshot_api_versions:
     device-data-volume-subscriptions: 0.2.0-rc.2
     device-data-volume: 0.2.0-rc.2
+  warnings:
+  - code: W003
+    message: Release r2.2 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: DeviceIdentifier
   github_url: https://github.com/camaraproject/DeviceIdentifier
   release_track: meta-release
@@ -1407,7 +1400,7 @@ progress:
       created_at: '2026-10-06T11:34:15Z'
       assignees:
       - hdamker
-      review_decision: COMMENTED
+      review_decision: APPROVED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
@@ -1872,12 +1865,12 @@ progress:
       created_at: '2026-10-13T06:19:38Z'
       assignees:
       - tanjadegroot
-      review_decision: COMMENTED
-      codeowner_approved: false
+      review_decision: APPROVED
+      codeowner_approved: true
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 4
+      rm_checked: 5
       rm_total: 6
     draft_release: null
     release_issue:
@@ -2085,10 +2078,22 @@ progress:
     target_api_status: rc
     main_contacts:
     - lihaojie-CMCC
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.2-07339cd
+    release_pr:
+      number: 66
+      state: open
+      url: https://github.com/camaraproject/ModelAsAService/pull/66
+      created_at: '2026-10-14T12:52:48Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 62
@@ -2127,6 +2132,10 @@ progress:
       api_version: 0.2.0-rc.1
     - api_name: qa-assistant-service
       api_version: 0.2.0-rc.1
+  snapshot_api_versions:
+    knowledge-base: 0.2.0-rc.2
+    qa-assistant-manage: 0.2.0-rc.2
+    qa-assistant-service: 0.2.0-rc.2
 - repository: MostFrequentLocation
   github_url: https://github.com/camaraproject/MostFrequentLocation
   release_track: meta-release
@@ -2535,13 +2544,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/NumberVerification/pull/267
       created_at: '2026-10-13T11:37:07Z'
-      assignees: []
+      assignees:
+      - hdamker
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 5
       rm_total: 6
     draft_release: null
     release_issue:
@@ -2655,13 +2665,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/OTPValidation/pull/172
       created_at: '2026-10-13T11:51:14Z'
-      assignees: []
-      review_decision: null
+      assignees:
+      - hdamker
+      review_decision: COMMENTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 6
     draft_release: null
     release_issue:
@@ -3172,10 +3183,22 @@ progress:
     - Kevsy
     - JoseMConde
     - maheshc01
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r3.3-084c865
+    release_pr:
+      number: 219
+      state: open
+      url: https://github.com/camaraproject/SimpleEdgeDiscovery/pull/219
+      created_at: '2026-10-14T15:10:54Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 214
@@ -3211,6 +3234,8 @@ progress:
     apis:
     - api_name: simple-edge-discovery
       api_version: 2.1.0-rc.3
+  snapshot_api_versions:
+    simple-edge-discovery: 2.1.0
 - repository: SimSwap
   github_url: https://github.com/camaraproject/SimSwap
   release_track: meta-release
@@ -3235,10 +3260,22 @@ progress:
     - bigludo7
     - fernandopradocabrillo
     - maxl2287
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r4.2-696080a
+    release_pr:
+      number: 307
+      state: open
+      url: https://github.com/camaraproject/SimSwap/pull/307
+      created_at: '2026-10-14T14:38:38Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 0
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 302
@@ -3277,6 +3314,9 @@ progress:
       api_version: 0.4.0-rc.1
     - api_name: sim-swap
       api_version: 2.2.0-rc.3
+  snapshot_api_versions:
+    sim-swap-subscriptions: 0.4.0-rc.2
+    sim-swap: 2.2.0-rc.4
 - repository: SimSwapTimeFrame
   github_url: https://github.com/camaraproject/SimSwapTimeFrame
   release_track: independent
