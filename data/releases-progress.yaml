@@ -1,7 +1,7 @@
 metadata:
-  last_updated: '2026-10-15T08:27:54Z'
-  last_checked: '2026-10-15T08:27:54Z'
-  releases_master_updated: '2026-10-10T14:38:01.161Z'
+  last_updated: '2026-10-15T15:01:31Z'
+  last_checked: '2026-10-15T15:01:31Z'
+  releases_master_updated: '2026-10-15T07:42:51.148Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
   repos_scanned: 64
@@ -33,7 +33,7 @@ meta_releases:
 - name: Sync26
   total_apis: 59
   m1_achieved: 8
-  m3_achieved: 54
+  m3_achieved: 56
   m4_achieved: 0
 progress:
 - repository: ApplicationEndpointDiscovery
@@ -337,9 +337,9 @@ progress:
       assignees: []
       review_decision: null
       codeowner_approved: false
-      codeowner_checked: 0
+      codeowner_checked: 3
       codeowner_total: 3
-      ready_for_review: false
+      ready_for_review: true
       rm_checked: 0
       rm_total: 6
     draft_release: null
@@ -551,10 +551,22 @@ progress:
     - bigludo7
     - sachinvodafone
     - akoshunyadi
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.2-12c776f
+    release_pr:
+      number: 88
+      state: open
+      url: https://github.com/camaraproject/ConnectedNetworkType/pull/88
+      created_at: '2026-10-15T08:47:50Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 0
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 82
@@ -589,6 +601,9 @@ progress:
       api_version: 0.3.0-rc.1
     - api_name: connected-network-type
       api_version: 0.3.0-rc.1
+  snapshot_api_versions:
+    connected-network-type-subscriptions: 0.3.0-rc.2
+    connected-network-type: 0.3.0-rc.2
 - repository: ConnectivityInsights
   github_url: https://github.com/camaraproject/ConnectivityInsights
   release_track: meta-release
@@ -799,13 +814,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/CustomerInsights/pull/97
       created_at: '2026-10-14T07:31:39Z'
-      assignees: []
-      review_decision: null
+      assignees:
+      - hdamker
+      review_decision: COMMENTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 6
       rm_total: 6
     draft_release: null
     release_issue:
@@ -1016,7 +1032,7 @@ progress:
       last_closed_at: '2026-10-09T13:18:52Z'
   published_context:
     latest_public_release: r1.3
-    newest_pre_release: r2.1
+    newest_pre_release: r2.2
   cycle_releases:
     m1:
       release_tag: null
@@ -1035,21 +1051,16 @@ progress:
       release_date: null
       apis: []
   last_published:
-    release_tag: r2.1
-    release_date: '2026-09-16T12:46:52Z'
+    release_tag: r2.2
+    release_date: '2026-10-14T12:57:33Z'
     apis:
     - api_name: device-data-volume-subscriptions
-      api_version: 0.2.0-rc.1
+      api_version: 0.2.0-rc.2
     - api_name: device-data-volume
-      api_version: 0.2.0-rc.1
+      api_version: 0.2.0-rc.2
   snapshot_api_versions:
     device-data-volume-subscriptions: 0.2.0-rc.2
     device-data-volume: 0.2.0-rc.2
-  warnings:
-  - code: W003
-    message: Release r2.2 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: DeviceIdentifier
   github_url: https://github.com/camaraproject/DeviceIdentifier
   release_track: meta-release
@@ -1390,24 +1401,13 @@ progress:
     - bigludo7
     - krishvenkatachalam
     - jgarciahospital
-  state: snapshot_active
+  state: draft_ready
   artifacts:
     snapshot_branch: release-snapshot/r4.3-154ead5
-    release_pr:
-      number: 131
-      state: open
-      url: https://github.com/camaraproject/DeviceSwap/pull/131
-      created_at: '2026-10-06T11:34:15Z'
-      assignees:
-      - hdamker
-      review_decision: APPROVED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 1
-      rm_total: 6
-    draft_release: null
+    release_pr: null
+    draft_release:
+      name: r4.3
+      url: https://github.com/camaraproject/DeviceSwap/releases/tag/untagged-3d58f7f7983b92235aa8
     release_issue:
       number: 127
       url: https://github.com/camaraproject/DeviceSwap/issues/127
@@ -1868,28 +1868,35 @@ progress:
       last_closed_at: '2026-10-13T06:14:12Z'
   published_context:
     latest_public_release: r1.2
-    newest_pre_release: null
+    newest_pre_release: r2.1
   cycle_releases:
     m1:
       release_tag: null
       release_date: null
       apis: []
     m3:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r2.1
+      release_date: '2026-10-15T06:41:16Z'
+      apis:
+      - api_name: iot-sim-fraud-prevention
+        api_version: 0.2.0-rc.1
+      - api_name: iot-sim-fraud-prevention-subscriptions
+        api_version: 0.2.0-rc.1
     m4:
       release_tag: null
       release_date: null
       apis: []
+  last_published:
+    release_tag: r2.1
+    release_date: '2026-10-15T06:41:16Z'
+    apis:
+    - api_name: iot-sim-fraud-prevention
+      api_version: 0.2.0-rc.1
+    - api_name: iot-sim-fraud-prevention-subscriptions
+      api_version: 0.2.0-rc.1
   snapshot_api_versions:
     iot-sim-fraud-prevention: 0.2.0-rc.1
     iot-sim-fraud-prevention-subscriptions: 0.2.0-rc.1
-  warnings:
-  - code: W003
-    message: Release r2.1 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: KnowYourCustomerAgeVerification
   github_url: https://github.com/camaraproject/KnowYourCustomerAgeVerification
   release_track: meta-release
@@ -2525,24 +2532,13 @@ progress:
     - bigludo7
     - fernandopradocabrillo
     - AxelNennker
-  state: snapshot_active
+  state: draft_ready
   artifacts:
     snapshot_branch: release-snapshot/r4.2-f7ae538
-    release_pr:
-      number: 267
-      state: open
-      url: https://github.com/camaraproject/NumberVerification/pull/267
-      created_at: '2026-10-13T11:37:07Z'
-      assignees:
-      - hdamker
-      review_decision: null
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 5
-      rm_total: 6
-    draft_release: null
+    release_pr: null
+    draft_release:
+      name: r4.2
+      url: https://github.com/camaraproject/NumberVerification/releases/tag/untagged-80a3f293c26cc922df05
     release_issue:
       number: 266
       url: https://github.com/camaraproject/NumberVerification/issues/266
@@ -2646,24 +2642,13 @@ progress:
     main_contacts:
     - bigludo7
     - fernandopradocabrillo
-  state: snapshot_active
+  state: draft_ready
   artifacts:
     snapshot_branch: release-snapshot/r4.3-86df7d0
-    release_pr:
-      number: 172
-      state: open
-      url: https://github.com/camaraproject/OTPValidation/pull/172
-      created_at: '2026-10-13T11:51:14Z'
-      assignees:
-      - hdamker
-      review_decision: COMMENTED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 1
-      rm_total: 6
-    draft_release: null
+    release_pr: null
+    draft_release:
+      name: r4.3
+      url: https://github.com/camaraproject/OTPValidation/releases/tag/untagged-1c79edcb7a487cc23b61
     release_issue:
       number: 170
       url: https://github.com/camaraproject/OTPValidation/issues/170
@@ -3247,13 +3232,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/SimSwap/pull/307
       created_at: '2026-10-14T14:38:38Z'
-      assignees: []
+      assignees:
+      - hdamker
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 6
     draft_release: null
     release_issue:
