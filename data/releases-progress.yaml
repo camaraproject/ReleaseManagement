@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-10-15T15:01:31Z'
-  last_checked: '2026-10-15T15:01:31Z'
+  last_updated: '2026-10-16T08:20:47Z'
+  last_checked: '2026-10-16T08:20:47Z'
   releases_master_updated: '2026-10-15T07:42:51.148Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -8,7 +8,7 @@ metadata:
   repos_new: 0
   repos_with_plan: 64
   repos_fully_onboarded: 47
-  repos_with_release_issue: 37
+  repos_with_release_issue: 36
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -562,9 +562,9 @@ progress:
       assignees: []
       review_decision: null
       codeowner_approved: false
-      codeowner_checked: 0
+      codeowner_checked: 3
       codeowner_total: 3
-      ready_for_review: false
+      ready_for_review: true
       rm_checked: 0
       rm_total: 6
     draft_release: null
@@ -816,7 +816,7 @@ progress:
       created_at: '2026-10-14T07:31:39Z'
       assignees:
       - hdamker
-      review_decision: COMMENTED
+      review_decision: APPROVED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
@@ -897,10 +897,22 @@ progress:
     - PeterKovacs2
     - carlosromerog
     - eric-murray
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.3-81bcd9d
+    release_pr:
+      number: 199
+      state: open
+      url: https://github.com/camaraproject/DedicatedNetworks/pull/199
+      created_at: '2026-10-15T21:03:30Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 1
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 192
@@ -951,6 +963,11 @@ progress:
       api_version: 0.2.0-rc.1
     - api_name: dedicated-network-areas
       api_version: 0.1.0-rc.1
+  snapshot_api_versions:
+    dedicated-network-accesses: 0.2.0-rc.2
+    dedicated-network-profiles: 0.2.0-rc.2
+    dedicated-network: 0.2.0-rc.2
+    dedicated-network-areas: 0.1.0-rc.2
 - repository: DeviceAuthenticity
   github_url: https://github.com/camaraproject/DeviceAuthenticity
   release_track: independent
@@ -966,10 +983,22 @@ progress:
     main_contacts:
     - ALIIQBAL786
     - usmanTheCoder
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r1.1-9e574b4
+    release_pr:
+      number: 26
+      state: open
+      url: https://github.com/camaraproject/DeviceAuthenticity/pull/26
+      created_at: '2026-10-16T05:26:38Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 2
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 21
@@ -996,6 +1025,8 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    device-authenticity: 0.1.0-alpha.1
 - repository: DeviceDataVolume
   github_url: https://github.com/camaraproject/DeviceDataVolume
   release_track: meta-release
@@ -1282,10 +1313,22 @@ progress:
     - bigludo7
     - sachinvodafone
     - akoshunyadi
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.2-14b7ac9
+    release_pr:
+      number: 93
+      state: open
+      url: https://github.com/camaraproject/DeviceReachabilityStatus/pull/93
+      created_at: '2026-10-15T22:02:20Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 0
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 89
@@ -1320,6 +1363,9 @@ progress:
       api_version: 0.9.0-rc.1
     - api_name: device-reachability-status
       api_version: 1.2.0-rc.3
+  snapshot_api_versions:
+    device-reachability-status-subscriptions: 0.9.0-rc.2
+    device-reachability-status: 1.2.0-rc.4
 - repository: DeviceRoamingStatus
   github_url: https://github.com/camaraproject/DeviceRoamingStatus
   release_track: meta-release
@@ -1346,10 +1392,22 @@ progress:
     - bigludo7
     - sachinvodafone
     - akoshunyadi
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.2-558cc39
+    release_pr:
+      number: 104
+      state: open
+      url: https://github.com/camaraproject/DeviceRoamingStatus/pull/104
+      created_at: '2026-10-15T19:38:40Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 100
@@ -1384,6 +1442,9 @@ progress:
       api_version: 0.9.0-rc.1
     - api_name: device-roaming-status
       api_version: 1.2.0-rc.3
+  snapshot_api_versions:
+    device-roaming-status-subscriptions: 0.9.0-rc.2
+    device-roaming-status: 1.2.0-rc.4
 - repository: DeviceSwap
   github_url: https://github.com/camaraproject/DeviceSwap
   release_track: meta-release
@@ -1914,10 +1975,22 @@ progress:
     - ToshiWakayama-KDDI
     - fernandopradocabrillo
     - GillesInnov35
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.2-217486f
+    release_pr:
+      number: 69
+      state: open
+      url: https://github.com/camaraproject/KnowYourCustomerAgeVerification/pull/69
+      created_at: '2026-10-16T06:20:35Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 0
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 65
@@ -1948,6 +2021,8 @@ progress:
     apis:
     - api_name: kyc-age-verification
       api_version: 0.3.0-rc.1
+  snapshot_api_versions:
+    kyc-age-verification: 1.0.0-rc.1
 - repository: KnowYourCustomerFill-in
   github_url: https://github.com/camaraproject/KnowYourCustomerFill-in
   release_track: meta-release
@@ -2015,10 +2090,22 @@ progress:
     - ToshiWakayama-KDDI
     - fernandopradocabrillo
     - GillesInnov35
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.2-fb8a956
+    release_pr:
+      number: 101
+      state: open
+      url: https://github.com/camaraproject/KnowYourCustomerMatch/pull/101
+      created_at: '2026-10-16T06:24:05Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 0
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 94
@@ -2049,6 +2136,8 @@ progress:
     apis:
     - api_name: kyc-match
       api_version: 0.5.0-rc.1
+  snapshot_api_versions:
+    kyc-match: 1.0.0-rc.1
 - repository: ModelAsAService
   github_url: https://github.com/camaraproject/ModelAsAService
   release_track: meta-release
@@ -2707,12 +2796,12 @@ progress:
       created_at: '2026-10-13T09:52:12Z'
       assignees:
       - tanjadegroot
-      review_decision: null
+      review_decision: COMMENTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 5
       rm_total: 6
     draft_release: null
     release_issue:
@@ -3091,15 +3180,12 @@ progress:
     - benhepworth
     - maheshc01
     - kevsy
-  state: planned
+  state: published
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue:
-      number: 116
-      url: https://github.com/camaraproject/SessionInsights/issues/116
-      created_at: '2026-09-18T00:33:52Z'
+    release_issue: null
     review_history:
       discarded_count: 1
       last_reviewers:
@@ -3130,6 +3216,13 @@ progress:
     apis:
     - api_name: session-insights
       api_version: 0.2.0-rc.1
+  snapshot_api_versions:
+    session-insights: 0.2.0-rc.2
+  warnings:
+  - code: W003
+    message: Release r2.2 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: SimpleEdgeDiscovery
   github_url: https://github.com/camaraproject/SimpleEdgeDiscovery
   release_track: meta-release
@@ -3155,13 +3248,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/SimpleEdgeDiscovery/pull/219
       created_at: '2026-10-14T15:10:54Z'
-      assignees: []
-      review_decision: null
-      codeowner_approved: false
+      assignees:
+      - tanjadegroot
+      review_decision: APPROVED
+      codeowner_approved: true
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 6
       rm_total: 6
     draft_release: null
     release_issue:
@@ -3234,12 +3328,12 @@ progress:
       created_at: '2026-10-14T14:38:38Z'
       assignees:
       - hdamker
-      review_decision: null
+      review_decision: COMMENTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 4
       rm_total: 6
     draft_release: null
     release_issue:
@@ -3423,10 +3517,22 @@ progress:
     - GillesInnov35
     - grgpapadopoulos
     - fernandopradocabrillo
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r3.3-bd3a827
+    release_pr:
+      number: 105
+      state: open
+      url: https://github.com/camaraproject/Tenure/pull/105
+      created_at: '2026-10-16T08:13:51Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 0
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 102
@@ -3459,6 +3565,8 @@ progress:
     apis:
     - api_name: kyc-tenure
       api_version: 0.3.0-rc.1
+  snapshot_api_versions:
+    kyc-tenure: 0.3.0-rc.2
 - repository: TrafficInfluence
   github_url: https://github.com/camaraproject/TrafficInfluence
   release_track: meta-release
