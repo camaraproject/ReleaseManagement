@@ -1,7 +1,7 @@
 metadata:
-  last_updated: '2026-10-16T08:20:47Z'
-  last_checked: '2026-10-16T08:20:47Z'
-  releases_master_updated: '2026-10-15T07:42:51.148Z'
+  last_updated: '2026-10-16T16:56:21Z'
+  last_checked: '2026-10-16T16:56:21Z'
+  releases_master_updated: '2026-10-16T07:29:45.771Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
   repos_scanned: 64
@@ -205,12 +205,12 @@ progress:
       created_at: '2026-10-12T06:10:45Z'
       assignees:
       - eric-murray
-      review_decision: null
+      review_decision: APPROVED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 6
       rm_total: 6
     draft_release: null
     release_issue:
@@ -806,29 +806,21 @@ progress:
     - PedroDiez
     - KevScarr
     - rartych
-  state: snapshot_active
+  state: planned
   artifacts:
-    snapshot_branch: release-snapshot/r3.2-1bc625a
-    release_pr:
-      number: 97
-      state: open
-      url: https://github.com/camaraproject/CustomerInsights/pull/97
-      created_at: '2026-10-14T07:31:39Z'
-      assignees:
-      - hdamker
-      review_decision: APPROVED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 6
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
     release_issue:
       number: 94
       url: https://github.com/camaraproject/CustomerInsights/issues/94
       created_at: '2026-09-15T11:07:15Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers:
+      - hdamker
+      last_pr_url: https://github.com/camaraproject/CustomerInsights/pull/97
+      last_closed_at: '2026-10-16T14:11:10Z'
   published_context:
     latest_public_release: r2.2
     newest_pre_release: r3.1
@@ -853,8 +845,6 @@ progress:
     apis:
     - api_name: customer-insights
       api_version: 0.3.0-rc.1
-  snapshot_api_versions:
-    customer-insights: 0.3.0-rc.2
 - repository: DedicatedNetworks
   github_url: https://github.com/camaraproject/DedicatedNetworks
   release_track: meta-release
@@ -908,9 +898,9 @@ progress:
       assignees: []
       review_decision: null
       codeowner_approved: false
-      codeowner_checked: 1
+      codeowner_checked: 3
       codeowner_total: 3
-      ready_for_review: false
+      ready_for_review: true
       rm_checked: 0
       rm_total: 6
     draft_release: null
@@ -985,16 +975,16 @@ progress:
     - usmanTheCoder
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r1.1-9e574b4
+    snapshot_branch: release-snapshot/r1.1-7b55f0a
     release_pr:
-      number: 26
+      number: 28
       state: open
-      url: https://github.com/camaraproject/DeviceAuthenticity/pull/26
-      created_at: '2026-10-16T05:26:38Z'
+      url: https://github.com/camaraproject/DeviceAuthenticity/pull/28
+      created_at: '2026-10-16T08:54:42Z'
       assignees: []
       review_decision: null
       codeowner_approved: false
-      codeowner_checked: 2
+      codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
       rm_checked: 0
@@ -1005,10 +995,10 @@ progress:
       url: https://github.com/camaraproject/DeviceAuthenticity/issues/21
       created_at: '2026-10-13T09:54:30Z'
     review_history:
-      discarded_count: 1
+      discarded_count: 2
       last_reviewers: []
-      last_pr_url: https://github.com/camaraproject/DeviceAuthenticity/pull/22
-      last_closed_at: '2026-10-14T09:13:22Z'
+      last_pr_url: https://github.com/camaraproject/DeviceAuthenticity/pull/26
+      last_closed_at: '2026-10-16T08:52:58Z'
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -1324,9 +1314,9 @@ progress:
       assignees: []
       review_decision: null
       codeowner_approved: false
-      codeowner_checked: 0
+      codeowner_checked: 3
       codeowner_total: 3
-      ready_for_review: false
+      ready_for_review: true
       rm_checked: 0
       rm_total: 6
     draft_release: null
@@ -1798,7 +1788,7 @@ progress:
 - repository: IoTDeviceManagement
   github_url: https://github.com/camaraproject/IoTDeviceManagement
   release_track: independent
-  target_release_tag: r1.3
+  target_release_tag: r1.4
   target_release_type: pre-release-rc
   dependencies:
     commonalities_release: r4.4
@@ -1812,12 +1802,27 @@ progress:
     - chenfr2-ChinaTelecom
     - XunliYang
     - rkandoi
-  state: published
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r1.4-a1abbb4
+    release_pr:
+      number: 84
+      state: open
+      url: https://github.com/camaraproject/IoTDeviceManagement/pull/84
+      created_at: '2026-10-16T10:36:31Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 83
+      url: https://github.com/camaraproject/IoTDeviceManagement/issues/83
+      created_at: '2026-10-16T10:32:52Z'
     review_history: null
   published_context:
     latest_public_release: null
@@ -1846,7 +1851,7 @@ progress:
     - api_name: esim-profile-management
       api_version: 0.1.0-rc.2
   snapshot_api_versions:
-    esim-profile-management: 0.1.0-rc.2
+    esim-profile-management: 0.1.0-rc.3
 - repository: IoTNetworkOptimization
   github_url: https://github.com/camaraproject/IoTNetworkOptimization
   release_track: independent
@@ -2681,10 +2686,22 @@ progress:
     - gainsley
     - JoseMConde
     - maheshc01
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.2-6ca728b
+    release_pr:
+      number: 62
+      state: open
+      url: https://github.com/camaraproject/OptimalEdgeDiscovery/pull/62
+      created_at: '2026-10-16T15:39:56Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 59
@@ -2715,6 +2732,8 @@ progress:
     apis:
     - api_name: optimal-edge-discovery
       api_version: 0.2.0-rc.1
+  snapshot_api_versions:
+    optimal-edge-discovery: 0.2.0-rc.2
 - repository: OTPValidation
   github_url: https://github.com/camaraproject/OTPValidation
   release_track: meta-release
@@ -2982,10 +3001,22 @@ progress:
     - eric-murray
     - benhepworth
     - jlurien
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r1.1-8ce8f4d
+    release_pr:
+      number: 30
+      state: open
+      url: https://github.com/camaraproject/QoSProfiles/pull/30
+      created_at: '2026-10-16T14:04:58Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 13
@@ -3008,6 +3039,8 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    qos-profiles: 1.2.0-rc.4
 - repository: QualityOnDemand
   github_url: https://github.com/camaraproject/QualityOnDemand
   release_track: meta-release
@@ -3034,10 +3067,22 @@ progress:
     - eric-murray
     - benhepworth
     - jlurien
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r4.2-471aa35
+    release_pr:
+      number: 625
+      state: open
+      url: https://github.com/camaraproject/QualityOnDemand/pull/625
+      created_at: '2026-10-16T13:56:08Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 617
@@ -3076,6 +3121,9 @@ progress:
       api_version: 0.4.0-rc.1
     - api_name: quality-on-demand
       api_version: 1.2.0-rc.3
+  snapshot_api_versions:
+    qos-provisioning: 0.4.0-rc.2
+    quality-on-demand: 1.2.0-rc.4
 - repository: RainfallIntensity
   github_url: https://github.com/camaraproject/RainfallIntensity
   release_track: independent
@@ -3194,7 +3242,7 @@ progress:
       last_closed_at: '2026-10-14T23:07:56Z'
   published_context:
     latest_public_release: null
-    newest_pre_release: r2.1
+    newest_pre_release: r2.2
   cycle_releases:
     m1:
       release_tag: null
@@ -3211,18 +3259,13 @@ progress:
       release_date: null
       apis: []
   last_published:
-    release_tag: r2.1
-    release_date: '2026-08-19T16:29:52Z'
+    release_tag: r2.2
+    release_date: '2026-10-16T00:14:59Z'
     apis:
     - api_name: session-insights
-      api_version: 0.2.0-rc.1
+      api_version: 0.2.0-rc.2
   snapshot_api_versions:
     session-insights: 0.2.0-rc.2
-  warnings:
-  - code: W003
-    message: Release r2.2 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: SimpleEdgeDiscovery
   github_url: https://github.com/camaraproject/SimpleEdgeDiscovery
   release_track: meta-release
@@ -3240,28 +3283,12 @@ progress:
     - Kevsy
     - JoseMConde
     - maheshc01
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r3.3-084c865
-    release_pr:
-      number: 219
-      state: open
-      url: https://github.com/camaraproject/SimpleEdgeDiscovery/pull/219
-      created_at: '2026-10-14T15:10:54Z'
-      assignees:
-      - tanjadegroot
-      review_decision: APPROVED
-      codeowner_approved: true
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 6
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 214
-      url: https://github.com/camaraproject/SimpleEdgeDiscovery/issues/214
-      created_at: '2026-10-05T08:57:36Z'
+    release_issue: null
     review_history:
       discarded_count: 1
       last_reviewers:
@@ -3294,6 +3321,11 @@ progress:
       api_version: 2.1.0-rc.3
   snapshot_api_versions:
     simple-edge-discovery: 2.1.0
+  warnings:
+  - code: W003
+    message: Release r3.3 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: SimSwap
   github_url: https://github.com/camaraproject/SimSwap
   release_track: meta-release
@@ -3528,9 +3560,9 @@ progress:
       assignees: []
       review_decision: null
       codeowner_approved: false
-      codeowner_checked: 0
+      codeowner_checked: 3
       codeowner_total: 3
-      ready_for_review: false
+      ready_for_review: true
       rm_checked: 0
       rm_total: 6
     draft_release: null
