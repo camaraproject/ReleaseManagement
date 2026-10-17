@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-10-16T16:56:21Z'
-  last_checked: '2026-10-16T16:56:21Z'
+  last_updated: '2026-10-17T07:56:28Z'
+  last_checked: '2026-10-17T07:56:28Z'
   releases_master_updated: '2026-10-16T07:29:45.771Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -195,28 +195,12 @@ progress:
     - maheshc01
     - Kevsy
     - urvika-v
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r2.2-b3511ec
-    release_pr:
-      number: 51
-      state: open
-      url: https://github.com/camaraproject/ApplicationProfiles/pull/51
-      created_at: '2026-10-12T06:10:45Z'
-      assignees:
-      - eric-murray
-      review_decision: APPROVED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 6
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 49
-      url: https://github.com/camaraproject/ApplicationProfiles/issues/49
-      created_at: '2026-09-11T17:32:29Z'
+    release_issue: null
     review_history: null
   published_context:
     latest_public_release: r1.2
@@ -244,6 +228,11 @@ progress:
       api_version: 0.6.0-rc.1
   snapshot_api_versions:
     application-profiles: 0.6.0-rc.2
+  warnings:
+  - code: W003
+    message: Release r2.2 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: BlockchainPublicAddress
   github_url: https://github.com/camaraproject/BlockchainPublicAddress
   release_track: meta-release
@@ -1173,13 +1162,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/DeviceLocation/pull/440
       created_at: '2026-10-13T09:43:21Z'
-      assignees: []
+      assignees:
+      - hdamker
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 6
     draft_release: null
     release_issue:
@@ -2340,7 +2330,7 @@ progress:
   github_url: https://github.com/camaraproject/NetworkAccessManagement
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r3.1
+  target_release_tag: r3.2
   target_release_type: pre-release-rc
   dependencies:
     commonalities_release: r4.3
@@ -2362,18 +2352,28 @@ progress:
     - mayur007
     - clundie-CL
     - benhepworth
-  state: published
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r3.2-d086eae
+    release_pr:
+      number: 195
+      state: open
+      url: https://github.com/camaraproject/NetworkAccessManagement/pull/195
+      created_at: '2026-10-16T18:35:37Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
-    release_issue: null
-    review_history:
-      discarded_count: 3
-      last_reviewers:
-      - tanjadegroot
-      last_pr_url: https://github.com/camaraproject/NetworkAccessManagement/pull/164
-      last_closed_at: '2026-07-24T11:06:28Z'
+    release_issue:
+      number: 194
+      url: https://github.com/camaraproject/NetworkAccessManagement/issues/194
+      created_at: '2026-10-16T18:28:50Z'
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: r3.1
@@ -2403,8 +2403,8 @@ progress:
     - api_name: network-access-domains
       api_version: 0.3.0-rc.1
   snapshot_api_versions:
-    network-access-devices: 0.3.0-rc.1
-    network-access-domains: 0.3.0-rc.1
+    network-access-devices: 0.3.0-rc.2
+    network-access-domains: 0.3.0-rc.2
 - repository: NetworkInsights
   github_url: https://github.com/camaraproject/NetworkInsights
   release_track: meta-release
@@ -2575,10 +2575,22 @@ progress:
     - eric-murray
     - Masa8106
     - grgpapadopoulos
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r3.2-e54bb1b
+    release_pr:
+      number: 131
+      state: open
+      url: https://github.com/camaraproject/NumberRecycling/pull/131
+      created_at: '2026-10-16T18:49:24Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 0
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 125
@@ -2609,6 +2621,8 @@ progress:
     apis:
     - api_name: number-recycling
       api_version: 0.3.0-rc.1
+  snapshot_api_versions:
+    number-recycling: 0.3.0-rc.2
 - repository: NumberVerification
   github_url: https://github.com/camaraproject/NumberVerification
   release_track: meta-release
@@ -2945,10 +2959,22 @@ progress:
     main_contacts:
     - Masa8106
     - jlurien
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.2-4de93f1
+    release_pr:
+      number: 156
+      state: open
+      url: https://github.com/camaraproject/QoSBooking/pull/156
+      created_at: '2026-10-16T18:48:21Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 0
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 150
@@ -2983,6 +3009,9 @@ progress:
       api_version: 0.2.0-rc.1
     - api_name: qos-booking
       api_version: 0.2.0-rc.1
+  snapshot_api_versions:
+    qos-booking-and-assignment: 0.2.0-rc.2
+    qos-booking: 0.2.0-rc.2
 - repository: QoSProfiles
   github_url: https://github.com/camaraproject/QoSProfiles
   release_track: meta-release
@@ -3825,10 +3854,22 @@ progress:
     - pradeepachar-mavenir
     - deepakjaiswal1
     - teikuran
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r3.2-fc378cf
+    release_pr:
+      number: 246
+      state: open
+      url: https://github.com/camaraproject/WebRTC/pull/246
+      created_at: '2026-10-16T18:43:37Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 240
@@ -3867,6 +3908,10 @@ progress:
       api_version: 0.3.0-rc.1
     - api_name: webrtc-registration
       api_version: 0.4.0-rc.1
+  snapshot_api_versions:
+    webrtc-call-handling: 0.4.0-rc.2
+    webrtc-events-subscriptions: 0.3.0-rc.2
+    webrtc-registration: 0.4.0-rc.2
 - repository: ApplicationEndpointDiscovery
   github_url: https://github.com/camaraproject/ApplicationEndpointDiscovery
   release_track: meta-release
