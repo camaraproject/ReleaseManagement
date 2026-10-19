@@ -1,7 +1,7 @@
 metadata:
-  last_updated: '2026-10-18T08:11:00Z'
-  last_checked: '2026-10-18T08:11:00Z'
-  releases_master_updated: '2026-10-16T07:29:45.771Z'
+  last_updated: '2026-10-19T09:07:28Z'
+  last_checked: '2026-10-19T09:07:28Z'
+  releases_master_updated: '2026-10-18T07:24:32.806Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
   repos_scanned: 64
@@ -34,7 +34,7 @@ meta_releases:
   total_apis: 59
   m1_achieved: 8
   m3_achieved: 56
-  m4_achieved: 0
+  m4_achieved: 1
 progress:
 - repository: ApplicationEndpointDiscovery
   github_url: https://github.com/camaraproject/ApplicationEndpointDiscovery
@@ -204,7 +204,7 @@ progress:
     review_history: null
   published_context:
     latest_public_release: r1.2
-    newest_pre_release: r2.1
+    newest_pre_release: r2.2
   cycle_releases:
     m1:
       release_tag: null
@@ -221,18 +221,13 @@ progress:
       release_date: null
       apis: []
   last_published:
-    release_tag: r2.1
-    release_date: '2026-08-19T23:33:53Z'
+    release_tag: r2.2
+    release_date: '2026-10-17T05:51:38Z'
     apis:
     - api_name: application-profiles
-      api_version: 0.6.0-rc.1
+      api_version: 0.6.0-rc.2
   snapshot_api_versions:
     application-profiles: 0.6.0-rc.2
-  warnings:
-  - code: W003
-    message: Release r2.2 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: BlockchainPublicAddress
   github_url: https://github.com/camaraproject/BlockchainPublicAddress
   release_track: meta-release
@@ -323,13 +318,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/CallForwardingSignal/pull/243
       created_at: '2026-10-13T12:05:45Z'
-      assignees: []
-      review_decision: null
+      assignees:
+      - tanjadegroot
+      review_decision: CHANGES_REQUESTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 4
       rm_total: 6
     draft_release: null
     release_issue:
@@ -2166,13 +2162,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/ModelAsAService/pull/66
       created_at: '2026-10-14T12:52:48Z'
-      assignees: []
-      review_decision: null
+      assignees:
+      - tanjadegroot
+      review_decision: CHANGES_REQUESTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 3
       rm_total: 6
     draft_release: null
     release_issue:
@@ -3325,8 +3322,8 @@ progress:
       last_pr_url: https://github.com/camaraproject/SimpleEdgeDiscovery/pull/215
       last_closed_at: '2026-10-13T09:41:34Z'
   published_context:
-    latest_public_release: r2.3
-    newest_pre_release: r3.2
+    latest_public_release: r3.3
+    newest_pre_release: null
   cycle_releases:
     m1:
       release_tag: null
@@ -3339,22 +3336,19 @@ progress:
       - api_name: simple-edge-discovery
         api_version: 2.1.0-rc.2
     m4:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r3.3
+      release_date: '2026-10-16T09:46:03Z'
+      apis:
+      - api_name: simple-edge-discovery
+        api_version: 2.1.0
   last_published:
-    release_tag: r3.2
-    release_date: '2026-09-11T15:03:54Z'
+    release_tag: r3.3
+    release_date: '2026-10-16T09:46:03Z'
     apis:
     - api_name: simple-edge-discovery
-      api_version: 2.1.0-rc.3
+      api_version: 2.1.0
   snapshot_api_versions:
     simple-edge-discovery: 2.1.0
-  warnings:
-  - code: W003
-    message: Release r3.3 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: SimSwap
   github_url: https://github.com/camaraproject/SimSwap
   release_track: meta-release
