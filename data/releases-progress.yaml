@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-10-19T09:07:28Z'
-  last_checked: '2026-10-19T09:07:28Z'
+  last_updated: '2026-10-19T19:42:29Z'
+  last_checked: '2026-10-19T19:42:29Z'
   releases_master_updated: '2026-10-18T07:24:32.806Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -8,7 +8,7 @@ metadata:
   repos_new: 0
   repos_with_plan: 64
   repos_fully_onboarded: 47
-  repos_with_release_issue: 36
+  repos_with_release_issue: 35
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -58,24 +58,13 @@ progress:
     - gainsley
     - JoseMConde
     - maheshc01
-  state: snapshot_active
+  state: draft_ready
   artifacts:
     snapshot_branch: release-snapshot/r2.2-650e517
-    release_pr:
-      number: 62
-      state: open
-      url: https://github.com/camaraproject/ApplicationEndpointDiscovery/pull/62
-      created_at: '2026-10-12T05:52:38Z'
-      assignees:
-      - tanjadegroot
-      review_decision: COMMENTED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 5
-      rm_total: 6
-    draft_release: null
+    release_pr: null
+    draft_release:
+      name: r2.2
+      url: https://github.com/camaraproject/ApplicationEndpointDiscovery/releases/tag/untagged-e4dda93f2b7220d30580
     release_issue:
       number: 60
       url: https://github.com/camaraproject/ApplicationEndpointDiscovery/issues/60
@@ -129,24 +118,13 @@ progress:
     - gainsley
     - JoseMConde
     - maheshc01
-  state: snapshot_active
+  state: draft_ready
   artifacts:
     snapshot_branch: release-snapshot/r2.2-cc55f1c
-    release_pr:
-      number: 56
-      state: open
-      url: https://github.com/camaraproject/ApplicationEndpointRegistration/pull/56
-      created_at: '2026-10-12T06:01:34Z'
-      assignees:
-      - eric-murray
-      review_decision: null
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 1
-      rm_total: 6
-    draft_release: null
+    release_pr: null
+    draft_release:
+      name: r2.2
+      url: https://github.com/camaraproject/ApplicationEndpointRegistration/releases/tag/untagged-96f1d573b01f8a770e71
     release_issue:
       number: 54
       url: https://github.com/camaraproject/ApplicationEndpointRegistration/issues/54
@@ -182,25 +160,28 @@ progress:
   github_url: https://github.com/camaraproject/ApplicationProfiles
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r2.2
-  target_release_type: pre-release-rc
+  target_release_tag: r2.3
+  target_release_type: public-release
   dependencies:
     commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: application-profiles
     target_api_version: 0.6.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - maheshc01
     - Kevsy
     - urvika-v
-  state: published
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 55
+      url: https://github.com/camaraproject/ApplicationProfiles/issues/55
+      created_at: '2026-10-19T17:39:03Z'
     review_history: null
   published_context:
     latest_public_release: r1.2
@@ -226,8 +207,6 @@ progress:
     apis:
     - api_name: application-profiles
       api_version: 0.6.0-rc.2
-  snapshot_api_versions:
-    application-profiles: 0.6.0-rc.2
 - repository: BlockchainPublicAddress
   github_url: https://github.com/camaraproject/BlockchainPublicAddress
   release_track: meta-release
@@ -544,13 +523,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/ConnectedNetworkType/pull/88
       created_at: '2026-10-15T08:47:50Z'
-      assignees: []
-      review_decision: null
+      assignees:
+      - tanjadegroot
+      review_decision: APPROVED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 6
       rm_total: 6
     draft_release: null
     release_issue:
@@ -1006,36 +986,34 @@ progress:
   github_url: https://github.com/camaraproject/DeviceDataVolume
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r2.2
-  target_release_type: pre-release-rc
+  target_release_tag: r2.3
+  target_release_type: public-release
   dependencies:
     commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: device-data-volume-subscriptions
     target_api_version: 0.2.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - maxl2287
     - sachinvodafone
   - api_name: device-data-volume
     target_api_version: 0.2.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - maxl2287
     - sachinvodafone
-  state: published
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
-    review_history:
-      discarded_count: 1
-      last_reviewers:
-      - hdamker
-      last_pr_url: https://github.com/camaraproject/DeviceDataVolume/pull/133
-      last_closed_at: '2026-10-09T13:18:52Z'
+    release_issue:
+      number: 148
+      url: https://github.com/camaraproject/DeviceDataVolume/issues/148
+      created_at: '2026-10-19T09:39:15Z'
+    review_history: null
   published_context:
     latest_public_release: r1.3
     newest_pre_release: r2.2
@@ -1064,9 +1042,6 @@ progress:
       api_version: 0.2.0-rc.2
     - api_name: device-data-volume
       api_version: 0.2.0-rc.2
-  snapshot_api_versions:
-    device-data-volume-subscriptions: 0.2.0-rc.2
-    device-data-volume: 0.2.0-rc.2
 - repository: DeviceIdentifier
   github_url: https://github.com/camaraproject/DeviceIdentifier
   release_track: meta-release
@@ -1160,12 +1135,12 @@ progress:
       created_at: '2026-10-13T09:43:21Z'
       assignees:
       - hdamker
-      review_decision: null
+      review_decision: COMMENTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 4
       rm_total: 6
     draft_release: null
     release_issue:
@@ -1297,13 +1272,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/DeviceReachabilityStatus/pull/93
       created_at: '2026-10-15T22:02:20Z'
-      assignees: []
-      review_decision: null
+      assignees:
+      - hdamker
+      review_decision: COMMENTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 3
       rm_total: 6
     draft_release: null
     release_issue:
@@ -1376,13 +1352,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/DeviceRoamingStatus/pull/104
       created_at: '2026-10-15T19:38:40Z'
-      assignees: []
-      review_decision: null
+      assignees:
+      - hdamker
+      review_decision: COMMENTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 6
     draft_release: null
     release_issue:
@@ -1438,17 +1415,12 @@ progress:
     - bigludo7
     - krishvenkatachalam
     - jgarciahospital
-  state: draft_ready
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r4.3-154ead5
+    snapshot_branch: null
     release_pr: null
-    draft_release:
-      name: r4.3
-      url: https://github.com/camaraproject/DeviceSwap/releases/tag/untagged-3d58f7f7983b92235aa8
-    release_issue:
-      number: 127
-      url: https://github.com/camaraproject/DeviceSwap/issues/127
-      created_at: '2026-10-06T08:10:14Z'
+    draft_release: null
+    release_issue: null
     review_history:
       discarded_count: 1
       last_reviewers: []
@@ -1480,6 +1452,11 @@ progress:
       api_version: 1.1.0-rc.3
   snapshot_api_versions:
     device-swap: 1.1.0
+  warnings:
+  - code: W003
+    message: Release r4.3 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: DeviceVisitLocation
   github_url: https://github.com/camaraproject/DeviceVisitLocation
   release_track: independent
@@ -2637,17 +2614,12 @@ progress:
     - bigludo7
     - fernandopradocabrillo
     - AxelNennker
-  state: draft_ready
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r4.2-f7ae538
+    snapshot_branch: null
     release_pr: null
-    draft_release:
-      name: r4.2
-      url: https://github.com/camaraproject/NumberVerification/releases/tag/untagged-80a3f293c26cc922df05
-    release_issue:
-      number: 266
-      url: https://github.com/camaraproject/NumberVerification/issues/266
-      created_at: '2026-10-09T11:26:17Z'
+    draft_release: null
+    release_issue: null
     review_history: null
   published_context:
     latest_public_release: r3.2
@@ -2675,6 +2647,11 @@ progress:
       api_version: 2.1.1-rc.2
   snapshot_api_versions:
     number-verification: 2.1.1
+  warnings:
+  - code: W003
+    message: Release r4.2 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: OptimalEdgeDiscovery
   github_url: https://github.com/camaraproject/OptimalEdgeDiscovery
   release_track: meta-release
@@ -2761,17 +2738,12 @@ progress:
     main_contacts:
     - bigludo7
     - fernandopradocabrillo
-  state: draft_ready
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r4.3-86df7d0
+    snapshot_branch: null
     release_pr: null
-    draft_release:
-      name: r4.3
-      url: https://github.com/camaraproject/OTPValidation/releases/tag/untagged-1c79edcb7a487cc23b61
-    release_issue:
-      number: 170
-      url: https://github.com/camaraproject/OTPValidation/issues/170
-      created_at: '2026-10-09T11:26:38Z'
+    draft_release: null
+    release_issue: null
     review_history: null
   published_context:
     latest_public_release: r3.2
@@ -2799,6 +2771,11 @@ progress:
       api_version: 2.0.0-rc.2
   snapshot_api_versions:
     one-time-password-sms: 2.0.0
+  warnings:
+  - code: W003
+    message: Release r4.3 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: PopulationDensityData
   github_url: https://github.com/camaraproject/PopulationDensityData
   release_track: meta-release
@@ -3156,8 +3133,8 @@ progress:
   target_release_tag: r1.1
   target_release_type: none
   dependencies:
-    commonalities_release: r3.4
-    identity_consent_management_release: r3.3
+    commonalities_release: r4.4
+    identity_consent_management_release: r4.2
   apis:
   - api_name: rainfall-intensity
     target_api_version: 0.1.0
@@ -3375,20 +3352,20 @@ progress:
     - maxl2287
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r4.2-696080a
+    snapshot_branch: release-snapshot/r4.2-2356666
     release_pr:
-      number: 307
+      number: 310
       state: open
-      url: https://github.com/camaraproject/SimSwap/pull/307
-      created_at: '2026-10-14T14:38:38Z'
+      url: https://github.com/camaraproject/SimSwap/pull/310
+      created_at: '2026-10-19T15:44:06Z'
       assignees:
       - hdamker
-      review_decision: COMMENTED
+      review_decision: APPROVED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 4
+      rm_checked: 6
       rm_total: 6
     draft_release: null
     release_issue:
@@ -3396,10 +3373,11 @@ progress:
       url: https://github.com/camaraproject/SimSwap/issues/302
       created_at: '2026-10-06T08:17:13Z'
     review_history:
-      discarded_count: 1
-      last_reviewers: []
-      last_pr_url: https://github.com/camaraproject/SimSwap/pull/304
-      last_closed_at: '2026-10-06T09:14:01Z'
+      discarded_count: 2
+      last_reviewers:
+      - hdamker
+      last_pr_url: https://github.com/camaraproject/SimSwap/pull/307
+      last_closed_at: '2026-10-19T15:06:58Z'
   published_context:
     latest_public_release: r3.3
     newest_pre_release: r4.1
