@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-10-19T19:42:29Z'
-  last_checked: '2026-10-19T19:42:29Z'
+  last_updated: '2026-10-20T08:43:56Z'
+  last_checked: '2026-10-20T08:43:56Z'
   releases_master_updated: '2026-10-18T07:24:32.806Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -1125,24 +1125,13 @@ progress:
     - bigludo7
     - jlurien
     - maxl2287
-  state: snapshot_active
+  state: draft_ready
   artifacts:
     snapshot_branch: release-snapshot/r4.2-0b155f3
-    release_pr:
-      number: 440
-      state: open
-      url: https://github.com/camaraproject/DeviceLocation/pull/440
-      created_at: '2026-10-13T09:43:21Z'
-      assignees:
-      - hdamker
-      review_decision: COMMENTED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 4
-      rm_total: 6
-    draft_release: null
+    release_pr: null
+    draft_release:
+      name: r4.2
+      url: https://github.com/camaraproject/DeviceLocation/releases/tag/untagged-e04911687413f4edb1a5
     release_issue:
       number: 432
       url: https://github.com/camaraproject/DeviceLocation/issues/432
@@ -1359,7 +1348,7 @@ progress:
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 5
       rm_total: 6
     draft_release: null
     release_issue:
@@ -3330,54 +3319,48 @@ progress:
   github_url: https://github.com/camaraproject/SimSwap
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r4.2
-  target_release_type: pre-release-rc
+  target_release_tag: r4.3
+  target_release_type: public-release
   dependencies:
     commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: sim-swap-subscriptions
     target_api_version: 0.4.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - bigludo7
     - fernandopradocabrillo
     - maxl2287
   - api_name: sim-swap
     target_api_version: 2.2.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - bigludo7
     - fernandopradocabrillo
     - maxl2287
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r4.2-2356666
+    snapshot_branch: release-snapshot/r4.3-43f7128
     release_pr:
-      number: 310
+      number: 315
       state: open
-      url: https://github.com/camaraproject/SimSwap/pull/310
-      created_at: '2026-10-19T15:44:06Z'
-      assignees:
-      - hdamker
-      review_decision: APPROVED
+      url: https://github.com/camaraproject/SimSwap/pull/315
+      created_at: '2026-10-20T07:59:26Z'
+      assignees: []
+      review_decision: null
       codeowner_approved: false
-      codeowner_checked: 3
+      codeowner_checked: 0
       codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 6
+      ready_for_review: false
+      rm_checked: 0
       rm_total: 6
     draft_release: null
     release_issue:
-      number: 302
-      url: https://github.com/camaraproject/SimSwap/issues/302
-      created_at: '2026-10-06T08:17:13Z'
-    review_history:
-      discarded_count: 2
-      last_reviewers:
-      - hdamker
-      last_pr_url: https://github.com/camaraproject/SimSwap/pull/307
-      last_closed_at: '2026-10-19T15:06:58Z'
+      number: 314
+      url: https://github.com/camaraproject/SimSwap/issues/314
+      created_at: '2026-10-20T07:56:12Z'
+    review_history: null
   published_context:
     latest_public_release: r3.3
     newest_pre_release: r4.1
@@ -3407,8 +3390,8 @@ progress:
     - api_name: sim-swap
       api_version: 2.2.0-rc.3
   snapshot_api_versions:
-    sim-swap-subscriptions: 0.4.0-rc.2
-    sim-swap: 2.2.0-rc.4
+    sim-swap-subscriptions: 0.4.0
+    sim-swap: 2.2.0
 - repository: SimSwapTimeFrame
   github_url: https://github.com/camaraproject/SimSwapTimeFrame
   release_track: independent
