@@ -1,7 +1,7 @@
 metadata:
-  last_updated: '2026-10-22T08:47:10Z'
-  last_checked: '2026-10-22T08:47:10Z'
-  releases_master_updated: '2026-10-21T07:58:41.247Z'
+  last_updated: '2026-10-22T11:00:50Z'
+  last_checked: '2026-10-22T11:00:50Z'
+  releases_master_updated: '2026-10-22T07:55:22.530Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
   repos_scanned: 64
@@ -34,7 +34,7 @@ meta_releases:
   total_apis: 59
   m1_achieved: 8
   m3_achieved: 57
-  m4_achieved: 4
+  m4_achieved: 5
 progress:
 - repository: ApplicationEndpointDiscovery
   github_url: https://github.com/camaraproject/ApplicationEndpointDiscovery
@@ -201,8 +201,8 @@ progress:
     release_issue: null
     review_history: null
   published_context:
-    latest_public_release: r1.2
-    newest_pre_release: r2.2
+    latest_public_release: r2.3
+    newest_pre_release: null
   cycle_releases:
     m1:
       release_tag: null
@@ -215,22 +215,19 @@ progress:
       - api_name: application-profiles
         api_version: 0.6.0-rc.1
     m4:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r2.3
+      release_date: '2026-10-22T02:36:24Z'
+      apis:
+      - api_name: application-profiles
+        api_version: 0.6.0
   last_published:
-    release_tag: r2.2
-    release_date: '2026-10-17T05:51:38Z'
+    release_tag: r2.3
+    release_date: '2026-10-22T02:36:24Z'
     apis:
     - api_name: application-profiles
-      api_version: 0.6.0-rc.2
+      api_version: 0.6.0
   snapshot_api_versions:
     application-profiles: 0.6.0
-  warnings:
-  - code: W003
-    message: Release r2.3 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: BlockchainPublicAddress
   github_url: https://github.com/camaraproject/BlockchainPublicAddress
   release_track: meta-release
@@ -630,7 +627,7 @@ progress:
     review_history: null
   published_context:
     latest_public_release: r3.2
-    newest_pre_release: r4.1
+    newest_pre_release: r4.2
   cycle_releases:
     m1:
       release_tag: null
@@ -649,21 +646,16 @@ progress:
       release_date: null
       apis: []
   last_published:
-    release_tag: r4.1
-    release_date: '2026-08-20T22:39:16Z'
+    release_tag: r4.2
+    release_date: '2026-10-21T16:23:37Z'
     apis:
     - api_name: connectivity-insights-subscriptions
-      api_version: 0.7.0-rc.1
+      api_version: 0.7.0-rc.2
     - api_name: connectivity-insights
-      api_version: 0.7.0-rc.1
+      api_version: 0.7.0-rc.2
   snapshot_api_versions:
     connectivity-insights-subscriptions: 0.7.0-rc.2
     connectivity-insights: 0.7.0-rc.2
-  warnings:
-  - code: W003
-    message: Release r4.2 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: ConsentInfo
   github_url: https://github.com/camaraproject/ConsentInfo
   release_track: independent
@@ -1181,7 +1173,7 @@ progress:
     review_history: null
   published_context:
     latest_public_release: r3.2
-    newest_pre_release: r4.1
+    newest_pre_release: r4.2
   cycle_releases:
     m1:
       release_tag: null
@@ -1202,24 +1194,19 @@ progress:
       release_date: null
       apis: []
   last_published:
-    release_tag: r4.1
-    release_date: '2026-09-01T08:31:47Z'
+    release_tag: r4.2
+    release_date: '2026-10-21T11:35:15Z'
     apis:
     - api_name: geofencing-subscriptions
-      api_version: 0.6.0-rc.1
+      api_version: 0.6.0-rc.2
     - api_name: location-retrieval
-      api_version: 1.0.0-rc.1
+      api_version: 1.0.0-rc.2
     - api_name: location-verification
-      api_version: 3.1.0-rc.2
+      api_version: 3.1.0-rc.3
   snapshot_api_versions:
     geofencing-subscriptions: 0.6.0-rc.2
     location-retrieval: 1.0.0-rc.2
     location-verification: 3.1.0-rc.3
-  warnings:
-  - code: W003
-    message: Release r4.2 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: DeviceMediaStreamingRate
   github_url: https://github.com/camaraproject/DeviceMediaStreamingRate
   release_track: independent
@@ -2065,13 +2052,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/KnowYourCustomerFill-in/pull/73
       created_at: '2026-10-20T10:01:32Z'
-      assignees: []
+      assignees:
+      - hdamker
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 0
       codeowner_total: 3
       ready_for_review: false
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 6
     draft_release: null
     release_issue:
