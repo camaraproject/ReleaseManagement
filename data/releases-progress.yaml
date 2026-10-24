@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-10-22T15:10:34Z'
-  last_checked: '2026-10-22T15:10:34Z'
+  last_updated: '2026-10-24T08:17:21Z'
+  last_checked: '2026-10-24T08:17:21Z'
   releases_master_updated: '2026-10-22T07:55:22.530Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -8,7 +8,7 @@ metadata:
   repos_new: 0
   repos_with_plan: 64
   repos_fully_onboarded: 47
-  repos_with_release_issue: 21
+  repos_with_release_issue: 37
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -75,7 +75,10 @@ progress:
       rm_checked: 0
       rm_total: 6
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 73
+      url: https://github.com/camaraproject/ApplicationEndpointDiscovery/issues/73
+      created_at: '2026-10-22T02:54:28Z'
     review_history: null
   published_context:
     latest_public_release: r1.2
@@ -461,25 +464,40 @@ progress:
   github_url: https://github.com/camaraproject/ClickToDial
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r2.2
-  target_release_type: pre-release-rc
+  target_release_tag: r2.3
+  target_release_type: public-release
   dependencies:
     commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: click-to-dial
     target_api_version: 0.2.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - YadingFang
     - Wojiaozhenghao
     - XunliYang
-  state: published
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.3-daff875
+    release_pr:
+      number: 134
+      state: open
+      url: https://github.com/camaraproject/ClickToDial/pull/134
+      created_at: '2026-10-23T09:01:16Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 133
+      url: https://github.com/camaraproject/ClickToDial/issues/133
+      created_at: '2026-10-23T08:35:36Z'
     review_history: null
   published_context:
     latest_public_release: r1.4
@@ -506,7 +524,7 @@ progress:
     - api_name: click-to-dial
       api_version: 0.2.0-rc.2
   snapshot_api_versions:
-    click-to-dial: 0.2.0-rc.2
+    click-to-dial: 0.2.0
 - repository: ConnectedNetworkType
   github_url: https://github.com/camaraproject/ConnectedNetworkType
   release_track: meta-release
@@ -550,7 +568,10 @@ progress:
       rm_checked: 0
       rm_total: 6
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 82
+      url: https://github.com/camaraproject/ConnectedNetworkType/issues/82
+      created_at: '2026-09-14T12:35:22Z'
     review_history:
       discarded_count: 1
       last_reviewers:
@@ -592,32 +613,35 @@ progress:
   github_url: https://github.com/camaraproject/ConnectivityInsights
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r4.2
-  target_release_type: pre-release-rc
+  target_release_tag: r4.3
+  target_release_type: public-release
   dependencies:
     commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: connectivity-insights-subscriptions
     target_api_version: 0.7.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - maheshc01
     - kevsy
     - urvika-v
   - api_name: connectivity-insights
     target_api_version: 0.7.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - maheshc01
     - kevsy
     - urvika-v
-  state: published
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 233
+      url: https://github.com/camaraproject/ConnectivityInsights/issues/233
+      created_at: '2026-10-22T18:09:18Z'
     review_history: null
   published_context:
     latest_public_release: r3.2
@@ -647,9 +671,6 @@ progress:
       api_version: 0.7.0-rc.2
     - api_name: connectivity-insights
       api_version: 0.7.0-rc.2
-  snapshot_api_versions:
-    connectivity-insights-subscriptions: 0.7.0-rc.2
-    connectivity-insights: 0.7.0-rc.2
 - repository: ConsentInfo
   github_url: https://github.com/camaraproject/ConsentInfo
   release_track: independent
@@ -888,7 +909,10 @@ progress:
       rm_checked: 5
       rm_total: 6
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 192
+      url: https://github.com/camaraproject/DedicatedNetworks/issues/192
+      created_at: '2026-09-21T14:17:54Z'
     review_history: null
   published_context:
     latest_public_release: r1.2
@@ -1037,7 +1061,10 @@ progress:
       rm_checked: 0
       rm_total: 6
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 148
+      url: https://github.com/camaraproject/DeviceDataVolume/issues/148
+      created_at: '2026-10-19T09:39:15Z'
     review_history: null
   published_context:
     latest_public_release: r1.3
@@ -1243,7 +1270,10 @@ progress:
       rm_checked: 0
       rm_total: 6
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 53
+      url: https://github.com/camaraproject/DeviceMediaStreamingRate/issues/53
+      created_at: '2026-10-20T21:54:39Z'
     review_history: null
   published_context:
     latest_public_release: null
@@ -1567,7 +1597,10 @@ progress:
       rm_checked: 0
       rm_total: 6
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 39
+      url: https://github.com/camaraproject/EdgeApplicationManagement/issues/39
+      created_at: '2026-06-05T12:05:06Z'
     review_history:
       discarded_count: 8
       last_reviewers: []
@@ -1900,35 +1933,46 @@ progress:
   github_url: https://github.com/camaraproject/IoTSIMFraudPrevention
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r2.1
-  target_release_type: pre-release-rc
+  target_release_tag: r2.2
+  target_release_type: public-release
   dependencies:
     commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: iot-sim-fraud-prevention
     target_api_version: 0.2.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - chenfr2-ChinaTelecom
     - XunliYang
   - api_name: iot-sim-fraud-prevention-subscriptions
     target_api_version: 0.2.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - chenfr2-ChinaTelecom
     - XunliYang
-  state: published
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.2-d79db76
+    release_pr:
+      number: 95
+      state: open
+      url: https://github.com/camaraproject/IoTSIMFraudPrevention/pull/95
+      created_at: '2026-10-23T08:51:29Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
-    release_issue: null
-    review_history:
-      discarded_count: 7
-      last_reviewers: []
-      last_pr_url: https://github.com/camaraproject/IoTSIMFraudPrevention/pull/85
-      last_closed_at: '2026-10-13T06:14:12Z'
+    release_issue:
+      number: 94
+      url: https://github.com/camaraproject/IoTSIMFraudPrevention/issues/94
+      created_at: '2026-10-23T08:48:54Z'
+    review_history: null
   published_context:
     latest_public_release: r1.2
     newest_pre_release: r2.1
@@ -1958,8 +2002,8 @@ progress:
     - api_name: iot-sim-fraud-prevention-subscriptions
       api_version: 0.2.0-rc.1
   snapshot_api_versions:
-    iot-sim-fraud-prevention: 0.2.0-rc.1
-    iot-sim-fraud-prevention-subscriptions: 0.2.0-rc.1
+    iot-sim-fraud-prevention: 0.2.0
+    iot-sim-fraud-prevention-subscriptions: 0.2.0
 - repository: KnowYourCustomerAgeVerification
   github_url: https://github.com/camaraproject/KnowYourCustomerAgeVerification
   release_track: meta-release
@@ -2059,7 +2103,10 @@ progress:
       rm_checked: 1
       rm_total: 6
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 68
+      url: https://github.com/camaraproject/KnowYourCustomerFill-in/issues/68
+      created_at: '2026-09-28T12:36:28Z'
     review_history: null
   published_context:
     latest_public_release: r1.3
@@ -2121,7 +2168,10 @@ progress:
       rm_checked: 0
       rm_total: 6
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 94
+      url: https://github.com/camaraproject/KnowYourCustomerMatch/issues/94
+      created_at: '2026-09-24T11:39:03Z'
     review_history: null
   published_context:
     latest_public_release: r1.2
@@ -2176,27 +2226,31 @@ progress:
     - lihaojie-CMCC
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r2.2-07339cd
+    snapshot_branch: release-snapshot/r2.2-dc5116c
     release_pr:
-      number: 66
+      number: 74
       state: open
-      url: https://github.com/camaraproject/ModelAsAService/pull/66
-      created_at: '2026-10-14T12:52:48Z'
-      assignees:
-      - tanjadegroot
-      review_decision: CHANGES_REQUESTED
+      url: https://github.com/camaraproject/ModelAsAService/pull/74
+      created_at: '2026-10-23T02:22:56Z'
+      assignees: []
+      review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 3
+      rm_checked: 0
       rm_total: 6
     draft_release: null
     release_issue:
       number: 62
       url: https://github.com/camaraproject/ModelAsAService/issues/62
       created_at: '2026-10-10T07:54:04Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers:
+      - tanjadegroot
+      last_pr_url: https://github.com/camaraproject/ModelAsAService/pull/66
+      last_closed_at: '2026-10-23T02:18:37Z'
   published_context:
     latest_public_release: r1.2
     newest_pre_release: r2.1
@@ -2316,7 +2370,10 @@ progress:
       rm_checked: 2
       rm_total: 4
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 22
+      url: https://github.com/camaraproject/MultiPointVPN/issues/22
+      created_at: '2026-03-27T12:53:06Z'
     review_history:
       discarded_count: 2
       last_reviewers: []
@@ -2383,7 +2440,10 @@ progress:
       rm_checked: 0
       rm_total: 6
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 194
+      url: https://github.com/camaraproject/NetworkAccessManagement/issues/194
+      created_at: '2026-10-16T18:28:50Z'
     review_history: null
   published_context:
     latest_public_release: null
@@ -2718,15 +2778,18 @@ progress:
       created_at: '2026-10-16T15:39:56Z'
       assignees:
       - eric-murray
-      review_decision: null
+      review_decision: CHANGES_REQUESTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 5
       rm_total: 6
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 59
+      url: https://github.com/camaraproject/OptimalEdgeDiscovery/issues/59
+      created_at: '2026-09-11T17:32:41Z'
     review_history: null
   published_context:
     latest_public_release: r1.2
@@ -2982,7 +3045,10 @@ progress:
       rm_checked: 0
       rm_total: 6
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 150
+      url: https://github.com/camaraproject/QoSBooking/issues/150
+      created_at: '2026-09-29T10:36:43Z'
     review_history:
       discarded_count: 2
       last_reviewers: []
@@ -3258,10 +3324,22 @@ progress:
     - benhepworth
     - maheshc01
     - kevsy
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.3-9c6ee06
+    release_pr:
+      number: 132
+      state: open
+      url: https://github.com/camaraproject/SessionInsights/pull/132
+      created_at: '2026-10-22T19:28:56Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 0
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 129
@@ -3292,6 +3370,8 @@ progress:
     apis:
     - api_name: session-insights
       api_version: 0.2.0-rc.2
+  snapshot_api_versions:
+    session-insights: 0.2.0
 - repository: SimpleEdgeDiscovery
   github_url: https://github.com/camaraproject/SimpleEdgeDiscovery
   release_track: meta-release
@@ -3502,26 +3582,41 @@ progress:
   github_url: https://github.com/camaraproject/SubscriptionStatus
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r2.1
-  target_release_type: pre-release-rc
+  target_release_tag: r2.2
+  target_release_type: public-release
   dependencies:
     commonalities_release: r4.3
     identity_consent_management_release: r4.2
   apis:
   - api_name: subscription-status
     target_api_version: 0.2.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - chinaunicomyangfan
     - ClownsAlbert
     - ChuanyuChen
     - DanXu-ChinaTelecom
-  state: published
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.2-2d11764
+    release_pr:
+      number: 47
+      state: open
+      url: https://github.com/camaraproject/SubscriptionStatus/pull/47
+      created_at: '2026-10-23T09:14:02Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 0
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 46
+      url: https://github.com/camaraproject/SubscriptionStatus/issues/46
+      created_at: '2026-10-23T09:07:40Z'
     review_history: null
   published_context:
     latest_public_release: r1.2
@@ -3548,7 +3643,7 @@ progress:
     - api_name: subscription-status
       api_version: 0.2.0-rc.1
   snapshot_api_versions:
-    subscription-status: 0.2.0-rc.1
+    subscription-status: 0.2.0
 - repository: Tenure
   github_url: https://github.com/camaraproject/Tenure
   release_track: meta-release
