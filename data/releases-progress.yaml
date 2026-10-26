@@ -1,7 +1,7 @@
 metadata:
-  last_updated: '2026-10-25T08:35:30Z'
-  last_checked: '2026-10-25T08:35:30Z'
-  releases_master_updated: '2026-10-22T07:55:22.530Z'
+  last_updated: '2026-10-26T09:10:08Z'
+  last_checked: '2026-10-26T09:10:08Z'
+  releases_master_updated: '2026-10-26T05:58:00.991Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
   repos_scanned: 64
@@ -2768,29 +2768,21 @@ progress:
     - gainsley
     - JoseMConde
     - maheshc01
-  state: snapshot_active
+  state: planned
   artifacts:
-    snapshot_branch: release-snapshot/r2.2-6ca728b
-    release_pr:
-      number: 62
-      state: open
-      url: https://github.com/camaraproject/OptimalEdgeDiscovery/pull/62
-      created_at: '2026-10-16T15:39:56Z'
-      assignees:
-      - eric-murray
-      review_decision: CHANGES_REQUESTED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 5
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
     release_issue:
       number: 59
       url: https://github.com/camaraproject/OptimalEdgeDiscovery/issues/59
       created_at: '2026-09-11T17:32:41Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers:
+      - eric-murray
+      last_pr_url: https://github.com/camaraproject/OptimalEdgeDiscovery/pull/62
+      last_closed_at: '2026-10-26T00:08:37Z'
   published_context:
     latest_public_release: r1.2
     newest_pre_release: r2.1
@@ -2815,8 +2807,6 @@ progress:
     apis:
     - api_name: optimal-edge-discovery
       api_version: 0.2.0-rc.1
-  snapshot_api_versions:
-    optimal-edge-discovery: 0.2.0-rc.2
 - repository: OTPValidation
   github_url: https://github.com/camaraproject/OTPValidation
   release_track: meta-release
@@ -2968,7 +2958,7 @@ progress:
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 4
       rm_total: 6
     draft_release: null
     release_issue:
@@ -3790,10 +3780,22 @@ progress:
     - alpaycetin74
     - olsi-korkuti
     - GillesInnov35
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.3-4668134
+    release_pr:
+      number: 157
+      state: open
+      url: https://github.com/camaraproject/VerifiedCaller/pull/157
+      created_at: '2026-10-26T08:45:09Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 0
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 150
@@ -3832,6 +3834,9 @@ progress:
       api_version: 0.2.0-rc.1
     - api_name: verified-caller
       api_version: 0.2.0-rc.1
+  snapshot_api_versions:
+    brand-registration: 0.2.0-rc.2
+    verified-caller: 0.2.0-rc.2
 - repository: VoiceNotification
   github_url: https://github.com/camaraproject/VoiceNotification
   release_track: independent
