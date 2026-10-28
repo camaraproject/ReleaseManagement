@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-10-27T16:02:18Z'
-  last_checked: '2026-10-27T16:02:18Z'
+  last_updated: '2026-10-28T09:53:07Z'
+  last_checked: '2026-10-28T09:53:07Z'
   releases_master_updated: '2026-10-27T08:21:32.104Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -559,13 +559,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/ConnectedNetworkType/pull/97
       created_at: '2026-10-20T15:37:51Z'
-      assignees: []
+      assignees:
+      - tanjadegroot
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 6
     draft_release: null
     release_issue:
@@ -1121,13 +1122,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/DeviceIdentifier/pull/227
       created_at: '2026-10-20T15:20:13Z'
-      assignees: []
+      assignees:
+      - hdamker
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 6
     draft_release: null
     release_issue:
@@ -1335,13 +1337,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/DeviceReachabilityStatus/pull/104
       created_at: '2026-10-20T19:20:55Z'
-      assignees: []
+      assignees:
+      - hdamker
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 6
     draft_release: null
     release_issue:
@@ -2356,9 +2359,9 @@ progress:
     main_contacts:
     - abd-abhisek
     - hemantagogoi-infy
-  state: snapshot_active
+  state: planned
   artifacts:
-    snapshot_branch: release-snapshot/r1.1-d274cfd
+    snapshot_branch: null
     release_pr: null
     draft_release: null
     release_issue:
@@ -2366,11 +2369,10 @@ progress:
       url: https://github.com/camaraproject/MultiPointVPN/issues/22
       created_at: '2026-03-27T12:53:06Z'
     review_history:
-      discarded_count: 3
-      last_reviewers:
-      - tanjadegroot
-      last_pr_url: https://github.com/camaraproject/MultiPointVPN/pull/41
-      last_closed_at: '2026-10-27T12:20:42Z'
+      discarded_count: 4
+      last_reviewers: []
+      last_pr_url: https://github.com/camaraproject/MultiPointVPN/pull/47
+      last_closed_at: '2026-10-28T09:40:50Z'
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -2387,8 +2389,6 @@ progress:
       release_tag: null
       release_date: null
       apis: []
-  snapshot_api_versions:
-    multi-point-vpn: 0.1.0-alpha.1
 - repository: NetworkAccessManagement
   github_url: https://github.com/camaraproject/NetworkAccessManagement
   release_track: meta-release
@@ -2423,13 +2423,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/NetworkAccessManagement/pull/195
       created_at: '2026-10-16T18:35:37Z'
-      assignees: []
+      assignees:
+      - eric-murray
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 6
     draft_release: null
     release_issue:
@@ -2646,13 +2647,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/NumberRecycling/pull/131
       created_at: '2026-10-16T18:49:24Z'
-      assignees: []
+      assignees:
+      - hdamker
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 2
       codeowner_total: 3
       ready_for_review: false
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 6
     draft_release: null
     release_issue:
@@ -3284,9 +3286,9 @@ progress:
       assignees: []
       review_decision: null
       codeowner_approved: false
-      codeowner_checked: 0
+      codeowner_checked: 3
       codeowner_total: 3
-      ready_for_review: false
+      ready_for_review: true
       rm_checked: 0
       rm_total: 6
     draft_release: null
@@ -3410,13 +3412,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/SimSwap/pull/315
       created_at: '2026-10-20T07:59:26Z'
-      assignees: []
+      assignees:
+      - tanjadegroot
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 6
     draft_release: null
     release_issue:
@@ -3915,13 +3918,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/WebRTC/pull/246
       created_at: '2026-10-16T18:43:37Z'
-      assignees: []
+      assignees:
+      - tanjadegroot
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 6
     draft_release: null
     release_issue:
