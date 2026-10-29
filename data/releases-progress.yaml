@@ -1,7 +1,7 @@
 metadata:
-  last_updated: '2026-10-28T09:53:07Z'
-  last_checked: '2026-10-28T09:53:07Z'
-  releases_master_updated: '2026-10-27T08:21:32.104Z'
+  last_updated: '2026-10-29T10:13:43Z'
+  last_checked: '2026-10-29T10:13:43Z'
+  releases_master_updated: '2026-10-29T08:52:45.425Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
   repos_scanned: 64
@@ -312,27 +312,31 @@ progress:
     - chinaunicomyangfan
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r4.2-d268e8c
+    snapshot_branch: release-snapshot/r4.2-8eaf69b
     release_pr:
-      number: 243
+      number: 254
       state: open
-      url: https://github.com/camaraproject/CallForwardingSignal/pull/243
-      created_at: '2026-10-13T12:05:45Z'
-      assignees:
-      - tanjadegroot
-      review_decision: CHANGES_REQUESTED
+      url: https://github.com/camaraproject/CallForwardingSignal/pull/254
+      created_at: '2026-10-28T11:12:56Z'
+      assignees: []
+      review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 4
+      rm_checked: 0
       rm_total: 6
     draft_release: null
     release_issue:
       number: 241
       url: https://github.com/camaraproject/CallForwardingSignal/issues/241
       created_at: '2026-09-29T10:07:39Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers:
+      - tanjadegroot
+      last_pr_url: https://github.com/camaraproject/CallForwardingSignal/pull/243
+      last_closed_at: '2026-10-28T11:11:04Z'
   published_context:
     latest_public_release: r3.3
     newest_pre_release: r4.1
@@ -806,12 +810,12 @@ progress:
       created_at: '2026-10-22T11:31:41Z'
       assignees:
       - hdamker
-      review_decision: null
-      codeowner_approved: false
+      review_decision: APPROVED
+      codeowner_approved: true
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 6
       rm_total: 6
     draft_release: null
     release_issue:
@@ -1339,12 +1343,12 @@ progress:
       created_at: '2026-10-20T19:20:55Z'
       assignees:
       - hdamker
-      review_decision: null
+      review_decision: COMMENTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 4
       rm_total: 6
     draft_release: null
     release_issue:
@@ -1414,28 +1418,12 @@ progress:
     - bigludo7
     - sachinvodafone
     - akoshunyadi
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r2.2-25ae41f
-    release_pr:
-      number: 111
-      state: open
-      url: https://github.com/camaraproject/DeviceRoamingStatus/pull/111
-      created_at: '2026-10-20T16:00:53Z'
-      assignees:
-      - hdamker
-      review_decision: null
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 1
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 100
-      url: https://github.com/camaraproject/DeviceRoamingStatus/issues/100
-      created_at: '2026-09-14T12:35:02Z'
+    release_issue: null
     review_history:
       discarded_count: 1
       last_reviewers:
@@ -1444,7 +1432,7 @@ progress:
       last_closed_at: '2026-10-20T12:21:23Z'
   published_context:
     latest_public_release: r1.2
-    newest_pre_release: r2.1
+    newest_pre_release: r2.2
   cycle_releases:
     m1:
       release_tag: null
@@ -1463,13 +1451,13 @@ progress:
       release_date: null
       apis: []
   last_published:
-    release_tag: r2.1
-    release_date: '2026-08-07T09:58:54Z'
+    release_tag: r2.2
+    release_date: '2026-10-28T13:53:54Z'
     apis:
     - api_name: device-roaming-status-subscriptions
-      api_version: 0.9.0-rc.1
+      api_version: 0.9.0-rc.2
     - api_name: device-roaming-status
-      api_version: 1.2.0-rc.3
+      api_version: 1.2.0-rc.4
   snapshot_api_versions:
     device-roaming-status-subscriptions: 0.9.0-rc.2
     device-roaming-status: 1.2.0-rc.4
@@ -2359,10 +2347,22 @@ progress:
     main_contacts:
     - abd-abhisek
     - hemantagogoi-infy
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r1.1-2db8a98
+    release_pr:
+      number: 50
+      state: open
+      url: https://github.com/camaraproject/MultiPointVPN/pull/50
+      created_at: '2026-10-28T10:42:56Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 0
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 22
@@ -2389,6 +2389,8 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    multi-point-vpn: 0.1.0-alpha.1
 - repository: NetworkAccessManagement
   github_url: https://github.com/camaraproject/NetworkAccessManagement
   release_track: meta-release
@@ -2489,10 +2491,22 @@ progress:
     target_api_status: rc
     main_contacts:
     - cnzj-Gc
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.1-a0f6dbd
+    release_pr:
+      number: 116
+      state: open
+      url: https://github.com/camaraproject/NetworkInsights/pull/116
+      created_at: '2026-10-29T08:35:49Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 88
@@ -2521,6 +2535,9 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    network-health-assessment: 0.2.0-rc.1
+    network-traffic-analysis: 0.2.0-rc.1
 - repository: NetworkServiceAreas
   github_url: https://github.com/camaraproject/NetworkServiceAreas
   release_track: independent
@@ -3058,26 +3075,29 @@ progress:
   github_url: https://github.com/camaraproject/QoSProfiles
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r1.1
-  target_release_type: pre-release-rc
+  target_release_tag: r1.2
+  target_release_type: public-release
   dependencies:
     commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: qos-profiles
     target_api_version: 1.2.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - hdamker
     - eric-murray
     - benhepworth
     - jlurien
-  state: published
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 35
+      url: https://github.com/camaraproject/QoSProfiles/issues/35
+      created_at: '2026-10-28T15:38:43Z'
     review_history: null
   published_context:
     latest_public_release: null
@@ -3103,8 +3123,6 @@ progress:
     apis:
     - api_name: qos-profiles
       api_version: 1.2.0-rc.4
-  snapshot_api_versions:
-    qos-profiles: 1.2.0-rc.4
 - repository: QualityOnDemand
   github_url: https://github.com/camaraproject/QualityOnDemand
   release_track: meta-release
@@ -3920,12 +3938,12 @@ progress:
       created_at: '2026-10-16T18:43:37Z'
       assignees:
       - tanjadegroot
-      review_decision: null
+      review_decision: CHANGES_REQUESTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 5
       rm_total: 6
     draft_release: null
     release_issue:
