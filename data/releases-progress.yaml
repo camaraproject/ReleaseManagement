@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-10-29T10:13:43Z'
-  last_checked: '2026-10-29T10:13:43Z'
+  last_updated: '2026-10-30T10:15:46Z'
+  last_checked: '2026-10-30T10:15:46Z'
   releases_master_updated: '2026-10-29T08:52:45.425Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -565,12 +565,12 @@ progress:
       created_at: '2026-10-20T15:37:51Z'
       assignees:
       - tanjadegroot
-      review_decision: null
+      review_decision: COMMENTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 5
       rm_total: 6
     draft_release: null
     release_issue:
@@ -787,47 +787,41 @@ progress:
   github_url: https://github.com/camaraproject/CustomerInsights
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r3.2
-  target_release_type: pre-release-rc
+  target_release_tag: r3.3
+  target_release_type: public-release
   dependencies:
     commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: customer-insights
     target_api_version: 0.3.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - PedroDiez
     - KevScarr
     - rartych
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r3.2-4aa3c74
+    snapshot_branch: release-snapshot/r3.3-977a128
     release_pr:
-      number: 108
+      number: 112
       state: open
-      url: https://github.com/camaraproject/CustomerInsights/pull/108
-      created_at: '2026-10-22T11:31:41Z'
-      assignees:
-      - hdamker
-      review_decision: APPROVED
-      codeowner_approved: true
-      codeowner_checked: 3
+      url: https://github.com/camaraproject/CustomerInsights/pull/112
+      created_at: '2026-10-30T09:52:24Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 0
       codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 6
+      ready_for_review: false
+      rm_checked: 0
       rm_total: 6
     draft_release: null
     release_issue:
-      number: 94
-      url: https://github.com/camaraproject/CustomerInsights/issues/94
-      created_at: '2026-09-15T11:07:15Z'
-    review_history:
-      discarded_count: 1
-      last_reviewers:
-      - hdamker
-      last_pr_url: https://github.com/camaraproject/CustomerInsights/pull/97
-      last_closed_at: '2026-10-16T14:11:10Z'
+      number: 111
+      url: https://github.com/camaraproject/CustomerInsights/issues/111
+      created_at: '2026-10-30T07:46:28Z'
+    review_history: null
   published_context:
     latest_public_release: r2.2
     newest_pre_release: r3.1
@@ -853,7 +847,7 @@ progress:
     - api_name: customer-insights
       api_version: 0.3.0-rc.1
   snapshot_api_versions:
-    customer-insights: 0.3.0-rc.2
+    customer-insights: 0.3.0
 - repository: DedicatedNetworks
   github_url: https://github.com/camaraproject/DedicatedNetworks
   release_track: meta-release
@@ -898,27 +892,31 @@ progress:
     - eric-murray
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r2.3-81bcd9d
+    snapshot_branch: release-snapshot/r2.3-800d8cc
     release_pr:
-      number: 199
+      number: 213
       state: open
-      url: https://github.com/camaraproject/DedicatedNetworks/pull/199
-      created_at: '2026-10-15T21:03:30Z'
-      assignees:
-      - tanjadegroot
+      url: https://github.com/camaraproject/DedicatedNetworks/pull/213
+      created_at: '2026-10-29T15:27:02Z'
+      assignees: []
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 5
+      rm_checked: 0
       rm_total: 6
     draft_release: null
     release_issue:
       number: 192
       url: https://github.com/camaraproject/DedicatedNetworks/issues/192
       created_at: '2026-09-21T14:17:54Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers:
+      - tanjadegroot
+      last_pr_url: https://github.com/camaraproject/DedicatedNetworks/pull/199
+      last_closed_at: '2026-10-29T15:24:33Z'
   published_context:
     latest_public_release: r1.2
     newest_pre_release: r2.2
@@ -1173,39 +1171,54 @@ progress:
   github_url: https://github.com/camaraproject/DeviceLocation
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r4.2
-  target_release_type: pre-release-rc
+  target_release_tag: r4.3
+  target_release_type: public-release
   dependencies:
     commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: geofencing-subscriptions
     target_api_version: 0.6.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - bigludo7
     - jlurien
     - maxl2287
   - api_name: location-retrieval
     target_api_version: 1.0.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - bigludo7
     - jlurien
     - maxl2287
   - api_name: location-verification
     target_api_version: 3.1.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - bigludo7
     - jlurien
     - maxl2287
-  state: published
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r4.3-938c694
+    release_pr:
+      number: 454
+      state: open
+      url: https://github.com/camaraproject/DeviceLocation/pull/454
+      created_at: '2026-10-30T09:26:26Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 0
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
-    release_issue: null
+    release_issue:
+      number: 453
+      url: https://github.com/camaraproject/DeviceLocation/issues/453
+      created_at: '2026-10-30T08:08:49Z'
     review_history: null
   published_context:
     latest_public_release: r3.2
@@ -1240,9 +1253,9 @@ progress:
     - api_name: location-verification
       api_version: 3.1.0-rc.3
   snapshot_api_versions:
-    geofencing-subscriptions: 0.6.0-rc.2
-    location-retrieval: 1.0.0-rc.2
-    location-verification: 3.1.0-rc.3
+    geofencing-subscriptions: 0.6.0
+    location-retrieval: 1.0.0
+    location-verification: 3.1.0
 - repository: DeviceMediaStreamingRate
   github_url: https://github.com/camaraproject/DeviceMediaStreamingRate
   release_track: independent
@@ -2016,27 +2029,31 @@ progress:
     - GillesInnov35
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r2.2-217486f
+    snapshot_branch: release-snapshot/r2.2-f9deef0
     release_pr:
-      number: 69
+      number: 76
       state: open
-      url: https://github.com/camaraproject/KnowYourCustomerAgeVerification/pull/69
-      created_at: '2026-10-16T06:20:35Z'
-      assignees:
-      - tanjadegroot
-      review_decision: APPROVED
+      url: https://github.com/camaraproject/KnowYourCustomerAgeVerification/pull/76
+      created_at: '2026-10-29T14:00:11Z'
+      assignees: []
+      review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 5
+      rm_checked: 0
       rm_total: 6
     draft_release: null
     release_issue:
       number: 65
       url: https://github.com/camaraproject/KnowYourCustomerAgeVerification/issues/65
       created_at: '2026-09-24T11:39:06Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers:
+      - tanjadegroot
+      last_pr_url: https://github.com/camaraproject/KnowYourCustomerAgeVerification/pull/69
+      last_closed_at: '2026-10-29T13:54:14Z'
   published_context:
     latest_public_release: r1.3
     newest_pre_release: r2.1
@@ -2081,27 +2098,31 @@ progress:
     - GillesInnov35
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r2.2-3e12ecc
+    snapshot_branch: release-snapshot/r2.2-88bd0a7
     release_pr:
-      number: 73
+      number: 80
       state: open
-      url: https://github.com/camaraproject/KnowYourCustomerFill-in/pull/73
-      created_at: '2026-10-20T10:01:32Z'
-      assignees:
-      - hdamker
-      review_decision: APPROVED
+      url: https://github.com/camaraproject/KnowYourCustomerFill-in/pull/80
+      created_at: '2026-10-29T11:11:29Z'
+      assignees: []
+      review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 6
+      rm_checked: 0
       rm_total: 6
     draft_release: null
     release_issue:
       number: 68
       url: https://github.com/camaraproject/KnowYourCustomerFill-in/issues/68
       created_at: '2026-09-28T12:36:28Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers:
+      - hdamker
+      last_pr_url: https://github.com/camaraproject/KnowYourCustomerFill-in/pull/73
+      last_closed_at: '2026-10-29T11:07:11Z'
   published_context:
     latest_public_release: r1.3
     newest_pre_release: r2.1
@@ -2147,27 +2168,31 @@ progress:
     - GillesInnov35
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r2.2-fb8a956
+    snapshot_branch: release-snapshot/r2.2-b8a8d60
     release_pr:
-      number: 101
+      number: 108
       state: open
-      url: https://github.com/camaraproject/KnowYourCustomerMatch/pull/101
-      created_at: '2026-10-16T06:24:05Z'
-      assignees:
-      - hdamker
-      review_decision: APPROVED
+      url: https://github.com/camaraproject/KnowYourCustomerMatch/pull/108
+      created_at: '2026-10-29T10:55:42Z'
+      assignees: []
+      review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 6
+      rm_checked: 0
       rm_total: 6
     draft_release: null
     release_issue:
       number: 94
       url: https://github.com/camaraproject/KnowYourCustomerMatch/issues/94
       created_at: '2026-09-24T11:39:03Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers:
+      - hdamker
+      last_pr_url: https://github.com/camaraproject/KnowYourCustomerMatch/pull/101
+      last_closed_at: '2026-10-29T10:47:59Z'
   published_context:
     latest_public_release: r1.2
     newest_pre_release: r2.1
@@ -3089,10 +3114,22 @@ progress:
     - eric-murray
     - benhepworth
     - jlurien
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r1.2-e25c633
+    release_pr:
+      number: 38
+      state: open
+      url: https://github.com/camaraproject/QoSProfiles/pull/38
+      created_at: '2026-10-29T21:21:49Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 35
@@ -3123,6 +3160,8 @@ progress:
     apis:
     - api_name: qos-profiles
       api_version: 1.2.0-rc.4
+  snapshot_api_versions:
+    qos-profiles: 1.2.0
 - repository: QualityOnDemand
   github_url: https://github.com/camaraproject/QualityOnDemand
   release_track: meta-release
@@ -3422,29 +3461,18 @@ progress:
     - bigludo7
     - fernandopradocabrillo
     - maxl2287
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r4.3-43f7128
-    release_pr:
-      number: 315
-      state: open
-      url: https://github.com/camaraproject/SimSwap/pull/315
-      created_at: '2026-10-20T07:59:26Z'
-      assignees:
-      - tanjadegroot
-      review_decision: null
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 1
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 314
-      url: https://github.com/camaraproject/SimSwap/issues/314
-      created_at: '2026-10-20T07:56:12Z'
-    review_history: null
+    release_issue: null
+    review_history:
+      discarded_count: 1
+      last_reviewers:
+      - tanjadegroot
+      last_pr_url: https://github.com/camaraproject/SimSwap/pull/315
+      last_closed_at: '2026-10-29T15:50:35Z'
   published_context:
     latest_public_release: r3.3
     newest_pre_release: r4.2
@@ -3476,6 +3504,11 @@ progress:
   snapshot_api_versions:
     sim-swap-subscriptions: 0.4.0
     sim-swap: 2.2.0
+  warnings:
+  - code: W003
+    message: Release r4.3 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: SimSwapTimeFrame
   github_url: https://github.com/camaraproject/SimSwapTimeFrame
   release_track: independent
