@@ -1,14 +1,14 @@
 metadata:
-  last_updated: '2026-10-30T10:15:46Z'
-  last_checked: '2026-10-30T10:15:46Z'
-  releases_master_updated: '2026-10-29T08:52:45.425Z'
+  last_updated: '2026-10-31T09:50:29Z'
+  last_checked: '2026-10-31T09:50:29Z'
+  releases_master_updated: '2026-10-30T08:57:12.829Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
   repos_scanned: 64
   repos_new: 0
   repos_with_plan: 64
   repos_fully_onboarded: 47
-  repos_with_release_issue: 35
+  repos_with_release_issue: 36
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -34,7 +34,7 @@ meta_releases:
   total_apis: 59
   m1_achieved: 8
   m3_achieved: 57
-  m4_achieved: 5
+  m4_achieved: 7
 progress:
 - repository: ApplicationEndpointDiscovery
   github_url: https://github.com/camaraproject/ApplicationEndpointDiscovery
@@ -533,15 +533,15 @@ progress:
   github_url: https://github.com/camaraproject/ConnectedNetworkType
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r2.2
-  target_release_type: pre-release-rc
+  target_release_tag: r2.3
+  target_release_type: public-release
   dependencies:
     commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: connected-network-type-subscriptions
     target_api_version: 0.3.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - eric-murray
     - bigludo7
@@ -549,40 +549,22 @@ progress:
     - akoshunyadi
   - api_name: connected-network-type
     target_api_version: 0.3.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - eric-murray
     - bigludo7
     - sachinvodafone
     - akoshunyadi
-  state: snapshot_active
+  state: planned
   artifacts:
-    snapshot_branch: release-snapshot/r2.2-f38d31f
-    release_pr:
-      number: 97
-      state: open
-      url: https://github.com/camaraproject/ConnectedNetworkType/pull/97
-      created_at: '2026-10-20T15:37:51Z'
-      assignees:
-      - tanjadegroot
-      review_decision: COMMENTED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 5
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
     release_issue:
-      number: 82
-      url: https://github.com/camaraproject/ConnectedNetworkType/issues/82
-      created_at: '2026-09-14T12:35:22Z'
-    review_history:
-      discarded_count: 1
-      last_reviewers:
-      - tanjadegroot
-      last_pr_url: https://github.com/camaraproject/ConnectedNetworkType/pull/88
-      last_closed_at: '2026-10-20T10:14:24Z'
+      number: 104
+      url: https://github.com/camaraproject/ConnectedNetworkType/issues/104
+      created_at: '2026-10-30T17:49:54Z'
+    review_history: null
   published_context:
     latest_public_release: r1.2
     newest_pre_release: r2.1
@@ -611,9 +593,6 @@ progress:
       api_version: 0.3.0-rc.1
     - api_name: connected-network-type
       api_version: 0.3.0-rc.1
-  snapshot_api_versions:
-    connected-network-type-subscriptions: 0.3.0-rc.2
-    connected-network-type: 0.3.0-rc.2
 - repository: ConnectivityInsights
   github_url: https://github.com/camaraproject/ConnectivityInsights
   release_track: meta-release
@@ -638,10 +617,22 @@ progress:
     - maheshc01
     - kevsy
     - urvika-v
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r4.3-5a7d768
+    release_pr:
+      number: 234
+      state: open
+      url: https://github.com/camaraproject/ConnectivityInsights/pull/234
+      created_at: '2026-10-30T20:13:59Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 233
@@ -676,6 +667,9 @@ progress:
       api_version: 0.7.0-rc.2
     - api_name: connectivity-insights
       api_version: 0.7.0-rc.2
+  snapshot_api_versions:
+    connectivity-insights-subscriptions: 0.7.0
+    connectivity-insights: 0.7.0
 - repository: ConsentInfo
   github_url: https://github.com/camaraproject/ConsentInfo
   release_track: independent
@@ -811,7 +805,7 @@ progress:
       assignees: []
       review_decision: null
       codeowner_approved: false
-      codeowner_checked: 0
+      codeowner_checked: 2
       codeowner_total: 3
       ready_for_review: false
       rm_checked: 0
@@ -824,7 +818,7 @@ progress:
     review_history: null
   published_context:
     latest_public_release: r2.2
-    newest_pre_release: r3.1
+    newest_pre_release: r3.2
   cycle_releases:
     m1:
       release_tag: null
@@ -841,11 +835,11 @@ progress:
       release_date: null
       apis: []
   last_published:
-    release_tag: r3.1
-    release_date: '2026-07-23T16:06:40Z'
+    release_tag: r3.2
+    release_date: '2026-10-29T14:19:11Z'
     apis:
     - api_name: customer-insights
-      api_version: 0.3.0-rc.1
+      api_version: 0.3.0-rc.2
   snapshot_api_versions:
     customer-insights: 0.3.0
 - repository: DedicatedNetworks
@@ -1055,13 +1049,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/DeviceDataVolume/pull/154
       created_at: '2026-10-20T16:01:22Z'
-      assignees: []
-      review_decision: null
+      assignees:
+      - tanjadegroot
+      review_decision: APPROVED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 5
       rm_total: 6
     draft_release: null
     release_issue:
@@ -1126,12 +1121,12 @@ progress:
       created_at: '2026-10-20T15:20:13Z'
       assignees:
       - hdamker
-      review_decision: null
+      review_decision: APPROVED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 6
       rm_total: 6
     draft_release: null
     release_issue:
@@ -1209,9 +1204,9 @@ progress:
       assignees: []
       review_decision: null
       codeowner_approved: false
-      codeowner_checked: 0
+      codeowner_checked: 3
       codeowner_total: 3
-      ready_for_review: false
+      ready_for_review: true
       rm_checked: 0
       rm_total: 6
     draft_release: null
@@ -1409,15 +1404,15 @@ progress:
   github_url: https://github.com/camaraproject/DeviceRoamingStatus
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r2.2
-  target_release_type: pre-release-rc
+  target_release_tag: r2.3
+  target_release_type: public-release
   dependencies:
     commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: device-roaming-status-subscriptions
     target_api_version: 0.9.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - eric-murray
     - bigludo7
@@ -1425,24 +1420,22 @@ progress:
     - akoshunyadi
   - api_name: device-roaming-status
     target_api_version: 1.2.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - eric-murray
     - bigludo7
     - sachinvodafone
     - akoshunyadi
-  state: published
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
-    review_history:
-      discarded_count: 1
-      last_reviewers:
-      - hdamker
-      last_pr_url: https://github.com/camaraproject/DeviceRoamingStatus/pull/104
-      last_closed_at: '2026-10-20T12:21:23Z'
+    release_issue:
+      number: 116
+      url: https://github.com/camaraproject/DeviceRoamingStatus/issues/116
+      created_at: '2026-10-30T17:55:41Z'
+    review_history: null
   published_context:
     latest_public_release: r1.2
     newest_pre_release: r2.2
@@ -1471,9 +1464,6 @@ progress:
       api_version: 0.9.0-rc.2
     - api_name: device-roaming-status
       api_version: 1.2.0-rc.4
-  snapshot_api_versions:
-    device-roaming-status-subscriptions: 0.9.0-rc.2
-    device-roaming-status: 1.2.0-rc.4
 - repository: DeviceSwap
   github_url: https://github.com/camaraproject/DeviceSwap
   release_track: meta-release
@@ -2104,13 +2094,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/KnowYourCustomerFill-in/pull/80
       created_at: '2026-10-29T11:11:29Z'
-      assignees: []
+      assignees:
+      - hdamker
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 6
     draft_release: null
     release_issue:
@@ -2174,13 +2165,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/KnowYourCustomerMatch/pull/108
       created_at: '2026-10-29T10:55:42Z'
-      assignees: []
+      assignees:
+      - hdamker
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 6
     draft_release: null
     release_issue:
@@ -2919,13 +2911,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/PopulationDensityData/pull/169
       created_at: '2026-10-20T15:39:24Z'
-      assignees: []
+      assignees:
+      - tanjadegroot
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 5
       rm_total: 6
     draft_release: null
     release_issue:
@@ -3116,12 +3109,12 @@ progress:
     - jlurien
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r1.2-e25c633
+    snapshot_branch: release-snapshot/r1.2-a6f5dfa
     release_pr:
-      number: 38
+      number: 43
       state: open
-      url: https://github.com/camaraproject/QoSProfiles/pull/38
-      created_at: '2026-10-29T21:21:49Z'
+      url: https://github.com/camaraproject/QoSProfiles/pull/43
+      created_at: '2026-10-30T20:05:02Z'
       assignees: []
       review_decision: null
       codeowner_approved: false
@@ -3135,7 +3128,11 @@ progress:
       number: 35
       url: https://github.com/camaraproject/QoSProfiles/issues/35
       created_at: '2026-10-28T15:38:43Z'
-    review_history: null
+    review_history:
+      discarded_count: 2
+      last_reviewers: []
+      last_pr_url: https://github.com/camaraproject/QoSProfiles/pull/41
+      last_closed_at: '2026-10-30T19:56:08Z'
   published_context:
     latest_public_release: null
     newest_pre_release: r1.1
@@ -3474,8 +3471,8 @@ progress:
       last_pr_url: https://github.com/camaraproject/SimSwap/pull/315
       last_closed_at: '2026-10-29T15:50:35Z'
   published_context:
-    latest_public_release: r3.3
-    newest_pre_release: r4.2
+    latest_public_release: r4.3
+    newest_pre_release: null
   cycle_releases:
     m1:
       release_tag: null
@@ -3490,25 +3487,24 @@ progress:
       - api_name: sim-swap
         api_version: 2.2.0-rc.3
     m4:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r4.3
+      release_date: '2026-10-30T08:13:57Z'
+      apis:
+      - api_name: sim-swap-subscriptions
+        api_version: 0.4.0
+      - api_name: sim-swap
+        api_version: 2.2.0
   last_published:
-    release_tag: r4.2
-    release_date: '2026-10-20T07:46:51Z'
+    release_tag: r4.3
+    release_date: '2026-10-30T08:13:57Z'
     apis:
     - api_name: sim-swap-subscriptions
-      api_version: 0.4.0-rc.2
+      api_version: 0.4.0
     - api_name: sim-swap
-      api_version: 2.2.0-rc.4
+      api_version: 2.2.0
   snapshot_api_versions:
     sim-swap-subscriptions: 0.4.0
     sim-swap: 2.2.0
-  warnings:
-  - code: W003
-    message: Release r4.3 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: SimSwapTimeFrame
   github_url: https://github.com/camaraproject/SimSwapTimeFrame
   release_track: independent
