@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-11-03T09:16:33Z'
-  last_checked: '2026-11-03T09:16:33Z'
+  last_updated: '2026-11-03T16:08:11Z'
+  last_checked: '2026-11-03T16:08:11Z'
   releases_master_updated: '2026-10-31T08:49:18.348Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -555,10 +555,22 @@ progress:
     - bigludo7
     - sachinvodafone
     - akoshunyadi
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.3-b308bb3
+    release_pr:
+      number: 105
+      state: open
+      url: https://github.com/camaraproject/ConnectedNetworkType/pull/105
+      created_at: '2026-11-03T13:27:38Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 0
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 104
@@ -593,6 +605,9 @@ progress:
       api_version: 0.3.0-rc.2
     - api_name: connected-network-type
       api_version: 0.3.0-rc.2
+  snapshot_api_versions:
+    connected-network-type-subscriptions: 0.3.0
+    connected-network-type: 0.3.0
 - repository: ConnectivityInsights
   github_url: https://github.com/camaraproject/ConnectivityInsights
   release_track: meta-release
@@ -1042,10 +1057,22 @@ progress:
     main_contacts:
     - maxl2287
     - sachinvodafone
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.4-025f46d
+    release_pr:
+      number: 160
+      state: open
+      url: https://github.com/camaraproject/DeviceDataVolume/pull/160
+      created_at: '2026-11-03T13:20:26Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 0
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 159
@@ -1080,6 +1107,9 @@ progress:
       api_version: 0.2.0-rc.2
     - api_name: device-data-volume
       api_version: 0.2.0-rc.2
+  snapshot_api_versions:
+    device-data-volume-subscriptions: 0.2.0
+    device-data-volume: 0.2.0
 - repository: DeviceIdentifier
   github_url: https://github.com/camaraproject/DeviceIdentifier
   release_track: meta-release
@@ -1096,10 +1126,22 @@ progress:
     main_contacts:
     - eric-murray
     - Kevsy
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r3.5-1dc0110
+    release_pr:
+      number: 235
+      state: open
+      url: https://github.com/camaraproject/DeviceIdentifier/pull/235
+      created_at: '2026-11-03T13:20:05Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 0
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 234
@@ -1132,6 +1174,8 @@ progress:
     apis:
     - api_name: device-identifier
       api_version: 0.4.0-rc.2
+  snapshot_api_versions:
+    device-identifier: 0.4.0
 - repository: DeviceLocation
   github_url: https://github.com/camaraproject/DeviceLocation
   release_track: meta-release
@@ -1311,10 +1355,22 @@ progress:
     - bigludo7
     - sachinvodafone
     - akoshunyadi
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.3-0f8c2fb
+    release_pr:
+      number: 112
+      state: open
+      url: https://github.com/camaraproject/DeviceReachabilityStatus/pull/112
+      created_at: '2026-11-03T13:20:36Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 0
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 111
@@ -1349,6 +1405,9 @@ progress:
       api_version: 0.9.0-rc.1
     - api_name: device-reachability-status
       api_version: 1.2.0-rc.3
+  snapshot_api_versions:
+    device-reachability-status-subscriptions: 0.9.0
+    device-reachability-status: 1.2.0
 - repository: DeviceRoamingStatus
   github_url: https://github.com/camaraproject/DeviceRoamingStatus
   release_track: meta-release
@@ -1375,10 +1434,22 @@ progress:
     - bigludo7
     - sachinvodafone
     - akoshunyadi
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.3-d052786
+    release_pr:
+      number: 117
+      state: open
+      url: https://github.com/camaraproject/DeviceRoamingStatus/pull/117
+      created_at: '2026-11-03T13:23:39Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 0
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 116
@@ -1413,6 +1484,9 @@ progress:
       api_version: 0.9.0-rc.2
     - api_name: device-roaming-status
       api_version: 1.2.0-rc.4
+  snapshot_api_versions:
+    device-roaming-status-subscriptions: 0.9.0
+    device-roaming-status: 1.2.0
 - repository: DeviceSwap
   github_url: https://github.com/camaraproject/DeviceSwap
   release_track: meta-release
@@ -2325,9 +2399,9 @@ progress:
       assignees: []
       review_decision: null
       codeowner_approved: false
-      codeowner_checked: 0
+      codeowner_checked: 3
       codeowner_total: 3
-      ready_for_review: false
+      ready_for_review: true
       rm_checked: 0
       rm_total: 6
     draft_release: null
@@ -2622,7 +2696,7 @@ progress:
       created_at: '2026-10-16T18:49:24Z'
       assignees:
       - hdamker
-      review_decision: null
+      review_decision: CHANGES_REQUESTED
       codeowner_approved: false
       codeowner_checked: 2
       codeowner_total: 3
@@ -2910,10 +2984,22 @@ progress:
     main_contacts:
     - eric-murray
     - albertoramosmonagas
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.3-41506ea
+    release_pr:
+      number: 94
+      state: open
+      url: https://github.com/camaraproject/PredictiveConnectivityData/pull/94
+      created_at: '2026-11-03T09:18:03Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 1
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 93
@@ -2944,6 +3030,8 @@ progress:
     apis:
     - api_name: predictive-connectivity-data
       api_version: 0.2.0-rc.2
+  snapshot_api_versions:
+    predictive-connectivity-data: 0.2.0
 - repository: QoSBooking
   github_url: https://github.com/camaraproject/QoSBooking
   release_track: meta-release
@@ -2974,13 +3062,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/QoSBooking/pull/160
       created_at: '2026-10-20T21:18:52Z'
-      assignees: []
-      review_decision: null
+      assignees:
+      - hdamker
+      review_decision: CHANGES_REQUESTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 6
     draft_release: null
     release_issue:
@@ -3892,29 +3981,21 @@ progress:
     - pradeepachar-mavenir
     - deepakjaiswal1
     - teikuran
-  state: snapshot_active
+  state: planned
   artifacts:
-    snapshot_branch: release-snapshot/r3.2-fc378cf
-    release_pr:
-      number: 246
-      state: open
-      url: https://github.com/camaraproject/WebRTC/pull/246
-      created_at: '2026-10-16T18:43:37Z'
-      assignees:
-      - tanjadegroot
-      review_decision: CHANGES_REQUESTED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 5
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
     release_issue:
       number: 240
       url: https://github.com/camaraproject/WebRTC/issues/240
       created_at: '2026-10-11T00:47:41Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers:
+      - tanjadegroot
+      last_pr_url: https://github.com/camaraproject/WebRTC/pull/246
+      last_closed_at: '2026-11-03T16:01:58Z'
   published_context:
     latest_public_release: r2.2
     newest_pre_release: r3.1
@@ -3947,10 +4028,6 @@ progress:
       api_version: 0.3.0-rc.1
     - api_name: webrtc-registration
       api_version: 0.4.0-rc.1
-  snapshot_api_versions:
-    webrtc-call-handling: 0.4.0-rc.2
-    webrtc-events-subscriptions: 0.3.0-rc.2
-    webrtc-registration: 0.4.0-rc.2
 - repository: ApplicationEndpointDiscovery
   github_url: https://github.com/camaraproject/ApplicationEndpointDiscovery
   release_track: meta-release
