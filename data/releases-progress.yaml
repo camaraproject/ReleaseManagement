@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-11-02T11:28:51Z'
-  last_checked: '2026-11-02T11:28:51Z'
+  last_updated: '2026-11-03T09:16:33Z'
+  last_checked: '2026-11-03T09:16:33Z'
   releases_master_updated: '2026-10-31T08:49:18.348Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -8,7 +8,7 @@ metadata:
   repos_new: 0
   repos_with_plan: 64
   repos_fully_onboarded: 47
-  repos_with_release_issue: 36
+  repos_with_release_issue: 37
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -802,13 +802,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/CustomerInsights/pull/112
       created_at: '2026-10-30T09:52:24Z'
-      assignees: []
+      assignees:
+      - hdamker
       review_decision: null
       codeowner_approved: false
-      codeowner_checked: 2
+      codeowner_checked: 3
       codeowner_total: 3
-      ready_for_review: false
-      rm_checked: 0
+      ready_for_review: true
+      rm_checked: 1
       rm_total: 6
     draft_release: null
     release_issue:
@@ -1083,40 +1084,27 @@ progress:
   github_url: https://github.com/camaraproject/DeviceIdentifier
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r3.4
-  target_release_type: pre-release-rc
+  target_release_tag: r3.5
+  target_release_type: public-release
   dependencies:
     commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: device-identifier
     target_api_version: 0.4.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - eric-murray
     - Kevsy
-  state: snapshot_active
+  state: planned
   artifacts:
-    snapshot_branch: release-snapshot/r3.4-11605ff
-    release_pr:
-      number: 227
-      state: open
-      url: https://github.com/camaraproject/DeviceIdentifier/pull/227
-      created_at: '2026-10-20T15:20:13Z'
-      assignees:
-      - hdamker
-      review_decision: APPROVED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 6
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
     release_issue:
-      number: 224
-      url: https://github.com/camaraproject/DeviceIdentifier/issues/224
-      created_at: '2026-10-02T15:14:22Z'
+      number: 234
+      url: https://github.com/camaraproject/DeviceIdentifier/issues/234
+      created_at: '2026-11-02T13:06:58Z'
     review_history: null
   published_context:
     latest_public_release: r2.2
@@ -1144,8 +1132,6 @@ progress:
     apis:
     - api_name: device-identifier
       api_version: 0.4.0-rc.2
-  snapshot_api_versions:
-    device-identifier: 0.4.0-rc.3
 - repository: DeviceLocation
   github_url: https://github.com/camaraproject/DeviceLocation
   release_track: meta-release
@@ -1303,15 +1289,15 @@ progress:
   github_url: https://github.com/camaraproject/DeviceReachabilityStatus
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r2.2
-  target_release_type: pre-release-rc
+  target_release_tag: r2.3
+  target_release_type: public-release
   dependencies:
     commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: device-reachability-status-subscriptions
     target_api_version: 0.9.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - eric-murray
     - bigludo7
@@ -1319,40 +1305,22 @@ progress:
     - akoshunyadi
   - api_name: device-reachability-status
     target_api_version: 1.2.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - eric-murray
     - bigludo7
     - sachinvodafone
     - akoshunyadi
-  state: snapshot_active
+  state: planned
   artifacts:
-    snapshot_branch: release-snapshot/r2.2-1cae79d
-    release_pr:
-      number: 104
-      state: open
-      url: https://github.com/camaraproject/DeviceReachabilityStatus/pull/104
-      created_at: '2026-10-20T19:20:55Z'
-      assignees:
-      - hdamker
-      review_decision: COMMENTED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 4
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
     release_issue:
-      number: 89
-      url: https://github.com/camaraproject/DeviceReachabilityStatus/issues/89
-      created_at: '2026-09-14T12:35:46Z'
-    review_history:
-      discarded_count: 1
-      last_reviewers:
-      - hdamker
-      last_pr_url: https://github.com/camaraproject/DeviceReachabilityStatus/pull/93
-      last_closed_at: '2026-10-20T16:30:19Z'
+      number: 111
+      url: https://github.com/camaraproject/DeviceReachabilityStatus/issues/111
+      created_at: '2026-11-03T08:11:20Z'
+    review_history: null
   published_context:
     latest_public_release: r1.2
     newest_pre_release: r2.1
@@ -1381,9 +1349,6 @@ progress:
       api_version: 0.9.0-rc.1
     - api_name: device-reachability-status
       api_version: 1.2.0-rc.3
-  snapshot_api_versions:
-    device-reachability-status-subscriptions: 0.9.0-rc.2
-    device-reachability-status: 1.2.0-rc.4
 - repository: DeviceRoamingStatus
   github_url: https://github.com/camaraproject/DeviceRoamingStatus
   release_track: meta-release
@@ -2080,12 +2045,12 @@ progress:
       created_at: '2026-10-29T11:11:29Z'
       assignees:
       - hdamker
-      review_decision: null
-      codeowner_approved: false
+      review_decision: APPROVED
+      codeowner_approved: true
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 6
       rm_total: 6
     draft_release: null
     release_issue:
@@ -2151,12 +2116,12 @@ progress:
       created_at: '2026-10-29T10:55:42Z'
       assignees:
       - hdamker
-      review_decision: null
-      codeowner_approved: false
+      review_decision: APPROVED
+      codeowner_approved: true
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 6
       rm_total: 6
     draft_release: null
     release_issue:
@@ -2222,15 +2187,15 @@ progress:
     - lihaojie-CMCC
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r2.2-dc5116c
+    snapshot_branch: release-snapshot/r2.2-f2a7cdf
     release_pr:
-      number: 74
+      number: 86
       state: open
-      url: https://github.com/camaraproject/ModelAsAService/pull/74
-      created_at: '2026-10-23T02:22:56Z'
+      url: https://github.com/camaraproject/ModelAsAService/pull/86
+      created_at: '2026-11-02T11:52:30Z'
       assignees:
       - tanjadegroot
-      review_decision: null
+      review_decision: COMMENTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
@@ -2243,11 +2208,11 @@ progress:
       url: https://github.com/camaraproject/ModelAsAService/issues/62
       created_at: '2026-10-10T07:54:04Z'
     review_history:
-      discarded_count: 1
+      discarded_count: 2
       last_reviewers:
       - tanjadegroot
-      last_pr_url: https://github.com/camaraproject/ModelAsAService/pull/66
-      last_closed_at: '2026-10-23T02:18:37Z'
+      last_pr_url: https://github.com/camaraproject/ModelAsAService/pull/74
+      last_closed_at: '2026-11-02T11:48:10Z'
   published_context:
     latest_public_release: r1.2
     newest_pre_release: r2.1
@@ -2419,29 +2384,21 @@ progress:
     - mayur007
     - clundie-CL
     - benhepworth
-  state: snapshot_active
+  state: planned
   artifacts:
-    snapshot_branch: release-snapshot/r3.2-d086eae
-    release_pr:
-      number: 195
-      state: open
-      url: https://github.com/camaraproject/NetworkAccessManagement/pull/195
-      created_at: '2026-10-16T18:35:37Z'
-      assignees:
-      - eric-murray
-      review_decision: null
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 6
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
     release_issue:
       number: 194
       url: https://github.com/camaraproject/NetworkAccessManagement/issues/194
       created_at: '2026-10-16T18:28:50Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers:
+      - eric-murray
+      last_pr_url: https://github.com/camaraproject/NetworkAccessManagement/pull/195
+      last_closed_at: '2026-11-02T19:57:29Z'
   published_context:
     latest_public_release: null
     newest_pre_release: r3.1
@@ -2470,9 +2427,6 @@ progress:
       api_version: 0.3.0-rc.1
     - api_name: network-access-domains
       api_version: 0.3.0-rc.1
-  snapshot_api_versions:
-    network-access-devices: 0.3.0-rc.2
-    network-access-domains: 0.3.0-rc.2
 - repository: NetworkInsights
   github_url: https://github.com/camaraproject/NetworkInsights
   release_track: meta-release
@@ -2791,11 +2745,10 @@ progress:
       url: https://github.com/camaraproject/OptimalEdgeDiscovery/issues/59
       created_at: '2026-09-11T17:32:41Z'
     review_history:
-      discarded_count: 1
-      last_reviewers:
-      - eric-murray
-      last_pr_url: https://github.com/camaraproject/OptimalEdgeDiscovery/pull/62
-      last_closed_at: '2026-10-26T00:08:37Z'
+      discarded_count: 2
+      last_reviewers: []
+      last_pr_url: https://github.com/camaraproject/OptimalEdgeDiscovery/pull/68
+      last_closed_at: '2026-11-02T17:27:02Z'
   published_context:
     latest_public_release: r1.2
     newest_pre_release: r2.1
@@ -2945,30 +2898,28 @@ progress:
   github_url: https://github.com/camaraproject/PredictiveConnectivityData
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r2.2
-  target_release_type: pre-release-rc
+  target_release_tag: r2.3
+  target_release_type: public-release
   dependencies:
     commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: predictive-connectivity-data
     target_api_version: 0.2.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - eric-murray
     - albertoramosmonagas
-  state: published
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
-    review_history:
-      discarded_count: 1
-      last_reviewers:
-      - tanjadegroot
-      last_pr_url: https://github.com/camaraproject/PredictiveConnectivityData/pull/82
-      last_closed_at: '2026-10-13T10:09:32Z'
+    release_issue:
+      number: 93
+      url: https://github.com/camaraproject/PredictiveConnectivityData/issues/93
+      created_at: '2026-11-03T09:15:20Z'
+    review_history: null
   published_context:
     latest_public_release: r1.2
     newest_pre_release: r2.2
@@ -2993,8 +2944,6 @@ progress:
     apis:
     - api_name: predictive-connectivity-data
       api_version: 0.2.0-rc.2
-  snapshot_api_versions:
-    predictive-connectivity-data: 0.2.0-rc.2
 - repository: QoSBooking
   github_url: https://github.com/camaraproject/QoSBooking
   release_track: meta-release
@@ -3781,13 +3730,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/VerifiedCaller/pull/159
       created_at: '2026-10-26T10:42:36Z'
-      assignees: []
+      assignees:
+      - tanjadegroot
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 5
       rm_total: 6
     draft_release: null
     release_issue:
