@@ -1,14 +1,14 @@
 metadata:
-  last_updated: '2026-11-05T06:45:53Z'
-  last_checked: '2026-11-05T06:45:53Z'
-  releases_master_updated: '2026-11-03T09:59:28.688Z'
+  last_updated: '2026-11-05T11:13:47Z'
+  last_checked: '2026-11-05T11:13:47Z'
+  releases_master_updated: '2026-11-05T06:45:25.547Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
   repos_scanned: 64
   repos_new: 0
   repos_with_plan: 64
   repos_fully_onboarded: 47
-  repos_with_release_issue: 37
+  repos_with_release_issue: 38
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -66,13 +66,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/ApplicationEndpointDiscovery/pull/74
       created_at: '2026-10-22T03:02:38Z'
-      assignees: []
+      assignees:
+      - eric-murray
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 6
     draft_release: null
     release_issue:
@@ -136,13 +137,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/ApplicationEndpointRegistration/pull/63
       created_at: '2026-10-22T02:59:40Z'
-      assignees: []
+      assignees:
+      - eric-murray
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 6
     draft_release: null
     release_issue:
@@ -1982,13 +1984,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/IoTSIMFraudPrevention/pull/95
       created_at: '2026-10-23T08:51:29Z'
-      assignees: []
+      assignees:
+      - eric-murray
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 6
     draft_release: null
     release_issue:
@@ -2100,33 +2103,31 @@ progress:
   github_url: https://github.com/camaraproject/KnowYourCustomerFill-in
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r2.2
-  target_release_type: pre-release-rc
+  target_release_tag: r2.3
+  target_release_type: public-release
   dependencies:
     commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: kyc-fill-in
     target_api_version: 0.5.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - ToshiWakayama-KDDI
     - GillesInnov35
-  state: published
+  state: planned
   artifacts:
     snapshot_branch: null
     release_pr: null
     draft_release: null
-    release_issue: null
-    review_history:
-      discarded_count: 1
-      last_reviewers:
-      - hdamker
-      last_pr_url: https://github.com/camaraproject/KnowYourCustomerFill-in/pull/73
-      last_closed_at: '2026-10-29T11:07:11Z'
+    release_issue:
+      number: 84
+      url: https://github.com/camaraproject/KnowYourCustomerFill-in/issues/84
+      created_at: '2026-11-05T09:55:06Z'
+    review_history: null
   published_context:
     latest_public_release: r1.3
-    newest_pre_release: r2.1
+    newest_pre_release: r2.2
   cycle_releases:
     m1:
       release_tag: null
@@ -2143,18 +2144,11 @@ progress:
       release_date: null
       apis: []
   last_published:
-    release_tag: r2.1
-    release_date: '2026-09-01T05:11:26Z'
+    release_tag: r2.2
+    release_date: '2026-11-04T08:27:08Z'
     apis:
     - api_name: kyc-fill-in
-      api_version: 0.5.0-rc.1
-  snapshot_api_versions:
-    kyc-fill-in: 0.5.0-rc.2
-  warnings:
-  - code: W003
-    message: Release r2.2 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
+      api_version: 0.5.0-rc.2
 - repository: KnowYourCustomerMatch
   github_url: https://github.com/camaraproject/KnowYourCustomerMatch
   release_track: meta-release
@@ -2196,7 +2190,7 @@ progress:
     review_history: null
   published_context:
     latest_public_release: r1.2
-    newest_pre_release: r2.1
+    newest_pre_release: r2.2
   cycle_releases:
     m1:
       release_tag: null
@@ -2213,11 +2207,11 @@ progress:
       release_date: null
       apis: []
   last_published:
-    release_tag: r2.1
-    release_date: '2026-09-01T05:04:32Z'
+    release_tag: r2.2
+    release_date: '2026-11-04T07:47:40Z'
     apis:
     - api_name: kyc-match
-      api_version: 0.5.0-rc.1
+      api_version: 1.0.0-rc.1
   snapshot_api_versions:
     kyc-match: 1.0.0
 - repository: ModelAsAService
@@ -2810,12 +2804,12 @@ progress:
       created_at: '2026-11-03T17:23:23Z'
       assignees:
       - eric-murray
-      review_decision: null
+      review_decision: APPROVED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 6
       rm_total: 6
     draft_release: null
     release_issue:
@@ -3215,10 +3209,22 @@ progress:
     - eric-murray
     - benhepworth
     - jlurien
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r4.3-6e21c48
+    release_pr:
+      number: 644
+      state: open
+      url: https://github.com/camaraproject/QualityOnDemand/pull/644
+      created_at: '2026-11-05T10:45:15Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 643
@@ -3255,6 +3261,9 @@ progress:
       api_version: 0.4.0-rc.2
     - api_name: quality-on-demand
       api_version: 1.2.0-rc.4
+  snapshot_api_versions:
+    qos-provisioning: 0.4.0
+    quality-on-demand: 1.2.0
 - repository: RainfallIntensity
   github_url: https://github.com/camaraproject/RainfallIntensity
   release_track: independent
@@ -3693,27 +3702,31 @@ progress:
     - fernandopradocabrillo
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r3.3-bd3a827
+    snapshot_branch: release-snapshot/r3.3-2de731a
     release_pr:
-      number: 105
+      number: 115
       state: open
-      url: https://github.com/camaraproject/Tenure/pull/105
-      created_at: '2026-10-16T08:13:51Z'
-      assignees:
-      - tanjadegroot
-      review_decision: CHANGES_REQUESTED
+      url: https://github.com/camaraproject/Tenure/pull/115
+      created_at: '2026-11-05T10:11:25Z'
+      assignees: []
+      review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 5
+      rm_checked: 0
       rm_total: 6
     draft_release: null
     release_issue:
       number: 102
       url: https://github.com/camaraproject/Tenure/issues/102
       created_at: '2026-09-17T08:04:53Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers:
+      - tanjadegroot
+      last_pr_url: https://github.com/camaraproject/Tenure/pull/105
+      last_closed_at: '2026-11-05T10:09:36Z'
   published_context:
     latest_public_release: r2.2
     newest_pre_release: r3.2
@@ -3842,7 +3855,7 @@ progress:
     review_history: null
   published_context:
     latest_public_release: r1.3
-    newest_pre_release: r2.2
+    newest_pre_release: r2.3
   cycle_releases:
     m1:
       release_tag: r2.1
@@ -3865,13 +3878,13 @@ progress:
       release_date: null
       apis: []
   last_published:
-    release_tag: r2.2
-    release_date: '2026-09-10T13:07:52Z'
+    release_tag: r2.3
+    release_date: '2026-11-04T05:59:09Z'
     apis:
     - api_name: brand-registration
-      api_version: 0.2.0-rc.1
+      api_version: 0.2.0-rc.2
     - api_name: verified-caller
-      api_version: 0.2.0-rc.1
+      api_version: 0.2.0-rc.2
   snapshot_api_versions:
     brand-registration: 0.2.0
     verified-caller: 0.2.0
