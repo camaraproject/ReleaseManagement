@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-11-05T11:13:47Z'
-  last_checked: '2026-11-05T11:13:47Z'
+  last_updated: '2026-11-06T11:11:50Z'
+  last_checked: '2026-11-06T11:11:50Z'
   releases_master_updated: '2026-11-05T06:45:25.547Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -8,7 +8,7 @@ metadata:
   repos_new: 0
   repos_with_plan: 64
   repos_fully_onboarded: 47
-  repos_with_release_issue: 38
+  repos_with_release_issue: 36
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -2115,10 +2115,22 @@ progress:
     main_contacts:
     - ToshiWakayama-KDDI
     - GillesInnov35
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.3-be760b4
+    release_pr:
+      number: 85
+      state: open
+      url: https://github.com/camaraproject/KnowYourCustomerFill-in/pull/85
+      created_at: '2026-11-05T14:48:12Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 84
@@ -2149,6 +2161,8 @@ progress:
     apis:
     - api_name: kyc-fill-in
       api_version: 0.5.0-rc.2
+  snapshot_api_versions:
+    kyc-fill-in: 0.5.0
 - repository: KnowYourCustomerMatch
   github_url: https://github.com/camaraproject/KnowYourCustomerMatch
   release_track: meta-release
@@ -2177,9 +2191,9 @@ progress:
       assignees: []
       review_decision: null
       codeowner_approved: false
-      codeowner_checked: 0
+      codeowner_checked: 3
       codeowner_total: 3
-      ready_for_review: false
+      ready_for_review: true
       rm_checked: 0
       rm_total: 6
     draft_release: null
@@ -2218,55 +2232,37 @@ progress:
   github_url: https://github.com/camaraproject/ModelAsAService
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r2.2
-  target_release_type: pre-release-rc
+  target_release_tag: r2.3
+  target_release_type: public-release
   dependencies:
     commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: knowledge-base
     target_api_version: 0.2.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - lihaojie-CMCC
   - api_name: qa-assistant-manage
     target_api_version: 0.2.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - lihaojie-CMCC
   - api_name: qa-assistant-service
     target_api_version: 0.2.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - lihaojie-CMCC
-  state: snapshot_active
+  state: planned
   artifacts:
-    snapshot_branch: release-snapshot/r2.2-f2a7cdf
-    release_pr:
-      number: 86
-      state: open
-      url: https://github.com/camaraproject/ModelAsAService/pull/86
-      created_at: '2026-11-02T11:52:30Z'
-      assignees:
-      - tanjadegroot
-      review_decision: APPROVED
-      codeowner_approved: true
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 6
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
     release_issue:
-      number: 62
-      url: https://github.com/camaraproject/ModelAsAService/issues/62
-      created_at: '2026-10-10T07:54:04Z'
-    review_history:
-      discarded_count: 2
-      last_reviewers:
-      - tanjadegroot
-      last_pr_url: https://github.com/camaraproject/ModelAsAService/pull/74
-      last_closed_at: '2026-11-02T11:48:10Z'
+      number: 91
+      url: https://github.com/camaraproject/ModelAsAService/issues/91
+      created_at: '2026-11-06T02:16:48Z'
+    review_history: null
   published_context:
     latest_public_release: r1.2
     newest_pre_release: r2.1
@@ -2299,10 +2295,6 @@ progress:
       api_version: 0.2.0-rc.1
     - api_name: qa-assistant-service
       api_version: 0.2.0-rc.1
-  snapshot_api_versions:
-    knowledge-base: 0.2.0-rc.2
-    qa-assistant-manage: 0.2.0-rc.2
-    qa-assistant-service: 0.2.0-rc.2
 - repository: MostFrequentLocation
   github_url: https://github.com/camaraproject/MostFrequentLocation
   release_track: meta-release
@@ -2509,13 +2501,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/NetworkInsights/pull/116
       created_at: '2026-10-29T08:35:49Z'
-      assignees: []
+      assignees:
+      - eric-murray
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 6
     draft_release: null
     release_issue:
@@ -2794,28 +2787,12 @@ progress:
     - gainsley
     - JoseMConde
     - maheshc01
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r2.2-4859df2
-    release_pr:
-      number: 70
-      state: open
-      url: https://github.com/camaraproject/OptimalEdgeDiscovery/pull/70
-      created_at: '2026-11-03T17:23:23Z'
-      assignees:
-      - eric-murray
-      review_decision: APPROVED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 6
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 59
-      url: https://github.com/camaraproject/OptimalEdgeDiscovery/issues/59
-      created_at: '2026-09-11T17:32:41Z'
+    release_issue: null
     review_history:
       discarded_count: 2
       last_reviewers: []
@@ -2847,6 +2824,11 @@ progress:
       api_version: 0.2.0-rc.1
   snapshot_api_versions:
     optimal-edge-discovery: 0.2.0-rc.2
+  warnings:
+  - code: W003
+    message: Release r2.2 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: OTPValidation
   github_url: https://github.com/camaraproject/OTPValidation
   release_track: meta-release
@@ -2915,33 +2897,18 @@ progress:
     - sachinvodafone
     - jgarciahospital
     - maheshc01
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r4.3-eaccf1a
-    release_pr:
-      number: 169
-      state: open
-      url: https://github.com/camaraproject/PopulationDensityData/pull/169
-      created_at: '2026-10-20T15:39:24Z'
-      assignees:
-      - tanjadegroot
-      review_decision: null
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 5
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 159
-      url: https://github.com/camaraproject/PopulationDensityData/issues/159
-      created_at: '2026-10-13T09:49:12Z'
+    release_issue: null
     review_history:
-      discarded_count: 2
-      last_reviewers: []
-      last_pr_url: https://github.com/camaraproject/PopulationDensityData/pull/166
-      last_closed_at: '2026-10-20T13:13:24Z'
+      discarded_count: 3
+      last_reviewers:
+      - tanjadegroot
+      last_pr_url: https://github.com/camaraproject/PopulationDensityData/pull/169
+      last_closed_at: '2026-11-05T12:32:07Z'
   published_context:
     latest_public_release: r3.2
     newest_pre_release: r4.2
@@ -2968,6 +2935,11 @@ progress:
       api_version: 1.0.0-rc.2
   snapshot_api_versions:
     population-density-data: 1.0.0
+  warnings:
+  - code: W003
+    message: Release r4.3 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: PredictiveConnectivityData
   github_url: https://github.com/camaraproject/PredictiveConnectivityData
   release_track: meta-release
@@ -2995,9 +2967,9 @@ progress:
       assignees: []
       review_decision: null
       codeowner_approved: false
-      codeowner_checked: 1
+      codeowner_checked: 3
       codeowner_total: 3
-      ready_for_review: false
+      ready_for_review: true
       rm_checked: 0
       rm_total: 6
     draft_release: null
@@ -3686,15 +3658,15 @@ progress:
   github_url: https://github.com/camaraproject/Tenure
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r3.3
-  target_release_type: pre-release-rc
+  target_release_tag: r3.4
+  target_release_type: public-release
   dependencies:
     commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: kyc-tenure
     target_api_version: 0.3.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - eric-murray
     - GillesInnov35
@@ -3702,12 +3674,12 @@ progress:
     - fernandopradocabrillo
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r3.3-2de731a
+    snapshot_branch: release-snapshot/r3.4-56d4ad8
     release_pr:
-      number: 115
+      number: 119
       state: open
-      url: https://github.com/camaraproject/Tenure/pull/115
-      created_at: '2026-11-05T10:11:25Z'
+      url: https://github.com/camaraproject/Tenure/pull/119
+      created_at: '2026-11-06T09:05:10Z'
       assignees: []
       review_decision: null
       codeowner_approved: false
@@ -3718,15 +3690,10 @@ progress:
       rm_total: 6
     draft_release: null
     release_issue:
-      number: 102
-      url: https://github.com/camaraproject/Tenure/issues/102
-      created_at: '2026-09-17T08:04:53Z'
-    review_history:
-      discarded_count: 1
-      last_reviewers:
-      - tanjadegroot
-      last_pr_url: https://github.com/camaraproject/Tenure/pull/105
-      last_closed_at: '2026-11-05T10:09:36Z'
+      number: 118
+      url: https://github.com/camaraproject/Tenure/issues/118
+      created_at: '2026-11-06T09:03:20Z'
+    review_history: null
   published_context:
     latest_public_release: r2.2
     newest_pre_release: r3.2
@@ -3754,7 +3721,7 @@ progress:
     - api_name: kyc-tenure
       api_version: 0.3.0-rc.1
   snapshot_api_versions:
-    kyc-tenure: 0.3.0-rc.2
+    kyc-tenure: 0.3.0
 - repository: TrafficInfluence
   github_url: https://github.com/camaraproject/TrafficInfluence
   release_track: meta-release
