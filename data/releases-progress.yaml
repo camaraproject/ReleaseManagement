@@ -1,7 +1,7 @@
 metadata:
-  last_updated: '2026-11-06T11:11:50Z'
-  last_checked: '2026-11-06T11:11:50Z'
-  releases_master_updated: '2026-11-05T06:45:25.547Z'
+  last_updated: '2026-11-06T13:50:53Z'
+  last_checked: '2026-11-06T13:50:53Z'
+  releases_master_updated: '2026-11-06T09:48:26.600Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
   repos_scanned: 64
@@ -34,7 +34,7 @@ meta_releases:
   total_apis: 59
   m1_achieved: 8
   m3_achieved: 57
-  m4_achieved: 7
+  m4_achieved: 8
 progress:
 - repository: ApplicationEndpointDiscovery
   github_url: https://github.com/camaraproject/ApplicationEndpointDiscovery
@@ -2265,7 +2265,7 @@ progress:
     review_history: null
   published_context:
     latest_public_release: r1.2
-    newest_pre_release: r2.1
+    newest_pre_release: r2.2
   cycle_releases:
     m1:
       release_tag: null
@@ -2286,15 +2286,15 @@ progress:
       release_date: null
       apis: []
   last_published:
-    release_tag: r2.1
-    release_date: '2026-07-28T01:55:13Z'
+    release_tag: r2.2
+    release_date: '2026-11-06T01:18:38Z'
     apis:
     - api_name: knowledge-base
-      api_version: 0.2.0-rc.1
+      api_version: 0.2.0-rc.2
     - api_name: qa-assistant-manage
-      api_version: 0.2.0-rc.1
+      api_version: 0.2.0-rc.2
     - api_name: qa-assistant-service
-      api_version: 0.2.0-rc.1
+      api_version: 0.2.0-rc.2
 - repository: MostFrequentLocation
   github_url: https://github.com/camaraproject/MostFrequentLocation
   release_track: meta-release
@@ -2800,7 +2800,7 @@ progress:
       last_closed_at: '2026-11-02T17:27:02Z'
   published_context:
     latest_public_release: r1.2
-    newest_pre_release: r2.1
+    newest_pre_release: r2.2
   cycle_releases:
     m1:
       release_tag: null
@@ -2817,18 +2817,13 @@ progress:
       release_date: null
       apis: []
   last_published:
-    release_tag: r2.1
-    release_date: '2026-09-10T20:04:23Z'
+    release_tag: r2.2
+    release_date: '2026-11-05T16:40:10Z'
     apis:
     - api_name: optimal-edge-discovery
-      api_version: 0.2.0-rc.1
+      api_version: 0.2.0-rc.2
   snapshot_api_versions:
     optimal-edge-discovery: 0.2.0-rc.2
-  warnings:
-  - code: W003
-    message: Release r2.2 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: OTPValidation
   github_url: https://github.com/camaraproject/OTPValidation
   release_track: meta-release
@@ -2910,8 +2905,8 @@ progress:
       last_pr_url: https://github.com/camaraproject/PopulationDensityData/pull/169
       last_closed_at: '2026-11-05T12:32:07Z'
   published_context:
-    latest_public_release: r3.2
-    newest_pre_release: r4.2
+    latest_public_release: r4.3
+    newest_pre_release: null
   cycle_releases:
     m1:
       release_tag: null
@@ -2924,22 +2919,19 @@ progress:
       - api_name: population-density-data
         api_version: 1.0.0-rc.1
     m4:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r4.3
+      release_date: '2026-11-06T09:02:33Z'
+      apis:
+      - api_name: population-density-data
+        api_version: 1.0.0
   last_published:
-    release_tag: r4.2
-    release_date: '2026-10-08T14:04:38Z'
+    release_tag: r4.3
+    release_date: '2026-11-06T09:02:33Z'
     apis:
     - api_name: population-density-data
-      api_version: 1.0.0-rc.2
+      api_version: 1.0.0
   snapshot_api_versions:
     population-density-data: 1.0.0
-  warnings:
-  - code: W003
-    message: Release r4.3 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: PredictiveConnectivityData
   github_url: https://github.com/camaraproject/PredictiveConnectivityData
   release_track: meta-release
@@ -3696,7 +3688,7 @@ progress:
     review_history: null
   published_context:
     latest_public_release: r2.2
-    newest_pre_release: r3.2
+    newest_pre_release: r3.3
   cycle_releases:
     m1:
       release_tag: r3.1
@@ -3715,11 +3707,11 @@ progress:
       release_date: null
       apis: []
   last_published:
-    release_tag: r3.2
-    release_date: '2026-08-11T08:25:04Z'
+    release_tag: r3.3
+    release_date: '2026-11-06T08:56:59Z'
     apis:
     - api_name: kyc-tenure
-      api_version: 0.3.0-rc.1
+      api_version: 0.3.0-rc.2
   snapshot_api_versions:
     kyc-tenure: 0.3.0
 - repository: TrafficInfluence
