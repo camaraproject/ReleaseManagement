@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-11-06T13:50:53Z'
-  last_checked: '2026-11-06T13:50:53Z'
+  last_updated: '2026-11-08T10:36:26Z'
+  last_checked: '2026-11-08T10:36:26Z'
   releases_master_updated: '2026-11-06T09:48:26.600Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -8,7 +8,7 @@ metadata:
   repos_new: 0
   repos_with_plan: 64
   repos_fully_onboarded: 47
-  repos_with_release_issue: 36
+  repos_with_release_issue: 35
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -31,9 +31,9 @@ meta_releases:
   m3_achieved: 3
   m4_achieved: 3
 - name: Sync26
-  total_apis: 59
+  total_apis: 58
   m1_achieved: 8
-  m3_achieved: 57
+  m3_achieved: 56
   m4_achieved: 8
 progress:
 - repository: ApplicationEndpointDiscovery
@@ -314,20 +314,20 @@ progress:
     - chinaunicomyangfan
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r4.2-8eaf69b
+    snapshot_branch: release-snapshot/r4.2-381018a
     release_pr:
-      number: 254
+      number: 259
       state: open
-      url: https://github.com/camaraproject/CallForwardingSignal/pull/254
-      created_at: '2026-10-28T11:12:56Z'
+      url: https://github.com/camaraproject/CallForwardingSignal/pull/259
+      created_at: '2026-11-06T15:55:23Z'
       assignees:
       - hdamker
-      review_decision: null
+      review_decision: APPROVED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 6
       rm_total: 6
     draft_release: null
     release_issue:
@@ -335,11 +335,11 @@ progress:
       url: https://github.com/camaraproject/CallForwardingSignal/issues/241
       created_at: '2026-09-29T10:07:39Z'
     review_history:
-      discarded_count: 1
+      discarded_count: 2
       last_reviewers:
-      - tanjadegroot
-      last_pr_url: https://github.com/camaraproject/CallForwardingSignal/pull/243
-      last_closed_at: '2026-10-28T11:11:04Z'
+      - hdamker
+      last_pr_url: https://github.com/camaraproject/CallForwardingSignal/pull/254
+      last_closed_at: '2026-11-06T15:20:12Z'
   published_context:
     latest_public_release: r3.3
     newest_pre_release: r4.1
@@ -823,7 +823,7 @@ progress:
       created_at: '2026-10-30T09:52:24Z'
       assignees:
       - hdamker
-      review_decision: null
+      review_decision: COMMENTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
@@ -914,12 +914,12 @@ progress:
       created_at: '2026-10-29T15:27:02Z'
       assignees:
       - hdamker
-      review_decision: null
+      review_decision: COMMENTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 4
       rm_total: 6
     draft_release: null
     release_issue:
@@ -2503,7 +2503,7 @@ progress:
       created_at: '2026-10-29T08:35:49Z'
       assignees:
       - eric-murray
-      review_decision: null
+      review_decision: CHANGES_REQUESTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
@@ -2669,12 +2669,12 @@ progress:
       created_at: '2026-11-03T18:24:07Z'
       assignees:
       - hdamker
-      review_decision: null
+      review_decision: CHANGES_REQUESTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 5
       rm_total: 6
     draft_release: null
     release_issue:
@@ -3028,12 +3028,12 @@ progress:
       created_at: '2026-11-04T01:30:47Z'
       assignees:
       - hdamker
-      review_decision: null
+      review_decision: APPROVED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 4
+      rm_checked: 6
       rm_total: 6
     draft_release: null
     release_issue:
@@ -3340,13 +3340,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/SessionInsights/pull/132
       created_at: '2026-10-22T19:28:56Z'
-      assignees: []
+      assignees:
+      - tanjadegroot
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 2
       rm_total: 6
     draft_release: null
     release_issue:
@@ -3582,44 +3583,35 @@ progress:
       apis: []
 - repository: SubscriptionStatus
   github_url: https://github.com/camaraproject/SubscriptionStatus
-  release_track: meta-release
-  meta_release: Sync26
+  release_track: independent
   target_release_tag: r2.2
-  target_release_type: public-release
+  target_release_type: pre-release-rc
   dependencies:
-    commonalities_release: r4.3
+    commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: subscription-status
     target_api_version: 0.2.0
-    target_api_status: public
+    target_api_status: rc
     main_contacts:
     - chinaunicomyangfan
     - ClownsAlbert
     - ChuanyuChen
     - DanXu-ChinaTelecom
-  state: snapshot_active
+  state: planned
   artifacts:
-    snapshot_branch: release-snapshot/r2.2-2d11764
-    release_pr:
-      number: 47
-      state: open
-      url: https://github.com/camaraproject/SubscriptionStatus/pull/47
-      created_at: '2026-10-23T09:14:02Z'
-      assignees: []
-      review_decision: null
-      codeowner_approved: false
-      codeowner_checked: 0
-      codeowner_total: 3
-      ready_for_review: false
-      rm_checked: 0
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
     release_issue:
       number: 46
       url: https://github.com/camaraproject/SubscriptionStatus/issues/46
       created_at: '2026-10-23T09:07:40Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers: []
+      last_pr_url: https://github.com/camaraproject/SubscriptionStatus/pull/47
+      last_closed_at: '2026-11-06T18:25:10Z'
   published_context:
     latest_public_release: r1.2
     newest_pre_release: r2.1
@@ -3644,8 +3636,6 @@ progress:
     apis:
     - api_name: subscription-status
       api_version: 0.2.0-rc.1
-  snapshot_api_versions:
-    subscription-status: 0.2.0
 - repository: Tenure
   github_url: https://github.com/camaraproject/Tenure
   release_track: meta-release
@@ -3664,27 +3654,12 @@ progress:
     - GillesInnov35
     - grgpapadopoulos
     - fernandopradocabrillo
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r3.4-56d4ad8
-    release_pr:
-      number: 119
-      state: open
-      url: https://github.com/camaraproject/Tenure/pull/119
-      created_at: '2026-11-06T09:05:10Z'
-      assignees: []
-      review_decision: null
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 0
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 118
-      url: https://github.com/camaraproject/Tenure/issues/118
-      created_at: '2026-11-06T09:03:20Z'
+    release_issue: null
     review_history: null
   published_context:
     latest_public_release: r2.2
@@ -3714,6 +3689,11 @@ progress:
       api_version: 0.3.0-rc.2
   snapshot_api_versions:
     kyc-tenure: 0.3.0
+  warnings:
+  - code: W003
+    message: Release r3.4 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: TrafficInfluence
   github_url: https://github.com/camaraproject/TrafficInfluence
   release_track: meta-release
@@ -3966,9 +3946,9 @@ progress:
       assignees: []
       review_decision: null
       codeowner_approved: false
-      codeowner_checked: 0
+      codeowner_checked: 3
       codeowner_total: 3
-      ready_for_review: false
+      ready_for_review: true
       rm_checked: 0
       rm_total: 6
     draft_release: null
