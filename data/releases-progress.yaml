@@ -1,14 +1,14 @@
 metadata:
-  last_updated: '2026-11-08T15:57:03Z'
-  last_checked: '2026-11-08T15:57:03Z'
-  releases_master_updated: '2026-11-08T09:26:22.047Z'
+  last_updated: '2026-11-09T11:52:07Z'
+  last_checked: '2026-11-09T11:52:07Z'
+  releases_master_updated: '2026-11-09T10:14:34.698Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
   repos_scanned: 64
   repos_new: 0
   repos_with_plan: 64
   repos_fully_onboarded: 47
-  repos_with_release_issue: 36
+  repos_with_release_issue: 35
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -299,50 +299,44 @@ progress:
   github_url: https://github.com/camaraproject/CallForwardingSignal
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r4.2
-  target_release_type: pre-release-rc
+  target_release_tag: r4.3
+  target_release_type: public-release
   dependencies:
     commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: call-forwarding-signal
     target_api_version: 0.5.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - FabrizioMoggio
     - bigludo7
     - chinaunicomyangfan
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r4.2-381018a
+    snapshot_branch: release-snapshot/r4.3-4ca8c5f
     release_pr:
-      number: 259
+      number: 263
       state: open
-      url: https://github.com/camaraproject/CallForwardingSignal/pull/259
-      created_at: '2026-11-06T15:55:23Z'
-      assignees:
-      - hdamker
-      review_decision: APPROVED
+      url: https://github.com/camaraproject/CallForwardingSignal/pull/263
+      created_at: '2026-11-09T09:33:48Z'
+      assignees: []
+      review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 6
+      rm_checked: 0
       rm_total: 6
     draft_release: null
     release_issue:
-      number: 241
-      url: https://github.com/camaraproject/CallForwardingSignal/issues/241
-      created_at: '2026-09-29T10:07:39Z'
-    review_history:
-      discarded_count: 2
-      last_reviewers:
-      - hdamker
-      last_pr_url: https://github.com/camaraproject/CallForwardingSignal/pull/254
-      last_closed_at: '2026-11-06T15:20:12Z'
+      number: 262
+      url: https://github.com/camaraproject/CallForwardingSignal/issues/262
+      created_at: '2026-11-09T08:48:35Z'
+    review_history: null
   published_context:
     latest_public_release: r3.3
-    newest_pre_release: r4.1
+    newest_pre_release: r4.2
   cycle_releases:
     m1:
       release_tag: null
@@ -359,13 +353,13 @@ progress:
       release_date: null
       apis: []
   last_published:
-    release_tag: r4.1
-    release_date: '2026-09-17T16:03:57Z'
+    release_tag: r4.2
+    release_date: '2026-11-09T07:27:32Z'
     apis:
     - api_name: call-forwarding-signal
-      api_version: 0.5.0-rc.1
+      api_version: 0.5.0-rc.2
   snapshot_api_versions:
-    call-forwarding-signal: 0.5.0-rc.2
+    call-forwarding-signal: 0.5.0
 - repository: CapabilitiesAndRuntimeRestrictions
   github_url: https://github.com/camaraproject/CapabilitiesAndRuntimeRestrictions
   release_track: independent
@@ -866,15 +860,15 @@ progress:
   github_url: https://github.com/camaraproject/DedicatedNetworks
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r2.3
-  target_release_type: pre-release-rc
+  target_release_tag: r2.4
+  target_release_type: public-release
   dependencies:
     commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: dedicated-network-accesses
     target_api_version: 0.2.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - tlohmar
     - PeterKovacs2
@@ -882,7 +876,7 @@ progress:
     - eric-murray
   - api_name: dedicated-network-profiles
     target_api_version: 0.2.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - tlohmar
     - PeterKovacs2
@@ -890,7 +884,7 @@ progress:
     - eric-murray
   - api_name: dedicated-network
     target_api_version: 0.2.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - tlohmar
     - PeterKovacs2
@@ -898,7 +892,7 @@ progress:
     - eric-murray
   - api_name: dedicated-network-areas
     target_api_version: 0.1.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - tlohmar
     - PeterKovacs2
@@ -906,35 +900,29 @@ progress:
     - eric-murray
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r2.3-800d8cc
+    snapshot_branch: release-snapshot/r2.4-7843778
     release_pr:
-      number: 213
+      number: 218
       state: open
-      url: https://github.com/camaraproject/DedicatedNetworks/pull/213
-      created_at: '2026-10-29T15:27:02Z'
-      assignees:
-      - hdamker
-      review_decision: APPROVED
-      codeowner_approved: true
-      codeowner_checked: 3
+      url: https://github.com/camaraproject/DedicatedNetworks/pull/218
+      created_at: '2026-11-09T09:27:08Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 0
       codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 6
+      ready_for_review: false
+      rm_checked: 0
       rm_total: 6
     draft_release: null
     release_issue:
-      number: 192
-      url: https://github.com/camaraproject/DedicatedNetworks/issues/192
-      created_at: '2026-09-21T14:17:54Z'
-    review_history:
-      discarded_count: 1
-      last_reviewers:
-      - tanjadegroot
-      last_pr_url: https://github.com/camaraproject/DedicatedNetworks/pull/199
-      last_closed_at: '2026-10-29T15:24:33Z'
+      number: 217
+      url: https://github.com/camaraproject/DedicatedNetworks/issues/217
+      created_at: '2026-11-09T09:20:45Z'
+    review_history: null
   published_context:
     latest_public_release: r1.2
-    newest_pre_release: r2.2
+    newest_pre_release: r2.3
   cycle_releases:
     m1:
       release_tag: r2.1
@@ -965,22 +953,22 @@ progress:
       release_date: null
       apis: []
   last_published:
-    release_tag: r2.2
-    release_date: '2026-09-16T19:09:08Z'
+    release_tag: r2.3
+    release_date: '2026-11-08T19:35:56Z'
     apis:
     - api_name: dedicated-network-accesses
-      api_version: 0.2.0-rc.1
+      api_version: 0.2.0-rc.2
     - api_name: dedicated-network-profiles
-      api_version: 0.2.0-rc.1
+      api_version: 0.2.0-rc.2
     - api_name: dedicated-network
-      api_version: 0.2.0-rc.1
+      api_version: 0.2.0-rc.2
     - api_name: dedicated-network-areas
-      api_version: 0.1.0-rc.1
+      api_version: 0.1.0-rc.2
   snapshot_api_versions:
-    dedicated-network-accesses: 0.2.0-rc.2
-    dedicated-network-profiles: 0.2.0-rc.2
-    dedicated-network: 0.2.0-rc.2
-    dedicated-network-areas: 0.1.0-rc.2
+    dedicated-network-accesses: 0.2.0
+    dedicated-network-profiles: 0.2.0
+    dedicated-network: 0.2.0
+    dedicated-network-areas: 0.1.0
 - repository: DeviceAuthenticity
   github_url: https://github.com/camaraproject/DeviceAuthenticity
   release_track: independent
@@ -2660,28 +2648,12 @@ progress:
     - eric-murray
     - Masa8106
     - grgpapadopoulos
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r3.2-011729d
-    release_pr:
-      number: 133
-      state: open
-      url: https://github.com/camaraproject/NumberRecycling/pull/133
-      created_at: '2026-11-03T18:24:07Z'
-      assignees:
-      - hdamker
-      review_decision: CHANGES_REQUESTED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 5
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 125
-      url: https://github.com/camaraproject/NumberRecycling/issues/125
-      created_at: '2026-09-21T09:12:27Z'
+    release_issue: null
     review_history:
       discarded_count: 1
       last_reviewers:
@@ -2690,7 +2662,7 @@ progress:
       last_closed_at: '2026-11-03T18:17:25Z'
   published_context:
     latest_public_release: r2.2
-    newest_pre_release: r3.1
+    newest_pre_release: r3.2
   cycle_releases:
     m1:
       release_tag: null
@@ -2707,11 +2679,11 @@ progress:
       release_date: null
       apis: []
   last_published:
-    release_tag: r3.1
-    release_date: '2026-09-03T19:08:44Z'
+    release_tag: r3.2
+    release_date: '2026-11-09T09:05:29Z'
     apis:
     - api_name: number-recycling
-      api_version: 0.3.0-rc.1
+      api_version: 0.3.0-rc.2
   snapshot_api_versions:
     number-recycling: 0.3.0-rc.2
 - repository: NumberVerification
@@ -2998,54 +2970,49 @@ progress:
   github_url: https://github.com/camaraproject/QoSBooking
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r2.2
-  target_release_type: pre-release-rc
+  target_release_tag: r2.3
+  target_release_type: public-release
   dependencies:
     commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: qos-booking-and-assignment
     target_api_version: 0.2.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - Masa8106
     - jlurien
   - api_name: qos-booking
     target_api_version: 0.2.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - Masa8106
     - jlurien
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r2.2-99411ce
+    snapshot_branch: release-snapshot/r2.3-b7db911
     release_pr:
-      number: 187
+      number: 191
       state: open
-      url: https://github.com/camaraproject/QoSBooking/pull/187
-      created_at: '2026-11-04T01:30:47Z'
-      assignees:
-      - hdamker
-      review_decision: APPROVED
+      url: https://github.com/camaraproject/QoSBooking/pull/191
+      created_at: '2026-11-09T07:19:35Z'
+      assignees: []
+      review_decision: null
       codeowner_approved: false
-      codeowner_checked: 3
+      codeowner_checked: 1
       codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 6
+      ready_for_review: false
+      rm_checked: 0
       rm_total: 6
     draft_release: null
     release_issue:
-      number: 150
-      url: https://github.com/camaraproject/QoSBooking/issues/150
-      created_at: '2026-09-29T10:36:43Z'
-    review_history:
-      discarded_count: 4
-      last_reviewers: []
-      last_pr_url: https://github.com/camaraproject/QoSBooking/pull/184
-      last_closed_at: '2026-11-04T01:17:00Z'
+      number: 190
+      url: https://github.com/camaraproject/QoSBooking/issues/190
+      created_at: '2026-11-09T07:15:12Z'
+    review_history: null
   published_context:
     latest_public_release: r1.2
-    newest_pre_release: r2.1
+    newest_pre_release: r2.2
   cycle_releases:
     m1:
       release_tag: null
@@ -3064,16 +3031,16 @@ progress:
       release_date: null
       apis: []
   last_published:
-    release_tag: r2.1
-    release_date: '2026-08-28T16:58:33Z'
+    release_tag: r2.2
+    release_date: '2026-11-09T06:57:32Z'
     apis:
     - api_name: qos-booking-and-assignment
-      api_version: 0.2.0-rc.1
+      api_version: 0.2.0-rc.2
     - api_name: qos-booking
-      api_version: 0.2.0-rc.1
+      api_version: 0.2.0-rc.2
   snapshot_api_versions:
-    qos-booking-and-assignment: 0.2.0-rc.2
-    qos-booking: 0.2.0-rc.2
+    qos-booking-and-assignment: 0.2.0
+    qos-booking: 0.2.0
 - repository: QoSProfiles
   github_url: https://github.com/camaraproject/QoSProfiles
   release_track: meta-release
