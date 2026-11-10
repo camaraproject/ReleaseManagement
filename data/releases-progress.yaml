@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-11-09T11:52:07Z'
-  last_checked: '2026-11-09T11:52:07Z'
+  last_updated: '2026-11-10T11:27:22Z'
+  last_checked: '2026-11-10T11:27:22Z'
   releases_master_updated: '2026-11-09T10:14:34.698Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -139,12 +139,12 @@ progress:
       created_at: '2026-10-22T02:59:40Z'
       assignees:
       - eric-murray
-      review_decision: null
+      review_decision: APPROVED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 6
       rm_total: 6
     draft_release: null
     release_issue:
@@ -366,10 +366,10 @@ progress:
   target_release_tag: r1.1
   target_release_type: none
   dependencies:
-    commonalities_release: r3.4
-    identity_consent_management_release: r3.3
+    commonalities_release: r4.4
+    identity_consent_management_release: r4.2
   apis:
-  - api_name: capabilities-and-restrictions
+  - api_name: effective-capabilities-and-restrictions
     target_api_version: 0.1.0
     target_api_status: draft
     main_contacts:
@@ -639,7 +639,7 @@ progress:
       created_at: '2026-10-30T20:13:59Z'
       assignees:
       - eric-murray
-      review_decision: null
+      review_decision: CHANGES_REQUESTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
@@ -817,12 +817,12 @@ progress:
       created_at: '2026-10-30T09:52:24Z'
       assignees:
       - hdamker
-      review_decision: COMMENTED
-      codeowner_approved: false
+      review_decision: APPROVED
+      codeowner_approved: true
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 6
       rm_total: 6
     draft_release: null
     release_issue:
@@ -909,9 +909,9 @@ progress:
       assignees: []
       review_decision: null
       codeowner_approved: false
-      codeowner_checked: 0
+      codeowner_checked: 3
       codeowner_total: 3
-      ready_for_review: false
+      ready_for_review: true
       rm_checked: 0
       rm_total: 6
     draft_release: null
@@ -1052,12 +1052,12 @@ progress:
     - sachinvodafone
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r2.4-025f46d
+    snapshot_branch: release-snapshot/r2.4-b23ddc3
     release_pr:
-      number: 160
+      number: 165
       state: open
-      url: https://github.com/camaraproject/DeviceDataVolume/pull/160
-      created_at: '2026-11-03T13:20:26Z'
+      url: https://github.com/camaraproject/DeviceDataVolume/pull/165
+      created_at: '2026-11-10T10:02:55Z'
       assignees: []
       review_decision: null
       codeowner_approved: false
@@ -1071,7 +1071,11 @@ progress:
       number: 159
       url: https://github.com/camaraproject/DeviceDataVolume/issues/159
       created_at: '2026-11-02T11:16:08Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers: []
+      last_pr_url: https://github.com/camaraproject/DeviceDataVolume/pull/160
+      last_closed_at: '2026-11-10T10:00:26Z'
   published_context:
     latest_public_release: r1.3
     newest_pre_release: r2.3
@@ -1966,27 +1970,31 @@ progress:
     - XunliYang
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r2.2-d79db76
+    snapshot_branch: release-snapshot/r2.2-f07169e
     release_pr:
-      number: 95
+      number: 104
       state: open
-      url: https://github.com/camaraproject/IoTSIMFraudPrevention/pull/95
-      created_at: '2026-10-23T08:51:29Z'
-      assignees:
-      - eric-murray
+      url: https://github.com/camaraproject/IoTSIMFraudPrevention/pull/104
+      created_at: '2026-11-10T05:36:02Z'
+      assignees: []
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 0
       rm_total: 6
     draft_release: null
     release_issue:
       number: 94
       url: https://github.com/camaraproject/IoTSIMFraudPrevention/issues/94
       created_at: '2026-10-23T08:48:54Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers:
+      - eric-murray
+      last_pr_url: https://github.com/camaraproject/IoTSIMFraudPrevention/pull/95
+      last_closed_at: '2026-11-10T05:33:48Z'
   published_context:
     latest_public_release: r1.2
     newest_pre_release: r2.1
@@ -3905,13 +3913,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/WebRTC/pull/253
       created_at: '2026-11-03T16:24:17Z'
-      assignees: []
+      assignees:
+      - tanjadegroot
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 5
       rm_total: 6
     draft_release: null
     release_issue:
