@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-11-10T11:27:22Z'
-  last_checked: '2026-11-10T11:27:22Z'
+  last_updated: '2026-11-10T15:58:17Z'
+  last_checked: '2026-11-10T15:58:17Z'
   releases_master_updated: '2026-11-09T10:14:34.698Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -68,12 +68,12 @@ progress:
       created_at: '2026-10-22T03:02:38Z'
       assignees:
       - eric-murray
-      review_decision: null
+      review_decision: APPROVED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 6
       rm_total: 6
     draft_release: null
     release_issue:
@@ -554,12 +554,12 @@ progress:
     - akoshunyadi
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r2.3-b308bb3
+    snapshot_branch: release-snapshot/r2.3-5cbc26e
     release_pr:
-      number: 105
+      number: 107
       state: open
-      url: https://github.com/camaraproject/ConnectedNetworkType/pull/105
-      created_at: '2026-11-03T13:27:38Z'
+      url: https://github.com/camaraproject/ConnectedNetworkType/pull/107
+      created_at: '2026-11-10T13:01:53Z'
       assignees: []
       review_decision: null
       codeowner_approved: false
@@ -573,7 +573,11 @@ progress:
       number: 104
       url: https://github.com/camaraproject/ConnectedNetworkType/issues/104
       created_at: '2026-10-30T17:49:54Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers: []
+      last_pr_url: https://github.com/camaraproject/ConnectedNetworkType/pull/105
+      last_closed_at: '2026-11-10T12:59:32Z'
   published_context:
     latest_public_release: r1.2
     newest_pre_release: r2.2
@@ -807,24 +811,13 @@ progress:
     - PedroDiez
     - KevScarr
     - rartych
-  state: snapshot_active
+  state: draft_ready
   artifacts:
     snapshot_branch: release-snapshot/r3.3-977a128
-    release_pr:
-      number: 112
-      state: open
-      url: https://github.com/camaraproject/CustomerInsights/pull/112
-      created_at: '2026-10-30T09:52:24Z'
-      assignees:
-      - hdamker
-      review_decision: APPROVED
-      codeowner_approved: true
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 6
-      rm_total: 6
-    draft_release: null
+    release_pr: null
+    draft_release:
+      name: r3.3
+      url: https://github.com/camaraproject/CustomerInsights/releases/tag/untagged-957706037ee7443b5b2a
     release_issue:
       number: 111
       url: https://github.com/camaraproject/CustomerInsights/issues/111
@@ -906,13 +899,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/DedicatedNetworks/pull/218
       created_at: '2026-11-09T09:27:08Z'
-      assignees: []
+      assignees:
+      - hdamker
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 6
     draft_release: null
     release_issue:
@@ -1052,12 +1046,12 @@ progress:
     - sachinvodafone
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r2.4-b23ddc3
+    snapshot_branch: release-snapshot/r2.4-19b786e
     release_pr:
-      number: 165
+      number: 167
       state: open
-      url: https://github.com/camaraproject/DeviceDataVolume/pull/165
-      created_at: '2026-11-10T10:02:55Z'
+      url: https://github.com/camaraproject/DeviceDataVolume/pull/167
+      created_at: '2026-11-10T13:15:11Z'
       assignees: []
       review_decision: null
       codeowner_approved: false
@@ -1072,10 +1066,10 @@ progress:
       url: https://github.com/camaraproject/DeviceDataVolume/issues/159
       created_at: '2026-11-02T11:16:08Z'
     review_history:
-      discarded_count: 1
+      discarded_count: 2
       last_reviewers: []
-      last_pr_url: https://github.com/camaraproject/DeviceDataVolume/pull/160
-      last_closed_at: '2026-11-10T10:00:26Z'
+      last_pr_url: https://github.com/camaraproject/DeviceDataVolume/pull/165
+      last_closed_at: '2026-11-10T13:09:15Z'
   published_context:
     latest_public_release: r1.3
     newest_pre_release: r2.3
@@ -1125,12 +1119,12 @@ progress:
     - Kevsy
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r3.5-1dc0110
+    snapshot_branch: release-snapshot/r3.5-ac2cdee
     release_pr:
-      number: 235
+      number: 239
       state: open
-      url: https://github.com/camaraproject/DeviceIdentifier/pull/235
-      created_at: '2026-11-03T13:20:05Z'
+      url: https://github.com/camaraproject/DeviceIdentifier/pull/239
+      created_at: '2026-11-10T14:47:48Z'
       assignees: []
       review_decision: null
       codeowner_approved: false
@@ -1144,7 +1138,11 @@ progress:
       number: 234
       url: https://github.com/camaraproject/DeviceIdentifier/issues/234
       created_at: '2026-11-02T13:06:58Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers: []
+      last_pr_url: https://github.com/camaraproject/DeviceIdentifier/pull/235
+      last_closed_at: '2026-11-10T14:45:48Z'
   published_context:
     latest_public_release: r2.2
     newest_pre_release: r3.4
@@ -1355,12 +1353,12 @@ progress:
     - akoshunyadi
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r2.3-0f8c2fb
+    snapshot_branch: release-snapshot/r2.3-05bb74a
     release_pr:
-      number: 112
+      number: 114
       state: open
-      url: https://github.com/camaraproject/DeviceReachabilityStatus/pull/112
-      created_at: '2026-11-03T13:20:36Z'
+      url: https://github.com/camaraproject/DeviceReachabilityStatus/pull/114
+      created_at: '2026-11-10T13:03:26Z'
       assignees: []
       review_decision: null
       codeowner_approved: false
@@ -1374,7 +1372,11 @@ progress:
       number: 111
       url: https://github.com/camaraproject/DeviceReachabilityStatus/issues/111
       created_at: '2026-11-03T08:11:20Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers: []
+      last_pr_url: https://github.com/camaraproject/DeviceReachabilityStatus/pull/112
+      last_closed_at: '2026-11-10T13:00:32Z'
   published_context:
     latest_public_release: r1.2
     newest_pre_release: r2.2
@@ -1434,12 +1436,12 @@ progress:
     - akoshunyadi
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r2.3-d052786
+    snapshot_branch: release-snapshot/r2.3-d2673da
     release_pr:
-      number: 117
+      number: 120
       state: open
-      url: https://github.com/camaraproject/DeviceRoamingStatus/pull/117
-      created_at: '2026-11-03T13:23:39Z'
+      url: https://github.com/camaraproject/DeviceRoamingStatus/pull/120
+      created_at: '2026-11-10T13:33:55Z'
       assignees: []
       review_decision: null
       codeowner_approved: false
@@ -1453,7 +1455,11 @@ progress:
       number: 116
       url: https://github.com/camaraproject/DeviceRoamingStatus/issues/116
       created_at: '2026-10-30T17:55:41Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers: []
+      last_pr_url: https://github.com/camaraproject/DeviceRoamingStatus/pull/117
+      last_closed_at: '2026-11-10T13:23:51Z'
   published_context:
     latest_public_release: r1.2
     newest_pre_release: r2.2
@@ -2043,33 +2049,21 @@ progress:
     - ToshiWakayama-KDDI
     - fernandopradocabrillo
     - GillesInnov35
-  state: snapshot_active
+  state: planned
   artifacts:
-    snapshot_branch: release-snapshot/r2.2-de363af
-    release_pr:
-      number: 80
-      state: open
-      url: https://github.com/camaraproject/KnowYourCustomerAgeVerification/pull/80
-      created_at: '2026-11-04T09:23:32Z'
-      assignees:
-      - hdamker
-      review_decision: CHANGES_REQUESTED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 1
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
     release_issue:
       number: 65
       url: https://github.com/camaraproject/KnowYourCustomerAgeVerification/issues/65
       created_at: '2026-09-24T11:39:06Z'
     review_history:
-      discarded_count: 2
-      last_reviewers: []
-      last_pr_url: https://github.com/camaraproject/KnowYourCustomerAgeVerification/pull/76
-      last_closed_at: '2026-11-04T09:19:44Z'
+      discarded_count: 3
+      last_reviewers:
+      - hdamker
+      last_pr_url: https://github.com/camaraproject/KnowYourCustomerAgeVerification/pull/80
+      last_closed_at: '2026-11-10T12:36:57Z'
   published_context:
     latest_public_release: r1.3
     newest_pre_release: r2.1
@@ -2094,8 +2088,6 @@ progress:
     apis:
     - api_name: kyc-age-verification
       api_version: 0.3.0-rc.1
-  snapshot_api_versions:
-    kyc-age-verification: 1.0.0-rc.1
 - repository: KnowYourCustomerFill-in
   github_url: https://github.com/camaraproject/KnowYourCustomerFill-in
   release_track: meta-release
@@ -3320,7 +3312,7 @@ progress:
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 2
+      rm_checked: 4
       rm_total: 6
     draft_release: null
     release_issue:
@@ -3915,12 +3907,12 @@ progress:
       created_at: '2026-11-03T16:24:17Z'
       assignees:
       - tanjadegroot
-      review_decision: null
+      review_decision: APPROVED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 5
+      rm_checked: 6
       rm_total: 6
     draft_release: null
     release_issue:
