@@ -1,14 +1,14 @@
 metadata:
-  last_updated: '2026-11-11T11:15:14Z'
-  last_checked: '2026-11-11T11:15:14Z'
-  releases_master_updated: '2026-11-09T10:14:34.698Z'
+  last_updated: '2026-11-12T11:32:14Z'
+  last_checked: '2026-11-12T11:32:14Z'
+  releases_master_updated: '2026-11-12T10:13:25.082Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
   repos_scanned: 64
   repos_new: 0
   repos_with_plan: 64
   repos_fully_onboarded: 47
-  repos_with_release_issue: 35
+  repos_with_release_issue: 34
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -34,7 +34,7 @@ meta_releases:
   total_apis: 58
   m1_achieved: 8
   m3_achieved: 56
-  m4_achieved: 9
+  m4_achieved: 10
 progress:
 - repository: ApplicationEndpointDiscovery
   github_url: https://github.com/camaraproject/ApplicationEndpointDiscovery
@@ -322,7 +322,7 @@ progress:
       created_at: '2026-11-09T09:33:48Z'
       assignees:
       - hdamker
-      review_decision: null
+      review_decision: COMMENTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
@@ -481,27 +481,31 @@ progress:
     - XunliYang
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r2.3-daff875
+    snapshot_branch: release-snapshot/r2.3-8573430
     release_pr:
-      number: 134
+      number: 145
       state: open
-      url: https://github.com/camaraproject/ClickToDial/pull/134
-      created_at: '2026-10-23T09:01:16Z'
-      assignees:
-      - eric-murray
-      review_decision: CHANGES_REQUESTED
+      url: https://github.com/camaraproject/ClickToDial/pull/145
+      created_at: '2026-11-12T08:54:25Z'
+      assignees: []
+      review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 4
+      rm_checked: 0
       rm_total: 6
     draft_release: null
     release_issue:
       number: 133
       url: https://github.com/camaraproject/ClickToDial/issues/133
       created_at: '2026-10-23T08:35:36Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers:
+      - eric-murray
+      last_pr_url: https://github.com/camaraproject/ClickToDial/pull/134
+      last_closed_at: '2026-11-12T08:51:40Z'
   published_context:
     latest_public_release: r1.4
     newest_pre_release: r2.2
@@ -821,8 +825,8 @@ progress:
     release_issue: null
     review_history: null
   published_context:
-    latest_public_release: r2.2
-    newest_pre_release: r3.2
+    latest_public_release: r3.3
+    newest_pre_release: null
   cycle_releases:
     m1:
       release_tag: null
@@ -835,22 +839,19 @@ progress:
       - api_name: customer-insights
         api_version: 0.3.0-rc.1
     m4:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r3.3
+      release_date: '2026-11-10T16:17:35Z'
+      apis:
+      - api_name: customer-insights
+        api_version: 0.3.0
   last_published:
-    release_tag: r3.2
-    release_date: '2026-10-29T14:19:11Z'
+    release_tag: r3.3
+    release_date: '2026-11-10T16:17:35Z'
     apis:
     - api_name: customer-insights
-      api_version: 0.3.0-rc.2
+      api_version: 0.3.0
   snapshot_api_versions:
     customer-insights: 0.3.0
-  warnings:
-  - code: W003
-    message: Release r3.3 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: DedicatedNetworks
   github_url: https://github.com/camaraproject/DedicatedNetworks
   release_track: meta-release
@@ -903,12 +904,12 @@ progress:
       created_at: '2026-11-09T09:27:08Z'
       assignees:
       - hdamker
-      review_decision: CHANGES_REQUESTED
-      codeowner_approved: false
+      review_decision: APPROVED
+      codeowner_approved: true
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 6
       rm_total: 6
     draft_release: null
     release_issue:
@@ -1721,33 +1722,21 @@ progress:
     main_contacts:
     - SentianSun
     - ChinaUnicomXiaoDongrui
-  state: snapshot_active
+  state: planned
   artifacts:
-    snapshot_branch: release-snapshot/r1.1-d0ed2c0
-    release_pr:
-      number: 41
-      state: open
-      url: https://github.com/camaraproject/eSimRemoteManagement/pull/41
-      created_at: '2026-09-30T03:50:35Z'
-      assignees:
-      - eric-murray
-      review_decision: null
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 1
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
     release_issue:
       number: 20
       url: https://github.com/camaraproject/eSimRemoteManagement/issues/20
       created_at: '2026-07-29T01:08:25Z'
     review_history:
-      discarded_count: 6
-      last_reviewers: []
-      last_pr_url: https://github.com/camaraproject/eSimRemoteManagement/pull/39
-      last_closed_at: '2026-09-22T02:55:26Z'
+      discarded_count: 7
+      last_reviewers:
+      - eric-murray
+      last_pr_url: https://github.com/camaraproject/eSimRemoteManagement/pull/41
+      last_closed_at: '2026-11-12T01:17:46Z'
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -1764,8 +1753,6 @@ progress:
       release_tag: null
       release_date: null
       apis: []
-  snapshot_api_versions:
-    esim-remote-management: 0.1.0-alpha.1
 - repository: HighThroughputElasticNetworks
   github_url: https://github.com/camaraproject/HighThroughputElasticNetworks
   release_track: independent
@@ -1865,13 +1852,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/IoTDeviceManagement/pull/84
       created_at: '2026-10-16T10:36:31Z'
-      assignees: []
+      assignees:
+      - eric-murray
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 6
     draft_release: null
     release_issue:
@@ -1978,20 +1966,19 @@ progress:
     - XunliYang
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r2.2-f07169e
+    snapshot_branch: release-snapshot/r2.2-f5b344b
     release_pr:
-      number: 104
+      number: 112
       state: open
-      url: https://github.com/camaraproject/IoTSIMFraudPrevention/pull/104
-      created_at: '2026-11-10T05:36:02Z'
-      assignees:
-      - eric-murray
+      url: https://github.com/camaraproject/IoTSIMFraudPrevention/pull/112
+      created_at: '2026-11-12T07:51:17Z'
+      assignees: []
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 0
       rm_total: 6
     draft_release: null
     release_issue:
@@ -1999,11 +1986,11 @@ progress:
       url: https://github.com/camaraproject/IoTSIMFraudPrevention/issues/94
       created_at: '2026-10-23T08:48:54Z'
     review_history:
-      discarded_count: 1
+      discarded_count: 2
       last_reviewers:
       - eric-murray
-      last_pr_url: https://github.com/camaraproject/IoTSIMFraudPrevention/pull/95
-      last_closed_at: '2026-11-10T05:33:48Z'
+      last_pr_url: https://github.com/camaraproject/IoTSIMFraudPrevention/pull/104
+      last_closed_at: '2026-11-12T07:49:14Z'
   published_context:
     latest_public_release: r1.2
     newest_pre_release: r2.1
@@ -2117,7 +2104,7 @@ progress:
       created_at: '2026-11-05T14:48:12Z'
       assignees:
       - hdamker
-      review_decision: null
+      review_decision: CHANGES_REQUESTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
@@ -2183,12 +2170,12 @@ progress:
       created_at: '2026-11-04T13:35:05Z'
       assignees:
       - hdamker
-      review_decision: null
+      review_decision: CHANGES_REQUESTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 4
       rm_total: 6
     draft_release: null
     release_issue:
@@ -2518,7 +2505,7 @@ progress:
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 4
       rm_total: 6
     draft_release: null
     release_issue:
@@ -2950,7 +2937,7 @@ progress:
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 6
     draft_release: null
     release_issue:
@@ -3014,13 +3001,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/QoSBooking/pull/191
       created_at: '2026-11-09T07:19:35Z'
-      assignees: []
+      assignees:
+      - hdamker
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 1
       codeowner_total: 3
       ready_for_review: false
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 6
     draft_release: null
     release_issue:
@@ -3331,7 +3319,7 @@ progress:
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 4
+      rm_checked: 5
       rm_total: 6
     draft_release: null
     release_issue:
@@ -3760,13 +3748,13 @@ progress:
       url: https://github.com/camaraproject/VerifiedCaller/pull/166
       created_at: '2026-11-04T08:16:50Z'
       assignees:
-      - tanjadegroot
-      review_decision: null
+      - hdamker
+      review_decision: CHANGES_REQUESTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 6
     draft_release: null
     release_issue:
@@ -3917,28 +3905,12 @@ progress:
     - pradeepachar-mavenir
     - deepakjaiswal1
     - teikuran
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r3.2-40a4021
-    release_pr:
-      number: 253
-      state: open
-      url: https://github.com/camaraproject/WebRTC/pull/253
-      created_at: '2026-11-03T16:24:17Z'
-      assignees:
-      - tanjadegroot
-      review_decision: APPROVED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 6
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 240
-      url: https://github.com/camaraproject/WebRTC/issues/240
-      created_at: '2026-10-11T00:47:41Z'
+    release_issue: null
     review_history:
       discarded_count: 1
       last_reviewers:
@@ -3947,7 +3919,7 @@ progress:
       last_closed_at: '2026-11-03T16:01:58Z'
   published_context:
     latest_public_release: r2.2
-    newest_pre_release: r3.1
+    newest_pre_release: r3.2
   cycle_releases:
     m1:
       release_tag: null
@@ -3968,15 +3940,15 @@ progress:
       release_date: null
       apis: []
   last_published:
-    release_tag: r3.1
-    release_date: '2026-09-25T10:57:02Z'
+    release_tag: r3.2
+    release_date: '2026-11-11T15:39:19Z'
     apis:
     - api_name: webrtc-call-handling
-      api_version: 0.4.0-rc.1
+      api_version: 0.4.0-rc.2
     - api_name: webrtc-events-subscriptions
-      api_version: 0.3.0-rc.1
+      api_version: 0.3.0-rc.2
     - api_name: webrtc-registration
-      api_version: 0.4.0-rc.1
+      api_version: 0.4.0-rc.2
   snapshot_api_versions:
     webrtc-call-handling: 0.4.0-rc.2
     webrtc-events-subscriptions: 0.3.0-rc.2
