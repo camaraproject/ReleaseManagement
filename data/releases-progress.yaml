@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-11-13T11:17:32Z'
-  last_checked: '2026-11-13T11:17:32Z'
+  last_updated: '2026-11-14T10:42:29Z'
+  last_checked: '2026-11-14T10:42:29Z'
   releases_master_updated: '2026-11-13T09:56:15.082Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -487,13 +487,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/ClickToDial/pull/145
       created_at: '2026-11-12T08:54:25Z'
-      assignees: []
+      assignees:
+      - eric-murray
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 6
     draft_release: null
     release_issue:
@@ -2032,10 +2033,22 @@ progress:
     - ToshiWakayama-KDDI
     - fernandopradocabrillo
     - GillesInnov35
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.2-0840982
+    release_pr:
+      number: 87
+      state: open
+      url: https://github.com/camaraproject/KnowYourCustomerAgeVerification/pull/87
+      created_at: '2026-11-13T13:51:11Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 0
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 65
@@ -2071,6 +2084,8 @@ progress:
     apis:
     - api_name: kyc-age-verification
       api_version: 0.3.0-rc.1
+  snapshot_api_versions:
+    kyc-age-verification: 0.3.0-rc.2
 - repository: KnowYourCustomerFill-in
   github_url: https://github.com/camaraproject/KnowYourCustomerFill-in
   release_track: meta-release
@@ -2537,12 +2552,17 @@ progress:
   target_release_tag: r1.1
   target_release_type: none
   dependencies:
-    commonalities_release: r4.1
-    identity_consent_management_release: r4.1
+    commonalities_release: r4.4
+    identity_consent_management_release: r4.2
   apis:
-  - api_name: placeholder-entry
+  - api_name: service-areas
     target_api_version: 0.1.0
     target_api_status: draft
+    main_contacts:
+    - hubertp-ericsson
+    - eric-murray
+    - Masa8106
+    - jlurien
   state: not_planned
   artifacts:
     snapshot_branch: null
@@ -2925,12 +2945,12 @@ progress:
       created_at: '2026-11-03T09:18:03Z'
       assignees:
       - tanjadegroot
-      review_decision: null
-      codeowner_approved: false
+      review_decision: APPROVED
+      codeowner_approved: true
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 5
       rm_total: 6
     draft_release: null
     release_issue:
@@ -2988,19 +3008,19 @@ progress:
     - jlurien
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r2.3-b7db911
+    snapshot_branch: release-snapshot/r2.3-52445f5
     release_pr:
-      number: 191
+      number: 195
       state: open
-      url: https://github.com/camaraproject/QoSBooking/pull/191
-      created_at: '2026-11-09T07:19:35Z'
+      url: https://github.com/camaraproject/QoSBooking/pull/195
+      created_at: '2026-11-13T23:42:10Z'
       assignees:
       - hdamker
-      review_decision: COMMENTED
+      review_decision: null
       codeowner_approved: false
-      codeowner_checked: 2
+      codeowner_checked: 3
       codeowner_total: 3
-      ready_for_review: false
+      ready_for_review: true
       rm_checked: 1
       rm_total: 6
     draft_release: null
@@ -3008,7 +3028,12 @@ progress:
       number: 190
       url: https://github.com/camaraproject/QoSBooking/issues/190
       created_at: '2026-11-09T07:15:12Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers:
+      - hdamker
+      last_pr_url: https://github.com/camaraproject/QoSBooking/pull/191
+      last_closed_at: '2026-11-13T23:39:21Z'
   published_context:
     latest_public_release: r1.2
     newest_pre_release: r2.2
@@ -3068,12 +3093,12 @@ progress:
       created_at: '2026-10-30T20:05:02Z'
       assignees:
       - tanjadegroot
-      review_decision: null
-      codeowner_approved: false
+      review_decision: APPROVED
+      codeowner_approved: true
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 6
       rm_total: 6
     draft_release: null
     release_issue:
@@ -3147,12 +3172,12 @@ progress:
       created_at: '2026-11-05T10:45:15Z'
       assignees:
       - tanjadegroot
-      review_decision: null
+      review_decision: COMMENTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 6
     draft_release: null
     release_issue:
@@ -3307,7 +3332,7 @@ progress:
       created_at: '2026-10-22T19:28:56Z'
       assignees:
       - tanjadegroot
-      review_decision: null
+      review_decision: COMMENTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
