@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-11-14T10:42:29Z'
-  last_checked: '2026-11-14T10:42:29Z'
+  last_updated: '2026-11-16T11:47:58Z'
+  last_checked: '2026-11-16T11:47:58Z'
   releases_master_updated: '2026-11-13T09:56:15.082Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -8,7 +8,7 @@ metadata:
   repos_new: 0
   repos_with_plan: 64
   repos_fully_onboarded: 47
-  repos_with_release_issue: 33
+  repos_with_release_issue: 32
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -1716,21 +1716,32 @@ progress:
     main_contacts:
     - SentianSun
     - ChinaUnicomXiaoDongrui
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r1.1-65d8e6b
+    release_pr:
+      number: 50
+      state: open
+      url: https://github.com/camaraproject/eSimRemoteManagement/pull/50
+      created_at: '2026-11-16T03:34:51Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 20
       url: https://github.com/camaraproject/eSimRemoteManagement/issues/20
       created_at: '2026-07-29T01:08:25Z'
     review_history:
-      discarded_count: 7
-      last_reviewers:
-      - eric-murray
-      last_pr_url: https://github.com/camaraproject/eSimRemoteManagement/pull/41
-      last_closed_at: '2026-11-12T01:17:46Z'
+      discarded_count: 8
+      last_reviewers: []
+      last_pr_url: https://github.com/camaraproject/eSimRemoteManagement/pull/48
+      last_closed_at: '2026-11-16T03:08:04Z'
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -1747,6 +1758,8 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  snapshot_api_versions:
+    esim-remote-management: 0.1.0-alpha.1
 - repository: HighThroughputElasticNetworks
   github_url: https://github.com/camaraproject/HighThroughputElasticNetworks
   release_track: independent
@@ -2669,10 +2682,22 @@ progress:
     - eric-murray
     - Masa8106
     - grgpapadopoulos
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r3.3-fb65d3c
+    release_pr:
+      number: 141
+      state: open
+      url: https://github.com/camaraproject/NumberRecycling/pull/141
+      created_at: '2026-11-16T02:02:58Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 140
@@ -2703,6 +2728,8 @@ progress:
     apis:
     - api_name: number-recycling
       api_version: 0.3.0-rc.2
+  snapshot_api_versions:
+    number-recycling: 0.3.0
 - repository: NumberVerification
   github_url: https://github.com/camaraproject/NumberVerification
   release_track: meta-release
@@ -3083,28 +3110,12 @@ progress:
     - eric-murray
     - benhepworth
     - jlurien
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r1.2-a6f5dfa
-    release_pr:
-      number: 43
-      state: open
-      url: https://github.com/camaraproject/QoSProfiles/pull/43
-      created_at: '2026-10-30T20:05:02Z'
-      assignees:
-      - tanjadegroot
-      review_decision: APPROVED
-      codeowner_approved: true
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 6
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 35
-      url: https://github.com/camaraproject/QoSProfiles/issues/35
-      created_at: '2026-10-28T15:38:43Z'
+    release_issue: null
     review_history:
       discarded_count: 2
       last_reviewers: []
@@ -3136,6 +3147,11 @@ progress:
       api_version: 1.2.0-rc.4
   snapshot_api_versions:
     qos-profiles: 1.2.0
+  warnings:
+  - code: W003
+    message: Release r1.2 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: QualityOnDemand
   github_url: https://github.com/camaraproject/QualityOnDemand
   release_track: meta-release
@@ -3162,29 +3178,21 @@ progress:
     - eric-murray
     - benhepworth
     - jlurien
-  state: snapshot_active
+  state: planned
   artifacts:
-    snapshot_branch: release-snapshot/r4.3-6e21c48
-    release_pr:
-      number: 644
-      state: open
-      url: https://github.com/camaraproject/QualityOnDemand/pull/644
-      created_at: '2026-11-05T10:45:15Z'
-      assignees:
-      - tanjadegroot
-      review_decision: COMMENTED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 1
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
     release_issue:
       number: 643
       url: https://github.com/camaraproject/QualityOnDemand/issues/643
       created_at: '2026-11-04T14:01:49Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers:
+      - tanjadegroot
+      last_pr_url: https://github.com/camaraproject/QualityOnDemand/pull/644
+      last_closed_at: '2026-11-16T05:50:52Z'
   published_context:
     latest_public_release: r3.2
     newest_pre_release: r4.2
@@ -3215,9 +3223,6 @@ progress:
       api_version: 0.4.0-rc.2
     - api_name: quality-on-demand
       api_version: 1.2.0-rc.4
-  snapshot_api_versions:
-    qos-provisioning: 0.4.0
-    quality-on-demand: 1.2.0
 - repository: RainfallIntensity
   github_url: https://github.com/camaraproject/RainfallIntensity
   release_track: independent
@@ -3588,10 +3593,22 @@ progress:
     - ClownsAlbert
     - ChuanyuChen
     - DanXu-ChinaTelecom
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r2.2-6e4f327
+    release_pr:
+      number: 52
+      state: open
+      url: https://github.com/camaraproject/SubscriptionStatus/pull/52
+      created_at: '2026-11-16T08:20:29Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 0
+      codeowner_total: 3
+      ready_for_review: false
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 46
@@ -3626,6 +3643,8 @@ progress:
     apis:
     - api_name: subscription-status
       api_version: 0.2.0-rc.1
+  snapshot_api_versions:
+    subscription-status: 0.2.0-rc.2
 - repository: Tenure
   github_url: https://github.com/camaraproject/Tenure
   release_track: meta-release
@@ -3759,27 +3778,31 @@ progress:
     - GillesInnov35
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r2.4-dba505e
+    snapshot_branch: release-snapshot/r2.4-e16bffc
     release_pr:
-      number: 166
+      number: 177
       state: open
-      url: https://github.com/camaraproject/VerifiedCaller/pull/166
-      created_at: '2026-11-04T08:16:50Z'
-      assignees:
-      - hdamker
-      review_decision: CHANGES_REQUESTED
+      url: https://github.com/camaraproject/VerifiedCaller/pull/177
+      created_at: '2026-11-16T10:02:59Z'
+      assignees: []
+      review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 0
       rm_total: 6
     draft_release: null
     release_issue:
       number: 165
       url: https://github.com/camaraproject/VerifiedCaller/issues/165
       created_at: '2026-11-04T08:11:04Z'
-    review_history: null
+    review_history:
+      discarded_count: 1
+      last_reviewers:
+      - hdamker
+      last_pr_url: https://github.com/camaraproject/VerifiedCaller/pull/166
+      last_closed_at: '2026-11-16T09:56:05Z'
   published_context:
     latest_public_release: r1.3
     newest_pre_release: r2.3
