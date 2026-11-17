@@ -1,14 +1,14 @@
 metadata:
-  last_updated: '2026-11-16T11:47:58Z'
-  last_checked: '2026-11-16T11:47:58Z'
-  releases_master_updated: '2026-11-13T09:56:15.082Z'
+  last_updated: '2026-11-17T12:02:18Z'
+  last_checked: '2026-11-17T12:02:18Z'
+  releases_master_updated: '2026-11-16T19:36:21.253Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
   repos_scanned: 64
   repos_new: 0
   repos_with_plan: 64
   repos_fully_onboarded: 47
-  repos_with_release_issue: 32
+  repos_with_release_issue: 30
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -34,7 +34,7 @@ meta_releases:
   total_apis: 58
   m1_achieved: 8
   m3_achieved: 56
-  m4_achieved: 14
+  m4_achieved: 16
 progress:
 - repository: ApplicationEndpointDiscovery
   github_url: https://github.com/camaraproject/ApplicationEndpointDiscovery
@@ -312,28 +312,12 @@ progress:
     - FabrizioMoggio
     - bigludo7
     - chinaunicomyangfan
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r4.3-4ca8c5f
-    release_pr:
-      number: 263
-      state: open
-      url: https://github.com/camaraproject/CallForwardingSignal/pull/263
-      created_at: '2026-11-09T09:33:48Z'
-      assignees:
-      - hdamker
-      review_decision: COMMENTED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 0
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 262
-      url: https://github.com/camaraproject/CallForwardingSignal/issues/262
-      created_at: '2026-11-09T08:48:35Z'
+    release_issue: null
     review_history: null
   published_context:
     latest_public_release: r3.3
@@ -361,6 +345,11 @@ progress:
       api_version: 0.5.0-rc.2
   snapshot_api_versions:
     call-forwarding-signal: 0.5.0
+  warnings:
+  - code: W003
+    message: Release r4.3 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: CapabilitiesAndRuntimeRestrictions
   github_url: https://github.com/camaraproject/CapabilitiesAndRuntimeRestrictions
   release_track: independent
@@ -489,12 +478,12 @@ progress:
       created_at: '2026-11-12T08:54:25Z'
       assignees:
       - eric-murray
-      review_decision: null
-      codeowner_approved: false
+      review_decision: APPROVED
+      codeowner_approved: true
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 6
       rm_total: 6
     draft_release: null
     release_issue:
@@ -1208,12 +1197,12 @@ progress:
       created_at: '2026-10-30T09:26:26Z'
       assignees:
       - tanjadegroot
-      review_decision: COMMENTED
-      codeowner_approved: false
+      review_decision: APPROVED
+      codeowner_approved: true
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 3
+      rm_checked: 6
       rm_total: 6
     draft_release: null
     release_issue:
@@ -1716,32 +1705,21 @@ progress:
     main_contacts:
     - SentianSun
     - ChinaUnicomXiaoDongrui
-  state: snapshot_active
+  state: planned
   artifacts:
-    snapshot_branch: release-snapshot/r1.1-65d8e6b
-    release_pr:
-      number: 50
-      state: open
-      url: https://github.com/camaraproject/eSimRemoteManagement/pull/50
-      created_at: '2026-11-16T03:34:51Z'
-      assignees: []
-      review_decision: null
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 0
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
     release_issue:
       number: 20
       url: https://github.com/camaraproject/eSimRemoteManagement/issues/20
       created_at: '2026-07-29T01:08:25Z'
     review_history:
-      discarded_count: 8
-      last_reviewers: []
-      last_pr_url: https://github.com/camaraproject/eSimRemoteManagement/pull/48
-      last_closed_at: '2026-11-16T03:08:04Z'
+      discarded_count: 9
+      last_reviewers:
+      - eric-murray
+      last_pr_url: https://github.com/camaraproject/eSimRemoteManagement/pull/50
+      last_closed_at: '2026-11-17T08:40:52Z'
   published_context:
     latest_public_release: null
     newest_pre_release: null
@@ -1758,8 +1736,6 @@ progress:
       release_tag: null
       release_date: null
       apis: []
-  snapshot_api_versions:
-    esim-remote-management: 0.1.0-alpha.1
 - repository: HighThroughputElasticNetworks
   github_url: https://github.com/camaraproject/HighThroughputElasticNetworks
   release_track: independent
@@ -1973,12 +1949,12 @@ progress:
     - XunliYang
   state: snapshot_active
   artifacts:
-    snapshot_branch: release-snapshot/r2.2-f5b344b
+    snapshot_branch: release-snapshot/r2.2-de71196
     release_pr:
-      number: 112
+      number: 121
       state: open
-      url: https://github.com/camaraproject/IoTSIMFraudPrevention/pull/112
-      created_at: '2026-11-12T07:51:17Z'
+      url: https://github.com/camaraproject/IoTSIMFraudPrevention/pull/121
+      created_at: '2026-11-17T03:41:07Z'
       assignees: []
       review_decision: null
       codeowner_approved: false
@@ -1993,11 +1969,10 @@ progress:
       url: https://github.com/camaraproject/IoTSIMFraudPrevention/issues/94
       created_at: '2026-10-23T08:48:54Z'
     review_history:
-      discarded_count: 2
-      last_reviewers:
-      - eric-murray
-      last_pr_url: https://github.com/camaraproject/IoTSIMFraudPrevention/pull/104
-      last_closed_at: '2026-11-12T07:49:14Z'
+      discarded_count: 3
+      last_reviewers: []
+      last_pr_url: https://github.com/camaraproject/IoTSIMFraudPrevention/pull/112
+      last_closed_at: '2026-11-17T03:39:19Z'
   published_context:
     latest_public_release: r1.2
     newest_pre_release: r2.1
@@ -2057,9 +2032,9 @@ progress:
       assignees: []
       review_decision: null
       codeowner_approved: false
-      codeowner_checked: 0
+      codeowner_checked: 3
       codeowner_total: 3
-      ready_for_review: false
+      ready_for_review: true
       rm_checked: 0
       rm_total: 6
     draft_release: null
@@ -2125,7 +2100,7 @@ progress:
       created_at: '2026-11-05T14:48:12Z'
       assignees:
       - hdamker
-      review_decision: CHANGES_REQUESTED
+      review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
@@ -2191,12 +2166,12 @@ progress:
       created_at: '2026-11-04T13:35:05Z'
       assignees:
       - hdamker
-      review_decision: CHANGES_REQUESTED
+      review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 4
+      rm_checked: 6
       rm_total: 6
     draft_release: null
     release_issue:
@@ -2962,32 +2937,16 @@ progress:
     main_contacts:
     - eric-murray
     - albertoramosmonagas
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r2.3-41506ea
-    release_pr:
-      number: 94
-      state: open
-      url: https://github.com/camaraproject/PredictiveConnectivityData/pull/94
-      created_at: '2026-11-03T09:18:03Z'
-      assignees:
-      - tanjadegroot
-      review_decision: APPROVED
-      codeowner_approved: true
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 5
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 93
-      url: https://github.com/camaraproject/PredictiveConnectivityData/issues/93
-      created_at: '2026-11-03T09:15:20Z'
+    release_issue: null
     review_history: null
   published_context:
-    latest_public_release: r1.2
-    newest_pre_release: r2.2
+    latest_public_release: r2.3
+    newest_pre_release: null
   cycle_releases:
     m1:
       release_tag: null
@@ -3000,15 +2959,17 @@ progress:
       - api_name: predictive-connectivity-data
         api_version: 0.2.0-rc.1
     m4:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r2.3
+      release_date: '2026-11-16T12:53:48Z'
+      apis:
+      - api_name: predictive-connectivity-data
+        api_version: 0.2.0
   last_published:
-    release_tag: r2.2
-    release_date: '2026-10-26T14:35:51Z'
+    release_tag: r2.3
+    release_date: '2026-11-16T12:53:48Z'
     apis:
     - api_name: predictive-connectivity-data
-      api_version: 0.2.0-rc.2
+      api_version: 0.2.0
   snapshot_api_versions:
     predictive-connectivity-data: 0.2.0
 - repository: QoSBooking
@@ -3043,12 +3004,12 @@ progress:
       created_at: '2026-11-13T23:42:10Z'
       assignees:
       - hdamker
-      review_decision: null
-      codeowner_approved: false
+      review_decision: APPROVED
+      codeowner_approved: true
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 1
+      rm_checked: 6
       rm_total: 6
     draft_release: null
     release_issue:
@@ -3122,8 +3083,8 @@ progress:
       last_pr_url: https://github.com/camaraproject/QoSProfiles/pull/41
       last_closed_at: '2026-10-30T19:56:08Z'
   published_context:
-    latest_public_release: null
-    newest_pre_release: r1.1
+    latest_public_release: r1.2
+    newest_pre_release: null
   cycle_releases:
     m1:
       release_tag: null
@@ -3136,22 +3097,19 @@ progress:
       - api_name: qos-profiles
         api_version: 1.2.0-rc.4
     m4:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r1.2
+      release_date: '2026-11-15T18:30:14Z'
+      apis:
+      - api_name: qos-profiles
+        api_version: 1.2.0
   last_published:
-    release_tag: r1.1
-    release_date: '2026-10-20T16:23:16Z'
+    release_tag: r1.2
+    release_date: '2026-11-15T18:30:14Z'
     apis:
     - api_name: qos-profiles
-      api_version: 1.2.0-rc.4
+      api_version: 1.2.0
   snapshot_api_versions:
     qos-profiles: 1.2.0
-  warnings:
-  - code: W003
-    message: Release r1.2 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: QualityOnDemand
   github_url: https://github.com/camaraproject/QualityOnDemand
   release_track: meta-release
@@ -3178,10 +3136,22 @@ progress:
     - eric-murray
     - benhepworth
     - jlurien
-  state: planned
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r4.3-ff1efe1
+    release_pr:
+      number: 655
+      state: open
+      url: https://github.com/camaraproject/QualityOnDemand/pull/655
+      created_at: '2026-11-16T17:51:54Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
     release_issue:
       number: 643
@@ -3223,6 +3193,9 @@ progress:
       api_version: 0.4.0-rc.2
     - api_name: quality-on-demand
       api_version: 1.2.0-rc.4
+  snapshot_api_versions:
+    qos-provisioning: 0.4.0
+    quality-on-demand: 1.2.0
 - repository: RainfallIntensity
   github_url: https://github.com/camaraproject/RainfallIntensity
   release_track: independent
