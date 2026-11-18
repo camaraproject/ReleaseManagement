@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-11-17T12:02:18Z'
-  last_checked: '2026-11-17T12:02:18Z'
+  last_updated: '2026-11-17T17:44:47Z'
+  last_checked: '2026-11-17T17:44:47Z'
   releases_master_updated: '2026-11-16T19:36:21.253Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -8,7 +8,7 @@ metadata:
   repos_new: 0
   repos_with_plan: 64
   repos_fully_onboarded: 47
-  repos_with_release_issue: 30
+  repos_with_release_issue: 29
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -31,9 +31,9 @@ meta_releases:
   m3_achieved: 3
   m4_achieved: 3
 - name: Sync26
-  total_apis: 58
+  total_apis: 54
   m1_achieved: 8
-  m3_achieved: 56
+  m3_achieved: 54
   m4_achieved: 16
 progress:
 - repository: ApplicationEndpointDiscovery
@@ -468,28 +468,12 @@ progress:
     - YadingFang
     - Wojiaozhenghao
     - XunliYang
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r2.3-8573430
-    release_pr:
-      number: 145
-      state: open
-      url: https://github.com/camaraproject/ClickToDial/pull/145
-      created_at: '2026-11-12T08:54:25Z'
-      assignees:
-      - eric-murray
-      review_decision: APPROVED
-      codeowner_approved: true
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 6
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 133
-      url: https://github.com/camaraproject/ClickToDial/issues/133
-      created_at: '2026-10-23T08:35:36Z'
+    release_issue: null
     review_history:
       discarded_count: 1
       last_reviewers:
@@ -522,6 +506,11 @@ progress:
       api_version: 0.2.0-rc.2
   snapshot_api_versions:
     click-to-dial: 0.2.0
+  warnings:
+  - code: W003
+    message: Release r2.3 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: ConnectedNetworkType
   github_url: https://github.com/camaraproject/ConnectedNetworkType
   release_track: meta-release
@@ -556,13 +545,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/ConnectedNetworkType/pull/107
       created_at: '2026-11-10T13:01:53Z'
-      assignees: []
+      assignees:
+      - tanjadegroot
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 6
     draft_release: null
     release_issue:
@@ -1037,13 +1027,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/DeviceDataVolume/pull/167
       created_at: '2026-11-10T13:15:11Z'
-      assignees: []
+      assignees:
+      - tanjadegroot
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 6
     draft_release: null
     release_issue:
@@ -1344,13 +1335,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/DeviceReachabilityStatus/pull/114
       created_at: '2026-11-10T13:03:26Z'
-      assignees: []
-      review_decision: null
+      assignees:
+      - hdamker
+      review_decision: CHANGES_REQUESTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 6
     draft_release: null
     release_issue:
@@ -1955,13 +1947,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/IoTSIMFraudPrevention/pull/121
       created_at: '2026-11-17T03:41:07Z'
-      assignees: []
+      assignees:
+      - eric-murray
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 6
     draft_release: null
     release_issue:
@@ -2029,13 +2022,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/KnowYourCustomerAgeVerification/pull/87
       created_at: '2026-11-13T13:51:11Z'
-      assignees: []
-      review_decision: null
+      assignees:
+      - hdamker
+      review_decision: COMMENTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 6
       rm_total: 6
     draft_release: null
     release_issue:
@@ -2399,8 +2393,7 @@ progress:
     multi-point-vpn: 0.1.0-alpha.1
 - repository: NetworkAccessManagement
   github_url: https://github.com/camaraproject/NetworkAccessManagement
-  release_track: meta-release
-  meta_release: Sync26
+  release_track: independent
   target_release_tag: r3.2
   target_release_type: pre-release-rc
   dependencies:
@@ -2429,15 +2422,10 @@ progress:
     release_pr: null
     draft_release: null
     release_issue:
-      number: 194
-      url: https://github.com/camaraproject/NetworkAccessManagement/issues/194
-      created_at: '2026-10-16T18:28:50Z'
-    review_history:
-      discarded_count: 1
-      last_reviewers:
-      - eric-murray
-      last_pr_url: https://github.com/camaraproject/NetworkAccessManagement/pull/195
-      last_closed_at: '2026-11-02T19:57:29Z'
+      number: 208
+      url: https://github.com/camaraproject/NetworkAccessManagement/issues/208
+      created_at: '2026-11-17T17:38:03Z'
+    review_history: null
   published_context:
     latest_public_release: null
     newest_pre_release: r3.1
@@ -2468,8 +2456,7 @@ progress:
       api_version: 0.3.0-rc.1
 - repository: NetworkInsights
   github_url: https://github.com/camaraproject/NetworkInsights
-  release_track: meta-release
-  meta_release: Sync26
+  release_track: independent
   target_release_tag: r2.1
   target_release_type: pre-release-rc
   dependencies:
@@ -2486,35 +2473,16 @@ progress:
     target_api_status: rc
     main_contacts:
     - cnzj-Gc
-  state: snapshot_active
+  state: planned
   artifacts:
-    snapshot_branch: release-snapshot/r2.1-a0f6dbd
-    release_pr:
-      number: 116
-      state: open
-      url: https://github.com/camaraproject/NetworkInsights/pull/116
-      created_at: '2026-10-29T08:35:49Z'
-      assignees:
-      - eric-murray
-      review_decision: CHANGES_REQUESTED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 4
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
     release_issue:
-      number: 88
-      url: https://github.com/camaraproject/NetworkInsights/issues/88
-      created_at: '2026-06-29T03:00:30Z'
-    review_history:
-      discarded_count: 1
-      last_reviewers:
-      - hdamker
-      - tanjadegroot
-      last_pr_url: https://github.com/camaraproject/NetworkInsights/pull/89
-      last_closed_at: '2026-08-27T06:24:24Z'
+      number: 127
+      url: https://github.com/camaraproject/NetworkInsights/issues/127
+      created_at: '2026-11-17T16:47:49Z'
+    review_history: null
   published_context:
     latest_public_release: r1.3
     newest_pre_release: null
@@ -2531,9 +2499,6 @@ progress:
       release_tag: null
       release_date: null
       apis: []
-  snapshot_api_versions:
-    network-health-assessment: 0.2.0-rc.1
-    network-traffic-analysis: 0.2.0-rc.1
 - repository: NetworkServiceAreas
   github_url: https://github.com/camaraproject/NetworkServiceAreas
   release_track: independent
@@ -3144,13 +3109,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/QualityOnDemand/pull/655
       created_at: '2026-11-16T17:51:54Z'
-      assignees: []
+      assignees:
+      - tanjadegroot
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 6
     draft_release: null
     release_issue:
@@ -3310,12 +3276,12 @@ progress:
       created_at: '2026-10-22T19:28:56Z'
       assignees:
       - tanjadegroot
-      review_decision: COMMENTED
+      review_decision: APPROVED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 5
+      rm_checked: 6
       rm_total: 6
     draft_release: null
     release_issue:
