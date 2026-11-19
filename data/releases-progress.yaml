@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-11-19T10:59:14Z'
-  last_checked: '2026-11-19T10:59:14Z'
+  last_updated: '2026-11-19T11:55:35Z'
+  last_checked: '2026-11-19T11:55:35Z'
   releases_master_updated: '2026-11-19T10:44:00.133Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -8,7 +8,7 @@ metadata:
   repos_new: 0
   repos_with_plan: 64
   repos_fully_onboarded: 47
-  repos_with_release_issue: 15
+  repos_with_release_issue: 14
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -2149,12 +2149,12 @@ progress:
       created_at: '2026-11-11T04:51:52Z'
       assignees:
       - tanjadegroot
-      review_decision: null
-      codeowner_approved: false
+      review_decision: APPROVED
+      codeowner_approved: true
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 4
+      rm_checked: 6
       rm_total: 6
     draft_release: null
     release_issue:
@@ -3581,28 +3581,12 @@ progress:
     - alpaycetin74
     - olsi-korkuti
     - GillesInnov35
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r2.4-e16bffc
-    release_pr:
-      number: 177
-      state: open
-      url: https://github.com/camaraproject/VerifiedCaller/pull/177
-      created_at: '2026-11-16T10:02:59Z'
-      assignees:
-      - hdamker
-      review_decision: APPROVED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 6
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 165
-      url: https://github.com/camaraproject/VerifiedCaller/issues/165
-      created_at: '2026-11-04T08:11:04Z'
+    release_issue: null
     review_history:
       discarded_count: 1
       last_reviewers:
@@ -3644,6 +3628,11 @@ progress:
   snapshot_api_versions:
     brand-registration: 0.2.0
     verified-caller: 0.2.0
+  warnings:
+  - code: W003
+    message: Release r2.4 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: VoiceNotification
   github_url: https://github.com/camaraproject/VoiceNotification
   release_track: independent
