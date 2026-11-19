@@ -1,14 +1,14 @@
 metadata:
-  last_updated: '2026-11-18T23:50:23Z'
-  last_checked: '2026-11-18T23:50:23Z'
-  releases_master_updated: '2026-11-17T11:04:08.589Z'
+  last_updated: '2026-11-19T10:59:14Z'
+  last_checked: '2026-11-19T10:59:14Z'
+  releases_master_updated: '2026-11-19T10:44:00.133Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
   repos_scanned: 64
   repos_new: 0
   repos_with_plan: 64
   repos_fully_onboarded: 47
-  repos_with_release_issue: 21
+  repos_with_release_issue: 15
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -34,7 +34,7 @@ meta_releases:
   total_apis: 54
   m1_achieved: 8
   m3_achieved: 54
-  m4_achieved: 17
+  m4_achieved: 37
 progress:
 - repository: ApplicationEndpointDiscovery
   github_url: https://github.com/camaraproject/ApplicationEndpointDiscovery
@@ -66,8 +66,8 @@ progress:
     release_issue: null
     review_history: null
   published_context:
-    latest_public_release: r1.2
-    newest_pre_release: r2.2
+    latest_public_release: r2.3
+    newest_pre_release: null
   cycle_releases:
     m1:
       release_tag: null
@@ -80,22 +80,19 @@ progress:
       - api_name: application-endpoint-discovery
         api_version: 0.2.0-rc.1
     m4:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r2.3
+      release_date: '2026-11-18T22:26:18Z'
+      apis:
+      - api_name: application-endpoint-discovery
+        api_version: 0.2.0
   last_published:
-    release_tag: r2.2
-    release_date: '2026-10-20T22:12:31Z'
+    release_tag: r2.3
+    release_date: '2026-11-18T22:26:18Z'
     apis:
     - api_name: application-endpoint-discovery
-      api_version: 0.2.0-rc.2
+      api_version: 0.2.0
   snapshot_api_versions:
     application-endpoint-discovery: 0.2.0
-  warnings:
-  - code: W003
-    message: Release r2.3 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: ApplicationEndpointRegistration
   github_url: https://github.com/camaraproject/ApplicationEndpointRegistration
   release_track: meta-release
@@ -126,8 +123,8 @@ progress:
     release_issue: null
     review_history: null
   published_context:
-    latest_public_release: r1.2
-    newest_pre_release: r2.2
+    latest_public_release: r2.3
+    newest_pre_release: null
   cycle_releases:
     m1:
       release_tag: null
@@ -140,22 +137,19 @@ progress:
       - api_name: application-endpoint-registration
         api_version: 0.2.0-rc.1
     m4:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r2.3
+      release_date: '2026-11-18T22:20:40Z'
+      apis:
+      - api_name: application-endpoint-registration
+        api_version: 0.2.0
   last_published:
-    release_tag: r2.2
-    release_date: '2026-10-20T22:11:21Z'
+    release_tag: r2.3
+    release_date: '2026-11-18T22:20:40Z'
     apis:
     - api_name: application-endpoint-registration
-      api_version: 0.2.0-rc.2
+      api_version: 0.2.0
   snapshot_api_versions:
     application-endpoint-registration: 0.2.0
-  warnings:
-  - code: W003
-    message: Release r2.3 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: ApplicationProfiles
   github_url: https://github.com/camaraproject/ApplicationProfiles
   release_track: meta-release
@@ -456,8 +450,8 @@ progress:
       last_pr_url: https://github.com/camaraproject/ClickToDial/pull/134
       last_closed_at: '2026-11-12T08:51:40Z'
   published_context:
-    latest_public_release: r1.4
-    newest_pre_release: r2.2
+    latest_public_release: r2.3
+    newest_pre_release: null
   cycle_releases:
     m1:
       release_tag: null
@@ -470,22 +464,19 @@ progress:
       - api_name: click-to-dial
         api_version: 0.2.0-rc.1
     m4:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r2.3
+      release_date: '2026-11-17T13:35:18Z'
+      apis:
+      - api_name: click-to-dial
+        api_version: 0.2.0
   last_published:
-    release_tag: r2.2
-    release_date: '2026-09-15T02:34:18Z'
+    release_tag: r2.3
+    release_date: '2026-11-17T13:35:18Z'
     apis:
     - api_name: click-to-dial
-      api_version: 0.2.0-rc.2
+      api_version: 0.2.0
   snapshot_api_versions:
     click-to-dial: 0.2.0
-  warnings:
-  - code: W003
-    message: Release r2.3 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: ConnectedNetworkType
   github_url: https://github.com/camaraproject/ConnectedNetworkType
   release_track: meta-release
@@ -524,8 +515,8 @@ progress:
       last_pr_url: https://github.com/camaraproject/ConnectedNetworkType/pull/105
       last_closed_at: '2026-11-10T12:59:32Z'
   published_context:
-    latest_public_release: r1.2
-    newest_pre_release: r2.2
+    latest_public_release: r2.3
+    newest_pre_release: null
   cycle_releases:
     m1:
       release_tag: null
@@ -540,25 +531,24 @@ progress:
       - api_name: connected-network-type
         api_version: 0.3.0-rc.1
     m4:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r2.3
+      release_date: '2026-11-18T21:13:52Z'
+      apis:
+      - api_name: connected-network-type-subscriptions
+        api_version: 0.3.0
+      - api_name: connected-network-type
+        api_version: 0.3.0
   last_published:
-    release_tag: r2.2
-    release_date: '2026-10-30T16:02:17Z'
+    release_tag: r2.3
+    release_date: '2026-11-18T21:13:52Z'
     apis:
     - api_name: connected-network-type-subscriptions
-      api_version: 0.3.0-rc.2
+      api_version: 0.3.0
     - api_name: connected-network-type
-      api_version: 0.3.0-rc.2
+      api_version: 0.3.0
   snapshot_api_versions:
     connected-network-type-subscriptions: 0.3.0
     connected-network-type: 0.3.0
-  warnings:
-  - code: W003
-    message: Release r2.3 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: ConnectivityInsights
   github_url: https://github.com/camaraproject/ConnectivityInsights
   release_track: meta-release
@@ -596,8 +586,8 @@ progress:
       last_pr_url: https://github.com/camaraproject/ConnectivityInsights/pull/234
       last_closed_at: '2026-11-18T16:13:35Z'
   published_context:
-    latest_public_release: r3.2
-    newest_pre_release: r4.2
+    latest_public_release: r4.3
+    newest_pre_release: null
   cycle_releases:
     m1:
       release_tag: null
@@ -612,25 +602,24 @@ progress:
       - api_name: connectivity-insights
         api_version: 0.7.0-rc.1
     m4:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r4.3
+      release_date: '2026-11-18T21:26:46Z'
+      apis:
+      - api_name: connectivity-insights-subscriptions
+        api_version: 0.7.0
+      - api_name: connectivity-insights
+        api_version: 0.7.0
   last_published:
-    release_tag: r4.2
-    release_date: '2026-10-21T16:23:37Z'
+    release_tag: r4.3
+    release_date: '2026-11-18T21:26:46Z'
     apis:
     - api_name: connectivity-insights-subscriptions
-      api_version: 0.7.0-rc.2
+      api_version: 0.7.0
     - api_name: connectivity-insights
-      api_version: 0.7.0-rc.2
+      api_version: 0.7.0
   snapshot_api_versions:
     connectivity-insights-subscriptions: 0.7.0
     connectivity-insights: 0.7.0
-  warnings:
-  - code: W003
-    message: Release r4.3 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: ConsentInfo
   github_url: https://github.com/camaraproject/ConsentInfo
   release_track: independent
@@ -977,36 +966,20 @@ progress:
     main_contacts:
     - maxl2287
     - sachinvodafone
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r2.4-19b786e
-    release_pr:
-      number: 167
-      state: open
-      url: https://github.com/camaraproject/DeviceDataVolume/pull/167
-      created_at: '2026-11-10T13:15:11Z'
-      assignees:
-      - tanjadegroot
-      review_decision: APPROVED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 6
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 159
-      url: https://github.com/camaraproject/DeviceDataVolume/issues/159
-      created_at: '2026-11-02T11:16:08Z'
+    release_issue: null
     review_history:
       discarded_count: 2
       last_reviewers: []
       last_pr_url: https://github.com/camaraproject/DeviceDataVolume/pull/165
       last_closed_at: '2026-11-10T13:09:15Z'
   published_context:
-    latest_public_release: r1.3
-    newest_pre_release: r2.3
+    latest_public_release: r2.4
+    newest_pre_release: null
   cycle_releases:
     m1:
       release_tag: null
@@ -1021,17 +994,21 @@ progress:
       - api_name: device-data-volume
         api_version: 0.2.0-rc.1
     m4:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r2.4
+      release_date: '2026-11-19T09:34:41Z'
+      apis:
+      - api_name: device-data-volume-subscriptions
+        api_version: 0.2.0
+      - api_name: device-data-volume
+        api_version: 0.2.0
   last_published:
-    release_tag: r2.3
-    release_date: '2026-11-02T10:40:34Z'
+    release_tag: r2.4
+    release_date: '2026-11-19T09:34:41Z'
     apis:
     - api_name: device-data-volume-subscriptions
-      api_version: 0.2.0-rc.3
+      api_version: 0.2.0
     - api_name: device-data-volume
-      api_version: 0.2.0-rc.3
+      api_version: 0.2.0
   snapshot_api_versions:
     device-data-volume-subscriptions: 0.2.0
     device-data-volume: 0.2.0
@@ -1298,8 +1275,8 @@ progress:
       last_pr_url: https://github.com/camaraproject/DeviceReachabilityStatus/pull/112
       last_closed_at: '2026-11-10T13:00:32Z'
   published_context:
-    latest_public_release: r1.2
-    newest_pre_release: r2.2
+    latest_public_release: r2.3
+    newest_pre_release: null
   cycle_releases:
     m1:
       release_tag: null
@@ -1314,25 +1291,24 @@ progress:
       - api_name: device-reachability-status
         api_version: 1.2.0-rc.3
     m4:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r2.3
+      release_date: '2026-11-18T21:10:46Z'
+      apis:
+      - api_name: device-reachability-status-subscriptions
+        api_version: 0.9.0
+      - api_name: device-reachability-status
+        api_version: 1.2.0
   last_published:
-    release_tag: r2.2
-    release_date: '2026-11-02T20:32:14Z'
+    release_tag: r2.3
+    release_date: '2026-11-18T21:10:46Z'
     apis:
     - api_name: device-reachability-status-subscriptions
-      api_version: 0.9.0-rc.2
+      api_version: 0.9.0
     - api_name: device-reachability-status
-      api_version: 1.2.0-rc.4
+      api_version: 1.2.0
   snapshot_api_versions:
     device-reachability-status-subscriptions: 0.9.0
     device-reachability-status: 1.2.0
-  warnings:
-  - code: W003
-    message: Release r2.3 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: DeviceRoamingStatus
   github_url: https://github.com/camaraproject/DeviceRoamingStatus
   release_track: meta-release
@@ -1646,28 +1622,12 @@ progress:
     main_contacts:
     - SentianSun
     - ChinaUnicomXiaoDongrui
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r1.1-ea9f2b5
-    release_pr:
-      number: 58
-      state: open
-      url: https://github.com/camaraproject/eSimRemoteManagement/pull/58
-      created_at: '2026-11-18T02:02:56Z'
-      assignees:
-      - eric-murray
-      review_decision: APPROVED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 6
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 20
-      url: https://github.com/camaraproject/eSimRemoteManagement/issues/20
-      created_at: '2026-07-29T01:08:25Z'
+    release_issue: null
     review_history:
       discarded_count: 9
       last_reviewers:
@@ -1676,12 +1636,14 @@ progress:
       last_closed_at: '2026-11-17T08:40:52Z'
   published_context:
     latest_public_release: null
-    newest_pre_release: null
+    newest_pre_release: r1.1
   cycle_releases:
     m1:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r1.1
+      release_date: '2026-11-19T01:24:35Z'
+      apis:
+      - api_name: esim-remote-management
+        api_version: 0.1.0-alpha.1
     m3:
       release_tag: null
       release_date: null
@@ -1690,6 +1652,12 @@ progress:
       release_tag: null
       release_date: null
       apis: []
+  last_published:
+    release_tag: r1.1
+    release_date: '2026-11-19T01:24:35Z'
+    apis:
+    - api_name: esim-remote-management
+      api_version: 0.1.0-alpha.1
   snapshot_api_versions:
     esim-remote-management: 0.1.0-alpha.1
 - repository: HighThroughputElasticNetworks
@@ -1903,28 +1871,12 @@ progress:
     main_contacts:
     - chenfr2-ChinaTelecom
     - XunliYang
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r2.2-4335f3a
-    release_pr:
-      number: 126
-      state: open
-      url: https://github.com/camaraproject/IoTSIMFraudPrevention/pull/126
-      created_at: '2026-11-18T02:38:13Z'
-      assignees:
-      - eric-murray
-      review_decision: APPROVED
-      codeowner_approved: true
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 6
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 94
-      url: https://github.com/camaraproject/IoTSIMFraudPrevention/issues/94
-      created_at: '2026-10-23T08:48:54Z'
+    release_issue: null
     review_history:
       discarded_count: 4
       last_reviewers:
@@ -1932,8 +1884,8 @@ progress:
       last_pr_url: https://github.com/camaraproject/IoTSIMFraudPrevention/pull/121
       last_closed_at: '2026-11-18T02:36:28Z'
   published_context:
-    latest_public_release: r1.2
-    newest_pre_release: r2.1
+    latest_public_release: r2.2
+    newest_pre_release: null
   cycle_releases:
     m1:
       release_tag: null
@@ -1948,17 +1900,21 @@ progress:
       - api_name: iot-sim-fraud-prevention-subscriptions
         api_version: 0.2.0-rc.1
     m4:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r2.2
+      release_date: '2026-11-19T02:49:10Z'
+      apis:
+      - api_name: iot-sim-fraud-prevention
+        api_version: 0.2.0
+      - api_name: iot-sim-fraud-prevention-subscriptions
+        api_version: 0.2.0
   last_published:
-    release_tag: r2.1
-    release_date: '2026-10-15T06:41:16Z'
+    release_tag: r2.2
+    release_date: '2026-11-19T02:49:10Z'
     apis:
     - api_name: iot-sim-fraud-prevention
-      api_version: 0.2.0-rc.1
+      api_version: 0.2.0
     - api_name: iot-sim-fraud-prevention-subscriptions
-      api_version: 0.2.0-rc.1
+      api_version: 0.2.0
   snapshot_api_versions:
     iot-sim-fraud-prevention: 0.2.0
     iot-sim-fraud-prevention-subscriptions: 0.2.0
@@ -1979,28 +1935,12 @@ progress:
     - ToshiWakayama-KDDI
     - fernandopradocabrillo
     - GillesInnov35
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r2.2-0840982
-    release_pr:
-      number: 87
-      state: open
-      url: https://github.com/camaraproject/KnowYourCustomerAgeVerification/pull/87
-      created_at: '2026-11-13T13:51:11Z'
-      assignees:
-      - hdamker
-      review_decision: APPROVED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 6
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 65
-      url: https://github.com/camaraproject/KnowYourCustomerAgeVerification/issues/65
-      created_at: '2026-09-24T11:39:06Z'
+    release_issue: null
     review_history:
       discarded_count: 3
       last_reviewers:
@@ -2009,7 +1949,7 @@ progress:
       last_closed_at: '2026-11-10T12:36:57Z'
   published_context:
     latest_public_release: r1.3
-    newest_pre_release: r2.1
+    newest_pre_release: r2.2
   cycle_releases:
     m1:
       release_tag: null
@@ -2026,11 +1966,11 @@ progress:
       release_date: null
       apis: []
   last_published:
-    release_tag: r2.1
-    release_date: '2026-09-01T05:15:38Z'
+    release_tag: r2.2
+    release_date: '2026-11-19T09:06:50Z'
     apis:
     - api_name: kyc-age-verification
-      api_version: 0.3.0-rc.1
+      api_version: 0.3.0-rc.2
   snapshot_api_versions:
     kyc-age-verification: 0.3.0-rc.2
 - repository: KnowYourCustomerFill-in
@@ -2057,13 +1997,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/KnowYourCustomerFill-in/pull/91
       created_at: '2026-11-18T11:12:38Z'
-      assignees: []
-      review_decision: null
+      assignees:
+      - hdamker
+      review_decision: APPROVED
       codeowner_approved: false
-      codeowner_checked: 0
+      codeowner_checked: 3
       codeowner_total: 3
-      ready_for_review: false
-      rm_checked: 0
+      ready_for_review: true
+      rm_checked: 6
       rm_total: 6
     draft_release: null
     release_issue:
@@ -2127,13 +2068,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/KnowYourCustomerMatch/pull/118
       created_at: '2026-11-18T08:24:34Z'
-      assignees: []
-      review_decision: null
+      assignees:
+      - hdamker
+      review_decision: APPROVED
       codeowner_approved: false
-      codeowner_checked: 0
+      codeowner_checked: 3
       codeowner_total: 3
-      ready_for_review: false
-      rm_checked: 0
+      ready_for_review: true
+      rm_checked: 6
       rm_total: 6
     draft_release: null
     release_issue:
@@ -2212,7 +2154,7 @@ progress:
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 3
+      rm_checked: 4
       rm_total: 6
     draft_release: null
     release_issue:
@@ -2596,32 +2538,16 @@ progress:
     - eric-murray
     - Masa8106
     - grgpapadopoulos
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r3.3-fb65d3c
-    release_pr:
-      number: 141
-      state: open
-      url: https://github.com/camaraproject/NumberRecycling/pull/141
-      created_at: '2026-11-16T02:02:58Z'
-      assignees:
-      - tanjadegroot
-      review_decision: APPROVED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 6
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 140
-      url: https://github.com/camaraproject/NumberRecycling/issues/140
-      created_at: '2026-11-11T03:38:54Z'
+    release_issue: null
     review_history: null
   published_context:
-    latest_public_release: r2.2
-    newest_pre_release: r3.2
+    latest_public_release: r3.3
+    newest_pre_release: null
   cycle_releases:
     m1:
       release_tag: null
@@ -2634,15 +2560,17 @@ progress:
       - api_name: number-recycling
         api_version: 0.3.0-rc.1
     m4:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r3.3
+      release_date: '2026-11-19T04:42:06Z'
+      apis:
+      - api_name: number-recycling
+        api_version: 0.3.0
   last_published:
-    release_tag: r3.2
-    release_date: '2026-11-09T09:05:29Z'
+    release_tag: r3.3
+    release_date: '2026-11-19T04:42:06Z'
     apis:
     - api_name: number-recycling
-      api_version: 0.3.0-rc.2
+      api_version: 0.3.0
   snapshot_api_versions:
     number-recycling: 0.3.0
 - repository: NumberVerification
@@ -2727,8 +2655,8 @@ progress:
     release_issue: null
     review_history: null
   published_context:
-    latest_public_release: r1.2
-    newest_pre_release: r2.2
+    latest_public_release: r2.3
+    newest_pre_release: null
   cycle_releases:
     m1:
       release_tag: null
@@ -2741,22 +2669,19 @@ progress:
       - api_name: optimal-edge-discovery
         api_version: 0.2.0-rc.1
     m4:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r2.3
+      release_date: '2026-11-18T18:57:23Z'
+      apis:
+      - api_name: optimal-edge-discovery
+        api_version: 0.2.0
   last_published:
-    release_tag: r2.2
-    release_date: '2026-11-05T16:40:10Z'
+    release_tag: r2.3
+    release_date: '2026-11-18T18:57:23Z'
     apis:
     - api_name: optimal-edge-discovery
-      api_version: 0.2.0-rc.2
+      api_version: 0.2.0
   snapshot_api_versions:
     optimal-edge-discovery: 0.2.0
-  warnings:
-  - code: W003
-    message: Release r2.3 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: OTPValidation
   github_url: https://github.com/camaraproject/OTPValidation
   release_track: meta-release
@@ -2951,8 +2876,8 @@ progress:
       last_pr_url: https://github.com/camaraproject/QoSBooking/pull/191
       last_closed_at: '2026-11-13T23:39:21Z'
   published_context:
-    latest_public_release: r1.2
-    newest_pre_release: r2.2
+    latest_public_release: r2.3
+    newest_pre_release: null
   cycle_releases:
     m1:
       release_tag: null
@@ -2967,25 +2892,24 @@ progress:
       - api_name: qos-booking
         api_version: 0.2.0-rc.1
     m4:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r2.3
+      release_date: '2026-11-18T01:11:20Z'
+      apis:
+      - api_name: qos-booking-and-assignment
+        api_version: 0.2.0
+      - api_name: qos-booking
+        api_version: 0.2.0
   last_published:
-    release_tag: r2.2
-    release_date: '2026-11-09T06:57:32Z'
+    release_tag: r2.3
+    release_date: '2026-11-18T01:11:20Z'
     apis:
     - api_name: qos-booking-and-assignment
-      api_version: 0.2.0-rc.2
+      api_version: 0.2.0
     - api_name: qos-booking
-      api_version: 0.2.0-rc.2
+      api_version: 0.2.0
   snapshot_api_versions:
     qos-booking-and-assignment: 0.2.0
     qos-booking: 0.2.0
-  warnings:
-  - code: W003
-    message: Release r2.3 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: QoSProfiles
   github_url: https://github.com/camaraproject/QoSProfiles
   release_track: meta-release
@@ -3069,28 +2993,12 @@ progress:
     - eric-murray
     - benhepworth
     - jlurien
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r4.3-ff1efe1
-    release_pr:
-      number: 655
-      state: open
-      url: https://github.com/camaraproject/QualityOnDemand/pull/655
-      created_at: '2026-11-16T17:51:54Z'
-      assignees:
-      - tanjadegroot
-      review_decision: APPROVED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 6
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 643
-      url: https://github.com/camaraproject/QualityOnDemand/issues/643
-      created_at: '2026-11-04T14:01:49Z'
+    release_issue: null
     review_history:
       discarded_count: 1
       last_reviewers:
@@ -3098,8 +3006,8 @@ progress:
       last_pr_url: https://github.com/camaraproject/QualityOnDemand/pull/644
       last_closed_at: '2026-11-16T05:50:52Z'
   published_context:
-    latest_public_release: r3.2
-    newest_pre_release: r4.2
+    latest_public_release: r4.3
+    newest_pre_release: null
   cycle_releases:
     m1:
       release_tag: null
@@ -3116,17 +3024,21 @@ progress:
       - api_name: quality-on-demand
         api_version: 1.2.0-rc.3
     m4:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r4.3
+      release_date: '2026-11-19T07:57:56Z'
+      apis:
+      - api_name: qos-provisioning
+        api_version: 0.4.0
+      - api_name: quality-on-demand
+        api_version: 1.2.0
   last_published:
-    release_tag: r4.2
-    release_date: '2026-10-26T10:05:12Z'
+    release_tag: r4.3
+    release_date: '2026-11-19T07:57:56Z'
     apis:
     - api_name: qos-provisioning
-      api_version: 0.4.0-rc.2
+      api_version: 0.4.0
     - api_name: quality-on-demand
-      api_version: 1.2.0-rc.4
+      api_version: 1.2.0
   snapshot_api_versions:
     qos-provisioning: 0.4.0
     quality-on-demand: 1.2.0
@@ -3242,8 +3154,8 @@ progress:
     release_issue: null
     review_history: null
   published_context:
-    latest_public_release: null
-    newest_pre_release: r2.2
+    latest_public_release: r2.3
+    newest_pre_release: null
   cycle_releases:
     m1:
       release_tag: null
@@ -3256,22 +3168,19 @@ progress:
       - api_name: session-insights
         api_version: 0.2.0-rc.1
     m4:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r2.3
+      release_date: '2026-11-17T23:38:48Z'
+      apis:
+      - api_name: session-insights
+        api_version: 0.2.0
   last_published:
-    release_tag: r2.2
-    release_date: '2026-10-16T00:14:59Z'
+    release_tag: r2.3
+    release_date: '2026-11-17T23:38:48Z'
     apis:
     - api_name: session-insights
-      api_version: 0.2.0-rc.2
+      api_version: 0.2.0
   snapshot_api_versions:
     session-insights: 0.2.0
-  warnings:
-  - code: W003
-    message: Release r2.3 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: SimpleEdgeDiscovery
   github_url: https://github.com/camaraproject/SimpleEdgeDiscovery
   release_track: meta-release
@@ -3680,13 +3589,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/VerifiedCaller/pull/177
       created_at: '2026-11-16T10:02:59Z'
-      assignees: []
-      review_decision: null
+      assignees:
+      - hdamker
+      review_decision: APPROVED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 6
       rm_total: 6
     draft_release: null
     release_issue:
