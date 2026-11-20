@@ -1,6 +1,6 @@
 metadata:
-  last_updated: '2026-11-19T14:59:56Z'
-  last_checked: '2026-11-19T14:59:56Z'
+  last_updated: '2026-11-20T11:56:58Z'
+  last_checked: '2026-11-20T11:56:58Z'
   releases_master_updated: '2026-11-19T10:44:00.133Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
@@ -8,7 +8,7 @@ metadata:
   repos_new: 0
   repos_with_plan: 64
   repos_fully_onboarded: 47
-  repos_with_release_issue: 14
+  repos_with_release_issue: 10
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -1103,24 +1103,13 @@ progress:
     - bigludo7
     - jlurien
     - maxl2287
-  state: snapshot_active
+  state: draft_ready
   artifacts:
     snapshot_branch: release-snapshot/r4.3-938c694
-    release_pr:
-      number: 454
-      state: open
-      url: https://github.com/camaraproject/DeviceLocation/pull/454
-      created_at: '2026-10-30T09:26:26Z'
-      assignees:
-      - tanjadegroot
-      review_decision: APPROVED
-      codeowner_approved: true
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 6
-      rm_total: 6
-    draft_release: null
+    release_pr: null
+    draft_release:
+      name: r4.3
+      url: https://github.com/camaraproject/DeviceLocation/releases/tag/untagged-f207e3225b9f8d5a72ca
     release_issue:
       number: 453
       url: https://github.com/camaraproject/DeviceLocation/issues/453
@@ -1324,17 +1313,12 @@ progress:
     - bigludo7
     - sachinvodafone
     - akoshunyadi
-  state: draft_ready
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r2.3-1ead7b5
+    snapshot_branch: null
     release_pr: null
-    draft_release:
-      name: r2.3
-      url: https://github.com/camaraproject/DeviceRoamingStatus/releases/tag/untagged-23404d1fd6ee89a4dbc9
-    release_issue:
-      number: 116
-      url: https://github.com/camaraproject/DeviceRoamingStatus/issues/116
-      created_at: '2026-10-30T17:55:41Z'
+    draft_release: null
+    release_issue: null
     review_history:
       discarded_count: 2
       last_reviewers:
@@ -1372,6 +1356,11 @@ progress:
   snapshot_api_versions:
     device-roaming-status-subscriptions: 0.9.0
     device-roaming-status: 1.2.0
+  warnings:
+  - code: W003
+    message: Release r2.3 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: DeviceSwap
   github_url: https://github.com/camaraproject/DeviceSwap
   release_track: meta-release
@@ -1483,33 +1472,21 @@ progress:
     - JoseMConde
     - Seralogar
     - Kevsy
-  state: snapshot_active
+  state: planned
   artifacts:
-    snapshot_branch: release-snapshot/r1.2-120a731
-    release_pr:
-      number: 94
-      state: open
-      url: https://github.com/camaraproject/EdgeApplicationManagement/pull/94
-      created_at: '2026-10-21T15:37:50Z'
-      assignees:
-      - eric-murray
-      review_decision: CHANGES_REQUESTED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 1
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
     release_issue:
       number: 39
       url: https://github.com/camaraproject/EdgeApplicationManagement/issues/39
       created_at: '2026-06-05T12:05:06Z'
     review_history:
-      discarded_count: 8
-      last_reviewers: []
-      last_pr_url: https://github.com/camaraproject/EdgeApplicationManagement/pull/89
-      last_closed_at: '2026-10-21T11:25:58Z'
+      discarded_count: 9
+      last_reviewers:
+      - eric-murray
+      last_pr_url: https://github.com/camaraproject/EdgeApplicationManagement/pull/94
+      last_closed_at: '2026-11-19T15:35:35Z'
   published_context:
     latest_public_release: null
     newest_pre_release: r1.1
@@ -1534,8 +1511,6 @@ progress:
     apis:
     - api_name: edge-application-management
       api_version: 0.1.0-alpha.1
-  snapshot_api_versions:
-    edge-application-management: 0.1.0-rc.1
 - repository: EnergyFootprintNotification
   github_url: https://github.com/camaraproject/EnergyFootprintNotification
   release_track: meta-release
@@ -1914,28 +1889,12 @@ progress:
     - ToshiWakayama-KDDI
     - fernandopradocabrillo
     - GillesInnov35
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r2.3-3b4d114
-    release_pr:
-      number: 92
-      state: open
-      url: https://github.com/camaraproject/KnowYourCustomerAgeVerification/pull/92
-      created_at: '2026-11-19T13:56:20Z'
-      assignees:
-      - hdamker
-      review_decision: COMMENTED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 0
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 91
-      url: https://github.com/camaraproject/KnowYourCustomerAgeVerification/issues/91
-      created_at: '2026-11-19T13:51:31Z'
+    release_issue: null
     review_history: null
   published_context:
     latest_public_release: r1.3
@@ -1963,6 +1922,11 @@ progress:
       api_version: 0.3.0-rc.2
   snapshot_api_versions:
     kyc-age-verification: 0.3.0
+  warnings:
+  - code: W003
+    message: Release r2.3 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: KnowYourCustomerFill-in
   github_url: https://github.com/camaraproject/KnowYourCustomerFill-in
   release_track: meta-release
@@ -1979,28 +1943,12 @@ progress:
     main_contacts:
     - ToshiWakayama-KDDI
     - GillesInnov35
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r2.3-d245a60
-    release_pr:
-      number: 91
-      state: open
-      url: https://github.com/camaraproject/KnowYourCustomerFill-in/pull/91
-      created_at: '2026-11-18T11:12:38Z'
-      assignees:
-      - hdamker
-      review_decision: APPROVED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 6
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 84
-      url: https://github.com/camaraproject/KnowYourCustomerFill-in/issues/84
-      created_at: '2026-11-05T09:55:06Z'
+    release_issue: null
     review_history:
       discarded_count: 1
       last_reviewers:
@@ -2033,6 +1981,11 @@ progress:
       api_version: 0.5.0-rc.2
   snapshot_api_versions:
     kyc-fill-in: 0.5.0
+  warnings:
+  - code: W003
+    message: Release r2.3 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: KnowYourCustomerMatch
   github_url: https://github.com/camaraproject/KnowYourCustomerMatch
   release_track: meta-release
@@ -2050,28 +2003,12 @@ progress:
     - ToshiWakayama-KDDI
     - fernandopradocabrillo
     - GillesInnov35
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r2.3-c9f90dc
-    release_pr:
-      number: 118
-      state: open
-      url: https://github.com/camaraproject/KnowYourCustomerMatch/pull/118
-      created_at: '2026-11-18T08:24:34Z'
-      assignees:
-      - hdamker
-      review_decision: APPROVED
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 6
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 112
-      url: https://github.com/camaraproject/KnowYourCustomerMatch/issues/112
-      created_at: '2026-11-04T09:17:36Z'
+    release_issue: null
     review_history:
       discarded_count: 1
       last_reviewers:
@@ -2104,6 +2041,11 @@ progress:
       api_version: 1.0.0-rc.1
   snapshot_api_versions:
     kyc-match: 1.0.0
+  warnings:
+  - code: W003
+    message: Release r2.3 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: ModelAsAService
   github_url: https://github.com/camaraproject/ModelAsAService
   release_track: meta-release
@@ -2129,28 +2071,12 @@ progress:
     target_api_status: public
     main_contacts:
     - lihaojie-CMCC
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r2.3-e61d1f9
-    release_pr:
-      number: 95
-      state: open
-      url: https://github.com/camaraproject/ModelAsAService/pull/95
-      created_at: '2026-11-11T04:51:52Z'
-      assignees:
-      - tanjadegroot
-      review_decision: APPROVED
-      codeowner_approved: true
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 6
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 91
-      url: https://github.com/camaraproject/ModelAsAService/issues/91
-      created_at: '2026-11-06T02:16:48Z'
+    release_issue: null
     review_history: null
   published_context:
     latest_public_release: r1.2
@@ -2188,6 +2114,11 @@ progress:
     knowledge-base: 0.2.0
     qa-assistant-manage: 0.2.0
     qa-assistant-service: 0.2.0
+  warnings:
+  - code: W003
+    message: Release r2.3 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: MostFrequentLocation
   github_url: https://github.com/camaraproject/MostFrequentLocation
   release_track: meta-release
@@ -3701,15 +3632,15 @@ progress:
   github_url: https://github.com/camaraproject/WebRTC
   release_track: meta-release
   meta_release: Sync26
-  target_release_tag: r3.2
-  target_release_type: pre-release-rc
+  target_release_tag: r3.3
+  target_release_type: public-release
   dependencies:
     commonalities_release: r4.4
     identity_consent_management_release: r4.2
   apis:
   - api_name: webrtc-call-handling
     target_api_version: 0.4.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - stroncoso
     - pradeepachar-mavenir
@@ -3717,7 +3648,7 @@ progress:
     - teikuran
   - api_name: webrtc-events-subscriptions
     target_api_version: 0.3.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - stroncoso
     - pradeepachar-mavenir
@@ -3725,24 +3656,34 @@ progress:
     - teikuran
   - api_name: webrtc-registration
     target_api_version: 0.4.0
-    target_api_status: rc
+    target_api_status: public
     main_contacts:
     - stroncoso
     - pradeepachar-mavenir
     - deepakjaiswal1
     - teikuran
-  state: published
+  state: snapshot_active
   artifacts:
-    snapshot_branch: null
-    release_pr: null
+    snapshot_branch: release-snapshot/r3.3-d020b71
+    release_pr:
+      number: 263
+      state: open
+      url: https://github.com/camaraproject/WebRTC/pull/263
+      created_at: '2026-11-19T22:58:28Z'
+      assignees: []
+      review_decision: null
+      codeowner_approved: false
+      codeowner_checked: 3
+      codeowner_total: 3
+      ready_for_review: true
+      rm_checked: 0
+      rm_total: 6
     draft_release: null
-    release_issue: null
-    review_history:
-      discarded_count: 1
-      last_reviewers:
-      - tanjadegroot
-      last_pr_url: https://github.com/camaraproject/WebRTC/pull/246
-      last_closed_at: '2026-11-03T16:01:58Z'
+    release_issue:
+      number: 262
+      url: https://github.com/camaraproject/WebRTC/issues/262
+      created_at: '2026-11-19T21:20:27Z'
+    review_history: null
   published_context:
     latest_public_release: r2.2
     newest_pre_release: r3.2
@@ -3776,9 +3717,9 @@ progress:
     - api_name: webrtc-registration
       api_version: 0.4.0-rc.2
   snapshot_api_versions:
-    webrtc-call-handling: 0.4.0-rc.2
-    webrtc-events-subscriptions: 0.3.0-rc.2
-    webrtc-registration: 0.4.0-rc.2
+    webrtc-call-handling: 0.4.0
+    webrtc-events-subscriptions: 0.3.0
+    webrtc-registration: 0.4.0
 - repository: ApplicationEndpointDiscovery
   github_url: https://github.com/camaraproject/ApplicationEndpointDiscovery
   release_track: meta-release
