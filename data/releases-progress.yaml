@@ -1,14 +1,14 @@
 metadata:
-  last_updated: '2026-11-20T11:56:58Z'
-  last_checked: '2026-11-20T11:56:58Z'
-  releases_master_updated: '2026-11-19T10:44:00.133Z'
+  last_updated: '2026-11-21T11:28:00Z'
+  last_checked: '2026-11-21T11:28:00Z'
+  releases_master_updated: '2026-11-20T10:26:01.054Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
   repos_scanned: 64
   repos_new: 0
   repos_with_plan: 64
   repos_fully_onboarded: 47
-  repos_with_release_issue: 10
+  repos_with_release_issue: 8
 meta_releases:
 - name: Fall24
   total_apis: 25
@@ -34,7 +34,7 @@ meta_releases:
   total_apis: 54
   m1_achieved: 8
   m3_achieved: 54
-  m4_achieved: 37
+  m4_achieved: 45
 progress:
 - repository: ApplicationEndpointDiscovery
   github_url: https://github.com/camaraproject/ApplicationEndpointDiscovery
@@ -1040,8 +1040,8 @@ progress:
       last_pr_url: https://github.com/camaraproject/DeviceIdentifier/pull/235
       last_closed_at: '2026-11-10T14:45:48Z'
   published_context:
-    latest_public_release: r2.2
-    newest_pre_release: r3.4
+    latest_public_release: r3.5
+    newest_pre_release: null
   cycle_releases:
     m1:
       release_tag: r3.1
@@ -1056,22 +1056,19 @@ progress:
       - api_name: device-identifier
         api_version: 0.4.0-rc.1
     m4:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r3.5
+      release_date: '2026-11-19T12:43:55Z'
+      apis:
+      - api_name: device-identifier
+        api_version: 0.4.0
   last_published:
-    release_tag: r3.4
-    release_date: '2026-11-02T11:55:05Z'
+    release_tag: r3.5
+    release_date: '2026-11-19T12:43:55Z'
     apis:
     - api_name: device-identifier
-      api_version: 0.4.0-rc.3
+      api_version: 0.4.0
   snapshot_api_versions:
     device-identifier: 0.4.0
-  warnings:
-  - code: W003
-    message: Release r3.5 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: DeviceLocation
   github_url: https://github.com/camaraproject/DeviceLocation
   release_track: meta-release
@@ -1103,17 +1100,12 @@ progress:
     - bigludo7
     - jlurien
     - maxl2287
-  state: draft_ready
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r4.3-938c694
+    snapshot_branch: null
     release_pr: null
-    draft_release:
-      name: r4.3
-      url: https://github.com/camaraproject/DeviceLocation/releases/tag/untagged-f207e3225b9f8d5a72ca
-    release_issue:
-      number: 453
-      url: https://github.com/camaraproject/DeviceLocation/issues/453
-      created_at: '2026-10-30T08:08:49Z'
+    draft_release: null
+    release_issue: null
     review_history: null
   published_context:
     latest_public_release: r3.2
@@ -1151,6 +1143,11 @@ progress:
     geofencing-subscriptions: 0.6.0
     location-retrieval: 1.0.0
     location-verification: 3.1.0
+  warnings:
+  - code: W003
+    message: Release r4.3 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: DeviceMediaStreamingRate
   github_url: https://github.com/camaraproject/DeviceMediaStreamingRate
   release_track: independent
@@ -1326,8 +1323,8 @@ progress:
       last_pr_url: https://github.com/camaraproject/DeviceRoamingStatus/pull/120
       last_closed_at: '2026-11-19T13:58:37Z'
   published_context:
-    latest_public_release: r1.2
-    newest_pre_release: r2.2
+    latest_public_release: r2.3
+    newest_pre_release: null
   cycle_releases:
     m1:
       release_tag: null
@@ -1342,25 +1339,24 @@ progress:
       - api_name: device-roaming-status
         api_version: 1.2.0-rc.3
     m4:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r2.3
+      release_date: '2026-11-19T15:00:44Z'
+      apis:
+      - api_name: device-roaming-status-subscriptions
+        api_version: 0.9.0
+      - api_name: device-roaming-status
+        api_version: 1.2.0
   last_published:
-    release_tag: r2.2
-    release_date: '2026-10-28T13:53:54Z'
+    release_tag: r2.3
+    release_date: '2026-11-19T15:00:44Z'
     apis:
     - api_name: device-roaming-status-subscriptions
-      api_version: 0.9.0-rc.2
+      api_version: 0.9.0
     - api_name: device-roaming-status
-      api_version: 1.2.0-rc.4
+      api_version: 1.2.0
   snapshot_api_versions:
     device-roaming-status-subscriptions: 0.9.0
     device-roaming-status: 1.2.0
-  warnings:
-  - code: W003
-    message: Release r2.3 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: DeviceSwap
   github_url: https://github.com/camaraproject/DeviceSwap
   release_track: meta-release
@@ -2079,8 +2075,8 @@ progress:
     release_issue: null
     review_history: null
   published_context:
-    latest_public_release: r1.2
-    newest_pre_release: r2.2
+    latest_public_release: r2.3
+    newest_pre_release: null
   cycle_releases:
     m1:
       release_tag: null
@@ -2097,28 +2093,29 @@ progress:
       - api_name: qa-assistant-service
         api_version: 0.2.0-rc.1
     m4:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r2.3
+      release_date: '2026-11-20T01:26:37Z'
+      apis:
+      - api_name: knowledge-base
+        api_version: 0.2.0
+      - api_name: qa-assistant-manage
+        api_version: 0.2.0
+      - api_name: qa-assistant-service
+        api_version: 0.2.0
   last_published:
-    release_tag: r2.2
-    release_date: '2026-11-06T01:18:38Z'
+    release_tag: r2.3
+    release_date: '2026-11-20T01:26:37Z'
     apis:
     - api_name: knowledge-base
-      api_version: 0.2.0-rc.2
+      api_version: 0.2.0
     - api_name: qa-assistant-manage
-      api_version: 0.2.0-rc.2
+      api_version: 0.2.0
     - api_name: qa-assistant-service
-      api_version: 0.2.0-rc.2
+      api_version: 0.2.0
   snapshot_api_versions:
     knowledge-base: 0.2.0
     qa-assistant-manage: 0.2.0
     qa-assistant-service: 0.2.0
-  warnings:
-  - code: W003
-    message: Release r2.3 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: MostFrequentLocation
   github_url: https://github.com/camaraproject/MostFrequentLocation
   release_track: meta-release
@@ -3515,8 +3512,8 @@ progress:
       last_pr_url: https://github.com/camaraproject/VerifiedCaller/pull/166
       last_closed_at: '2026-11-16T09:56:05Z'
   published_context:
-    latest_public_release: r1.3
-    newest_pre_release: r2.3
+    latest_public_release: r2.4
+    newest_pre_release: null
   cycle_releases:
     m1:
       release_tag: r2.1
@@ -3535,25 +3532,24 @@ progress:
       - api_name: verified-caller
         api_version: 0.2.0-rc.1
     m4:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r2.4
+      release_date: '2026-11-19T11:23:04Z'
+      apis:
+      - api_name: brand-registration
+        api_version: 0.2.0
+      - api_name: verified-caller
+        api_version: 0.2.0
   last_published:
-    release_tag: r2.3
-    release_date: '2026-11-04T05:59:09Z'
+    release_tag: r2.4
+    release_date: '2026-11-19T11:23:04Z'
     apis:
     - api_name: brand-registration
-      api_version: 0.2.0-rc.2
+      api_version: 0.2.0
     - api_name: verified-caller
-      api_version: 0.2.0-rc.2
+      api_version: 0.2.0
   snapshot_api_versions:
     brand-registration: 0.2.0
     verified-caller: 0.2.0
-  warnings:
-  - code: W003
-    message: Release r2.4 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: VoiceNotification
   github_url: https://github.com/camaraproject/VoiceNotification
   release_track: independent
@@ -3662,28 +3658,17 @@ progress:
     - pradeepachar-mavenir
     - deepakjaiswal1
     - teikuran
-  state: snapshot_active
+  state: published
   artifacts:
-    snapshot_branch: release-snapshot/r3.3-d020b71
-    release_pr:
-      number: 263
-      state: open
-      url: https://github.com/camaraproject/WebRTC/pull/263
-      created_at: '2026-11-19T22:58:28Z'
-      assignees: []
-      review_decision: null
-      codeowner_approved: false
-      codeowner_checked: 3
-      codeowner_total: 3
-      ready_for_review: true
-      rm_checked: 0
-      rm_total: 6
+    snapshot_branch: null
+    release_pr: null
     draft_release: null
-    release_issue:
-      number: 262
-      url: https://github.com/camaraproject/WebRTC/issues/262
-      created_at: '2026-11-19T21:20:27Z'
-    review_history: null
+    release_issue: null
+    review_history:
+      discarded_count: 1
+      last_reviewers: []
+      last_pr_url: https://github.com/camaraproject/WebRTC/pull/263
+      last_closed_at: '2026-11-21T08:05:39Z'
   published_context:
     latest_public_release: r2.2
     newest_pre_release: r3.2
@@ -3720,6 +3705,11 @@ progress:
     webrtc-call-handling: 0.4.0
     webrtc-events-subscriptions: 0.3.0
     webrtc-registration: 0.4.0
+  warnings:
+  - code: W003
+    message: Release r3.3 has been published. Milestone data will be updated in the
+      next 24 hours.
+    severity: warning
 - repository: ApplicationEndpointDiscovery
   github_url: https://github.com/camaraproject/ApplicationEndpointDiscovery
   release_track: meta-release
