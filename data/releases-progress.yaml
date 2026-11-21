@@ -1,7 +1,7 @@
 metadata:
-  last_updated: '2026-11-21T11:28:00Z'
-  last_checked: '2026-11-21T11:28:00Z'
-  releases_master_updated: '2026-11-20T10:26:01.054Z'
+  last_updated: '2026-11-21T17:43:36Z'
+  last_checked: '2026-11-21T17:43:36Z'
+  releases_master_updated: '2026-11-21T10:08:52.135Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
   repos_scanned: 64
@@ -34,7 +34,7 @@ meta_releases:
   total_apis: 54
   m1_achieved: 8
   m3_achieved: 54
-  m4_achieved: 45
+  m4_achieved: 54
 progress:
 - repository: ApplicationEndpointDiscovery
   github_url: https://github.com/camaraproject/ApplicationEndpointDiscovery
@@ -1108,8 +1108,8 @@ progress:
     release_issue: null
     review_history: null
   published_context:
-    latest_public_release: r3.2
-    newest_pre_release: r4.2
+    latest_public_release: r4.3
+    newest_pre_release: null
   cycle_releases:
     m1:
       release_tag: null
@@ -1126,28 +1126,29 @@ progress:
       - api_name: location-verification
         api_version: 3.1.0-rc.2
     m4:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r4.3
+      release_date: '2026-11-20T14:55:17Z'
+      apis:
+      - api_name: geofencing-subscriptions
+        api_version: 0.6.0
+      - api_name: location-retrieval
+        api_version: 1.0.0
+      - api_name: location-verification
+        api_version: 3.1.0
   last_published:
-    release_tag: r4.2
-    release_date: '2026-10-21T11:35:15Z'
+    release_tag: r4.3
+    release_date: '2026-11-20T14:55:17Z'
     apis:
     - api_name: geofencing-subscriptions
-      api_version: 0.6.0-rc.2
+      api_version: 0.6.0
     - api_name: location-retrieval
-      api_version: 1.0.0-rc.2
+      api_version: 1.0.0
     - api_name: location-verification
-      api_version: 3.1.0-rc.3
+      api_version: 3.1.0
   snapshot_api_versions:
     geofencing-subscriptions: 0.6.0
     location-retrieval: 1.0.0
     location-verification: 3.1.0
-  warnings:
-  - code: W003
-    message: Release r4.3 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: DeviceMediaStreamingRate
   github_url: https://github.com/camaraproject/DeviceMediaStreamingRate
   release_track: independent
@@ -1893,8 +1894,8 @@ progress:
     release_issue: null
     review_history: null
   published_context:
-    latest_public_release: r1.3
-    newest_pre_release: r2.2
+    latest_public_release: r2.3
+    newest_pre_release: null
   cycle_releases:
     m1:
       release_tag: null
@@ -1907,22 +1908,19 @@ progress:
       - api_name: kyc-age-verification
         api_version: 0.3.0-rc.1
     m4:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r2.3
+      release_date: '2026-11-20T10:45:06Z'
+      apis:
+      - api_name: kyc-age-verification
+        api_version: 0.3.0
   last_published:
-    release_tag: r2.2
-    release_date: '2026-11-19T09:06:50Z'
+    release_tag: r2.3
+    release_date: '2026-11-20T10:45:06Z'
     apis:
     - api_name: kyc-age-verification
-      api_version: 0.3.0-rc.2
+      api_version: 0.3.0
   snapshot_api_versions:
     kyc-age-verification: 0.3.0
-  warnings:
-  - code: W003
-    message: Release r2.3 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: KnowYourCustomerFill-in
   github_url: https://github.com/camaraproject/KnowYourCustomerFill-in
   release_track: meta-release
@@ -1952,8 +1950,8 @@ progress:
       last_pr_url: https://github.com/camaraproject/KnowYourCustomerFill-in/pull/85
       last_closed_at: '2026-11-18T11:08:18Z'
   published_context:
-    latest_public_release: r1.3
-    newest_pre_release: r2.2
+    latest_public_release: r2.3
+    newest_pre_release: null
   cycle_releases:
     m1:
       release_tag: null
@@ -1966,22 +1964,19 @@ progress:
       - api_name: kyc-fill-in
         api_version: 0.5.0-rc.1
     m4:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r2.3
+      release_date: '2026-11-20T11:17:19Z'
+      apis:
+      - api_name: kyc-fill-in
+        api_version: 0.5.0
   last_published:
-    release_tag: r2.2
-    release_date: '2026-11-04T08:27:08Z'
+    release_tag: r2.3
+    release_date: '2026-11-20T11:17:19Z'
     apis:
     - api_name: kyc-fill-in
-      api_version: 0.5.0-rc.2
+      api_version: 0.5.0
   snapshot_api_versions:
     kyc-fill-in: 0.5.0
-  warnings:
-  - code: W003
-    message: Release r2.3 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: KnowYourCustomerMatch
   github_url: https://github.com/camaraproject/KnowYourCustomerMatch
   release_track: meta-release
@@ -2012,8 +2007,8 @@ progress:
       last_pr_url: https://github.com/camaraproject/KnowYourCustomerMatch/pull/113
       last_closed_at: '2026-11-18T08:19:47Z'
   published_context:
-    latest_public_release: r1.2
-    newest_pre_release: r2.2
+    latest_public_release: r2.3
+    newest_pre_release: null
   cycle_releases:
     m1:
       release_tag: null
@@ -2026,22 +2021,19 @@ progress:
       - api_name: kyc-match
         api_version: 0.5.0-rc.1
     m4:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r2.3
+      release_date: '2026-11-20T11:06:00Z'
+      apis:
+      - api_name: kyc-match
+        api_version: 1.0.0
   last_published:
-    release_tag: r2.2
-    release_date: '2026-11-04T07:47:40Z'
+    release_tag: r2.3
+    release_date: '2026-11-20T11:06:00Z'
     apis:
     - api_name: kyc-match
-      api_version: 1.0.0-rc.1
+      api_version: 1.0.0
   snapshot_api_versions:
     kyc-match: 1.0.0
-  warnings:
-  - code: W003
-    message: Release r2.3 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: ModelAsAService
   github_url: https://github.com/camaraproject/ModelAsAService
   release_track: meta-release
@@ -3670,8 +3662,8 @@ progress:
       last_pr_url: https://github.com/camaraproject/WebRTC/pull/263
       last_closed_at: '2026-11-21T08:05:39Z'
   published_context:
-    latest_public_release: r2.2
-    newest_pre_release: r3.2
+    latest_public_release: r3.3
+    newest_pre_release: null
   cycle_releases:
     m1:
       release_tag: null
@@ -3688,28 +3680,29 @@ progress:
       - api_name: webrtc-registration
         api_version: 0.4.0-rc.1
     m4:
-      release_tag: null
-      release_date: null
-      apis: []
+      release_tag: r3.3
+      release_date: '2026-11-21T09:19:55Z'
+      apis:
+      - api_name: webrtc-call-handling
+        api_version: 0.4.0
+      - api_name: webrtc-events-subscriptions
+        api_version: 0.3.0
+      - api_name: webrtc-registration
+        api_version: 0.4.0
   last_published:
-    release_tag: r3.2
-    release_date: '2026-11-11T15:39:19Z'
+    release_tag: r3.3
+    release_date: '2026-11-21T09:19:55Z'
     apis:
     - api_name: webrtc-call-handling
-      api_version: 0.4.0-rc.2
+      api_version: 0.4.0
     - api_name: webrtc-events-subscriptions
-      api_version: 0.3.0-rc.2
+      api_version: 0.3.0
     - api_name: webrtc-registration
-      api_version: 0.4.0-rc.2
+      api_version: 0.4.0
   snapshot_api_versions:
     webrtc-call-handling: 0.4.0
     webrtc-events-subscriptions: 0.3.0
     webrtc-registration: 0.4.0
-  warnings:
-  - code: W003
-    message: Release r3.3 has been published. Milestone data will be updated in the
-      next 24 hours.
-    severity: warning
 - repository: ApplicationEndpointDiscovery
   github_url: https://github.com/camaraproject/ApplicationEndpointDiscovery
   release_track: meta-release
