@@ -209,27 +209,30 @@ The release finalization follows a two-phase process:
    - Reviewable content (CHANGELOG) is on the release-review branch
    - If API corrections needed: discard snapshot, fix main, create new snapshot
 
-#### Phase 2: Draft Creation and Publication (after PR merge)
+#### Phase 2: Publication (after PR merge)
 
-After approval and Release PR merge to snapshot branch:
+After approval and Release PR merge to snapshot branch, the release type decides how publication starts:
 
-1. Automation creates draft GitHub Release (no tag yet)
-2. Populates final metadata:
+- **Pre-releases** (`pre-release-alpha`, `pre-release-rc`): the merge publishes the release directly.
+- **Public and maintenance releases**: automation creates a draft GitHub Release (no tag yet). The codeowner reviews the draft (description from CHANGELOG, assets) and **publishes** via `/publish-release --confirm <tag>`.
+
+Publication then:
+
+1. Populates final metadata:
    - `release_date`: Current UTC timestamp
-3. Codeowner reviews draft release (description from CHANGELOG, assets)
-4. **Codeowner publishes** via `/publish-release --confirm <tag>` → creates git tag (e.g., `r4.1`)
-5. CI builds and publishes artifacts
-6. GitHub Release with artifacts is finalized:
+2. Creates git tag (e.g., `r4.1`) and publishes the GitHub Release
+3. CI builds and publishes artifacts
+4. GitHub Release with artifacts is finalized:
    - Standalone OpenAPI specifications (bundled on the snapshot branch, included in the auto-generated source archive)
    - Generated documentation
    - Release metadata files
 
-**Note:** Tag `rX.Y` is only created at final publication, not after PR merge. This provides a codeowner checkpoint before publication.
+**Note:** Tag `rX.Y` is only created at publication. For public and maintenance releases, the draft provides a codeowner checkpoint before publication; pre-releases rely on the Release PR approvals. The `release-tag-protection` ruleset restricts the creation of release tags to the release automation, so a draft cannot be published from the GitHub UI.
 
 **Rationale:**
 - Provides traceable, repeatable state for each tagged release
 - Two-phase approach ensures metadata reflects actual release state
-- Codeowner checkpoint prevents accidental publication
+- Codeowner checkpoint before publication of public and maintenance releases
 - Immutable snapshots simplify validation and prevent drift
 
 ### Step 5: Post-Release Actions
@@ -390,8 +393,8 @@ Each release attempt gets its own **temporary** snapshot branch (SHA-based namin
 1. **Creation**: Snapshot branch `release-snapshot/r4.1-abc1234` is created from `main` (or `maintenance-rX` for patches)
 2. **Preparation**: Automation sets versions, updates metadata on snapshot branch; creates release-review branch for CHANGELOG
 3. **Review**: Release PR merges reviewable content from release-review branch into snapshot branch
-4. **Draft**: After PR merge, draft release is created
-5. **Publication**: Codeowner publishes → tag `r4.1` is created
+4. **Draft**: After PR merge, draft release is created (public and maintenance releases only)
+5. **Publication**: Codeowner publishes the draft, or the PR merge publishes a pre-release → tag `r4.1` is created
 6. **Deletion**: After tagging, snapshot branch is deleted (the tag preserves the release)
 
 ```

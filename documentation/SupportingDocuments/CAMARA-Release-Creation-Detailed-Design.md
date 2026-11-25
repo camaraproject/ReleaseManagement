@@ -30,7 +30,7 @@ This document details the **release creation process** for CAMARA API repositori
 - **Cheap retries**: Discarding and recreating snapshots is fast and normal
 - **Clear accountability**: Explicit commands with audit trail
 - **Reduced confusion**: One active snapshot per release, clear state labels
-- **Human control**: Automation creates drafts; humans publish
+- **Human control**: Humans approve and merge the Release PR; for public and maintenance releases they also publish the draft
 - **One-step happy path**: Single `/create-snapshot` command validates and creates the snapshot branch, the release-review branch, and the Release PR
 
 ### Deviations from Current Concept
@@ -246,15 +246,15 @@ These refinements are **compatible extensions** to the concept. A change request
 
 ### 2.7 Automation Creates, Codeowner Publishes
 
-**Principle:** Automation creates draft releases; codeowners explicitly approve final publication and tag creation.
+**Principle:** Automation creates the release. For public and maintenance releases it creates a draft, and codeowners explicitly approve final publication and tag creation. Pre-releases are published on the Release PR merge.
 
 **Addresses:** R3, G3
 
 **Rationale:**
 - Automation ensures consistency of artifacts
-- Codeowner checkpoint prevents accidents
+- Codeowner checkpoint before a public or maintenance release
 - Clear accountability for publication decision
-- Uses GitHub Environment protection
+- The `release-tag-protection` ruleset restricts the creation of release tags to the release automation, so a draft cannot be published from the GitHub UI
 - Tag `rX.Y` only created at final publication (no extensions)
 
 ---
@@ -285,7 +285,7 @@ States are mutually exclusive. State is derived from repository artifacts, not s
 |-------|---------|-------|--------------|
 | **PLANNED** | Release configured in `release-plan.yaml`; no active snapshot | `release-state: planned` | `target_release_type ≠ none` in `release-plan.yaml` AND no `release-snapshot/rX.Y-*` branch |
 | **SNAPSHOT ACTIVE** | Snapshot branch exists (Release PR is a consequence) | `release-state: snapshot-active` | `release-snapshot/rX.Y-*` branch exists |
-| **DRAFT READY** | Release PR merged; draft release created | `release-state: draft-ready` | Draft release exists for `rX.Y` |
+| **DRAFT READY** | Release PR merged; draft release created (public and maintenance releases) | `release-state: draft-ready` | Draft release exists for `rX.Y` |
 | **PUBLISHED** | Release published; tag `rX.Y` created | `release-state: published` | Tag `rX.Y` exists; issue closed |
 | **NOT_PLANNED** | Release not currently planned | `release-state: not-planned` | `target_release_type: none` in `release-plan.yaml` |
 
@@ -339,7 +339,8 @@ The release automation workflow synchronizes the Release Issue when triggered by
 | PLANNED | `target_release_type: none` | NOT_PLANNED | Automation updates labels |
 | NOT_PLANNED | `target_release_type ≠ none` | PLANNED | Automation updates labels |
 | SNAPSHOT ACTIVE | `/discard-snapshot <reason>` | PLANNED | Reason required |
-| SNAPSHOT ACTIVE | Merge Release PR | DRAFT READY | |
+| SNAPSHOT ACTIVE | Merge Release PR | DRAFT READY | Public and maintenance releases |
+| SNAPSHOT ACTIVE | Merge Release PR | PUBLISHED | Pre-releases; creates tag `rX.Y`, closes issue |
 | DRAFT READY | `/delete-draft <reason>` | PLANNED | Reason required |
 | DRAFT READY | Publish release | PUBLISHED | Creates tag `rX.Y`, closes issue |
 
@@ -363,7 +364,8 @@ stateDiagram-v2
     NOT_PLANNED --> PLANNED : target_release_type ≠ none
     NOT_PLANNED --> [*] : issue closed manually
     SNAPSHOT_ACTIVE --> PLANNED : /discard-snapshot
-    SNAPSHOT_ACTIVE --> DRAFT_READY : Merge Release PR
+    SNAPSHOT_ACTIVE --> DRAFT_READY : Merge Release PR (public, maintenance)
+    SNAPSHOT_ACTIVE --> PUBLISHED : Merge Release PR (pre-release)
     DRAFT_READY --> PLANNED : /delete-draft
     DRAFT_READY --> PUBLISHED : /publish-release --confirm
     PUBLISHED --> [*]
@@ -542,11 +544,11 @@ Review, refine CHANGELOG
        ↓
 Merge Release PR into snapshot
        ↓
+Public or maintenance release: automation creates draft release (no tag yet),
+then codeowner: /publish-release --confirm r4.1
+Pre-release: publication starts directly
+       ↓
 Automation commits finalization (release_date) to snapshot
-       ↓
-Automation creates draft release (no tag yet)
-       ↓
-Codeowner: /publish-release --confirm r4.1
        ↓
 Automation publishes release (creates tag r4.1)
 Creates reference tag source/r4.1 on main
@@ -804,7 +806,7 @@ The following 16 messages cover all bot comment types. Each entry specifies the 
 
 #### Draft Phase
 
-**6. `draft_created`** — triggered by Release PR merge
+**6. `draft_created`** — triggered by Release PR merge of a public or maintenance release
 
 | Element | Content |
 |---------|---------|
@@ -836,7 +838,7 @@ The following 16 messages cover all bot comment types. Each entry specifies the 
 | Config | APIs, dependencies — from release-metadata.yaml |
 | Actions | `/publish-release --confirm {tag}` — publish the release; `/delete-draft <reason>` |
 
-**9. `release_published`** — response to `/publish-release --confirm`
+**9. `release_published`** — response to `/publish-release --confirm`; for a pre-release, a new comment after the Release PR merge
 
 | Element | Content |
 |---------|---------|
@@ -1207,11 +1209,9 @@ Issue closure is the final step — it follows the success message so the user s
 
 ## 9. Open Questions
 
-1. **Environment setup** — Who configures the release-publishing environment per repository?
+1. **Cross-repository visibility** — Should issue labels and comments be structured for machine-readable aggregation across repositories?
 
-2. **Cross-repository visibility** — Should issue labels and comments be structured for machine-readable aggregation across repositories?
-
-3. **Validation strictness** — Should `/create-snapshot` block on warnings, or only on errors?
+2. **Validation strictness** — Should `/create-snapshot` block on warnings, or only on errors?
 
 ---
 

@@ -8,8 +8,8 @@ This guide walks you through releasing an API repository in CAMARA.
 - [ ] Ensure all intended changes are merged to `main`
 - [ ] APIs meet their declared target statuses (Checks on `main` should be green)
 - [ ] `/create-snapshot` in Release Issue
-- [ ] Edit `CHANGELOG-rX.md` on the release-review branch, get approvals, merge Release PR
-- [ ] `/publish-release`
+- [ ] Edit `CHANGELOG-rX.md` on the release-review branch, get approvals, merge Release PR (publishes a pre-release)
+- [ ] Public and maintenance releases only: `/publish-release`
 - [ ] Merge post-release sync PR → Done
 
 ## The Release Process
@@ -88,7 +88,8 @@ This phase is ongoing until you decide to release.
 > **Do not** open a separate PR to `main` for the CHANGELOG — the post-release sync PR (step 6) carries it back to `main` automatically.
 
 **What you see:**
-- After merge: Draft release created, issue shows "DRAFT READY"
+- After merge of a pre-release (alpha, rc): the release is published, with the results listed in step 5 → continue with step 6
+- After merge of a public or maintenance release: Draft release created, issue shows "DRAFT READY" → continue with step 5
 
 **What can block you:**
 - Issue found in API specification, README, or anything beyond `CHANGELOG-rX.md`:
@@ -98,7 +99,9 @@ This phase is ongoing until you decide to release.
 
 ---
 
-### 5. Publish
+### 5. Publish (public and maintenance releases)
+
+Pre-releases skip this step: the Release PR merge publishes them.
 
 **What you do:**
 1. Review the draft release in GitHub Releases
@@ -140,14 +143,14 @@ This section is a summary only. For explanations, see the sections above.
 |---------|-------------|--------|
 | `/create-snapshot` | Ready to release | Creates Release PR |
 | `/discard-snapshot <reason>` | Problem found during review | Returns to start |
-| `/delete-draft <reason>` | Problem found in draft | Returns to start |
-| `/publish-release --confirm rX.Y` | Ready to publish | Publishes the release |
+| `/delete-draft <reason>` | Problem found in draft (public and maintenance releases) | Returns to start |
+| `/publish-release --confirm rX.Y` | Ready to publish (public and maintenance releases) | Publishes the release |
 
 | Release State | Meaning | Next step |
 |-------|---------|-----------|
 | PLANNED | Release is planned and ready | `/create-snapshot` |
-| SNAPSHOT ACTIVE | Release PR under review | Review and merge PR |
-| DRAFT READY | Draft awaiting publication | `/publish-release --confirm rX.Y` |
+| SNAPSHOT ACTIVE | Release PR under review | Review and merge PR (a pre-release is published by the merge) |
+| DRAFT READY | Draft awaiting publication (public and maintenance releases) | `/publish-release --confirm rX.Y` |
 | PUBLISHED | Done | — |
 
 ---
