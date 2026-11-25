@@ -33,13 +33,13 @@ These are independent numbering systems.
 
 **Release PR:** Pull request for reviewing release documentation.
 
-**Draft release:** Prepared but unpublished GitHub release.
+**Draft release:** Prepared but unpublished GitHub release. Created for public and maintenance releases only; pre-releases are published on the merge of the Release PR.
 
 **Release tag:** Git tag marking a published release (e.g., `r4.1`).
 
 **Release pointer branch:** A branch (`release/rX.Y` for public releases, `pre-release/rX.Y` for pre-releases) created by the automation at the release tag commit. Prevents the GitHub "commit does not belong to any branch" warning when browsing the tag tree view.
 
-**Release-review branch:** An editable branch created by the automation at snapshot time, named `release-review/rX.Y-<snapshot-id>`. The `CHANGELOG-rX.md` is completed here during release review. This branch is deleted by the automation when `/publish-release` is run.
+**Release-review branch:** An editable branch created by the automation at snapshot time, named `release-review/rX.Y-<snapshot-id>`. The `CHANGELOG-rX.md` is completed here during release review. This branch is deleted by the automation when the release is published.
 
 **Pr-to-main branch:** The source branch for the post-release sync PR, named `pr-to-main/rX.Y`. Created automatically on publish to carry `CHANGELOG-rX.md` and the automation-updated `README.md` back to `main`. Codeowner deletes it after the sync PR is merged.
 
@@ -49,7 +49,7 @@ These are independent numbering systems.
 |-------|---------|
 | PLANNED | Release intent declared in release-plan.yaml |
 | SNAPSHOT ACTIVE | Release PR under review |
-| DRAFT READY | Draft awaiting publication |
+| DRAFT READY | Draft awaiting publication (public and maintenance releases) |
 | PUBLISHED | Release complete |
 | NOT PLANNED | Release no longer planned |
 

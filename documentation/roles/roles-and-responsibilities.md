@@ -4,7 +4,7 @@
 
 | Role | Permissions |
 |------|-------------|
-| Codeowner | Update `release-plan.yaml` via pull requests, trigger releases, publish |
+| Codeowner | Update `release-plan.yaml` via pull requests, trigger releases, publish public and maintenance releases |
 | Maintainer | Contribute to and review release content |
 | Contributor | Submit PRs for release-review content |
 
