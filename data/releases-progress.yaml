@@ -1,7 +1,7 @@
 metadata:
-  last_updated: '2026-11-23T13:17:19Z'
-  last_checked: '2026-11-23T13:17:19Z'
-  releases_master_updated: '2026-11-21T10:08:52.135Z'
+  last_updated: '2026-11-25T13:14:26Z'
+  last_checked: '2026-11-25T13:14:26Z'
+  releases_master_updated: '2026-11-24T21:56:57.905Z'
   schema_version: 1.7.0
   collector_version: 1.7.0
   repos_scanned: 64
@@ -908,13 +908,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/DeviceAuthenticity/pull/28
       created_at: '2026-10-16T08:54:42Z'
-      assignees: []
+      assignees:
+      - tanjadegroot
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 6
     draft_release: null
     release_issue:
@@ -1173,13 +1174,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/DeviceMediaStreamingRate/pull/55
       created_at: '2026-10-22T02:40:22Z'
-      assignees: []
-      review_decision: null
+      assignees:
+      - eric-murray
+      review_decision: CHANGES_REQUESTED
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 5
       rm_total: 6
     draft_release: null
     release_issue:
@@ -2176,13 +2178,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/MultiPointVPN/pull/50
       created_at: '2026-10-28T10:42:56Z'
-      assignees: []
+      assignees:
+      - tanjadegroot
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 1
       rm_total: 6
     draft_release: null
     release_issue:
@@ -3311,13 +3314,14 @@ progress:
       state: open
       url: https://github.com/camaraproject/SubscriptionStatus/pull/52
       created_at: '2026-11-16T08:20:29Z'
-      assignees: []
+      assignees:
+      - eric-murray
       review_decision: null
       codeowner_approved: false
       codeowner_checked: 3
       codeowner_total: 3
       ready_for_review: true
-      rm_checked: 0
+      rm_checked: 5
       rm_total: 6
     draft_release: null
     release_issue:
@@ -6712,6 +6716,47 @@ progress:
     apis:
     - api_name: region-device-count
       api_version: 0.1.0
+  source: historical
+- repository: SessionInsights
+  github_url: https://github.com/camaraproject/SessionInsights
+  release_track: independent
+  target_release_tag: null
+  target_release_type: null
+  apis:
+  - api_name: session-insights
+    target_api_version: 0.1.0-alpha.1
+    target_api_status: ''
+  state: historical
+  artifacts:
+    snapshot_branch: null
+    release_pr: null
+    draft_release: null
+    release_issue: null
+    review_history: null
+  published_context:
+    latest_public_release: null
+    newest_pre_release: null
+  cycle_releases:
+    m1:
+      release_tag: r1.1
+      release_date: '2026-05-07T09:55:28Z'
+      apis:
+      - api_name: session-insights
+        api_version: 0.1.0-alpha.1
+    m3:
+      release_tag: null
+      release_date: null
+      apis: []
+    m4:
+      release_tag: null
+      release_date: null
+      apis: []
+  last_published:
+    release_tag: r1.1
+    release_date: '2026-05-07T09:55:28Z'
+    apis:
+    - api_name: session-insights
+      api_version: 0.1.0-alpha.1
   source: historical
 - repository: SimSwap
   github_url: https://github.com/camaraproject/SimSwap
